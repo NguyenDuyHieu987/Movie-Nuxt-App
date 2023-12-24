@@ -176,6 +176,7 @@
   ],
   "ignorePatterns": [
     ".nuxt/*",
+    "node_modules/*",
     "public/js/*",
     "**/*.css",
     "**/*.scss",
