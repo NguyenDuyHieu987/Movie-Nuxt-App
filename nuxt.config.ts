@@ -1,10 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-// import resolveAntDVComponents from './utils/autoImportsAntdv';
 import { version } from 'ant-design-vue';
 import type { NuxtPage } from 'nuxt/schema';
 import { resolve } from 'path';
 import { isProduction } from 'std-env';
+import { fileURLToPath } from 'url';
 import svgLoader from 'vite-svg-loader';
+// import resolveAntDVComponents from './utils/autoImportsAntdv';
 
 const antdVersion: number = +version.split('.')[0];
 
