@@ -78,6 +78,7 @@ export default defineNuxtConfig({
   },
   alias: {
     '@': resolve(__dirname, './')
+    // components: fileURLToPath(new URL('./components', import.meta.url))
   },
   imports: {
     dirs: [
