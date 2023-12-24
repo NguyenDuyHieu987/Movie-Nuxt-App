@@ -4,3 +4,4 @@ public/js/*
 *.css
 *.scss
 *.less
+coverage
