@@ -212,13 +212,11 @@
   </div>
 </template>
 <script setup lang="ts">
-// import { ElCarousel, ElCarouselItem, ElTooltip } from 'element-plus';
 import BillboardItem from '~/components/BillboardItem/BillboardItem.vue';
 import { getImage } from '~/services/image';
 
 const billboard = ref();
 const billboardPreview = ref();
-// const data = ref<any[]>([]);
 const dataModel = defineModel<any[]>('data', { default: [] });
 const prevItemCarousel = ref<string>(
   dataModel.value![dataModel.value!?.length - 1]?.name

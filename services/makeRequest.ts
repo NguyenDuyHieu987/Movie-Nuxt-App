@@ -1,16 +1,22 @@
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
+import type {
+  AxiosRequestConfig,
+  AxiosRequestHeaders,
+  AxiosResponse
+} from 'axios';
 import axios from 'axios';
 
 type MakeRequestOptions = {
   noAuthHeaders?: boolean;
   getResponseHeaders?: boolean;
+  headers: AxiosRequestHeaders | object;
 } & AxiosRequestConfig;
 
 export async function makeRequest(
   url: string,
   options: MakeRequestOptions = {
     noAuthHeaders: false,
-    getResponseHeaders: false
+    getResponseHeaders: false,
+    headers: {}
   }
 ) {
   const nuxtConfig = useRuntimeConfig();
