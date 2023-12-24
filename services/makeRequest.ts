@@ -17,14 +17,23 @@ export async function makeRequest(
   const utils = useUtils();
 
   const api = axios.create({
-    baseURL: nuxtConfig.app.production_mode ? nuxtConfig.app.apiGateway : 'http://localhost:5000',
+    baseURL: nuxtConfig.app.production_mode
+      ? nuxtConfig.app.apiGateway
+      : 'http://localhost:5000',
     // 'http://127.0.0.1:5000',
     withCredentials: true
   });
 
-  if (utils.localStorage.getWithExpiry('user_token') && !options?.noAuthHeaders) {
-    if (!options.headers!.Authorization) {
-      options.headers!.Authorization = `Bearer ${utils.localStorage.getWithExpiry('user_token')}`;
+  if (
+    utils.localStorage.getWithExpiry('user_token') &&
+    !options?.noAuthHeaders
+  ) {
+    if (!options.headers?.Authorization) {
+      options.headers!.Authorization = `Bearer ${utils.localStorage.getWithExpiry(
+        'user_token'
+      )}`;
+
+      console.log(options.headers!);
     }
   }
 
@@ -40,5 +49,7 @@ export async function makeRequest(
 
       return data;
     })
-    .catch((error) => Promise.reject(error?.response?.data?.message ?? 'Error'));
+    .catch((error) =>
+      Promise.reject(error?.response?.data?.message ?? 'Error')
+    );
 }
