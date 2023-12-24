@@ -1,3 +1,0 @@
-module.exports = {
-  '*.{ts,tsx,js,mjs,cjs,vue}': 'eslint --fix --cache'
-};
