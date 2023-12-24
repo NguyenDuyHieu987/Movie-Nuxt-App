@@ -115,7 +115,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 
-import { TheMenu } from '~/components/Layouts';
+import { TheMenu } from '~/components/layouts';
 import { getImage } from '~/services/image';
 
 const store = useStore();
@@ -139,4 +139,3 @@ router.beforeResolve(() => {
 </script>
 
 <style lang="scss" src="./Drawer.scss"></style>
-~/components/Layouts/TheMenu

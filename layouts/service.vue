@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { Drawer, Footer, HeaderService } from '~/components/Layouts';
+import { Drawer, Footer, HeaderService } from '~/components/layouts';
 </script>
 
 <style lang="scss" src="~/assets/style/serviceLayout.scss"></style>

@@ -40,10 +40,15 @@
 </template>
 
 <script setup lang="ts">
-// import BreadCrumb from '~/components/layouts/BreadCrumb';
 import { storeToRefs } from 'pinia';
 
-import { Drawer, Footer, Header, Sider } from '~/components/Layouts';
+import {
+  // BreadCrumb,
+  Drawer,
+  Footer,
+  Header,
+  Sider
+} from '~/components/layouts';
 
 const store = useStore();
 const router = useRouter();

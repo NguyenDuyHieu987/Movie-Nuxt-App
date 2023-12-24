@@ -148,7 +148,7 @@ import {
   // SearchCard,
   SearchDropdown,
   SearchMobile
-} from '~/components/Layouts/Header';
+} from '~/components/layouts/Header';
 import { getImage } from '~/services/image';
 import {
   getDaTaSearch,

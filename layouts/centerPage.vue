@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { Drawer, Footer, HeaderCenterPage } from '~/components/Layouts';
+import { Drawer, Footer, HeaderCenterPage } from '~/components/layouts';
 </script>
 
 <style lang="scss" src="~/assets/style/centerPageLayout.scss"></style>

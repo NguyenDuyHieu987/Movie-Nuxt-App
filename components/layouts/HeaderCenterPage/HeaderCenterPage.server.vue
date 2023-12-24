@@ -92,7 +92,7 @@
 import _ from 'lodash';
 import { storeToRefs } from 'pinia';
 
-import { DropdownAccount, Notification } from '~/components/Layouts/Header';
+import { DropdownAccount, Notification } from '~/components/layouts/Header';
 import { getImage } from '~/services/image';
 
 const store = useStore();

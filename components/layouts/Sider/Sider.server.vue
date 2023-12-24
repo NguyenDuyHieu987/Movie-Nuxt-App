@@ -110,7 +110,7 @@
 import { useBreakpoints } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 
-import { TheMenu } from '~/components/Layouts';
+import { TheMenu } from '~/components/layouts';
 import { getImage } from '~/services/image';
 
 const store = useStore();
