@@ -32,8 +32,6 @@ export async function makeRequest(
       options.headers!.Authorization = `Bearer ${utils.localStorage.getWithExpiry(
         'user_token'
       )}`;
-
-      console.log(options.headers!);
     }
   }
 
