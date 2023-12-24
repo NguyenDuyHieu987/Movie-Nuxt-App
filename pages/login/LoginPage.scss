@@ -1,0 +1,308 @@
+.login {
+  display: flex;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding: 20px 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .login-container {
+    display: flex;
+    max-width: 100%;
+    margin: auto auto;
+
+    .login-form-container {
+      position: relative;
+      box-shadow: var(--box-shadow-large);
+      z-index: 1;
+      // background-color: var(--background-content-color);
+      background-color: rgba(0, 0, 0, 0.9);
+      width: 550px;
+      min-height: 630px;
+      overflow: hidden;
+      border-radius: 2px;
+
+      .login-form {
+        // position: absolute;
+        // inset: 3px;
+        // z-index: 3;
+        // background-color: var(--background-content-color);
+        padding: 30px 70px;
+
+        .title-login {
+          text-align: center;
+          margin-bottom: 20px;
+          font-size: 2.7rem;
+          margin-top: 0px;
+        }
+
+        .play-now {
+          margin-top: 15px;
+          display: block;
+          color: inherit;
+          text-align: center;
+          padding: 6px 15px;
+          flex-grow: 1;
+          background-image: linear-gradient(
+            to right,
+            var(--app-background-color2),
+            var(--app-background-color),
+            var(--app-background-color2)
+          );
+          transition: background 0.4s;
+          background-size: 100% 100%;
+          background-position: 100% center;
+          border-radius: 2px;
+          font-size: 1.5rem;
+          user-select: none;
+
+          &:hover {
+            background-size: 200% 100%;
+          }
+        }
+
+        .ant-row.ant-form-item {
+          &.remember-me {
+            .ant-checkbox-wrapper {
+              user-select: none;
+              font-size: 1.45rem;
+            }
+          }
+
+          .ant-checkbox-wrapper {
+            color: inherit;
+          }
+        }
+
+        .forgot-password-btn {
+          float: right;
+          color: var(--link-text-color);
+          transition: all 0.15s;
+          user-select: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .login-form-button {
+          width: 100%;
+          padding: 10px 15px;
+          font-size: 1.5rem;
+          background-color: var(--background-content-color);
+          border: 1px solid var(--border-regular);
+
+          &:disabled {
+            // color: #707070;
+          }
+        }
+
+        .bottom-form {
+          color: inherit;
+        }
+
+        .separate {
+          margin: 30px auto;
+          border-top: 1px solid #fff;
+          width: 60%;
+        }
+
+        .social-login {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          .el-button {
+            padding: 13px 17px;
+            background-color: var(--btn-backgroud-color-gray);
+            color: inherit;
+
+            span {
+              width: 100%;
+              margin-left: 0px;
+              font-weight: normal;
+              font-size: 1.5rem;
+            }
+          }
+
+          .ant-btn {
+            display: flex;
+            align-items: center;
+            background-color: var(--background-content-color);
+            border: 1px solid var(--border-regular);
+            padding: 10px 15px;
+
+            &:hover {
+              // border-color: var(--app-background-color);
+              background-color: var(--background-content-color1);
+            }
+
+            &:active {
+            }
+
+            &.ant-btn-loading {
+              span {
+                margin-left: 0px;
+                margin-right: auto;
+                width: auto;
+              }
+            }
+
+            span {
+              margin-left: 0px;
+              width: 100%;
+            }
+          }
+
+          .facebook-login-btn {
+            flex-grow: 1;
+
+            .el-icon {
+              font-size: 1.8rem;
+              margin-left: 0px;
+            }
+
+            .fa-facebook-f {
+              fill: #1890ff;
+              color: #1890ff;
+            }
+          }
+
+          .google-login-btn {
+            margin-left: 0px;
+            flex-grow: 1;
+
+            .el-icon {
+              font-size: 1.8rem;
+              margin-left: 0px;
+            }
+
+            img {
+              // height: 100%;
+              // width: 100%;
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+
+        .bottom-form {
+          margin: 20px 0px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+
+        &::-webkit-scrollbar {
+          display: none !important;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          display: none !important;
+        }
+      }
+
+      // &::before {
+      //   content: '';
+      //   position: absolute;
+      //   top: 50%;
+      //   left: 50%;
+      //   transform: translate(-50%, -50%);
+      //   width: 500px;
+      //   height: 500px;
+      //   background-image: linear-gradient(
+      //     45deg,
+      //     var(--app-background-color),
+      //     var(--loading-progress-bar2),
+      //     var(--loading-progress-bar1)
+      //   );
+      //   z-index: 1;
+      //   animation: animate 10s linear infinite;
+      //   transform-origin: top left;
+      // }
+
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   top: 50%;
+      //   left: 50%;
+      //   transform: translate(-50%, -50%);
+      //   width: 500px;
+      //   height: 500px;
+      //   background-image: linear-gradient(
+      //     45deg,
+      //     var(--app-background-color),
+      //     var(--loading-progress-bar2),
+      //     var(--loading-progress-bar1)
+      //   );
+      //   z-index: 1;
+      //   animation: animate 10s linear infinite;
+      //   transform-origin: top left;
+      //   animation-delay: -4.9s;
+      // }
+
+      @keyframes animate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes animate-reverse {
+        0% {
+          transform: rotate(360deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login {
+    .login-container {
+      .login-form-container {
+        width: 500px;
+
+        .login-form {
+          padding: 30px 60px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .login {
+    .login-container {
+      .login-form-container {
+        width: 470px;
+
+        .login-form {
+          padding: 30px 50px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .login {
+    .login-container {
+      .login-form-container {
+        .login-form {
+          padding: 30px 40px;
+        }
+      }
+    }
+  }
+}

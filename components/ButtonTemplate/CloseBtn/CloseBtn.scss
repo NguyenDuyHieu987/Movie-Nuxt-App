@@ -1,0 +1,20 @@
+svg.close {
+  position: absolute;
+  padding: 5px;
+  font-size: 4rem;
+  width: 4rem;
+  height: 4rem;
+  top: 10px;
+  right: 10px;
+  transition: 0.25s;
+  cursor: pointer;
+  background-color: #07070785;
+  border-radius: 50%;
+  filter: drop-shadow(2px 2px 2px #000);
+  color: var(--text-color);
+  fill: var(--text-color);
+
+  &.transparent {
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,27 @@
+.sort-tab {
+  display: flex;
+  gap: 5px;
+
+  .tab-item {
+    padding: 8px 20px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.4rem;
+    // background-color: #00000097;
+    border-radius: 7px;
+    transition: all 0.15s;
+    line-height: normal;
+
+    &.active {
+      // background-color: #23232397;
+      // box-shadow: var(--box-shadow-small);
+      background-color: #e3e3e3;
+      color: var(--text-color-invert);
+    }
+
+    &:active {
+      background-color: #c7c7c7;
+      color: var(--text-color-invert);
+    }
+  }
+}

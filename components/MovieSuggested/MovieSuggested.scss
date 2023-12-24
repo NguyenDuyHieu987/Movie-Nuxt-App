@@ -1,0 +1,72 @@
+.suggested {
+  position: relative;
+
+  .suggested-container {
+    padding-bottom: 50px;
+
+    .suggested-title {
+      margin-bottom: 20px;
+    }
+
+    .el-skeleton.is-animated.movie-group-suggested-skeleton {
+      position: relative;
+      display: flex;
+      gap: 10px;
+      overflow: hidden;
+      background-color: var(--background-content-color);
+      flex-wrap: wrap;
+
+      .movie-card-item-suggested {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .ing-box {
+        position: relative;
+        display: flex;
+        flex: 1 0 200px;
+        max-width: 200px;
+        overflow: hidden;
+        border-radius: 5px;
+
+        .el-skeleton__item.skeleton-img {
+          width: 100%;
+          height: 100%;
+          transition: all 0.3s;
+        }
+      }
+
+      .content-skeleton {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+
+        .el-skeleton__item.el-skeleton__text {
+          &:first-child {
+            height: 16px;
+          }
+
+          &:nth-child(2) {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+
+    .suggested-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .loading-suggested {
+      position: absolute;
+      left: 50%;
+      right: 50%;
+      bottom: 0;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

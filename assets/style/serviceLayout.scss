@@ -1,0 +1,76 @@
+.body-content-service {
+  display: flex;
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  margin-top: var(--header-height);
+  background-color: #fff;
+  // transition: all 0.2s;
+  // overflow: hidden;
+
+  .body-wrapper {
+    --text-color-gray: #6f6f6f;
+    --text-color-gray1: #4d4d4d;
+    flex: auto;
+    position: relative;
+    display: flex;
+    max-width: var(--max-width-app);
+    color: var(--text-color-invert);
+    margin: 0px auto;
+
+    .anticon {
+      svg {
+        fill: var(--text-color-invert);
+      }
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      color: var(--text-color-invert);
+
+      &.submit-btn {
+        color: var(--text-color);
+      }
+    }
+  }
+
+  main.main-content {
+    display: flex;
+    flex: auto;
+    width: 0;
+    flex-direction: column;
+
+    & > .container {
+      // padding: 15px 20px;
+      padding-bottom: 50px;
+      flex-grow: 1;
+      height: 100%;
+    }
+
+    footer.footer {
+      .footer-container {
+        max-width: var(--max-width-center-page);
+        margin: 0px auto;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .ant-layout-content.container {
+    // background-color: var(--background-content-color);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .body-content-service {
+    main.main-content {
+      & + .container {
+        // padding: 15px 15px;
+        padding-bottom: 30px;
+      }
+    }
+  }
+}

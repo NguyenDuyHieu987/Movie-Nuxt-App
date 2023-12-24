@@ -1,0 +1,30 @@
+.search {
+  .gradient-title-default {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .search-section {
+    .ant-result {
+      .ant-result-subtitle {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .search {
+    .gradient-title-default {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .ant-select {
+        align-self: flex-end;
+      }
+    }
+  }
+}
