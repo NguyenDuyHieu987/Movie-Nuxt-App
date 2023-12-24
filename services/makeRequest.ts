@@ -8,7 +8,7 @@ import axios from 'axios';
 type MakeRequestOptions = {
   noAuthHeaders?: boolean;
   getResponseHeaders?: boolean;
-  headers: AxiosRequestHeaders | object;
+  headers?: AxiosRequestHeaders | object;
 } & AxiosRequestConfig;
 
 export async function makeRequest(

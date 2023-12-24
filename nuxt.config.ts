@@ -62,11 +62,10 @@ export default defineNuxtConfig({
       googleTagManagerID: process.env.GOOGLE_TAG_MANAGER_ID,
       facebookAppID: process.env.FACEBOOK_APP_ID,
       googleOauth2ClientID: process.env.GOOGLE_OAUTH2_CLIENT_ID,
-      googleOauth2ClientSecret: process.env.GOOGLE_OAUTH2_CLIENT_SECRET
+      googleOauth2ClientSecret: process.env.GOOGLE_OAUTH2_CLIENT_SECRET,
+      TMDBurl: process.env.TMDB_IMAGE_BASE_URL
     },
     public: {
-      TMDBurl: process.env.TMDB_IMAGE_BASE_URL,
-
       // SEO
       siteUrl: 'https://phimhay247z.org',
       siteName: 'Phimhay247',
@@ -104,7 +103,9 @@ export default defineNuxtConfig({
     strict: true
   },
   css: [
-    antdVersion == 4 ? 'ant-design-vue/dist/reset.css' : 'ant-design-vue/dist/antd.dark.min.css',
+    antdVersion == 4
+      ? 'ant-design-vue/dist/reset.css'
+      : 'ant-design-vue/dist/antd.dark.min.css',
     '~/assets/style/fonts/GoogleFonts.css',
     '~/assets/style/globalStyle/overwrite/antdv/antdv.scss',
     '~/assets/style/globalStyle/overwrite/element/element.scss',
