@@ -7,7 +7,11 @@
           :src="
             // getImage(`Background_Auth${image}.jpg`, '/background/auth')
             // 'https://ik.imagekit.io/8toa5f2rp/images/background/1/Background_1.jpg'
-            getImage('Background_1.jpg', 'background/1', 'w-' + windowWidth?.toString())
+            getImage(
+              'Background_1.jpg',
+              'background/1',
+              'w-' + windowWidth?.toString()
+            )
           "
           loading="lazy"
           format="avif"
@@ -32,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import HeaderAuth from '~/components/layouts/HeaderAuth/HeaderAuth.server.vue';
+import { HeaderAuth } from '~/components/Layouts';
 import { getImage } from '~/services/image';
 
 const image = ref<number>(Math.floor(Math.random() * 3) + 1);

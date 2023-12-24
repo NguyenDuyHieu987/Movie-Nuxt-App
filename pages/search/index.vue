@@ -79,7 +79,7 @@
 
 <script setup lang="ts">
 import { ControlPage } from '~/components/ControlPage';
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import { LoadingSpinner } from '~/components/Loading';
 import { MovieCardHorizontal } from '~/components/MovieCard';
 import { addRankSearch } from '~/services/ranks';
 import { addSearch, addSearchHistory, getDaTaSearch } from '~/services/search';

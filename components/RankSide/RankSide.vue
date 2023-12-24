@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import RankCard from '~/components/RankSide/RankCard/RankCard.vue';
+import { RankCard } from '~/components/RankSide';
 import { getRanking } from '~/services/ranks';
 
 interface tab {

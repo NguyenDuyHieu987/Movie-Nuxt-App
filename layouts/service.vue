@@ -21,9 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import Drawer from '~/components/layouts/Drawer/Drawer.server.vue';
-import Footer from '~/components/layouts/Footer/Footer.server.vue';
-import HeaderService from '~/components/layouts/HeaderService/HeaderService.server.vue';
+import { Drawer, Footer, HeaderService } from '~/components/Layouts';
 </script>
 
 <style lang="scss" src="~/assets/style/serviceLayout.scss"></style>

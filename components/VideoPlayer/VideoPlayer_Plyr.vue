@@ -32,8 +32,8 @@ import Hls from 'hls.js';
 import Plyr from 'plyr';
 import 'plyr/dist/plyr.css';
 
-import CloseBtn from '~/components/ButtonTemplate/CloseBtn/CloseBtn.vue';
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import { CloseBtn } from '~/components/ButtonTemplate';
+import { LoadingSpinner } from '~/components/Loading';
 import { getVideo } from '~/services/video';
 
 const props = withDefaults(

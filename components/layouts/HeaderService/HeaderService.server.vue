@@ -63,8 +63,7 @@ import { MenuOutlined } from '@ant-design/icons-vue';
 import _ from 'lodash';
 import { storeToRefs } from 'pinia';
 
-import DropdownAccount from '~/components/layouts/Header/DropdownAcount/DropdownAcount.vue';
-import Notification from '~/components/layouts/Header/Notification/Notification.vue';
+import { DropdownAccount, Notification } from '~/components/Layouts/Header';
 import { getImage } from '~/services/image';
 
 const store = useStore();

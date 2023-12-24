@@ -26,7 +26,9 @@
         <div class="container">
           <slot />
         </div>
-        <Footer v-show="$route.path != '/follow' && $route.path != '/history'" />
+        <Footer
+          v-show="$route.path != '/follow' && $route.path != '/history'"
+        />
       </main>
 
       <!-- <section
@@ -41,10 +43,7 @@
 // import BreadCrumb from '~/components/layouts/BreadCrumb';
 import { storeToRefs } from 'pinia';
 
-import Drawer from '~/components/layouts/Drawer/Drawer.server.vue';
-import Footer from '~/components/layouts/Footer/Footer.server.vue';
-import Header from '~/components/layouts/Header/Header.server.vue';
-import Sider from '~/components/layouts/Sider/Sider.server.vue';
+import { Drawer, Footer, Header, Sider } from '~/components/Layouts';
 
 const store = useStore();
 const router = useRouter();

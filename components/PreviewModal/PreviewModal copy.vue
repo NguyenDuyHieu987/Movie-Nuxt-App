@@ -410,7 +410,7 @@
 <script setup lang="ts">
 import gsap from 'gsap';
 
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import { LoadingSpinner } from '~/components/Loading';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';

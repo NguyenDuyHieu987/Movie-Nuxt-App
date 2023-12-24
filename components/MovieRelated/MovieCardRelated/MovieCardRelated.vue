@@ -199,7 +199,7 @@
 </template>
 
 <script setup lang="ts">
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import { LoadingSpinner } from '~/components/Loading';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getItemList } from '~/services/list';

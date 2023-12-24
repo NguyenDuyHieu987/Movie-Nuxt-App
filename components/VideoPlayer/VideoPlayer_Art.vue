@@ -8,8 +8,8 @@
 import Artplayer from 'artplayer';
 import Hls from 'hls.js';
 
-import CloseBtn from '~/components/ButtonTemplate/CloseBtn/CloseBtn.vue';
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import { CloseBtn } from '~/components/ButtonTemplate';
+import { LoadingSpinner } from '~/components/Loading';
 import { getVideo } from '~/services/video';
 
 const props = withDefaults(
