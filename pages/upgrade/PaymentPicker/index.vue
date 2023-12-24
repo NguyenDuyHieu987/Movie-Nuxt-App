@@ -153,8 +153,6 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
-
 import type { plan } from '@/types';
 import RequireAuth from '~/components/RequireAuth/RequireAuth.server.vue';
 import { getImage } from '~/services/image';

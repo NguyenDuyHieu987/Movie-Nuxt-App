@@ -127,56 +127,55 @@
 </template>
 
 <script setup lang="ts">
-import { useBreakpoints } from '@vueuse/core'
-import axios from 'axios'
-import gsap from 'gsap'
-import _ from 'lodash'
-import { storeToRefs } from 'pinia'
+import { useBreakpoints } from '@vueuse/core';
+import gsap from 'gsap';
+import _ from 'lodash';
+import { storeToRefs } from 'pinia';
 
 // import scrollBottom from 'scroll-bottom';
-import MovieCardHorizontalFollow from '~/components/MovieCardHorizontalFollow/MovieCardHorizontalFollow.vue'
-import RequireAuth from '~/components/RequireAuth/RequireAuth.server.vue'
-import SortTab from '~/components/SortTab/SortTab.vue'
-import TopicColumn from '~/components/TopicColumn/TopicColumn.vue'
-import TopicRow from '~/components/TopicRow/TopicRow.vue'
-import { getList, searchList } from '~/services/list'
+import MovieCardHorizontalFollow from '~/components/MovieCardHorizontalFollow/MovieCardHorizontalFollow.vue';
+import RequireAuth from '~/components/RequireAuth/RequireAuth.server.vue';
+import SortTab from '~/components/SortTab/SortTab.vue';
+import TopicColumn from '~/components/TopicColumn/TopicColumn.vue';
+import TopicRow from '~/components/TopicRow/TopicRow.vue';
+import { getList, searchList } from '~/services/list';
 
 definePageMeta({
   // requireAuth: true,
   // middleware: ['require-auth'],
-})
+});
 
-const store = useStore()
-const utils = useUtils()
-const { isLogin } = storeToRefs<any>(store)
-const route = useRoute()
-const dataList = ref<any[]>([])
-const valueInput = ref<string>('')
-const debounce = ref<any>()
-const total = ref<number>(0)
-const skip = ref<number>(1)
-const loading = ref<boolean>(false)
-const loadingSearch = ref<boolean>(false)
-const isFixedNavActiom = ref<boolean>(false)
-const loadMore = ref<boolean>(false)
-const topicImage = ref<string>('topic1.jpg')
-const followContent = ref()
-const title = ref<string>('Phim đã thêm vào danh sách phát')
-const activeTab = ref<string>('all')
-const showData = ref<boolean>(true)
+const store = useStore();
+const utils = useUtils();
+const { isLogin } = storeToRefs<any>(store);
+const route = useRoute();
+const dataList = ref<any[]>([]);
+const valueInput = ref<string>('');
+const debounce = ref<any>();
+const total = ref<number>(0);
+const skip = ref<number>(1);
+const loading = ref<boolean>(false);
+const loadingSearch = ref<boolean>(false);
+const isFixedNavActiom = ref<boolean>(false);
+const loadMore = ref<boolean>(false);
+const topicImage = ref<string>('topic1.jpg');
+const followContent = ref();
+const title = ref<string>('Phim đã thêm vào danh sách phát');
+const activeTab = ref<string>('all');
+const showData = ref<boolean>(true);
 
 const breakpoints = useBreakpoints({
   responsive: 1200
-})
+});
 
-const responsive = breakpoints.smallerOrEqual('responsive')
+const responsive = breakpoints.smallerOrEqual('responsive');
 
-const internalInstance: any = getCurrentInstance()
+const internalInstance: any = getCurrentInstance();
 
 useHead({
   title: 'Danh sách theo dõi',
   htmlAttrs: { lang: 'vi' }
-})
+});
 
 useSeoMeta({
   title: 'Danh sách theo dõi',
@@ -186,27 +185,27 @@ useSeoMeta({
   // ogUrl: window.location.href,
   ogDescription: 'Danh sách theo dõi của bạn',
   ogLocale: 'vi'
-})
+});
 
 onMounted(() => {
   const headerHeight = +getComputedStyle(document.documentElement)
     .getPropertyValue('--header-height')
-    .replace('px', '')
+    .replace('px', '');
 
   window.addEventListener('scroll', async () => {
     if (dataList.value?.length == 0) {
-      return
+      return;
     }
 
     if (followContent?.value) {
       if (window.scrollY >= followContent.value.offsetTop + headerHeight) {
-        isFixedNavActiom.value = true
+        isFixedNavActiom.value = true;
       } else {
-        isFixedNavActiom.value = false
+        isFixedNavActiom.value = false;
       }
     }
 
-    const scrollHeight = Math.round(window.scrollY + window.innerHeight)
+    const scrollHeight = Math.round(window.scrollY + window.innerHeight);
 
     if (
       scrollHeight == document.documentElement.scrollHeight &&
@@ -214,7 +213,7 @@ onMounted(() => {
       total.value > 20 &&
       dataList.value?.length < total.value
     ) {
-      loadMore.value = true
+      loadMore.value = true;
       // await useAsyncData(
       //   `list/get/${store.userAccount?.id}/${activeTab.value}/${skip.value}`,
       //   () => getList(activeTab.value, skip.value)
@@ -222,20 +221,20 @@ onMounted(() => {
       await getList(activeTab.value, skip.value)
         .then((response) => {
           if (response?.results?.length > 0) {
-            dataList.value = dataList.value.concat(response?.results)
-            skip.value++
+            dataList.value = dataList.value.concat(response?.results);
+            skip.value++;
           }
         })
         .catch((e) => {})
         .finally(() => {
-          loadMore.value = false
-        })
+          loadMore.value = false;
+        });
     }
-  })
-})
+  });
+});
 
 const getData = async () => {
-  loading.value = true
+  loading.value = true;
 
   // await useAsyncData(
   //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
@@ -244,10 +243,10 @@ const getData = async () => {
   await getList(activeTab.value, 1)
     .then((response) => {
       if (response?.results?.length > 0) {
-        dataList.value = response?.results
-        total.value = response?.total
-        topicImage.value = dataList.value[0]?.backdrop_path
-        skip.value++
+        dataList.value = response?.results;
+        total.value = response?.total;
+        topicImage.value = dataList.value[0]?.backdrop_path;
+        skip.value++;
       }
 
       // if (dataList.value?.length == 0) {
@@ -264,9 +263,9 @@ const getData = async () => {
     })
     .catch((e) => {})
     .finally(() => {
-      loading.value = false
-    })
-}
+      loading.value = false;
+    });
+};
 
 // onBeforeMount(async () => {
 //   if (store.isLogin) {
@@ -276,16 +275,16 @@ const getData = async () => {
 //   }
 // });
 
-getData()
+getData();
 
 const getDataWhenRemoveList = (data: number) => {
   // dataList.value = data;
   dataList.value = _.reject(dataList.value, (x) => {
-    return x.movie_id === data
-  })
-  total.value = dataList.value?.length
-  topicImage.value = dataList.value[0]?.backdrop_path
-}
+    return x.movie_id === data;
+  });
+  total.value = dataList.value?.length;
+  topicImage.value = dataList.value[0]?.backdrop_path;
+};
 
 const removeAllFollowList = () => {
   if (dataList.value?.length > 0) {
@@ -294,21 +293,21 @@ const removeAllFollowList = () => {
       message: 'Bạn có muốn xóa toàn bộ Danh sách phát không?',
       onOk: async function () {
         if (await utils.handleRemoveAllitemFromList()) {
-          dataList.value = []
+          dataList.value = [];
         }
       },
       onCancel() {}
-    })
+    });
   }
-}
+};
 
 const searchFollow = (e: any) => {
   if (e.target.value.length >= 0) {
-    loadingSearch.value = true
+    loadingSearch.value = true;
 
-    internalInstance.appContext.config.globalProperties.$Progress.start()
+    internalInstance.appContext.config.globalProperties.$Progress.start();
 
-    clearTimeout(debounce.value)
+    clearTimeout(debounce.value);
 
     debounce.value = setTimeout(async () => {
       // await useAsyncData(
@@ -317,23 +316,23 @@ const searchFollow = (e: any) => {
       // )
       await searchList(e.target.value, activeTab.value)
         .then((response) => {
-          dataList.value = response?.results
+          dataList.value = response?.results;
         })
         .catch((e) => {
-          loadingSearch.value = false
+          loadingSearch.value = false;
         })
         .finally(() => {
-          loadingSearch.value = false
-          internalInstance.appContext.config.globalProperties.$Progress.finish()
-        })
-    }, 500)
+          loadingSearch.value = false;
+          internalInstance.appContext.config.globalProperties.$Progress.finish();
+        });
+    }, 500);
   }
-}
+};
 
 const handleChangeTab = async (value: string) => {
-  activeTab.value = value
-  internalInstance.appContext.config.globalProperties.$Progress.start()
-  valueInput.value = ''
+  activeTab.value = value;
+  internalInstance.appContext.config.globalProperties.$Progress.start();
+  valueInput.value = '';
 
   // window.scrollTo({
   //   top: 0,
@@ -341,11 +340,11 @@ const handleChangeTab = async (value: string) => {
   //   behavior: 'instant',
   // });
 
-  showData.value = false
+  showData.value = false;
 
   setTimeout(() => {
-    showData.value = true
-  }, 300)
+    showData.value = true;
+  }, 300);
 
   switch (value) {
     case 'all':
@@ -355,20 +354,20 @@ const handleChangeTab = async (value: string) => {
       // )
       await getList(activeTab.value, 1)
         .then((response) => {
-          dataList.value = response?.results
+          dataList.value = response?.results;
           // title.value = 'Phim đã thêm vào danh sách phát';
-          total.value = response?.total
+          total.value = response?.total;
 
           if (response?.results?.length > 0) {
-            topicImage.value = dataList.value[0]?.backdrop_path
-            skip.value = 2
+            topicImage.value = dataList.value[0]?.backdrop_path;
+            skip.value = 2;
           }
         })
         .catch((e) => {})
         .finally(() => {
-          internalInstance.appContext.config.globalProperties.$Progress.finish()
-        })
-      break
+          internalInstance.appContext.config.globalProperties.$Progress.finish();
+        });
+      break;
     case 'movie':
       // await useAsyncData(
       //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
@@ -376,20 +375,20 @@ const handleChangeTab = async (value: string) => {
       // )
       await getList(activeTab.value, 1)
         .then((response) => {
-          dataList.value = response?.results
+          dataList.value = response?.results;
           // title.value = 'Phim lẻ';
-          total.value = response?.total
+          total.value = response?.total;
 
           if (response?.results?.length > 0) {
-            topicImage.value = dataList.value[0]?.backdrop_path
-            skip.value = 2
+            topicImage.value = dataList.value[0]?.backdrop_path;
+            skip.value = 2;
           }
         })
         .catch((e) => {})
         .finally(() => {
-          internalInstance.appContext.config.globalProperties.$Progress.finish()
-        })
-      break
+          internalInstance.appContext.config.globalProperties.$Progress.finish();
+        });
+      break;
     case 'tv':
       // await useAsyncData(
       //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
@@ -397,26 +396,26 @@ const handleChangeTab = async (value: string) => {
       // )
       await getList(activeTab.value, 1)
         .then((response) => {
-          dataList.value = response?.results
+          dataList.value = response?.results;
           // title.value = 'Phim bộ';
-          total.value = response?.total
+          total.value = response?.total;
 
           if (response?.results?.length > 0) {
-            topicImage.value = dataList.value[0]?.backdrop_path
-            skip.value = 2
+            topicImage.value = dataList.value[0]?.backdrop_path;
+            skip.value = 2;
           }
         })
         .catch((e) => {})
         .finally(() => {
-          internalInstance.appContext.config.globalProperties.$Progress.finish()
-        })
-      break
+          internalInstance.appContext.config.globalProperties.$Progress.finish();
+        });
+      break;
   }
-}
+};
 
 const beforeEnter = (el: any) => {
-  el.style.display = 'none'
-}
+  el.style.display = 'none';
+};
 
 const enter = (el: any, done: () => void) => {
   gsap.to(el, {
@@ -424,18 +423,18 @@ const enter = (el: any, done: () => void) => {
     delay: 0.3,
     duration: 0,
     onComplete: done
-  })
-}
+  });
+};
 
 const beforeLeave = (el: any) => {
   if (!showData.value) {
-    el.style.display = 'none'
-    return
+    el.style.display = 'none';
+    return;
   }
 
-  el.style.transform = 'translateX(0)'
-  el.style.opacity = '1'
-}
+  el.style.transform = 'translateX(0)';
+  el.style.opacity = '1';
+};
 
 const leave = (el: any, done: () => void) => {
   if (!showData.value) {
@@ -443,8 +442,8 @@ const leave = (el: any, done: () => void) => {
       display: 'none',
       duration: 0,
       onComplete: done
-    })
-    return
+    });
+    return;
   }
 
   gsap.to(el, {
@@ -452,8 +451,8 @@ const leave = (el: any, done: () => void) => {
     opacity: 0,
     duration: 0.3,
     onComplete: done
-  })
-}
+  });
+};
 </script>
 
 <style lang="scss" src="./FollowPage.scss"></style>

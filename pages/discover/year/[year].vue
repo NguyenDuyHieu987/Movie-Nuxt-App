@@ -6,7 +6,11 @@
       :cancelFilter="cancelFilter"
     /> -->
 
-    <DiscoverHead :initialSlide="years.findIndex((item1) => item1.name == route.params?.year)">
+    <DiscoverHead
+      :initialSlide="
+        years.findIndex((item1) => item1.name == route.params?.year)
+      "
+    >
       <SwiperSlide
         v-for="(item, index) in years"
         :key="item?.name"
@@ -57,27 +61,24 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
+import type { formfilter, year } from '@/types';
+import ControlPage from '~/components/ControlPage/ControlPage.vue';
+import DiscoverHead from '~/components/DiscoverHead/DiscoverHead.vue';
+import FilterBar from '~/components/FilterBar/FilterBar.vue';
+import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';
+import { FilterMovie, getMoviesByYear } from '~/services/discover';
 
-import type { formfilter, year } from '@/types'
-import ControlPage from '~/components/ControlPage/ControlPage.vue'
-import DiscoverHead from '~/components/DiscoverHead/DiscoverHead.vue'
-import FilterBar from '~/components/FilterBar/FilterBar.vue'
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue'
-import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue'
-import { FilterMovie,getMoviesByYear  } from '~/services/discover'
-
-
-const route = useRoute()
-const router = useRouter()
-const store = useStore()
-const dataDiscover = ref<any[]>()
-const years = ref<year[]>(store.allYears)
-const page = ref<number>(+route.query?.page || 1)
-const totalPage = ref<number>(100)
-const pageSize = ref<number>(20)
-const isFilter = ref<boolean>(false)
-const loading = ref<boolean>(false)
+const route = useRoute();
+const router = useRouter();
+const store = useStore();
+const dataDiscover = ref<any[]>();
+const years = ref<year[]>(store.allYears);
+const page = ref<number>(+route.query?.page || 1);
+const totalPage = ref<number>(100);
+const pageSize = ref<number>(20);
+const isFilter = ref<boolean>(false);
+const loading = ref<boolean>(false);
 const formFilter = ref<formfilter>({
   type: 'all',
   sortBy: '',
@@ -85,17 +86,19 @@ const formFilter = ref<formfilter>({
   year: '',
   country: '',
   page: 1
-})
+});
 const yearRoute = computed<number | string>(() =>
-  /^\d+$/.test(route.params.year) ? +route.params.year : 'Trước năm ' + route.params.year?.slice(-4)
-)
-const metaHead = ref<string>('Năm: ' + yearRoute.value)
-const internalInstance: any = getCurrentInstance()
+  /^\d+$/.test(route.params.year)
+    ? +route.params.year
+    : 'Trước năm ' + route.params.year?.slice(-4)
+);
+const metaHead = ref<string>('Năm: ' + yearRoute.value);
+const internalInstance: any = getCurrentInstance();
 
 useHead({
   title: () => 'Khám phá | Năm: ' + yearRoute.value + '',
   htmlAttrs: { lang: 'vi' }
-})
+});
 
 useSeoMeta({
   title: () => 'Khám phá | Năm: ' + yearRoute.value + '',
@@ -105,28 +108,29 @@ useSeoMeta({
   // ogUrl: () => window.location.href,
   ogDescription: () => 'Khám phá phim mới cùng Phimhay247',
   ogLocale: 'vi'
-})
+});
 
 const getData = async () => {
   // loading.value = true;
 
-  await useAsyncData(`discover/year/all/${route.params.year}/${page.value}`, () =>
-    getMoviesByYear(route.params.year, '', page.value)
+  await useAsyncData(
+    `discover/year/all/${route.params.year}/${page.value}`,
+    () => getMoviesByYear(route.params.year, '', page.value)
   )
     .then((response) => {
-      dataDiscover.value = response.data.value?.results
-      totalPage.value = response.data.value?.total
-      pageSize.value = response.data.value?.page_size
+      dataDiscover.value = response.data.value?.results;
+      totalPage.value = response.data.value?.total;
+      pageSize.value = response.data.value?.page_size;
     })
     .catch((e) => {})
     .finally(() => {
-      loading.value = false
-    })
-}
+      loading.value = false;
+    });
+};
 
 // getData();
 
-loading.value = true
+loading.value = true;
 
 const { data: dataDiscoverCache, pending } = await useAsyncData(
   `discover/year/all/${route.params.year}/${page.value}`,
@@ -140,41 +144,41 @@ const { data: dataDiscoverCache, pending } = await useAsyncData(
     // },
     // server: false,
   }
-)
+);
 
-loading.value = false
-dataDiscover.value = dataDiscoverCache.value.results
+loading.value = false;
+dataDiscover.value = dataDiscoverCache.value.results;
 
-totalPage.value = dataDiscoverCache.value?.total
-pageSize.value = dataDiscoverCache.value?.page_size
+totalPage.value = dataDiscoverCache.value?.total;
+pageSize.value = dataDiscoverCache.value?.page_size;
 
 const onChangePage = (
   pageSelected: number
   // pageSize
 ) => {
-  page.value = pageSelected
-  router.push({ query: { page: pageSelected } })
-  getData()
-}
+  page.value = pageSelected;
+  router.push({ query: { page: pageSelected } });
+  getData();
+};
 
 const setDataFiltered = (data: any[], formSelect: formfilter) => {
-  internalInstance.appContext.config.globalProperties.$Progress.start()
+  internalInstance.appContext.config.globalProperties.$Progress.start();
 
-  dataDiscover.value = data
-  formFilter.value = formSelect
-  isFilter.value = true
-  page.value = formSelect.page!
-  metaHead.value = 'Danh sách phim đã lọc'
+  dataDiscover.value = data;
+  formFilter.value = formSelect;
+  isFilter.value = true;
+  page.value = formSelect.page!;
+  metaHead.value = 'Danh sách phim đã lọc';
 
-  internalInstance.appContext.config.globalProperties.$Progress.finish()
-}
+  internalInstance.appContext.config.globalProperties.$Progress.finish();
+};
 
 const cancelFilter = () => {
-  isFilter.value = false
+  isFilter.value = false;
   // getData();
-  refreshNuxtData(`discover/year/all/${route.params.year}/${page.value}`)
-  metaHead.value = 'Năm: ' + yearRoute.value
-}
+  refreshNuxtData(`discover/year/all/${route.params.year}/${page.value}`);
+  metaHead.value = 'Năm: ' + yearRoute.value;
+};
 </script>
 
 <style lang="scss" src="../DiscoverPage.scss"></style>

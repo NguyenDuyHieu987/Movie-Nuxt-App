@@ -78,8 +78,6 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
-
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
 import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';

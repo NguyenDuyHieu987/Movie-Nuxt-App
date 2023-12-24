@@ -49,24 +49,22 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
+import type { formfilter, typeMovie } from '@/types';
+import ControlPage from '~/components/ControlPage/ControlPage.vue';
+import FilterSection from '~/components/FilterSection/FilterSection.vue';
+import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';
+import MovieCardVertical from '~/components/MovieCardVertical/MovieCardVertical.vue';
+import { FilterMovieSlug } from '~/services/movieSlug';
 
-import type { formfilter, typeMovie } from '@/types'
-import ControlPage from '~/components/ControlPage/ControlPage.vue'
-import FilterSection from '~/components/FilterSection/FilterSection.vue'
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue'
-import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue'
-import MovieCardVertical from '~/components/MovieCardVertical/MovieCardVertical.vue'
-import { FilterMovieSlug } from '~/services/movieSlug'
-
-const store = useStore()
-const route = useRoute()
-const router = useRouter()
-const dataDiscover = ref<any[]>()
-const page = ref<number>(+route.query?.page || 1)
-const totalPage = ref<number>(100)
-const pageSize = ref<number>(20)
-const loading = ref<boolean>(false)
+const store = useStore();
+const route = useRoute();
+const router = useRouter();
+const dataDiscover = ref<any[]>();
+const page = ref<number>(+route.query?.page || 1);
+const totalPage = ref<number>(100);
+const pageSize = ref<number>(20);
+const loading = ref<boolean>(false);
 const formFilter = computed<formfilter>(() => {
   return {
     type: route.query?.type || 'all',
@@ -76,13 +74,13 @@ const formFilter = computed<formfilter>(() => {
     country: route.query?.country || '',
     page: route.query?.page || 1,
     limit: 20
-  }
-})
+  };
+});
 
 useHead({
   title: () => 'Khám phá | Phim lẻ: ' + formFilter.value.type + '',
   htmlAttrs: { lang: 'vi' }
-})
+});
 
 useSeoMeta({
   title: () => 'Khám phá | Phim lẻ: ' + formFilter.value.type + '',
@@ -92,7 +90,7 @@ useSeoMeta({
   // ogUrl: () => window.location.href,
   ogDescription: () => 'Khám phá phim mới cùng Phimhay247',
   ogLocale: 'vi'
-})
+});
 
 const getData = async () => {
   // loading.value = true;
@@ -101,17 +99,17 @@ const getData = async () => {
     FilterMovieSlug(formFilter.value)
   )
     .then((movieResponse) => {
-      dataDiscover.value = movieResponse.data.value?.results
-      totalPage.value = movieResponse.data.value?.total
-      pageSize.value = movieResponse.data.value?.page_size
+      dataDiscover.value = movieResponse.data.value?.results;
+      totalPage.value = movieResponse.data.value?.total;
+      pageSize.value = movieResponse.data.value?.page_size;
     })
     .catch((e) => {})
     .finally(() => {
-      loading.value = false
-    })
-}
+      loading.value = false;
+    });
+};
 
-loading.value = true
+loading.value = true;
 
 const {
   data: dataDiscoverCache,
@@ -129,39 +127,39 @@ const {
     // },
     // server: false,
   }
-)
+);
 
-dataDiscover.value = dataDiscoverCache.value.results
+dataDiscover.value = dataDiscoverCache.value.results;
 
-totalPage.value = dataDiscoverCache.value?.total
-pageSize.value = dataDiscoverCache.value?.page_size
-loading.value = false
+totalPage.value = dataDiscoverCache.value?.total;
+pageSize.value = dataDiscoverCache.value?.page_size;
+loading.value = false;
 
 watch(
   formFilter,
   () => {
-    getData()
+    getData();
   },
   { deep: true }
-)
+);
 
 const handleFilter = () => {
-  getData()
-}
+  getData();
+};
 
 const onChangePage = (
   pageSelected: number
   // pageSize
 ) => {
-  page.value = pageSelected
-  formFilter.value.page = pageSelected
-  router.push({ query: { ...route.query, page: pageSelected } })
+  page.value = pageSelected;
+  formFilter.value.page = pageSelected;
+  router.push({ query: { ...route.query, page: pageSelected } });
   // getData();
-}
+};
 
 const cancelFilter = () => {
-  refreshNuxtData(`movie/${formFilter.value.type}`)
-}
+  refreshNuxtData(`movie/${formFilter.value.type}`);
+};
 </script>
 
 <style lang="scss" src="../DiscoverPage.scss"></style>

@@ -133,29 +133,29 @@
 </template>
 
 <script setup lang="ts">
-import CastCard from '~/components/CastCard/CastCard.vue'
-import SliderGroup from '~/components/SliderGroup/SliderGroup.vue'
-import { getCredits } from '~/services/credit'
+import CastCard from '~/components/CastCard/CastCard.vue';
+import SliderGroup from '~/components/SliderGroup/SliderGroup.vue';
+import { getCredits } from '~/services/credit';
 
 const props = defineProps<{
   dataMovie: any;
-}>()
+}>();
 
-const dataCredit = ref<any>(props.dataMovie?.credits)
-const loading = ref<boolean>(false)
-const activeTabCast = ref<string>('cast')
+const dataCredit = ref<any>(props.dataMovie?.credits);
+const loading = ref<boolean>(false);
+const activeTabCast = ref<string>('cast');
 
-loading.value = true
+loading.value = true;
 
 // useAsyncData(`credits/${props.dataMovie?.id}`, () =>
 //   getCredits(props.dataMovie?.id)
 // )
 getCredits(props.dataMovie?.id)
   .then((response) => {
-    dataCredit.value = response
-    loading.value = false
+    dataCredit.value = response;
+    loading.value = false;
   })
-  .finally(() => {})
+  .finally(() => {});
 
 // const { data: dataCredit, pending } = await useAsyncData(
 //   `credits/${props.dataMovie?.id}`,

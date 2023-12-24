@@ -220,9 +220,9 @@ import {
   CheckCircleFilled,
   CloseCircleFilled,
   LockOutlined,
-  UserOutlined} from '@ant-design/icons-vue';
+  UserOutlined
+} from '@ant-design/icons-vue';
 import type { Rule } from 'ant-design-vue/es/form';
-import axios from 'axios';
 import { ElNotification } from 'element-plus';
 
 import VerifySignUpForm from '~/components/VerifyForm/VerifySignUpForm/VerifySignUpForm.vue';

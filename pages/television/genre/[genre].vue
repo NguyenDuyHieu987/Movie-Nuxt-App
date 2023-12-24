@@ -212,8 +212,6 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
-
 import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
 import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
 import HeaderPageGenreType from '~/components/layouts/HeaderPageGenreType/HeaderPageGenreType.server.vue';

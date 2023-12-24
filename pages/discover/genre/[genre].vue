@@ -7,7 +7,9 @@
     /> -->
 
     <DiscoverHead
-      :initialSlide="genres.findIndex((item1) => item1.short_name == route.params?.genre)"
+      :initialSlide="
+        genres.findIndex((item1) => item1.short_name == route.params?.genre)
+      "
     >
       <SwiperSlide
         v-for="(item, index) in genres"
@@ -59,27 +61,25 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
+import type { formfilter, genre } from '@/types';
+import ControlPage from '~/components/ControlPage/ControlPage.vue';
+import DiscoverHead from '~/components/DiscoverHead/DiscoverHead.vue';
+import FilterBar from '~/components/FilterBar/FilterBar.vue';
+import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';
+import { FilterMovie, getMoviesByGenres } from '~/services/discover';
+import { getGenreByShortName } from '~/services/genres';
 
-import type { formfilter, genre } from '@/types'
-import ControlPage from '~/components/ControlPage/ControlPage.vue'
-import DiscoverHead from '~/components/DiscoverHead/DiscoverHead.vue'
-import FilterBar from '~/components/FilterBar/FilterBar.vue'
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue'
-import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue'
-import { FilterMovie,getMoviesByGenres  } from '~/services/discover'
-import { getGenreByShortName } from '~/services/genres'
-
-const route = useRoute()
-const router = useRouter()
-const store = useStore()
-const dataDiscover = ref<any[]>()
-const genres = ref<genre[]>(store.allGenres)
-const page = ref<number>(+route.query?.page || 1)
-const totalPage = ref<number>(100)
-const pageSize = ref<number>(20)
-const isFilter = ref<boolean>(false)
-const loading = ref<boolean>(false)
+const route = useRoute();
+const router = useRouter();
+const store = useStore();
+const dataDiscover = ref<any[]>();
+const genres = ref<genre[]>(store.allGenres);
+const page = ref<number>(+route.query?.page || 1);
+const totalPage = ref<number>(100);
+const pageSize = ref<number>(20);
+const isFilter = ref<boolean>(false);
+const loading = ref<boolean>(false);
 const formFilter = ref<formfilter>({
   type: 'all',
   sortBy: '',
@@ -87,15 +87,17 @@ const formFilter = ref<formfilter>({
   year: '',
   country: '',
   page: 1
-})
-const genreRoute = computed<genre>(() => getGenreByShortName(route.params.genre, store.allGenres))
-const metaHead = ref<string>('Thể loại: ' + genreRoute.value.name_vietsub)
-const internalInstance: any = getCurrentInstance()
+});
+const genreRoute = computed<genre>(
+  () => getGenreByShortName(route.params.genre, store.allGenres)!
+);
+const metaHead = ref<string>('Thể loại: ' + genreRoute.value.name_vietsub);
+const internalInstance: any = getCurrentInstance();
 
 useHead({
   title: () => 'Khám phá | Thể loại: ' + genreRoute.value.name_vietsub + '',
   htmlAttrs: { lang: 'vi' }
-})
+});
 
 useSeoMeta({
   title: () => 'Khám phá | Thể loại: ' + genreRoute.value.name_vietsub + '',
@@ -105,30 +107,31 @@ useSeoMeta({
   // ogUrl: () => window.location.href,
   ogDescription: () => 'Khám phá phim mới cùng Phimhay247',
   ogLocale: 'vi'
-})
+});
 
-watch(genreRoute, () => {})
+watch(genreRoute, () => {});
 
 const getData = async () => {
   // loading.value = true;
 
-  await useAsyncData(`discover/genre/all/${route.params.genre}/${page.value}`, () =>
-    getMoviesByGenres(route.params.genre, '', page.value)
+  await useAsyncData(
+    `discover/genre/all/${route.params.genre}/${page.value}`,
+    () => getMoviesByGenres(route.params.genre, '', page.value)
   )
     .then((response) => {
-      dataDiscover.value = response.data.value?.results
-      totalPage.value = response.data.value?.total
-      pageSize.value = response.data.value?.page_size
+      dataDiscover.value = response.data.value?.results;
+      totalPage.value = response.data.value?.total;
+      pageSize.value = response.data.value?.page_size;
     })
     .catch((e) => {})
     .finally(() => {
-      loading.value = false
-    })
-}
+      loading.value = false;
+    });
+};
 
 // getData();
 
-loading.value = true
+loading.value = true;
 
 const { data: dataDiscoverCache, pending } = await useAsyncData(
   `discover/genre/all/${route.params.genre}/${page.value}`,
@@ -142,41 +145,41 @@ const { data: dataDiscoverCache, pending } = await useAsyncData(
     // },
     // server: false,
   }
-)
+);
 
-dataDiscover.value = dataDiscoverCache.value.results
+dataDiscover.value = dataDiscoverCache.value.results;
 
-totalPage.value = dataDiscoverCache.value?.total
-pageSize.value = dataDiscoverCache.value?.page_size
-loading.value = false
+totalPage.value = dataDiscoverCache.value?.total;
+pageSize.value = dataDiscoverCache.value?.page_size;
+loading.value = false;
 
 const onChangePage = (
   pageSelected: number
   // pageSize
 ) => {
-  page.value = pageSelected
-  router.push({ query: { page: pageSelected } })
-  getData()
-}
+  page.value = pageSelected;
+  router.push({ query: { page: pageSelected } });
+  getData();
+};
 
 const setDataFiltered = (data: any[], formSelect: formfilter) => {
-  internalInstance.appContext.config.globalProperties.$Progress.start()
+  internalInstance.appContext.config.globalProperties.$Progress.start();
 
-  dataDiscover.value = data
-  formFilter.value = formSelect
-  isFilter.value = true
-  page.value = formSelect.page!
-  metaHead.value = 'Danh sách phim đã lọc'
+  dataDiscover.value = data;
+  formFilter.value = formSelect;
+  isFilter.value = true;
+  page.value = formSelect.page!;
+  metaHead.value = 'Danh sách phim đã lọc';
 
-  internalInstance.appContext.config.globalProperties.$Progress.finish()
-}
+  internalInstance.appContext.config.globalProperties.$Progress.finish();
+};
 
 const cancelFilter = () => {
-  isFilter.value = false
+  isFilter.value = false;
   // getData();
-  metaHead.value = 'Thể loại: ' + genreRoute.value.name_vietsub
-  refreshNuxtData(`discover/genre/all/${route.params.genre}/${page.value}`)
-}
+  metaHead.value = 'Thể loại: ' + genreRoute.value.name_vietsub;
+  refreshNuxtData(`discover/genre/all/${route.params.genre}/${page.value}`);
+};
 </script>
 
 <style lang="scss" src="../DiscoverPage.scss"></style>
