@@ -212,9 +212,9 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderPageMovieType } from '@/components/Layouts';
 import { BillboardAnimation } from '~/components/BillboardAnimation';
 import { SwiperCarouselGroup } from '~/components/CarouselGroup';
+import HeaderPageMovieType from '~/components/Layouts/HeaderPageMovieType/HeaderPageMovieType.server.vue';
 import { LoadingSectionHorizontal } from '~/components/Loading';
 import { MovieCardHorizontal } from '~/components/MovieCard';
 import {
