@@ -65,8 +65,8 @@
           v-show="isShowFormComment"
           v-model:commentsList="listReplies"
           v-model:commentContent="commentContent"
-          :movie-id="item?.movie_id"
-          :movie-type="item?.movie_type"
+          :movie-id="item?.movie_id!"
+          :movie-type="item?.movie_type!"
           :showActions="true"
           :parent="parent"
           :comment="item"
@@ -279,24 +279,22 @@ const handleRemoveComment = () => {
           return x.id === props.item?.id;
         });
 
-        ElNotification({
-          title: 'Thành công!',
+        ElNotification.success({
+          title: MESSAGE.STATUS.SUCCESS,
           message: 'Xóa bình luận thành công.',
-          type: 'success',
           position: 'bottom-right',
-          duration: 3000
+          duration: MESSAGE.DURATION.FAST
         });
 
         emits('omSuccessRemoveCommentChild');
       }
     })
     .catch((e) => {
-      ElNotification({
-        title: 'Thất bại!',
+      ElNotification.error({
+        title: MESSAGE.STATUS.FAILED,
         message: 'Xóa bình luận thất bại',
-        type: 'error',
         position: 'bottom-right',
-        duration: 3000
+        duration: MESSAGE.DURATION.FAST
       });
     })
     .finally(() => {});

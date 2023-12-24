@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   //   }
   // });
 
-  // if (utils.localStorage.getWithExpiry('userAccount')) {
+  // if (utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)) {
   //   store.isLogin = true;
   // } else {
   // }

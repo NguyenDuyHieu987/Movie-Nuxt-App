@@ -8,19 +8,18 @@ import axios from 'axios';
 type MakeRequestOptions = {
   noAuthHeaders?: boolean;
   getResponseHeaders?: boolean;
-  headers?: AxiosRequestHeaders | object;
 } & AxiosRequestConfig;
 
 export async function makeRequest(
   url: string,
   options: MakeRequestOptions = {
     noAuthHeaders: false,
-    getResponseHeaders: false,
-    headers: {}
+    getResponseHeaders: false
   }
 ) {
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
+  const headers: AxiosRequestHeaders | any = {};
 
   const api = axios.create({
     baseURL: nuxtConfig.app.production_mode
@@ -30,19 +29,17 @@ export async function makeRequest(
     withCredentials: true
   });
 
-  if (
-    utils.localStorage.getWithExpiry('user_token') &&
-    !options?.noAuthHeaders
-  ) {
+  const userToken = utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN);
+
+  if (userToken && !options?.noAuthHeaders) {
     if (!options.headers?.Authorization) {
-      options.headers!.Authorization = `Bearer ${utils.localStorage.getWithExpiry(
-        'user_token'
-      )}`;
+      headers.Authorization = `Bearer ${userToken}`;
     }
   }
 
   return await api(url, {
-    ...options
+    ...options,
+    headers: { ...headers, ...options?.headers }
   })
     .then((res: AxiosResponse) => {
       const { headers, data } = res;

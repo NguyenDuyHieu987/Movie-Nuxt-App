@@ -216,12 +216,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  CheckCircleFilled,
-  CloseCircleFilled,
-  LockOutlined,
-  UserOutlined
-} from '@ant-design/icons-vue';
+import { LockOutlined, UserOutlined } from '@ant-design/icons-vue';
 import type { Rule } from 'ant-design-vue/es/form';
 import { ElNotification } from 'element-plus';
 
@@ -342,7 +337,7 @@ const handleSignUp = (e: any) => {
 
   if (
     otpExpOffset.value > 0 ||
-    utils.cookie.getCookie('vrf_signup_token') != null
+    utils.cookie.getCookie(TOKEN.NAME.COOKIE_VRF_SIGNUP_TOKEN) != null
   ) {
     showAnimation.value = false;
 
@@ -376,26 +371,21 @@ const handleSignUp = (e: any) => {
 
       if (response?.isInValidEmail == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Email không tồn tại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isSended == true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: `Mã xác nhận đã được gửi đến đến Email: ${formSignup.email}.`,
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            }),
-          duration: 7000
+          duration: MESSAGE.DURATION.SLOW
         });
 
         // vrfSignupToken.value = response.headers.get('Authorization');
-        vrfSignupToken.value = utils.cookie.getCookie('vrf_signup_token')!;
+        vrfSignupToken.value = utils.cookie.getCookie(
+          TOKEN.NAME.COOKIE_VRF_SIGNUP_TOKEN
+        )!;
         otpExpOffset.value = response.exp_offset;
 
         showAnimation.value = false;
@@ -406,32 +396,23 @@ const handleSignUp = (e: any) => {
         }, 300);
       } else if (response?.isEmailExist == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Email đã được đăng ký.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isSended == false) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Gửi Email thất bại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Thất bại!',
+        title: MESSAGE.STATUS.FAILED,
         message: 'Gửi Email thất bại.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {
@@ -462,57 +443,43 @@ const handleResendVerifyEmail = () => {
 
       if (response?.isSended == true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: `Mã xác nhận đã được gửi đến đến email: ${formSignup.email}.`,
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            }),
-          duration: 7000
+          duration: MESSAGE.DURATION.SLOW
         });
 
         disabled_countdown.value = true;
 
         // vrfSignupToken.value = response.headers.get('Authorization');
-        vrfSignupToken.value = utils.cookie.getCookie('vrf_signup_token')!;
+        vrfSignupToken.value = utils.cookie.getCookie(
+          TOKEN.NAME.COOKIE_VRF_SIGNUP_TOKEN
+        )!;
         otpExpOffset.value = response.exp_offset;
       } else if (response?.isInValidEmail == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Email không tồn tại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isEmailExist == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Email đã được đăng ký.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isSended == false) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Gửi email thất bại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Thất bại!',
+        title: MESSAGE.STATUS.FAILED,
         message: 'Gửi Email thất bại.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {
@@ -533,53 +500,38 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
       // console.log(response);
       if (response?.isSignUp == true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: 'Bạn đã đăng ký thành công tài khoản tại Phimhay247.',
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
 
         navigateTo({ path: '/login' });
         reset();
       } else if (response?.isInvalidOTP == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Mã xác nhận không đúng.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isAccountExist == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Tài khoản đã tồn tại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isOTPExpired == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Mã xác nhận đã hết hạn.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Thất bại!',
+        title: MESSAGE.STATUS.FAILED,
         message: 'Đăng ký tài khoản thất bại.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {

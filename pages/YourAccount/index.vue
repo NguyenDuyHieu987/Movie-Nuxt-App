@@ -224,11 +224,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-  CheckCircleFilled,
-  CloseCircleFilled,
-  QuestionCircleOutlined
-} from '@ant-design/icons-vue';
 import { useBreakpoints } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 
@@ -326,13 +321,10 @@ const handleClickSaveRowItem = (e: any) => {
   const newFullName: string | undefined = rowItemLabel?.innerText.trim();
 
   if (!newFullName || newFullName.length == 0) {
-    ElNotification.error({
-      title: 'Thông báo!',
+    ElNotification.info({
+      title: MESSAGE.STATUS.INFO,
       message: 'Họ và tên không được bỏ trống.',
-      icon: () =>
-        h(QuestionCircleOutlined, {
-          style: 'color: #f1ac09'
-        })
+      duration: MESSAGE.DURATION.DEFAULT
     });
 
     rowItemLabel!.innerText = store.userAccount!.full_name;
@@ -358,12 +350,9 @@ const handleClickSaveRowItem = (e: any) => {
       // console.log(response);
       if (response?.success == true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: 'Thay đổi họ và tên thành công.',
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
 
         rowItemLabel!.innerText = newFullName;
@@ -371,20 +360,17 @@ const handleClickSaveRowItem = (e: any) => {
         store.userAccount!.full_name = newFullName;
 
         utils.localStorage.setWithExpiry(
-          'user_token',
+          TOKEN.NAME.USER_TOKEN,
           response.headers.get('Authorization'),
-          24
+          TOKEN.OFFSET.USER_TOKEN
         );
       } else {
         rowItemLabel!.innerText = store.userAccount!.full_name;
 
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Thay đổi họ và tên thất bại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
@@ -392,12 +378,9 @@ const handleClickSaveRowItem = (e: any) => {
       rowItemLabel!.innerText = store.userAccount!.full_name;
 
       ElNotification.error({
-        title: 'Thất bại!',
-        message: 'Some thing went wrong.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        title: MESSAGE.STATUS.BROKE,
+        message: MESSAGE.STATUS.BROKE_MESSAGE,
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {

@@ -29,8 +29,11 @@
             :rules="[
               {
                 required: true,
-                message: 'Vui lòng nhập đúng định dạng email (vd: example@gmail.com)!',
-                pattern: new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/),
+                message:
+                  'Vui lòng nhập đúng định dạng email (vd: example@gmail.com)!',
+                pattern: new RegExp(
+                  /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+                ),
                 trigger: ['change', 'blur']
               }
             ]"
@@ -78,7 +81,6 @@
 </template>
 
 <script setup lang="ts">
-import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue';
 import { ElNotification } from 'element-plus';
 
 import { forgotPassword } from '~/services/authentication';
@@ -110,7 +112,9 @@ const noteForgotPassword = ref<string>(
   'Hãy nhập Email của tài khoản mà bạn muốn khôi phục mật khẩu.'
 );
 const disabled = computed<boolean>((): boolean => {
-  return !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formForgotPassword.email);
+  return !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+    formForgotPassword.email
+  );
 });
 const internalInstance: any = getCurrentInstance();
 
@@ -134,7 +138,9 @@ const reset = () => {
 };
 
 const getForgotPasswordLocalStr = async () => {
-  const forgot_password = utils.localStorage.getWithExpiry_ExpRemain('forgot_password');
+  const forgot_password = utils.localStorage.getWithExpiry_ExpRemain(
+    TOKEN.NAME.LOCS_FORGOT_PASSWORD
+  );
   const isExpireForm = forgot_password == null;
 
   if (!isExpireForm) {
@@ -156,16 +162,21 @@ const checkSendedEmail = () => {
     if (forgotPasswordLocalStr.exp_after > 60) {
       noteForgotPassword.value = `Chúng tôi đã gửi email kèm hướng dẫn đặt lại mật khẩu đến ${
         formForgotPassword.email
-      }. Vui lòng thử lại sau ${Math.round(forgotPasswordLocalStr.exp_after / 60)} phút nữa.`;
+      }. Vui lòng thử lại sau ${Math.round(
+        forgotPasswordLocalStr.exp_after / 60
+      )} phút nữa.`;
     } else {
       noteForgotPassword.value = `Chúng tôi đã gửi email kèm hướng dẫn đặt lại mật khẩu đến ${
         formForgotPassword.email
-      }. Vui lòng thử lại sau ${Math.round(forgotPasswordLocalStr.exp_after)} giây nữa.`;
+      }. Vui lòng thử lại sau ${Math.round(
+        forgotPasswordLocalStr.exp_after
+      )} giây nữa.`;
     }
     isActionForm.value = true;
   } else {
     isActionForm.value = false;
-    noteForgotPassword.value = 'Hãy nhập Email của tài khoản mà bạn muốn khôi phục mật khẩu.';
+    noteForgotPassword.value =
+      'Hãy nhập Email của tài khoản mà bạn muốn khôi phục mật khẩu.';
   }
 };
 
@@ -190,20 +201,16 @@ const handleSubmit = () => {
 
       if (response?.isSended === true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: `Gửi Email thành công.`,
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            }),
-          duration: 7000
+          duration: MESSAGE.DURATION.DEFAULT
         });
 
         forgotPasswordLocalStr.email = formForgotPassword.email;
         forgotPasswordLocalStr.exp_after = +response.exp_offset;
 
         utils.localStorage.setWithExpiry(
-          'forgot_password',
+          TOKEN.NAME.LOCS_FORGOT_PASSWORD,
           {
             email: formForgotPassword.email,
             exp_after: +response.exp_offset
@@ -218,41 +225,29 @@ const handleSubmit = () => {
         isActionForm.value = true;
       } else if (response?.isEmailExist == false) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Email chưa được đăng ký.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isInValidEmail == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Email không tồn tại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isSended == false) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Gửi Email thất bại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Thất bại!',
+        title: MESSAGE.STATUS.FAILED,
         message: 'Gửi Email thất bại.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {

@@ -154,7 +154,6 @@
 </template>
 
 <script setup lang="ts">
-import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue';
 import type { Rule } from 'ant-design-vue/es/form';
 import { ElNotification } from 'element-plus';
 import { storeToRefs } from 'pinia';
@@ -284,7 +283,7 @@ const handleSubmit = () => {
 
   if (
     otpExpOffset.value > 0 ||
-    utils.cookie.getCookie('chg_pwd_token') != null
+    utils.cookie.getCookie(TOKEN.NAME.COOKIE_CHG_PASSWORD_TOKEN) != null
   ) {
     showAnimation.value = false;
 
@@ -314,16 +313,14 @@ const handleSubmit = () => {
 
       if (response?.isSended === true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: `Mã xác nhận đã được gửi đến đến Email: ${store.userAccount?.email}.`,
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            }),
-          duration: 7000
+          duration: MESSAGE.DURATION.SLOW
         });
 
-        chgPwdToken.value = utils.cookie.getCookie('chg_pwd_token')!;
+        chgPwdToken.value = utils.cookie.getCookie(
+          TOKEN.NAME.COOKIE_CHG_PASSWORD_TOKEN
+        )!;
         otpExpOffset.value = response.exp_offset;
 
         // router.push({
@@ -339,32 +336,23 @@ const handleSubmit = () => {
         }, 300);
       } else if (response?.isWrongPassword == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Mật khẩu cũ không đúng.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isSended == false) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Gửi Email thất bại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Thất bại!',
+        title: MESSAGE.STATUS.FAILED,
         message: 'Gửi Email thất bại.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {
@@ -386,19 +374,16 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
       // console.log(response);
       if (response?.success == true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: 'Đổi mật khẩu thành công.',
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
 
         if (response?.logout_all_device) {
           utils.localStorage.setWithExpiry(
-            'user_token',
+            TOKEN.NAME.USER_TOKEN,
             response.headers.get('Authorization'),
-            24
+            TOKEN.OFFSET.USER_TOKEN
           );
         }
 
@@ -406,41 +391,29 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
         reset();
       } else if (response?.isInvalidOTP == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Mã xác nhận không đúng.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isOTPExpired == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Mã xác nhận đã hết hạn.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.success == false) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Đổi mật khẩu thất bại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Thất bại!',
+        title: MESSAGE.STATUS.FAILED,
         message: 'Đổi mật khẩu thất bại.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {
@@ -470,47 +443,36 @@ const handleResendVerifyEmail = () => {
 
       if (response?.isSended === true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: `Mã xác nhận đã được gửi đến đến Email: ${store.userAccount?.email}.`,
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            }),
-          duration: 7000
+          duration: MESSAGE.DURATION.SLOW
         });
 
         disabled_countdown.value = true;
 
-        chgPwdToken.value = utils.cookie.getCookie('chg_pwd_token')!;
+        chgPwdToken.value = utils.cookie.getCookie(
+          TOKEN.NAME.COOKIE_CHG_PASSWORD_TOKEN
+        )!;
         otpExpOffset.value = response.exp_offset;
       } else if (response?.isWrongPassword == true) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Mật khẩu cũ không đúng.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isSended == false) {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Gửi Email thất bại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Thất bại!',
+        title: MESSAGE.STATUS.FAILED,
         message: 'Gửi Email thất bại.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {

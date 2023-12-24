@@ -69,7 +69,6 @@
 </template>
 
 <script setup lang="ts">
-import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue';
 import { ElNotification } from 'element-plus';
 
 import {
@@ -135,12 +134,9 @@ await VerifyChangeEmail(chgEmailToken.value)
       isDisabledForm.value = true;
 
       ElNotification.error({
-        title: 'Thất bại!',
+        title: MESSAGE.STATUS.FAILED,
         message: 'Some thing went wrong.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        duration: MESSAGE.DURATION.DEFAULT
       });
     }
   })
@@ -148,12 +144,9 @@ await VerifyChangeEmail(chgEmailToken.value)
     isDisabledForm.value = true;
 
     ElNotification.error({
-      title: 'Thất bại!',
+      title: MESSAGE.STATUS.FAILED,
       message: 'Some thing went wrong.',
-      icon: () =>
-        h(CloseCircleFilled, {
-          style: 'color: red'
-        })
+      duration: MESSAGE.DURATION.DEFAULT
     });
   });
 
@@ -177,12 +170,9 @@ const handleSubmit = () => {
       // console.log(response);
       if (response?.success == true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: 'Thay đổi email thành công.',
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
 
         isDisabledForm.value = true;
@@ -190,33 +180,27 @@ const handleSubmit = () => {
         store.userAccount!.email = formChangeEmail.newEmail;
 
         utils.localStorage.setWithExpiry(
-          'user_token',
+          TOKEN.NAME.USER_TOKEN,
           response.headers.get('Authorization'),
-          24
+          TOKEN.OFFSET.USER_TOKEN
         );
 
-        window.localStorage.removeItem('change_email');
+        window.localStorage.removeItem(TOKEN.NAME.LOCS_CHANGE_EMAIL);
 
         navigateTo('/YourAccount');
       } else {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Thay đổi email thất bại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Thất bại!',
+        title: MESSAGE.STATUS.FAILED,
         message: 'Some thing went wrong.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {

@@ -97,7 +97,6 @@
 </template>
 
 <script setup lang="ts">
-import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue';
 import type { Rule } from 'ant-design-vue/es/form';
 import { ElNotification } from 'element-plus';
 
@@ -162,12 +161,9 @@ await VerifyResetPassword(rstPwdToken.value)
       isDisabledForm.value = true;
 
       ElNotification.error({
-        title: 'Thất bại!',
-        message: 'Some thing went wrong.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        title: MESSAGE.STATUS.FAILED,
+        message: MESSAGE.STATUS.BROKE_MESSAGE,
+        duration: MESSAGE.DURATION.DEFAULT
       });
     }
   })
@@ -175,12 +171,9 @@ await VerifyResetPassword(rstPwdToken.value)
     isDisabledForm.value = true;
 
     ElNotification.error({
-      title: 'Thất bại!',
-      message: 'Some thing went wrong.',
-      icon: () =>
-        h(CloseCircleFilled, {
-          style: 'color: red'
-        })
+      title: MESSAGE.STATUS.BROKE,
+      message: MESSAGE.STATUS.BROKE_MESSAGE,
+      duration: MESSAGE.DURATION.DEFAULT
     });
   });
 
@@ -236,38 +229,29 @@ const handleSubmit = () => {
       // console.log(response);
       if (response?.success == true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: 'Đặt lại mật khẩu thành công.',
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
 
         isDisabledForm.value = true;
 
-        window.localStorage.removeItem('forgot_password');
+        window.localStorage.removeItem(TOKEN.NAME.LOCS_FORGOT_PASSWORD);
 
         navigateTo('/login');
       } else {
         ElNotification.error({
-          title: 'Thất bại!',
+          title: MESSAGE.STATUS.FAILED,
           message: 'Đặt lại mật khẩu thất bại.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Thất bại!',
-        message: 'Some thing went wrong.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        title: MESSAGE.STATUS.BROKE,
+        message: MESSAGE.STATUS.BROKE_MESSAGE,
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {

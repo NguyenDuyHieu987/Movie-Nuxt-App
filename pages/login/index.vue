@@ -188,11 +188,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  CheckCircleFilled,
-  CloseCircleFilled,
-  LockOutlined,
-  UserOutlined} from '@ant-design/icons-vue';
+import { LockOutlined, UserOutlined } from '@ant-design/icons-vue';
 import { ElNotification } from 'element-plus';
 
 import { LogIn, loginFacebook, loginGoogle } from '~/services/authentication';
@@ -304,9 +300,9 @@ const handleLogin = () => {
         store.userAccount = response?.result;
 
         utils.localStorage.setWithExpiry(
-          'user_token',
+          TOKEN.NAME.USER_TOKEN,
           response.headers.get('Authorization'),
-          24
+          TOKEN.OFFSET.USER_TOKEN
         );
 
         // navigateTo({ path: '/' });
@@ -317,35 +313,26 @@ const handleLogin = () => {
       } else if (response?.isNotExist == true) {
         setTimeout(() => {
           ElNotification.error({
-            title: 'Thất bại!',
+            title: MESSAGE.STATUS.FAILED,
             message: 'Tài khoản không tồi tại.',
-            icon: () =>
-              h(CloseCircleFilled, {
-                style: 'color: red'
-              })
+            duration: MESSAGE.DURATION.DEFAULT
           });
         }, 1000);
       } else if (response?.isWrongPassword == true) {
         setTimeout(() => {
           ElNotification.error({
-            title: 'Thất bại!',
+            title: MESSAGE.STATUS.FAILED,
             message: 'Sai tài khoản hoặc mật khẩu.',
-            icon: () =>
-              h(CloseCircleFilled, {
-                style: 'color: red'
-              })
+            duration: MESSAGE.DURATION.DEFAULT
           });
         }, 1000);
       }
     })
     .catch((e) => {
       ElNotification.error({
-        title: 'Failed!',
-        message: 'Some thing went wrong.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        title: MESSAGE.STATUS.BROKE,
+        message: MESSAGE.STATUS.BROKE_MESSAGE,
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {
@@ -373,27 +360,26 @@ const handleClickFacebookLogin = async () => {
       // console.log(response?.result);
       if (response.isSignUp == true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: 'Bạn đã đăng nhập bằng Facebook thành công tại Phimhay247.',
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
         store.userAccount = response?.result;
+
         utils.localStorage.setWithExpiry(
-          'user_token',
+          TOKEN.NAME.USER_TOKEN,
           response.headers.get('Authorization'),
-          24
+          TOKEN.OFFSET.USER_TOKEN
         );
         // navigateTo({ path: '/' });
         navigateTo({ path: urlBack.value });
       } else if (response.isLogin == true) {
         store.userAccount = response?.result;
+
         utils.localStorage.setWithExpiry(
-          'user_token',
+          TOKEN.NAME.USER_TOKEN,
           response.headers.get('Authorization'),
-          24
+          TOKEN.OFFSET.USER_TOKEN
         );
         // navigateTo({ path: '/' });
         navigateTo({ path: urlBack.value });
@@ -402,12 +388,9 @@ const handleClickFacebookLogin = async () => {
     .catch((e) => {
       console.log(e);
       ElNotification.error({
-        title: 'Thất bại!',
-        message: 'Some thing went wrong.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        title: MESSAGE.STATUS.BROKE,
+        message: MESSAGE.STATUS.BROKE_MESSAGE,
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {
@@ -477,53 +460,44 @@ const handleGooglePopupCallback = (googleOauthResponse: any) => {
       .then((response) => {
         if (response.isSignUp == true) {
           ElNotification.success({
-            title: 'Thành công!',
+            title: MESSAGE.STATUS.SUCCESS,
             message: 'Bạn đã đăng nhập bằng Google thành công tại Phimhay247.',
-            icon: () =>
-              h(CheckCircleFilled, {
-                style: 'color: green'
-              })
+            duration: MESSAGE.DURATION.DEFAULT
           });
           store.userAccount = response?.result;
           utils.localStorage.setWithExpiry(
-            'user_token',
+            TOKEN.NAME.USER_TOKEN,
             {
               user_token: response.headers.get('Authorization')
             },
-            24
+            TOKEN.OFFSET.USER_TOKEN
           );
           // navigateTo({ path: '/' });
           navigateTo({ path: urlBack.value });
         } else if (response.isLogin == true) {
           store.userAccount = response?.result;
           utils.localStorage.setWithExpiry(
-            'user_token',
+            TOKEN.NAME.USER_TOKEN,
             {
               user_token: response.headers.get('Authorization')
             },
-            24
+            TOKEN.OFFSET.USER_TOKEN
           );
           // navigateTo({ path: '/' });
           navigateTo({ path: urlBack.value });
         } else if (response.isLogin == false) {
           ElNotification.error({
-            title: 'Thất bại!',
-            message: 'Some thing went wrong.',
-            icon: () =>
-              h(CloseCircleFilled, {
-                style: 'color: red'
-              })
+            title: MESSAGE.STATUS.FAILED,
+            message: MESSAGE.STATUS.BROKE_MESSAGE,
+            duration: MESSAGE.DURATION.DEFAULT
           });
         }
       })
       .catch((e) => {
         ElNotification.error({
-          title: 'Thất bại!',
-          message: 'Some thing went wrong.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          title: MESSAGE.STATUS.BROKE,
+          message: MESSAGE.STATUS.BROKE_MESSAGE,
+          duration: MESSAGE.DURATION.DEFAULT
         });
       })
       .finally(() => {

@@ -37,35 +37,34 @@ export const useAuthStore = defineStore('auth', () => {
     loadingUser.value = true;
 
     if (
-      utils.localStorage.getWithExpiry('user_token') != null ||
-      utils.cookie.getCookie('user_token') != null
+      utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) != null ||
+      utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) != null
     ) {
       await getUserToken({
-        user_token: utils.localStorage.getWithExpiry('user_token')
+        user_token: utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
       })
         .then((accountResponse: any) => {
           if (accountResponse?.isLogin == true) {
             userAccount.value = accountResponse?.result;
 
-            if (utils.localStorage.getWithExpiry('user_token') == null) {
+            if (
+              utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) == null
+            ) {
               utils.localStorage.setWithExpiry(
-                'user_token',
-                utils.cookie.getCookie('user_token'),
-                24
+                TOKEN.NAME.USER_TOKEN,
+                utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN),
+                TOKEN.OFFSET.USER_TOKEN
               );
             }
           } else {
-            window.localStorage.removeItem('user_token');
+            window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
           }
         })
         .catch((e) => {
           ElNotification.error({
-            title: 'Lỗi!',
-            message: 'Some thing went wrong.',
-            icon: () =>
-              h(CloseCircleFilled, {
-                style: 'color: red'
-              })
+            title: MESSAGE.STATUS.BROKE,
+            message: MESSAGE.STATUS.BROKE_MESSAGE,
+            duration: MESSAGE.DURATION.DEFAULT
           });
         })
         .finally(() => {
@@ -89,29 +88,23 @@ export const useAuthStore = defineStore('auth', () => {
               resolve(navigateTo('/login'));
             }).then(() => {
               setTimeout(() => {
-                window.localStorage.removeItem('user_token');
+                window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
                 userAccount.value = null;
               }, 200);
             });
           } else {
             ElNotification.error({
-              title: 'Lỗi!',
+              title: MESSAGE.STATUS.FAILED,
               message: 'Đăng xuất thất bại.',
-              icon: () =>
-                h(CloseCircleFilled, {
-                  style: 'color: red'
-                })
+              duration: MESSAGE.DURATION.DEFAULT
             });
           }
         })
         .catch((e) => {
           ElNotification.error({
-            title: 'Lỗi!',
+            title: MESSAGE.STATUS.FAILED,
             message: 'Đăng xuất thất bại.',
-            icon: () =>
-              h(CloseCircleFilled, {
-                style: 'color: red'
-              })
+            duration: MESSAGE.DURATION.DEFAULT
           });
         })
         .finally(() => {

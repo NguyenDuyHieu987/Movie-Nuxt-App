@@ -405,7 +405,7 @@
 </template>
 
 <script setup lang="ts">
-import BackPage from '~/components/BackPage/BackPage.vue';
+import { BackPage } from '~/components/BackPage';
 import CastCrew from '~/components/CastCrew/CastCrew.vue';
 import Comment from '~/components/Comment/Comment.vue';
 import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';

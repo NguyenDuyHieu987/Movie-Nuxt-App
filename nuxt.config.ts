@@ -80,8 +80,9 @@ export default defineNuxtConfig({
   },
   imports: {
     dirs: [
-      // '/services',
-      //  '/stores'
+      'common'
+      // 'services',
+      //  'stores'
     ]
   },
   experimental: {

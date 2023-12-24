@@ -148,7 +148,7 @@ const props = withDefaults(
     comment?: commentForm;
     replyTo?: commentForm;
     commentType?: string;
-    action?: 'post' | 'edit';
+    action?: 'post' | 'edit' | string;
     showActions?: boolean;
     isShowFormComment?: boolean;
   }>(),
@@ -389,12 +389,11 @@ const onSubmit = () => {
       })
         .then((response) => {
           if (response?.success) {
-            ElNotification({
-              title: 'Thành công!',
+            ElNotification.success({
+              title: MESSAGE.STATUS.SUCCESS,
               message: 'Chỉnh sửa bình luận thành công.',
-              type: 'success',
               position: 'bottom-right',
-              duration: 3000
+              duration: MESSAGE.DURATION.FAST
             });
 
             contenteditableInputField.value!.innerHTML = '';
@@ -405,12 +404,11 @@ const onSubmit = () => {
           }
         })
         .catch((e) => {
-          ElNotification({
-            title: 'Thất bại!',
+          ElNotification.error({
+            title: MESSAGE.STATUS.FAILED,
             message: 'Chỉnh sửa bình luận thất bại',
-            type: 'error',
             position: 'bottom-right',
-            duration: 3000
+            duration: MESSAGE.DURATION.FAST
           });
         })
         .finally(() => {

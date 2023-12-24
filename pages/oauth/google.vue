@@ -140,7 +140,6 @@
 </template>
 
 <script setup lang="ts">
-import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue';
 import { ElNotification } from 'element-plus';
 
 import { loginGoogle } from '~/services/authentication';
@@ -175,34 +174,35 @@ onBeforeMount(() => {
     .then((response) => {
       if (response.isSignUp == true) {
         ElNotification.success({
-          title: 'Thành công!',
+          title: MESSAGE.STATUS.SUCCESS,
           message: 'Bạn đã đăng nhập bằng Google thành công tại Phimhay247.',
-
-          icon: () =>
-            h(CheckCircleFilled, {
-              style: 'color: green'
-            })
+          duration: MESSAGE.DURATION.DEFAULT
         });
 
         store.userAccount = response?.result;
-        utils.localStorage.setWithExpiry('user_token', response.headers.get('Authorization'), 24);
+        utils.localStorage.setWithExpiry(
+          TOKEN.NAME.USER_TOKEN,
+          response.headers.get('Authorization'),
+          TOKEN.OFFSET.USER_TOKEN
+        );
         navigateTo({ path: '/' });
         // navigateTo({ path: urlBack.value });
       } else if (response.isLogin == true) {
         store.userAccount = response?.result;
-        utils.localStorage.setWithExpiry('user_token', response.headers.get('Authorization'), 24);
+        utils.localStorage.setWithExpiry(
+          TOKEN.NAME.USER_TOKEN,
+          response.headers.get('Authorization'),
+          TOKEN.OFFSET.USER_TOKEN
+        );
         navigateTo({ path: '/' });
         // navigateTo({ path: urlBack.value });
       } else if (response.isLogin == false) {
         navigateTo({ path: '/login' });
 
         ElNotification.error({
-          title: 'Thất bại!',
-          message: 'Some thing went wrong.',
-          icon: () =>
-            h(CloseCircleFilled, {
-              style: 'color: red'
-            })
+          title: MESSAGE.STATUS.FAILED,
+          message: MESSAGE.STATUS.BROKE_MESSAGE,
+          duration: MESSAGE.DURATION.DEFAULT
         });
       }
     })
@@ -210,12 +210,9 @@ onBeforeMount(() => {
       navigateTo({ path: '/login' });
 
       ElNotification.error({
-        title: 'Thất bại!',
-        message: 'Some thing went wrong.',
-        icon: () =>
-          h(CloseCircleFilled, {
-            style: 'color: red'
-          })
+        title: MESSAGE.STATUS.BROKE,
+        message: MESSAGE.STATUS.BROKE_MESSAGE,
+        duration: MESSAGE.DURATION.DEFAULT
       });
     })
     .finally(() => {

@@ -106,12 +106,11 @@ const handleRating = (value: number) => {
   })
     .then((response) => {
       if (response?.success == true) {
-        ElNotification({
-          title: 'Thành công!',
+        ElNotification.success({
+          title: MESSAGE.STATUS.SUCCESS,
           message: `Đánh giá ${props.dataMovie.name} thành công: ${value} điểm.`,
-          type: 'success',
           position: 'bottom-right',
-          duration: 3000
+          duration: MESSAGE.DURATION.FAST
         });
 
         vote_Average.value = response?.vote_average;
@@ -120,12 +119,11 @@ const handleRating = (value: number) => {
       }
     })
     .catch((e) => {
-      ElNotification({
-        title: 'Thất bại!',
+      ElNotification.error({
+        title: MESSAGE.STATUS.FAILED,
         message: 'Đánh giá phim thất bại.',
-        type: 'error',
         position: 'bottom-right',
-        duration: 3000
+        duration: MESSAGE.DURATION.FAST
       });
     });
 

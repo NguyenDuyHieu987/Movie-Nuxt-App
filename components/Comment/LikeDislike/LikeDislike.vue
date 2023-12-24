@@ -135,12 +135,11 @@ const handleLikeComment = () => {
         isLike.value = true;
         like.value++;
       }
-      ElNotification({
-        title: 'Thất bại!',
+      ElNotification.error({
+        title: MESSAGE.STATUS.FAILED,
         message: 'Thích bình luận thất bại',
-        type: 'error',
         position: 'bottom-right',
-        duration: 3000
+        duration: MESSAGE.DURATION.FAST
       });
     });
 };
@@ -185,12 +184,11 @@ const handleDisLikeComment = () => {
         isDisLike.value = true;
         dislike.value++;
       }
-      ElNotification({
-        title: 'Thất bại!',
+      ElNotification.error({
+        title: MESSAGE.STATUS.FAILED,
         message: 'Dislike bình luận thất bại',
-        type: 'error',
         position: 'bottom-right',
-        duration: 3000
+        duration: MESSAGE.DURATION.FAST
       });
     });
 };

@@ -300,7 +300,7 @@
 <script setup lang="ts">
 import _ from 'lodash';
 
-import BackPage from '~/components/BackPage/BackPage.vue';
+import { BackPage } from '~/components/BackPage';
 import Comment from '~/components/Comment/Comment.vue';
 import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';
 import Interaction from '~/components/Interaction/Interaction.vue';
@@ -313,7 +313,7 @@ import Tags from '~/components/Tags/Tags.server.vue';
 import VideoPlayer from '~/components/VideoPlayer/VideoPlayer.vue';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
-import { add_update_History,getItemHistory } from '~/services/history';
+import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
