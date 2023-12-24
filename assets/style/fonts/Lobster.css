@@ -1,0 +1,10 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap'); */
+
+@font-face {
+  font-family: 'Lobster';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('~/assets/fonts/Lobster/Lobster-Regular.woff2') format('woff2');
+}

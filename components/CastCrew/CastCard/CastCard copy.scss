@@ -1,0 +1,122 @@
+.cast-item {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .el-skeleton.is-animated {
+    .img-box {
+      width: 100%;
+      height: 0px !important;
+      padding-bottom: 130%;
+      transition: all 0.3s;
+      overflow: hidden;
+
+      .el-skeleton__item.skeleton-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: opacity 0.3s;
+        object-fit: cover;
+      }
+    }
+
+    .content-skeleton {
+      margin-top: 10px;
+
+      .el-skeleton__item.el-skeleton__text {
+        // height: 18px;
+      }
+    }
+  }
+
+  .img-box {
+    display: flex;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .ant-image {
+      width: 100%;
+      height: 0px !important;
+      padding-bottom: 130%;
+      transition: all 0.3s;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        transition: opacity 0.3s;
+        object-fit: cover;
+
+        &[lazy='error'] {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: url('https://ik.imagekit.io/z8fhvnk8u/images/svg/error-user.svg');
+          background-repeat: no-repeat;
+          background-size: 80%;
+          background-position: center center;
+          transition: background-position 0s;
+        }
+      }
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+    border: 1px solid var(--border-regular);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: none;
+    color: #d0d0d0;
+    flex-grow: 1;
+
+    .name,
+    .character,
+    .job {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .character,
+    .job {
+      line-height: 1.2;
+      color: var(--text-color-gray);
+    }
+  }
+
+  &:hover {
+    img {
+      opacity: 0.8;
+    }
+
+    .duration-episode-box {
+      background-size: 200% 100%;
+      background-position: -50px center;
+    }
+
+    .release-date-box {
+      background-size: 200% 100%;
+      background-position: -45px center;
+    }
+
+    .info {
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,164 @@
+[
+  {
+    "id": 28,
+    "name": "Action",
+    "name_vietsub": "Hành động",
+    "short_name": "hanh-dong"
+  },
+  {
+    "id": 12,
+    "name": "Adventure",
+    "name_vietsub": "Phiêu lưu",
+    "short_name": "phieu-luu"
+  },
+  {
+    "id": 16,
+    "name": "Animation",
+    "name_vietsub": "Hoạt hình",
+    "short_name": "hoat-hinh"
+  },
+  {
+    "id": 35,
+    "name": "Comedy",
+    "name_vietsub": "Hài hước",
+    "short_name": "hai-huoc"
+  },
+  {
+    "id": 80,
+    "name": "Crime",
+    "name_vietsub": "Tội phạm",
+    "short_name": "toi-pham"
+  },
+  {
+    "id": 99,
+    "name": "Documentary",
+    "name_vietsub": "Tài liệu",
+    "short_name": "tai-lieu"
+  },
+  {
+    "id": 18,
+    "name": "Drama",
+    "name_vietsub": "Drama",
+    "short_name": "drama"
+  },
+  {
+    "id": 10751,
+    "name": "Family",
+    "name_vietsub": "Gia đình",
+    "short_name": "gia-dinh"
+  },
+  {
+    "id": 14,
+    "name": "Fantasy",
+    "name_vietsub": "Kỳ ảo",
+    "short_name": "ky-ao"
+  },
+  {
+    "id": 36,
+    "name": "History",
+    "name_vietsub": "Lịch sử",
+    "short_name": "lich-su"
+  },
+  {
+    "id": 27,
+    "name": "Horror",
+    "name_vietsub": "Kinh dị",
+    "short_name": "kinh-di"
+  },
+  {
+    "id": 10402,
+    "name": "Music",
+    "name_vietsub": "Âm nhạc",
+    "short_name": "am-nhac"
+  },
+  {
+    "id": 9648,
+    "name": "Mystery",
+    "name_vietsub": "Bí ẩn",
+    "short_name": "bi-an"
+  },
+  {
+    "id": 10749,
+    "name": "Romance",
+    "name_vietsub": "Lãng mạn",
+    "short_name": "lang-man"
+  },
+  {
+    "id": 878,
+    "name": "Science Fiction",
+    "name_vietsub": "Khoa học viễn tưởng",
+    "short_name": "khoa-hoc-vien-tuong"
+  },
+  {
+    "id": 10770,
+    "name": "TV Movie",
+    "name_vietsub": "Phim dài tập",
+    "short_name": "phim-dai-tap"
+  },
+  {
+    "id": 53,
+    "name": "Thriller",
+    "name_vietsub": "Giật gân",
+    "short_name": "giat-gan"
+  },
+  {
+    "id": 10752,
+    "name": "War",
+    "name_vietsub": "Chiến tranh",
+    "short_name": "chien-tranh"
+  },
+  {
+    "id": 37,
+    "name": "Western",
+    "name_vietsub": "Cao bồi",
+    "short_name": "cao-boi"
+  },
+  {
+    "id": 10765,
+    "name": "Sci-Fi & Fantasy",
+    "name_vietsub": "Khoa học viễn tưởng & Kỳ ảo",
+    "short_name": "khoa-hoc-vien-tuong-&-ky-ao"
+  },
+  {
+    "id": 10759,
+    "name": "Action & Adventure",
+    "name_vietsub": "Hành động & Phiêu lưu",
+    "short_name": "hanh-dong-&-phieu-luu"
+  },
+  {
+    "id": 10768,
+    "name": "War & Politics",
+    "name_vietsub": "Chiến tranh & Chính trị",
+    "short_name": "chien-tranh-&-chinh-tri"
+  },
+  {
+    "id": 10766,
+    "name": "Soap",
+    "name_vietsub": "Kịch",
+    "short_name": "kich"
+  },
+  {
+    "id": 10767,
+    "name": "Talk Show",
+    "name_vietsub": "Talk Show",
+    "short_name": "talk-show"
+  },
+  {
+    "id": 10763,
+    "name": "News",
+    "name_vietsub": "Tin tức",
+    "short_name": "tin-tuc"
+  },
+  {
+    "id": 10764,
+    "name": "Reality",
+    "name_vietsub": "Đời thực",
+    "short_name": "doi-thuc"
+  },
+  {
+    "id": 10762,
+    "name": "Kids",
+    "name_vietsub": "Trẻ em",
+    "short_name": "tre-em"
+  }
+]
