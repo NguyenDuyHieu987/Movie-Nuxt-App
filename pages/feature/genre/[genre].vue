@@ -222,7 +222,7 @@
 <script setup lang="ts">
 import { BillboardAnimation } from '~/components/BillboardAnimation';
 import { SwiperCarouselGroup } from '~/components/CarouselGroup';
-import { HeaderPageGenreType } from '~/components/Layouts';
+import HeaderPageGenreType from '~/components/Layouts/HeaderPageGenreType/HeaderPageGenreType.server.vue';
 import { LoadingSectionHorizontal } from '~/components/Loading';
 import { MovieCardHorizontal } from '~/components/MovieCard';
 import { getGenreById } from '~/services/genres';
