@@ -1,0 +1,358 @@
+.your-account {
+  font-size: 1.6rem;
+  height: 100%;
+
+  .center-page {
+    // max-width: var(--max-width-center-page);
+    max-width: 1024px;
+    margin: 0px auto;
+  }
+
+  .your-account-container {
+    --left-width: 258px;
+    padding-top: 20px;
+
+    .your-account-header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-regular);
+
+      h1 {
+        font-size: 3rem;
+        font-weight: normal;
+        white-space: nowrap;
+        cursor: default;
+      }
+
+      .join-since {
+        white-space: nowrap;
+        align-self: flex-end;
+        font-size: 1.4rem;
+        color: var(--text-color-gray1);
+      }
+    }
+
+    .account-grid {
+      .account-grid-row {
+        display: flex;
+        padding: 15px 2px 15px 2px;
+        border-bottom: 1px solid var(--border-regular);
+
+        &.info-account {
+          .row-label {
+            display: flex;
+            flex-direction: column;
+
+            .avatar-box {
+              display: flex;
+              position: relative;
+              align-items: center;
+              justify-self: center;
+              position: relative;
+              height: 80px;
+              width: 80px;
+              border-radius: 50%;
+              margin-top: 0.7em;
+              margin-left: 2em;
+              overflow: hidden;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+
+              .updload-avatar {
+                display: flex;
+                position: absolute;
+                align-items: center;
+                justify-content: center;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                user-select: none;
+                transition: background-color 0.15s;
+
+                svg.updload-avatar-icon {
+                  width: 2rem;
+                  height: 2rem;
+                  color: var(--app-background-color);
+                  z-index: -1;
+                  opacity: 0;
+                  transition: opacity 0.15s;
+                }
+
+                &:active {
+                  svg.updload-avatar-icon {
+                    opacity: 0.8 !important;
+                  }
+                }
+              }
+
+              &:hover {
+                cursor: pointer;
+
+                .updload-avatar {
+                  background-color: #000000b1;
+
+                  svg.updload-avatar-icon {
+                    z-index: 1;
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .row-label {
+          width: var(--left-width);
+          flex-shrink: 0;
+          font-size: 1.8rem;
+          color: var(--text-color-gray);
+          cursor: default;
+        }
+
+        .row-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          flex-grow: 1;
+
+          .row-content-item + .row-content-item {
+            margin-top: 8px;
+          }
+
+          .row-content-item {
+            display: flex;
+            justify-content: space-between;
+
+            &.password {
+              cursor: default;
+              color: var(--text-color-gray);
+            }
+
+            .left {
+              display: flex;
+              align-items: center;
+
+              span.label {
+                display: inline-block;
+                width: 85px;
+                color: var(--text-color-gray);
+                cursor: default;
+
+                & + span[contenteditable='true'] {
+                  padding: 0px 5px;
+                }
+              }
+
+              svg {
+                fill: var(--link-text-color);
+                cursor: pointer;
+                margin-left: 10px;
+                width: 1.7rem;
+                height: 1.7rem;
+                transition: opacity 0.15s;
+
+                &.edit-icon {
+                  opacity: 0;
+                }
+
+                &:active {
+                  opacity: 0.8 !important;
+                }
+              }
+
+              &:hover {
+                svg {
+                  &.edit-icon {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+
+            .right {
+              a {
+                color: var(--app-background-color);
+                transition: all 0.15s;
+
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+
+              .upgrade-btn {
+                padding: 7px 15px;
+                background-image: linear-gradient(
+                  45deg,
+                  var(--app-background-color),
+                  #0988c8,
+                  #04d6f2
+                );
+                box-shadow: 0 1px 3px #000;
+                font-size: 1.4rem;
+                color: var(--text-color);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .bottom-zone {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 20px;
+
+      .left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: var(--left-width);
+
+        .switch-account-btn,
+        .delete-account-btn {
+          margin-top: auto;
+          padding: 7px 25px;
+          font-size: 1.4rem;
+          // width: 70%;
+          // max-width: 180px;
+          color: var(--link-text-color);
+          border: 1px solid var(--app-background-color);
+          border-radius: 20px;
+
+          &:hover {
+            color: var(--text-color);
+            background-color: var(--app-background-color);
+          }
+        }
+      }
+
+      .right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-grow: 1;
+        margin: 0px auto;
+
+        .ant-btn {
+          &.logout-btn {
+            margin: 0px auto;
+            padding: 8px 90px;
+            border-radius: 30px;
+            background-color: #d2d2d2;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+
+            &:hover {
+              background-color: #e6e6e6;
+            }
+
+            &:active {
+              opacity: 0.8;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .your-account {
+    font-size: 1.5rem;
+
+    .your-account-container {
+      .your-account-header {
+        gap: 15px;
+
+        h1 {
+          font-size: 2.7rem;
+        }
+      }
+
+      .account-grid {
+        .account-grid-row {
+          .row-label {
+            width: 228px;
+          }
+
+          &.info-account {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .your-account {
+    .your-account-container {
+      #danger-zone {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .delete-account-btn {
+        margin: 0px auto;
+      }
+
+      .account-grid {
+        .account-grid-row {
+          flex-direction: column;
+
+          &.info-account {
+            .row-label {
+            }
+          }
+
+          .row-label {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+          }
+
+          .row-content {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .your-account {
+    .your-account-container {
+      .your-account-header {
+        gap: 10px;
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .join-since {
+          margin-left: auto;
+        }
+      }
+
+      .account-grid {
+        .account-grid-row {
+          .row-label {
+            // width: 190px;
+          }
+        }
+      }
+    }
+  }
+}

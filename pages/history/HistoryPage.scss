@@ -1,0 +1,224 @@
+.history {
+  --history-sidebar-width: 340px;
+  min-height: calc(101vh - var(--header-height));
+
+  .history-container {
+    & > div {
+      position: relative;
+    }
+
+    .history-main-content {
+      position: relative;
+      z-index: 1;
+      padding-top: 20px;
+      overflow: hidden;
+      margin-right: var(--history-sidebar-width);
+
+      .gradient-title-default {
+        margin-top: 0px;
+      }
+
+      .nav-action {
+        width: 100%;
+        // width: var(--width);
+        // margin-bottom: 15px;
+        height: 49px;
+
+        .sort-tab {
+          width: 100%;
+          padding-top: 7px;
+          padding-bottom: 7px;
+        }
+
+        &.fixed {
+          margin-bottom: 0px;
+
+          .sort-tab {
+            position: fixed;
+            z-index: 1;
+            top: var(--header-height);
+            background-color: #080808e6;
+            // background-color: red;
+            transition: background-color 0.25s;
+            transition-delay: 0.3s;
+          }
+        }
+      }
+
+      .movie-history {
+        // max-width: 850px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 17px;
+      }
+
+      .skeleton-loadmore {
+        .el-skeleton.is-animated {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          gap: 15px;
+          margin-top: 15px;
+
+          .img-box {
+            position: relative;
+            flex: 1 0 250px;
+            width: 250px;
+            height: 141px;
+            overflow: hidden;
+            border-radius: 7px;
+
+            .el-skeleton__item.skeleton-img {
+              height: 100%;
+              width: 100%;
+            }
+          }
+
+          .content-skeleton {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            margin-top: 7px;
+
+            .overview {
+              margin-top: 5px;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#topic-history-column-teleport {
+  position: fixed;
+  flex: auto;
+  background-color: var(--background-content-color);
+  padding: 15px 0px 0px 0px;
+  max-width: 340px;
+  height: 100%;
+  z-index: 2;
+  right: 0;
+}
+
+.body-content:has(.history .history-container) {
+  .body-wrapper {
+    margin-left: 0px;
+    margin-right: auto;
+    // max-width: 1100px;
+
+    & > .container {
+    }
+  }
+
+  #topic-history-column-teleport {
+    margin-right: auto;
+    // margin-right: 0px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #topic-history-column-teleport {
+    display: none;
+  }
+
+  .history {
+    .history-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .topic-row {
+        display: block;
+      }
+
+      .history-main-content {
+        width: 100%;
+        margin-top: 20px;
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .history {
+    .history-container {
+      .topic-row {
+        padding: 15px;
+      }
+
+      .history-main-content {
+        padding-top: 15px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .history {
+    .history-container {
+      .topic-row {
+        .row-container {
+          .top {
+            flex-direction: column;
+
+            .backdrop {
+              flex: 1 0 100%;
+              width: 100%;
+            }
+
+            .info {
+              .user-info {
+                .viewmore-btn-history {
+                  right: -12px;
+                }
+              }
+            }
+          }
+
+          .bottom {
+            .box-btn {
+              flex: 1 0 40%;
+
+              .remove-all-history-btn {
+                margin: 0px;
+              }
+            }
+
+            .widget {
+              flex: 1 0 60%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .history {
+    .history-container {
+      .topic-row {
+        .row-container {
+          .bottom {
+            flex-direction: column-reverse;
+
+            .box-btn {
+            }
+
+            .widget {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

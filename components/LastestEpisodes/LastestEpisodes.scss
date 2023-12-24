@@ -1,0 +1,71 @@
+.lastest-episodes {
+  display: flex;
+  align-items: center;
+
+  .label {
+    white-space: nowrap;
+    margin-right: 0.3rem;
+    color: var(--text-label-color);
+  }
+
+  .list-lastest-episodes.skeleton {
+    .ant-skeleton {
+      margin: 7px 7px 0px 0px;
+    }
+  }
+
+  ul.list-lastest-episodes {
+    display: flex;
+    overflow: hidden;
+    list-style-type: none;
+    gap: 7px;
+    flex-wrap: wrap;
+
+    & > li,
+    li + li {
+      // margin-top: 7px;
+      // margin-right: 7px;
+    }
+
+    li {
+      a {
+        display: inline-block;
+        white-space: nowrap;
+        // padding: 7px 10px;
+        padding: 0px 10px;
+        border-radius: 3px;
+        color: var(--app-background-color);
+        // transition: all 0.5s;
+        transition: all 0.15s;
+        font-weight: 500;
+
+        // background-image: linear-gradient(
+        //   to right,
+        //   #006a88,
+        //   var(--app-background-color2),
+        //   var(--app-background-color1)
+        // );
+        // background-size: 200% 100%;
+
+        // &:hover {
+        //   background-size: 200% 100%;
+        //   // background-position: -75px center;
+        //   background-position: 100% center;
+        // }
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &:active {
+          opacity: 0.8;
+        }
+
+        &:visited {
+          // color: #006098;
+          color: #00e5a4;
+        }
+      }
+    }
+  }
+}

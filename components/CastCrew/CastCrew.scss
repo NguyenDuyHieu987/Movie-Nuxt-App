@@ -1,0 +1,89 @@
+.cast-crew {
+  position: relative;
+  z-index: 1;
+  margin-top: 25px;
+
+  .cast-crew-tabs {
+    .el-skeleton.is-animated {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      .el-skeleton__item.skeleton-img {
+        width: 150px;
+        height: 180px;
+      }
+
+      .content-skeleton {
+        margin-top: 5px;
+
+        .el-skeleton__item.el-skeleton__text {
+        }
+      }
+    }
+
+    &.ant-tabs {
+      overflow: visible;
+
+      .ant-tabs-nav-list {
+        .ant-tabs-tab {
+          &:hover {
+            .ant-tabs-tab-btn {
+              color: inherit;
+              // color: transparent;
+              // display: inline;
+              // -webkit-text-fill-color: transparent;
+              // -webkit-background-clip: text;
+              // background-image: linear-gradient(
+              //   to right,
+              //   var(--app-background-color2),
+              //   var(--app-background-color3)
+              // );
+            }
+          }
+
+          .ant-tabs-tab-btn {
+            color: inherit;
+            font-weight: 600;
+            font-size: 1.7rem;
+            transition: all 0.1s;
+          }
+        }
+
+        .ant-tabs-tab-active {
+          &:hover {
+            .ant-tabs-tab-btn {
+              color: var(--app-background-color);
+            }
+          }
+
+          .ant-tabs-tab-btn {
+            color: var(--app-background-color);
+            // color: transparent;
+            // display: inline;
+            // -webkit-text-fill-color: transparent;
+            // -webkit-background-clip: text;
+            // background-image: linear-gradient(
+            //   to right,
+            //   var(--app-background-color2),
+            //   var(--app-background-color3)
+            // );
+          }
+        }
+
+        .ant-tabs-ink-bar {
+          height: 2px;
+          background: var(--app-background-color);
+        }
+      }
+    }
+
+    &.el-tabs {
+      .el-tabs__nav {
+        .el-tabs__item {
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+}

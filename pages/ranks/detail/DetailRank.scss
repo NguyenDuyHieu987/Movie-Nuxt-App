@@ -1,0 +1,24 @@
+.detail-rank {
+  font-size: 1.6rem;
+  height: 100%;
+
+  --padding-rank-detail-section: 15px 20px;
+
+  .detail-rank-container {
+    // max-width: var(--max-width-center-page);
+    max-width: 1400px;
+    margin: 0px auto;
+
+    .detail-rank-header {
+      .detail-rank-title {
+      }
+    }
+
+    .detail-rank-body {
+      .detail-rank-section {
+        background-color: #222222;
+        padding: var(--padding-rank-detail-section);
+      }
+    }
+  }
+}

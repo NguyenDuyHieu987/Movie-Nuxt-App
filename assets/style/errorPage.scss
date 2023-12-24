@@ -1,0 +1,28 @@
+.ant-result.error-page {
+  .ant-result-title {
+    color: var(--text-color-invert);
+    font-size: 2.3rem;
+  }
+
+  .ant-result-subtitle {
+    h3 {
+      font-size: 1.8rem;
+    }
+  }
+
+  .ant-result-extra {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .ant-btn {
+      border-radius: 3px;
+      color: var(--text-color);
+      padding: 11px 30px;
+      height: 100%;
+
+      &:hover {
+      }
+    }
+  }
+}

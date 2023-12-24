@@ -1,0 +1,22 @@
+.discover {
+  .discover-title {
+    .gradient-title-default {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .discover-section {
+    .loading-page {
+      top: 60%;
+
+      svg {
+        font-size: 4rem;
+        width: 4rem;
+        height: 4rem;
+      }
+    }
+  }
+}
