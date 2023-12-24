@@ -154,7 +154,7 @@
 
 <script setup lang="ts">
 import type { plan } from '@/types';
-import RequireAuth from '~/components/RequireAuth/RequireAuth.server.vue';
+import { RequireAuth } from '~/components/RequireAuth';
 import { getImage } from '~/services/image';
 import { getAllPlan, registerPlan } from '~/services/plans';
 

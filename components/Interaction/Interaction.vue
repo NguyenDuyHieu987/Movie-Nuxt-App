@@ -400,7 +400,7 @@
 </template>
 
 <script setup lang="ts">
-import CloseBtn from '~/components/ButtonTemplate/CloseBtn/CloseBtn.vue';
+import { CloseBtn } from '~/components/ButtonTemplate';
 import { getImage } from '~/services/image';
 
 const props = withDefaults(

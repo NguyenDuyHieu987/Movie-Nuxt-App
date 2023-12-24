@@ -204,11 +204,11 @@
 </template>
 
 <script setup lang="ts">
-import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
-import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
-import HeaderPageMovieType from '~/components/layouts/HeaderPageMovieType/HeaderPageMovieType.server.vue';
-import LoadingSectionHorizontal from '~/components/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
-import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';
+import { BillboardAnimation } from '~/components/BillboardAnimation';
+import { SwiperCarouselGroup } from '~/components/CarouselGroup';
+import { HeaderPageMovieType } from '~/components/Layouts';
+import { LoadingSectionHorizontal } from '~/components/Loading';
+import { MovieCardHorizontal } from '~/components/MovieCard';
 import {
   getTvAiringToday,
   getTvOntheAir,

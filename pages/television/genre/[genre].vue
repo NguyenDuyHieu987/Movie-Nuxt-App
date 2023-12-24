@@ -212,11 +212,11 @@
 </template>
 
 <script setup lang="ts">
-import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
-import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
-import HeaderPageGenreType from '~/components/layouts/HeaderPageGenreType/HeaderPageGenreType.server.vue';
-import LoadingSectionHorizontal from '~/components/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
-import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';
+import { BillboardAnimation } from '~/components/BillboardAnimation';
+import { SwiperCarouselGroup } from '~/components/CarouselGroup';
+import { HeaderPageGenreType } from '~/components/Layouts';
+import { LoadingSectionHorizontal } from '~/components/Loading';
+import { MovieCardHorizontal } from '~/components/MovieCard';
 import { getGenreById } from '~/services/genres';
 import { FilterTvSlug } from '~/services/TvSlug';
 import type { formfilter, genre } from '~/types';

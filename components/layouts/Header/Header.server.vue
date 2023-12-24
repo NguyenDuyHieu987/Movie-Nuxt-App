@@ -140,13 +140,15 @@
 
 <script setup lang="ts">
 import { MenuOutlined } from '@ant-design/icons-vue';
-// import SearchCard from '~/components/SearchCard/SearchCard.vue';
 import { storeToRefs } from 'pinia';
-import DropdownAccount from './DropdownAcount/DropdownAcount.vue';
-import Notification from './Notification/Notification.vue';
-import SearchDropdown from './SearchDropdown/SearchDropdown.vue';
-import SearchMobile from './SearchMobile/SearchMobile.vue';
 
+import {
+  DropdownAccount,
+  Notification,
+  // SearchCard,
+  SearchDropdown,
+  SearchMobile
+} from '~/components/Layouts/Header';
 import { getImage } from '~/services/image';
 import {
   getDaTaSearch,

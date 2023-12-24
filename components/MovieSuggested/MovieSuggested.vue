@@ -59,8 +59,8 @@
 </template>
 
 <script setup lang="ts">
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
-import MovieCardSuggested from '~/components/MovieCardSuggested/MovieCardSuggested.vue';
+import { LoadingSpinner } from '~/components/Loading';
+import { MovieCardSuggested } from '~/components/MovieSuggested';
 import { getSimilar } from '~/services/similar';
 import { getTrending } from '~/services/trending';
 

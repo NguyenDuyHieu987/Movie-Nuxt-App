@@ -93,7 +93,7 @@
 </template>
 
 <script setup lang="ts">
-import CloseBtn from '~/components/ButtonTemplate/CloseBtn/CloseBtn.vue';
+import { CloseBtn } from '~/components/ButtonTemplate';
 
 const store = useStore();
 </script>

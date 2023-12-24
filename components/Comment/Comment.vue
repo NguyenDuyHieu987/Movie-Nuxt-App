@@ -49,10 +49,8 @@
 </template>
 
 <script setup lang="ts">
-import CommentItem from '~/components/Comment/CommentItem/CommentItem.vue';
-import FormComment from '~/components/Comment/FormComment/FormComment.vue';
-import LoadingCircle from '~/components/LoadingCircle/LoadingCircle.vue';
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import { CommentItem, FormComment } from '~/components/Comment';
+import { LoadingCircle, LoadingSpinner } from '~/components/Loading';
 import { getCommentByMovidId } from '~/services/comment';
 import type { commentForm } from '~/types';
 

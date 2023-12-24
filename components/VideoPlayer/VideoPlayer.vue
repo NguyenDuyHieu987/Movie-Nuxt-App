@@ -766,7 +766,7 @@
 <script setup lang="ts">
 import Hls from 'hls.js';
 
-import CloseBtn from '~/components/ButtonTemplate/CloseBtn/CloseBtn.vue';
+import { CloseBtn } from '~/components/ButtonTemplate';
 import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
 import { getVideo } from '~/services/video';
 

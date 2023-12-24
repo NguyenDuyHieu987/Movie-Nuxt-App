@@ -284,15 +284,15 @@
 import _ from 'lodash';
 
 import { BackPage } from '~/components/BackPage';
-import Comment from '~/components/Comment/Comment.vue';
-import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';
-import Interaction from '~/components/Interaction/Interaction.vue';
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
-import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
-import Overview from '~/components/Overview/Overview.server.vue';
-import RatingMovie from '~/components/RatingMovie/RatingMovie.vue';
-import Tags from '~/components/Tags/Tags.server.vue';
-import VideoPlayer from '~/components/VideoPlayer/VideoPlayer.vue';
+import { Comment } from '~/components/Comment';
+import { HistoryProgressBar } from '~/components/HistoryProgressBar';
+import { Interaction } from '~/components/Interaction';
+import { LoadingSpinner } from '~/components/Loading';
+import { MovieSuggested } from '~/components/MovieSuggested';
+import { Overview } from '~/components/Overview';
+import { RatingMovie } from '~/components/RatingMovie';
+import { Tags } from '~/components/Tags';
+import { VideoPlayer } from '~/components/VideoPlayer';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';

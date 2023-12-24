@@ -133,8 +133,8 @@
 </template>
 
 <script setup lang="ts">
-import CastCard from '~/components/CastCard/CastCard.vue';
-import SliderGroup from '~/components/SliderGroup/SliderGroup.vue';
+import { CastCard } from '~/components/CastCrew';
+import { SliderGroup } from '~/components/SliderGroup';
 import { getCredits } from '~/services/credit';
 
 const props = defineProps<{

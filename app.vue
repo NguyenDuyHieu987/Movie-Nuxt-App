@@ -73,66 +73,66 @@
 </template>
 
 <script setup lang="ts">
-import LoadingApp from '~/components/LoadingApp/LoadingApp.server.vue'
-import RequireAuthDialog from '~/components/RequireAuthDialog/RequireAuthDialog.server.vue'
+import { LoadingApp } from '~/components/Loading';
+import { RequireAuthDialog } from '~/components/RequireAuthDialog';
 
-const runtimeConfig = useRuntimeConfig()
+const runtimeConfig = useRuntimeConfig();
 
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk
       ? `${titleChunk} ${runtimeConfig.public.titleSeparator} ${runtimeConfig.public.siteName}`
-      : runtimeConfig.public.siteName
+      : runtimeConfig.public.siteName;
   }
-})
+});
 
 useSeoMeta({
   description: runtimeConfig.public.siteDescription
-})
+});
 
 const onBackTop = () => {
   window.scrollTo({
     top: 0,
     left: 0,
     behavior: 'instant'
-  })
-}
+  });
+};
 
 onMounted(() => {
   // window.history.scrollRestoration = 'auto';
   screen.orientation.addEventListener('change', () => {
-    const windowWidth: number = screen.availWidth
-    const windowHeight: number = screen.availHeight
+    const windowWidth: number = screen.availWidth;
+    const windowHeight: number = screen.availHeight;
 
-    const bodyStyle = document.body.style as any
+    const bodyStyle = document.body.style as any;
 
     if (windowWidth <= 1000) {
-      const zoomLevel = windowWidth / windowHeight
+      const zoomLevel = windowWidth / windowHeight;
 
-      bodyStyle.zoom = zoomLevel
+      bodyStyle.zoom = zoomLevel;
     } else {
-      bodyStyle.zoom = 1
+      bodyStyle.zoom = 1;
     }
-  })
+  });
 
   window.addEventListener('orientationchange', (e: any) => {
     // // Lấy kích thước của cửa sổ trình duyệt
-    const windowWidth: number = screen.availWidth
-    const windowHeight: number = screen.availHeight
+    const windowWidth: number = screen.availWidth;
+    const windowHeight: number = screen.availHeight;
 
-    const bodyStyle = document.body.style as any
+    const bodyStyle = document.body.style as any;
 
     if (windowWidth <= 1000) {
       // // Tính toán tỉ lệ zoom tương ứng (có thể điều chỉnh theo ý muốn)
       // Ví dụ: zoom nhỏ khi chiều rộng cửa sổ dưới 1000px
 
-      const zoomLevel = windowWidth / windowHeight
+      const zoomLevel = windowWidth / windowHeight;
 
-      bodyStyle.zoom = zoomLevel
+      bodyStyle.zoom = zoomLevel;
     } else {
-      bodyStyle.zoom = 1
+      bodyStyle.zoom = 1;
     }
-  })
+  });
 
   // new ResizeObserver((entries) => {
   //   console.log(entries);
@@ -144,7 +144,7 @@ onMounted(() => {
   //     );
   //   }
   // }).observe(document.body);
-})
+});
 </script>
 
 <style lang="scss" src="~/assets/style/app.scss"></style>

@@ -227,7 +227,7 @@
 import { useBreakpoints } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 
-import RequireAuth from '~/components/RequireAuth/RequireAuth.server.vue';
+import { RequireAuth } from '~/components/RequireAuth';
 import { ChangeFullname } from '~/services/account';
 import { getImage } from '~/services/image';
 

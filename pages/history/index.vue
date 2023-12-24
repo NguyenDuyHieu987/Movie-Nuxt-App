@@ -125,17 +125,17 @@
 </template>
 
 <script setup lang="ts">
-// import scrollBottom from 'scroll-bottom';
 import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';
 import _ from 'lodash';
 import { storeToRefs } from 'pinia';
 
-import MovieCardHorizontalHistory from '~/components/MovieCardHorizontalHistory/MovieCardHorizontalHistory.vue';
-import RequireAuth from '~/components/RequireAuth/RequireAuth.server.vue';
-import SortTab from '~/components/SortTab/SortTab.vue';
-import TopicColumn from '~/components/TopicColumn/TopicColumn.vue';
-import TopicRow from '~/components/TopicRow/TopicRow.vue';
+// import scrollBottom from 'scroll-bottom';
+import { MovieCardHorizontalHistory } from '~/components/MovieCardHorizontalHistory';
+import { RequireAuth } from '~/components/RequireAuth';
+import { SortTab } from '~/components/SortTab';
+import { TopicColumn } from '~/components/TopicColumn';
+import { TopicRow } from '~/components/TopicRow';
 import { getHistory, searchHistory } from '~/services/history';
 
 definePageMeta({

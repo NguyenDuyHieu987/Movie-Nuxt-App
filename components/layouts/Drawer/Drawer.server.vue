@@ -37,7 +37,11 @@
           class="avatar"
           :src="
             !isNaN(+userAccount?.avatar)
-              ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar', 'w-50')
+              ? getImage(
+                  `account${userAccount?.avatar}.jpg`,
+                  'user_avatar',
+                  'w-50'
+                )
               : userAccount?.avatar
           "
           loading="lazy"
@@ -109,10 +113,9 @@
 </template>
 
 <script setup lang="ts">
-// import { ElDrawer } from 'element-plus';
 import { storeToRefs } from 'pinia';
 
-import TheMenu from '~/components/TheMenu/TheMenu.server.vue';
+import { TheMenu } from '~/components/Layouts';
 import { getImage } from '~/services/image';
 
 const store = useStore();
@@ -136,3 +139,4 @@ router.beforeResolve(() => {
 </script>
 
 <style lang="scss" src="./Drawer.scss"></style>
+~/components/Layouts/TheMenu

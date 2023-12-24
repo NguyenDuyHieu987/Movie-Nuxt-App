@@ -187,9 +187,7 @@ import { ElNotification } from 'element-plus';
 import _ from 'lodash';
 import { storeToRefs } from 'pinia';
 
-import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';
-import FormComment from '~/components/Comment/FormComment/FormComment.vue';
-import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
+import { CommentContent, FormComment, LikeDislike } from '~/components/Comment';
 import { DeleteComment } from '~/services/comment';
 import { getImage } from '~/services/image';
 import type { commentForm } from '~/types';

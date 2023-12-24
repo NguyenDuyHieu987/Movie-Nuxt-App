@@ -91,7 +91,7 @@
 </template>
 
 <script setup lang="ts">
-import ModalTrailer from '~/components/ModalTrailer/ModalTrailer.vue';
+import { ModalTrailer } from '~/components/ModalTrailer';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 

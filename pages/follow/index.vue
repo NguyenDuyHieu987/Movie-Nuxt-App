@@ -133,11 +133,11 @@ import _ from 'lodash';
 import { storeToRefs } from 'pinia';
 
 // import scrollBottom from 'scroll-bottom';
-import MovieCardHorizontalFollow from '~/components/MovieCardHorizontalFollow/MovieCardHorizontalFollow.vue';
-import RequireAuth from '~/components/RequireAuth/RequireAuth.server.vue';
-import SortTab from '~/components/SortTab/SortTab.vue';
-import TopicColumn from '~/components/TopicColumn/TopicColumn.vue';
-import TopicRow from '~/components/TopicRow/TopicRow.vue';
+import { MovieCardHorizontalFollow } from '~/components/MovieCardHorizontalFollow';
+import { RequireAuth } from '~/components/RequireAuth';
+import { SortTab } from '~/components/SortTab';
+import { TopicColumn } from '~/components/TopicColumn';
+import { TopicRow } from '~/components/TopicRow';
 import { getList, searchList } from '~/services/list';
 
 definePageMeta({

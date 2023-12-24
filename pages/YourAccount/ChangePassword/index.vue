@@ -158,8 +158,8 @@ import type { Rule } from 'ant-design-vue/es/form';
 import { ElNotification } from 'element-plus';
 import { storeToRefs } from 'pinia';
 
-import RequireAuth from '~/components/RequireAuth/RequireAuth.server.vue';
-import VerifyPinOTPForm from '~/components/VerifyForm/VerifyPinOTPForm/VerifyPinOTPForm.vue';
+import { RequireAuth } from '~/components/RequireAuth';
+import { VerifyPinOTPForm } from '~/components/VerifyForm';
 import { AccountConfirm, ChangePassword } from '~/services/account';
 
 definePageMeta({

@@ -166,10 +166,10 @@
 </template>
 
 <script setup lang="ts">
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
-import RankSection from '~/components/RankSection/RankSection.vue';
+import { LoadingSpinner } from '~/components/Loading';
+import { RankSection } from '~/components/RankSection';
 import { filterRanks, getRankPlay } from '~/services/ranks';
-import type { formfilterRank, rankSort,rankType } from '~/types';
+import type { formfilterRank, rankSort, rankType } from '~/types';
 
 useHead({
   title: 'Bảng xếp hạng',
@@ -283,8 +283,9 @@ const getData = async () => {
 
   internalInstance.appContext.config.globalProperties.$Progress.start();
 
-  await useAsyncData(`ranks/filter/${JSON.stringify(formFilterRank.value)}`, () =>
-    filterRanks(formFilterRank.value)
+  await useAsyncData(
+    `ranks/filter/${JSON.stringify(formFilterRank.value)}`,
+    () => filterRanks(formFilterRank.value)
   )
     .then((response) => {
       ranksData.value = compareRanks(response.data.value);

@@ -147,8 +147,8 @@
 </template>
 
 <script setup lang="ts">
-import MovieCardRelated from '~/components/MovieCardRelated/MovieCardRelated.vue';
-import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
+import { MovieCardRelated } from '~/components/MovieRelated';
+import { ViewMoreBar } from '~/components/ViewMoreBar';
 import { getSimilar } from '~/services/similar';
 import { getTrending } from '~/services/trending';
 

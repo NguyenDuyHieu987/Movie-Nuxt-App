@@ -127,17 +127,17 @@
 </template>
 
 <script setup lang="ts">
-import CastCard from '~/components/CastCard/CastCard.vue'
-import SliderGroup from '~/components/SliderGroup/SliderGroup.vue'
-import { getCredits } from '~/services/credit'
+import { CastCard } from '~/components/CastCrew';
+import { SliderGroup } from '~/components/SliderGroup';
+import { getCredits } from '~/services/credit';
 
 const props = defineProps<{
   dataMovie: any;
-}>()
+}>();
 
-const dataCredit = ref<any>(props.dataMovie?.credits)
-const loading = ref<boolean>(false)
-const activeTabCast = ref<string>('cast')
+const dataCredit = ref<any>(props.dataMovie?.credits);
+const loading = ref<boolean>(false);
+const activeTabCast = ref<string>('cast');
 const responsiveCarousel = ref<any>({
   0: {
     slidesPerView: 2
@@ -185,17 +185,19 @@ const responsiveCarousel = ref<any>({
     slidesPerView: 10
     // slidesPerGroup: 10,
   }
-})
+});
 
-loading.value = true
+loading.value = true;
 
-useAsyncData(`credits/${props.dataMovie?.id}`, () => getCredits(props.dataMovie?.id))
+useAsyncData(`credits/${props.dataMovie?.id}`, () =>
+  getCredits(props.dataMovie?.id)
+)
   .then((response) => {
-    dataCredit.value = response.data.value
+    dataCredit.value = response.data.value;
   })
   .finally(() => {
-    loading.value = false
-  })
+    loading.value = false;
+  });
 
 // const { data: dataCredit, pending } = await useAsyncData(
 //   `credits/${props.dataMovie?.id}`,

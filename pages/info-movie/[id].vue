@@ -402,15 +402,15 @@
 
 <script setup lang="ts">
 import { BackPage } from '~/components/BackPage';
-import CastCrew from '~/components/CastCrew/CastCrew.vue';
-import Comment from '~/components/Comment/Comment.vue';
-import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';
-import Interaction from '~/components/Interaction/Interaction.vue';
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
-import MovieRelated from '~/components/MovieRelated/MovieRelated.vue';
-import Overview from '~/components/Overview/Overview.server.vue';
-import RatingMovie from '~/components/RatingMovie/RatingMovie.vue';
-import Tags from '~/components/Tags/Tags.server.vue';
+import { CastCrew } from '~/components/CastCrew';
+import { Comment } from '~/components/Comment';
+import { HistoryProgressBar } from '~/components/HistoryProgressBar';
+import { Interaction } from '~/components/Interaction';
+import { LoadingSpinner } from '~/components/Loading';
+import { MovieRelated } from '~/components/MovieRelated';
+import { Overview } from '~/components/Overview';
+import { RatingMovie } from '~/components/RatingMovie';
+import { Tags } from '~/components/Tags';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { getItemHistory } from '~/services/history';

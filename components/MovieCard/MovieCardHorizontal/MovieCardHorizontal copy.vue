@@ -106,7 +106,7 @@
 </template>
 
 <script setup lang="ts">
-import PreviewModal from '~/components/PreviewModal/PreviewModal.vue';
+import { PreviewModal } from '~/components/PreviewModal';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 

@@ -23,7 +23,11 @@
             :src="
               // `/images/account_avatar/account${userAccount?.avatar}.jpg`
               !isNaN(+userAccount?.avatar)
-                ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar', 'w-50')
+                ? getImage(
+                    `account${userAccount?.avatar}.jpg`,
+                    'user_avatar',
+                    'w-50'
+                  )
                 : userAccount?.avatar
             "
             loading="lazy"
@@ -106,11 +110,12 @@
 import { useBreakpoints } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 
-import TheMenu from '~/components/TheMenu/TheMenu.server.vue';
+import { TheMenu } from '~/components/Layouts';
 import { getImage } from '~/services/image';
 
 const store = useStore();
-const { collapsed, isLogin, userAccount, openSiderBarFixed } = storeToRefs<any>(store);
+const { collapsed, isLogin, userAccount, openSiderBarFixed } =
+  storeToRefs<any>(store);
 const siderScrolled = ref<boolean>(false);
 
 const breakpoints = useBreakpoints({
@@ -149,8 +154,12 @@ onMounted(() => {
   //   }
   // });
 
-  const menu: HTMLElement | null = document.querySelector('.sider-bar .ant-layout-sider-children');
-  const sider_header = document.querySelector('.sider-bar .sider-header') as HTMLElement;
+  const menu: HTMLElement | null = document.querySelector(
+    '.sider-bar .ant-layout-sider-children'
+  );
+  const sider_header = document.querySelector(
+    '.sider-bar .sider-header'
+  ) as HTMLElement;
 
   menu!.addEventListener('scroll', (e: any) => {
     if (e.target.scrollTop > 0) {

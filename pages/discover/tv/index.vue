@@ -50,11 +50,10 @@
 
 <script setup lang="ts">
 import type { formfilter, typeTv } from '@/types';
-import ControlPage from '~/components/ControlPage/ControlPage.vue';
-import FilterSection from '~/components/FilterSection/FilterSection.vue';
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
-import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';
-import MovieCardVertical from '~/components/MovieCardVertical/MovieCardVertical.vue';
+import { ControlPage } from '~/components/ControlPage';
+import { FilterSection } from '~/components/FilterSection';
+import { LoadingSpinner } from '~/components/Loading';
+import { MovieCardHorizontal, MovieCardVertical } from '~/components/MovieCard';
 import { FilterTvSlug } from '~/services/TvSlug';
 
 const store = useStore();

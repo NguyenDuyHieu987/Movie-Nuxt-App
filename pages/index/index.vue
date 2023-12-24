@@ -401,15 +401,16 @@
 </template>
 
 <script setup lang="ts">
-import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
-import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
-import LoadingSectionHorizontal from '~/components/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
-import LoadingSectionVertical from '~/components/LoadingSection/LoadingSectionVertical/LoadingSectionVertical.vue';
-import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';
-import MovieCardHorizontalTrailer from '~/components/MovieCardHorizontalTrailer/MovieCardHorizontalTrailer.vue';
-import MovieCardVertical from '~/components/MovieCardVertical/MovieCardVertical.vue';
-import SliderGroupBackground from '~/components/SliderGroup/SliderGroupBackground/SliderGroupBackground.vue';
-import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
+import { BillboardAnimation } from '~/components/BillboardAnimation';
+import { SwiperCarouselGroup } from '~/components/CarouselGroup';
+import {
+  LoadingSectionHorizontal,
+  LoadingSectionVertical
+} from '~/components/Loading';
+import { MovieCardHorizontal, MovieCardVertical } from '~/components/MovieCard';
+import { MovieCardHorizontalTrailer } from '~/components/MovieCardHorizontalTrailer';
+import { SliderGroupBackground } from '~/components/SliderGroup';
+import { ViewMoreBar } from '~/components/ViewMoreBar';
 import { getMoviesByGenres } from '~/services/discover';
 import { getNowPlaying, getTopRated, getUpComing } from '~/services/movieSlug';
 import { getMyRecommend } from '~/services/recommend';

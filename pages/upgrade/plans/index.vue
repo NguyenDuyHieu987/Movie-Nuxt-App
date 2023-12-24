@@ -28,14 +28,24 @@
       </div>
       <!-- </Transition> -->
 
-      <Transition appear name="slide-left">
+      <Transition
+        appear
+        name="slide-left"
+      >
         <div v-show="showAnimation">
           <PlanGrid @onSelectPlan="handleOnSelectPlan" />
         </div>
       </Transition>
 
-      <div v-show="showAnimation" class="submit-btn-container">
-        <a-button type="text" class="submit-btn" @click="onRouteToPaymentPage">
+      <div
+        v-show="showAnimation"
+        class="submit-btn-container"
+      >
+        <a-button
+          type="text"
+          class="submit-btn"
+          @click="onRouteToPaymentPage"
+        >
           Tiếp theo
         </a-button>
       </div>
@@ -44,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import PlanGrid from '~/components/PlanGrid/PlanGrid.vue';
+import { PlanGrid } from '~/components/PlanGrid';
 import type { plan } from '~/types';
 
 definePageMeta({
@@ -60,7 +70,7 @@ const showAnimation = ref<boolean>(false);
 
 useHead({
   title: 'Nâng cấp tài khoản',
-  htmlAttrs: { lang: 'vi' },
+  htmlAttrs: { lang: 'vi' }
 });
 
 useSeoMeta({
@@ -70,7 +80,7 @@ useSeoMeta({
   ogType: 'video.movie',
   // ogUrl: window.location.href,
   ogDescription: 'Nâng cấp tài khoản, Dịch vụ, đăng ký gói',
-  ogLocale: 'vi',
+  ogLocale: 'vi'
 });
 
 onBeforeMount(() => {

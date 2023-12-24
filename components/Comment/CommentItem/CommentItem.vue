@@ -273,12 +273,13 @@ import _ from 'lodash';
 import { storeToRefs } from 'pinia';
 
 import type { commentForm } from '@/types';
-import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';
-import CommentItemChild from '~/components/Comment/CommentItemChild/CommentItemChild.vue';
-import FormComment from '~/components/Comment/FormComment/FormComment.vue';
-import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
-import LoadingCircle from '~/components/LoadingCircle/LoadingCircle.vue';
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
+import {
+  CommentContent,
+  CommentItemChild,
+  FormComment,
+  LikeDislike
+} from '~/components/Comment';
+import { LoadingCircle, LoadingSpinner } from '~/components/Loading';
 import {
   DeleteComment,
   getCommentByMovidId_ParentId

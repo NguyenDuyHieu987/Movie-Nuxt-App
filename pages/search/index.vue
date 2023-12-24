@@ -78,9 +78,9 @@
 </template>
 
 <script setup lang="ts">
-import ControlPage from '~/components/ControlPage/ControlPage.vue';
+import { ControlPage } from '~/components/ControlPage';
 import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
-import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';
+import { MovieCardHorizontal } from '~/components/MovieCard';
 import { addRankSearch } from '~/services/ranks';
 import { addSearch, addSearchHistory, getDaTaSearch } from '~/services/search';
 

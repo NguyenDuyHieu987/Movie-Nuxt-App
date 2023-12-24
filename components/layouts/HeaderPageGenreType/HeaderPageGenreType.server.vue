@@ -11,7 +11,9 @@
         <h1 class="breadcrumb-title">{{ genreTitle }}</h1>
       </div>
       <div class="right">
-        <NuxtLink :to="`/discover/genre/${genreRoute.short_name}`"> Tất cả nội dung </NuxtLink>
+        <NuxtLink :to="`/discover/genre/${genreRoute.short_name}`">
+          Tất cả nội dung
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -23,10 +25,13 @@ import type { genre } from '~/types';
 
 const store = useStore();
 const route = useRoute();
-const genreRoute = ref<genre>(getGenreById(route.params.genre, store.allGenres));
+const genreRoute = ref<genre>(
+  getGenreById(route.params.genre, store.allGenres)!
+);
 const genreTitle = ref<string>(
   route.params?.genre
-    ? getGenreById(route.params.genre, store.allGenres)?.name_vietsub || 'Thể loại'
+    ? getGenreById(route.params.genre, store.allGenres)?.name_vietsub ||
+        'Thể loại'
     : 'Thể loại'
 );
 </script>

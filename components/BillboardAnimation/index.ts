@@ -1,1 +1,2 @@
-export { default as BackPage } from './BackPage.vue';
+export { default as BillboardAnimation } from './BillboardAnimation.server.vue';
+export { default as BillboardItem } from './BillboardItem/BillboardItem.vue';

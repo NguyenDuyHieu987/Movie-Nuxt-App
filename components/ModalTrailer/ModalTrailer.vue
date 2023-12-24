@@ -177,7 +177,7 @@
 </template>
 
 <script setup lang="ts">
-import CloseBtn from '~/components/ButtonTemplate/CloseBtn/CloseBtn.vue';
+import { CloseBtn } from '~/components/ButtonTemplate';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
 import { getVideos } from '~/services/video';

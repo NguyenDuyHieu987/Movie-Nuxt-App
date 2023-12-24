@@ -212,7 +212,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import BillboardItem from '~/components/BillboardItem/BillboardItem.vue';
+import { BillboardItem } from '~/components/BillboardAnimation';
 import { getImage } from '~/services/image';
 
 const billboard = ref();

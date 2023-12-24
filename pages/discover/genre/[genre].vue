@@ -62,11 +62,11 @@
 
 <script setup lang="ts">
 import type { formfilter, genre } from '@/types';
-import ControlPage from '~/components/ControlPage/ControlPage.vue';
-import DiscoverHead from '~/components/DiscoverHead/DiscoverHead.vue';
-import FilterBar from '~/components/FilterBar/FilterBar.vue';
-import LoadingSpinner from '~/components/LoadingSpinner/LoadingSpinner.vue';
-import MovieCardHorizontal from '~/components/MovieCardHorizontal/MovieCardHorizontal.vue';
+import { ControlPage } from '~/components/ControlPage';
+import { DiscoverHead } from '~/components/DiscoverHead';
+import { FilterBar } from '~/components/FilterBar';
+import { LoadingSpinner } from '~/components/Loading';
+import { MovieCardHorizontal } from '~/components/MovieCard';
 import { FilterMovie, getMoviesByGenres } from '~/services/discover';
 import { getGenreByShortName } from '~/services/genres';
 

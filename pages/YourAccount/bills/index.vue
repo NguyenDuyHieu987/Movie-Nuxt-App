@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 
-import RequireAuth from '~/components/RequireAuth/RequireAuth.server.vue';
+import { RequireAuth } from '~/components/RequireAuth';
 
 definePageMeta({
   layout: 'service'
