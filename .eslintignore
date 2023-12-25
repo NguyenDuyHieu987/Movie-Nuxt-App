@@ -1,7 +1,7 @@
 .nuxt/*
 node_modules/*
 public/js/*
+coverage/*
 *.css
 *.scss
 *.less
-coverage
