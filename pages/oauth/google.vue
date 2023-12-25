@@ -218,9 +218,9 @@ onBeforeMount(() => {
     .finally(() => {
       loading.value = false;
 
-      // setTimeout(() => {
+      // await wait(300);
+
       // store.loadingAppInstance.finish();
-      // }, 300);
     });
 });
 

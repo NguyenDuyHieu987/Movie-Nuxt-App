@@ -213,7 +213,7 @@ onMounted(() => {
   // });
 });
 
-watchEffect(() => {
+watchEffect(async () => {
   if (props.isShowFormComment) {
     switch (props.action) {
       case 'post':
@@ -238,16 +238,16 @@ watchEffect(() => {
       replyToEl.setAttribute('contenteditable', 'false');
     }
 
-    setTimeout(() => {
-      const range = document.createRange();
-      const selection = window.getSelection();
-      range.selectNodeContents(contenteditableInputField.value!);
-      range.collapse(false);
-      selection!.removeAllRanges();
-      selection!.addRange(range);
+    await wait(10);
 
-      contenteditableInputField.value!.focus();
-    }, 10);
+    const range = document.createRange();
+    const selection = window.getSelection();
+    range.selectNodeContents(contenteditableInputField.value!);
+    range.collapse(false);
+    selection!.removeAllRanges();
+    selection!.addRange(range);
+
+    contenteditableInputField.value!.focus();
   }
 });
 

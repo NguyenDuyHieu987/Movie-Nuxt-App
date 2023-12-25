@@ -87,7 +87,7 @@ export function forgotPassword(email: string, type: string) {
   });
 }
 
-export function LogOut(params: any) {
+export function LogOut() {
   return makeRequest('/auth/logout', {
     method: 'POST'
   });

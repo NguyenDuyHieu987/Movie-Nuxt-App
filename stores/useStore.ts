@@ -101,9 +101,9 @@ export default defineStore('store', () => {
           loadingUser.value = false;
         });
     } else {
-      setTimeout(() => {
-        loadingUser.value = false;
-      }, 300);
+      await wait(300);
+
+      loadingUser.value = false;
     }
   };
 
@@ -111,17 +111,13 @@ export default defineStore('store', () => {
     if (isLogin.value) {
       loadingAppInstance.start();
 
-      LogOut({})
-        .then((response) => {
+      LogOut()
+        .then(async (response) => {
           if (response?.isLogout == true) {
-            new Promise((resolve, reject) => {
-              resolve(navigateTo('/login'));
-            }).then(() => {
-              setTimeout(() => {
-                window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
-                userAccount.value = null;
-              }, 200);
-            });
+            await wait(200);
+
+            window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
+            userAccount.value = null;
           } else {
             ElNotification.error({
               title: MESSAGE.STATUS.FAILED,
@@ -138,9 +134,7 @@ export default defineStore('store', () => {
           });
         })
         .finally(() => {
-          setTimeout(() => {
-            loadingAppInstance.finish();
-          }, 200);
+          loadingAppInstance.finish();
         });
     }
   }

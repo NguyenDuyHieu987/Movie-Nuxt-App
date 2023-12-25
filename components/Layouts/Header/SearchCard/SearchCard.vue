@@ -112,8 +112,8 @@ onBeforeMount(() => {});
 
 loading.value = true;
 
-setTimeout(() => {
-  loading.value = false;
-}, 500);
+await wait(500);
+
+loading.value = false;
 </script>
 <style lang="scss" src="./SearchCard.scss"></style>

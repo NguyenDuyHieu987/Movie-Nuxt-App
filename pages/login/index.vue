@@ -311,21 +311,17 @@ const handleLogin = () => {
 
         reset();
       } else if (response?.isNotExist == true) {
-        setTimeout(() => {
-          ElNotification.error({
-            title: MESSAGE.STATUS.FAILED,
-            message: 'Tài khoản không tồi tại.',
-            duration: MESSAGE.DURATION.DEFAULT
-          });
-        }, 1000);
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Tài khoản không tồi tại.',
+          duration: MESSAGE.DURATION.DEFAULT
+        });
       } else if (response?.isWrongPassword == true) {
-        setTimeout(() => {
-          ElNotification.error({
-            title: MESSAGE.STATUS.FAILED,
-            message: 'Sai tài khoản hoặc mật khẩu.',
-            duration: MESSAGE.DURATION.DEFAULT
-          });
-        }, 1000);
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Sai tài khoản hoặc mật khẩu.',
+          duration: MESSAGE.DURATION.DEFAULT
+        });
       }
     })
     .catch((e) => {

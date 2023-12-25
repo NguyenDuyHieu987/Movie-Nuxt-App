@@ -303,7 +303,7 @@ const rules: Record<string, Rule[]> = {
   ]
 };
 
-const handleSubmitVerifyEmail = () => {
+const handleSubmitVerifyEmail = async () => {
   if (loadingVerifyEmail.value) return;
 
   if (
@@ -312,10 +312,10 @@ const handleSubmitVerifyEmail = () => {
   ) {
     showAnimation.value = false;
 
-    setTimeout(() => {
-      showAnimation.value = true;
-      isShowVerifyOTPForm.value = true;
-    }, 300);
+    await wait(300);
+
+    showAnimation.value = true;
+    isShowVerifyOTPForm.value = true;
 
     return;
   }
@@ -381,16 +381,16 @@ const handleVerify = (formVerify: any) => {
     otp: formVerify.otp,
     vrfEmailToken: vrfEmailToken.value
   })
-    .then((response) => {
+    .then(async (response) => {
       // console.log(response);
       if (response?.success == true) {
         showAnimation.value = false;
 
-        setTimeout(() => {
-          showAnimation.value = true;
-          isShowVerifyOTPForm.value = false;
-          isChangeEmailForm.value = true;
-        }, 300);
+        await wait(300);
+
+        showAnimation.value = true;
+        isShowVerifyOTPForm.value = false;
+        isChangeEmailForm.value = true;
       } else if (response?.isInvalidOTP == true) {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,

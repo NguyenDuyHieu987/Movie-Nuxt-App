@@ -332,7 +332,7 @@ const rules: Record<string, Rule[]> = {
 // console.log(encryptedHex);
 // console.log(pbkdf2.pbkdf2Sync('123', 'salt', 1, 256 / 8, 'sha512'));
 
-const handleSignUp = (e: any) => {
+const handleSignUp = async (e: any) => {
   if (loadingSignUp.value) return;
 
   if (
@@ -341,10 +341,10 @@ const handleSignUp = (e: any) => {
   ) {
     showAnimation.value = false;
 
-    setTimeout(() => {
-      showAnimation.value = true;
-      isShowVerifyOTPForm.value = true;
-    }, 300);
+    await wait(300);
+
+    showAnimation.value = true;
+    isShowVerifyOTPForm.value = true;
 
     return;
   }
@@ -366,7 +366,7 @@ const handleSignUp = (e: any) => {
     },
     'email'
   )
-    .then((response) => {
+    .then(async (response) => {
       // console.log(response);
 
       if (response?.isInValidEmail == true) {
@@ -390,10 +390,10 @@ const handleSignUp = (e: any) => {
 
         showAnimation.value = false;
 
-        setTimeout(() => {
-          showAnimation.value = true;
-          isShowVerifyOTPForm.value = true;
-        }, 300);
+        await wait(300);
+
+        showAnimation.value = true;
+        isShowVerifyOTPForm.value = true;
       } else if (response?.isEmailExist == true) {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,
@@ -539,13 +539,13 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
     });
 };
 
-const handleClickBack = () => {
+const handleClickBack = async () => {
   showAnimation.value = false;
 
-  setTimeout(() => {
-    showAnimation.value = true;
-    isShowVerifyOTPForm.value = false;
-  }, 300);
+  await wait(300);
+
+  showAnimation.value = true;
+  isShowVerifyOTPForm.value = false;
 };
 </script>
 

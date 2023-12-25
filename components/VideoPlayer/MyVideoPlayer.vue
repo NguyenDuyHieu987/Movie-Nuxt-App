@@ -1488,12 +1488,12 @@ const onClickItemPlayback = (item: string) => {
   }
 };
 
-const onCloseSettings = () => {
-  setTimeout(() => {
-    settingStates.subSetting.enable = false;
-    settingStates.subSetting.playback = false;
-    settingStates.subSetting.quality = false;
-  }, 150);
+const onCloseSettings = async () => {
+  await wait(150);
+
+  settingStates.subSetting.enable = false;
+  settingStates.subSetting.playback = false;
+  settingStates.subSetting.quality = false;
 };
 
 const onClickPlayAgain = () => {

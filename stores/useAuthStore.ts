@@ -57,9 +57,9 @@ export const useAuthStore = defineStore('auth', () => {
           loadingUser.value = false;
         });
     } else {
-      setTimeout(() => {
-        loadingUser.value = false;
-      }, 300);
+      await wait(300);
+
+      loadingUser.value = false;
     }
   };
 
@@ -67,17 +67,13 @@ export const useAuthStore = defineStore('auth', () => {
     if (isLogin.value) {
       store.loadingAppInstance.start();
 
-      LogOut({})
-        .then((response) => {
+      LogOut()
+        .then(async (response) => {
           if (response?.isLogout == true) {
-            new Promise((resolve, reject) => {
-              resolve(navigateTo('/login'));
-            }).then(() => {
-              setTimeout(() => {
-                window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
-                userAccount.value = null;
-              }, 200);
-            });
+            await wait(200);
+
+            window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
+            userAccount.value = null;
           } else {
             ElNotification.error({
               title: MESSAGE.STATUS.FAILED,
@@ -94,9 +90,7 @@ export const useAuthStore = defineStore('auth', () => {
           });
         })
         .finally(() => {
-          setTimeout(() => {
-            store.loadingAppInstance.finish();
-          }, 200);
+          store.loadingAppInstance.finish();
         });
     }
   }

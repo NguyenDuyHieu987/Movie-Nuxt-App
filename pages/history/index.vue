@@ -305,8 +305,10 @@ watch(route, () => {
 const searchHistoryEvent = (e: any) => {
   if (e.target.value.length >= 0) {
     loadingSearch.value = true;
+    internalInstance.appContext.config.globalProperties.$Progress.start();
 
     clearTimeout(debounce.value);
+
     debounce.value = setTimeout(async () => {
       //  await useAsyncData(
       //     `history/search/${store.userAccount?.id}/${activeTab.value}/${e.target.value}`,
@@ -315,12 +317,11 @@ const searchHistoryEvent = (e: any) => {
       await searchHistory(e.target.value, activeTab.value)
         .then((response) => {
           dataHistory.value = response?.results;
-          setTimeout(() => {
-            loadingSearch.value = false;
-          }, 500);
         })
-        .catch((e) => {
+        .catch((e) => {})
+        .finally(() => {
           loadingSearch.value = false;
+          internalInstance.appContext.config.globalProperties.$Progress.finish();
         });
     }, 500);
   }

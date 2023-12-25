@@ -275,11 +275,12 @@ const handleResendVerifyEmail = () => {
   emits('onResend');
 };
 
-const handleClickBack = () => {
+const handleClickBack = async () => {
   emits('onClickBack');
-  setTimeout(() => {
-    formVerify.pin = [null, null, null, null, null, null];
-  }, 310);
+
+  await wait(310);
+
+  formVerify.pin = [null, null, null, null, null, null];
 };
 </script>
 

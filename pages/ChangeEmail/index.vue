@@ -209,13 +209,13 @@ const handleSubmit = () => {
     });
 };
 
-const handleClickBack = () => {
+const handleClickBack = async () => {
   showAnimation.value = false;
 
-  setTimeout(() => {
-    showAnimation.value = true;
-    isShowVerifyOTPForm.value = false;
-  }, 300);
+  await wait(300);
+
+  showAnimation.value = true;
+  isShowVerifyOTPForm.value = false;
 };
 </script>
 

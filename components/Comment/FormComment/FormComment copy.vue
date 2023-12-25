@@ -216,7 +216,7 @@ onMounted(() => {
   // });
 });
 
-watchEffect(() => {
+watchEffect(async () => {
   if (props.isShowFormComment) {
     switch (props.action) {
       case 'post':
@@ -227,9 +227,9 @@ watchEffect(() => {
         break;
     }
 
-    setTimeout(() => {
-      commentTextAreaField.value!.focus();
-    }, 10);
+    await wait(10);
+
+    commentTextAreaField.value!.focus();
   }
 });
 
@@ -293,10 +293,10 @@ const onSubmit = () => {
           }
         })
         .catch((e) => {})
-        .finally(() => {
-          setTimeout(() => {
-            loading.value = false;
-          }, 500);
+        .finally(async () => {
+          await wait(500);
+
+          loading.value = false;
         });
       break;
     case 'edit':

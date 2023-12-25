@@ -13,7 +13,8 @@ export const useUtils = () => {
     localStorage: customLocalStorage(),
     dateTimeFormater: dateTimeFormater(),
     conrfirmMessageModal,
-    removeVietnameseTones
+    removeVietnameseTones,
+    wait
   };
 };
 
@@ -28,3 +29,4 @@ export * from './initFacebookSDK';
 export * from './initGoogleGSIClient';
 export * from './messageModal';
 export * from './removeVietnameseTones';
+export * from './wait';

@@ -330,10 +330,10 @@ const onClickShowReplies = async () => {
         skip.value++;
       })
       .catch((e) => {})
-      .finally(() => {
-        setTimeout(() => {
-          loadingReplies.value = false;
-        }, 300);
+      .finally(async () => {
+        await wait(300);
+
+        loadingReplies.value = false;
       });
   }
 };
@@ -353,10 +353,10 @@ const onLoadMoreReplies = async () => {
       skip.value++;
     })
     .catch((e) => {})
-    .finally(() => {
-      setTimeout(() => {
-        isLoadmoreReplies.value = false;
-      }, 300);
+    .finally(async () => {
+      await wait(300);
+
+      isLoadmoreReplies.value = false;
     });
 };
 

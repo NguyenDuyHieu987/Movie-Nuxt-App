@@ -304,7 +304,6 @@ const removeAllFollowList = () => {
 const searchFollow = (e: any) => {
   if (e.target.value.length >= 0) {
     loadingSearch.value = true;
-
     internalInstance.appContext.config.globalProperties.$Progress.start();
 
     clearTimeout(debounce.value);

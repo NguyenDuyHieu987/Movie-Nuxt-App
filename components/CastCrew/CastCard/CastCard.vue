@@ -53,11 +53,12 @@ const props = defineProps<{
 
 const loading = ref<boolean>(false);
 
-onBeforeMount(() => {
+onBeforeMount(async () => {
   loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-  }, 300);
+
+  await wait(300);
+
+  loading.value = false;
 });
 </script>
 <style lang="scss" src="./CastCard.scss"></style>
