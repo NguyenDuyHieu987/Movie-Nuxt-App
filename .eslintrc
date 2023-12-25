@@ -28,7 +28,7 @@
       2
     ],
     "no-console": [
-      "off",
+      "warn",
       {
         "allow": [
           "warn",
