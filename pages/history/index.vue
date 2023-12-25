@@ -1,5 +1,5 @@
 <template>
-  <div class="history">
+  <div class="history-page">
     <div v-if="!store.loadingUser">
       <div
         v-if="store.isLogin"

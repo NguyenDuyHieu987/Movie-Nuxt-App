@@ -70,6 +70,7 @@
           v-model:isShowSearchResults="isShowSearchResults"
           v-model:isFocusSearchInput="isFocusSearchInput"
           v-model:valueInput="valueInput"
+          :loadingSearch="loadingSearch"
         />
       </div>
 
@@ -180,6 +181,8 @@ const isFocusSearchInput = ref<boolean>(false);
 
 const getData = async () => {
   if (store.isLogin) {
+    loadingSearchHistory.value = true;
+
     await getDaTaSearchHistory(1, 10)
       .then((response) => {
         dataSearchHistory.value = response?.results;
@@ -190,6 +193,8 @@ const getData = async () => {
         loadingSearchHistory.value = false;
       });
   }
+
+  loadingTopSearch.value = true;
 
   await useAsyncData(`search/top-search/1/10`, () => getDaTaTopSearch(1, 10))
     .then((response) => {
@@ -258,7 +263,7 @@ watchEffect(() => {
 
 const handleChangeInput = (query: string) => {
   if (query?.length > 0) {
-    // loadingSearch.value = true;
+    loadingSearch.value = true;
 
     clearTimeout(debounce.value);
     debounce.value = setTimeout(async () => {

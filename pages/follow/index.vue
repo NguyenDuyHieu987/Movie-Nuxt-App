@@ -1,5 +1,5 @@
 <template>
-  <div class="follow">
+  <div class="follow-page">
     <div v-if="!store.loadingUser">
       <div
         v-if="store.isLogin"

@@ -1,4 +1,4 @@
-.history {
+.history-page {
   --history-sidebar-width: 340px;
   min-height: calc(101vh - var(--header-height));
 
@@ -107,7 +107,7 @@
   right: 0;
 }
 
-.body-content:has(.history .history-container) {
+.body-content:has(.history-page .history-container) {
   .body-wrapper {
     margin-left: 0px;
     margin-right: auto;
@@ -128,7 +128,7 @@
     display: none;
   }
 
-  .history {
+  .history-page {
     .history-container {
       width: 100%;
       display: flex;
@@ -148,7 +148,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .history {
+  .history-page {
     .history-container {
       .topic-row {
         padding: 15px;
@@ -162,7 +162,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .history {
+  .history-page {
     .history-container {
       .topic-row {
         .row-container {
@@ -203,7 +203,7 @@
 }
 
 @media only screen and (max-width: 550px) {
-  .history {
+  .history-page {
     .history-container {
       .topic-row {
         .row-container {

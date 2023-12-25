@@ -66,6 +66,7 @@
             </div>
           </div>
         </div>
+
         <div
           v-if="
             store.isLogin &&
@@ -111,6 +112,7 @@
             </div>
           </div>
         </div>
+
         <div
           v-if="dataTopSearch?.length && !isShowSearchResults"
           class="top-search"
@@ -172,7 +174,14 @@ import {
   removeSearchHistory
 } from '~/services/search';
 
-const props = defineProps<{}>();
+const props = withDefaults(
+  defineProps<{
+    loadingSearch: boolean;
+  }>(),
+  {
+    loadingSearch: false
+  }
+);
 
 const store = useStore();
 const route = useRoute();
