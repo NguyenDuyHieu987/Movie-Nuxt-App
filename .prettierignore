@@ -1,8 +1,0 @@
-*.webmanifest
-index.html
-.output
-build
-dist
-dist-test
-coverage
-node_modules
