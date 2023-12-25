@@ -80,32 +80,6 @@
         "endOfLine": "auto"
       }
     ],
-    "simple-import-sort/imports": [
-      "warn",
-      {
-        "groups": [
-          [
-            // Side effect imports.
-            "^\\u0000",
-            // Packages. `vue` related packages come first.
-            "^vue",
-            "^@?#?\\w",
-            // Internal packages.
-            "^(src|components|config|utils|pages|hooks|api)(/.*|$)",
-            // Parent imports. Put `..` last.
-            "^\\.\\.(?!/?$)",
-            "^\\.\\./?$",
-            // Other relative imports. Put same-folder imports and `.` last.
-            "^\\./(?=.*/)(?!/?$)",
-            "^\\.(?!/?$)",
-            "^\\./?$",
-            // Style imports.
-            "^.+\\.s?css$"
-          ]
-        ]
-      }
-    ],
-    "simple-import-sort/exports": "warn",
     "vue/multi-word-component-names": "off",
     "vue/attribute-hyphenation": [
       "off",
@@ -155,7 +129,33 @@
         "ignoreTypeReferences": false,
         "functions": false
       }
-    ]
+    ],
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          [
+            // Side effect imports.
+            "^\\u0000",
+            // Packages. `vue` related packages come first.
+            "^vue",
+            "^@?#?\\w",
+            // Internal packages.
+            "^(src|components|config|pages|services|server|types|utils|stores)(/.*|$)",
+            // Parent imports. Put `..` last.
+            "^\\.\\.(?!/?$)",
+            "^\\.\\./?$",
+            // Other relative imports. Put same-folder imports and `.` last.
+            "^\\./(?=.*/)(?!/?$)",
+            "^\\.(?!/?$)",
+            "^\\./?$",
+            // Style imports.
+            "^.+\\.s?css$"
+          ]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "warn"
   },
   "overrides": [
     {
