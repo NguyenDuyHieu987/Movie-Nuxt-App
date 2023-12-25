@@ -1,0 +1,74 @@
+body:has(.slider-group .slider-group-wrapper.dragging) {
+  cursor: grab;
+}
+
+.slider-group {
+  position: relative;
+
+  .slider-group-list {
+    position: relative;
+    display: flex;
+    overflow-x: scroll;
+    padding-bottom: 12px;
+    gap: 10px;
+
+    .slider-item {
+      display: flex;
+    }
+
+    &.dragging {
+      cursor: grab;
+
+      .slider-item {
+        cursor: grab;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .slider-button-prev {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50px;
+    z-index: 1;
+    background: transparent;
+    transition: all 0.15s;
+
+    &.enable {
+      background: linear-gradient(90deg, #080808 0%, #08080800 100%);
+    }
+  }
+
+  .slider-button-next {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    z-index: 1;
+    background: linear-gradient(90deg, #08080800 0%, #080808 100%);
+    transition: all 0.15s;
+
+    &.disabled {
+      background: transparent;
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .slider-group {
+    .slider-group-list {
+      gap: 8px;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .slider-group {
+    .slider-group-list {
+      gap: 7px;
+    }
+  }
+}

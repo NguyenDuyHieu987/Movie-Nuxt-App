@@ -1,0 +1,123 @@
+@import '@/assets/style/globalStyle/MovieCardItem.scss';
+
+.movie-group.horizontal.trailer {
+  // display: grid;
+  // .movie-card-item.horizontal:first-child {
+  //   grid-column: span 3;
+  //   grid-row: span 2;
+  // }
+}
+
+.movie-card-item.horizontal.trailer {
+  .el-skeleton.is-animated {
+    position: relative;
+    overflow: hidden;
+    // border-top-right-radius: 5px;
+    // border-top-left-radius: 5px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    height: 0px !important;
+    padding-bottom: 56.25%;
+
+    .el-skeleton__item.skeleton-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .content-skeleton {
+      margin-top: 7px;
+
+      .el-skeleton__item.el-skeleton__text {
+        // height: 18px;
+      }
+    }
+  }
+
+  .img-box {
+    position: relative;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    // border-top-right-radius: 5px;
+    // border-top-left-radius: 5px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    height: 0px !important;
+    padding-bottom: 56.25%;
+
+    img {
+      position: absolute;
+      width: 100%;
+      object-fit: cover;
+      transition: all 0.3s;
+      background-color: var(--background-content-color);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-height: 100%;
+      max-height: 100%;
+
+      &[lazy='error'] {
+        background-size: 30%;
+      }
+    }
+
+    .percent-viewed {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2.5px;
+      width: var(--percent-viewed);
+      background-color: var(--app-background-color3);
+      z-index: 2;
+    }
+
+    .viewed-overlay-bar {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2.5px;
+      width: 100%;
+      z-index: 1;
+      background-color: #3c3c3c59;
+    }
+
+    .youtub-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: all 0.4s;
+
+      svg.fa-youtube {
+        font-size: 5rem;
+        width: 5rem;
+        height: 5rem;
+        color: red;
+        fill: red;
+      }
+    }
+  }
+
+  .info {
+    padding: 5px 5px;
+    padding-top: 15px;
+  }
+
+  &:hover {
+    .img-box {
+      .youtub-icon {
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+  }
+}

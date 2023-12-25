@@ -1,0 +1,228 @@
+.modal-trailer {
+  &.el-dialog {
+    background-color: var(--background-content-color1);
+
+    .el-dialog__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      margin-right: 0px;
+      padding: 20px 25px;
+      padding-bottom: 10px;
+
+      .title {
+      }
+
+      .icon.close {
+        right: 10px;
+      }
+    }
+
+    .el-dialog__body {
+      padding: 5px 25px;
+
+      iframe {
+        height: 40vw;
+        width: 100%;
+      }
+    }
+
+    .el-dialog__footer {
+      padding: 10px 25px;
+
+      .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .info {
+          max-width: 70%;
+
+          .overview {
+            display: flex;
+            text-align: left;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            display: -webkit-box;
+
+            & > span {
+              font-size: 1.7rem;
+              font-weight: bold;
+            }
+          }
+        }
+
+        .action {
+          display: inline-flex;
+          gap: 10px;
+
+          .ant-btn {
+            padding: 8px 23px;
+          }
+
+          .btn-play-now {
+            color: inherit;
+            padding: 8px 23px;
+            background-color: #ba0025;
+            transition: all 0.3s;
+            border-radius: 3px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+
+            &:hover {
+              background-color: #ba0025ae;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.ant-modal {
+    background-color: var(--background-content-color1);
+
+    .ant-modal-content {
+      .ant-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        padding: 20px;
+        padding-bottom: 10px;
+        border: none;
+
+        .title {
+        }
+
+        .icon.close {
+          right: 10px;
+        }
+      }
+
+      .ant-modal-body {
+        padding: 5px 25px;
+
+        iframe {
+          height: 40vw;
+          width: 100%;
+        }
+      }
+
+      .ant-modal-footer {
+        padding: 10px 25px;
+        border: none;
+
+        .content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .info {
+            max-width: 70%;
+
+            .overview {
+              display: flex;
+              text-align: left;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              display: -webkit-box;
+
+              & > span {
+                font-size: 1.7rem;
+                font-weight: bold;
+              }
+            }
+          }
+
+          .action {
+            display: inline-flex;
+            gap: 10px;
+
+            .ant-btn {
+              padding: 8px 23px;
+            }
+
+            .btn-play-now {
+              color: inherit;
+              padding: 8px 23px;
+              background-color: #ba0025;
+              transition: all 0.3s;
+              border-radius: 3px;
+              white-space: nowrap;
+              display: flex;
+              align-items: center;
+              font-size: 1.5rem;
+
+              &:hover {
+                background-color: #ba0025ae;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .modal-trailer {
+    .ant-modal-body {
+      iframe {
+        // height: 40vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .modal-trailer {
+    width: 1000px !important;
+
+    .ant-modal-body,
+    .el-dialog__body {
+      iframe {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+  .modal-trailer {
+    .ant-modal-body,
+    .el-dialog__body {
+      iframe {
+        height: 45vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .modal-trailer {
+    width: 900px !important;
+
+    .ant-modal-body,
+    .el-dialog__body {
+      iframe {
+        height: 50vw;
+      }
+
+      .ant-modal-footer,
+      .el-dialog__footer {
+        .content {
+          .action {
+            .ant-btn,
+            .btn-play-now {
+              padding: 7px 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.comment-content {
+  font-size: 1.4rem;
+  margin-top: 3px;
+  white-space: pre-line;
+
+  .comment-content-box {
+  }
+
+  &.show-more {
+    .comment-content-box {
+      max-height: 100%;
+      overflow: visible;
+    }
+  }
+
+  &.collapse {
+    .comment-content-box {
+      max-height: 200px;
+      overflow: hidden;
+    }
+  }
+
+  &:has(.reply-to) {
+    .comment-content-box {
+    }
+  }
+
+  .reply-to {
+    display: inline;
+    white-space: nowrap;
+    color: #008ddf;
+    cursor: pointer;
+  }
+
+  .show-more,
+  .collapse {
+    display: inline-block;
+    margin-top: 5px;
+    color: var(--text-color-gray);
+    font-weight: 500;
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
