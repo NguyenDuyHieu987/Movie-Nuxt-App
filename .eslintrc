@@ -139,7 +139,7 @@
             "^\\u0000",
             // Packages. `vue` related packages come first.
             "^vue",
-            "^@?#?\\w",
+            "^@?~?#?\\w",
             // Internal packages.
             "^(src|components|config|pages|services|server|types|utils|stores)(/.*|$)",
             // Parent imports. Put `..` last.
