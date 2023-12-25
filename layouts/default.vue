@@ -3,8 +3,8 @@
     class="body-content"
     :class="{
       expand: collapsed || openSiderBarFixed,
-      fixed: openSiderBarFixed,
-      home: $route.meta.name?.includes('home')
+      fixed: openSiderBarFixed
+      // home: $route.meta.name?.includes('home')
     }"
   >
     <Header />
