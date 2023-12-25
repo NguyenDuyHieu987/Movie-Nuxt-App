@@ -178,6 +178,7 @@
     .ant-select-item {
       padding: 10px 15px;
       color: inherit;
+      transition: background-color 0.15s ease;
 
       &:hover {
         background-color: var(--hover-dropdown-color);
