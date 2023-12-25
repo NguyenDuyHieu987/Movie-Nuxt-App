@@ -4,7 +4,7 @@
 //     // route.matched[0].meta.layout != 'auth'
 
 //     const store = useStore();
-//     await store.loadUser();
+//     store.loadUser();
 //   });
 // });
 
@@ -19,7 +19,7 @@ export default defineNuxtPlugin({
       // route.matched[0].meta.layout != 'auth'
 
       const store = useStore();
-      await store.loadUser();
+      store.loadUser();
     }
   },
   parallel: true,

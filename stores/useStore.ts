@@ -97,7 +97,7 @@ export default defineStore('store', () => {
             duration: MESSAGE.DURATION.DEFAULT
           });
         })
-        .finally(() => {
+        .finally(async () => {
           loadingUser.value = false;
         });
     } else {
