@@ -5,10 +5,10 @@ module.exports = {
       port: '3000',
       exec_mode: 'cluster',
       instances: 'max',
-      script: './.output/server/index.mjs',
-      watch: ['.output/server'],
+      script: './server/index.mjs',
+      watch: ['server'],
       watch_delay: 1000,
-      ignore_watch: ['.output/public'],
+      ignore_watch: ['public'],
       env: {
         NODE_ENV: 'production'
       },
