@@ -1,15 +1,9 @@
 import { computed, ref } from 'vue';
-import { CloseCircleFilled } from '@ant-design/icons-vue';
-import { useBreakpoints } from '@vueuse/core';
 import { ElNotification } from 'element-plus';
 import { defineStore } from 'pinia';
 
 import type { user } from '@/types';
 import { getUserToken, LogOut } from '~/services/authentication';
-
-const breakpoints = useBreakpoints({
-  desktop: 1300
-});
 
 export const useAuthStore = defineStore('auth', () => {
   const userAccount = ref<user>(null);
@@ -17,14 +11,6 @@ export const useAuthStore = defineStore('auth', () => {
   const isLogin = computed<boolean>(() => !!userAccount.value);
   const openRequireAuthDialog = ref<boolean>(false);
   const loadingUser = ref<boolean>(true);
-
-  // watch(largerThanDesktop, () => {
-  //   if (largerThanDesktop.value) {
-  //     collapsed.value = false;
-  //   } else {
-  //     collapsed.value = true;
-  //   }
-  // });
 
   const setCloseRequireAuthDialog = () => {
     openRequireAuthDialog.value = false;
