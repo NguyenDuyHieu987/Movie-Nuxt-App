@@ -1049,6 +1049,11 @@ onMounted(() => {
     videoStates.isPlayVideo = true;
   }
 
+  videoPlayer.value?.scrollIntoView({
+    block: 'end',
+    behavior: 'instant'
+  });
+
   duration.value = formatDuration(video.value!.duration)!;
 
   window.addEventListener('pointerup', windowPointerUp);

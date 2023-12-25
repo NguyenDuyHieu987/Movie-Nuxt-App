@@ -389,14 +389,14 @@ onBeforeMount(() => {
 });
 
 onMounted(() => {
-  const videoPlayer = document.querySelector(
-    '.video-player #video-player'
-  ) as HTMLVideoElement;
+  // const videoPlayer = document.querySelector(
+  //   '.video-player #video-player'
+  // ) as HTMLVideoElement;
 
-  videoPlayer?.scrollIntoView({
-    block: 'end',
-    behavior: 'instant'
-  });
+  // videoPlayer?.scrollIntoView({
+  //   block: 'end',
+  //   behavior: 'instant'
+  // });
 
   if (window.innerWidth < 1300) {
     store.collapsed = true;
