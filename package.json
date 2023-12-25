@@ -18,6 +18,7 @@
     "test:run": "vitest --run --changed",
     "benchmark": "vitest bench --changed",
     "icon": "pwa-assets-generator",
+    "lint": "eslint --cache **/*.{vue,ts}",
     "format": "eslint --fix --cache **/*.{vue,ts}",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
