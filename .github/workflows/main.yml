@@ -13,17 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install NVM
-        run: |
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
       - name: Setup Node.js
-        run: |
-          nvm install
-          nvm use
+        uses: actions/setup-node@v3
+        with:
+          node-version: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org/'
 
       - name: Create .env file
         run: echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
