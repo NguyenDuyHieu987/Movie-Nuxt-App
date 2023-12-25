@@ -3,137 +3,139 @@
     class="header-bar"
     :class="{ scrolled: store.headerScrolled }"
   >
-    <div class="left-header">
-      <button
-        class="menu-btn mobile"
-        @click="store.setOpendrawer()"
-      >
-        <MenuOutlined />
-      </button>
+    <div class="header-bar-container">
+      <div class="left-header">
+        <button
+          class="menu-btn mobile"
+          @click="store.setOpendrawer()"
+        >
+          <MenuOutlined />
+        </button>
 
-      <div class="logo">
-        <NuxtLink :to="{ path: '/' }">
-          <NuxtImg
-            :src="getImage('logo.png', 'logo', 'w-45')"
-            alt=""
-            :height="30"
-            :width="30"
-          />
-          <span> PhimHay247 </span>
-        </NuxtLink>
+        <div class="logo">
+          <NuxtLink :to="{ path: '/' }">
+            <NuxtImg
+              :src="getImage('logo.png', 'logo', 'w-45')"
+              alt=""
+              :height="30"
+              :width="30"
+            />
+            <span> PhimHay247 </span>
+          </NuxtLink>
+        </div>
       </div>
-    </div>
 
-    <div class="search-header-box">
-      <a-input-search
-        v-model:value="valueInput"
-        class="search-header"
-        placeholder="Nhập tên phim để tìm kiếm..."
-        size="large"
-        allow-clear
-        bordered
-        :loading="loadingSearch"
-        @change="handleChangeInput(valueInput)"
-        @search="handleSearch"
-        @focus="handleFoucusSearchInput"
-        @blur="handleBlurSearchInput"
-      >
-        <template #enterButton>
-          <el-tooltip
-            content="Tìm kiếm"
-            effect="dark"
-            placement="bottom"
-            popper-class="popper-tooltip"
-            :offset="22"
-          >
-            <svg
-              class="fa-magnifying-glass"
-              xmlns="http://www.w3.org/2000/svg"
-              width="1.8rem"
-              height="1.8rem"
-              viewBox="0 0 512 512"
+      <div class="search-header-box">
+        <a-input-search
+          v-model:value="valueInput"
+          class="search-header"
+          placeholder="Nhập tên phim để tìm kiếm..."
+          size="large"
+          allow-clear
+          bordered
+          :loading="loadingSearch"
+          @change="handleChangeInput(valueInput)"
+          @search="handleSearch"
+          @focus="handleFoucusSearchInput"
+          @blur="handleBlurSearchInput"
+        >
+          <template #enterButton>
+            <el-tooltip
+              content="Tìm kiếm"
+              effect="dark"
+              placement="bottom"
+              popper-class="popper-tooltip"
+              :offset="22"
             >
-              <path
-                fill="currentColor"
-                d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352a144 144 0 1 0 0-288a144 144 0 1 0 0 288z"
-              />
-            </svg>
-          </el-tooltip>
-        </template>
-      </a-input-search>
+              <svg
+                class="fa-magnifying-glass"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1.8rem"
+                height="1.8rem"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352a144 144 0 1 0 0-288a144 144 0 1 0 0 288z"
+                />
+              </svg>
+            </el-tooltip>
+          </template>
+        </a-input-search>
 
-      <SearchDropdown
-        v-model:dataSearch="dataSearch"
-        v-model:dataTopSearch="dataTopSearch"
-        v-model:dataSearchHistory="dataSearchHistory"
-        v-model:isShowSearchResults="isShowSearchResults"
-        v-model:isFocusSearchInput="isFocusSearchInput"
-        v-model:valueInput="valueInput"
-      />
-    </div>
+        <SearchDropdown
+          v-model:dataSearch="dataSearch"
+          v-model:dataTopSearch="dataTopSearch"
+          v-model:dataSearchHistory="dataSearchHistory"
+          v-model:isShowSearchResults="isShowSearchResults"
+          v-model:isFocusSearchInput="isFocusSearchInput"
+          v-model:valueInput="valueInput"
+        />
+      </div>
 
-    <div class="right-header">
-      <el-skeleton
-        :loading="loadingUser"
-        animated
-      >
-        <template #template>
-          <el-skeleton-item
-            v-for="(item, index) in 2"
-            :key="index"
-            class="menu-item skeleton"
-            variant="button"
-            :index="index"
-          />
-        </template>
+      <div class="right-header">
+        <el-skeleton
+          :loading="loadingUser"
+          animated
+        >
+          <template #template>
+            <el-skeleton-item
+              v-for="(item, index) in 2"
+              :key="index"
+              class="menu-item skeleton"
+              variant="button"
+              :index="index"
+            />
+          </template>
 
-        <template #default>
-          <ul class="menu-header">
-            <li class="menu-item search-mobile">
-              <SearchMobile
-                v-model:valueInput="valueInput"
-                v-model:loading="loadingSearch"
-                @change="handleChangeInput(valueInput)"
-                @search="handleSearch"
-              />
-            </li>
+          <template #default>
+            <ul class="menu-header">
+              <li class="menu-item search-mobile">
+                <SearchMobile
+                  v-model:valueInput="valueInput"
+                  v-model:loading="loadingSearch"
+                  @change="handleChangeInput(valueInput)"
+                  @search="handleSearch"
+                />
+              </li>
 
-            <li
-              v-if="isLogin"
-              class="menu-item notification"
-              :show-timeout="0"
-              :hide-timeout="0"
-            >
-              <Notification />
-            </li>
+              <li
+                v-if="isLogin"
+                class="menu-item notification"
+                :show-timeout="0"
+                :hide-timeout="0"
+              >
+                <Notification />
+              </li>
 
-            <li class="menu-item account">
-              <DropdownAccount />
-            </li>
+              <li class="menu-item account">
+                <DropdownAccount />
+              </li>
 
-            <!-- <li v-else class="menu-item login-header">
-              <NuxtLink to="/login">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="2.3rem"
-                  height="2.3rem"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zM7.35 18.5C8.66 17.56 10.26 17 12 17s3.34.56 4.65 1.5c-1.31.94-2.91 1.5-4.65 1.5s-3.34-.56-4.65-1.5zm10.79-1.38a9.947 9.947 0 0 0-12.28 0A7.957 7.957 0 0 1 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8c0 1.95-.7 3.73-1.86 5.12z"
-                  />
-                  <path
-                    fill="currentColor"
-                    d="M12 6c-1.93 0-3.5 1.57-3.5 3.5S10.07 13 12 13s3.5-1.57 3.5-3.5S13.93 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"
-                  />
-                </svg>
-                <span> Đăng Nhập</span>
-              </NuxtLink>
-            </li> -->
-          </ul>
-        </template>
-      </el-skeleton>
+              <!-- <li v-else class="menu-item login-header">
+                <NuxtLink to="/login">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="2.3rem"
+                    height="2.3rem"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zM7.35 18.5C8.66 17.56 10.26 17 12 17s3.34.56 4.65 1.5c-1.31.94-2.91 1.5-4.65 1.5s-3.34-.56-4.65-1.5zm10.79-1.38a9.947 9.947 0 0 0-12.28 0A7.957 7.957 0 0 1 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8c0 1.95-.7 3.73-1.86 5.12z"
+                    />
+                    <path
+                      fill="currentColor"
+                      d="M12 6c-1.93 0-3.5 1.57-3.5 3.5S10.07 13 12 13s3.5-1.57 3.5-3.5S13.93 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"
+                    />
+                  </svg>
+                  <span> Đăng Nhập</span>
+                </NuxtLink>
+              </li> -->
+            </ul>
+          </template>
+        </el-skeleton>
+      </div>
     </div>
   </header>
 </template>

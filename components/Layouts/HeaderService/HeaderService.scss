@@ -1,19 +1,25 @@
 header.header-bar-service {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 20px;
-  // border-bottom: 0.25px solid var(--border-regular-light);
   height: var(--header-height);
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
+  padding: 0px 20px;
   z-index: 100;
   // background: linear-gradient(to bottom, #080808 0, #08080800 100%);
   background: var(--background-content-color);
+  // border-bottom: 0.25px solid var(--border-regular-light);
   // transition: background-color 0.25s;
   // transition-delay: 0.3s;
+
+  .header-bar-service-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: var(--max-width-app);
+    margin: 0px auto;
+  }
 
   .anticon {
     svg {
@@ -186,10 +192,10 @@ header.header-bar-service {
 
 @media only screen and (max-width: 900px) {
   header.header-bar-service {
-    padding: 0px 20px;
+    padding: 0px 15px;
 
     &:has(.menu-btn.desktop) {
-      padding: 0px 20px;
+      padding: 0px 15px;
     }
 
     .left-header {

@@ -70,6 +70,8 @@ export const useAuthStore = defineStore('auth', () => {
       LogOut()
         .then(async (response) => {
           if (response?.isLogout == true) {
+            navigateTo('/login');
+
             await wait(200);
 
             window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);

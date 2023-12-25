@@ -1,18 +1,24 @@
 header.header-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 20px;
-  // border-bottom: 0.25px solid var(--border-regular-light);
   height: var(--header-height);
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
+  padding: 0px 20px;
   z-index: 100;
   background: var(--header-background);
+  // border-bottom: 0.25px solid var(--border-regular-light);
   transition: background-color 0.2s ease;
   transition-delay: 0.2s;
+
+  .header-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: var(--max-width-app);
+    margin: 0px auto;
+  }
 
   &.scrolled {
     background: var(--header-background-scrolled);
@@ -418,10 +424,10 @@ header.header-bar {
 
 @media only screen and (max-width: 900px) {
   header.header-bar {
-    padding: 0px 20px;
+    padding: 0px 15px;
 
     &:has(.menu-btn.desktop) {
-      padding: 0px 20px;
+      padding: 0px 15px;
     }
 
     .left-header {
@@ -458,8 +464,9 @@ header.header-bar {
 @media only screen and (max-width: 800px) {
   header.header-bar {
     .search-header-box {
+      display: none;
+
       .ant-input-search.search-header {
-        display: none;
       }
     }
 
