@@ -39,8 +39,7 @@ jobs:
 
       - name: Install Dependencies and Build
         run: |
-          npm install -g pnpm
-          pnpm install
+          npm install
           npm run build
 
       - name: Install SSH key
