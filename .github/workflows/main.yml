@@ -18,10 +18,19 @@ jobs:
         id: nvm
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
-          registry-url: 'https://registry.npmjs.org/'
+        run: |
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load nvm
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Load bash_completion
+      
+          if [ -f ".nvmrc" ]; then
+            NODE_VERSION=$(cat .nvmrc)
+            nvm install "$NODE_VERSION"
+            nvm use "$NODE_VERSION"
+          else
+            nvm install node  # Install the latest Node.js version
+            nvm use node
+          fi
 
       - name: Create .env file
         run: echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
