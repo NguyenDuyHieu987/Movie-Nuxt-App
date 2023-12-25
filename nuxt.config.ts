@@ -321,7 +321,6 @@ export default defineNuxtConfig({
       '/',
       '/feature',
       '/television',
-      '/ranks',
       '/upgrade/plans',
       '/login',
       '/signup',

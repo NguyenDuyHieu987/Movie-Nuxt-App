@@ -249,12 +249,12 @@ const compareRanks = (ranks: any): any[] => {
         }
       });
 
-      const step_text = step >= 0 ? `+${step}` : `-${Math.abs(step)}`;
+      const stepText = step >= 0 ? `+${step}` : `-${Math.abs(step)}`;
 
       return {
         ...item,
         step,
-        step_text,
+        stepText,
         new: !itemRank
         // disabled: formFilterRank.value.sortBy == 'all',
       };
@@ -265,7 +265,7 @@ const compareRanks = (ranks: any): any[] => {
       //   return {
       //     ...item,
       //     step: 0,
-      //     step_text: 0,
+      //     stepText: 0,
       //     new: false,
       //   };
       // });

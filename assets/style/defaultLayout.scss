@@ -8,7 +8,9 @@
   a {
     color: var(--link-text-color);
     text-decoration: none;
-    transition: color 0.15s, background-color 0.15s;
+    transition:
+      color 0.15s,
+      background-color 0.15s;
 
     &:hover {
       color: var(--link-text-color-hover);
@@ -148,12 +150,15 @@
   }
 }
 
+body:has(.service-page, .change-page, .center-page) {
+  background-color: #fff;
+}
+
 // .upgrade, .payment, .your-account, .bills
 .body-content:has(.service-page, .change-page, .center-page) {
   --sider-width: 0px;
   --sider-collapsed-width: 0px;
   margin-left: 0px;
-  background-color: #fff;
 
   .body-wrapper {
     --text-color-gray: #6f6f6f;

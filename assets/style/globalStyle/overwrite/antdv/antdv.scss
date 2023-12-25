@@ -171,7 +171,7 @@
 .ant-select-dropdown {
   padding: 0px;
   border: 0.1px solid var(--border-dropdown);
-  box-shadow: none;
+  box-shadow: var(--box-shadow-small);
   background-color: var(--background-select-dropdown-color);
 
   .rc-virtual-list-holder-inner {
@@ -194,6 +194,7 @@
 
     .ant-select-item-option-selected {
       background-color: var(--background-dropdown-selected-color);
+      font-weight: 500;
     }
   }
 }

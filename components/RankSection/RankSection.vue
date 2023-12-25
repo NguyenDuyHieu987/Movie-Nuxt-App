@@ -111,7 +111,7 @@
               v-if="item?.step != 0"
               class="step-number"
             >
-              {{ item?.step_text }}
+              {{ item?.stepText }}
             </span>
           </div>
         </NuxtLink>
@@ -157,12 +157,12 @@ const compareRanks = (ranks: any): any[] => {
         }
       });
 
-      const step_text = step >= 0 ? `+${step}` : `-${Math.abs(step)}`;
+      const stepText = step >= 0 ? `+${step}` : `-${Math.abs(step)}`;
 
       return {
         ...item,
         step,
-        step_text,
+        stepText,
         new: !itemRank
       };
     });
