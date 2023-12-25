@@ -13,10 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Read .nvmrc
+        run: echo '##[set-output name=NVMRC;]$(cat .nvmrc)'
+        id: nvm
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '.nvmrc'
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Create .env file
