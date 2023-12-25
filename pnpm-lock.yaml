@@ -164,7 +164,7 @@ devDependencies:
     specifier: ^8.56.0
     version: 8.56.0
   eslint-config-prettier:
-    specifier: ^8.8.0
+    specifier: ^8.10.0
     version: 8.10.0(eslint@8.56.0)
   eslint-config-standard:
     specifier: ^17.1.0
@@ -2763,6 +2763,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     bundledDependencies:
       - napi-wasm
 
@@ -8553,6 +8554,9 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
 
   /native-promise-only@0.8.1:
     resolution: {integrity: sha512-zkVhZUA3y8mbz652WrL5x0fB0ehrBkulWT3TomAQ9iDtyXZvzKeEA6GPxAItBYeNYl5yngKRX612qHOhvMkDeg==}
