@@ -373,9 +373,7 @@ const onSubmit = () => {
         })
         .catch((e) => {})
         .finally(() => {
-          setTimeout(() => {
-            loading.value = false;
-          }, 500);
+          loading.value = false;
         });
       break;
     case 'edit':
