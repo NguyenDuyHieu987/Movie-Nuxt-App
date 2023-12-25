@@ -13,10 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Read .nvmrc
-        run: echo '##[set-output name=NVMRC;]$(cat .nvmrc)'
-        id: nvm
-
       - name: Setup Node.js
         run: |
           export NVM_DIR="$HOME/.nvm"
