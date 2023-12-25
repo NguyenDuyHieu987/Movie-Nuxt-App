@@ -173,6 +173,7 @@
         & > .right {
           width: 40%;
           max-width: 500px;
+          min-width: 500px;
         }
       }
     }
@@ -236,6 +237,7 @@
           & > .right {
             width: 450px;
             max-width: 450px;
+            min-width: 450px;
           }
         }
       }

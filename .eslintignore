@@ -2,6 +2,10 @@
 node_modules/*
 public/js/*
 coverage/*
+.output/*
+build/*
+dist/*
+dist-test/*
 *.css
 *.scss
 *.less
