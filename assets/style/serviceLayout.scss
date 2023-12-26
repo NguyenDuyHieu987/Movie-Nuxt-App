@@ -27,11 +27,6 @@
   }
 
   main.main-content {
-    display: flex;
-    flex: auto;
-    flex-direction: column;
-    width: 0;
-
     & > .container {
       position: relative;
       padding-bottom: 50px;
