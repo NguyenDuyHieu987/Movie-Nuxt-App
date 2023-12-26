@@ -1,5 +1,6 @@
 footer.footer {
   position: relative;
+  padding: 25px 50px;
   // background-color: var(--background-content-color);
   background: linear-gradient(
       10deg,
@@ -7,6 +8,7 @@ footer.footer {
       var(--app-background-color) 128%
     ),
     var(--background-content-color);
+
   font-size: 1.4rem;
   // color: inherit;
   color: var(--text-color);
@@ -15,7 +17,6 @@ footer.footer {
   .footer-container {
     display: flex;
     flex-direction: column;
-    padding: 25px 50px;
 
     .footer-header {
       display: flex;
@@ -146,24 +147,27 @@ footer.footer {
 
 @media only screen and (max-width: 1500px) {
   footer.footer {
+    padding: 25px 30px;
+
     .footer-container {
-      padding: 25px 30px;
     }
   }
 }
 
 @media only screen and (max-width: 1100px) {
   footer.footer {
+    padding: 25px 20px;
+
     .footer-container {
-      padding: 25px 20px;
     }
   }
 }
 
 @media only screen and (max-width: 900px) {
   footer.footer {
+    padding: 20px 15px;
+
     .footer-container {
-      padding: 20px 15px;
     }
   }
 }
