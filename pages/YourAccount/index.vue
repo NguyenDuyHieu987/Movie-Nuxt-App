@@ -319,7 +319,7 @@ const handleClickSaveRowItem = (e: any) => {
 
   if (loadingEditRowItem.value) return;
 
-  const newFullName: string | undefined = rowItemLabel?.innerText.trim();
+  const newFullName: string = rowItemLabel?.innerText.trim()!;
 
   if (!newFullName || newFullName.length == 0) {
     ElNotification.info({
