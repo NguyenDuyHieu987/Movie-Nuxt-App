@@ -1037,7 +1037,8 @@ onBeforeRouteLeave(() => {
 
 onBeforeMount(() => {
   // initVideo(props.videoUrl);
-  // loadM3u8Video();
+
+  loadM3u8Video();
 });
 
 onMounted(() => {
