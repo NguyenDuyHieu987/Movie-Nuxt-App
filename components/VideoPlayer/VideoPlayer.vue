@@ -1148,13 +1148,11 @@ const onLoadStartVideo = () => {
 };
 
 const onCanPlayVideo = () => {
-  videoStates.isLoading = false;
+  if (videoStates.isLoading) {
+    videoStates.isLoading = false;
+  }
 
   video.value!.play().catch(() => {
-    if (videoStates.isLoading) {
-      videoStates.isLoading = false;
-    }
-
     if (videoStates.isPlayVideo) {
       videoStates.isPlayVideo = false;
     }
