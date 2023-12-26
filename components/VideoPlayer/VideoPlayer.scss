@@ -808,6 +808,7 @@ video::-webkit-media-controls {
 
               li {
                 display: flex;
+                position: relative;
                 align-items: center;
                 gap: 8px;
                 padding: 7px 10px;
@@ -819,10 +820,12 @@ video::-webkit-media-controls {
                 transition: background 0.15s;
 
                 &.active {
-                  padding: 7px 12px;
+                  // padding: 7px 12px;
                 }
 
                 svg {
+                  position: absolute;
+                  left: 10px;
                   width: calc(var(--icon-size) / 1.77);
                   height: calc(var(--icon-size) / 1.77);
                 }
@@ -876,25 +879,37 @@ video::-webkit-media-controls {
       --progress-height: 5px;
     }
 
+    &.hide-controls {
+      cursor: none;
+
+      .video-mask {
+        cursor: none;
+      }
+
+      .controls {
+        opacity: 0;
+      }
+    }
+
+    &.settings {
+      .controls {
+        opacity: 1 !important;
+      }
+    }
+
     &:hover {
       .controls {
         opacity: 1;
       }
 
-      .background-controls {
-        opacity: 1;
-      }
-
       &.hide-controls {
-        cursor: none;
-
-        .video-mask {
-          cursor: none;
-        }
-
         .controls {
           opacity: 0;
         }
+      }
+
+      .background-controls {
+        opacity: 1;
       }
     }
   }

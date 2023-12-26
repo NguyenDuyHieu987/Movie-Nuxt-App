@@ -21,7 +21,8 @@
         'hide-controls': videoStates.isHideControls,
         'show-controls': videoStates.isShowControls,
         pause: !videoStates.isPlayVideo || videoStates.isEndedVideo,
-        'full-screen': videoStates.isFullScreen
+        'full-screen': videoStates.isFullScreen,
+        settings: settingStates.enable
       }"
       @click="handleClickVideoPlayer"
     >
@@ -1036,7 +1037,8 @@ onBeforeRouteLeave(() => {
 
 onBeforeMount(() => {
   // initVideo(props.videoUrl);
-  // loadM3u8Video();
+
+  loadM3u8Video();
 });
 
 onMounted(() => {
