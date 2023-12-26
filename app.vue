@@ -74,7 +74,7 @@
 
 <script setup lang="ts">
 import { LoadingApp } from '~/components/Loading';
-import { RequireAuthDialog } from '~/components/RequireAuthDialog';
+import { RequireAuthDialog } from '~/components/RequireAuth';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -148,3 +148,4 @@ onMounted(() => {
 </script>
 
 <style lang="scss" src="~/assets/style/app.scss"></style>
+~/components/RequireAuth/RequireAuthDialog

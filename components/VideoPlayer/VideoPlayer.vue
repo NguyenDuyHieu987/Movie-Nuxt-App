@@ -286,7 +286,7 @@
 
                 <svg
                   v-show="videoStates.isPlayVideo && !videoStates.isEndedVideo"
-                  class="play"
+                  class="pause"
                   xmlns="http://www.w3.org/2000/svg"
                   width="2.6rem"
                   height="2.6rem"
@@ -1152,6 +1152,10 @@ const onCanPlayVideo = () => {
     videoStates.isLoading = false;
   }
 
+  if (video.value!.ended) {
+    return;
+  }
+
   video.value!.play().catch(() => {
     if (videoStates.isPlayVideo) {
       videoStates.isPlayVideo = false;
@@ -1229,6 +1233,7 @@ const onWaitingVideo = (e: any) => {
 
 const onPLayingVideo = (e: any) => {
   videoStates.isLoading = false;
+  videoStates.isPlayVideo = true;
 };
 
 const onPlayVideo = (e: any) => {
