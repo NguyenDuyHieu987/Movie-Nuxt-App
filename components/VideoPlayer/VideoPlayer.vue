@@ -945,18 +945,20 @@ const initVideo = async (newVideoUrl: string) => {
 
 const loadM3u8Video = () => {
   if (Hls.isSupported()) {
-    // const myVideo = document.getElementById('video-player') as HTMLVideoElement;
     const hls = new Hls();
     console.log(videoSrc.value);
+
     hls.on(Hls.Events.ERROR, (event, data) => {
       console.error(`hls.js error: ${data.type} - ${data.details}`);
     });
     hls.loadSource(
-      'http://localhost:5002/videos/feature/Transformer_5/Transformer_5.m3u8'
+      'http://localhost:5002/static/videos/feature/Transformer_5/Transformer_5.m3u8'
     );
     hls.attachMedia(video.value!);
+
+    console.log('HLS.js is supported');
   } else {
-    console.error('HLS is not supported on your browser.');
+    console.error('HLS is not supported on your browser, but native HLS is');
   }
 };
 
@@ -1034,8 +1036,7 @@ onBeforeRouteLeave(() => {
 
 onBeforeMount(() => {
   // initVideo(props.videoUrl);
-
-  loadM3u8Video();
+  // loadM3u8Video();
 });
 
 onMounted(() => {
