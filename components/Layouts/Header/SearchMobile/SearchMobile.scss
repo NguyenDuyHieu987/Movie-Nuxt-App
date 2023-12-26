@@ -1,7 +1,9 @@
 .el-popper.el-popover.popper-search {
-  background-color: var(--background-content-color1) !important;
+  background-color: var(--background-dropdown-color) !important;
   transition: opacity 0.15s;
   width: 96.5vw !important;
+  border-radius: 2px;
+  box-shadow: var(--box-shadow-small);
 
   .section-title.search {
     margin-top: 0px;
@@ -19,15 +21,30 @@
       &:has(.ant-input-affix-wrapper-focused) {
         // background: var(--search-focus-background);
 
-        // .ant-input-affix-wrapper {
-        //   border-color: var(--search-focus-border-color);
-        // }
+        .ant-input-affix-wrapper {
+          color: var(--menu-active-text-color);
+          border-color: var(--search-focus-border-color);
 
-        // .ant-input-group-addon {
-        //   .ant-input-search-button {
-        //     border-color: var(--search-focus-border-color);
-        //   }
-        // }
+          .ant-input {
+            &::placeholder {
+              color: var(--menu-active-text-color);
+            }
+          }
+
+          .anticon svg {
+            color: var(--menu-active-text-color);
+          }
+        }
+
+        .ant-input-group-addon {
+          .ant-input-search-button {
+            border-color: var(--search-focus-border-color);
+
+            svg {
+              color: var(--menu-active-text-color);
+            }
+          }
+        }
       }
 
       .ant-input-affix-wrapper {

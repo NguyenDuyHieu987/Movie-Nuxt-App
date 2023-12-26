@@ -21,7 +21,6 @@
 
     .main-content {
       display: flex;
-      flex: auto;
       flex-direction: column;
 
       & > .container {
@@ -99,7 +98,7 @@
   }
 }
 
-body:has(.center-page, .change-page) {
+body:has(.service-page, .change-page, .center-page) {
   footer.footer {
     .footer-container {
       max-width: var(--max-width-app);
@@ -138,6 +137,16 @@ body:has(.center-page, .change-page) {
 }
 
 @media only screen and (max-width: 900px) {
+  .app-wrapper {
+    .body-wrapper {
+      main.main-content {
+        & + .container {
+          padding-bottom: 30px;
+        }
+      }
+    }
+  }
+
   .padding-content {
     padding: 15px;
 

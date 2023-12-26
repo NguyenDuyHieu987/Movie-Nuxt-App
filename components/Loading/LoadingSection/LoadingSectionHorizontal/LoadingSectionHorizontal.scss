@@ -2,18 +2,26 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: var(--gap);
   overflow: hidden;
   // background-color: var(--background-content-color);
 
+  --gap: 0.4vw;
+
   .img-box {
     display: flex;
-    // height: 150px;
-    width: 267px;
+    min-width: 267px;
+    width: calc((100% - (5 * var(--gap))) / 6);
     flex-shrink: 0;
 
     .el-skeleton__item.skeleton-img {
       width: 100%;
     }
+  }
+}
+
+@media only screen and (max-width: 2000px) {
+  .el-skeleton.is-animated.loading-section-horizontal {
+    --gap: 8px;
   }
 }

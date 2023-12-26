@@ -95,10 +95,9 @@
 
     &.recommend {
       .movie-group.vertical {
-        // clip-path: inset(-100vh 0 -100vh 0);
         position: relative;
-        // max-height: 40em;
-        max-height: 330px;
+        // max-height: 330px;
+        max-height: 20vw;
         overflow: hidden;
         // transition: all 0.5s;
 

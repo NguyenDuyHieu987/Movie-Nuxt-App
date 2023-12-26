@@ -42,20 +42,3 @@
     }
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  .ant-layout-content.container {
-    // background-color: var(--background-content-color);
-  }
-}
-
-@media only screen and (max-width: 900px) {
-  .body-content-service {
-    main.main-content {
-      & + .container {
-        // padding: 15px 15px;
-        padding-bottom: 30px;
-      }
-    }
-  }
-}

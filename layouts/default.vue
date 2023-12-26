@@ -23,9 +23,11 @@
 
       <main class="main-content">
         <!-- <BreadCrumb /> -->
+
         <div class="container">
           <slot />
         </div>
+
         <Footer
           v-show="$route.path != '/follow' && $route.path != '/history'"
         />
