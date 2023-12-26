@@ -11,9 +11,9 @@
   }
 
   .body-wrapper {
+    display: flex;
     flex: auto;
     position: relative;
-    display: flex;
     flex-direction: column;
     max-width: var(--max-width-app);
     min-width: var(--min-width-app);
