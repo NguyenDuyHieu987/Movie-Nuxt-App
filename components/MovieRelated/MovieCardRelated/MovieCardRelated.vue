@@ -308,14 +308,14 @@ const handleAddToList = (e: any) => {
 };
 
 const onMouseEnter = () => {
-  if (video.value!.paused && !showVideo.value) {
+  if (video.value! && video.value!.paused && !showVideo.value) {
     showVideo.value = true;
     video.value!.play();
   }
 };
 
 const onMouseLeave = () => {
-  if (!video.value!.paused && showVideo.value) {
+  if (video.value! && !video.value!.paused && showVideo.value) {
     showVideo.value = false;
     video.value!.pause();
   }
