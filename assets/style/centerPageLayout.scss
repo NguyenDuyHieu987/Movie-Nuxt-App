@@ -1,11 +1,5 @@
 .body-content-center-page {
-  display: flex;
-  position: relative;
-  min-height: calc(100vh - var(--header-height));
-  margin-top: var(--header-height);
   background-color: #fff;
-  // transition: all 0.2s;
-  // overflow: hidden;
 
   .body-wrapper {
     --text-color-gray: #6f6f6f;
@@ -37,16 +31,7 @@
   }
 
   main.main-content {
-    display: flex;
-    flex: auto;
-    width: 0;
-    flex-direction: column;
-
     & > .container {
-      // padding: 15px 20px;
-      padding-bottom: 50px;
-      flex-grow: 1;
-      height: 100%;
     }
 
     footer.footer {

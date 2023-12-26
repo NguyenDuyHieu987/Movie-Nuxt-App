@@ -8,7 +8,7 @@
   .detail-rank-container {
     // max-width: var(--max-width-center-page);
     max-width: var(--detail-rank-container-width);
-    min-width: 1100px;
+    min-width: 1000px;
     margin: 0px auto;
 
     .detail-rank-header {
@@ -236,6 +236,18 @@
               color: #f6e200;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .detail-rank {
+    .detail-rank-container {
+      .detail-rank-body {
+        .info {
+          min-width: calc(var(--detail-rank-container-width) / 4);
         }
       }
     }

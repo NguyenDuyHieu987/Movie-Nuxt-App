@@ -1,21 +1,10 @@
 .body-content-service {
-  display: flex;
-  position: relative;
-  min-height: calc(100vh - var(--header-height));
-  margin-top: var(--header-height);
   background-color: #fff;
-  // transition: all 0.2s;
-  // overflow: hidden;
 
   .body-wrapper {
     --text-color-gray: #6f6f6f;
     --text-color-gray1: #4d4d4d;
-    flex: auto;
-    position: relative;
-    display: flex;
-    max-width: var(--max-width-app);
     color: var(--text-color-invert);
-    margin: 0px auto;
 
     .anticon {
       svg {
@@ -39,13 +28,12 @@
   main.main-content {
     display: flex;
     flex: auto;
-    width: 0;
     flex-direction: column;
+    width: 0;
 
     & > .container {
-      // padding: 15px 20px;
+      position: relative;
       padding-bottom: 50px;
-      flex-grow: 1;
       height: 100%;
     }
 

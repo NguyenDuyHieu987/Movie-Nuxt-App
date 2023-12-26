@@ -1,16 +1,16 @@
 .body-content.home {
-  display: flex;
-  position: relative;
   min-height: calc(101vh - var(--header-height));
-  margin-left: 0px;
   margin-top: 0px;
 
   .body-wrapper {
-    flex: auto;
-    position: relative;
-    display: flex;
-    max-width: var(--max-width-app);
-    margin: 0px auto;
+    max-width: 100%;
+  }
+
+  main.main-content {
+    margin-left: 0px;
+
+    & > .container {
+    }
   }
 
   header.header-bar,
@@ -82,7 +82,9 @@
 
   &.expand,
   &.fixed {
-    margin-left: 0px;
+    main.main-content {
+      margin-left: 0px;
+    }
   }
 
   &.expand {
@@ -112,21 +114,6 @@
 
     footer.footer {
       margin-left: var(--sider-collapsed-width);
-    }
-  }
-
-  main.main-content {
-    display: flex;
-    flex: auto;
-    width: 0;
-    flex-direction: column;
-
-    & > .container {
-      position: relative;
-      // padding: 15px 20px;
-      padding-bottom: 50px;
-      flex-grow: 1;
-      height: 100%;
     }
   }
 }

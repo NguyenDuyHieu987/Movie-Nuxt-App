@@ -100,6 +100,7 @@
   --sider-width: 220px;
   --sider-collapsed-width: 75px;
   --drawer-width: 260px;
+  --min-width-app: 800px;
   --max-width-app: 2200px;
   --max-width-collapsed-sider: 900px;
   --max-width-center-page: 1024px;
@@ -235,7 +236,9 @@ h6 {
 
 a {
   color: inherit;
-  transition: color 0.15s, background-color 0.15s;
+  transition:
+    color 0.15s,
+    background-color 0.15s;
 
   &:hover {
     color: inherit;

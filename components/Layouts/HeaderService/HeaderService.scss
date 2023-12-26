@@ -192,10 +192,14 @@ header.header-bar-service {
 
 @media only screen and (max-width: 900px) {
   header.header-bar-service {
-    padding: 0px 15px;
+    .header-bar-service-container {
+      padding: 0px 15px;
+    }
 
     &:has(.menu-btn.desktop) {
-      padding: 0px 15px;
+      .header-bar-service-container {
+        padding: 0px 15px;
+      }
     }
 
     .left-header {
@@ -251,10 +255,14 @@ header.header-bar-service {
 
 @media only screen and (max-width: 650px) {
   header.header-bar-service {
-    padding: 0px 15px;
+    .header-bar-service-container {
+      padding: 0px 15px;
+    }
 
     &:has(.menu-btn.desktop) {
-      padding: 0px 15px;
+      .header-bar-service-container {
+        padding: 0px 15px;
+      }
     }
 
     .left-header {
