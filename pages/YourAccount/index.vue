@@ -234,7 +234,8 @@ import { getImage } from '~/services/image';
 definePageMeta({
   layout: 'service',
   pageTransition: {
-    name: 'slide-bottom'
+    // name: 'slide-bottom',
+    // appear: true
   }
 });
 

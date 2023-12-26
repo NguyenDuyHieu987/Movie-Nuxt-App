@@ -207,8 +207,8 @@ definePageMeta({
     }
   ],
   pageTransition: {
-    name: 'slide-left',
-    appear: true
+    // name: 'slide-left',
+    // appear: true
   }
 });
 

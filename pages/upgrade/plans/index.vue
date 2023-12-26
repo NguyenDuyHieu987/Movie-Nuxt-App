@@ -61,7 +61,8 @@ definePageMeta({
   // layout: 'service',
   // pageTransition: {
   //   name: 'slide-left',
-  // },
+  //   appear: true
+  // }
 });
 
 const store = useStore();
