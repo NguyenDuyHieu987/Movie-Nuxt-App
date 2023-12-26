@@ -107,7 +107,7 @@
               color: var(--text-color-gray);
 
               &:hover {
-                color: var(--text-color);
+                color: inherit;
                 text-decoration: underline;
               }
 
@@ -175,13 +175,17 @@
               opacity: 0;
               color: var(--text-color-gray);
 
+              &:hover {
+                color: inherit;
+              }
+
               &:active {
                 opacity: 0.8 !important;
               }
             }
 
             &:hover {
-              background-color: #3e3e3e;
+              background-color: #404040;
 
               svg.remove-icon {
                 z-index: 1;
