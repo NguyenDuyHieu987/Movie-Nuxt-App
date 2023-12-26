@@ -15,7 +15,11 @@ import { storeToRefs } from 'pinia';
 import { RequireAuth } from '~/components/RequireAuth';
 
 definePageMeta({
-  layout: 'service'
+  layout: 'service',
+  pageTransition: {
+    name: 'slide-left',
+    appear: true
+  }
 });
 
 const store = useStore();
