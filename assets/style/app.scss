@@ -6,7 +6,6 @@
   & > [class^='body-content'],
   & > [class|='body-content'] {
     position: relative;
-    margin-top: var(--header-height);
     min-height: calc(100vh - var(--header-height));
   }
 
@@ -96,7 +95,15 @@
   }
 }
 
-body:has(.service-page, .change-page, .center-page) {
+body:has(
+    .body-content-center-page,
+    .body-content-service,
+    .service-page,
+    .change-page,
+    .center-page
+  ) {
+  background-color: #fff;
+
   footer.footer {
     .footer-container {
       max-width: var(--max-width-app);

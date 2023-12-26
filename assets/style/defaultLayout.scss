@@ -1,4 +1,6 @@
 .body-content {
+  margin-top: var(--header-height);
+
   a {
     color: var(--link-text-color);
     text-decoration: none;
@@ -131,10 +133,6 @@
       }
     }
   }
-}
-
-body:has(.service-page, .change-page, .center-page) {
-  background-color: #fff;
 }
 
 // .upgrade, .payment, .your-account, .bills
