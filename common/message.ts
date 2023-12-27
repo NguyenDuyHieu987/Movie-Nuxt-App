@@ -1,6 +1,6 @@
 export const MESSAGE = {
   STATUS: {
-    INFO: 'Thông tin!',
+    INFO: 'Thông báo!',
     WARN: 'Cảnh báo!',
     SUCCESS: 'Thành công!',
     FAILED: 'Thất bại!',

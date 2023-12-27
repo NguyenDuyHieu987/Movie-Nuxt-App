@@ -44,6 +44,31 @@
       z-index: 1;
       color: var(--text-color);
 
+      .vip-number {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 2px 10px;
+        background-color: var(--app-background-color1);
+        font-size: 1.4rem;
+        border-top-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+
+      .ant-ribbon-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        .ant-ribbon {
+          background-color: var(--app-background-color1);
+
+          .ant-ribbon-text {
+            font-weight: 600;
+          }
+        }
+      }
+
       &.selected {
         background-color: var(--app-background-color);
         opacity: 1;
@@ -59,7 +84,7 @@
           right: -18px;
           border: 0 solid transparent;
           border-width: 15px 15px 0;
-          border-top-color: #3e9cd2;
+          border-top-color: #3c97cb;
         }
       }
     }

@@ -27,7 +27,13 @@
             @click="handleClickPlanOpiton(item)"
             @dblclick="handleDBClickPlanOpiton(item)"
           >
-            <span>{{ item.name }}</span>
+            <!-- <div class="vip-number">VIP {{ item?.vip }}</div> -->
+            <a-badge-ribbon
+              :text="'VIP ' + item?.vip"
+              placement="start"
+            />
+
+            <span>{{ item?.name }}</span>
           </div>
         </template>
       </el-skeleton>
@@ -260,4 +266,4 @@ const handleDBClickPlanOpiton = (plan: plan) => {
 };
 </script>
 
-<style scoped lang="scss" src="./PlanGrid.scss"></style>
+<style lang="scss" src="./PlanGrid.scss"></style>

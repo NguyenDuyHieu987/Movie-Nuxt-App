@@ -151,6 +151,7 @@ const valueInput = ref<string>('');
 const debounce = ref<any>();
 const total = ref<number>(0);
 const skip = ref<number>(1);
+const limit = ref<number>(20);
 const dataHistory = ref<any[]>([]);
 const loading = ref<boolean>(false);
 const loadingSearch = ref<boolean>(false);
@@ -207,7 +208,7 @@ onMounted(() => {
     if (
       scrollHeight == document.documentElement.scrollHeight &&
       // Math.floor(scrollBottom()) == 0 &&
-      total.value > 20 &&
+      total.value > limit.value &&
       dataHistory.value?.length < total.value
     ) {
       loadMore.value = true;
@@ -218,7 +219,7 @@ onMounted(() => {
       await getHistory(activeTab.value, skip.value)
         .then((response) => {
           if (response?.results?.length > 0) {
-            dataHistory.value = dataHistory.value.concat(response.data?.result);
+            dataHistory.value = dataHistory.value.concat(response?.results);
             skip.value++;
           }
         })
@@ -231,8 +232,6 @@ onMounted(() => {
 });
 
 const getData = async () => {
-  loading.value = true;
-
   // await useAsyncData(
   //   `history/get/${store.userAccount?.id}/${activeTab.value}/1`,
   //   () => getHistory(activeTab.value, 1)
@@ -241,6 +240,7 @@ const getData = async () => {
     .then((response) => {
       if (response?.results?.length > 0) {
         dataHistory.value = response?.results;
+        limit.value = response?.limit;
         total.value = response?.total;
         topicImage.value = dataHistory.value[0]?.backdrop_path;
         skip.value++;
@@ -272,6 +272,8 @@ const getData = async () => {
 //   }
 // });
 
+loading.value = true;
+
 getData();
 
 const getDataWhenRemoveHistory = (data: number) => {
@@ -284,7 +286,7 @@ const getDataWhenRemoveHistory = (data: number) => {
 };
 
 const removeAllHistoryList = () => {
-  if (dataHistory.value?.length > 0) {
+  if (total.value > 0) {
     utils.conrfirmMessageModal({
       title: 'Thông Báo',
       message: 'Bạn có muốn xóa toàn bộ Lịch sử xem không?',
@@ -298,12 +300,8 @@ const removeAllHistoryList = () => {
   }
 };
 
-watch(route, () => {
-  // getData();
-});
-
 const searchHistoryEvent = (e: any) => {
-  if (e.target.value.length >= 0) {
+  if (e.target.value.length > 0) {
     loadingSearch.value = true;
     internalInstance.appContext.config.globalProperties.$Progress.start();
 
@@ -324,6 +322,8 @@ const searchHistoryEvent = (e: any) => {
           internalInstance.appContext.config.globalProperties.$Progress.finish();
         });
     }, 500);
+  } else if (e.target.value.length == 0) {
+    getData();
   }
 };
 

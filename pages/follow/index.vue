@@ -154,6 +154,7 @@ const valueInput = ref<string>('');
 const debounce = ref<any>();
 const total = ref<number>(0);
 const skip = ref<number>(1);
+const limit = ref<number>(20);
 const loading = ref<boolean>(false);
 const loadingSearch = ref<boolean>(false);
 const isFixedNavActiom = ref<boolean>(false);
@@ -210,7 +211,7 @@ onMounted(() => {
     if (
       scrollHeight == document.documentElement.scrollHeight &&
       // Math.floor(scrollBottom()) == 0 &&
-      total.value > 20 &&
+      total.value > limit.value &&
       dataList.value?.length < total.value
     ) {
       loadMore.value = true;
@@ -234,8 +235,6 @@ onMounted(() => {
 });
 
 const getData = async () => {
-  loading.value = true;
-
   // await useAsyncData(
   //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
   //   () => getList(activeTab.value, 1)
@@ -244,6 +243,7 @@ const getData = async () => {
     .then((response) => {
       if (response?.results?.length > 0) {
         dataList.value = response?.results;
+        limit.value = response?.limit;
         total.value = response?.total;
         topicImage.value = dataList.value[0]?.backdrop_path;
         skip.value++;
@@ -275,6 +275,8 @@ const getData = async () => {
 //   }
 // });
 
+loading.value = true;
+
 getData();
 
 const getDataWhenRemoveList = (data: number) => {
@@ -287,7 +289,7 @@ const getDataWhenRemoveList = (data: number) => {
 };
 
 const removeAllFollowList = () => {
-  if (dataList.value?.length > 0) {
+  if (total.value > 0) {
     utils.conrfirmMessageModal({
       title: 'Thông Báo',
       message: 'Bạn có muốn xóa toàn bộ Danh sách phát không?',
@@ -302,7 +304,7 @@ const removeAllFollowList = () => {
 };
 
 const searchFollow = (e: any) => {
-  if (e.target.value.length >= 0) {
+  if (e.target.value.length > 0) {
     loadingSearch.value = true;
     internalInstance.appContext.config.globalProperties.$Progress.start();
 
@@ -325,6 +327,8 @@ const searchFollow = (e: any) => {
           internalInstance.appContext.config.globalProperties.$Progress.finish();
         });
     }, 500);
+  } else if (e.target.value.length == 0) {
+    getData();
   }
 };
 

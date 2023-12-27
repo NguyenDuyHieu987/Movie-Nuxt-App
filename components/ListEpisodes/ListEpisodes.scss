@@ -57,6 +57,10 @@
       overflow-y: scroll;
       overflow-x: hidden;
 
+      &::-webkit-scrollbar {
+        width: 12px;
+      }
+
       li {
         display: inline-block;
         // margin-top: 7px;
