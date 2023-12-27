@@ -72,7 +72,7 @@
       </div>
 
       <div
-        v-if="loading"
+        v-if="!loading"
         class="ranks-body"
       >
         <RankSection
