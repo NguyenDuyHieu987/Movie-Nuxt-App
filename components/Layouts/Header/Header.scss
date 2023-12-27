@@ -227,10 +227,10 @@ header.header-bar {
             line-height: 0;
 
             svg {
+              fill: currentColor;
               // color: inherit;
               // color: var(--app-background-color);
               color: var(--menu-text-color);
-              font-size: 1.8rem;
               width: 1.8rem;
               height: 1.8rem;
               margin: 0;
@@ -285,7 +285,15 @@ header.header-bar {
           .search-btn {
             padding: 5px;
 
+            &[aria-describedby^='el-id'],
+            &[aria-describedby|='el-id'] {
+              svg {
+                fill: var(--menu-active-text-color);
+              }
+            }
+
             svg {
+              fill: var(--menu-text-color);
               width: 1.8rem;
               height: 1.8rem;
               cursor: pointer;
@@ -304,13 +312,11 @@ header.header-bar {
           outline: none;
 
           svg {
-            color: var(--menu-text-color);
             fill: var(--menu-text-color);
           }
 
           &[aria-expanded='true'] {
             svg {
-              color: var(--menu-active-text-color);
               fill: var(--menu-active-text-color);
             }
           }

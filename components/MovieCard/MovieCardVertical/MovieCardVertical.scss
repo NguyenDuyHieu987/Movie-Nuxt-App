@@ -150,6 +150,10 @@
             z-index: -1;
             // background-color: #08080825;
 
+            a {
+              color: inherit;
+            }
+
             a:not(:first-child) {
               // border-top: 1px solid #08080840;
             }
@@ -169,7 +173,7 @@
               svg {
                 width: 2rem;
                 height: 2rem;
-                fill: inherit;
+                fill: currentColor;
               }
 
               &:hover {

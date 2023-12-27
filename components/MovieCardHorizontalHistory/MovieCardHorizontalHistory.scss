@@ -212,21 +212,22 @@
       }
     }
 
-    .a-button {
+    .ant-btn {
       transition: all 0s;
+
+      svg {
+        fill: currentColor;
+        height: 2rem;
+        width: 2rem;
+      }
 
       &:hover,
       &:focus {
         background: inherit;
       }
 
-      .el-icon {
-        font-size: 2rem;
-      }
-
       &.remove-btn {
         svg {
-          font-size: 5rem;
           width: 2.5rem;
           height: 2.5rem;
         }

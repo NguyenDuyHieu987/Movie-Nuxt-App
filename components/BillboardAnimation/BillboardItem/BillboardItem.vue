@@ -157,11 +157,9 @@
                 width="3rem"
                 height="3rem"
                 viewBox="0 0 24 24"
+                fill="currentColor"
               >
-                <path
-                  fill="currentColor"
-                  d="M8 5v14l11-7z"
-                />
+                <path d="M8 5v14l11-7z" />
               </svg>
             </template>
             Xem ngay
@@ -197,8 +195,9 @@
                 width="1.8rem"
                 height="1.8rem"
                 viewBox="0 0 16 16"
+                fill="currentColor"
               >
-                <g fill="currentColor">
+                <g>
                   <path
                     d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
                   />
@@ -231,11 +230,9 @@
                 width="1.8rem"
                 height="1.8rem"
                 viewBox="0 0 24 24"
+                fill="currentColor"
               >
-                <path
-                  fill="currentColor"
-                  d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
-                />
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z" />
               </svg>
 
               <svg
@@ -244,11 +241,9 @@
                 width="1.8rem"
                 height="1.8rem"
                 viewBox="0 0 24 24"
+                fill="currentColor"
               >
-                <path
-                  fill="currentColor"
-                  d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
-                />
+                <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
               </svg>
             </template>
             <span> Danh sách</span>

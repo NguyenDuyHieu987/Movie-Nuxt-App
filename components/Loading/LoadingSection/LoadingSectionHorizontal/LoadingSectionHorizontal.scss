@@ -10,8 +10,8 @@
 
   .img-box {
     display: flex;
-    min-width: 267px;
     width: calc((100% - (5 * var(--gap))) / 6);
+    min-width: 267px;
     flex-shrink: 0;
 
     .el-skeleton__item.skeleton-img {

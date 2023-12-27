@@ -100,9 +100,11 @@
             }
 
             svg {
-              font-size: 1.8rem;
-              cursor: pointer;
+              fill: currentColor;
+              width: 2rem;
+              height: 2rem;
               transition: all 0.15s;
+              cursor: pointer;
 
               &:active {
                 opacity: 0.8;
@@ -197,12 +199,6 @@
     .danger-zone {
       .el-dropdown-menu__item {
         &.remove-item {
-          color: var(--text-danger-color);
-
-          span,
-          a {
-            color: var(--text-danger-color);
-          }
         }
       }
     }

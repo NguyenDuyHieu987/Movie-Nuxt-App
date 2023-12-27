@@ -221,7 +221,7 @@
       opacity: 1;
     }
 
-    .a-button {
+    .ant-btn {
       transition: all 0s;
 
       &:hover,
@@ -229,15 +229,10 @@
         background: inherit;
       }
 
-      .el-icon {
-        width: auto;
-        height: auto;
-
-        svg {
-          font-size: 1.76rem;
-          height: 1.9rem;
-          width: 1.9rem;
-        }
+      svg {
+        fill: currentColor;
+        height: 1.8rem;
+        width: 1.8rem;
       }
 
       &.viewmore-btn {

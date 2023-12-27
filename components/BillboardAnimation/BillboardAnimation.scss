@@ -201,14 +201,12 @@
       transition: opacity 0.15s;
 
       svg {
-        color: #bfbfbf;
         fill: #bfbfbf;
       }
 
       // &:hover ,
       &:focus {
         svg {
-          color: #fff;
           fill: #fff;
         }
       }
@@ -324,6 +322,7 @@
 
     .slick-arrow {
       svg {
+        fill: var(--text-color);
         width: 2.4rem;
         height: 2.4rem;
       }

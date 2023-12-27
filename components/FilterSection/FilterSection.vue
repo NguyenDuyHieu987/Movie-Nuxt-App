@@ -114,9 +114,9 @@
                   width="2.8rem"
                   height="2.8rem"
                   viewBox="0 0 16 16"
+                  fill="currentColor"
                 >
                   <path
-                    fill="currentColor"
                     fill-rule="evenodd"
                     d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
                   />
@@ -128,9 +128,9 @@
                   width="2.8rem"
                   height="2.8rem"
                   viewBox="0 0 16 16"
+                  fill="currentColor"
                 >
                   <path
-                    fill="currentColor"
                     fill-rule="evenodd"
                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"
                   />
@@ -189,9 +189,9 @@
                   width="2.8rem"
                   height="2.8rem"
                   viewBox="0 0 16 16"
+                  fill="currentColor"
                 >
                   <path
-                    fill="currentColor"
                     fill-rule="evenodd"
                     d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
                   />
@@ -203,9 +203,9 @@
                   width="2.8rem"
                   height="2.8rem"
                   viewBox="0 0 16 16"
+                  fill="currentColor"
                 >
                   <path
-                    fill="currentColor"
                     fill-rule="evenodd"
                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"
                   />
@@ -268,9 +268,9 @@
                   width="3.5rem"
                   height="3.5rem"
                   viewBox="0 0 16 16"
+                  fill="currentColor"
                 >
                   <path
-                    fill="currentColor"
                     fill-rule="evenodd"
                     d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
                   />
@@ -282,9 +282,9 @@
                   width="3.5rem"
                   height="3.5rem"
                   viewBox="0 0 16 16"
+                  fill="currentColor"
                 >
                   <path
-                    fill="currentColor"
                     fill-rule="evenodd"
                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"
                   />
@@ -299,11 +299,9 @@
             width="1.6rem"
             height="1.6rem"
             viewBox="0 0 24 24"
+            fill="currentColor"
           >
-            <path
-              fill="currentColor"
-              d="M3 4c2.01 2.59 7 9 7 9v7h4v-7s4.98-6.41 7-9H3z"
-            />
+            <path d="M3 4c2.01 2.59 7 9 7 9v7h4v-7s4.98-6.41 7-9H3z" />
           </svg>
         </template>
       </a-collapse-panel>

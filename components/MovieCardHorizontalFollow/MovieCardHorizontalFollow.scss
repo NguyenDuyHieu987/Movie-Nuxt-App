@@ -196,23 +196,18 @@
       opacity: 1;
     }
 
-    .a-button {
+    .ant-btn {
       transition: all 0s;
+
+      svg {
+        fill: currentColor;
+        height: 2rem;
+        width: 2rem;
+      }
 
       &:hover,
       &:focus {
         background: inherit;
-      }
-
-      .el-icon {
-        width: auto;
-        height: auto;
-
-        svg {
-          font-size: 1.76rem;
-          height: 1.9rem;
-          width: 1.9rem;
-        }
       }
 
       &.viewmore-btn {

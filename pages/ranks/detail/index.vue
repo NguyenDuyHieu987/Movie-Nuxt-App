@@ -114,9 +114,9 @@
                   width="1.5rem"
                   height="1.5rem"
                   viewBox="0 0 24 24"
+                  fill="currentColor"
                 >
                   <path
-                    fill="currentColor"
                     d="m4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8l-8 8z"
                   />
                 </svg>
@@ -127,6 +127,7 @@
                   width="1.5rem"
                   height="1.5rem"
                   viewBox="0 0 24 24"
+                  fill="currentColor"
                 >
                   <path
                     d="m20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8l8-8z"
@@ -139,11 +140,9 @@
                   width="1.5rem"
                   height="1.5rem"
                   viewBox="0 0 24 24"
+                  fill="currentColor"
                 >
-                  <path
-                    fill="currentColor"
-                    d="M20 14H4v-4h16"
-                  />
+                  <path d="M20 14H4v-4h16" />
                 </svg>
 
                 <span

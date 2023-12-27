@@ -132,27 +132,25 @@
 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="1.9rem"
-                  height="1.9rem"
+                  width="2rem"
+                  height="2rem"
                   viewBox="0 0 512 512"
+                  fill="currentColor"
                 >
                   <circle
                     cx="256"
                     cy="256"
                     r="48"
-                    fill="currentColor"
                   />
                   <circle
                     cx="256"
                     cy="416"
                     r="48"
-                    fill="currentColor"
                   />
                   <circle
                     cx="256"
                     cy="96"
                     r="48"
-                    fill="currentColor"
                   />
                 </svg>
               </template>
@@ -170,11 +168,9 @@
                       width="32"
                       height="32"
                       viewBox="0 0 24 24"
+                      fill="currentColor"
                     >
-                      <path
-                        fill="currentColor"
-                        d="M8 5v14l11-7z"
-                      />
+                      <path d="M8 5v14l11-7z" />
                     </svg>
 
                     <NuxtLink
@@ -211,9 +207,9 @@
                       width="1.8rem"
                       height="1.8rem"
                       viewBox="0 0 256 256"
+                      fill="currentColor"
                     >
                       <path
-                        fill="currentColor"
                         d="m240.49 103.52l-80-80A12 12 0 0 0 140 32v36.74c-25.76 3.12-53.66 15.89-76.75 35.47c-29.16 24.74-47.32 56.69-51.14 90A16 16 0 0 0 39.67 207c10.46-11.14 47-45.74 100.33-50.42V192a12 12 0 0 0 20.48 8.48l80-80a12 12 0 0 0 .01-16.96ZM164 163v-19a12 12 0 0 0-12-12c-49 0-86.57 21.56-109.79 40.11c7.13-18.16 19.63-35.22 36.57-49.59C101.3 103.41 128.67 92 152 92a12 12 0 0 0 12-12V61l51 51Z"
                       />
                     </svg>
@@ -247,9 +243,9 @@
                       width="1.5rem"
                       height="1.5rem"
                       viewBox="0 0 448 512"
+                      fill="currentColor"
                     >
                       <path
-                        fill="currentColor"
                         d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0h120.4c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64s14.3-32 32-32h96l7.2-14.3zM32 128h384v320c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"
                       />
                     </svg>

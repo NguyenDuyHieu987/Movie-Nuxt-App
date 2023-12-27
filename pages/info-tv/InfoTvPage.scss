@@ -172,6 +172,12 @@
             .action-btn {
               min-height: 40px;
               height: 42px;
+
+              .ant-btn {
+                svg {
+                  fill: currentColor;
+                }
+              }
             }
 
             .left {

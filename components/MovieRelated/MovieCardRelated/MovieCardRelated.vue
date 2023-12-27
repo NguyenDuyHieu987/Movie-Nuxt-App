@@ -87,11 +87,9 @@
           width="5rem"
           height="5rem"
           viewBox="0 0 24 24"
+          fill="currentColor"
         >
-          <path
-            fill="currentColor"
-            d="M8 5v14l11-7z"
-          />
+          <path d="M8 5v14l11-7z" />
         </svg>
       </div>
     </div>
@@ -163,11 +161,9 @@
                 width="2.4rem"
                 height="2.4rem"
                 viewBox="0 0 24 24"
+                fill="currentColor"
               >
-                <path
-                  fill="currentColor"
-                  d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
-                />
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z" />
               </svg>
 
               <svg
@@ -176,11 +172,9 @@
                 width="2.4rem"
                 height="2.4rem"
                 viewBox="0 0 24 24"
+                fill="currentColor"
               >
-                <path
-                  fill="currentColor"
-                  d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
-                />
+                <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
               </svg>
             </template>
           </a-button>

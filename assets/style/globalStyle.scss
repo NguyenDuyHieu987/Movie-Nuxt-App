@@ -12,7 +12,7 @@
   --text-button-disabled-color: #979797;
   --link-text-color: #0083cf;
   --link-text-color-hover: #008591;
-  --text-danger-color: #b90016;
+  --text-danger-color: #ff3236;
   --text-placeholder-color: #ababab;
 
   --header-background: linear-gradient(to bottom, #080808cc 0%, #08080800 100%);
@@ -725,6 +725,10 @@ svg {
 
       .main-action {
         padding: 3px 0px;
+
+        svg {
+          fill: currentColor;
+        }
       }
 
       .separate {
@@ -738,8 +742,11 @@ svg {
           &.remove-item {
             color: var(--text-danger-color);
 
-            span,
             svg {
+              fill: var(--text-danger-color);
+            }
+
+            span {
               color: var(--text-danger-color);
             }
           }

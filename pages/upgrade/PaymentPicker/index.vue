@@ -48,6 +48,7 @@
                       width="2.4rem"
                       height="2.4rem"
                       viewBox="0 0 24 24"
+                      fill="currentColor"
                     >
                       <path
                         d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
@@ -77,6 +78,7 @@
                       width="2.4rem"
                       height="2.4rem"
                       viewBox="0 0 24 24"
+                      fill="currentColor"
                     >
                       <path
                         d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
@@ -105,6 +107,7 @@
                       width="2.4rem"
                       height="2.4rem"
                       viewBox="0 0 24 24"
+                      fill="currentColor"
                     >
                       <path
                         d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
@@ -141,6 +144,7 @@
                       width="2.4rem"
                       height="2.4rem"
                       viewBox="0 0 24 24"
+                      fill="currentColor"
                     >
                       <path
                         d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"

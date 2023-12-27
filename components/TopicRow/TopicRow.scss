@@ -127,6 +127,10 @@
 
           .viewmore-btn {
             transition: all 0s;
+
+            svg {
+              fill: currentColor;
+            }
           }
         }
       }
@@ -192,7 +196,7 @@
             color: inherit;
 
             svg {
-              fill: inherit;
+              fill: currentColor;
             }
           }
 

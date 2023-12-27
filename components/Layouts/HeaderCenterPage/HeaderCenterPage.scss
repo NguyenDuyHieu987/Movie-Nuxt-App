@@ -90,6 +90,16 @@ header.header-bar-center-page {
           cursor: pointer;
           outline: none;
 
+          svg {
+            fill: var(--menu-text-color);
+          }
+
+          &[aria-expanded='true'] {
+            svg {
+              fill: var(--menu-active-text-color);
+            }
+          }
+
           &.notification {
             &[aria-expanded='true'] {
               .ant-badge {

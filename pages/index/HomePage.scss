@@ -87,6 +87,10 @@
         transition: all 0.3s;
         color: var(--text-color);
 
+        svg {
+          fill: currentColor;
+        }
+
         &:active {
           opacity: 0.8;
         }
