@@ -90,14 +90,6 @@ useSeoMeta({
   description: runtimeConfig.public.siteDescription
 });
 
-const onBackTop = () => {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'instant'
-  });
-};
-
 onMounted(() => {
   // window.history.scrollRestoration = 'auto';
   screen.orientation.addEventListener('change', () => {
@@ -145,6 +137,14 @@ onMounted(() => {
   //   }
   // }).observe(document.body);
 });
+
+const onBackTop = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'instant'
+  });
+};
 </script>
 
 <style lang="scss" src="~/assets/style/app.scss"></style>

@@ -50,7 +50,7 @@ export default defineNuxtConfig({
         }
       ]
     },
-    pageTransition: { name: 'page' }
+    pageTransition: { name: 'fade', mode: 'out-in', appear: true }
   },
   runtimeConfig: {
     app: {
@@ -235,7 +235,7 @@ export default defineNuxtConfig({
   router: {
     options: {
       strict: false,
-      scrollBehaviorType: 'auto'
+      scrollBehaviorType: 'smooth'
     }
   },
   optimization: {},
