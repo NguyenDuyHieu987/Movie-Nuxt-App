@@ -2,15 +2,18 @@ import { computed, ref } from 'vue';
 import { ElNotification } from 'element-plus';
 import { defineStore } from 'pinia';
 
-import type { user } from '@/types';
+import type { subscription, user } from '@/types';
 import { getUserToken, LogOut } from '~/services/authentication';
+import { getMySubscription } from '~/services/subscription';
 
 export const useAuthStore = defineStore('auth', () => {
   const userAccount = ref<user>(null);
+  const subscription = ref<subscription>(null);
   const role = computed<string>(() => userAccount.value?.role || 'normal');
   const isLogin = computed<boolean>(() => !!userAccount.value);
   const isOpenRequireAuthDialog = ref<boolean>(false);
   const loadingUser = ref<boolean>(true);
+  const loadingSubscription = ref<boolean>(true);
 
   const utils = useUtils();
   const store = useStore();
@@ -25,9 +28,13 @@ export const useAuthStore = defineStore('auth', () => {
       await getUserToken({
         user_token: utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
       })
-        .then((accountResponse: any) => {
-          if (accountResponse?.isLogin == true) {
-            userAccount.value = accountResponse?.result;
+        .then((response) => {
+          if (response?.isLogin == true) {
+            userAccount.value = response?.result;
+
+            if (response?.subscription) {
+              subscription.value = response.subscription;
+            }
 
             if (
               utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) == null
@@ -56,6 +63,38 @@ export const useAuthStore = defineStore('auth', () => {
       await wait(300);
 
       loadingUser.value = false;
+    }
+  };
+
+  const loadSubscription = async () => {
+    loadingSubscription.value = true;
+
+    if (
+      utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) != null ||
+      utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) != null
+    ) {
+      await getMySubscription({
+        user_token: utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
+      })
+        .then((response) => {
+          if (response) {
+            subscription.value = response;
+          }
+        })
+        .catch((e) => {
+          ElNotification.error({
+            title: MESSAGE.STATUS.BROKE,
+            message: MESSAGE.STATUS.BROKE_MESSAGE,
+            duration: MESSAGE.DURATION.DEFAULT
+          });
+        })
+        .finally(async () => {
+          loadingSubscription.value = false;
+        });
+    } else {
+      await wait(300);
+
+      loadingSubscription.value = false;
     }
   };
 
@@ -100,6 +139,7 @@ export const useAuthStore = defineStore('auth', () => {
     isOpenRequireAuthDialog,
     loadingUser,
     loadUser,
+    loadSubscription,
     logOut
   };
 });

@@ -93,7 +93,7 @@ const allTabs = ref<tab[]>([
   }
 ]);
 const isFixedNavActiom = ref<boolean>(false);
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 const getData = async (activeKey: string) => {
   if (activeTab.value == activeKey) return;
@@ -102,7 +102,7 @@ const getData = async (activeKey: string) => {
 
   loading.value = true;
 
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   switch (activeKey) {
     case 'day':
@@ -114,12 +114,12 @@ const getData = async (activeKey: string) => {
         .catch((e) => {})
         .finally(() => {
           loading.value = false;
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
 
       // refreshNuxtData('ranking/all/1');
       loading.value = false;
-      internalInstance.appContext.config.globalProperties.$Progress.finish();
+      nuxtLoadingIndicator.finish();
       break;
     case 'week':
       // useAsyncData(`ranking/all/2`, () => getRanking(2, 10))
@@ -130,7 +130,7 @@ const getData = async (activeKey: string) => {
         .catch((e) => {})
         .finally(() => {
           loading.value = false;
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
 
       break;
@@ -143,7 +143,7 @@ const getData = async (activeKey: string) => {
         .catch((e) => {})
         .finally(() => {
           loading.value = false;
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
 
       break;
@@ -156,7 +156,7 @@ const getData = async (activeKey: string) => {
         .catch((e) => {})
         .finally(() => {
           loading.value = false;
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
 
       break;

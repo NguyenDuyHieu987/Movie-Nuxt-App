@@ -135,7 +135,7 @@ const disabled = computed<boolean>((): boolean => {
     formResetPassword.newPassword == formResetPassword.confirmNewPassword
   );
 });
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: 'Đặt lại mật khẩu',
@@ -219,7 +219,7 @@ const rules: Record<string, Rule[]> = {
 
 const handleSubmit = () => {
   loadingResetPassword.value = true;
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   ResetPassword({
     rstPwdToken: rstPwdToken.value,
@@ -256,7 +256,7 @@ const handleSubmit = () => {
     })
     .finally(() => {
       loadingResetPassword.value = false;
-      internalInstance.appContext.config.globalProperties.$Progress.finish();
+      nuxtLoadingIndicator.finish();
     });
 };
 </script>

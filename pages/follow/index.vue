@@ -172,7 +172,7 @@ const breakpoints = useBreakpoints({
 
 const responsive = breakpoints.smallerOrEqual('responsive');
 
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: 'Danh sách theo dõi',
@@ -307,7 +307,7 @@ const removeAllFollowList = () => {
 const searchFollow = (e: any) => {
   if (e.target.value.length > 0) {
     loadingSearch.value = true;
-    internalInstance.appContext.config.globalProperties.$Progress.start();
+    nuxtLoadingIndicator.start();
 
     clearTimeout(debounce.value);
 
@@ -325,7 +325,7 @@ const searchFollow = (e: any) => {
         })
         .finally(() => {
           loadingSearch.value = false;
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
     }, 500);
   } else if (e.target.value.length == 0) {
@@ -335,7 +335,7 @@ const searchFollow = (e: any) => {
 
 const handleChangeTab = async (value: string) => {
   activeTab.value = value;
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
   valueInput.value = '';
 
   // window.scrollTo({
@@ -369,7 +369,7 @@ const handleChangeTab = async (value: string) => {
         })
         .catch((e) => {})
         .finally(() => {
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
       break;
     case 'movie':
@@ -390,7 +390,7 @@ const handleChangeTab = async (value: string) => {
         })
         .catch((e) => {})
         .finally(() => {
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
       break;
     case 'tv':
@@ -411,7 +411,7 @@ const handleChangeTab = async (value: string) => {
         })
         .catch((e) => {})
         .finally(() => {
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
       break;
   }

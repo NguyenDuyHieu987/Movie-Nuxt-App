@@ -108,7 +108,7 @@ const disabled = computed<boolean>((): boolean => {
     formChangeEmail.newEmail != authStore.userAccount?.email
   );
 });
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: 'Thay đỏi Email',
@@ -160,7 +160,7 @@ const handleSubmit = () => {
   if (loadingChangeEmail.value) return;
 
   loadingChangeEmail.value = true;
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   ChangeEmail({
     chgEmailToken: chgEmailToken.value,
@@ -205,7 +205,7 @@ const handleSubmit = () => {
     })
     .finally(() => {
       loadingChangeEmail.value = false;
-      internalInstance.appContext.config.globalProperties.$Progress.finish();
+      nuxtLoadingIndicator.finish();
     });
 };
 

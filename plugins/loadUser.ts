@@ -19,7 +19,9 @@ export default defineNuxtPlugin({
       // route.matched[0].meta.layout != 'auth'
 
       const authStore = useAuthStore();
+
       authStore.loadUser();
+      // authStore.loadSubscription();
     }
   },
   parallel: true,

@@ -94,7 +94,7 @@ const countryRoute = computed<country>(() =>
   getCountryByShortName(route.params.country, store.allCountries)
 );
 const metaHead = ref<string>('Quốc gia: ' + countryRoute.value.name);
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: () => 'Khám phá | Quốc gia: ' + countryRoute.value.name + '',
@@ -163,7 +163,7 @@ const onChangePage = (
 };
 
 const setDataFiltered = (data: any[], formSelect: formfilter) => {
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   dataDiscover.value = data;
   formFilter.value = formSelect;
@@ -171,7 +171,7 @@ const setDataFiltered = (data: any[], formSelect: formfilter) => {
   page.value = formSelect.page!;
   metaHead.value = 'Danh sách phim đã lọc';
 
-  internalInstance.appContext.config.globalProperties.$Progress.finish();
+  nuxtLoadingIndicator.finish();
 };
 
 const cancelFilter = () => {

@@ -21,7 +21,10 @@ const progressBarOptions = {
 export default defineNuxtPlugin({
   name: 'vueProgressBar',
   async setup(nuxtApp) {
-    nuxtApp.vueApp.use(VueProgressBar, progressBarOptions);
+    // nuxtApp.vueApp.use(VueProgressBar, progressBarOptions);
+    // const internalInstance: any = getCurrentInstance();
+    // internalInstance.appContext.config.globalProperties.$Progress.start();
+    // internalInstance.appContext.config.globalProperties.$Progress.finish();
   },
   hooks: {},
   parallel: true,

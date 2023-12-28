@@ -96,10 +96,10 @@ const loading = ref<boolean>(false);
 const page = ref<number>(+route.query?.page || 1);
 const total = ref<number>(100);
 const pageSize = ref<number>(20);
-const internalInstance: any = getCurrentInstance();
 const searchQuery = computed<string>(
   () => route.query?.q?.replaceAll('+', ' ') || ''
 );
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: () => 'Tìm kiếm: ' + searchQuery.value + '',
@@ -147,7 +147,7 @@ const addSearchHistoryD = async () => {
 const getData = async () => {
   if (searchQuery.value.length > 0) {
     // loading.value = true;
-    internalInstance.appContext.config.globalProperties.$Progress.start();
+    nuxtLoadingIndicator.start();
 
     await useAsyncData(`search/all/${searchQuery.value}/${page.value}/20`, () =>
       getDaTaSearch(searchQuery.value, page.value)
@@ -162,7 +162,7 @@ const getData = async () => {
       .catch((e) => {})
       .finally(() => {
         loading.value = false;
-        internalInstance.appContext.config.globalProperties.$Progress.finish();
+        nuxtLoadingIndicator.finish();
       });
   }
 };

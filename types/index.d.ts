@@ -83,6 +83,38 @@ export declare type user = {
   updatedAt?: string;
 } | null;
 
+export declare type subscription = {
+  id: string;
+  account_id: string;
+  subscription_id: string;
+  customer_id: string;
+  subscription: any;
+  latest_invoice: string;
+  plan_id: string;
+  start_date: string;
+  ended_date: string;
+  current_period_start: string;
+  current_period_end: string;
+  trial_start: string;
+  trial_end: string;
+  billing_cycle_anchor: string;
+  interval: 'day' | 'week' | 'month' | 'year';
+  interval_count: number | 1;
+  vip: number | 0;
+  status:
+    | 'trialing'
+    | 'active'
+    | 'inactive'
+    | 'paused'
+    | 'past_due'
+    | 'canceled'
+    | 'unpaid';
+  created_at: string;
+  updated_at: string;
+  createdAt?: string;
+  updatedAt?: string;
+} | null;
+
 export declare type commentForm = {
   id: string;
   user_id: string;

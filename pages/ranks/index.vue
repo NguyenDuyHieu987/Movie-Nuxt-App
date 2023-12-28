@@ -230,7 +230,7 @@ const rankSectionTitle = computed<string>(
       { title: 'Đánh giá cao', value: 'high-rate' }
     ].find((item) => item.value == formFilterRank.value.type)?.title!
 );
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 const compareRanks = (ranks: any): any[] => {
   if (ranks?.results.length > 0 || ranks?.prev_results.length) {
@@ -281,7 +281,7 @@ const compareRanks = (ranks: any): any[] => {
 const getData = async () => {
   loading.value = true;
 
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   await useAsyncData(
     `ranks/filter/${JSON.stringify(formFilterRank.value)}`,
@@ -481,7 +481,7 @@ const getData = async () => {
     .finally(() => {});
 
   loading.value = false;
-  internalInstance.appContext.config.globalProperties.$Progress.finish();
+  nuxtLoadingIndicator.finish();
 };
 
 loading.value = true;

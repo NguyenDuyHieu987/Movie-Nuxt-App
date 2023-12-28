@@ -159,11 +159,12 @@ const loadingSearch = ref<boolean>(false);
 const isFixedNavActiom = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
 const topicImage = ref<string>('topic1.jpg');
-const internalInstance: any = getCurrentInstance();
 const historyContent = ref();
 const title = ref<string>('Phim đã xem');
 const activeTab = ref<string>('all');
 const showData = ref<boolean>(true);
+
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 const breakpoints = useBreakpoints({
   responsive: 1200
@@ -304,7 +305,7 @@ const removeAllHistoryList = () => {
 const searchHistoryEvent = (e: any) => {
   if (e.target.value.length > 0) {
     loadingSearch.value = true;
-    internalInstance.appContext.config.globalProperties.$Progress.start();
+    nuxtLoadingIndicator.start();
 
     clearTimeout(debounce.value);
 
@@ -320,7 +321,7 @@ const searchHistoryEvent = (e: any) => {
         .catch((e) => {})
         .finally(() => {
           loadingSearch.value = false;
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
     }, 500);
   } else if (e.target.value.length == 0) {
@@ -330,7 +331,7 @@ const searchHistoryEvent = (e: any) => {
 
 const handleChangeTab = async (value: string) => {
   activeTab.value = value;
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
   valueInput.value = '';
 
   // window.scrollTo({
@@ -363,7 +364,7 @@ const handleChangeTab = async (value: string) => {
         })
         .catch((e) => {})
         .finally(() => {
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
       break;
     case 'movie':
@@ -383,7 +384,7 @@ const handleChangeTab = async (value: string) => {
         })
         .catch((e) => {})
         .finally(() => {
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
       break;
     case 'tv':
@@ -403,7 +404,7 @@ const handleChangeTab = async (value: string) => {
         })
         .catch((e) => {})
         .finally(() => {
-          internalInstance.appContext.config.globalProperties.$Progress.finish();
+          nuxtLoadingIndicator.finish();
         });
       break;
   }

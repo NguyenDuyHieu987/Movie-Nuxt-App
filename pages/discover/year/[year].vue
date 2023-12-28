@@ -93,7 +93,7 @@ const yearRoute = computed<number | string>(() =>
     : 'Trước năm ' + route.params.year?.slice(-4)
 );
 const metaHead = ref<string>('Năm: ' + yearRoute.value);
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: () => 'Khám phá | Năm: ' + yearRoute.value + '',
@@ -162,7 +162,7 @@ const onChangePage = (
 };
 
 const setDataFiltered = (data: any[], formSelect: formfilter) => {
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   dataDiscover.value = data;
   formFilter.value = formSelect;
@@ -170,7 +170,7 @@ const setDataFiltered = (data: any[], formSelect: formfilter) => {
   page.value = formSelect.page!;
   metaHead.value = 'Danh sách phim đã lọc';
 
-  internalInstance.appContext.config.globalProperties.$Progress.finish();
+  nuxtLoadingIndicator.finish();
 };
 
 const cancelFilter = () => {

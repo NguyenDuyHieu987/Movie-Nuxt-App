@@ -277,7 +277,7 @@ const disabled = computed<boolean>((): boolean => {
     formSignup.password == formSignup.confirmPass
   );
 });
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 const reset = () => {
   formSignup.fullname = '';
@@ -351,7 +351,7 @@ const handleSignUp = async (e: any) => {
 
   loadingSignUp.value = true;
   formSignup.avatar = `${Math.floor(Math.random() * 10) + 1}`;
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   verifySignUp(
     {
@@ -414,7 +414,7 @@ const handleSignUp = async (e: any) => {
       });
     })
     .finally(() => {
-      internalInstance.appContext.config.globalProperties.$Progress.finish();
+      nuxtLoadingIndicator.finish();
       loadingSignUp.value = false;
     });
 };

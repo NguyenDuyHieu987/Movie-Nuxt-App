@@ -203,7 +203,7 @@ const disabled = computed<boolean>((): boolean => {
     formChangePassword.newPassword == formChangePassword.confirmNewPassword
   );
 });
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: 'Đỏi mật khẩu',
@@ -298,7 +298,7 @@ const handleSubmit = async () => {
   }
 
   loadingChangePassword.value = true;
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   AccountConfirm(
     {
@@ -358,7 +358,7 @@ const handleSubmit = async () => {
       });
     })
     .finally(() => {
-      internalInstance.appContext.config.globalProperties.$Progress.finish();
+      nuxtLoadingIndicator.finish();
       loadingChangePassword.value = false;
     });
 };

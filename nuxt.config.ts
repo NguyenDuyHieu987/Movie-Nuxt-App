@@ -89,7 +89,9 @@ export default defineNuxtConfig({
   experimental: {
     payloadExtraction: true,
     viewTransition: true,
-    componentIslands: true,
+    componentIslands: {
+      selectiveClient: true
+    },
     restoreState: true,
     headNext: true,
     asyncContext: true,

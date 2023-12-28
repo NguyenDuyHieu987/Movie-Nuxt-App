@@ -202,7 +202,7 @@ const rankDetailTitle = computed<string>(
 const top1Count = computed<number>(
   () => Math.max(...rankDetailData.value.map((item) => item?.count)) || 1
 );
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: 'Chi tiết bảng xếp hạng - ' + rankDetailTitle,
@@ -268,7 +268,7 @@ const compareRanks = (ranks: any): any[] => {
 const getData = async () => {
   loading.value = true;
 
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   await useAsyncData(
     `ranks/filter/${JSON.stringify(formFilterRank.value)}`,
@@ -282,7 +282,7 @@ const getData = async () => {
     .finally(() => {});
 
   loading.value = false;
-  internalInstance.appContext.config.globalProperties.$Progress.finish();
+  nuxtLoadingIndicator.finish();
 };
 
 loading.value = true;

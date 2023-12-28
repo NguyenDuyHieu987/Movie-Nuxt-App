@@ -253,7 +253,7 @@ const disabled = computed<boolean>((): boolean => {
     formChangeEmail.newEmail != authStore.userAccount?.email
   );
 });
-const internalInstance: any = getCurrentInstance();
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: 'Thay đỏi Email',
@@ -324,7 +324,7 @@ const handleSubmitVerifyEmail = async () => {
   }
 
   loadingVerifyEmail.value = true;
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   AccountConfirm({ email: authStore.userAccount?.email }, 'email')
     .then((response) => {
@@ -370,7 +370,7 @@ const handleSubmitVerifyEmail = async () => {
       });
     })
     .finally(() => {
-      internalInstance.appContext.config.globalProperties.$Progress.finish();
+      nuxtLoadingIndicator.finish();
       loadingVerifyEmail.value = false;
     });
 };
@@ -521,7 +521,7 @@ const handleSubmitChangeEmail = () => {
   checkSendedEmail();
 
   loadingChangeEmail.value = true;
-  internalInstance.appContext.config.globalProperties.$Progress.start();
+  nuxtLoadingIndicator.start();
 
   AccountConfirm({ newEmail: formChangeEmail.newEmail }, 'change-email')
     .then((response) => {
@@ -580,7 +580,7 @@ const handleSubmitChangeEmail = () => {
     })
     .finally(() => {
       loadingChangeEmail.value = false;
-      internalInstance.appContext.config.globalProperties.$Progress.finish();
+      nuxtLoadingIndicator.finish();
     });
 };
 

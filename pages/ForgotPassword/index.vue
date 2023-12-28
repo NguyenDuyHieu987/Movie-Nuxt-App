@@ -117,7 +117,6 @@ const disabled = computed<boolean>((): boolean => {
     formForgotPassword.email
   );
 });
-const internalInstance: any = getCurrentInstance();
 
 useHead({
   title: 'Trợ giúp, Quên mật khẩu',
