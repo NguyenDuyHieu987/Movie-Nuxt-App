@@ -39,7 +39,7 @@ jobs:
 
       - name: Install Dependencies and Build
         run: |
-          npm install --force
+          npm install --legacy-peer-deps
           npm run build
 
       - name: Install SSH key
