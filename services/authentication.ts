@@ -48,7 +48,6 @@ export function getUserToken(params: any) {
 
 export function verifySignUp(params: any, type: string) {
   const bodyFormData = new FormData();
-  bodyFormData.append('id', params.id);
   bodyFormData.append('username', params.username);
   bodyFormData.append('email', params.email);
   bodyFormData.append('password', params.password);

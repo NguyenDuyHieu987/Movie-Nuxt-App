@@ -58,7 +58,10 @@
         v-show="store.isLogin"
         class="home-section recommend"
       >
-        <h2 class="gradient-title-default">
+        <h2
+          v-show="loadingRecommend || recommends?.length"
+          class="gradient-title-default"
+        >
           <span>Gợi ý cho bạn</span>
         </h2>
 

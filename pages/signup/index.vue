@@ -350,13 +350,11 @@ const handleSignUp = async (e: any) => {
   }
 
   loadingSignUp.value = true;
-  formSignup.id = Date.now();
   formSignup.avatar = `${Math.floor(Math.random() * 10) + 1}`;
   internalInstance.appContext.config.globalProperties.$Progress.start();
 
   verifySignUp(
     {
-      id: formSignup.id,
       username: formSignup.username,
       email: formSignup.email,
       // password: utils.encryptPassword(formSignup.password),
@@ -428,7 +426,6 @@ const handleResendVerifyEmail = () => {
 
   verifySignUp(
     {
-      id: formSignup.id,
       username: formSignup.username,
       email: formSignup.email,
       // password: utils.encryptPassword(formSignup.password),
