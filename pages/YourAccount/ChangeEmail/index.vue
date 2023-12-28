@@ -1,7 +1,7 @@
 <template>
   <div class="service-page change-email padding-content">
     <div class="change-page">
-      <div v-if="!store.loadingUser">
+      <div v-if="!authStore.loadingUser">
         <div
           v-if="isLogin"
           class="change-email-container"
@@ -208,7 +208,6 @@ definePageMeta({
   // }
 });
 
-const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
 const { isLogin } = storeToRefs<any>(authStore);

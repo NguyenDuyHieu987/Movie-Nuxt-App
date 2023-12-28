@@ -177,13 +177,13 @@ body:has(
 
 .fade-enter-active,
 .fade-leave-active {
-  transition-duration: 0.4s;
+  transition-duration: 0.3s;
   transition-property: filter, opacity;
 }
 
 .fade-enter-active {
   transition-timing-function: ease-in;
-  transition-duration: 0.4s;
+  transition-duration: 0.3s;
 }
 
 .fade-leave-active {
