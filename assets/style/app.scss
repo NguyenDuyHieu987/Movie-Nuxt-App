@@ -197,14 +197,30 @@ body:has(
   filter: blur(1rem);
 }
 
+// .slide-left-enter-active,
+// .slide-left-leave-active,
+// .slide-right-enter-active,
+// .slide-right-leave-active,
+// .slide-top-enter-active,
+// .slide-top-leave-active,
+// .slide-bottom-enter-active,
+// .slide-bottom-leave-active {
+//   transition: all 0.2s;
+// }
+
 .slide-left-enter-active,
-.slide-left-leave-active,
 .slide-right-enter-active,
-.slide-right-leave-active,
 .slide-top-enter-active,
+.slide-bottom-enter-active {
+  transition-timing-function: ease-in;
+  transition: all 0.4s;
+}
+
+.slide-left-leave-active,
+.slide-right-leave-active,
 .slide-top-leave-active,
-.slide-bottom-enter-active,
 .slide-bottom-leave-active {
+  transition-timing-function: ease-out;
   transition: all 0.2s;
 }
 
