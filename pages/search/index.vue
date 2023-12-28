@@ -84,6 +84,12 @@ import { MovieCardHorizontal } from '~/components/MovieCard';
 import { addRankSearch } from '~/services/ranks';
 import { addSearch, addSearchHistory, getDaTaSearch } from '~/services/search';
 
+definePageMeta({
+  pageTransition: {
+    name: 'fade'
+  }
+});
+
 const store = useStore();
 const authStore = useAuthStore();
 const route = useRoute();

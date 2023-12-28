@@ -72,6 +72,12 @@ import { MovieCardHorizontal } from '~/components/MovieCard';
 import { getCountryByShortName } from '~/services/country';
 import { FilterMovie, getMovieByCountry } from '~/services/discover';
 
+definePageMeta({
+  pageTransition: {
+    name: 'fade'
+  }
+});
+
 const route = useRoute();
 const router = useRouter();
 const store = useStore();

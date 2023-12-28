@@ -416,6 +416,12 @@ import { getItemList } from '~/services/list';
 import { getMovieById } from '~/services/movie';
 import { getRating } from '~/services/rating';
 
+definePageMeta({
+  pageTransition: {
+    name: 'fade'
+  }
+});
+
 const nuxtApp = useNuxtApp();
 const store = useStore();
 const authStore = useAuthStore();

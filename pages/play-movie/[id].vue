@@ -301,6 +301,12 @@ import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 import { UpdateView } from '~/services/updateView';
 
+definePageMeta({
+  pageTransition: {
+    name: 'fade'
+  }
+});
+
 const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();

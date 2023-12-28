@@ -269,10 +269,10 @@ useSeoMeta({
   ogLocale: 'vi'
 });
 
-onBeforeMount(() => {
-  setTimeout(() => {
-    showAnimation.value = true;
-  });
+onBeforeMount(async () => {
+  await nextTick();
+
+  showAnimation.value = true;
 });
 
 const checkConfirmNewEmail = async (_rule: any, value: string) => {

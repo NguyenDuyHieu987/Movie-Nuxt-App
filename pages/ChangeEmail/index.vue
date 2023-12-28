@@ -150,10 +150,10 @@ await VerifyChangeEmail(chgEmailToken.value)
     });
   });
 
-onBeforeMount(() => {
-  setTimeout(() => {
-    showAnimation.value = true;
-  });
+onBeforeMount(async () => {
+  await nextTick();
+
+  showAnimation.value = true;
 });
 
 const handleSubmit = () => {

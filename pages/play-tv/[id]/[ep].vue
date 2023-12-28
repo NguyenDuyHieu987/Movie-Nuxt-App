@@ -319,6 +319,12 @@ import { getRating } from '~/services/rating';
 import { getTvById } from '~/services/tv';
 import { UpdateView } from '~/services/updateView';
 
+definePageMeta({
+  pageTransition: {
+    name: 'fade'
+  }
+});
+
 const utils = useUtils();
 const store = useStore();
 const authStore = useAuthStore();

@@ -219,10 +219,10 @@ useSeoMeta({
   ogLocale: 'vi'
 });
 
-onBeforeMount(() => {
-  setTimeout(() => {
-    showAnimation.value = true;
-  });
+onBeforeMount(async () => {
+  await nextTick();
+
+  showAnimation.value = true;
 });
 
 const checkNewPassword = async (_rule: any, value: string) => {

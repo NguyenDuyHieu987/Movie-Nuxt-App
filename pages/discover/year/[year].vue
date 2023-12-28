@@ -69,6 +69,12 @@ import { LoadingSpinner } from '~/components/Loading';
 import { MovieCardHorizontal } from '~/components/MovieCard';
 import { FilterMovie, getMoviesByYear } from '~/services/discover';
 
+definePageMeta({
+  pageTransition: {
+    name: 'fade'
+  }
+});
+
 const route = useRoute();
 const router = useRouter();
 const store = useStore();

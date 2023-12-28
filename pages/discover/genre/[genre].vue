@@ -70,6 +70,12 @@ import { MovieCardHorizontal } from '~/components/MovieCard';
 import { FilterMovie, getMoviesByGenres } from '~/services/discover';
 import { getGenreByShortName } from '~/services/genres';
 
+definePageMeta({
+  pageTransition: {
+    name: 'fade'
+  }
+});
+
 const route = useRoute();
 const router = useRouter();
 const store = useStore();

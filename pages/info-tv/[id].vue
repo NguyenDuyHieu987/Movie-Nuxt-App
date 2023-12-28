@@ -421,6 +421,12 @@ import { getItemList } from '~/services/list';
 import { getRating } from '~/services/rating';
 import { getTvById } from '~/services/tv';
 
+definePageMeta({
+  pageTransition: {
+    name: 'fade'
+  }
+});
+
 const nuxtApp = useNuxtApp();
 const store = useStore();
 const authStore = useAuthStore();

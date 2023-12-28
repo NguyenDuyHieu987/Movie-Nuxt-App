@@ -56,6 +56,12 @@ import { LoadingSpinner } from '~/components/Loading';
 import { MovieCardHorizontal, MovieCardVertical } from '~/components/MovieCard';
 import { FilterTvSlug } from '~/services/TvSlug';
 
+definePageMeta({
+  pageTransition: {
+    name: 'fade'
+  }
+});
+
 const store = useStore();
 const route = useRoute();
 const router = useRouter();
