@@ -193,8 +193,13 @@ body:has(
 
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0.5;
-  filter: blur(0.5rem);
+  opacity: 0.6;
+  filter: blur(0.4rem);
+}
+
+.fade-leave-to {
+  opacity: 0.9;
+  filter: blur(0.1rem);
 }
 
 .slide-left-enter-active,
