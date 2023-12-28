@@ -51,8 +51,8 @@ import { storeToRefs } from 'pinia';
 
 import { getImage } from '~/services/image';
 
-const store = useStore();
-const { isLogin } = storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { isLogin } = storeToRefs<any>(authStore);
 const route = useRoute();
 
 onMounted(() => {});

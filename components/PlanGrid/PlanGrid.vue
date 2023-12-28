@@ -203,7 +203,7 @@ const emits = defineEmits<{
   onSelectPlan: [selected: plan];
 }>();
 
-const store = useStore();
+const authStore = useAuthStore();
 // const plans = ref<plan[]>([]);
 const loading = ref<boolean>(false);
 const selected = ref<string>('');
@@ -253,8 +253,8 @@ const handleClickPlanOpiton = (plan: plan) => {
 };
 
 const handleDBClickPlanOpiton = (plan: plan) => {
-  if (!store?.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
 

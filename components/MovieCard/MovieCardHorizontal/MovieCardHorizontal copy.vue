@@ -115,7 +115,7 @@ const props = defineProps<{
   type: string | undefined;
 }>();
 
-const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const router = useRouter();
 const dataMovie = ref<any>({});
@@ -156,7 +156,7 @@ const getData = async () => {
     }
   }
 
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     }

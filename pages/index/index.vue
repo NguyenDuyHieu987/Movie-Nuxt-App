@@ -55,7 +55,7 @@
       </section>
 
       <section
-        v-show="store.isLogin"
+        v-show="authStore.isLogin"
         class="home-section recommend"
       >
         <h2
@@ -450,7 +450,7 @@ useSeoMeta({
   ogLocale: 'vi'
 });
 
-const store = useStore();
+const authStore = useAuthStore();
 // const trendings = ref<any[]>([]);
 const nowPlayings = ref<any>([]);
 const upComings = ref<any>([]);

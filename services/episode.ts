@@ -1,7 +1,9 @@
 import { makeRequest } from './makeRequest';
 
+const PREFIX_ROUTE = 'episode';
+
 export function getListEpisode(movieId: string, seasonId: string) {
-  return makeRequest(`/episode/list/${movieId}/${seasonId}`);
+  return makeRequest(`/${PREFIX_ROUTE}/list/${movieId}/${seasonId}`);
 }
 
 export function getEpisode(
@@ -9,5 +11,7 @@ export function getEpisode(
   seasonId: string,
   episodeNumber: number
 ) {
-  return makeRequest(`/episode/get/${movieId}/${seasonId}/${episodeNumber}`);
+  return makeRequest(
+    `/${PREFIX_ROUTE}/get/${movieId}/${seasonId}/${episodeNumber}`
+  );
 }

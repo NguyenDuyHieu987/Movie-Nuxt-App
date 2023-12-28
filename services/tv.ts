@@ -1,16 +1,18 @@
 import { makeRequest } from './makeRequest';
 
+const PREFIX_ROUTE = 'tv';
+
 export function getTvById(
   movieId: number | string,
   append_to_response: string = ''
 ) {
   return makeRequest(
-    `/tv/detail/${movieId}?append_to_response=${append_to_response}`
+    `/${PREFIX_ROUTE}/detail/${movieId}?append_to_response=${append_to_response}`
   );
 }
 
 export function UpdateViewTv(movieId: number | string) {
-  return makeRequest(`/tv/updateview/${movieId}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/updateview/${movieId}`, {
     method: 'POST'
   });
 }

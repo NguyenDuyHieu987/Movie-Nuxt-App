@@ -1,6 +1,8 @@
 import axios, { type AxiosRequestConfig } from 'axios';
 import { makeRequest } from './makeRequest';
 
+const PREFIX_ROUTE = 'videos';
+
 export async function makeVideoRequest(
   url: string,
   options: AxiosRequestConfig = {}
@@ -23,10 +25,6 @@ export async function makeVideoRequest(
     );
 }
 
-export function getVideos(id: string) {
-  return makeRequest(`/videos/${id}`);
-}
-
 export function getVideo(
   path: string,
   startByte: number = 0,
@@ -39,4 +37,8 @@ export function getVideo(
     },
     responseType: 'arraybuffer'
   });
+}
+
+export function getVideos(id: string) {
+  return makeRequest(`/${PREFIX_ROUTE}/${id}`);
 }

@@ -80,11 +80,11 @@
 import { storeToRefs } from 'pinia';
 
 const utils = useUtils();
-const store = useStore();
-const { isLogin, userAccount, role } = storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { isLogin, userAccount, role } = storeToRefs<any>(authStore);
 
 const handleLogout = () => {
-  store.logOut();
+  authStore.logOut();
 };
 </script>
 

@@ -65,7 +65,7 @@ definePageMeta({
   // }
 });
 
-const store = useStore();
+const authStore = useAuthStore();
 const selectedPlan = ref<plan>();
 const showAnimation = ref<boolean>(false);
 
@@ -95,8 +95,8 @@ const handleOnSelectPlan = (plan: plan) => {
 };
 
 const onRouteToPaymentPage = () => {
-  if (!store?.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore?.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
 

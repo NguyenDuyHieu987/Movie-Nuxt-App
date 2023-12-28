@@ -3,8 +3,10 @@ import { makeRequest } from './makeRequest';
 import ALLCOUNTRIES from '@/constants/data/Country.json';
 import type { country } from '~/types';
 
+const PREFIX_ROUTE = 'country';
+
 export function getAllCountry() {
-  return makeRequest('/country/all');
+  return makeRequest(`/${PREFIX_ROUTE}/get-all`);
 }
 
 export function getCountryVietSub(

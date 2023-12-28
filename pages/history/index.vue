@@ -1,8 +1,8 @@
 <template>
   <div class="history-page">
-    <div v-if="!store.loadingUser">
+    <div v-if="!authStore.loadingUser">
       <div
-        v-if="store.isLogin"
+        v-if="authStore.isLogin"
         class="history-container"
       >
         <div v-if="!loading">
@@ -144,8 +144,9 @@ definePageMeta({
 });
 
 const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin } = storeToRefs<any>(store);
+const { isLogin } = storeToRefs<any>(authStore);
 const route = useRoute();
 const valueInput = ref<string>('');
 const debounce = ref<any>();

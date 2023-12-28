@@ -2,24 +2,26 @@ import { makeRequest } from './makeRequest';
 
 import type { formfilter } from '~/types';
 
+const PREFIX_ROUTE = 'tv';
+
 export function getTvs(page: number = 1) {
-  return makeRequest(`/tv/all?page=${page}`);
+  return makeRequest(`/${PREFIX_ROUTE}/all?page=${page}`);
 }
 
 export function getTvAiringToday(page: number = 1) {
-  return makeRequest(`/tv/airingtoday?page=${page}`);
+  return makeRequest(`/${PREFIX_ROUTE}/airingtoday?page=${page}`);
 }
 
 export function getTvOntheAir(page: number = 1) {
-  return makeRequest(`/tv/ontheair?page=${page}`);
+  return makeRequest(`/${PREFIX_ROUTE}/ontheair?page=${page}`);
 }
 
 export function getTvPopular(page: number = 1) {
-  return makeRequest(`/tv/popular?page=${page}`);
+  return makeRequest(`/${PREFIX_ROUTE}/popular?page=${page}`);
 }
 
 export function getTvTopRated(page: number = 1) {
-  return makeRequest(`/tv/toprated?page=${page}`);
+  return makeRequest(`/${PREFIX_ROUTE}/toprated?page=${page}`);
 }
 
 export function FilterTvSlug(formFilter: formfilter) {
@@ -40,9 +42,9 @@ export function FilterTvSlug(formFilter: formfilter) {
 
   return /^\d+$/.test(formFilter.year) || formFilter.year == ''
     ? makeRequest(
-        `/tv/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_gte=${yearGte}&primary_release_date_lte=${yearLte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
+        `/${PREFIX_ROUTE}/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_gte=${yearGte}&primary_release_date_lte=${yearLte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
       )
     : makeRequest(
-        `/tv/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_lte=${yearGte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
+        `/${PREFIX_ROUTE}/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_lte=${yearGte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
       );
 }

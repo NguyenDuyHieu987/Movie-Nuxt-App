@@ -129,7 +129,7 @@
                 v-model:loadingResend="loadingResend"
                 v-model:disabled_countdown="disabled_countdown"
                 v-model:loadingVerify="loadingVerify"
-                :email="store.userAccount?.email"
+                :email="authStore.userAccount?.email"
                 :token="chgPwdToken"
                 @on-verify="handleVerify"
                 @on-resend="handleResendVerifyEmail"
@@ -140,7 +140,7 @@
 
                   <p>
                     {{ titleVerify }}
-                    <strong> {{ store.userAccount?.email }}</strong>
+                    <strong> {{ authStore.userAccount?.email }}</strong>
                   </p>
                 </template>
               </VerifyPinOTPForm>
@@ -172,7 +172,8 @@ definePageMeta({
 
 const store = useStore();
 const utils = useUtils();
-const { isLogin } = storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { isLogin } = storeToRefs<any>(authStore);
 const loadingChangePassword = ref<boolean>(false);
 const formChangePassword = reactive<{
   oldPassword: string;
@@ -315,7 +316,7 @@ const handleSubmit = async () => {
       if (response?.isSended === true) {
         ElNotification.success({
           title: MESSAGE.STATUS.SUCCESS,
-          message: `Mã xác nhận đã được gửi đến đến Email: ${store.userAccount?.email}.`,
+          message: `Mã xác nhận đã được gửi đến đến Email: ${authStore.userAccount?.email}.`,
           duration: MESSAGE.DURATION.SLOW
         });
 
@@ -445,7 +446,7 @@ const handleResendVerifyEmail = () => {
       if (response?.isSended === true) {
         ElNotification.success({
           title: MESSAGE.STATUS.SUCCESS,
-          message: `Mã xác nhận đã được gửi đến đến Email: ${store.userAccount?.email}.`,
+          message: `Mã xác nhận đã được gửi đến đến Email: ${authStore.userAccount?.email}.`,
           duration: MESSAGE.DURATION.SLOW
         });
 

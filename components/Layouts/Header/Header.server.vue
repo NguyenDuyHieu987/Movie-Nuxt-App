@@ -7,7 +7,7 @@
       <div class="left-header">
         <button
           class="menu-btn mobile"
-          @click="store.setOpendrawer()"
+          @click="store.toogleDrawer()"
         >
           <MenuOutlined />
         </button>
@@ -160,7 +160,8 @@ import {
 } from '~/services/search';
 
 const store = useStore();
-const { isLogin, loadingUser } = storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { isLogin, loadingUser } = storeToRefs<any>(authStore);
 const router = useRouter();
 const route = useRoute();
 const dataSearch = ref<any[]>([]);
@@ -179,7 +180,7 @@ const valueInput = ref<string>(route.query?.q);
 const isFocusSearchInput = ref<boolean>(false);
 
 const getData = async () => {
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     loadingSearchHistory.value = true;
 
     await getDaTaSearchHistory(1, 10)
@@ -266,7 +267,7 @@ const handleChangeInput = (query: string) => {
 
     clearTimeout(debounce.value);
     debounce.value = setTimeout(async () => {
-      if (store.isLogin) {
+      if (authStore.isLogin) {
         await getDaTaSearchInHistory(query, 1, 10)
           .then((response) => {
             dataSearchInHistory.value = response?.results;

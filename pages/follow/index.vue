@@ -1,8 +1,8 @@
 <template>
   <div class="follow-page">
-    <div v-if="!store.loadingUser">
+    <div v-if="!authStore.loadingUser">
       <div
-        v-if="store.isLogin"
+        v-if="authStore.isLogin"
         class="follow-container"
       >
         <div v-if="!loading">
@@ -146,8 +146,9 @@ definePageMeta({
 });
 
 const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin } = storeToRefs<any>(store);
+const { isLogin } = storeToRefs<any>(authStore);
 const route = useRoute();
 const dataList = ref<any[]>([]);
 const valueInput = ref<string>('');

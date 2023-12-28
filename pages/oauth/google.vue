@@ -186,7 +186,7 @@ definePageMeta({
 });
 
 const utils = useUtils();
-const store = useStore();
+const authStore = useAuthStore();
 const route = useRoute();
 const router = useRouter();
 const loading = ref<boolean>(false);
@@ -215,7 +215,8 @@ onBeforeMount(() => {
           duration: MESSAGE.DURATION.DEFAULT
         });
 
-        store.userAccount = response?.result;
+        authStore.userAccount = response?.result;
+
         utils.localStorage.setWithExpiry(
           TOKEN.NAME.USER_TOKEN,
           response.headers.get('Authorization'),
@@ -224,7 +225,8 @@ onBeforeMount(() => {
         navigateTo({ path: '/' });
         // navigateTo({ path: urlBack.value });
       } else if (response.isLogin == true) {
-        store.userAccount = response?.result;
+        authStore.userAccount = response?.result;
+
         utils.localStorage.setWithExpiry(
           TOKEN.NAME.USER_TOKEN,
           response.headers.get('Authorization'),

@@ -84,7 +84,7 @@ definePageMeta({
   }
 });
 
-const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const route = useRoute();
 const loadingChangeEmail = ref<boolean>(false);
@@ -105,7 +105,7 @@ const disabled = computed<boolean>((): boolean => {
     /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
       formChangeEmail.newEmail
     ) &&
-    formChangeEmail.newEmail != store.userAccount?.email
+    formChangeEmail.newEmail != authStore.userAccount?.email
   );
 });
 const internalInstance: any = getCurrentInstance();
@@ -177,7 +177,7 @@ const handleSubmit = () => {
 
         isDisabledForm.value = true;
 
-        store.userAccount!.email = formChangeEmail.newEmail;
+        authStore.userAccount!.email = formChangeEmail.newEmail;
 
         utils.localStorage.setWithExpiry(
           TOKEN.NAME.USER_TOKEN,

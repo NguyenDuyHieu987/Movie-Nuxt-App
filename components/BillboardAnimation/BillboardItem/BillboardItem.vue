@@ -261,7 +261,7 @@ import { getItemList } from '~/services/list';
 const props = defineProps<{
   item: any;
 }>();
-const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const isAddToList = ref<boolean>(false);
 const windowWidth = ref<number>(1200);
@@ -270,9 +270,9 @@ onBeforeMount(async () => {
   windowWidth.value = window.innerWidth;
 });
 
-if (store.isLogin) {
+if (authStore.isLogin) {
   //  useAsyncData(
-  //   `itemlist/${store?.userAccount?.id}/${props.item?.id}`,
+  //   `itemlist/${authStore.userAccount?.id}/${props.item?.id}`,
   //   () => getItemList(props.item?.id, props.item?.media_type)
   // )
   getItemList(props.item?.id, props.item?.media_type)
@@ -285,8 +285,8 @@ if (store.isLogin) {
 }
 
 const handleAddToList = () => {
-  if (!store?.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
 

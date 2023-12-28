@@ -1,23 +1,29 @@
 import { makeRequest } from './makeRequest';
 
+const PREFIX_ROUTE = 'list';
+
 export function getList(
   type: string = 'all',
   skip: number = 1,
   limit: number = 20
 ) {
-  const store = useStore();
+  const authStore = useAuthStore();
 
-  if (!store.isLogin) return new Promise(() => {});
+  if (!authStore.isLogin) return new Promise(() => {});
 
-  return makeRequest(`/list/get-all/${type}?skip=${skip}&limit=${limit}`);
+  return makeRequest(
+    `/${PREFIX_ROUTE}/get-all/${type}?skip=${skip}&limit=${limit}`
+  );
 }
 
 export function searchList(query: string, type: string = 'all') {
-  return makeRequest(`/list/search/${type}?query=${query}`);
+  return makeRequest(`/${PREFIX_ROUTE}/search/${type}?query=${query}`);
 }
 
 export function getItemList(movieId: string, media_type: string) {
-  return makeRequest(`/list/get/${media_type}/${movieId}?api=hieu987`);
+  return makeRequest(
+    `/${PREFIX_ROUTE}/get/${media_type}/${movieId}?api=hieu987`
+  );
 }
 
 export function addItemList(params: { movie_id: string; media_type: string }) {
@@ -25,7 +31,7 @@ export function addItemList(params: { movie_id: string; media_type: string }) {
   bodyFormData.append('movie_id', params.movie_id);
   bodyFormData.append('media_type', params.media_type);
 
-  return makeRequest('/list/add', {
+  return makeRequest(`/${PREFIX_ROUTE}/add`, {
     method: 'POST',
     data: bodyFormData
   });
@@ -41,14 +47,14 @@ export function removeItemList(params: {
   bodyFormData.append('movie_id', params.movie_id);
   bodyFormData.append('media_type', params.media_type);
 
-  return makeRequest('/list/remove', {
+  return makeRequest(`/${PREFIX_ROUTE}/remove`, {
     method: 'DELETE',
     data: bodyFormData
   });
 }
 
 export function removeAllItemList() {
-  return makeRequest('/list/clear', {
+  return makeRequest(`/${PREFIX_ROUTE}/clear`, {
     method: 'DELETE'
   });
 }

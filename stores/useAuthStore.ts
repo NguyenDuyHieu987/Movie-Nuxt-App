@@ -9,12 +9,8 @@ export const useAuthStore = defineStore('auth', () => {
   const userAccount = ref<user>(null);
   const role = computed<string>(() => userAccount.value?.role || 'normal');
   const isLogin = computed<boolean>(() => !!userAccount.value);
-  const openRequireAuthDialog = ref<boolean>(false);
+  const isOpenRequireAuthDialog = ref<boolean>(false);
   const loadingUser = ref<boolean>(true);
-
-  const setCloseRequireAuthDialog = () => {
-    openRequireAuthDialog.value = false;
-  };
 
   const utils = useUtils();
   const store = useStore();
@@ -101,9 +97,8 @@ export const useAuthStore = defineStore('auth', () => {
     userAccount,
     isLogin,
     role,
-    openRequireAuthDialog,
+    isOpenRequireAuthDialog,
     loadingUser,
-    setCloseRequireAuthDialog,
     loadUser,
     logOut
   };

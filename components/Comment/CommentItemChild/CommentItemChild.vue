@@ -197,8 +197,8 @@ const emits = defineEmits<{
 }>();
 
 const utils = useUtils();
-const store = useStore();
-const { userAccount } = storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { userAccount } = storeToRefs<any>(authStore);
 const commentItemChild = ref<HTMLElement>();
 const listReplies = defineModel<any[]>('listReplies');
 const isShowFormComment = ref<boolean>(false);

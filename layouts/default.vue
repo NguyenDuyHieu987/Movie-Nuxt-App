@@ -53,8 +53,10 @@ import {
 } from '~/components/Layouts';
 
 const store = useStore();
+const authStore = useAuthStore();
+const { collapsed, openSiderBarFixed } = storeToRefs(store);
+const { isLogin } = storeToRefs(authStore);
 const router = useRouter();
-const { collapsed, isLogin, openSiderBarFixed } = storeToRefs(store);
 
 // let promise = Promise.resolve();
 

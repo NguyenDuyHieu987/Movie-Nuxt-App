@@ -205,7 +205,7 @@ const props = defineProps<{
 
 const nuxtConfig = useRuntimeConfig();
 const utils = useUtils();
-const store = useStore();
+const authStore = useAuthStore();
 const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
@@ -243,7 +243,7 @@ const getData = async () => {
       break;
   }
 
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     } else {
@@ -282,8 +282,8 @@ const getData = async () => {
 getData();
 
 const handleAddToList = (e: any) => {
-  if (!store?.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore?.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
   if (!isAddToList.value) {

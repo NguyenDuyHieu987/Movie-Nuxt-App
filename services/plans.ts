@@ -2,8 +2,10 @@ import { makeRequest } from './makeRequest';
 
 import type { plan } from '@/types';
 
+const PREFIX_ROUTE = 'plan';
+
 export function getAllPlan() {
-  return makeRequest('/plan/get');
+  return makeRequest(`/${PREFIX_ROUTE}/get-all`);
 }
 
 export function registerPlan(
@@ -13,7 +15,7 @@ export function registerPlan(
   const bodyFormData = new FormData();
   bodyFormData.append('method', payment_method);
 
-  return makeRequest(`/plan/register/${id}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/register/${id}`, {
     method: 'POST',
     data: bodyFormData
   });

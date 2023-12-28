@@ -1,9 +1,9 @@
 <template>
   <div class="service-page payment padding-content">
     <div class="center-page">
-      <div v-if="!store.loadingUser">
+      <div v-if="!authStore.loadingUser">
         <div
-          v-if="store.isLogin"
+          v-if="authStore.isLogin"
           class="payment-container"
         >
           <Transition
@@ -217,6 +217,7 @@ definePageMeta({
 });
 
 const store = useStore();
+const authStore = useAuthStore();
 const route = useRoute();
 const planSelected = ref<plan>();
 const showAnimation = ref<boolean>(false);

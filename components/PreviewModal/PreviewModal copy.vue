@@ -433,6 +433,7 @@ const emit = defineEmits<{ setIsTeleportModal: [data: boolean] }>();
 
 const nuxtConfig = useRuntimeConfig();
 const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const dataMovie = ref<any>(props.dataMovie || {});
 // const isEpisodes = ref<boolean>(false);
@@ -737,7 +738,7 @@ watch(isTeleport, async () => {
           });
       }
 
-      if (store.isLogin) {
+      if (authStore.isLogin) {
         if (dataMovie.value?.in_list) {
           isAddToList.value = true;
         }
@@ -748,7 +749,7 @@ watch(isTeleport, async () => {
         }
       }
     } else {
-      if (store.isLogin) {
+      if (authStore.isLogin) {
         if (dataMovie.value?.in_list) {
           isAddToList.value = true;
         }
@@ -781,8 +782,8 @@ const onClickPreviewModal = (e: any) => {
 };
 
 const handleAddToList = (e: any) => {
-  if (!store?.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore?.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
 

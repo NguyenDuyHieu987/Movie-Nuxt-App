@@ -423,6 +423,7 @@ import { getTvById } from '~/services/tv';
 
 const nuxtApp = useNuxtApp();
 const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const route = useRoute();
 const router = useRouter();
@@ -481,7 +482,7 @@ const getData = async () => {
       loading.value = false;
     });
 
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     isAddToList.value = dataMovie.value?.in_list == true;
 
     if (dataMovie.value?.history_progress) {
@@ -522,7 +523,7 @@ if (dataMovie.value?.history_progress) {
 
 ratedValue.value = dataMovie.value?.rated_value;
 
-if (store.isLogin) {
+if (authStore.isLogin) {
   if (!isAddToList.value) {
     getItemList(movieId.value, 'tv')
       .then((response) => {
@@ -578,8 +579,8 @@ useSeoMeta({
 });
 
 const handleAddToList = () => {
-  if (!store?.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore?.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
   if (!isAddToList.value) {

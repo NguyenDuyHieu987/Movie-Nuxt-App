@@ -64,7 +64,7 @@ const props = defineProps<{
   ratedValue: number | undefined;
 }>();
 
-const store = useStore();
+const authStore = useAuthStore();
 const disabledRate = ref<boolean>(!!props.ratedValue);
 const myRate = ref<number>(props.ratedValue || props.dataMovie?.vote_average);
 const vote_Average = ref<number>(props.dataMovie?.vote_average);
@@ -91,8 +91,8 @@ watchEffect(() => {
 });
 
 const handleRating = (value: number) => {
-  if (!store.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
 

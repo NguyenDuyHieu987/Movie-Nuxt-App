@@ -240,8 +240,9 @@ definePageMeta({
 });
 
 const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin, userAccount } = storeToRefs<any>(store);
+const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const breakPoints = useBreakpoints({
   responesive: 650
 });
@@ -252,7 +253,7 @@ const loadingEditRowItem = ref<boolean>(false);
 const responesive = breakPoints.smallerOrEqual('responesive');
 
 const joinSince = computed<string>(() =>
-  utils.dateTimeFormater.format(store.userAccount?.created_at!, 'LLL')
+  utils.dateTimeFormater.format(authStore.userAccount?.created_at!, 'LLL')
 );
 
 useHead({
@@ -290,7 +291,7 @@ const deleteAccount = () => {
 };
 
 const handleLogout = () => {
-  store.logOut();
+  authStore.logOut();
 };
 
 const handleClickEditRowItem = (e: any) => {
@@ -328,7 +329,7 @@ const handleClickSaveRowItem = (e: any) => {
       duration: MESSAGE.DURATION.DEFAULT
     });
 
-    rowItemLabel!.innerText = store.userAccount!.full_name;
+    rowItemLabel!.innerText = authStore.userAccount!.full_name;
 
     isFullNameditable.value = false;
     rowItemLabel?.setAttribute('contenteditable', 'false');
@@ -336,7 +337,7 @@ const handleClickSaveRowItem = (e: any) => {
     return;
   }
 
-  if (newFullName == store.userAccount!.full_name) {
+  if (newFullName == authStore.userAccount!.full_name) {
     isFullNameditable.value = false;
     rowItemLabel?.setAttribute('contenteditable', 'false');
     rowItemLabel!.innerText = newFullName;
@@ -358,7 +359,7 @@ const handleClickSaveRowItem = (e: any) => {
 
         rowItemLabel!.innerText = newFullName;
 
-        store.userAccount!.full_name = newFullName;
+        authStore.userAccount!.full_name = newFullName;
 
         utils.localStorage.setWithExpiry(
           TOKEN.NAME.USER_TOKEN,
@@ -366,7 +367,7 @@ const handleClickSaveRowItem = (e: any) => {
           TOKEN.OFFSET.USER_TOKEN
         );
       } else {
-        rowItemLabel!.innerText = store.userAccount!.full_name;
+        rowItemLabel!.innerText = authStore.userAccount!.full_name;
 
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,
@@ -376,7 +377,7 @@ const handleClickSaveRowItem = (e: any) => {
       }
     })
     .catch((e) => {
-      rowItemLabel!.innerText = store.userAccount!.full_name;
+      rowItemLabel!.innerText = authStore.userAccount!.full_name;
 
       ElNotification.error({
         title: MESSAGE.STATUS.BROKE,

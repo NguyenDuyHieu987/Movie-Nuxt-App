@@ -4,7 +4,7 @@
       <div class="left-header">
         <button
           class="menu-btn"
-          @click="store.setOpendrawer()"
+          @click="store.toogleDrawer()"
         >
           <MenuOutlined />
         </button>
@@ -69,14 +69,15 @@ import { DropdownAccount, Notification } from '~/components/Layouts/Header';
 import { getImage } from '~/services/image';
 
 const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin, loadingUser } = storeToRefs<any>(store);
+const { isLogin, loadingUser } = storeToRefs<any>(authStore);
 
 onMounted(() => {});
 
 const handleLogout = () => {
   if (isLogin) {
-    store.logOut();
+    authStore.logOut();
   }
 };
 </script>

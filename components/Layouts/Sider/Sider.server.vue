@@ -114,8 +114,9 @@ import { TheMenu } from '~/components/Layouts';
 import { getImage } from '~/services/image';
 
 const store = useStore();
-const { collapsed, isLogin, userAccount, openSiderBarFixed } =
-  storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { collapsed, openSiderBarFixed } = storeToRefs<any>(store);
+const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const siderScrolled = ref<boolean>(false);
 
 const breakpoints = useBreakpoints({

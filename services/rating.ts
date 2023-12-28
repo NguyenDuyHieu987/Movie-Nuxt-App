@@ -1,7 +1,9 @@
 import { makeRequest } from './makeRequest';
 
+const PREFIX_ROUTE = 'rating';
+
 export function getRating(moveId: string, type: string) {
-  return makeRequest(`/rating/get/${type}/${moveId}`);
+  return makeRequest(`/${PREFIX_ROUTE}/get/${type}/${moveId}`);
 }
 
 export function rating(params: {
@@ -12,8 +14,11 @@ export function rating(params: {
   const bodyFormData = new FormData();
   bodyFormData.append('value', params.value.toString());
 
-  return makeRequest(`/rating/${params.media_type}/${params.movie_id}`, {
-    method: 'POST',
-    data: bodyFormData
-  });
+  return makeRequest(
+    `/${PREFIX_ROUTE}/${params.media_type}/${params.movie_id}`,
+    {
+      method: 'POST',
+      data: bodyFormData
+    }
+  );
 }

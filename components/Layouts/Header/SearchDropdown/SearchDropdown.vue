@@ -69,7 +69,7 @@
 
         <div
           v-if="
-            store.isLogin &&
+            authStore.isLogin &&
             store.dataSearchHistory?.length &&
             !isShowSearchResults
           "
@@ -184,6 +184,7 @@ const props = withDefaults(
 );
 
 const store = useStore();
+const authStore = useAuthStore();
 const route = useRoute();
 const dataSearch = defineModel<any[]>('dataSearch');
 const dataTopSearch = defineModel<any[]>('dataTopSearch');

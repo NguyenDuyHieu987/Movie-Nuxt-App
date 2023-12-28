@@ -2,6 +2,8 @@ import { makeRequest } from './makeRequest';
 
 import type { formfilterRank, rankSort } from '~/types';
 
+const PREFIX_ROUTE = 'ranks';
+
 export function getRanking(page: number = 1, limit: number = 10) {
   return makeRequest(
     `/discover/all?sort_by=views_desc&page=${page}&limit=${limit}`
@@ -10,7 +12,7 @@ export function getRanking(page: number = 1, limit: number = 10) {
 
 export function filterRanks(formfilterRank: formfilterRank) {
   return makeRequest(
-    `/ranks/filter/${formfilterRank.type}/${formfilterRank.sortBy}?media_type=${formfilterRank.mediaType}&with_genres=${formfilterRank.genre}&with_original_language=${formfilterRank.country}&page=${formfilterRank.page}&limit=${formfilterRank.limit}`
+    `/${PREFIX_ROUTE}/filter/${formfilterRank.type}/${formfilterRank.sortBy}?media_type=${formfilterRank.mediaType}&with_genres=${formfilterRank.genre}&with_original_language=${formfilterRank.country}&page=${formfilterRank.page}&limit=${formfilterRank.limit}`
   );
 }
 
@@ -19,7 +21,9 @@ export function getRankSearch(
   page: number = 1,
   limit: number = 10
 ) {
-  return makeRequest(`/ranks/hot-search/${sort}?page=${page}&limit=${limit}`);
+  return makeRequest(
+    `/${PREFIX_ROUTE}/hot-search/${sort}?page=${page}&limit=${limit}`
+  );
 }
 
 export function getRankPlay(
@@ -27,7 +31,9 @@ export function getRankPlay(
   page: number = 1,
   limit: number = 10
 ) {
-  return makeRequest(`/ranks/hot-play/${sort}?page=${page}&limit=${limit}`);
+  return makeRequest(
+    `/${PREFIX_ROUTE}/hot-play/${sort}?page=${page}&limit=${limit}`
+  );
 }
 
 export function getRankHighRate(
@@ -35,7 +41,9 @@ export function getRankHighRate(
   page: number = 1,
   limit: number = 10
 ) {
-  return makeRequest(`/ranks/high-rate/${sort}?page=${page}&limit=${limit}`);
+  return makeRequest(
+    `/${PREFIX_ROUTE}/high-rate/${sort}?page=${page}&limit=${limit}`
+  );
 }
 
 export function addRankPlay(params: { movie_id: string; media_type: string }) {
@@ -43,7 +51,7 @@ export function addRankPlay(params: { movie_id: string; media_type: string }) {
   bodyFormData.append('movie_id', params.movie_id);
   bodyFormData.append('media_type', params.media_type);
 
-  return makeRequest('/ranks/add-play', {
+  return makeRequest(`/${PREFIX_ROUTE}/add-play`, {
     method: 'POST',
     data: bodyFormData
   });
@@ -59,7 +67,7 @@ export function addRankSearch(params: {
   params?.media_type && bodyFormData.append('media_type', params.media_type!);
   bodyFormData.append('query', params.query);
 
-  return makeRequest('/ranks/add-search', {
+  return makeRequest(`/${PREFIX_ROUTE}/add-search`, {
     method: 'POST',
     data: bodyFormData
   });
@@ -75,7 +83,7 @@ export function addRankRate(params: {
   bodyFormData.append('media_type', params.media_type!);
   bodyFormData.append('rate_value', params.rate_value.toString());
 
-  return makeRequest('/ranks/add-rate', {
+  return makeRequest(`/${PREFIX_ROUTE}/add-rate`, {
     method: 'POST',
     data: bodyFormData
   });

@@ -7,7 +7,7 @@ export default defineStore('store', {
     return {
       collapsed: false,
       openDrawer: false,
-      openRequireAuthDialog: false,
+      isOpenRequireAuthDialog: false,
       isLogin: !!utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN),
       breadCrumbValue: '',
       role: 'normal',
@@ -25,14 +25,11 @@ export default defineStore('store', {
     isLogin: (state) => state.isLogin
   },
   actions: {
-    setCollapsed() {
+    toogleSidebar() {
       this.collapsed = !this.collapsed;
     },
-    setOpendrawer() {
+    toogleDrawer() {
       this.openDrawer = !this.openDrawer;
-    },
-    setCloseRequireAuthDialog() {
-      this.openRequireAuthDialog = false;
     }
   }
 });

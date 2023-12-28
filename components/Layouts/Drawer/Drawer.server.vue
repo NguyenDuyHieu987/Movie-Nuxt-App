@@ -16,7 +16,7 @@
         height="2.5rem"
         viewBox="0 0 24 24"
         fill="currentColor"
-        @click="store.setOpendrawer()"
+        @click="store.toogleDrawer()"
       >
         <path
           d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
@@ -71,7 +71,7 @@
         <div class="drawer-header">
           <svg
             class="close"
-            @click="store.setOpendrawer()"
+            @click="store.toogleDrawer()"
             xmlns="http://www.w3.org/2000/svg"
             width="2.5rem"
             height="2.5rem"
@@ -119,7 +119,9 @@ import { TheMenu } from '~/components/Layouts';
 import { getImage } from '~/services/image';
 
 const store = useStore();
-const { collapsed, isLogin, openDrawer, userAccount } = storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { collapsed, openDrawer } = storeToRefs<any>(store);
+const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const route = useRoute();
 const router = useRouter();
 

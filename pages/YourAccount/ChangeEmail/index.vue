@@ -82,7 +82,7 @@
                             d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5l8-5v10zm-8-7L4 6h16l-8 5z"
                           />
                         </svg>
-                        <span> {{ store.userAccount?.email }}</span>
+                        <span> {{ authStore.userAccount?.email }}</span>
                       </div>
 
                       <div class="right">
@@ -109,7 +109,7 @@
                 v-model:loadingResend="loadingResend"
                 v-model:disabled_countdown="disabled_countdown"
                 v-model:loadingVerify="loadingVerify"
-                :email="store.userAccount?.email"
+                :email="authStore.userAccount?.email"
                 :token="vrfEmailToken"
                 @on-verify="handleVerify"
                 @on-resend="handleResendVerifyEmail"
@@ -120,7 +120,7 @@
 
                   <p>
                     {{ titleVerify }}
-                    <strong> {{ store.userAccount?.email }}</strong>
+                    <strong> {{ authStore.userAccount?.email }}</strong>
                   </p>
                 </template>
               </VerifyPinOTPForm>
@@ -209,14 +209,15 @@ definePageMeta({
 });
 
 const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin } = storeToRefs<any>(store);
+const { isLogin } = storeToRefs<any>(authStore);
 const loadingVerifyEmail = ref<boolean>(false);
 const loadingChangeEmail = ref<boolean>(false);
 const formVerifyEmail = reactive<{
   email: string | undefined;
 }>({
-  email: store.userAccount?.email
+  email: authStore.userAccount?.email
 });
 const formChangeEmail = reactive<{
   newEmail: string;
@@ -249,7 +250,7 @@ const disabled = computed<boolean>((): boolean => {
     /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
       formChangeEmail.newEmail
     ) &&
-    formChangeEmail.newEmail != store.userAccount?.email
+    formChangeEmail.newEmail != authStore.userAccount?.email
   );
 });
 const internalInstance: any = getCurrentInstance();
@@ -276,7 +277,7 @@ onBeforeMount(() => {
 });
 
 const checkConfirmNewEmail = async (_rule: any, value: string) => {
-  if (value == store.userAccount?.email) {
+  if (value == authStore.userAccount?.email) {
     return Promise.reject(
       new Error('Email mới không được trùng với email cũ!')
     );
@@ -325,14 +326,14 @@ const handleSubmitVerifyEmail = async () => {
   loadingVerifyEmail.value = true;
   internalInstance.appContext.config.globalProperties.$Progress.start();
 
-  AccountConfirm({ email: store.userAccount?.email }, 'email')
+  AccountConfirm({ email: authStore.userAccount?.email }, 'email')
     .then((response) => {
       // console.log(response);
 
       if (response?.isSended === true) {
         ElNotification.success({
           title: MESSAGE.STATUS.SUCCESS,
-          message: `Mã xác nhận đã được gửi đến đến Email: ${store.userAccount?.email}.`,
+          message: `Mã xác nhận đã được gửi đến đến Email: ${authStore.userAccount?.email}.`,
           duration: MESSAGE.DURATION.SLOW
         });
 
@@ -430,14 +431,14 @@ const handleResendVerifyEmail = () => {
 
   loadingResend.value = true;
 
-  AccountConfirm({ email: store.userAccount?.email }, 'email')
+  AccountConfirm({ email: authStore.userAccount?.email }, 'email')
     .then((response) => {
       // console.log(response);
 
       if (response?.isSended === true) {
         ElNotification.success({
           title: MESSAGE.STATUS.SUCCESS,
-          message: `Mã xác nhận đã được gửi đến đến Email: ${store.userAccount?.email}.`,
+          message: `Mã xác nhận đã được gửi đến đến Email: ${authStore.userAccount?.email}.`,
           duration: MESSAGE.DURATION.SLOW
         });
 

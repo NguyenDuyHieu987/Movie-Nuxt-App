@@ -218,7 +218,7 @@ useSeoMeta({
 });
 
 const nuxtConfig = useRuntimeConfig();
-const store = useStore();
+const authStore = useAuthStore();
 const router: any = useRouter();
 const route = useRoute();
 const utils = useUtils();
@@ -299,7 +299,7 @@ const handleLogin = () => {
   })
     .then((response) => {
       if (response?.isLogin == true) {
-        store.userAccount = response?.result;
+        authStore.userAccount = response?.result;
 
         utils.localStorage.setWithExpiry(
           TOKEN.NAME.USER_TOKEN,
@@ -362,7 +362,7 @@ const handleClickFacebookLogin = async () => {
           message: 'Bạn đã đăng nhập bằng Facebook thành công tại Phimhay247.',
           duration: MESSAGE.DURATION.DEFAULT
         });
-        store.userAccount = response?.result;
+        authStore.userAccount = response?.result;
 
         utils.localStorage.setWithExpiry(
           TOKEN.NAME.USER_TOKEN,
@@ -372,7 +372,7 @@ const handleClickFacebookLogin = async () => {
         // navigateTo({ path: '/' });
         navigateTo({ path: urlBack.value });
       } else if (response.isLogin == true) {
-        store.userAccount = response?.result;
+        authStore.userAccount = response?.result;
 
         utils.localStorage.setWithExpiry(
           TOKEN.NAME.USER_TOKEN,
@@ -462,7 +462,7 @@ const handleGooglePopupCallback = (googleOauthResponse: any) => {
             message: 'Bạn đã đăng nhập bằng Google thành công tại Phimhay247.',
             duration: MESSAGE.DURATION.DEFAULT
           });
-          store.userAccount = response?.result;
+          authStore.userAccount = response?.result;
           utils.localStorage.setWithExpiry(
             TOKEN.NAME.USER_TOKEN,
             {
@@ -473,7 +473,7 @@ const handleGooglePopupCallback = (googleOauthResponse: any) => {
           // navigateTo({ path: '/' });
           navigateTo({ path: urlBack.value });
         } else if (response.isLogin == true) {
-          store.userAccount = response?.result;
+          authStore.userAccount = response?.result;
           utils.localStorage.setWithExpiry(
             TOKEN.NAME.USER_TOKEN,
             {

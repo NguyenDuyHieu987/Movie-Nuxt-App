@@ -6,6 +6,8 @@ import { makeRequest } from './makeRequest';
 const URL_API_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
 // const URL_API_IMAGE = 'https://res.cloudinary.com/dvbhjlrdf/image/upload';
 
+const PREFIX_ROUTE = 'images';
+
 export async function makeImageRequest(
   url: string,
   options: AxiosRequestConfig = {}
@@ -68,10 +70,10 @@ export function getPosterCast(path: string) {
   return `${TMDB_IMAGE_BASE_URL}/original${path}`;
 }
 
-export function getImages(id: string) {
-  return makeRequest(`/images/${id}`);
-}
-
 export function getColorImage(path: string) {
   return makeImageRequest(`/image/color/backdrop/${path}`);
+}
+
+export function getImages(id: string) {
+  return makeRequest(`/${PREFIX_ROUTE}/${id}`);
 }

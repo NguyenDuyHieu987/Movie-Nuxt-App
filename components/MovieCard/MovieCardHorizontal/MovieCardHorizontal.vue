@@ -139,7 +139,7 @@ const props = defineProps<{
 }>();
 
 const nuxtConfig = useRuntimeConfig();
-const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const router = useRouter();
 const dataMovie = ref<any>({});
@@ -208,7 +208,7 @@ const getData = async () => {
       break;
   }
 
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     }

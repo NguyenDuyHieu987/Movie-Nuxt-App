@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  const store = useStore();
+  const authStore = useAuthStore();
   const utils = useUtils();
 
   // to.matched.some((record: any) => {
@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   // });
 
   // if (utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)) {
-  //   store.isLogin = true;
+  //   authStore.isLogin = true;
   // } else {
   // }
 });

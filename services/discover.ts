@@ -6,6 +6,8 @@ import { makeRequest } from './makeRequest';
 import ALLCOUNTRIES from '@/constants/data/Country.json';
 import type { country, formfilter, genre, typeMovie, typeTv } from '@/types';
 
+const PREFIX_ROUTE = 'discover';
+
 export function FilterMovie(formFilter: formfilter) {
   const yearLte = formFilter.year != '' ? formFilter.year + '-12-30' : '';
   const yearGte =
@@ -24,10 +26,10 @@ export function FilterMovie(formFilter: formfilter) {
 
   return /^\d+$/.test(formFilter.year) || formFilter.year == ''
     ? makeRequest(
-        `/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_gte=${yearGte}&primary_release_date_lte=${yearLte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
+        `/${PREFIX_ROUTE}/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_gte=${yearGte}&primary_release_date_lte=${yearLte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
       )
     : makeRequest(
-        `/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_lte=${yearGte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
+        `/${PREFIX_ROUTE}/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_lte=${yearGte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
       );
 }
 
@@ -51,7 +53,7 @@ export function getMoviesByGenres(
   );
 
   return makeRequest(
-    `/discover/all?sort_by=${sort_by}&with_genres=${
+    `/${PREFIX_ROUTE}/all?sort_by=${sort_by}&with_genres=${
       genre!.id
     }&page=${page}&limit=${limit}`
   );
@@ -64,8 +66,8 @@ export function getMoviesByYear(
   limit: number = 20
 ) {
   const url = /^\d+$/.test(year)
-    ? `/discover/all?sort_by=${sort_by}&primary_release_date_gte=${year}-01-01&primary_release_date_lte=${year}-12-30&page=${page}&limit=${limit}`
-    : `/discover/all?sort_by=${sort_by}&primary_release_date_lte=${year.slice(
+    ? `/${PREFIX_ROUTE}/all?sort_by=${sort_by}&primary_release_date_gte=${year}-01-01&primary_release_date_lte=${year}-12-30&page=${page}&limit=${limit}`
+    : `/${PREFIX_ROUTE}/all?sort_by=${sort_by}&primary_release_date_lte=${year.slice(
         -4
       )}-01-01&page=${page}&limit=${limit}`;
 
@@ -84,7 +86,7 @@ export function getMovieByCountry(
   );
 
   return makeRequest(
-    `/discover/all?sort_by=${sort_by}&with_original_language=${
+    `/${PREFIX_ROUTE}/all?sort_by=${sort_by}&with_original_language=${
       country!.iso_639_1
     }&page=${page}&limit=${limit}`
   );

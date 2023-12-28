@@ -3,7 +3,7 @@
     <div class="left-header">
       <button
         class="menu-btn mobile"
-        @click="store.setOpendrawer()"
+        @click="store.toogleDrawer()"
       >
         <MenuOutlined />
       </button>
@@ -357,8 +357,8 @@ import { getDaTaSearch } from '~/services/search';
 
 const utils = useUtils();
 const store = useStore();
-const { openDrawer, collapsed, isLogin, userAccount, role } =
-  storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { isLogin, userAccount, role } = storeToRefs<any>(authStore);
 const router = useRouter();
 const route = useRoute();
 const dataSearch = ref<any[]>([]);
@@ -447,7 +447,7 @@ const handleSearch = (value: string) => {
 };
 
 const handleLogout = () => {
-  store.logOut();
+  authStore.logOut();
 };
 </script>
 

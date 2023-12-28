@@ -112,7 +112,7 @@
         <div class="user-info">
           <p>
             <strong>
-              {{ store.userAccount?.username }}
+              {{ authStore.userAccount?.username }}
             </strong>
           </p>
           <p class="count-video">
@@ -265,7 +265,7 @@ const props = defineProps<{
   deleteAll: () => void;
 }>();
 
-const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const topicColumn = ref();
 const valueSearch = defineModel<string>('valueInput');

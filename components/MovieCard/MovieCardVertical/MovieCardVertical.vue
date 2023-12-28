@@ -293,6 +293,7 @@ const props = defineProps<{
 }>();
 
 const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const router = useRouter();
 const dataMovie = ref<any>({});
@@ -341,7 +342,7 @@ const getData = async () => {
       break;
   }
 
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     } else {
@@ -419,8 +420,8 @@ const onMouseLeave = () => {
 };
 
 const handleAddToList = (e: any) => {
-  if (!store?.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore?.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
 

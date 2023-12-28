@@ -13,15 +13,11 @@ const breakpoints = useBreakpoints({
 export default defineStore('store', () => {
   const collapsed = breakpoints.smaller('desktop');
 
-  const userAccount = ref<user>(null);
-  const role = computed<string>(() => userAccount.value?.role || 'normal');
-  const isLogin = computed<boolean>(() => !!userAccount.value);
   // const collapsed = ref<boolean>(!largerThanDesktop.value);
   const openSiderBarFixed = ref<boolean>(false);
   const headerScrolled = ref<boolean>(false);
   const openDrawer = ref<boolean>(false);
   const modalVisible = ref<boolean>(false);
-  const openRequireAuthDialog = ref<boolean>(false);
   const breadCrumbValue = ref<string>('');
   const loadingApp = ref<boolean>(false);
   const loadingUser = ref<boolean>(true);
@@ -29,8 +25,6 @@ export default defineStore('store', () => {
   const allGenres = ref<genre[]>([]);
   const allCountries = ref<country[]>([]);
   const allYears = ref<year[]>([]);
-
-  const utils = useUtils();
 
   // watch(largerThanDesktop, () => {
   //   if (largerThanDesktop.value) {
@@ -40,16 +34,12 @@ export default defineStore('store', () => {
   //   }
   // });
 
-  const setCollapsed = () => {
+  const toogleSidebar = () => {
     collapsed.value = !collapsed.value;
   };
 
-  const setOpendrawer = () => {
+  const toogleDrawer = () => {
     openDrawer.value = !openDrawer.value;
-  };
-
-  const setCloseRequireAuthDialog = () => {
-    openRequireAuthDialog.value = false;
   };
 
   const loadingAppInstance = {
@@ -63,95 +53,13 @@ export default defineStore('store', () => {
     }
   };
 
-  const loadUser = async () => {
-    loadingUser.value = true;
-
-    if (
-      utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) != null ||
-      utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) != null
-    ) {
-      await getUserToken({
-        user_token: utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
-      })
-        .then((accountResponse: any) => {
-          if (accountResponse?.isLogin == true) {
-            userAccount.value = accountResponse?.result;
-
-            if (
-              utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) == null
-            ) {
-              utils.localStorage.setWithExpiry(
-                TOKEN.NAME.USER_TOKEN,
-                utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN),
-                TOKEN.OFFSET.USER_TOKEN
-              );
-            }
-          } else {
-            window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
-          }
-        })
-        .catch((e) => {
-          ElNotification.error({
-            title: MESSAGE.STATUS.BROKE,
-            message: MESSAGE.STATUS.BROKE_MESSAGE,
-            duration: MESSAGE.DURATION.DEFAULT
-          });
-        })
-        .finally(async () => {
-          loadingUser.value = false;
-        });
-    } else {
-      await wait(300);
-
-      loadingUser.value = false;
-    }
-  };
-
-  function logOut() {
-    if (isLogin.value) {
-      loadingAppInstance.start();
-
-      LogOut()
-        .then(async (response) => {
-          if (response?.isLogout == true) {
-            navigateTo('/login');
-
-            await wait(200);
-
-            window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
-            userAccount.value = null;
-          } else {
-            ElNotification.error({
-              title: MESSAGE.STATUS.FAILED,
-              message: 'Đăng xuất thất bại.',
-              duration: MESSAGE.DURATION.DEFAULT
-            });
-          }
-        })
-        .catch((e) => {
-          ElNotification.error({
-            title: MESSAGE.STATUS.FAILED,
-            message: 'Đăng xuất thất bại.',
-            duration: MESSAGE.DURATION.DEFAULT
-          });
-        })
-        .finally(() => {
-          loadingAppInstance.finish();
-        });
-    }
-  }
-
   return {
-    userAccount,
-    isLogin,
-    role,
     breadCrumbValue,
     collapsed,
     openSiderBarFixed,
     headerScrolled,
     openDrawer,
     modalVisible,
-    openRequireAuthDialog,
     loadingApp,
     loadingUser,
     loadingAppInstance,
@@ -159,10 +67,7 @@ export default defineStore('store', () => {
     allGenres,
     allCountries,
     allYears,
-    setCollapsed,
-    setOpendrawer,
-    setCloseRequireAuthDialog,
-    loadUser,
-    logOut
+    toogleSidebar,
+    toogleDrawer
   };
 });

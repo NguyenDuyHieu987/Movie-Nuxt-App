@@ -3,8 +3,8 @@
 //     const route = useRoute();
 //     // route.matched[0].meta.layout != 'auth'
 
-//     const store = useStore();
-//     store.loadUser();
+//     const authStore = useAuthStore();
+//     authStore.loadUser();
 //   });
 // });
 
@@ -18,8 +18,8 @@ export default defineNuxtPlugin({
       // const route = useRoute();
       // route.matched[0].meta.layout != 'auth'
 
-      const store = useStore();
-      store.loadUser();
+      const authStore = useAuthStore();
+      authStore.loadUser();
     }
   },
   parallel: true,

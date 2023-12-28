@@ -1,9 +1,9 @@
 <template>
-  <!-- :disabled="!store.openRequireAuthDialog"  -->
+  <!-- :disabled="!authStore.isOpenRequireAuthDialog"  -->
   <!-- <Teleport to="#append-to"> -->
   <div class="require-auth">
     <el-dialog
-      v-model="store.openRequireAuthDialog"
+      v-model="authStore.isOpenRequireAuthDialog"
       class="require-auth-dialog"
       :width="600"
       align-center
@@ -14,7 +14,7 @@
       <template #header>
         <CloseBtn
           class="transparent"
-          @click="store.setCloseRequireAuthDialog()"
+          @click="authStore.isOpenRequireAuthDialog = false"
         />
       </template>
 
@@ -27,7 +27,7 @@
       <template #footer>
         <NuxtLink
           :to="{ path: '/signup' }"
-          @click="store.setCloseRequireAuthDialog()"
+          @click="authStore.isOpenRequireAuthDialog = false"
         >
           <a-button
             type="text"
@@ -39,7 +39,7 @@
         </NuxtLink>
         <NuxtLink
           :to="{ path: '/login' }"
-          @click="store.setCloseRequireAuthDialog()"
+          @click="authStore.isOpenRequireAuthDialog = false"
         >
           <a-button
             type="text"
@@ -54,7 +54,7 @@
 
     <!-- <a-modal
         class="require-auth-dialog"
-        v-model:visible="store.openRequireAuthDialog"
+        v-model:visible="authStore.isOpenRequireAuthDialog"
         :width="600"
         centered
         :closable="true"
@@ -62,7 +62,7 @@
         <template #closeIcon>
           <CloseBtn
             class="transparent"
-            @click="store.setCloseRequireAuthDialog()"
+            @click="authStore.isOpenRequireAuthDialog = false"
           />
         </template>
   
@@ -72,7 +72,7 @@
         <template #footer>
           <NuxtLink
             :to="{ path: '/signup' }"
-            @click="store.setCloseRequireAuthDialog()"
+            @click="authStore.isOpenRequireAuthDialog = false"
           >
             <a-button type="text" size="large" class="default">
               Đăng ký
@@ -80,7 +80,7 @@
           </NuxtLink>
           <NuxtLink
             :to="{ path: '/login' }"
-            @click="store.setCloseRequireAuthDialog()"
+            @click="authStore.isOpenRequireAuthDialog = false"
           >
             <a-button type="text" size="large" class="default gradient">
               Đăng nhập
@@ -95,7 +95,7 @@
 <script setup lang="ts">
 import { CloseBtn } from '~/components/ButtonTemplate';
 
-const store = useStore();
+const authStore = useAuthStore();
 </script>
 
 <style lang="scss" src="./RequireAuthDialog.scss"></style>

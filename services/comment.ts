@@ -1,5 +1,7 @@
 import { makeRequest } from './makeRequest';
 
+const PREFIX_ROUTE = 'comment';
+
 export function getCommentByMovidId(
   movieId: string,
   movieType: string,
@@ -7,7 +9,7 @@ export function getCommentByMovidId(
   limit: number = 20
 ) {
   return makeRequest(
-    `/comment/get-all/${movieType}/${movieId}?skip=${skip}&limit=${limit}`
+    `/${PREFIX_ROUTE}/get-all/${movieType}/${movieId}?skip=${skip}&limit=${limit}`
   );
 }
 
@@ -19,7 +21,7 @@ export function getCommentByMovidId_ParentId(
   limit: number = 10
 ) {
   return makeRequest(
-    `/comment/get/${movieType}/${movieId}/${parentId}?skip=${skip}&limit=${limit}`
+    `/${PREFIX_ROUTE}/get/${movieType}/${movieId}/${parentId}?skip=${skip}&limit=${limit}`
   );
 }
 
@@ -37,10 +39,13 @@ export function CommentMovie(params: {
   params?.replyTo && bodyFormData.append('reply_to', params.replyTo);
   bodyFormData.append('type', params.commentType);
 
-  return makeRequest(`/comment/post/${params.movieType}/${params.movieId}`, {
-    method: 'POST',
-    data: bodyFormData
-  });
+  return makeRequest(
+    `/${PREFIX_ROUTE}/post/${params.movieType}/${params.movieId}`,
+    {
+      method: 'POST',
+      data: bodyFormData
+    }
+  );
 }
 
 export function EditComment(params: {
@@ -55,10 +60,13 @@ export function EditComment(params: {
   bodyFormData.append('type', params.commentType);
   bodyFormData.append('content', params.content);
 
-  return makeRequest(`/comment/edit/${params.movieType}/${params.movieId}`, {
-    method: 'PUT',
-    data: bodyFormData
-  });
+  return makeRequest(
+    `/${PREFIX_ROUTE}/edit/${params.movieType}/${params.movieId}`,
+    {
+      method: 'PUT',
+      data: bodyFormData
+    }
+  );
 }
 
 export function DeleteComment(params: {
@@ -73,24 +81,27 @@ export function DeleteComment(params: {
   params?.parentId && bodyFormData.append('parent_id', params.parentId);
   bodyFormData.append('type', params.commentType);
 
-  return makeRequest(`/comment/delete/${params.movieType}/${params.movieId}`, {
-    method: 'DELETE',
-    data: bodyFormData
-  });
+  return makeRequest(
+    `/${PREFIX_ROUTE}/delete/${params.movieType}/${params.movieId}`,
+    {
+      method: 'DELETE',
+      data: bodyFormData
+    }
+  );
 }
 
 export function LikeComment(params: { id: string }) {
-  return makeRequest(`/comment/like/${params.id}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/like/${params.id}`, {
     method: 'POST'
   });
 }
 
 export function DisLikeComment(params: { id: string }) {
-  return makeRequest(`/comment/dislike/${params.id}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/dislike/${params.id}`, {
     method: 'POST'
   });
 }
 
 export function CheckLikeDislike(id: string) {
-  return makeRequest(`/comment/check-like-dislike/${id}`);
+  return makeRequest(`/${PREFIX_ROUTE}/check-like-dislike/${id}`);
 }

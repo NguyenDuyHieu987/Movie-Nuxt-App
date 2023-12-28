@@ -85,6 +85,7 @@ import { addRankSearch } from '~/services/ranks';
 import { addSearch, addSearchHistory, getDaTaSearch } from '~/services/search';
 
 const store = useStore();
+const authStore = useAuthStore();
 const route = useRoute();
 const router = useRouter();
 const searchData = ref<any>([]);
@@ -116,7 +117,7 @@ useSeoMeta({
 });
 
 const addSearchHistoryD = async () => {
-  if (store.isLogin && total.value > 0 && searchQuery.value.length > 0) {
+  if (authStore.isLogin && total.value > 0 && searchQuery.value.length > 0) {
     addSearchHistory(searchQuery.value)
       .then((response) => {
         if (response?.added) {

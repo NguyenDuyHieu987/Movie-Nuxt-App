@@ -62,13 +62,14 @@ const props = defineProps<{
 }>();
 
 const store = useStore();
+const authStore = useAuthStore();
 const like = ref<number>(props.comment?.like || 0);
 const dislike = ref<number>(props.comment?.dislike || 0);
 const isLike = ref<boolean>(false);
 const isDisLike = ref<boolean>(false);
 
 onBeforeMount(async () => {
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     if (props.comment.is_like) {
       isLike.value = true;
       return;
@@ -96,8 +97,8 @@ onBeforeMount(async () => {
 });
 
 const handleLikeComment = () => {
-  if (!store.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
 
@@ -145,8 +146,8 @@ const handleLikeComment = () => {
 };
 
 const handleDisLikeComment = () => {
-  if (!store.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
 

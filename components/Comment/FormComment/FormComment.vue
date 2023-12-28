@@ -9,7 +9,7 @@
     <div class="author">
       <div class="author-image">
         <NuxtImg
-          v-if="isLogin && userAccount?.avatar && !store.loadingUser"
+          v-if="isLogin && userAccount?.avatar && !authStore.loadingUser"
           class="avatar"
           :src="
             !isNaN(+userAccount?.avatar)
@@ -170,7 +170,8 @@ const emits = defineEmits<{
 }>();
 
 const store = useStore();
-const { isLogin, userAccount } = storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const contenteditableInputField = ref<HTMLDivElement>();
 const content = ref<string>('');
 const isFocus = ref<boolean>(false);
@@ -325,8 +326,8 @@ const handleChange = (e: any) => {
 };
 
 const handleFocus = (e: any) => {
-  if (!store.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     e.target.blur();
     return;
   }

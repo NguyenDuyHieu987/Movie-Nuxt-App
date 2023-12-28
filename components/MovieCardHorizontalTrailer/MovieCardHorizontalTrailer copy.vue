@@ -148,7 +148,7 @@ const props = defineProps<{
   type: string | undefined;
 }>();
 
-const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const dataMovie = ref<any>({});
 const isEpisodes = ref<boolean>(false);
@@ -179,13 +179,13 @@ const getData = async () => {
     }
   }
 
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     if (dataMovie.value?.history_progress) {
       isInHistory.value = true;
       percent.value = dataMovie.value?.history_progress?.percent;
     } else {
       useAsyncData(
-        `itemhistory/${store?.userAccount?.id}/${props.item?.id}`,
+        `itemhistory/${authStore?.userAccount?.id}/${props.item?.id}`,
         () => getItemHistory(props.item?.id, props.item?.media_type)
       )
         .then((movieRespone: any) => {

@@ -4,7 +4,7 @@ import ALLGENRES from '@/constants/data/Genres.json';
 import type { genre } from '@/types';
 
 export function getAllGenre() {
-  return makeRequest('/genre/all');
+  return makeRequest('/genre/get-all');
 }
 
 export function getGenreByShortName(

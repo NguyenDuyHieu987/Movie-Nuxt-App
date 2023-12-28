@@ -1,7 +1,7 @@
 import { makeRequest } from './makeRequest';
 
-const PREFIX_ROUTE = 'notification';
+const PREFIX_ROUTE = 'subscription';
 
-export function getNotifications() {
+export function getMySubscription() {
   return makeRequest(`/${PREFIX_ROUTE}/get`);
 }

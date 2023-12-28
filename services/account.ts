@@ -1,5 +1,7 @@
 import { makeRequest } from './makeRequest';
 
+const PREFIX_ROUTE = 'account';
+
 export function AccountConfirm(
   params:
     | {
@@ -28,7 +30,7 @@ export function AccountConfirm(
       break;
   }
 
-  return makeRequest(`/account/confirm/${type}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/confirm/${type}`, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -39,7 +41,7 @@ export function ChangePassword(params: { otp: string; chgPwdToken: string }) {
   const bodyFormData = new FormData();
   bodyFormData.append('otp', params.otp);
 
-  return makeRequest('/account/change-password', {
+  return makeRequest(`/${PREFIX_ROUTE}/change-password`, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -50,14 +52,14 @@ export function VerifyEmail(params: { otp: string; vrfEmailToken: string }) {
   const bodyFormData = new FormData();
   bodyFormData.append('otp', params.otp);
 
-  return makeRequest('/account/verify-email', {
+  return makeRequest(`/${PREFIX_ROUTE}/verify-email`, {
     method: 'POST',
     data: bodyFormData
   });
 }
 
 export function VerifyChangeEmail(chgEmailToken: string) {
-  return makeRequest(`/account/change-email?token=${chgEmailToken}`);
+  return makeRequest(`/${PREFIX_ROUTE}/change-email?token=${chgEmailToken}`);
 }
 
 export function ChangeEmail(params: {
@@ -67,7 +69,7 @@ export function ChangeEmail(params: {
   const bodyFormData = new FormData();
   bodyFormData.append('new_email', params.newEmail);
 
-  return makeRequest('/account/change-email', {
+  return makeRequest(`/${PREFIX_ROUTE}/change-email`, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -78,7 +80,7 @@ export function ChangeFullname(newfullName: string) {
   const bodyFormData = new FormData();
   bodyFormData.append('new_full_name', newfullName);
 
-  return makeRequest('/account/change-fullname', {
+  return makeRequest(`/${PREFIX_ROUTE}/change-fullname`, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -86,7 +88,7 @@ export function ChangeFullname(newfullName: string) {
 }
 
 export function VerifyResetPassword(rstPwdToken: string) {
-  return makeRequest(`/account/reset-password?token=${rstPwdToken}`);
+  return makeRequest(`/${PREFIX_ROUTE}/reset-password?token=${rstPwdToken}`);
 }
 
 export function ResetPassword(params: {
@@ -96,7 +98,7 @@ export function ResetPassword(params: {
   const bodyFormData = new FormData();
   bodyFormData.append('new_password', params.newPassword);
 
-  return makeRequest('/account/reset-password', {
+  return makeRequest(`/${PREFIX_ROUTE}/reset-password`, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true

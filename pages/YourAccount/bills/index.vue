@@ -23,7 +23,8 @@ definePageMeta({
 });
 
 const store = useStore();
-const { isLogin } = storeToRefs<any>(store);
+const authStore = useAuthStore();
+const { isLogin } = storeToRefs<any>(authStore);
 
 useHead({
   title: 'Lịch sử giao dịch, Hóa đơn',

@@ -321,6 +321,7 @@ import { UpdateView } from '~/services/updateView';
 
 const utils = useUtils();
 const store = useStore();
+const authStore = useAuthStore();
 const route = useRoute();
 const router = useRouter();
 // const dataMovie = ref<any>({});
@@ -369,7 +370,7 @@ const getData = async () => {
       loading.value = false;
     });
 
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     isAddToList.value = dataMovie.value?.in_list == true;
 
     if (dataMovie.value?.history_progress) {
@@ -419,7 +420,7 @@ if (dataMovie.value?.history_progress) {
 
 ratedValue.value = dataMovie.value?.rated_value;
 
-if (store.isLogin) {
+if (authStore.isLogin) {
   if (!isAddToList.value) {
     getItemList(movieId.value, 'tv')
       .then((response) => {
@@ -490,7 +491,7 @@ useSeoMeta({
 });
 
 const updateHistory = () => {
-  if (isPlayVideo.value == true && store.isLogin) {
+  if (isPlayVideo.value == true && authStore.isLogin) {
     if (
       seconds.value > 0 &&
       percent.value > 0 &&
@@ -580,8 +581,8 @@ const onTimeUpdateVideoPlayer = (e: any) => {
 };
 
 const handleAddToList = () => {
-  if (!store?.isLogin) {
-    store.openRequireAuthDialog = true;
+  if (!authStore?.isLogin) {
+    authStore.isOpenRequireAuthDialog = true;
     return;
   }
   if (!isAddToList.value) {

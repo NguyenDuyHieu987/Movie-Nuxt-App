@@ -1,5 +1,7 @@
 import { makeRequest } from './makeRequest';
 
+const PREFIX_ROUTE = 'auth';
+
 export function emailValidation(email: string) {
   return makeRequest(
     `https://emailvalidation.abstractapi.com/v1/?api_key=e23c5b9c07dc432796eea058c9d99e82&email=${email}`
@@ -11,7 +13,7 @@ export function LogIn(params: any) {
   bodyFormData.append('email', params.email);
   bodyFormData.append('password', params.password);
 
-  return makeRequest('/auth/login', {
+  return makeRequest(`/${PREFIX_ROUTE}/login`, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -21,7 +23,7 @@ export function LogIn(params: any) {
 export function loginFacebook(params: any) {
   const headers = { Authorization: `Bearer ${params.accessToken}` };
 
-  return makeRequest('/auth/login-facebook', {
+  return makeRequest(`/${PREFIX_ROUTE}/login-facebook`, {
     method: 'POST',
     headers,
     getResponseHeaders: true
@@ -31,7 +33,7 @@ export function loginFacebook(params: any) {
 export function loginGoogle(params: any) {
   const headers = { Authorization: `Bearer ${params.accessToken}` };
 
-  return makeRequest('/auth/login-google', {
+  return makeRequest(`/${PREFIX_ROUTE}/login-google`, {
     method: 'POST',
     headers,
     getResponseHeaders: true
@@ -41,7 +43,7 @@ export function loginGoogle(params: any) {
 export function getUserToken(params: any) {
   const headers = { Authorization: `Bearer ${params.user_token}` };
 
-  return makeRequest('/auth/getuser', {
+  return makeRequest(`/${PREFIX_ROUTE}/getuser`, {
     headers
   });
 }
@@ -54,7 +56,7 @@ export function verifySignUp(params: any, type: string) {
   bodyFormData.append('full_name', params.full_name);
   bodyFormData.append('avatar', params.avatar);
 
-  return makeRequest(`/auth/verify-signup/${type}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/verify-signup/${type}`, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -67,7 +69,7 @@ export function signUp(params: { otp: string; vrfSignupToken: string }) {
 
   const headers = { Authorization: `Bearer ${params.vrfSignupToken}` };
 
-  return makeRequest('/auth/signup', {
+  return makeRequest(`/${PREFIX_ROUTE}/signup`, {
     method: 'POST',
     // headers: headers,
     data: bodyFormData,
@@ -79,7 +81,7 @@ export function forgotPassword(email: string, type: string) {
   const bodyFormData = new FormData();
   bodyFormData.append('email', email);
 
-  return makeRequest(`/auth/forgot-password/${type}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/forgot-password/${type}`, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -87,7 +89,7 @@ export function forgotPassword(email: string, type: string) {
 }
 
 export function LogOut() {
-  return makeRequest('/auth/logout', {
+  return makeRequest(`/${PREFIX_ROUTE}/logout`, {
     method: 'POST'
   });
 }

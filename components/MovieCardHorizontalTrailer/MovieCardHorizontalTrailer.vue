@@ -100,7 +100,7 @@ const props = defineProps<{
   type: string | undefined;
 }>();
 
-const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
@@ -125,7 +125,7 @@ const getData = async () => {
       break;
   }
 
-  if (store.isLogin) {
+  if (authStore.isLogin) {
     if (dataMovie.value?.history_progress) {
       isInHistory.value = true;
       percent.value = dataMovie.value?.history_progress?.percent;
