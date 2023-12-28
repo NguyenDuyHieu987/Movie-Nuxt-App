@@ -177,18 +177,18 @@ body:has(
 
 .fade-enter-active,
 .fade-leave-active {
-  transition-duration: 0.3s;
+  transition-duration: 0.4s;
   transition-property: filter, opacity;
 }
 
 .fade-enter-active {
   transition-timing-function: ease-in;
-  transition-duration: 0.3s;
+  transition-duration: 0.4s;
 }
 
 .fade-leave-active {
   transition-timing-function: ease-out;
-  transition-duration: 0.15s;
+  transition-duration: 0.3s;
 }
 
 .fade-enter-from,
@@ -203,7 +203,7 @@ body:has(
 .slide-bottom-enter-active {
   transition-property: transform, opacity;
   transition-timing-function: ease-in;
-  transition-duration: 0.2s;
+  transition-duration: 0.3s;
 }
 
 .slide-left-leave-active,
@@ -212,7 +212,7 @@ body:has(
 .slide-bottom-leave-active {
   transition-property: transform, opacity;
   transition-timing-function: ease-out;
-  transition-duration: 0.2s;
+  transition-duration: 0.4s;
 }
 
 .slide-left-enter-from {
