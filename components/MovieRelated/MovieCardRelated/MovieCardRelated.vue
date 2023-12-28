@@ -304,7 +304,7 @@ const handleAddToList = (e: any) => {
 const onMouseEnter = () => {
   if (video.value! && video.value!.paused && !showVideo.value) {
     showVideo.value = true;
-    video.value!.play();
+    video.value!.play().catch(() => {});
   }
 };
 
