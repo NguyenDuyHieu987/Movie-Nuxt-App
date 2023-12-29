@@ -1,0 +1,52 @@
+.swiper.swiper-horizontal {
+  .swiper-wrapper {
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: flex;
+    position: absolute;
+    // top: 50%;
+    // transform: translateY(-50%);
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 30px;
+    color: var(--text-color);
+    z-index: 1;
+    cursor: pointer;
+
+    svg {
+      width: 2.8rem;
+      height: 2.8rem;
+    }
+
+    &.swiper-button-disabled {
+      display: none;
+    }
+  }
+
+  .swiper-button-prev {
+    left: -8px;
+    justify-content: flex-start;
+    background-image: linear-gradient(
+      to right,
+      #191919 0%,
+      #19191950 70%,
+      #19191900 100%
+    );
+  }
+
+  .swiper-button-next {
+    right: -8px;
+    justify-content: flex-end;
+    background-image: linear-gradient(
+      to left,
+      #191919 0%,
+      #19191950 70%,
+      #19191900 100%
+    );
+  }
+}

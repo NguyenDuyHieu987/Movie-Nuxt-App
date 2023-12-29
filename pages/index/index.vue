@@ -1,6 +1,10 @@
 <template>
   <div class="home-page">
-    <BillboardAnimation v-model:data="trendings" />
+    <div class="home-billBoard">
+      <BillboardAnimation v-model:data="trendings" />
+
+      <BoxVip />
+    </div>
 
     <div class="home-content">
       <section class="home-section outstanding">
@@ -413,6 +417,7 @@
 
 <script setup lang="ts">
 import { BillboardAnimation } from '~/components/BillboardAnimation';
+import { BoxVip } from '~/components/BoxVip';
 import { SwiperCarouselGroup } from '~/components/CarouselGroup';
 import {
   LoadingSectionHorizontal,
@@ -431,7 +436,7 @@ import { getTvAiringToday, getTvOntheAir } from '~/services/TvSlug';
 definePageMeta({
   // layout: 'home',
   name: 'home'
-  // keepalive: true,
+  // keepalive: true
   // key: (route) => route.fullPath
 });
 

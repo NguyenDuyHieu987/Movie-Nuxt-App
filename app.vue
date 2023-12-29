@@ -48,7 +48,7 @@
 
     <div class="app-wrapper">
       <NuxtLayout>
-        <NuxtPage :keepalive="{ include: [], exclude: [] }" />
+        <NuxtPage :keepalive="{ exclude: [] }" />
 
         <el-backtop
           class="app-back-top click-active"

@@ -3,14 +3,10 @@
   margin-top: var(--header-height);
 
   .body-wrapper {
+    color: var(--text-color-invert);
+
     --text-color-gray: #6f6f6f;
     --text-color-gray1: #4d4d4d;
-    flex: auto;
-    position: relative;
-    display: flex;
-    max-width: var(--max-width-app);
-    color: var(--text-color-invert);
-    margin: 0px auto;
 
     .anticon {
       svg {

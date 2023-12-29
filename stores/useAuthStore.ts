@@ -134,6 +134,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   return {
     userAccount,
+    subscription,
     isLogin,
     role,
     isOpenRequireAuthDialog,

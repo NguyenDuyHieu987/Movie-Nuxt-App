@@ -183,7 +183,7 @@ header.header-bar {
           height: var(--search-height);
           padding-left: 18px;
           color: var(--menu-text-color);
-          // border: 1px solid var(--border-search-color);
+          // border: 1px solid var(--search-border-color);
           border: none;
           border-top-left-radius: calc(var(--search-height) / 2);
           border-bottom-left-radius: calc(var(--search-height) / 2);
@@ -215,7 +215,7 @@ header.header-bar {
             display: flex;
             align-items: center;
             background: transparent;
-            // border: 1px solid var(--border-search-color);
+            // border: 1px solid var(--search-border-color);
             border: none;
             transition: color 0.15s;
             height: var(--search-height);

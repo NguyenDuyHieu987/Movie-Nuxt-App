@@ -1,0 +1,60 @@
+.box-vip {
+  .box-vip-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px;
+    background-color: #060606e4;
+    border-radius: 2px;
+    width: 270px;
+    font-size: 1.6rem;
+
+    .ant-ribbon-wrapper {
+      position: absolute;
+      top: -16px;
+      right: 0;
+      transform: translateY(-100%);
+
+      .ant-ribbon {
+        background-image: linear-gradient(
+          45deg,
+          var(--app-background-color),
+          #0a7db7,
+          #00e699
+        );
+
+        .ant-ribbon-text {
+          font-weight: 600;
+        }
+      }
+    }
+
+    .user-info {
+      text-align: center;
+
+      .username {
+        display: inline-block;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        font-weight: 500;
+        background-image: linear-gradient(
+          to right,
+          var(--app-background-color7),
+          var(--app-background-color3)
+        );
+      }
+
+      .your-vip {
+        display: flex;
+        gap: 5px;
+        flex-wrap: nowrap;
+        font-size: 1.3rem;
+        margin-top: 5px;
+        color: var(--text-color-gray);
+
+        .description {
+        }
+      }
+    }
+  }
+}

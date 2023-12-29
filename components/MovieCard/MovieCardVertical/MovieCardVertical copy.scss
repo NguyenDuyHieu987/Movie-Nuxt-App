@@ -1,5 +1,3 @@
-@import '@/assets/style/globalStyle/MovieCardItem.scss';
-
 .movie-group.vertical {
   .movie-card-item.vertical {
     width: calc((100% - (7 * var(--card-movie-gap))) / 8);

@@ -182,7 +182,6 @@ header.header-bar-service {
         }
 
         &:hover {
-          // background-color: var(--hover-regular-color) !important;
           background-color: none !important;
           background: none !important;
           transition: all 0.2s;
@@ -526,7 +525,7 @@ header.header-bar-service {
       font-size: 1.4rem;
 
       &:hover {
-        background-color: var(--hover-dropdown-color);
+        background-color: var(--background-hover-dropdown-color);
       }
     }
   }

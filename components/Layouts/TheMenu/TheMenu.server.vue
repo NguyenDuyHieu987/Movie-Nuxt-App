@@ -477,6 +477,7 @@
     >
       <el-icon>
         <!-- <nuxt-img :src="getImage('king.png', 'misc', 'h-16')" alt="" /> -->
+
         <svg
           viewBox="0 0 192 192"
           height="1.6rem"

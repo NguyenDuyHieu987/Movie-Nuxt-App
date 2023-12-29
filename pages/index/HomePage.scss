@@ -19,6 +19,28 @@
 }
 
 .home-page {
+  .home-billBoard {
+    position: relative;
+
+    .box-vip {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      right: var(--padding-home);
+      z-index: 1;
+      animation: opacity-in 0.3s ease-in;
+
+      @keyframes opacity-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
   .home-content {
     position: relative;
     z-index: 1;

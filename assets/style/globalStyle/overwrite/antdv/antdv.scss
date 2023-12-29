@@ -181,7 +181,7 @@
       transition: background-color 0.15s ease;
 
       &:hover {
-        background-color: var(--hover-dropdown-color);
+        background-color: var(--background-hover-dropdown-color);
 
         &.ant-select-item-option-selected {
           background-color: var(--background-dropdown-selected-color);
@@ -221,7 +221,7 @@
       }
 
       .ant-dropdown-menu-item-active {
-        background-color: var(--hover-dropdown-color);
+        background-color: var(--background-hover-dropdown-color);
       }
 
       .ant-dropdown-menu-item:first-child {
