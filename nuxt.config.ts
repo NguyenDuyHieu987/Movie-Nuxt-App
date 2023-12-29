@@ -197,6 +197,7 @@ export default defineNuxtConfig({
     preload: true,
     families: {
       Roboto: { wght: '100..700', ital: '100..700' },
+      'Roboto Flex': { wght: '100..700', ital: '100..700' },
       Lobster: {
         wght: [400],
         ital: [400]
