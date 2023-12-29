@@ -4,9 +4,7 @@
       <NuxtLayout :name="isNetworkError ? 'default' : 'error'">
         <a-result
           class="error-page"
-          :status="
-            isNetworkError ? 500 : (error.statusCode as ResultStatusType)
-          "
+          :status="isNetworkError ? 500 : error.statusCode"
           :title="
             isNetworkError
               ? 'Kết nối mạng'
@@ -80,7 +78,7 @@ import type { ResultStatusType } from 'ant-design-vue/es/result';
 
 type errorResponse = {
   url: string;
-  statusCode: number | ResultStatusType;
+  statusCode: number & ResultStatusType;
   statusMessage: string;
   message: string;
   description: string;
