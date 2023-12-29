@@ -101,6 +101,7 @@ watch(
 
     if (isOnline.value == false) {
       throw createError({
+        statusCode: 500,
         data: {
           networkError: true
         }

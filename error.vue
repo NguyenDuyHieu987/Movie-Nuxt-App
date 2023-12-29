@@ -4,24 +4,39 @@
       <NuxtLayout :name="isNetworkError ? 'default' : 'error'">
         <a-result
           class="error-page"
-          :status="error.statusCode as ResultStatusType"
-          :title="`${error.statusCode} ${error.statusMessage}`"
+          :status="
+            isNetworkError ? 500 : (error.statusCode as ResultStatusType)
+          "
+          :title="
+            isNetworkError
+              ? 'Kết nối mạng'
+              : `${error.statusCode} ${error.statusMessage}`
+          "
         >
           <template
-            v-if="error.statusCode == 404"
+            v-if="error.statusCode == 404 && !isNetworkError"
             #subTitle
           >
             <h3>Ops!, Không thể tìm thấy trang này.</h3>
           </template>
+
           <template
-            v-else
+            v-else-if="error.statusCode != 404 && !isNetworkError"
             #subTitle
           >
             <h3>Ops!, It looks like something broke.</h3>
           </template>
 
+          <template
+            v-else-if="isNetworkError"
+            #subTitle
+          >
+            <h3>Không có kết nối Internet. Vui lòng kiểm tra lại mạng.</h3>
+          </template>
+
           <template #extra>
             <a-button
+              v-if="!isNetworkError"
               type="text"
               size="large"
               class="default"
@@ -30,7 +45,10 @@
               Quay lại
             </a-button>
 
-            <NuxtLink to="/">
+            <NuxtLink
+              v-if="!isNetworkError"
+              to="/"
+            >
               <a-button
                 type="text"
                 size="large"
@@ -39,6 +57,16 @@
                 Quay về trang chủ
               </a-button>
             </NuxtLink>
+
+            <a-button
+              v-if="isNetworkError"
+              type="text"
+              size="large"
+              class="default"
+              @click="() => {}"
+            >
+              Thử lại
+            </a-button>
           </template>
         </a-result>
       </NuxtLayout>
