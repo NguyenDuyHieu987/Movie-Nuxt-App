@@ -33,7 +33,7 @@
           size="large"
           allow-clear
           bordered
-          :loading="loadingSearch"
+          :loading="false"
           @change="handleChangeInput(valueInput)"
           @search="handleSearch"
           @focus="handleFoucusSearchInput"
