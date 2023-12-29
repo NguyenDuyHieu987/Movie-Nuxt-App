@@ -1,14 +1,18 @@
 <template>
   <div id="app">
     <div class="app-wrapper error">
-      <NuxtLayout :name="isNetworkError ? 'default' : 'error'">
+      <NuxtLayout :name="isNetworkError ? 'error' : 'default'">
         <a-result
           class="error-page"
           :status="isNetworkError ? 500 : error.statusCode"
           :title="
             isNetworkError
               ? 'Kết nối mạng'
-              : `${error.statusCode} ${error.statusMessage}`
+              : ` ${
+                  utils.isStringEmpty(error.statusMessage)
+                    ? error.statusCode
+                    : error.statusMessage
+                }`
           "
         >
           <template
@@ -87,10 +91,11 @@ type errorResponse = {
 
 const props = defineProps<{ error: errorResponse }>();
 
+const utils = useUtils();
 const isOnline = useOnline();
 
 const isNetworkError = computed<boolean>(
-  () => isOnline.value || props.error.data?.networkError
+  () => !isOnline.value || props.error.data?.networkError
 );
 
 useHead({
