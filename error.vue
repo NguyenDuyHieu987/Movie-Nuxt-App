@@ -64,7 +64,7 @@ const props = defineProps<{ error: errorResponse }>();
 const isOnline = useOnline();
 
 const isNetworkError = computed<boolean>(
-  () => isOnline.value && props.error.data?.networkError
+  () => isOnline.value || props.error.data?.networkError
 );
 
 useHead({
