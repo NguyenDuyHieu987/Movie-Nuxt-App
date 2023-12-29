@@ -16,12 +16,6 @@ header.header-bar-service {
   // transition: background-color 0.25s;
   // transition-delay: 0.3s;
 
-  .anticon {
-    svg {
-      fill: var(--text-color);
-    }
-  }
-
   &:has(.menu-btn.desktop) {
     padding-left: var(--padding-home);
     padding-right: calc(var(--padding-home) - 20px);
@@ -93,10 +87,6 @@ header.header-bar-service {
 
         &::after {
           display: none;
-        }
-
-        svg {
-          fill: var(--text-color);
         }
 
         .ant-badge {

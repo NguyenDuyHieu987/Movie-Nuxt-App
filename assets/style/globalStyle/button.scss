@@ -86,11 +86,9 @@
 
   &:not(.ant-btn-circle) {
     svg {
-      fill: inherit;
       margin-right: 7px;
-      font-size: 1.8rem;
-      // margin-right: 0.4vw;
-      // font-size: 1.1vw;
+      width: 1.8rem;
+      height: 1.8rem;
     }
   }
 
@@ -157,16 +155,6 @@
     // padding: 0.35vw 1.5vw;
     padding: 9px 25px;
     transition: all 0.15s;
-
-    &:not(.ant-btn-circle) {
-      svg {
-        fill: inherit;
-        margin-right: 7px;
-        font-size: 1.8rem;
-        // margin-right: 0.4vw;
-        // font-size: 1.1vw;
-      }
-    }
 
     &:active {
       opacity: 0.8;

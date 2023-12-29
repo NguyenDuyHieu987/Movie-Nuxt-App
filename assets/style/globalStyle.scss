@@ -8,6 +8,8 @@
 @import './globalStyle/title.scss';
 @import './globalStyle/button.scss';
 @import './globalStyle/input.scss';
+@import './globalStyle/icon.scss';
+@import './globalStyle/dropdown.scss';
 @import './globalStyle/swiper.scss';
 @import './globalStyle/movieCardItem.scss';
 
@@ -207,11 +209,6 @@ img,
 video {
   border: none;
   outline: none;
-}
-
-svg {
-  // fill: inherit;
-  user-select: none;
 }
 
 .logo {

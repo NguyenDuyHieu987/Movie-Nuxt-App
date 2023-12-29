@@ -21,12 +21,6 @@ header.header-bar-service {
     margin: 0px auto;
   }
 
-  .anticon {
-    svg {
-      // fill: var(--text-color);
-    }
-  }
-
   &:has(.menu-btn.desktop) {
     padding-left: var(--padding-home);
     padding-right: calc(var(--padding-home) - 20px);

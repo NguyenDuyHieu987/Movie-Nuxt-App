@@ -21,10 +21,10 @@
   }
 
   svg {
-    font-size: 2rem;
-    transition: all 0.15s;
-    fill: var(--text-color);
+    width: 1.9rem;
+    height: 1.9rem;
     cursor: pointer;
+    transition: all 0.15s;
 
     &:active {
       opacity: 0.8;
@@ -33,14 +33,14 @@
 
   .anticon + .anticon {
     margin-left: 13px;
-    font-size: 2rem;
   }
 
   .anticon {
     transition: all 0.15s;
 
     svg {
-      font-size: 1.9rem;
+      width: 1.9rem;
+      height: 1.9rem;
     }
   }
 }

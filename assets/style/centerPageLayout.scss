@@ -8,19 +8,11 @@
     --text-color-gray: #6f6f6f;
     --text-color-gray1: #4d4d4d;
 
-    .anticon {
-      svg {
-        fill: var(--text-color-invert);
-      }
-    }
-
     button,
     input,
     optgroup,
     select,
     textarea {
-      color: var(--text-color-invert);
-
       &.submit-btn {
         color: var(--text-color);
       }

@@ -34,12 +34,6 @@ header.header-bar {
     align-items: center;
     gap: 20px;
 
-    .anticon {
-      svg {
-        fill: var(--text-color);
-      }
-    }
-
     .menu-btn {
       // padding: 16px 20px;
       // padding-left: var(--padding-home);
@@ -227,7 +221,6 @@ header.header-bar {
             line-height: 0;
 
             svg {
-              fill: currentColor;
               // color: inherit;
               // color: var(--app-background-color);
               color: var(--menu-text-color);

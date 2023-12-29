@@ -216,6 +216,10 @@
               opacity: 0.7;
             }
 
+            .plan-option.support-devices svg {
+              fill: var(--text-color);
+            }
+
             td {
               &::before {
                 content: '';
