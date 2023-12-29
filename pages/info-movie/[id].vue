@@ -475,7 +475,9 @@ const getData = async () => {
       // setBackgroundColor(dataMovie.value.dominant_backdrop_color);
     })
     .catch((e) => {
-      navigateTo('/404');
+      throw createError({
+        statusCode: 404
+      });
     })
     .finally(() => {
       loading.value = false;

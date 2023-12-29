@@ -387,9 +387,6 @@ const getData = async () => {
     .finally(() => {
       loadingTvTopRated.value = false;
     });
-  // } else {
-  //   navigateTo('/404');
-  // }
 };
 
 const { data: dataBilboard, pending } = await useAsyncData(

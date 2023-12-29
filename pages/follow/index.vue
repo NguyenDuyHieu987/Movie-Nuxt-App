@@ -141,8 +141,7 @@ import { TopicRow } from '~/components/TopicRow';
 import { getList, searchList } from '~/services/list';
 
 definePageMeta({
-  // requireAuth: true,
-  // middleware: ['require-auth'],
+  middleware: ['require-auth']
 });
 
 const store = useStore();

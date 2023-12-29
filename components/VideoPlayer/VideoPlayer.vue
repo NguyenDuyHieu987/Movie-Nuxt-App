@@ -742,6 +742,7 @@
 </template>
 
 <script setup lang="ts">
+import { useLocalStorage } from '@vueuse/core';
 import Hls from 'hls.js';
 
 import { CloseBtn } from '~/components/ButtonTemplate';
@@ -776,6 +777,13 @@ const videoSrc = computed<string>(
   // 'http://localhost:5002/videos' + props.videoUrl
   // + '.m3u8'
 );
+const videoPlayerStorageStates = useLocalStorage(
+  STORAGE.VIDEO_PLAYER_STATES.KEY,
+  {
+    [STORAGE.VIDEO_PLAYER_STATES.VOLUME]: 100,
+    [STORAGE.VIDEO_PLAYER_STATES.MUTED]: false
+  }
+);
 const blobVideoSrc = ref<string>('');
 const videoPlayer = ref<HTMLElement>();
 const video = ref<HTMLVideoElement>();
@@ -802,7 +810,8 @@ const videoStates = reactive({
   isScrubbingProgressBar: false,
   isFullScreen: false,
   isChangingVolume: false,
-  isVolumeOff: false,
+  isVolumeOff:
+    videoPlayerStorageStates.value[STORAGE.VIDEO_PLAYER_STATES.MUTED] || false,
   isEndedVideo: false,
   isMouseMoveOverlayProgress: false,
   isHideControls: false,
@@ -842,13 +851,14 @@ const settings = reactive({
     current: '1080p - HD'
   }
 });
-const volume = ref<number>(100);
-const timeUpdate = ref<string>('00:00');
-const timelineUpdate = ref<string>('00:00');
+const volume = ref<number>(
+  (videoPlayerStorageStates.value[
+    STORAGE.VIDEO_PLAYER_STATES.VOLUME
+  ] as number) || 100
+);
+const timeUpdate = ref<string>('0:00');
+const timelineUpdate = ref<string>('0:00');
 const duration = ref<string>('00:00');
-// const duration = computed<string>(
-//   () => formatDuration(video.value?.duration) || '00:00'
-// );
 const timeOutShowControls = ref<any>();
 const timeOutVolumeChange = ref<any>();
 const mounted = ref<boolean>(false);
@@ -1024,13 +1034,13 @@ onMounted(() => {
     video.value!.autoplay = false;
   }
 
-  if (video.value!.muted) {
-    video.value!.muted = false;
-  }
-
   if (video.value!.paused == true) {
     const event = new Event('canplay');
     video.value!.dispatchEvent(event);
+  }
+
+  if (videoStates.isVolumeOff == true) {
+    video.value!.muted = true;
   }
 
   if (videoStates.isPlayVideo == false) {
@@ -1482,11 +1492,15 @@ const onClickFullScreenExit = () => {
 const onClickVolumeUp = () => {
   video.value!.muted = true;
   videoStates.isVolumeOff = true;
+
+  videoPlayerStorageStates.value[STORAGE.VIDEO_PLAYER_STATES.MUTED] = true;
 };
 
 const onClickVolumeOff = () => {
   video.value!.muted = false;
   videoStates.isVolumeOff = false;
+
+  videoPlayerStorageStates.value[STORAGE.VIDEO_PLAYER_STATES.MUTED] = false;
 };
 
 const onChangeVolume = (value: number) => {
@@ -1495,6 +1509,7 @@ const onChangeVolume = (value: number) => {
 
   volume.value = value;
   video.value!.volume = value / 100;
+  videoPlayerStorageStates.value[STORAGE.VIDEO_PLAYER_STATES.VOLUME] = value;
 
   if (volume.value > 0 && video.value!.muted) {
     video.value!.muted = false;

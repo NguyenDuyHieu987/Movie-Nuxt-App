@@ -1,19 +1,20 @@
 import { computed, ref } from 'vue';
-import { useBreakpoints } from '@vueuse/core';
-import { ElNotification } from 'element-plus';
+import { useBreakpoints, useLocalStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 
 import type { country, genre, user, year } from '@/types';
-import { getUserToken, LogOut } from '~/services/authentication';
 
 const breakpoints = useBreakpoints({
-  desktop: 1300
+  desktop: APP.COLLAPSED_SIDEBAR_WIDTH
+});
+
+const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
+  [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false
 });
 
 export default defineStore('store', () => {
   const collapsed = breakpoints.smaller('desktop');
 
-  // const collapsed = ref<boolean>(!largerThanDesktop.value);
   const openSiderBarFixed = ref<boolean>(false);
   const headerScrolled = ref<boolean>(false);
   const openDrawer = ref<boolean>(false);
@@ -26,13 +27,18 @@ export default defineStore('store', () => {
   const allCountries = ref<country[]>([]);
   const allYears = ref<year[]>([]);
 
-  // watch(largerThanDesktop, () => {
-  //   if (largerThanDesktop.value) {
-  //     collapsed.value = false;
-  //   } else {
-  //     collapsed.value = true;
-  //   }
-  // });
+  watch(collapsed, (oldVal, newVal) => {
+    appStorageStates.value[STORAGE.APP_STATES.COLLAPSED_SIDEBAR] =
+      collapsed.value;
+
+    if (oldVal) {
+      openSiderBarFixed.value = false;
+    } else {
+      if (openSiderBarFixed.value == true) {
+        openSiderBarFixed.value = false;
+      }
+    }
+  });
 
   const toogleSidebar = () => {
     collapsed.value = !collapsed.value;

@@ -371,7 +371,9 @@ const getData = async () => {
       dataMovie.value = response;
     })
     .catch((e) => {
-      navigateTo('/404');
+      throw createError({
+        statusCode: 404
+      });
     })
     .finally(() => {
       loading.value = false;
@@ -404,7 +406,7 @@ onMounted(() => {
   //   behavior: 'instant'
   // });
 
-  if (window.innerWidth < 1300) {
+  if (window.innerWidth < APP.COLLAPSED_SIDEBAR_WIDTH) {
     store.collapsed = true;
   }
 });

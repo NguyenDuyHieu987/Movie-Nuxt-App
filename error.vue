@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="app-wrapper error">
-      <NuxtLayout>
+      <NuxtLayout :name="isNetworkError ? 'default' : 'error'">
         <a-result
           class="error-page"
-          :status="error.statusCode"
+          :status="error.statusCode as ResultStatusType"
           :title="`${error.statusCode} ${error.statusMessage}`"
         >
           <template
@@ -30,7 +30,7 @@
               Quay lại
             </a-button>
 
-            <NuxtLink :to="{ path: '/' }">
+            <NuxtLink to="/">
               <a-button
                 type="text"
                 size="large"
@@ -47,7 +47,25 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ error: any }>();
+import { useOnline } from '@vueuse/core';
+import type { ResultStatusType } from 'ant-design-vue/es/result';
+
+type errorResponse = {
+  url: string;
+  statusCode: number | ResultStatusType;
+  statusMessage: string;
+  message: string;
+  description: string;
+  data: any;
+};
+
+const props = defineProps<{ error: errorResponse }>();
+
+const isOnline = useOnline();
+
+const isNetworkError = computed<boolean>(
+  () => isOnline.value && props.error.data?.networkError
+);
 
 useHead({
   title: `Lỗi - ${props.error.statusCode}`,

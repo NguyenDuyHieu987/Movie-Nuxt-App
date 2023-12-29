@@ -1,21 +1,23 @@
 <template>
-  <div class="body-content-center-page">
-    <HeaderCenterPage />
+  <div class="center-page-layout">
+    <div class="body-content-center-page">
+      <HeaderCenterPage />
 
-    <div
-      id="body-wrapper"
-      class="body-wrapper"
-    >
-      <Drawer />
+      <div
+        id="body-wrapper"
+        class="body-wrapper"
+      >
+        <Drawer />
 
-      <main class="main-content">
-        <!-- <BreadCrumb /> -->
-        <div class="container">
-          <slot />
-        </div>
+        <main class="main-content">
+          <!-- <BreadCrumb /> -->
+          <div class="container">
+            <slot />
+          </div>
 
-        <Footer />
-      </main>
+          <Footer />
+        </main>
+      </div>
     </div>
   </div>
 </template>

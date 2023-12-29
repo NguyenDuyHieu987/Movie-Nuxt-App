@@ -73,6 +73,8 @@
 </template>
 
 <script setup lang="ts">
+import { useOnline } from '@vueuse/core';
+
 import { LoadingApp } from '~/components/Loading';
 import { RequireAuthDialog } from '~/components/RequireAuth';
 
@@ -89,6 +91,27 @@ useHead({
 useSeoMeta({
   description: runtimeConfig.public.siteDescription
 });
+
+const isOnline = useOnline();
+
+watch(
+  isOnline,
+  () => {
+    console.log(isOnline.value);
+
+    if (isOnline.value == false) {
+      throw createError({
+        data: {
+          networkError: true
+        }
+      });
+    }
+  },
+  {
+    deep: true,
+    immediate: true
+  }
+);
 
 onMounted(() => {
   // window.history.scrollRestoration = 'auto';
@@ -148,4 +171,3 @@ const onBackTop = () => {
 </script>
 
 <style lang="scss" src="~/assets/style/app.scss"></style>
-~/components/RequireAuth/RequireAuthDialog

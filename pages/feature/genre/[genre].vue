@@ -423,9 +423,6 @@ const getData = async () => {
     .finally(() => {
       loadingTopRated.value = false;
     });
-  // } else {
-  //   navigateTo('/404');
-  // }
 };
 
 const { data: dataBilboard, pending } = await useAsyncData(

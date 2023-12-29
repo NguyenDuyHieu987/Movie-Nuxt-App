@@ -1,32 +1,34 @@
-.body-content-center-page {
-  background-color: #fff;
-  margin-top: var(--header-height);
+.center-page-layout {
+  .body-content-center-page {
+    background-color: #fff;
+    margin-top: var(--header-height);
 
-  .body-wrapper {
-    color: var(--text-color-invert);
+    .body-wrapper {
+      color: var(--text-color-invert);
 
-    --text-color-gray: #6f6f6f;
-    --text-color-gray1: #4d4d4d;
+      --text-color-gray: #6f6f6f;
+      --text-color-gray1: #4d4d4d;
 
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-      &.submit-btn {
-        color: var(--text-color);
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        &.submit-btn {
+          color: var(--text-color);
+        }
       }
     }
-  }
 
-  main.main-content {
-    & > .container {
-    }
+    main.main-content {
+      & > .container {
+      }
 
-    footer.footer {
-      .footer-container {
-        max-width: var(--max-width-center-page);
-        margin: 0px auto;
+      footer.footer {
+        .footer-container {
+          max-width: var(--max-width-center-page);
+          margin: 0px auto;
+        }
       }
     }
   }

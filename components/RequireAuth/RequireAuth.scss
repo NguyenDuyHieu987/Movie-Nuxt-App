@@ -5,6 +5,14 @@
   justify-content: center;
 
   .ant-result {
+    .ant-result-image {
+      margin-bottom: 0px;
+
+      svg {
+        transform: scale(0.8);
+      }
+    }
+
     .ant-result-title {
       font-size: 2.2rem;
     }

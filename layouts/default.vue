@@ -1,42 +1,44 @@
 <template>
-  <div
-    class="body-content"
-    :class="{
-      expand: collapsed || openSiderBarFixed,
-      fixed: openSiderBarFixed
-      // home: $route.meta.name?.includes('home')
-    }"
-  >
-    <Header />
-
+  <div class="default-layout">
     <div
-      id="body-wrapper"
-      class="body-wrapper"
+      class="body-content"
+      :class="{
+        expand: collapsed || openSiderBarFixed,
+        fixed: openSiderBarFixed
+        // home: $route.meta.name?.includes('home')
+      }"
     >
-      <Sider />
-      <Drawer />
+      <Header />
 
-      <!-- <section
-        v-show="isLogin && $route.path == '/follow'"
-        id="topic-follow-column-teleport"
-      ></section> -->
+      <div
+        id="body-wrapper"
+        class="body-wrapper"
+      >
+        <Sider />
+        <Drawer />
 
-      <main class="main-content">
-        <!-- <BreadCrumb /> -->
+        <!-- <section
+          v-show="isLogin && $route.path == '/follow'"
+          id="topic-follow-column-teleport"
+        ></section> -->
 
-        <div class="container">
-          <slot />
-        </div>
+        <main class="main-content">
+          <!-- <BreadCrumb /> -->
 
-        <Footer
-          v-show="$route.path != '/follow' && $route.path != '/history'"
-        />
-      </main>
+          <div class="container">
+            <slot />
+          </div>
 
-      <!-- <section
-        v-show="isLogin && $route.path == '/history'"
-        id="topic-history-column-teleport"
-      ></section> -->
+          <Footer
+            v-show="$route.path != '/follow' && $route.path != '/history'"
+          />
+        </main>
+
+        <!-- <section
+          v-show="isLogin && $route.path == '/history'"
+          id="topic-history-column-teleport"
+        ></section> -->
+      </div>
     </div>
   </div>
 </template>

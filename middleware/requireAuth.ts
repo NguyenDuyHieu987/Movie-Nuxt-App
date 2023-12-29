@@ -2,13 +2,14 @@ export default defineNuxtRouteMiddleware((to, from) => {
   const authStore = useAuthStore();
   const utils = useUtils();
 
-  // to.matched.some((record) => {
-  //   if (record.meta.requireAuth) {
-  //   }
-  // });
+  console.log(to);
 
-  // if (utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)) {
-  //   authStore.isLogin = true;
-  // } else {
-  // }
+  to.matched.forEach((record: any) => {
+    if (!authStore.isLogin) {
+      authStore.isOpenRequireAuthDialog = true;
+      return abortNavigation();
+    }
+
+    return navigateTo(record.path);
+  });
 });

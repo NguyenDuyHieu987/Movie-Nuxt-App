@@ -1,4 +1,12 @@
 .ant-result.error-page {
+  .ant-result-image {
+    margin-bottom: 0px;
+
+    svg {
+      transform: scale(0.8);
+    }
+  }
+
   .ant-result-title {
     color: var(--text-color-invert);
     font-size: 2.3rem;
@@ -21,12 +29,16 @@
     }
 
     a {
-      color: var(--text-color);
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
     }
 
     .ant-btn {
       height: 100%;
-      padding: 11px 30px;
+      padding: 10px 30px;
       border-radius: 2px;
 
       &:hover {

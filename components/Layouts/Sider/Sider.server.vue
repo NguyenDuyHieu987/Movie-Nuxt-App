@@ -107,7 +107,7 @@
 
 <script setup lang="ts">
 // import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
-import { useBreakpoints } from '@vueuse/core';
+import { useLocalStorage } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 
 import { TheMenu } from '~/components/Layouts';
@@ -118,42 +118,17 @@ const authStore = useAuthStore();
 const { collapsed, openSiderBarFixed } = storeToRefs<any>(store);
 const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const siderScrolled = ref<boolean>(false);
-
-const breakpoints = useBreakpoints({
-  desktop: 1300
-});
-const largerThanDesktop = breakpoints.greater('desktop');
-
-// watch(largerThanDesktop, () => {
-//   if (largerThanDesktop.value) {
-//     store.collapsed = false;
-//   } else {
-//     store.collapsed = true;
-//   }
-// });
-
-watch(collapsed, (oldVal, newVal) => {
-  if (oldVal) {
-    store.openSiderBarFixed = false;
-  } else {
-    if (store.openSiderBarFixed == true) {
-      store.openSiderBarFixed = false;
-    }
-  }
+const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
+  [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false
 });
 
 onMounted(() => {
-  // if (largerThanDesktop.value) {
-  //   store.collapsed = false;
-  // }
-
-  // window.addEventListener('resize', () => {
-  //   if (window.innerWidth > 1300) {
-  //     store.collapsed = false;
-  //   } else {
-  //     store.collapsed = true;
-  //   }
-  // });
+  if (
+    appStorageStates.value[STORAGE.APP_STATES.COLLAPSED_SIDEBAR] == true ||
+    window.innerWidth < APP.COLLAPSED_SIDEBAR_WIDTH
+  ) {
+    store.collapsed = true;
+  }
 
   const menu: HTMLElement | null = document.querySelector(
     '.sider-bar .ant-layout-sider-children'
