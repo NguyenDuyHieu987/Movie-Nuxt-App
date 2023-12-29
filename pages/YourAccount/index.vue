@@ -322,7 +322,7 @@ const handleClickSaveRowItem = (e: any) => {
   const newFullName: string = rowItemLabel?.innerText.trim()!;
 
   if (!newFullName || newFullName.length == 0) {
-    ElNotification.info({
+    ElNotification.warning({
       title: MESSAGE.STATUS.INFO,
       message: 'Họ và tên không được bỏ trống.',
       duration: MESSAGE.DURATION.DEFAULT

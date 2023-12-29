@@ -97,7 +97,7 @@ const isOnline = useOnline();
 watch(
   isOnline,
   () => {
-    console.log(isOnline.value);
+    console.log(isOnline.value ? 'online' : 'offline');
 
     if (isOnline.value == false) {
       throw createError({
@@ -109,7 +109,6 @@ watch(
     }
   },
   {
-    deep: true,
     immediate: true
   }
 );

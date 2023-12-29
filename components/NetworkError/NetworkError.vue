@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div class="network-error-notification">
+    <div class="toast"></div>
+  </div>
 </template>
 
 <script setup lang="ts"></script>

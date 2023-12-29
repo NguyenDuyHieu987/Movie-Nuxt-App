@@ -194,7 +194,8 @@ export default defineNuxtConfig({
   },
   fontMetrics: {},
   googleFonts: {
-    preload: true,
+    preload: false,
+    display: 'swap',
     families: {
       Roboto: { wght: '100..700', ital: '100..700' },
       'Roboto Flex': { wght: '100..700', ital: '100..700' },
