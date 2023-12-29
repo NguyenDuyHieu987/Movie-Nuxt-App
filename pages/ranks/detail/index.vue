@@ -79,14 +79,12 @@
                 :to="{
                   path:
                     item?.media_type == 'tv'
-                      ? `/info-tv/${item?.movie_id}__${utils
-                          .removeVietnameseTones(item?.name)
-                          ?.replaceAll(/\s/g, '-')
-                          .toLowerCase()}`
-                      : `/info-movie/${item?.movie_id}__${utils
-                          .removeVietnameseTones(item?.name)
-                          ?.replaceAll(/\s/g, '-')
-                          .toLowerCase()}`
+                      ? `/info-tv/${
+                          item?.movie_id
+                        }${utils.convertPath.toPathInfo_Play(item?.name)}`
+                      : `/info-movie/${
+                          item?.movie_id
+                        }${utils.convertPath.toPathInfo_Play(item?.name)}`
                 }"
                 class="info-wrapper"
               >

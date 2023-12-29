@@ -79,10 +79,11 @@
                     <NuxtLink
                       class="action-btn"
                       :to="{
-                        path: `/play-tv/${dataMovie?.id}__${utils
-                          .removeVietnameseTones(dataMovie?.name)
-                          ?.replaceAll(/\s/g, '-')
-                          .toLowerCase()}/tap-1`
+                        path: `/play-tv/${
+                          dataMovie?.id
+                        }${utils.convertPath.toPathInfo_Play(
+                          dataMovie?.name
+                        )}/tap-1`
                       }"
                     >
                       <a-button
@@ -444,7 +445,9 @@ const release_date = computed<string>(
 );
 const ratedValue = ref<number | undefined>();
 const windowWidth = ref<number>(1200);
-const movieId = computed<string>((): string => route.params?.id.split('__')[0]);
+const movieId = computed<string>((): string =>
+  utils.convertPath.parsePathInfo_Play(route.params?.id)
+);
 
 const setBackgroundColor = (color: string[]) => {
   const main_color = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`;

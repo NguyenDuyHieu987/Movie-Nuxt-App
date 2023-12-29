@@ -102,9 +102,7 @@
                 {
                   message:
                     'Vui lòng nhập đúng định dạng email (vd: ...@gmail.com)!',
-                  pattern: new RegExp(
-                    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
-                  ),
+                  pattern: new RegExp(utils.EMAIL_REGEX),
                   trigger: ['change', 'blur']
                 }
               ]"
@@ -270,8 +268,8 @@ const disabled = computed<boolean>((): boolean => {
   return !(
     formSignup.fullname &&
     formSignup.username &&
-    !/[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/.test(formSignup.username) &&
-    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formSignup.email) &&
+    !utils.isSpecialCharacters(formSignup.username) &&
+    utils.isEmailValid(formSignup.email) &&
     formSignup.password &&
     formSignup.confirmPass &&
     formSignup.password == formSignup.confirmPass
@@ -288,7 +286,7 @@ const reset = () => {
 };
 
 const checkSpecialCharacters = async (_rule: Rule, value: string) => {
-  if (/[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/.test(value)) {
+  if (utils.isSpecialCharacters(value)) {
     return Promise.reject(
       new Error('Tên tài khoản không được có ký tự đặc biệt!')
     );

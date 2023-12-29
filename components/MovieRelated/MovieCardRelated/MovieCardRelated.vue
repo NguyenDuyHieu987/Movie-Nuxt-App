@@ -98,14 +98,12 @@
       class="info"
       :to="{
         path: isEpisodes
-          ? `/info-tv/${item?.id}__${utils
-              .removeVietnameseTones(item?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}`
-          : `/info-movie/${item?.id}__${utils
-              .removeVietnameseTones(item?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}`
+          ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
+              item?.name
+            )}`
+          : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
+              item?.name
+            )}`
       }"
     >
       <p
@@ -318,14 +316,12 @@ const onMouseLeave = () => {
 const onClickPlay = () => {
   navigateTo({
     path: isEpisodes.value
-      ? `/play-tv/${props.item?.id}__${utils
-          .removeVietnameseTones(props.item?.name)
-          ?.replaceAll(/\s/g, '-')
-          .toLowerCase()}/tap-1`
-      : `/play-movie/${props.item?.id}__${utils
-          .removeVietnameseTones(props.item?.name)
-          ?.replaceAll(/\s/g, '-')
-          .toLowerCase()}`
+      ? `/play-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+          props.item?.name
+        )}/tap-1`
+      : `/play-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+          props.item?.name
+        )}`
   });
 };
 

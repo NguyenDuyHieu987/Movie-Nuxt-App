@@ -145,14 +145,14 @@
                       class="btn-play-now"
                       :to="{
                         path: isEpisodes
-                          ? `/play-tv/${item?.id}__${utils
-                              .removeVietnameseTones(item?.name)
-                              ?.replaceAll(/\s/g, '-')
-                              .toLowerCase()}/tap-1`
-                          : `/play-movie/${item?.id}__${utils
-                              .removeVietnameseTones(item?.name)
-                              ?.replaceAll(/\s/g, '-')
-                              .toLowerCase()}`
+                          ? `/play-tv/${
+                              item?.id
+                            }${utils.convertPath.toPathInfo_Play(
+                              item?.name
+                            )}/tap-1`
+                          : `/play-movie/${
+                              item?.id
+                            }${utils.convertPath.toPathInfo_Play(item?.name)}`
                       }"
                     >
                       <a-button
@@ -284,14 +284,12 @@
                     <NuxtLink
                       :to="{
                         path: isEpisodes
-                          ? `/info-tv/${item?.id}__${utils
-                              .removeVietnameseTones(item?.name)
-                              ?.replaceAll(/\s/g, '-')
-                              .toLowerCase()}`
-                          : `/info-movie/${item?.id}__${utils
-                              .removeVietnameseTones(item?.name)
-                              ?.replaceAll(/\s/g, '-')
-                              .toLowerCase()}`
+                          ? `/info-tv/${
+                              item?.id
+                            }${utils.convertPath.toPathInfo_Play(item?.name)}`
+                          : `/info-movie/${
+                              item?.id
+                            }${utils.convertPath.toPathInfo_Play(item?.name)}`
                       }"
                     >
                       <a-button
@@ -445,14 +443,12 @@ const urlShare = computed<string>(
   (): string =>
     window.location.origin +
     (props.isEpisodes
-      ? `/info-tv/${props.item?.id}__${utils
-          .removeVietnameseTones(props.item?.name)
-          ?.replaceAll(/\s/g, '-')
-          .toLowerCase()}`
-      : `/info-movie/${props.item?.id}__${utils
-          .removeVietnameseTones(props.item?.name)
-          ?.replaceAll(/\s/g, '-')
-          .toLowerCase()}`)
+      ? `/info-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+          props.item?.name
+        )}`
+      : `/info-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+          props.item?.name
+        )}props.`)
 );
 const isTeleport = defineModel<boolean>('isTeleport');
 const style = defineModel<{
@@ -726,14 +722,12 @@ const onClickPreviewModal = (e: any) => {
   if (!actionBtn.value) {
     navigateTo({
       path: props.isEpisodes
-        ? `/info-tv/${props.item?.id}__${utils
-            .removeVietnameseTones(props.item?.name)
-            ?.replaceAll(/\s/g, '-')
-            .toLowerCase()}`
-        : `/info-movie/${props.item?.id}__${utils
-            .removeVietnameseTones(props.item?.name)
-            ?.replaceAll(/\s/g, '-')
-            .toLowerCase()}`
+        ? `/info-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+            props.item?.name
+          )}`
+        : `/info-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+            props.item?.name
+          )}`
     });
   }
 };

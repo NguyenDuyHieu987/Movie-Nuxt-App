@@ -25,22 +25,16 @@ export function getUpComing(page: number = 1) {
 }
 
 export function FilterMovieSlug(formFilter: formfilter) {
+  const utils = useUtils();
+
   const yearLte = formFilter.year != '' ? formFilter.year + '-12-30' : '';
-  const yearGte =
-    formFilter.year != ''
-      ? /^\d+$/.test(formFilter.year)
-        ? formFilter.year + '-01-01'
-        : formFilter.year.slice(-4) + '-01-01'
-      : '';
+  const yearGte = !utils.isStringEmpty(formFilter.year)
+    ? utils.isNumber(formFilter.year)
+      ? formFilter.year + '-01-01'
+      : formFilter.year.slice(-4) + '-01-01'
+    : '';
 
-  // const genreStr =
-  //   formFilter.genre !== ''
-  //     ? /^\d+$/.test(formFilter.genre)
-  //       ? formFilter.genre
-  //       : getGenreByName(formFilter.genre)?.id
-  //     : '';
-
-  return /^\d+$/.test(formFilter.year) || formFilter.year == ''
+  return utils.isNumber(formFilter.year) || formFilter.year == ''
     ? makeRequest(
         `/${PREFIX_ROUTE}/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_gte=${yearGte}&primary_release_date_lte=${yearLte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
       )

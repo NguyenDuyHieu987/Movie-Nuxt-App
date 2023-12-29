@@ -133,14 +133,12 @@
           :to="{
             path:
               item?.media_type == 'movie'
-                ? `/play-movie/${item?.id}__${utils
-                    .removeVietnameseTones(item?.name)
-                    ?.replaceAll(/\s/g, '-')
-                    .toLowerCase()}`
-                : `/play-tv/${item?.id}__${utils
-                    .removeVietnameseTones(item?.name)
-                    ?.replaceAll(/\s/g, '-')
-                    .toLowerCase()}/tap-1`
+                ? `/play-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
+                    item?.name
+                  )}`
+                : `/play-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
+                    item?.name
+                  )}/tap-1`
           }"
         >
           <a-button
@@ -171,14 +169,12 @@
           :to="{
             path:
               item?.media_type == 'movie'
-                ? `/info-movie/${item?.id}__${utils
-                    .removeVietnameseTones(item?.name)
-                    ?.replace(/\s/g, '-')
-                    .toLowerCase()}`
-                : `/info-tv/${item?.id}__${utils
-                    .removeVietnameseTones(item?.name)
-                    ?.replace(/\s/g, '-')
-                    .toLowerCase()}`
+                ? `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
+                    item?.name
+                  )}`
+                : `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
+                    item?.name
+                  )}`
           }"
         >
           <a-button

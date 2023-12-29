@@ -75,6 +75,7 @@ definePageMeta({
   }
 });
 
+const utils = useUtils();
 const route = useRoute();
 const router = useRouter();
 const store = useStore();
@@ -94,7 +95,7 @@ const formFilter = ref<formfilter>({
   page: 1
 });
 const yearRoute = computed<number | string>(() =>
-  /^\d+$/.test(route.params.year)
+  utils.isNumber(route.params.year)
     ? +route.params.year
     : 'Trước năm ' + route.params.year?.slice(-4)
 );

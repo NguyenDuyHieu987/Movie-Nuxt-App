@@ -13,10 +13,9 @@
       >
         <NuxtLink
           :to="{
-            path: `/play-tv/${dataMovie?.id}__${utils
-              .removeVietnameseTones(dataMovie?.name)
-              ?.replace(/\s/g, '-')
-              .toLowerCase()}/tap-${item?.episode_number}`
+            path: `/play-tv/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
+              dataMovie?.name
+            )}/tap-${item?.episode_number}`
           }"
         >
           {{ 'Tập ' }}

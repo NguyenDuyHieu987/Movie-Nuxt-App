@@ -13,10 +13,9 @@
         <BackPage
           @onclick="
             navigateTo({
-              path: `/info-tv/${dataMovie?.id}__${utils
-                .removeVietnameseTones(dataMovie?.name)
-                ?.replaceAll(/\s/g, '-')
-                .toLowerCase()}
+              path: `/info-tv/${
+                dataMovie?.id
+              }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}
             `
             })
           "
@@ -355,7 +354,9 @@ const release_date = computed<string>(
 const ratedValue = ref<number | undefined>();
 const currentEpisode = ref<any>({});
 const windowWidth = ref<number>(1200);
-const movieId = computed<string>((): string => route.params?.id.split('__')[0]);
+const movieId = computed<string>((): string =>
+  utils.convertPath.parsePathInfo_Play(route.params?.id)
+);
 
 const getData = async () => {
   loading.value = true;

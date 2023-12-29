@@ -102,9 +102,7 @@ const isDisabledForm = ref<boolean>(false);
 const disabled = computed<boolean>((): boolean => {
   return !(
     formChangeEmail.newEmail &&
-    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
-      formChangeEmail.newEmail
-    ) &&
+    utils.isEmailValid(formChangeEmail.newEmail) &&
     formChangeEmail.newEmail != authStore.userAccount?.email
   );
 });

@@ -238,7 +238,7 @@
         <NuxtLink
           :to="{
             path: `/discover/year/${
-              /^\d+$/.test(item?.name)
+              utils.isNumber(item?.name)
                 ? item?.name
                 : utils
                     .removeVietnameseTones(item?.name)

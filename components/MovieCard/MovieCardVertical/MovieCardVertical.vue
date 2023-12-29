@@ -3,14 +3,10 @@
     ref="cardItem"
     :to="{
       path: isEpisodes
-        ? `/info-tv/${item?.id}__${utils
-            .removeVietnameseTones(item?.name)
-            ?.replaceAll(/\s/g, '-')
-            .toLowerCase()}`
-        : `/info-movie/${item?.id}__${utils
-            .removeVietnameseTones(item?.name)
-            ?.replaceAll(/\s/g, '-')
-            .toLowerCase()}`
+        ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(item?.name)}`
+        : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
+            item?.name
+          )}`
     }"
     class="movie-card-item vertical"
     :style="`--dominant-poster-color: ${item.dominant_poster_color[0]}, ${item.dominant_poster_color[1]},${item.dominant_poster_color[2]}`"
@@ -101,14 +97,12 @@
                 @click.prevent="
                   navigateTo(
                     isEpisodes
-                      ? `/play-tv/${item?.id}__${utils
-                          .removeVietnameseTones(item?.name)
-                          ?.replaceAll(/\s/g, '-')
-                          .toLowerCase()}/tap-1`
-                      : `/play-movie/${item?.id}__${utils
-                          .removeVietnameseTones(item?.name)
-                          ?.replaceAll(/\s/g, '-')
-                          .toLowerCase()}`
+                      ? `/play-tv/${
+                          item?.id
+                        }${utils.convertPath.toPathInfo_Play(item?.name)}/tap-1`
+                      : `/play-movie/${
+                          item?.id
+                        }${utils.convertPath.toPathInfo_Play(item?.name)}`
                   )
                 "
               >

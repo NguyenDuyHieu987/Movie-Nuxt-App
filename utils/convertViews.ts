@@ -1,5 +1,11 @@
-export function viewFormatter(num: any) {
-  const lookup = [
+type lookup = {
+  value: number;
+  symbol: string;
+  fixed: number;
+};
+
+export function viewFormatter(num: string | number) {
+  const lookup: lookup[] = [
     { value: 1, symbol: '', fixed: 0 },
     { value: 1e3, symbol: ' N', fixed: 0 },
     { value: 1e6, symbol: ' Tr', fixed: 1 },
@@ -12,23 +18,11 @@ export function viewFormatter(num: any) {
   const item = lookup
     .slice()
     .reverse()
-    .find(function (item: any) {
-      return num >= item.value;
+    .find(function (item: lookup) {
+      return +num >= item.value;
     });
+
   return item
-    ? (num / item.value).toFixed(item.fixed).replace(rx, '$1') + item.symbol
+    ? (+num / item.value).toFixed(item.fixed).replace(rx, '$1') + item.symbol
     : '0';
 }
-
-// export function ViewFormatter(num) {
-//   if (num >= 1000000000) {
-//     return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + ' T';
-//   }
-//   if (num >= 1000000) {
-//     return (num / 1000000).toFixed(1).replace(/\.0$/, '') + ' Tr';
-//   }
-//   if (num >= 1000) {
-//     return (num / 1000).toFixed(1).replace(/\.0$/, '') + ' N';
-//   }
-//   return num;
-// }

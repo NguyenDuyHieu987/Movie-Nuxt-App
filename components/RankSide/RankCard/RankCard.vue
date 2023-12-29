@@ -3,14 +3,12 @@
     :to="{
       path:
         item?.type || item?.media_type == 'tv'
-          ? `/info-tv/${item?.id}__${utils
-              .removeVietnameseTones(item?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}`
-          : `/info-movie/${item?.id}__${utils
-              .removeVietnameseTones(item?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}`
+          ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
+              item?.name
+            )}`
+          : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
+              item?.name
+            )}`
     }"
     class="movie-rank-item"
   >

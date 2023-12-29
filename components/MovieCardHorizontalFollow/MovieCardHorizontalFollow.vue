@@ -20,14 +20,12 @@
     <NuxtLink
       :to="{
         path: isEpisodes
-          ? `/info-tv/${item?.movie_id}__${utils
-              .removeVietnameseTones(item?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}`
-          : `/info-movie/${item?.movie_id}__${utils
-              .removeVietnameseTones(item?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}`
+          ? `/info-tv/${item?.movie_id}${utils.convertPath.toPathInfo_Play(
+              item?.name
+            )}`
+          : `/info-movie/${item?.movie_id}${utils.convertPath.toPathInfo_Play(
+              item?.name
+            )}`
       }"
       class="movie-follow-item"
     >
@@ -176,10 +174,9 @@
                     <NuxtLink
                       v-if="isEpisodes"
                       :to="{
-                        path: `/play-tv/${item?.movie_id}__${utils
-                          .removeVietnameseTones(item?.name)
-                          ?.replaceAll(/\s/g, '-')
-                          .toLowerCase()}/tap-1`
+                        path: `/play-tv/${
+                          item?.movie_id
+                        }${utils.convertPath.toPathInfo_Play(item?.name)}/tap-1`
                       }"
                       class="btn-play-now"
                     >
@@ -188,10 +185,9 @@
                     <NuxtLink
                       v-else
                       :to="{
-                        path: `/play-movie/${item?.movie_id}__${utils
-                          .removeVietnameseTones(item?.name)
-                          ?.replaceAll(/\s/g, '-')
-                          .toLowerCase()}`
+                        path: `/play-movie/${
+                          item?.movie_id
+                        }${utils.convertPath.toPathInfo_Play(item?.name)}`
                       }"
                       class="btn-play-now"
                     >
@@ -287,14 +283,12 @@ const urlShare = computed<string>(
   (): string =>
     window.location.origin +
     (isEpisodes
-      ? `/info-tv/${props.item?.id}__${utils
-          .removeVietnameseTones(props.item?.name)
-          ?.replaceAll(/\s/g, '-')
-          .toLowerCase()}`
-      : `/info-movie/${props.item?.id}__${utils
-          .removeVietnameseTones(props.item?.name)
-          ?.replaceAll(/\s/g, '-')
-          .toLowerCase()}`)
+      ? `/info-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+          props.item?.name
+        )}`
+      : `/info-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+          props.item?.name
+        )}`)
 );
 
 onMounted(() => {});

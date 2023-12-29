@@ -9,10 +9,9 @@
           v-if="dataColumn[0]?.media_type == 'tv' && dataColumn[0]?.movie_id"
           class="img-box ratio-16-9"
           :to="{
-            path: `/play-tv/${dataColumn[0]?.movie_id}__${utils
-              .removeVietnameseTones(dataColumn[0]?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}/ep-1`
+            path: `/play-tv/${
+              dataColumn[0]?.movie_id
+            }${utils.convertPath.toPathInfo_Play(dataColumn[0]?.name)}/tap-1`
           }"
         >
           <NuxtImg
@@ -45,10 +44,9 @@
           "
           class="img-box"
           :to="{
-            path: `/play-movie/${dataColumn[0]?.movie_id}__${utils
-              .removeVietnameseTones(dataColumn[0]?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}`
+            path: `/play-movie/${
+              dataColumn[0]?.movie_id
+            }${utils.convertPath.toPathInfo_Play(dataColumn[0]?.name)}`
           }"
         >
           <NuxtImg

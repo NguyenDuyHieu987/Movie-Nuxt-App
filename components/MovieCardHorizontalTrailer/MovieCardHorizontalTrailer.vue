@@ -10,14 +10,12 @@
       class="img-wrapper"
       :to="{
         path: isEpisodes
-          ? `/info-tv/${item?.id}__${utils
-              .removeVietnameseTones(item?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}`
-          : `/info-movie/${item?.id}__${utils
-              .removeVietnameseTones(item?.name)
-              ?.replaceAll(/\s/g, '-')
-              .toLowerCase()}`
+          ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
+              item?.name
+            )}`
+          : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
+              item?.name
+            )}`
       }"
     >
       <div class="img-box ratio-16-9">

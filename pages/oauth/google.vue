@@ -208,41 +208,39 @@ onBeforeMount(() => {
     accessToken: access_token
   })
     .then((response) => {
+      if (!response?.isLogin) {
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Đăng nhập thất bại.',
+          duration: MESSAGE.DURATION.DEFAULT
+        });
+
+        navigateTo({ path: '/login' });
+
+        return;
+      }
+
       if (response.isSignUp == true) {
         ElNotification.success({
           title: MESSAGE.STATUS.SUCCESS,
           message: 'Bạn đã đăng nhập bằng Google thành công tại Phimhay247.',
           duration: MESSAGE.DURATION.DEFAULT
         });
-
-        authStore.userAccount = response?.result;
-
-        utils.localStorage.setWithExpiry(
-          TOKEN.NAME.USER_TOKEN,
-          response.headers.get('Authorization'),
-          TOKEN.OFFSET.USER_TOKEN
-        );
-        navigateTo({ path: '/' });
-        // navigateTo({ path: urlBack.value });
-      } else if (response.isLogin == true) {
-        authStore.userAccount = response?.result;
-
-        utils.localStorage.setWithExpiry(
-          TOKEN.NAME.USER_TOKEN,
-          response.headers.get('Authorization'),
-          TOKEN.OFFSET.USER_TOKEN
-        );
-        navigateTo({ path: '/' });
-        // navigateTo({ path: urlBack.value });
-      } else if (response.isLogin == false) {
-        navigateTo({ path: '/login' });
-
-        ElNotification.error({
-          title: MESSAGE.STATUS.FAILED,
-          message: MESSAGE.STATUS.BROKE_MESSAGE,
-          duration: MESSAGE.DURATION.DEFAULT
-        });
       }
+
+      authStore.userAccount = response?.result;
+
+      if (response?.subscription) {
+        authStore.subscription = response.subscription;
+      }
+
+      utils.localStorage.setWithExpiry(
+        TOKEN.NAME.USER_TOKEN,
+        response.headers.get('Authorization'),
+        TOKEN.OFFSET.USER_TOKEN
+      );
+      navigateTo({ path: '/' });
+      // navigateTo({ path: urlBack.value });
     })
     .catch((e) => {
       navigateTo({ path: '/login' });

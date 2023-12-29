@@ -94,7 +94,6 @@ definePageMeta({
 });
 
 const utils = useUtils();
-const store = useStore();
 const loadingForgotPassword = ref<boolean>(false);
 const isActionForm = ref<boolean>(false);
 const formForgotPassword = reactive<{
@@ -113,9 +112,7 @@ const noteForgotPassword = ref<string>(
   'Hãy nhập Email của tài khoản mà bạn muốn khôi phục mật khẩu.'
 );
 const disabled = computed<boolean>((): boolean => {
-  return !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
-    formForgotPassword.email
-  );
+  return !utils.isEmailValid(formForgotPassword.email);
 });
 
 useHead({

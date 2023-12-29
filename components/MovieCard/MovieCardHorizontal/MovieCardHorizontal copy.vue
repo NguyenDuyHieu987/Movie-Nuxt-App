@@ -3,14 +3,10 @@
     ref="cardItem"
     :to="{
       path: isEpisodes
-        ? `/info-tv/${item?.id}__${utils
-            .removeVietnameseTones(item?.name)
-            ?.replaceAll(/\s/g, '-')
-            .toLowerCase()}`
-        : `/info-movie/${item?.id}__${utils
-            .removeVietnameseTones(item?.name)
-            ?.replaceAll(/\s/g, '-')
-            .toLowerCase()}`
+        ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(item?.name)}`
+        : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
+            item?.name
+          )}`
     }"
     class="movie-card-item horizontal"
     :style="`--dominant-backdrop-color: ${item.dominant_backdrop_color[0]}, ${item.dominant_backdrop_color[1]},${item.dominant_backdrop_color[2]}`"

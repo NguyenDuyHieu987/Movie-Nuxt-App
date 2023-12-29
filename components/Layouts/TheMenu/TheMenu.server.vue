@@ -309,23 +309,17 @@
         v-for="(item, index) in years"
         :key="item?.name"
         :index="`/discover/year/${
-          /^\d+$/.test(item?.name)
+          utils.isNumber(item?.name)
             ? item?.name
-            : utils
-                .removeVietnameseTones(item?.name)
-                ?.replaceAll(/\s/g, '-')
-                .toLowerCase()
+            : utils.convertPath.toPath(item?.name)
         }`"
       >
         <NuxtLink
           :to="{
             path: `/discover/year/${
-              /^\d+$/.test(item?.name)
+              utils.isNumber(item?.name)
                 ? item?.name
-                : utils
-                    .removeVietnameseTones(item?.name)
-                    ?.replaceAll(/\s/g, '-')
-                    .toLowerCase()
+                : utils.convertPath.toPath(item?.name)
             }`
           }"
         >

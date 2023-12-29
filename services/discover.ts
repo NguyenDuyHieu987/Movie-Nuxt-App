@@ -9,22 +9,16 @@ import type { country, formfilter, genre, typeMovie, typeTv } from '@/types';
 const PREFIX_ROUTE = 'discover';
 
 export function FilterMovie(formFilter: formfilter) {
+  const utils = useUtils();
+
   const yearLte = formFilter.year != '' ? formFilter.year + '-12-30' : '';
-  const yearGte =
-    formFilter.year != ''
-      ? /^\d+$/.test(formFilter.year)
-        ? formFilter.year + '-01-01'
-        : formFilter.year.slice(-4) + '-01-01'
-      : '';
+  const yearGte = !utils.isStringEmpty(formFilter.year)
+    ? utils.isNumber(formFilter.year)
+      ? formFilter.year + '-01-01'
+      : formFilter.year.slice(-4) + '-01-01'
+    : '';
 
-  // const genreStr =
-  //   formFilter.genre !== ''
-  //     ? /^\d+$/.test(formFilter.genre)
-  //       ? formFilter.genre
-  //       : getGenreByName(formFilter.genre)?.id
-  //     : '';
-
-  return /^\d+$/.test(formFilter.year) || formFilter.year == ''
+  return utils.isNumber(formFilter.year) || formFilter.year == ''
     ? makeRequest(
         `/${PREFIX_ROUTE}/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_gte=${yearGte}&primary_release_date_lte=${yearLte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
       )
@@ -65,7 +59,9 @@ export function getMoviesByYear(
   page: number = 1,
   limit: number = 20
 ) {
-  const url = /^\d+$/.test(year)
+  const utils = useUtils();
+
+  const url = utils.isNumber(year)
     ? `/${PREFIX_ROUTE}/all?sort_by=${sort_by}&primary_release_date_gte=${year}-01-01&primary_release_date_lte=${year}-12-30&page=${page}&limit=${limit}`
     : `/${PREFIX_ROUTE}/all?sort_by=${sort_by}&primary_release_date_lte=${year.slice(
         -4
