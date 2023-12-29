@@ -124,6 +124,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-lazy-load',
     '@nuxtjs/fontaine',
+    '@nuxtjs/google-fonts',
     'nuxt-gtag',
     // SEO
     'nuxt-simple-sitemap'
@@ -192,6 +193,16 @@ export default defineNuxtConfig({
     observerConfig: {}
   },
   fontMetrics: {},
+  googleFonts: {
+    preload: true,
+    families: {
+      Roboto: { wght: '100..700', ital: '100..700' },
+      Lobster: {
+        wght: [400],
+        ital: [400]
+      }
+    }
+  },
   // SEO
   site: {
     url: 'https://phimhay247z.org'

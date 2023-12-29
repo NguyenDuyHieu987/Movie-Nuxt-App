@@ -245,21 +245,21 @@
         <div class="genres-wrapper">
           <div class="genres">
             <!-- <ClientOnly>
-            <NuxtLink
-              v-for="(genreItem, index) in Array.from(
-                item?.genres,
-                (x: genre) => x
-              )"
-              :key="index"
-              :index="index"
-              :to="`/discover/genre/${
-                getGenreById(genreItem.id, store?.allGenres)?.short_name
-              }`"
-              class="genre-item"
-              nuxt-client
-            >
-              {{ genreItem?.name }}
-            </NuxtLink>
+              <NuxtLink
+                v-for="(genreItem, index) in Array.from(
+                  item?.genres,
+                  (x: genre) => x
+                )"
+                :key="index"
+                :index="index"
+                :to="`/discover/genre/${
+                  getGenreById(genreItem.id, store?.allGenres)?.short_name
+                }`"
+                class="genre-item"
+                nuxt-client
+              >
+                {{ genreItem?.name }}
+              </NuxtLink>
             </ClientOnly> -->
 
             <div
