@@ -1,44 +1,42 @@
 <template>
-  <div class="default-layout">
+  <div
+    class="body-content"
+    :class="{
+      expand: collapsed || openSiderBarFixed,
+      fixed: openSiderBarFixed
+      // home: $route.meta.name?.includes('home')
+    }"
+  >
+    <Header />
+
     <div
-      class="body-content"
-      :class="{
-        expand: collapsed || openSiderBarFixed,
-        fixed: openSiderBarFixed
-        // home: $route.meta.name?.includes('home')
-      }"
+      id="body-wrapper"
+      class="body-wrapper"
     >
-      <Header />
+      <Sider />
+      <Drawer />
 
-      <div
-        id="body-wrapper"
-        class="body-wrapper"
-      >
-        <Sider />
-        <Drawer />
-
-        <!-- <section
+      <!-- <section
           v-show="isLogin && $route.path == '/follow'"
           id="topic-follow-column-teleport"
         ></section> -->
 
-        <main class="main-content">
-          <!-- <BreadCrumb /> -->
+      <main class="main-content">
+        <!-- <BreadCrumb /> -->
 
-          <div class="container">
-            <slot />
-          </div>
+        <div class="container">
+          <slot />
+        </div>
 
-          <Footer
-            v-show="$route.path != '/follow' && $route.path != '/history'"
-          />
-        </main>
+        <Footer
+          v-show="$route.path != '/follow' && $route.path != '/history'"
+        />
+      </main>
 
-        <!-- <section
+      <!-- <section
           v-show="isLogin && $route.path == '/history'"
           id="topic-history-column-teleport"
         ></section> -->
-      </div>
     </div>
   </div>
 </template>

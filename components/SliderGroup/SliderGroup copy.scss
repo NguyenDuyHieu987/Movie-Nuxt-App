@@ -1,4 +1,4 @@
-.default-layout:has(.home-page) {
+.body-content:has(.home-page) {
   &.expand {
     .home-page {
       .home-content {
@@ -151,7 +151,7 @@
 }
 
 @media only screen and (max-width: 1500px) {
-  .default-layout:has(.home-page) {
+  .body-content:has(.home-page) {
     .home-page {
       .home-content {
         .slider-group {

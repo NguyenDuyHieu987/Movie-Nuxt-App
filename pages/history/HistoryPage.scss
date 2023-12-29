@@ -107,7 +107,7 @@
   right: 0;
 }
 
-.default-layout:has(.history-page .history-container) {
+.body-content:has(.history-page .history-container) {
   .body-wrapper {
     margin-left: 0px;
     margin-right: auto;

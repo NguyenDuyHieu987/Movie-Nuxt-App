@@ -1,4 +1,4 @@
-.default-layout:has(.home-page) {
+.body-content:has(.home-page) {
   .carousel-swiper {
     overflow: visible;
   }
@@ -174,7 +174,7 @@
 }
 
 @media only screen and (max-width: 1300px) {
-  .default-layout:has(.home-page) {
+  .body-content:has(.home-page) {
     .home-page {
       .home-content {
         .home-section {
@@ -192,7 +192,7 @@
     --padding-home: 20px;
   }
 
-  .default-layout:has(.home-page) {
+  .body-content:has(.home-page) {
     .home-page {
       .home-content {
         --padding-home: 20px;
@@ -214,7 +214,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .default-layout:has(.home-page),
+  .body-content:has(.home-page),
   .body-content.expand:has(.home-page) {
     .home-page {
       .home-content {
@@ -233,7 +233,7 @@
     --padding-home: 15px;
   }
 
-  .default-layout:has(.home-page),
+  .body-content:has(.home-page),
   .body-content.expand:has(.home-page) {
     .home-page {
       .home-content {

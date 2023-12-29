@@ -1,29 +1,27 @@
 <template>
-  <div class="home-layout">
+  <div
+    class="body-content home"
+    :class="{
+      expand: collapsed || openSiderBarFixed,
+      fixed: openSiderBarFixed
+    }"
+  >
+    <Header />
+
     <div
-      class="body-content home"
-      :class="{
-        expand: collapsed || openSiderBarFixed,
-        fixed: openSiderBarFixed
-      }"
+      id="body-wrapper"
+      class="body-wrapper"
     >
-      <Header />
+      <Sider />
+      <Drawer />
 
-      <div
-        id="body-wrapper"
-        class="body-wrapper"
-      >
-        <Sider />
-        <Drawer />
-
-        <main class="main-content">
-          <!-- <BreadCrumb /> -->
-          <div class="container">
-            <slot />
-          </div>
-          <Footer />
-        </main>
-      </div>
+      <main class="main-content">
+        <!-- <BreadCrumb /> -->
+        <div class="container">
+          <slot />
+        </div>
+        <Footer />
+      </main>
     </div>
   </div>
 </template>

@@ -1,4 +1,4 @@
-.default-layout:has(.home-page) {
+.body-content:has(.home-page) {
   .home-page {
     .home-content {
       .carousel-swiper {
@@ -142,7 +142,7 @@
 }
 
 @media only screen and (max-width: 1500px) {
-  .default-layout:has(.home-page) {
+  .body-content:has(.home-page) {
     .home-page {
       .home-content {
         .carousel-swiper {
@@ -170,7 +170,7 @@
 }
 
 @media only screen and (max-width: 1100px) {
-  .default-layout:has(.home-page) {
+  .body-content:has(.home-page) {
     .home-page {
       .home-content {
         .carousel-swiper {
