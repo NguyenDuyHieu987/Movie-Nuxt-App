@@ -1,9 +1,9 @@
 .movie-card-item {
   position: relative;
   display: block;
-  cursor: pointer;
   color: inherit !important;
   overflow: hidden;
+  cursor: pointer;
 
   .el-skeleton__item .el-skeleton__text {
     padding: 7px 0px;

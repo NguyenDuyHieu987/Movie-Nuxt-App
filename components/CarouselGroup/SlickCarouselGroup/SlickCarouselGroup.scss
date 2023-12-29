@@ -1,4 +1,4 @@
-.body-content:has(.home-page) {
+.default-layout:has(.home-page) {
   .home-page {
     .home-content {
       .carousel-slick {
@@ -139,7 +139,7 @@
 }
 
 @media only screen and (max-width: 1500px) {
-  .body-content:has(.home-page) {
+  .default-layout:has(.home-page) {
     .home-page {
       .home-content {
         .carousel-slick {
@@ -165,7 +165,7 @@
 }
 
 @media only screen and (max-width: 1100px) {
-  .body-content:has(.home-page) {
+  .default-layout:has(.home-page) {
     .home-page {
       .home-content {
         .carousel-slick {

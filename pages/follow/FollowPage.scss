@@ -133,7 +133,7 @@
   z-index: 2;
 }
 
-.body-content:has(.follow-page .follow-container) {
+.default-layout:has(.follow-page .follow-container) {
   .body-wrapper {
     margin-left: 0px;
     margin-right: auto;
