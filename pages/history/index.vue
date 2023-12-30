@@ -59,7 +59,7 @@
                 v-show="showData"
                 tag="div"
                 class="movie-history padding-content horizontal"
-                :duration="0.3"
+                :duration="0.5"
               >
                 <!-- @beforeEnter="beforeEnter"
                 @enter="enter"
@@ -139,7 +139,6 @@ import { TopicRow } from '~/components/TopicRow';
 import { getHistory, searchHistory } from '~/services/history';
 
 definePageMeta({
-  // requireAuth: true,
   // middleware: ['require-auth'],
 });
 
@@ -332,9 +331,7 @@ const handleChangeTab = async (value: string) => {
 
   showData.value = false;
 
-  setTimeout(() => {
-    showData.value = true;
-  }, 300);
+  await wait(300);
 
   switch (value) {
     case 'all':
@@ -398,6 +395,8 @@ const handleChangeTab = async (value: string) => {
         });
       break;
   }
+
+  showData.value = true;
 };
 
 const beforeEnter = (el: any) => {

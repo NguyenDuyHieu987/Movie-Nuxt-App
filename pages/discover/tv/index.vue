@@ -58,7 +58,7 @@ import { FilterTvSlug } from '~/services/TvSlug';
 
 definePageMeta({
   pageTransition: {
-    name: 'fade'
+    // name: 'fade'
   }
 });
 
@@ -81,6 +81,7 @@ const formFilter = computed<formfilter>(() => {
     limit: 20
   };
 });
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: () => 'Khám phá | Phim bộ: ' + formFilter.value.type + '',
@@ -98,6 +99,7 @@ useSeoMeta({
 });
 
 const getData = async () => {
+  nuxtLoadingIndicator.start();
   // loading.value = true;
 
   await useAsyncData(`tv/discover/${JSON.stringify(formFilter.value)}`, () =>
@@ -111,6 +113,7 @@ const getData = async () => {
     .catch((e) => {})
     .finally(() => {
       loading.value = false;
+      nuxtLoadingIndicator.finish();
     });
 };
 

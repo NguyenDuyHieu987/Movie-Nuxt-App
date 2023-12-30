@@ -192,6 +192,14 @@
     --padding-home: 20px;
   }
 
+  .home-page {
+    .home-billBoard {
+      .box-vip {
+        display: none;
+      }
+    }
+  }
+
   .body-content:has(.home-page) {
     .home-page {
       .home-content {

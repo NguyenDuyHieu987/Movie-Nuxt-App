@@ -5,12 +5,34 @@
   overflow: hidden;
   cursor: pointer;
 
+  &.horizontal,
+  &.vertical {
+    .img-box {
+      animation: movie-card-opacity-in 0.7s ease-in forwards;
+    }
+
+    &:hover {
+      .img-box {
+        img {
+          animation: card-movie-hover 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28)
+            forwards;
+        }
+      }
+    }
+  }
+
   .el-skeleton__item .el-skeleton__text {
     padding: 7px 0px;
   }
 
   .img-box {
     img {
+      width: 100%;
+      height: 100%;
+      background-color: var(--background-content-color2);
+      object-fit: cover;
+      transition: all 0.15s;
+
       &[lazy='loading'] {
       }
 
@@ -85,8 +107,6 @@
       img {
         // transform: scale(1.1);
         // opacity: 0.7;
-        animation: card-movie-hover 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28)
-          forwards;
       }
     }
 
@@ -107,6 +127,15 @@
         color: #fff;
       }
     }
+  }
+}
+
+@keyframes movie-card-opacity-in {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
   }
 }
 

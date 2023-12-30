@@ -53,7 +53,7 @@ export declare interface formfilter {
   type: string;
   sortBy?: string;
   genre: string | number;
-  year: string;
+  year: string | number;
   country: string;
   page?: number | 1;
   limit?: number | 20;
@@ -66,7 +66,10 @@ export declare interface plan {
   price: number;
   video_quality: string;
   resolution: string;
-  support_devices: string;
+  support_devices: ['phone', 'tablet', 'desktop', 'tv'];
+  ads: boolean;
+  order: number;
+  vip: number;
 }
 
 export declare type user = {
@@ -101,6 +104,7 @@ export declare type subscription = {
   interval: 'day' | 'week' | 'month' | 'year';
   interval_count: number | 1;
   vip: number | 0;
+  plan: plan;
   status:
     | 'trialing'
     | 'active'

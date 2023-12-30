@@ -56,7 +56,7 @@ import { FilterMovie } from '~/services/discover';
 
 definePageMeta({
   pageTransition: {
-    name: 'fade'
+    // name: 'fade'
   }
 });
 
@@ -79,6 +79,7 @@ const formFilter = computed<formfilter>(() => {
     limit: 20
   };
 });
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
   title: () => 'Khám phá',
@@ -96,6 +97,7 @@ useSeoMeta({
 });
 
 const getData = async () => {
+  nuxtLoadingIndicator.start();
   // loading.value = true;
 
   await useAsyncData(`discover/${JSON.stringify(formFilter.value)}`, () =>
@@ -109,6 +111,7 @@ const getData = async () => {
     .catch((e) => {})
     .finally(() => {
       loading.value = false;
+      nuxtLoadingIndicator.finish();
     });
 };
 

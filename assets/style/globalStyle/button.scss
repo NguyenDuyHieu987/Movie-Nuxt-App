@@ -63,6 +63,10 @@
     }
   }
 
+  &.ant-btn-text {
+    border-color: transparent;
+  }
+
   &[disabled] {
     color: var(--text-button-disabled-color) !important;
 

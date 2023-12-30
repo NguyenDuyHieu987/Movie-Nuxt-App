@@ -24,5 +24,5 @@ export function viewFormatter(num: string | number) {
 
   return item
     ? (+num / item.value).toFixed(item.fixed).replace(rx, '$1') + item.symbol
-    : '0';
+    : '';
 }

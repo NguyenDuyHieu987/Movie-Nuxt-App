@@ -48,12 +48,6 @@
       border-top-right-radius: 5px;
 
       img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        background-color: var(--background-content-color);
-        transition: all 0.15s;
-
         &[lazy='error'] {
           // width: 50% !important;
           background-size: 50%;

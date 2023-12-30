@@ -6,9 +6,4 @@ export default defineNuxtRouteMiddleware((to, from) => {
   //   if (record.meta.requireAuth) {
   //   }
   // });
-
-  // if (utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)) {
-  //   authStore.isLogin = true;
-  // } else {
-  // }
 });

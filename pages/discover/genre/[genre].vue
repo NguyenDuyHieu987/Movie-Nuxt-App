@@ -72,7 +72,7 @@ import { getGenreByShortName } from '~/services/genres';
 
 definePageMeta({
   pageTransition: {
-    name: 'fade'
+    // name: 'fade'
   }
 });
 
@@ -118,6 +118,7 @@ useSeoMeta({
 watch(genreRoute, () => {});
 
 const getData = async () => {
+  nuxtLoadingIndicator.start();
   // loading.value = true;
 
   await useAsyncData(
@@ -132,6 +133,7 @@ const getData = async () => {
     .catch((e) => {})
     .finally(() => {
       loading.value = false;
+      nuxtLoadingIndicator.finish();
     });
 };
 

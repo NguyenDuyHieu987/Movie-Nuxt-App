@@ -27,14 +27,16 @@ export function getUpComing(page: number = 1) {
 export function FilterMovieSlug(formFilter: formfilter) {
   const utils = useUtils();
 
-  const yearLte = formFilter.year != '' ? formFilter.year + '-12-30' : '';
-  const yearGte = !utils.isStringEmpty(formFilter.year)
+  const yearLte = !utils.isStringEmpty(formFilter.year.toString())
+    ? formFilter.year + '-12-30'
+    : '';
+  const yearGte = !utils.isStringEmpty(formFilter.year.toString())
     ? utils.isNumber(formFilter.year)
       ? formFilter.year + '-01-01'
-      : formFilter.year.slice(-4) + '-01-01'
+      : formFilter.year.toString().slice(-4) + '-01-01'
     : '';
 
-  return utils.isNumber(formFilter.year) || formFilter.year == ''
+  return utils.isStringNumber(formFilter.year) || formFilter.year == ''
     ? makeRequest(
         `/${PREFIX_ROUTE}/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_gte=${yearGte}&primary_release_date_lte=${yearLte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
       )

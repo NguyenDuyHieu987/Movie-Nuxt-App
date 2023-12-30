@@ -47,13 +47,11 @@ export function isString(obj: any): boolean {
 }
 
 export function isNumber(obj: any): boolean {
-  return (
-    typeof obj === 'number' || obj instanceof Number || isStringNumber(obj)
-  );
+  return typeof obj === 'number' || obj instanceof Number;
 }
 
-export function isStringNumber(str: string): boolean {
-  return typeof str === 'string' && NUMBER_REGEX.test(str);
+export function isStringNumber(obj: any): boolean {
+  return isString(obj) && NUMBER_REGEX.test(obj);
 }
 
 export function isStringEmpty(str: string): boolean {

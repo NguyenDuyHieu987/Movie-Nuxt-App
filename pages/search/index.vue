@@ -86,7 +86,7 @@ import { addSearch, addSearchHistory, getDaTaSearch } from '~/services/search';
 
 definePageMeta({
   pageTransition: {
-    name: 'fade'
+    // name: 'fade'
   }
 });
 

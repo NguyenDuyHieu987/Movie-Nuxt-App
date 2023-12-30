@@ -159,6 +159,13 @@ h6 {
   color: inherit;
 }
 
+fieldset,
+legend {
+  margin: 0;
+  padding: 0px;
+  font-size: inherit;
+}
+
 a {
   color: inherit;
   transition:

@@ -59,7 +59,7 @@
                 v-show="showData"
                 tag="div"
                 class="movie-follow padding-content horizontal"
-                :duration="0.3"
+                :duration="0.5"
               >
                 <!-- @beforeEnter="beforeEnter"
                 @enter="enter"
@@ -141,7 +141,7 @@ import { TopicRow } from '~/components/TopicRow';
 import { getList, searchList } from '~/services/list';
 
 definePageMeta({
-  middleware: ['require-auth']
+  // middleware: ['require-auth']
 });
 
 const store = useStore();
@@ -335,9 +335,7 @@ const handleChangeTab = async (value: string) => {
 
   showData.value = false;
 
-  setTimeout(() => {
-    showData.value = true;
-  }, 300);
+  await wait(300);
 
   switch (value) {
     case 'all':
@@ -404,6 +402,8 @@ const handleChangeTab = async (value: string) => {
         });
       break;
   }
+
+  showData.value = true;
 };
 
 const beforeEnter = (el: any) => {
