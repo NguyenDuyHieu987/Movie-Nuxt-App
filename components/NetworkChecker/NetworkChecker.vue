@@ -6,13 +6,46 @@
     <div class="network-checker-container">
       <div class="left">
         <div class="network-status">
+          <!-- <i
+                v-if="isOnline"
+                style="
+                  background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/TzNExlPStE_.png?_nc_eui2=AeGKRA6S_tleHRp0eRJP1pyUkvdItA4UBeOS90i0DhQF49qrFYVM-X648y84vUT4n4TuaLlY51VXP5PC4HPSk9oA');
+                  background-position: 0px -226px;
+                  background-size: 38px 442px;
+                  width: 2.4rem;
+                  height: 2.4rem;
+                  background-repeat: no-repeat;
+                  display: inline-block;
+                  color: #009c49;
+                "
+              ></i> -->
+
           <svg
-            v-if="!isClose"
+            v-if="isOnline"
+            class="online-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="2.4rem"
+            height="2.4rem"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <circle
+              cx="10"
+              cy="15"
+              r="2"
+            />
+            <path
+              d="M1 7.4a12 13 0 0 1 18 0l-1.5 1.4a10 11.1 0 0 0-15 0zm3.7 3.2a7 7.3 0 0 1 10.7 0L14 12a5 5.3 0 0 0-7.8 0z"
+            />
+          </svg>
+
+          <svg
+            v-else
+            class="offline-icon"
             viewBox="0 0 24 24"
             alt=""
-            class="x1lliihq x1k90msu x2h7rmj x1qfuztq x19dipnz"
-            height="24"
-            width="24"
+            height="2.4rem"
+            width="2.4rem"
             fill="currentColor"
           >
             <path
@@ -20,18 +53,22 @@
             ></path>
           </svg>
 
-          <span class="message">Không có kết nối Internet.</span>
+          <span class="message">{{
+            isOnline
+              ? 'Đã khôi phục kết nối Internet.'
+              : 'Không có kết nối Internet.'
+          }}</span>
         </div>
       </div>
       <div class="right">
         <svg
           class="close click-active"
           xmlns="http://www.w3.org/2000/svg"
-          width="2.5rem"
-          height="2.5rem"
+          width="2.3rem"
+          height="2.3rem"
           viewBox="0 0 24 24"
           fill="currentColor"
-          @click="isClose = true"
+          @click="handleClose"
         >
           <path
             d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41z"
@@ -51,18 +88,18 @@ const showOnline = ref<boolean>(false);
 const showOffline = ref<boolean>(false);
 
 watch(
-  () => isOnline.value,
+  isOnline,
   (newVal, oldVal) => {
-    console.log(newVal);
+    console.log(newVal, oldVal);
 
-    if (isOnline.value == false) {
-      throw createError({
-        statusCode: 500,
-        data: {
-          networkError: true
-        }
-      });
-    }
+    // if (isOnline.value == false) {
+    //   throw createError({
+    //     statusCode: 500,
+    //     data: {
+    //       networkError: true
+    //     }
+    //   });
+    // }
 
     if (oldVal == true && newVal == false) {
       showOffline.value = true;
@@ -76,6 +113,16 @@ watch(
     immediate: true
   }
 );
+
+const handleClose = () => {
+  isClose.value = true;
+  showOnline.value = false;
+  showOffline.value = false;
+
+  setTimeout(() => {
+    isClose.value = false;
+  }, 200);
+};
 </script>
 
 <style lang="scss" src="./NetworkChecker.scss" scoped></style>
