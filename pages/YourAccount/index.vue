@@ -321,11 +321,12 @@ const handleClickSaveRowItem = (e: any) => {
 
   const newFullName: string = rowItemLabel?.innerText.trim()!;
 
-  if (!newFullName || newFullName.length == 0) {
+  if (utils.isStringEmpty(newFullName)) {
     ElNotification.warning({
       title: MESSAGE.STATUS.INFO,
       message: 'Họ và tên không được bỏ trống.',
-      duration: MESSAGE.DURATION.DEFAULT
+      duration: MESSAGE.DURATION.DEFAULT,
+      position: 'bottom-right'
     });
 
     rowItemLabel!.innerText = authStore.userAccount!.full_name;
