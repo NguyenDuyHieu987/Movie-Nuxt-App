@@ -87,6 +87,10 @@
             </strong>
           </span>
         </div>
+
+        <div class="vip-privileges">
+          <p>Đặc quyền VIP</p>
+        </div>
       </div>
     </div>
   </div>

@@ -15,6 +15,7 @@
 
     .ant-result-title {
       font-size: 2.2rem;
+      color: inherit;
     }
 
     .ant-result-extra {
@@ -35,7 +36,6 @@
         height: 100%;
         padding: 10px 30px;
         border-radius: 2px;
-        color: var(--text-color);
       }
     }
   }
