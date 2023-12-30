@@ -44,6 +44,12 @@ export default defineNuxtConfig({
       ],
       script: [
         {
+          src: 'https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js?max_age=7776000',
+          // src: 'https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js?max_age=7776000',
+          type: 'text/javascript',
+          async: true
+        },
+        {
           src: 'https://accounts.google.com/gsi/client',
           type: 'text/javascript',
           async: true
