@@ -4,10 +4,10 @@ header.header-bar-center-page {
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 100;
   // background: linear-gradient(to bottom, #080808 0, #08080800 100%);
   background: var(--background-content-color);
   // border-bottom: 0.25px solid var(--border-regular-light);
+  z-index: var(--header-z-index);
   // transition: background-color 0.25s;
   // transition-delay: 0.3s;
 

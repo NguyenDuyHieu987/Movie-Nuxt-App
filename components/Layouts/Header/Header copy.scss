@@ -10,7 +10,7 @@ header.header-bar {
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: var(--header-z-index);
   background: linear-gradient(to bottom, #080808 0, #08080800 100%);
   transition: background-color 0.25s;
   transition-delay: 0.3s;

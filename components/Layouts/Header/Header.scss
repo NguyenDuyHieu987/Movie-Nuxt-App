@@ -4,9 +4,9 @@ header.header-bar {
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 100;
   background: var(--header-background);
   // border-bottom: 0.25px solid var(--border-regular-light);
+  z-index: var(--header-z-index);
   transition: background-color 0.2s ease;
   transition-delay: 0.2s;
 

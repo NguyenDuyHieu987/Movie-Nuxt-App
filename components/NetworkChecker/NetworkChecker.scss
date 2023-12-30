@@ -1,0 +1,73 @@
+.network-checker-notification {
+  position: fixed;
+  bottom: 15px;
+  left: 20px;
+  transform: translate(0%, 120%);
+  width: 320px;
+  font-size: 1.6rem;
+  z-index: calc(var(--sider-z-index) + 1);
+
+  &.online {
+    animation: network-error-appear 0.5s ease-in forwards;
+  }
+
+  &.offline {
+    animation: network-error-appear 0.5s ease-in forwards;
+  }
+
+  &.closed {
+    animation: network-error-disappear 0.2s ease-out forwards;
+  }
+
+  .network-checker-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background-color: var(--background-content-color1);
+    border-radius: 2px;
+    width: 100%;
+
+    .left {
+      display: flex;
+
+      .network-status {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        svg {
+          fill: #4e4e4e;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+
+      svg {
+        fill: #4e4e4e;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@keyframes network-error-appear {
+  from {
+    transform: translate(0%, 120%);
+  }
+  to {
+    transform: translate(0%, 0%);
+  }
+}
+
+@keyframes network-error-disappear {
+  from {
+    transform: translate(0%, 0%);
+  }
+  to {
+    transform: translate(0%, 120%);
+  }
+}

@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 8;
+  z-index: var(--preview-modal-z-index);
 
   .preview-modal {
     display: inline-block;

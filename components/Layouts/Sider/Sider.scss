@@ -20,7 +20,7 @@
     #08080800 100%
   );
   // background: transparent;
-  z-index: 10;
+  z-index: var(--sider-z-index);
   transition: all 0s;
 
   ::-webkit-scrollbar {

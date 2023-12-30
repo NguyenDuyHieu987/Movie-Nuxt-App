@@ -45,6 +45,7 @@
 
     <LoadingApp />
     <RequireAuthDialog />
+    <NetworkChecker />
 
     <div class="app-wrapper">
       <NuxtLayout>
@@ -73,9 +74,8 @@
 </template>
 
 <script setup lang="ts">
-import { useOnline } from '@vueuse/core';
-
 import { LoadingApp } from '~/components/Loading';
+import { NetworkChecker } from '~/components/NetworkChecker';
 import { RequireAuthDialog } from '~/components/RequireAuth';
 
 const runtimeConfig = useRuntimeConfig();
@@ -91,27 +91,6 @@ useHead({
 useSeoMeta({
   description: runtimeConfig.public.siteDescription
 });
-
-const isOnline = useOnline();
-
-watch(
-  isOnline,
-  () => {
-    console.log(isOnline.value ? 'online' : 'offline');
-
-    if (isOnline.value == false) {
-      throw createError({
-        statusCode: 500,
-        data: {
-          networkError: true
-        }
-      });
-    }
-  },
-  {
-    immediate: true
-  }
-);
 
 onMounted(() => {
   // window.history.scrollRestoration = 'auto';
@@ -171,3 +150,4 @@ const onBackTop = () => {
 </script>
 
 <style lang="scss" src="~/assets/style/app.scss"></style>
+~/components/NetworkChecker

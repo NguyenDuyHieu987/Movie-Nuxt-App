@@ -31,7 +31,7 @@ body.loading-mask {
 
   &.active {
     opacity: 1;
-    z-index: 99999;
+    z-index: var(--loading-app-z-index);
     transition: all 0.3s;
 
     .app-loading-container {

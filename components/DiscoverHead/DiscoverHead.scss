@@ -7,7 +7,7 @@
       position: fixed;
       top: var(--header-height);
       background: var(--header-background-scrolled);
-      z-index: 9;
+      z-index: var(--header-z-index);
     }
 
     .filter-swiper {
