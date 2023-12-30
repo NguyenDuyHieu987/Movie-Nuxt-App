@@ -205,10 +205,8 @@ onMounted(() => {
       }
     }
 
-    const scrollHeight = Math.round(window.scrollY + window.innerHeight);
-
     if (
-      scrollHeight == document.documentElement.scrollHeight &&
+      utils.isScrollBottom() &&
       // Math.floor(scrollBottom()) == 0 &&
       total.value > limit.value &&
       dataHistory.value?.length < total.value
@@ -245,7 +243,7 @@ const getData = async () => {
         limit.value = response?.limit;
         total.value = response?.total;
         topicImage.value = dataHistory.value[0]?.backdrop_path;
-        skip.value++;
+        skip.value = 2;
       }
 
       // if (dataHistory.value?.length == 0) {
@@ -265,14 +263,6 @@ const getData = async () => {
       loading.value = false;
     });
 };
-
-// onBeforeMount(async () => {
-//   if (store.isLogin) {
-//     await nextTick();
-
-//     getData();
-//   }
-// });
 
 loading.value = true;
 

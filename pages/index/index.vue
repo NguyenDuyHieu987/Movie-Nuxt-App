@@ -641,7 +641,7 @@ const getData = async () => {
   getMyRecommend(skipRecommend.value, 20)
     .then((response) => {
       recommends.value = response?.results;
-      skipRecommend.value++;
+      skipRecommend.value = 2;
     })
     .catch((e) => {})
     .finally(() => {

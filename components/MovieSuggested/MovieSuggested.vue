@@ -68,6 +68,7 @@ const props = defineProps<{
   dataMovie: any;
 }>();
 
+const utils = useUtils();
 const dataSuggested = ref<any[]>([]);
 const page = ref<number>(1);
 const loading = ref<boolean>(false);
@@ -79,9 +80,7 @@ onMounted(() => {
       return;
     }
 
-    const scrollHeight = Math.round(window.scrollY + window.innerHeight);
-
-    if (scrollHeight == document.documentElement.scrollHeight) {
+    if (utils.isScrollBottom()) {
       loadMore.value = true;
 
       await getSimilar(

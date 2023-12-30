@@ -13,6 +13,7 @@ export const useUtils = () => {
     isEmailValid,
     isSpecialCharacters,
     isVietnameseTones,
+    isScrollBottom,
     handleAddItemToList,
     viewFormatter,
     encryptPassword,
@@ -73,6 +74,16 @@ export function isSpecialCharacters(str: string): boolean {
 
 export function isVietnameseTones(str: string): boolean {
   return VIETNAMESE_REGEX.test(str);
+}
+
+export function isScrollBottom(options?: { offset?: number }): boolean {
+  if (process.client) {
+    const scrollHeight = Math.round(window.scrollY + window.innerHeight);
+
+    return scrollHeight == document.documentElement.scrollHeight;
+  } else {
+    return false;
+  }
 }
 
 export * from './convertPath';

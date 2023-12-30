@@ -58,6 +58,7 @@ const props = defineProps<{
   dataMovie: any;
 }>();
 
+const utils = useUtils();
 const commentsList = ref<commentForm[]>([]);
 const loading = ref<boolean>(false);
 const skip = ref<number>(1);
@@ -70,10 +71,8 @@ onMounted(() => {
       return;
     }
 
-    const scrollHeight = Math.round(window.scrollY + window.innerHeight);
-
     if (
-      scrollHeight == document.documentElement.scrollHeight &&
+      utils.isScrollBottom() &&
       total.value > 20 &&
       commentsList.value?.length < total.value
     ) {
@@ -117,7 +116,7 @@ getCommentByMovidId(
   .then((response) => {
     commentsList.value = response?.results;
     total.value = response?.total;
-    skip.value++;
+    skip.value = 2;
   })
   .catch((e) => {})
   .finally(() => {

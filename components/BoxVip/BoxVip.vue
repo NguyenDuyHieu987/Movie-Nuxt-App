@@ -5,7 +5,7 @@
   >
     <div class="box-vip-container">
       <a-badge-ribbon
-        v-if="authStore.subscription?.vip != 0"
+        v-if="authStore.isVipMember"
         :text="'VIP ' + authStore.subscription?.vip"
         placement="end"
       />
@@ -71,11 +71,20 @@
             </g>
           </svg>
 
-          <span
-            v-if="authStore.subscription?.vip != 0"
-            class="description"
-          >
-            {{ `Bạn hiện đang là VIP ${authStore.subscription?.vip}` }}
+          <span class="description">
+            {{
+              authStore.isVipMember
+                ? `Bạn hiện đang là`
+                : 'Bạn hiện vẫn chưa là'
+            }}
+
+            <strong class="vip-number">
+              {{
+                authStore.isVipMember
+                  ? ` VIP ${authStore.subscription?.vip}`
+                  : 'VIP'
+              }}
+            </strong>
           </span>
         </div>
       </div>

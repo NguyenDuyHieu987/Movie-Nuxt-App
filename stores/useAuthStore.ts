@@ -11,6 +11,9 @@ export const useAuthStore = defineStore('auth', () => {
   const subscription = ref<subscription>(null);
   const role = computed<string>(() => userAccount.value?.role || 'normal');
   const isLogin = computed<boolean>(() => !!userAccount.value);
+  const isVipMember = computed<boolean>(
+    () => !!subscription.value && subscription.value?.vip != 0
+  );
   const isOpenRequireAuthDialog = ref<boolean>(false);
   const loadingUser = ref<boolean>(true);
   const loadingSubscription = ref<boolean>(true);
@@ -137,6 +140,7 @@ export const useAuthStore = defineStore('auth', () => {
     subscription,
     isLogin,
     role,
+    isVipMember,
     isOpenRequireAuthDialog,
     loadingUser,
     loadUser,

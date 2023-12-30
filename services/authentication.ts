@@ -54,7 +54,7 @@ export function verifySignUp(params: any, type: string) {
   bodyFormData.append('email', params.email);
   bodyFormData.append('password', params.password);
   bodyFormData.append('full_name', params.full_name);
-  bodyFormData.append('avatar', params.avatar);
+  // bodyFormData.append('avatar', params.avatar);
 
   return makeRequest(`/${PREFIX_ROUTE}/verify-signup/${type}`, {
     method: 'POST',
