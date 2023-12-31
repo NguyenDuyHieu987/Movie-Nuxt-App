@@ -309,7 +309,7 @@ const handleSubmit = async () => {
     },
     'change-password'
   )
-    .then((response) => {
+    .then(async (response) => {
       // console.log(response);
 
       if (response?.isSended === true) {
@@ -331,10 +331,10 @@ const handleSubmit = async () => {
         // });
         showAnimation.value = false;
 
-        setTimeout(() => {
-          showAnimation.value = true;
-          isShowVerifyOTPForm.value = true;
-        }, 300);
+        await wait(300);
+
+        showAnimation.value = true;
+        isShowVerifyOTPForm.value = true;
       } else if (response?.isWrongPassword == true) {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,

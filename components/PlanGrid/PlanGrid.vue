@@ -85,6 +85,13 @@
                 :key="index"
                 :index="index"
                 :class="{ selected: item.id == selected }"
+                :style="{
+                  '--background-image': `url(${getImage(
+                    `Background_${index + 2}.jpg`,
+                    'background/1',
+                    'w-1000'
+                  )})`
+                }"
                 @click="handleClickPlanOpiton(item)"
                 @dblclick="handleDBClickPlanOpiton(item)"
               >
@@ -197,6 +204,7 @@
 
 <script setup lang="ts">
 import type { plan } from '@/types';
+import { getImage } from '~/services/image';
 import { getAllPlan } from '~/services/plans';
 
 const emits = defineEmits<{

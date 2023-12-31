@@ -198,10 +198,10 @@
 const authStore = useAuthStore();
 const isFade = ref<boolean>(false);
 
-onBeforeMount(() => {
-  setTimeout(() => {
-    isFade.value = true;
-  }, 10000);
+onBeforeMount(async () => {
+  await wait(10000);
+
+  isFade.value = true;
 });
 
 const handleClickAtiveVipBtn = () => {

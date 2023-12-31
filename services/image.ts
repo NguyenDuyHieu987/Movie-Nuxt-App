@@ -2,9 +2,8 @@ import axios, { type AxiosRequestConfig } from 'axios';
 import { isProduction } from 'std-env';
 import { makeRequest } from './makeRequest';
 
-// const URL_API_IMAGE = 'https://img.phimhay247.site';
-const URL_API_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
-// const URL_API_IMAGE = 'https://res.cloudinary.com/dvbhjlrdf/image/upload';
+export const SERVER_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
+export const DEV_SERVER_IMAGE = 'http://localhost:5002';
 
 const PREFIX_ROUTE = 'images';
 
@@ -17,7 +16,7 @@ export async function makeImageRequest(
   const api = axios.create({
     baseURL: nuxtConfig.app.production_mode
       ? nuxtConfig.app.serverVideoUrl
-      : 'http://localhost:5002',
+      : DEV_SERVER_IMAGE,
     withCredentials: true
   });
 
@@ -30,40 +29,43 @@ export async function makeImageRequest(
     );
 }
 
-export function getImage(path: string, type: string, crop: string = '') {
+export function getImage(
+  path: string,
+  type: string,
+  crop: string = ''
+): string {
   const nuxtConfig = useRuntimeConfig();
+  const utils = useUtils();
 
-  const URL_API_IMAGE1 = nuxtConfig.app.production_mode
+  const URL_IMAGE = nuxtConfig.app.production_mode
     ? nuxtConfig.app.serverImageUrl
-    : 'http://localhost:5002/static';
+    : `${DEV_SERVER_IMAGE}/static`;
 
-  if (!path) return ' ';
+  if (utils.isStringEmpty(path)) return URL_IMAGE;
 
   if (crop.length == 0 || !nuxtConfig.app.production_mode) {
-    return `${URL_API_IMAGE1}/images/${type}/${path}`;
+    return `${URL_IMAGE}/images/${type}/${path}`;
   }
 
-  return `${URL_API_IMAGE1}/images/${type}/${path}/tr:${crop}`;
-
-  // const URL_API_IMAGE1 = 'http://localhost:5002/static/';
-
-  // return`${URL_API_IMAGE1}/images/${type}/${path}`;
+  return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
 }
 
-export function getServerImage(path: string, type: string, crop = '') {
-  if (!path) return ' ';
+export function getServerImage(path: string, type: string, crop = ''): string {
+  const utils = useUtils();
 
-  const URL_API_IMAGE1 = isProduction
-    ? URL_API_IMAGE
-    : 'http://localhost:5002/static';
+  const URL_IMAGE = isProduction
+    ? DEV_SERVER_IMAGE
+    : `${DEV_SERVER_IMAGE}/static`;
+
+  if (utils.isStringEmpty(path)) return URL_IMAGE;
 
   if (crop.length == 0 || !isProduction)
-    return `${URL_API_IMAGE1}/images/${type}/${path}`;
+    return `${URL_IMAGE}/static/images/${type}/${path}`;
 
-  return `${URL_API_IMAGE}/images/${type}/${path}/tr:${crop}`;
+  return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
 }
 
-export function getPosterCast(path: string) {
+export function getPosterCast(path: string): string {
   const nuxtConfig = useRuntimeConfig();
   const TMDB_IMAGE_BASE_URL = nuxtConfig.app.TMDBurl;
 

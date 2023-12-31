@@ -148,9 +148,10 @@
                   :dataMovie="dataMovie"
                 />
 
-                <div
+                <NuxtLink
+                  href="#comment"
                   class="action-btn"
-                  @click="scrollToComment"
+                  @click.prevent="scrollToComment"
                 >
                   <a-button
                     size="large"
@@ -175,7 +176,7 @@
                     </template>
                     <span> Bình luận</span>
                   </a-button>
-                </div>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -609,7 +610,7 @@ const handleAddToList = () => {
 
 const scrollToComment = () => {
   const comment = document.getElementById('comment') as HTMLElement;
-  comment.scrollIntoView({ block: 'start' });
+  comment.scrollIntoView({ block: 'start', behavior: 'smooth' });
 };
 </script>
 

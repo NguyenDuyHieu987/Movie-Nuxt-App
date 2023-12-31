@@ -50,6 +50,7 @@
             <NuxtLink
               v-if="!isNetworkError"
               to="/"
+              @click.prevent="handleError"
             >
               <a-button
                 type="text"
@@ -65,7 +66,7 @@
               type="text"
               size="large"
               class="default"
-              @click="() => {}"
+              @click="handleTryAgain"
             >
               Thử lại
             </a-button>
@@ -92,6 +93,7 @@ type errorResponse = {
 const props = defineProps<{ error: errorResponse }>();
 
 const utils = useUtils();
+const nuxtLoadingIndicator = useLoadingIndicator();
 const isOnline = useOnline();
 
 const isNetworkError = computed<boolean>(
@@ -102,6 +104,19 @@ useHead({
   title: `Lỗi - ${props.error.statusCode}`,
   htmlAttrs: { lang: 'vi' }
 });
+
+const handleError = () => {
+  clearError({
+    redirect: '/'
+  });
+};
+
+const handleTryAgain = async () => {
+  nuxtLoadingIndicator.start();
+  reloadNuxtApp();
+  await refreshNuxtData();
+  nuxtLoadingIndicator.finish();
+};
 </script>
 
 <style lang="scss" src="~/assets/style/errorPage.scss"></style>

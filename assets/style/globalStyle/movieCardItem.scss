@@ -1,3 +1,5 @@
+$error-image: 'https://ik.imagekit.io/8toa5f2rp/images/svg/error-image.svg';
+
 .movie-card-item {
   position: relative;
   display: block;
@@ -40,7 +42,7 @@
         // width: 30% !important;
         // margin: 0px auto;
         // object-fit: contain !important;
-        background-image: url('https://ik.imagekit.io/z8fhvnk8u/images/svg/error-image.svg');
+        background-image: url($server-image + '/images/svg/error-image.svg');
         background-size: 30%;
         background-repeat: no-repeat;
         background-position: center center;

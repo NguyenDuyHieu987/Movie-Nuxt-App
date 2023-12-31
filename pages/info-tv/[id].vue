@@ -148,9 +148,10 @@
                       </a-button>
                     </div>
 
-                    <div
+                    <NuxtLink
+                      href="#trailer"
                       class="action-btn"
-                      @click="scrollToTrailer"
+                      @click.prevent="scrollToTrailer"
                     >
                       <a-button
                         size="large"
@@ -174,7 +175,7 @@
                         </template>
                         <span> Trailer</span>
                       </a-button>
-                    </div>
+                    </NuxtLink>
                   </div>
 
                   <div class="right">
@@ -183,9 +184,10 @@
                       :dataMovie="dataMovie"
                     />
 
-                    <div
+                    <NuxtLink
+                      href="#comment"
                       class="action-btn"
-                      @click="scrollToComment"
+                      @click.prevent="scrollToComment"
                     >
                       <a-button
                         size="large"
@@ -209,7 +211,7 @@
                         </template>
                         <span> Bình luận</span>
                       </a-button>
-                    </div>
+                    </NuxtLink>
 
                     <!-- <div class="ellipsis">
                       <Icon name="fa6-solid:ellipsis" />

@@ -254,7 +254,7 @@ export default defineNuxtConfig({
   router: {
     options: {
       strict: false,
-      scrollBehaviorType: 'smooth'
+      scrollBehaviorType: 'auto'
     }
   },
   optimization: {},
@@ -276,7 +276,11 @@ export default defineNuxtConfig({
       include: ['./components/**/*.vue']
     },
     css: {
-      preprocessorOptions: {},
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
+        }
+      },
       lightningcss: {}
     },
     build: {

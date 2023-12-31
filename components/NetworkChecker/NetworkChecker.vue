@@ -87,19 +87,22 @@ const isClose = ref<boolean>(false);
 const showOnline = ref<boolean>(false);
 const showOffline = ref<boolean>(false);
 
+onErrorCaptured((err) => {
+  console.log(err);
+});
+
 watch(
   isOnline,
   (newVal, oldVal) => {
-    console.log(newVal, oldVal);
-
-    // if (isOnline.value == false) {
-    //   throw createError({
-    //     statusCode: 500,
-    //     data: {
-    //       networkError: true
-    //     }
-    //   });
-    // }
+    if (isOnline.value == false) {
+      throw createError({
+        fatal: true,
+        statusCode: 500,
+        data: {
+          networkError: true
+        }
+      });
+    }
 
     if (oldVal == true && newVal == false) {
       showOffline.value = true;
@@ -114,14 +117,14 @@ watch(
   }
 );
 
-const handleClose = () => {
+const handleClose = async () => {
   isClose.value = true;
   showOnline.value = false;
   showOffline.value = false;
 
-  setTimeout(() => {
-    isClose.value = false;
-  }, 200);
+  await wait(200);
+
+  isClose.value = false;
 };
 </script>
 

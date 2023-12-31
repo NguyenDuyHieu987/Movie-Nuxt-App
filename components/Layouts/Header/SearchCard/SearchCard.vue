@@ -114,4 +114,5 @@ await wait(500);
 
 loading.value = false;
 </script>
+
 <style lang="scss" src="./SearchCard.scss"></style>

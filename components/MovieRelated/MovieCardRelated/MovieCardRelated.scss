@@ -75,7 +75,7 @@
       transition: all 0.15s;
 
       &[lazy='error'] {
-        background-image: url('https://ik.imagekit.io/z8fhvnk8u/images/svg/error-image.svg');
+        background-image: url($server-image + '/images/svg/error-image.svg');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: 27%;

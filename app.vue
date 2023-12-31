@@ -16,7 +16,7 @@
       }"
     /> -->
 
-    <ClientOnly>
+    <!-- <ClientOnly>
       <vue-progress-bar
         style="
           background: linear-gradient(
@@ -27,7 +27,7 @@
           );
         "
       />
-    </ClientOnly>
+    </ClientOnly> -->
 
     <NuxtLoadingIndicator
       color="linear-gradient(

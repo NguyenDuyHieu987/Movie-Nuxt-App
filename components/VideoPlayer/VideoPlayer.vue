@@ -494,7 +494,15 @@
         @keydown="onKeyDownVideo"
       ></div>
 
-      <div class="background-controls"></div>
+      <div
+        class="background-controls"
+        :style="{
+          backgroundImage: `url(${getImage(
+            'background-gradient-opacity.png',
+            'background/gradient'
+          )})`
+        }"
+      ></div>
 
       <div
         class="settings"
@@ -747,7 +755,8 @@ import Hls from 'hls.js';
 
 import { CloseBtn } from '~/components/ButtonTemplate';
 import { LoadingSpinner } from '~/components/Loading';
-import { getVideo } from '~/services/video';
+import { getImage } from '~/services/image';
+import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';
 
 const props = withDefaults(
   defineProps<{
@@ -773,8 +782,8 @@ const videoSrc = computed<string>(
   () =>
     nuxtConfig.app.production_mode
       ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl
-      : 'http://localhost:5002/videos' + props.videoUrl
-  // 'http://localhost:5002/videos' + props.videoUrl
+      : `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
+  // `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
   // + '.m3u8'
 );
 const videoPlayerStorageStates = useLocalStorage(

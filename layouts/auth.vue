@@ -5,8 +5,6 @@
       <div class="image-auth desktop">
         <NuxtImg
           :src="
-            // getImage(`Background_Auth${image}.jpg`, '/background/auth')
-            // 'https://ik.imagekit.io/8toa5f2rp/images/background/1/Background_1.jpg'
             getImage(
               'Background_1.jpg',
               'background/1',

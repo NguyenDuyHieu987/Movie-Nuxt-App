@@ -92,7 +92,7 @@
 
 .slide-top-leave-to {
   opacity: 0;
-  transform: translateY(-7rem);
+  transform: translateY(7rem);
 }
 
 .slide-bottom-enter-from {
@@ -102,5 +102,5 @@
 
 .slide-bottom-leave-to {
   opacity: 0;
-  transform: translateY(7rem);
+  transform: translateY(-7rem);
 }

@@ -62,7 +62,7 @@
           left: 0;
           right: 0;
           bottom: 0;
-          background-image: url('https://ik.imagekit.io/z8fhvnk8u/images/svg/error-user.svg');
+          background-image: url($server-image + '/images/svg/error-user.svg');
           background-repeat: no-repeat;
           background-size: 80%;
           background-position: center center;

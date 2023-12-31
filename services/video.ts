@@ -1,6 +1,9 @@
 import axios, { type AxiosRequestConfig } from 'axios';
 import { makeRequest } from './makeRequest';
 
+export const SERVER_VIDEO = 'https://media.phimhay247z.org';
+export const DEV_SERVER_VIDEO = 'http://localhost:5002';
+
 const PREFIX_ROUTE = 'videos';
 
 export async function makeVideoRequest(
@@ -12,7 +15,7 @@ export async function makeVideoRequest(
   const api = axios.create({
     baseURL: nuxtConfig.app.production_mode
       ? nuxtConfig.app.serverVideoUrl
-      : 'http://localhost:5002',
+      : DEV_SERVER_VIDEO,
     withCredentials: true
   });
 

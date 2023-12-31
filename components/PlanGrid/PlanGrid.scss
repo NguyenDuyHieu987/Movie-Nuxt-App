@@ -148,22 +148,15 @@
           height: var(--plan-box-selector-size);
           transition: transform 0.15s;
 
-          &:nth-child(1) {
-            &::after {
-              background-image: url('https://ik.imagekit.io/z8fhvnk8u/images/background/1/Background_4.jpg/tr:w-1000');
-            }
+          .background-plan {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-repeat: no-repeat;
           }
 
-          &:nth-child(2) {
-            &::after {
-              background-image: url('https://ik.imagekit.io/z8fhvnk8u/images/background/1/Background_2.jpg/tr:w-1000');
-            }
-          }
-
-          &:nth-child(3) {
-            &::after {
-              background-image: url('https://ik.imagekit.io/z8fhvnk8u/images/background/1/Background_3.jpg/tr:w-1000');
-            }
+          &::after {
+            background-image: var(--background-image);
           }
 
           &::after {
