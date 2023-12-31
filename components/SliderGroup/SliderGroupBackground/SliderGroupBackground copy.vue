@@ -46,7 +46,7 @@ const props = defineProps<{
 }>();
 
 const store = useStore();
-const slider = ref();
+const slider = ref<HTMLElement>();
 const sliderState = reactive({
   isScrubbing: false,
   isDragging: false,
@@ -91,8 +91,8 @@ const onPointerMoveSlider = (e: any) => {
   if (sliderState.isScrubbing) {
     sliderState.isDragging = true;
 
-    slider.value.scrollLeft -= e.movementX;
-    handleArrows(slider.value.scrollLeft);
+    slider.value!.scrollLeft -= e.movementX;
+    handleArrows(slider.value!.scrollLeft);
   }
 };
 
@@ -104,7 +104,7 @@ const onPointerUpSlider = (e: any) => {
 
 const handleArrows = (scrollVal: number) => {
   const maxScrollableWidth =
-    slider.value.scrollWidth - slider.value.clientWidth;
+    slider.value!.scrollWidth - slider.value!.clientWidth;
 
   sliderState.isStartScroll = scrollVal <= 0;
 
@@ -118,7 +118,7 @@ const handleArrows = (scrollVal: number) => {
 };
 
 const onScollSlider = (e: any) => {
-  handleArrows(slider.value.scrollLeft);
+  handleArrows(slider.value!.scrollLeft);
 };
 
 const onMouseOverSlider = (e: any) => {

@@ -265,7 +265,7 @@ const props = defineProps<{
 
 const authStore = useAuthStore();
 const utils = useUtils();
-const topicColumn = ref();
+const topicColumn = ref<HTMLElement>();
 const valueSearch = defineModel<string>('valueInput');
 const dataColumn = defineModel<any>('dataColumn');
 
@@ -285,9 +285,9 @@ const setBackgroundColor = (color: string[]) => {
   //   'topic-column'
   // )[0] as HTMLElement;
 
-  topicColumn.value.setAttribute('style', `background-image: ${main_color}`);
+  topicColumn.value!.setAttribute('style', `background-image: ${main_color}`);
 
-  const ant_input_affix_wrapper = topicColumn.value.getElementsByClassName(
+  const ant_input_affix_wrapper = topicColumn.value!.getElementsByClassName(
     'ant-input-affix-wrapper'
   )[0] as HTMLElement;
   ant_input_affix_wrapper.setAttribute(

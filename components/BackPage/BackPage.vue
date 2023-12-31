@@ -38,7 +38,7 @@ const emits = defineEmits<{ (e: 'onclick'): void }>();
 
 const props = defineProps({ fixed: { type: Boolean, default: false } });
 
-const backPage = ref();
+const backPage = ref<HTMLElement>();
 
 onMounted(() => {
   // window.onscroll = () => {

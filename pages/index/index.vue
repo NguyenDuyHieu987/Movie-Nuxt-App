@@ -225,12 +225,12 @@
             :to="{
               path: `/discover/movie`,
               query: {
-                type: 'upcoming',
-              },
+                type: 'upcoming'
+              }
             }"
           >
-           Xem tất cả
-           <svg
+            Xem tất cả
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="1.2rem"
               height="1.2rem"
@@ -246,15 +246,13 @@
 
         <!-- <LoadingSectionHorizontal v-model:loading="loadingUpComing">
           <template #content>
-            <section class="movie-group horizontal trailer">
-              <MovieCardHorizontalTrailer
-                v-for="(item, index) in upComings"
-                :index="index"
-                :key="item.id"
-                :item="item"
-                :type="item.media_type"
-              />
-            </section>
+            <MovieCardHorizontalTrailer
+              v-for="(item, index) in upComings"
+              :key="item.id"
+              :index="index"
+              :item="item"
+              :type="item.media_type"
+            />
           </template>
         </LoadingSectionHorizontal> -->
 
@@ -418,7 +416,10 @@
 <script setup lang="ts">
 import { BillboardAnimation } from '~/components/BillboardAnimation';
 import { BoxVip } from '~/components/BoxVip';
-import { SwiperCarouselGroup } from '~/components/CarouselGroup';
+import {
+  SlickCarouselGroup,
+  SwiperCarouselGroup
+} from '~/components/CarouselGroup';
 import {
   LoadingSectionHorizontal,
   LoadingSectionVertical
@@ -474,14 +475,15 @@ const loadingRecommend = ref<boolean>(true);
 const skipRecommend = ref<number>(1);
 const viewMoreRecommend = ref<boolean>(false);
 const loadMoreRecommend = ref<boolean>(false);
-const responsiveHorizoltal = computed<any>((): any => ({
+const responsiveHorizoltal = computed<any>(() => ({
   0: {
     slidesPerView: 2,
     slidesPerGroup: 2
   },
   600: {
     slidesPerView: 3,
-    slidesPerGroup: 3
+    slidesPerGroup: 3,
+    spaceBetween: 5
   },
   900: {
     slidesPerView: 3,
@@ -510,7 +512,7 @@ const responsiveHorizoltal = computed<any>((): any => ({
   }
 }));
 
-const responsiveVertical = computed<any>((): any => ({
+const responsiveVertical = computed<any>(() => ({
   0: {
     slidesPerView: 2,
     slidesPerGroup: 2
@@ -521,12 +523,12 @@ const responsiveVertical = computed<any>((): any => ({
   },
   600: {
     slidesPerView: 4,
-    slidesPerGroup: 4,
-    spaceBetween: 13
+    slidesPerGroup: 4
   },
   800: {
     slidesPerView: 5,
-    slidesPerGroup: 5
+    slidesPerGroup: 5,
+    spaceBetween: 13
   },
   900: {
     slidesPerView: 5,
@@ -555,6 +557,105 @@ const responsiveVertical = computed<any>((): any => ({
   }
 }));
 
+const responsiveHorizoltalSlick = computed<any[]>(() => [
+  {
+    breakpoint: 600,
+    settings: {
+      slidesToShow: 2,
+      slidesToScroll: 2
+    }
+  },
+  {
+    breakpoint: 900,
+    settings: {
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      spaceBetween: 5
+    }
+  },
+  {
+    breakpoint: 1000,
+    settings: {
+      slidesToShow: 4,
+      slidesToScroll: 4
+    }
+  },
+  {
+    breakpoint: 1200,
+    settings: {
+      slidesToShow: 4,
+      slidesToScroll: 4
+    }
+  },
+  {
+    breakpoint: 1500,
+    settings: {
+      slidesToShow: 4,
+      slidesToScroll: 4
+    }
+  },
+  {
+    breakpoint: 2000,
+    settings: {
+      slidesToShow: 5,
+      slidesToScroll: 5
+    }
+  }
+]);
+
+const responsiveVerticalSlick = computed<any[]>(() => [
+  {
+    breakpoint: 500,
+    settings: {
+      slidesToShow: 2,
+      slidesToScroll: 2
+    }
+  },
+  {
+    breakpoint: 600,
+    settings: {
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      spaceBetween: 13
+    }
+  },
+  {
+    breakpoint: 800,
+    settings: {
+      slidesToShow: 4,
+      slidesToScroll: 4
+    }
+  },
+  {
+    breakpoint: 1100,
+    settings: {
+      slidesToShow: 5,
+      slidesToScroll: 5
+    }
+  },
+  {
+    breakpoint: 1550,
+    settings: {
+      slidesToShow: 6,
+      slidesToScroll: 6
+    }
+  },
+  {
+    breakpoint: 1700,
+    settings: {
+      slidesToShow: 7,
+      slidesToScroll: 7
+    }
+  },
+  {
+    breakpoint: 2000,
+    settings: {
+      slidesToShow: 8,
+      slidesToScroll: 8
+    }
+  }
+]);
+
 const getData = async () => {
   loadingNowPlaying.value = true;
   loadingUpComing.value = true;
@@ -565,13 +666,6 @@ const getData = async () => {
   loadingRecommend.value = true;
 
   // await nextTick();
-
-  // await useAsyncData(`trending/all/1`, () => getTrending(1))
-  //   .then((response) => {
-  //     trendings.value = response.data.value?.results;
-  //   })
-  //   .catch((e) => {
-  //   });
 
   // useAsyncData('movie/nowplaying/1', () => getNowPlaying(1))
   getNowPlaying(1)

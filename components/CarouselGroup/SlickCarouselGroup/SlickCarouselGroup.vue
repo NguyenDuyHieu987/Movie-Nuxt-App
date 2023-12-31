@@ -1,8 +1,10 @@
 <template>
   <div class="carousel-container">
     <a-carousel
-      ref="carouselSlick"
+      ref="slickCarousel1"
       class="carousel-slick"
+      :class="cardMode"
+      :style="{ '--gap': gap + 'px' }"
       :arrows="true"
       :infinite="false"
       :autoplay="false"
@@ -10,12 +12,12 @@
       effect="scrollx"
       :dots="false"
       :initial-slide="0"
-      :slides-to-show="5"
-      :slides-to-scroll="5"
+      :slides-to-show="cardMode == 'horizontal' ? 6 : 9"
+      :slides-to-scroll="cardMode == 'horizontal' ? 6 : 9"
       :speed="300"
-      :draggable="true"
-      :swipe="true"
-      :touch-move="true"
+      :draggable="false"
+      :swipe="false"
+      :touch-move="false"
       :focus-on-select="false"
       :responsive="slickResponsive"
     >
@@ -28,7 +30,7 @@
             width="3.5rem"
             height="3.5rem"
             viewBox="0 0 16 16"
-            fill="currentColor"
+            fill="currrentColor"
           >
             <path
               fill-rule="evenodd"
@@ -58,20 +60,39 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  data: any[];
-  responsive: {
-    key: {
-      slidesPerView: number;
-      slidesPerGroup: number;
-      spaceBetween: number;
-    };
-  };
-  gap?: number;
-  cardMode?: 'horizontal' | 'vertical';
-}>();
+const props = withDefaults(
+  defineProps<{
+    data: any[];
+    responsive:
+      | {
+          key: {
+            slidesPerView: number;
+            slidesPerGroup: number;
+            spaceBetween: number;
+          };
+        }
+      | {
+          breakpoint: number;
+          settings: {
+            slidesToShow: number;
+            slidesToScroll: number;
+            spaceBetween?: number;
+          };
+        }[];
+    gap?: number;
+    cardMode: 'horizontal' | 'vertical';
+  }>(),
+  {
+    gap: 7,
+    cardMode: 'horizontal'
+  }
+);
 
 const slickResponsive = computed(() => {
+  if (Array.isArray(props.responsive)) {
+    return props.responsive;
+  }
+
   let responsive: any[] = [];
 
   for (const [key, value] of Object.entries(props.responsive)) {
@@ -90,7 +111,7 @@ const slickResponsive = computed(() => {
   return responsive;
 });
 
-console.log(slickResponsive.value);
+const slickCarousel = ref();
 </script>
 
 <style lang="scss" src="./SlickCarouselGroup.scss"></style>

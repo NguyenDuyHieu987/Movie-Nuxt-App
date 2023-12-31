@@ -5,12 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import Artplayer from 'artplayer';
-import Hls from 'hls.js';
+// import Artplayer from 'artplayer';
 
-import { CloseBtn } from '~/components/ButtonTemplate';
-import { LoadingSpinner } from '~/components/Loading';
-import { getVideo } from '~/services/video';
+import { DEV_SERVER_VIDEO } from '~/services/video';
 
 const props = withDefaults(
   defineProps<{
@@ -32,19 +29,13 @@ const emits = defineEmits<{
 const nuxtConfig = useRuntimeConfig();
 const videoSrc = computed<string>(
   () =>
-    // nuxtConfig.app.production_mode
-    //   ? nuxtConfig.app.serverVideoUrl + '/videos/' + props.videoUrl
-    //   : 'http://localhost:5002/videos' + props.videoUrl
-    'http://localhost:5002/videos' + props.videoUrl
+    nuxtConfig.app.production_mode
+      ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl
+      : `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
+  // `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
   // + '.m3u8'
 );
-const blobVideoSrc = ref<string>('');
-const videoPlayer = ref();
 const video = ref();
-const overlayProgress = ref();
-const progressBar = ref();
-const timeline = ref();
-const canvasPreviewImg = ref();
 const isInHistory = defineModel<boolean>('isInHistory', { default: false });
 const historyProgress = defineModel<{
   duration: number;
@@ -76,41 +67,6 @@ const videoStates = reactive({
     forward: false
   }
 });
-const settingStates = reactive({
-  enable: false,
-  switchBackgroud: true,
-  subSetting: {
-    enable: false,
-    playback: false,
-    quality: false
-  }
-});
-const settings = reactive({
-  playback: {
-    all: ['0.25', '0.5', '0.75', 'Bình thường', '1.25', '1.5', '1.75', '2'],
-    current: 'Bình thường'
-  },
-  quality: {
-    all: [
-      '2560p - 4K',
-      '1440p - 2K',
-      '1080p - HD',
-      '720p',
-      '480p',
-      '360p',
-      'Tự động'
-    ],
-    current: '1080p - HD'
-  }
-});
-const volume = ref<number>(100);
-const timeUpdate = ref<string>('00:00');
-const timelineUpdate = ref<string>('00:00');
-const duration = ref<string>('00:00');
-// const duration = computed<string>(
-//   () => formatDuration(video.value?.duration) || '00:00'
-// );
-const timeOut = ref<any>();
 const mounted = ref<boolean>(false);
 
 watch(
@@ -132,34 +88,34 @@ onBeforeMount(() => {});
 onMounted(() => {
   mounted.value = true;
 
-  const art = new Artplayer({
-    container: '.video-player',
-    url: videoSrc.value,
-    poster: props.backdrop,
-    volume: 0.5,
-    isLive: false,
-    muted: false,
-    autoplay: false,
-    pip: true,
-    autoSize: true,
-    autoMini: true,
-    screenshot: true,
-    setting: true,
-    loop: true,
-    flip: true,
-    playbackRate: true,
-    aspectRatio: true,
-    fullscreen: true,
-    fullscreenWeb: true,
-    subtitleOffset: true,
-    miniProgressBar: true,
-    mutex: true,
-    backdrop: true,
-    playsInline: true,
-    autoPlayback: true,
-    airplay: true,
-    theme: '#23ade5'
-  });
+  // const art = new Artplayer({
+  //   container: '.video-player',
+  //   url: videoSrc.value,
+  //   poster: props.backdrop,
+  //   volume: 0.5,
+  //   isLive: false,
+  //   muted: false,
+  //   autoplay: false,
+  //   pip: true,
+  //   autoSize: true,
+  //   autoMini: true,
+  //   screenshot: true,
+  //   setting: true,
+  //   loop: true,
+  //   flip: true,
+  //   playbackRate: true,
+  //   aspectRatio: true,
+  //   fullscreen: true,
+  //   fullscreenWeb: true,
+  //   subtitleOffset: true,
+  //   miniProgressBar: true,
+  //   mutex: true,
+  //   backdrop: true,
+  //   playsInline: true,
+  //   autoPlayback: true,
+  //   airplay: true,
+  //   theme: '#23ade5'
+  // });
 });
 
 const onTimeUpdateVideo = (e: any) => {

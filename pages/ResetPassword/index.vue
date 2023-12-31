@@ -28,7 +28,6 @@
                   name="username"
                 >
                   <a-input
-                    ref="usernameRef"
                     v-model:value="formResetPassword.username"
                     placeholder="..."
                     disabled

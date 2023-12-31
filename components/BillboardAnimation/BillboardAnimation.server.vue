@@ -187,7 +187,7 @@
             width="2.4rem"
             height="2.4rem"
             viewBox="0 0 16 16"
-            fill="var(--text-color)"
+            fill="currentColor"
           >
             <path
               fill-rule="evenodd"
@@ -203,7 +203,7 @@
             width="2.4rem"
             height="2.4rem"
             viewBox="0 0 16 16"
-            fill="var(--text-color)"
+            fill="currentColor"
           >
             <path
               fill-rule="evenodd"

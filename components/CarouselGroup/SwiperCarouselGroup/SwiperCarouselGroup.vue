@@ -2,7 +2,7 @@
   <div class="carousel-container">
     <Swiper
       class="carousel-swiper"
-      :class="cardMode || 'horizontal'"
+      :class="cardMode"
       :modules="[
         // SwiperAutoplay,
         // SwiperNavigation,
@@ -17,6 +17,7 @@
       :slides-per-group="5"
       :rewind="true"
       :speed="500"
+      :allow-touch-move="true"
       :virtual="true"
       effect="creative"
       :navigation="{
@@ -75,7 +76,7 @@ withDefaults(
     data: any[];
     responsive: any;
     gap?: number;
-    cardMode?: 'horizontal' | 'vertical';
+    cardMode: 'horizontal' | 'vertical';
   }>(),
   {
     gap: 7,

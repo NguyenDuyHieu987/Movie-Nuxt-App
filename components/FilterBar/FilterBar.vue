@@ -26,7 +26,6 @@
             </a-button>
             <!-- <ClientOnly>
               <el-select
-                ref="select"
                 v-model="formSelect.country"
                 style="width: 150px"
                 @change="handleChange"
@@ -43,7 +42,6 @@
               </el-select>
   
               <el-select
-                ref="select"
                 v-model="formSelect.year"
                 style="width: 170px"
                 @change="handleChange"
@@ -60,7 +58,6 @@
               </el-select>
   
               <el-select
-                ref="select"
                 v-model="formSelect.genre"
                 style="width: 170px"
                 @change="handleChange"
@@ -77,7 +74,6 @@
               </el-select>
   
               <el-select
-                ref="select"
                 v-model="formSelect.sortBy"
                 style="width: 170px"
                 @change="handleChange"
@@ -94,7 +90,6 @@
               </el-select>
   
               <el-select
-                ref="select"
                 v-model="formSelect.type"
                 style="width: 170px"
                 @change="handleChange"
@@ -107,7 +102,6 @@
             </ClientOnly> -->
 
             <a-select
-              ref="select"
               v-model:value="formSelect.country"
               style="width: 150px"
               size="large"
@@ -132,7 +126,6 @@
             </a-select>
 
             <a-select
-              ref="select"
               v-model:value="formSelect.year"
               style="width: 170px"
               size="large"
@@ -156,7 +149,6 @@
             </a-select>
 
             <a-select
-              ref="select"
               v-model:value="formSelect.genre"
               style="width: 170px"
               size="large"
@@ -180,7 +172,6 @@
             </a-select>
 
             <a-select
-              ref="select"
               v-model:value="formSelect.sortBy"
               style="width: 170px"
               size="large"
@@ -204,7 +195,6 @@
             </a-select>
 
             <a-select
-              ref="select"
               v-model:value="formSelect.type"
               style="width: 170px"
               size="large"

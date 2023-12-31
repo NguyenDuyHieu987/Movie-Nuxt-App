@@ -1,0 +1,11 @@
+.p247-image {
+  &[data-loading='loading'] {
+    // background-color: red !important;
+  }
+
+  background-image: red;
+
+  &[data-loading='loaded'] {
+    // animation: movie-card-opacity-in 0.7s ease-in forwards;
+  }
+}

@@ -744,7 +744,7 @@ import Hls from 'hls.js';
 
 import { CloseBtn } from '~/components/ButtonTemplate';
 import { LoadingSpinner } from '~/components/Loading';
-import { getVideo } from '~/services/video';
+import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';
 
 const props = withDefaults(
   defineProps<{
@@ -767,18 +767,18 @@ const emits = defineEmits<{
 const nuxtConfig = useRuntimeConfig();
 const videoSrc = computed<string>(
   () =>
-    // nuxtConfig.app.production_mode
-    //   ? nuxtConfig.app.serverVideoUrl + '/videos/' + props.videoUrl
-    //   : 'http://localhost:5002/videos' + props.videoUrl
-    'http://localhost:5002/videos' + props.videoUrl
+    nuxtConfig.app.production_mode
+      ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl
+      : `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
+  // `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
   // + '.m3u8'
 );
 const blobVideoSrc = ref<string>('');
-const videoPlayer = ref();
+const videoPlayer = ref<HTMLElement>();
 const video = ref<HTMLVideoElement>();
-const overlayProgress = ref();
-const progressBar = ref();
-const timeline = ref();
+const overlayProgress = ref<HTMLElement>();
+const progressBar = ref<HTMLElement>();
+const timeline = ref<HTMLElement>();
 const canvasPreviewImg = ref();
 const isInHistory = defineModel<boolean>('isInHistory', { default: false });
 const historyProgress = defineModel<{
@@ -1048,12 +1048,12 @@ const handleTimeUpdate = (e: any) => {
     video.value!.pause();
   }
 
-  const rect = overlayProgress.value.getBoundingClientRect();
+  const rect = overlayProgress.value!!.getBoundingClientRect();
 
   const percent =
     Math.min(Math.max(0, e.x - rect.left), rect.width) / rect.width;
 
-  progressBar.value.style.setProperty('--progress-width', percent);
+  progressBar.value!.style.setProperty('--progress-width', percent.toString());
 
   video.value!.currentTime = percent * video.value!.duration;
 
@@ -1087,7 +1087,7 @@ const onLoadStartVideo = () => {
 
   // video.value.currentTime = 0;
   // progressBar.value.style.setProperty('--progress-width', 0);
-  // overlayProgress.value.style.setProperty('--seekable-width', 0);
+  // overlayProgress.value!.style.setProperty('--seekable-width', 0);
 };
 
 const onCanPlayVideo = () => {
@@ -1104,7 +1104,7 @@ const onLoadedDataVideo = () => {
 const onTimeUpdateVideo = (e: any) => {
   timeUpdate.value = formatDuration(e.target.currentTime)!;
   const percent = e.target.currentTime / e.target.duration;
-  progressBar.value?.style.setProperty('--progress-width', percent);
+  progressBar.value?.style.setProperty('--progress-width', percent.toString());
 
   emits('onTimeUpdate', {
     seconds: video.value!.currentTime,
@@ -1129,7 +1129,10 @@ const onProgressVideo = (e: any) => {
 
       if (video.value!.currentTime > bufferedStart) {
         const percent = bufferedEnd / e.target.duration;
-        overlayProgress.value.style.setProperty('--seekable-width', percent);
+        overlayProgress.value!!.style.setProperty(
+          '--seekable-width',
+          percent.toString()
+        );
         break;
       }
     }
@@ -1200,7 +1203,7 @@ const onClickPause = () => {
 
 const onClickReplayVideo = () => {
   video.value!.currentTime = 0;
-  progressBar.value.style.setProperty('--progress-width', 0);
+  progressBar.value!.style.setProperty('--progress-width', '0');
   videoStates.isPlayVideo = true;
   videoStates.isEndedVideo = false;
   videoStates.isShowControls = false;
@@ -1261,7 +1264,10 @@ const rewindVideo = (value: number) => {
     checkEndedVideo();
 
     const percent = video.value!.currentTime / video.value!.duration;
-    progressBar.value.style.setProperty('--progress-width', percent);
+    progressBar.value!.style.setProperty(
+      '--progress-width',
+      percent.toString()
+    );
 
     if (videoStates.isPlayVideo) {
       video.value!.play();
@@ -1289,7 +1295,10 @@ const forwardVideo = (value: number) => {
     checkEndedVideo();
 
     const percent = video.value!.currentTime / video.value!.duration;
-    progressBar.value.style.setProperty('--progress-width', percent);
+    progressBar.value!.style.setProperty(
+      '--progress-width',
+      percent.toString()
+    );
 
     new Promise((resolve, reject) => {
       resolve((videoStates.isActiveControlsAnimation = false));
@@ -1341,12 +1350,15 @@ const onMouseUpProgressBar = () => {
 const onTouchMoveProgressBar = (e: any) => {
   videoStates.isMouseMoveOverlayProgress = true;
   videoStates.isShowControls = true;
-  const rect = overlayProgress.value.getBoundingClientRect();
+  const rect = overlayProgress.value!.getBoundingClientRect();
 
   [...e.changedTouches].forEach((touch) => {
     const percent =
       Math.min(Math.max(0, touch.pageX - rect.left), rect.width) / rect.width;
-    overlayProgress.value.style.setProperty('--preview-width', percent);
+    overlayProgress.value!.style.setProperty(
+      '--preview-width',
+      percent.toString()
+    );
 
     if (videoStates.isScrubbingProgressBar) {
       handleTimeUpdate({ x: touch.pageX });
@@ -1358,12 +1370,15 @@ const onTouchMoveProgressBar = (e: any) => {
 
 const onMouseMoveProgressBar = (e: any) => {
   videoStates.isMouseMoveOverlayProgress = true;
-  const rect = overlayProgress.value.getBoundingClientRect();
+  const rect = overlayProgress.value!.getBoundingClientRect();
 
   const percent =
     Math.min(Math.max(0, e.x - rect.left), rect.width) / rect.width;
 
-  overlayProgress.value.style.setProperty('--preview-width', percent);
+  overlayProgress.value!.style.setProperty(
+    '--preview-width',
+    percent.toString()
+  );
 
   if (videoStates.isScrubbingProgressBar) {
     handleTimeUpdate(e);
@@ -1377,7 +1392,7 @@ const onMouseLeaveProgressBar = (e: any) => {
 };
 
 const drawTimeLine = (e: any) => {
-  const rect = overlayProgress.value.getBoundingClientRect();
+  const rect = overlayProgress.value!.getBoundingClientRect();
 
   const percent =
     Math.min(Math.max(0, e.x - rect.left), rect.width) / rect.width;
@@ -1388,11 +1403,11 @@ const drawTimeLine = (e: any) => {
 
   const timeLinePositionFinnal = Math.min(
     // Math.max(10, timeLinePosition - timeline.value.offsetWidth / 2 + 10),
-    Math.max(0, timeLinePosition - timeline.value.offsetWidth / 2),
-    overlayProgress.value.offsetWidth - timeline.value.offsetWidth
+    Math.max(0, timeLinePosition - timeline.value!.offsetWidth / 2),
+    overlayProgress.value!.offsetWidth - timeline.value!.offsetWidth
   );
 
-  timeline.value.style.setProperty(
+  timeline.value!.style.setProperty(
     '--timeline-position',
     timeLinePositionFinnal + 'px'
   );
@@ -1420,7 +1435,7 @@ const drawTimeLine = (e: any) => {
 
 const onClickFullScreen = () => {
   videoStates.isFullScreen = true;
-  videoPlayer.value.requestFullscreen();
+  videoPlayer.value!.requestFullscreen();
 };
 
 const onClickFullScreenExit = () => {
@@ -1475,7 +1490,7 @@ const onCloseSettings = async () => {
 
 const onClickPlayAgain = () => {
   video.value!.currentTime = 0;
-  progressBar.value.style.setProperty('--progress-width', 0);
+  progressBar.value!.style.setProperty('--progress-width', '0');
   videoStates.isShowNotify = false;
   video.value!.play();
   videoStates.isPlayVideo = true;
@@ -1483,9 +1498,9 @@ const onClickPlayAgain = () => {
 
 const onClickKeepWatching = () => {
   video.value!.currentTime = historyProgress.value.seconds;
-  progressBar.value.style.setProperty(
+  progressBar.value!.style.setProperty(
     '--progress-width',
-    historyProgress.value.percent
+    historyProgress.value.percent.toString()
   );
   videoStates.isShowNotify = false;
   video.value!.play();
@@ -1535,7 +1550,7 @@ const onKeyDownVideo = (e: any) => {
       } else {
         videoStates.isFullScreen = true;
         window.screen.orientation.lock('landscape');
-        videoPlayer.value.requestFullscreen();
+        videoPlayer.value!.requestFullscreen();
       }
       break;
     default:

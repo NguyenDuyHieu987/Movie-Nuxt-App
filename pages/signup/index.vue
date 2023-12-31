@@ -79,7 +79,6 @@
               ]"
             >
               <a-input
-                ref="usernameRef"
                 v-model:value="formSignup.username"
                 placeholder="Username..."
                 allow-clear

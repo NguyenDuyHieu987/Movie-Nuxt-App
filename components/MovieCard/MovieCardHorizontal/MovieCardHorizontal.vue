@@ -39,6 +39,14 @@
         alt=""
       />
 
+      <!-- <Image
+        :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+        placeholder="/imgs/loading-img-16-9.webp"
+        format="avif"
+        loading="lazy"
+        alt=""
+      /> -->
+
       <div
         v-show="isInHistory"
         class="viewed-overlay-bar"
@@ -123,6 +131,7 @@
 </template>
 
 <script setup lang="ts">
+import { Image } from '~/components/Image';
 import { PreviewModal } from '~/components/PreviewModal';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';

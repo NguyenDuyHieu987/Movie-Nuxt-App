@@ -271,7 +271,7 @@ const props = defineProps<{
 
 const authStore = useAuthStore();
 const utils = useUtils();
-const topicRow = ref();
+const topicRow = ref<HTMLElement>();
 const valueSearch = defineModel<string>('valueInput');
 const dataRow = defineModel<any>('dataRow');
 
@@ -291,9 +291,9 @@ const setBackgroundColor = (color: string[]) => {
   //   'topic-row'
   // )[0] as HTMLElement;
 
-  topicRow.value.setAttribute('style', `background-image: ${main_color}`);
+  topicRow.value!.setAttribute('style', `background-image: ${main_color}`);
 
-  const ant_input_affix_wrapper = topicRow.value.getElementsByClassName(
+  const ant_input_affix_wrapper = topicRow.value!.getElementsByClassName(
     'ant-input-affix-wrapper'
   )[0] as HTMLElement;
 
