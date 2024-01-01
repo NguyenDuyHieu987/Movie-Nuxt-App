@@ -34,21 +34,22 @@
 const props = withDefaults(
   defineProps<{
     src: string;
-    defaultEl: boolean;
-    type: string | 'vertical' | 'horizontal' | 'cast' | undefined;
+    defaultEl?: boolean;
+    type?: string | 'vertical' | 'horizontal' | 'cast' | undefined;
     placeholder?: string | boolean;
-    loading: 'lazy' | 'eager';
+    loading?: 'lazy' | 'eager';
     format?: string;
     alt: string;
-    width: string | number | undefined;
-    height: string | number | undefined;
-    sizes: string | Record<string, any> | undefined;
-    quality: string | number | undefined;
+    width?: string | number | undefined;
+    height?: string | number | undefined;
+    sizes?: string | Record<string, any> | undefined;
+    quality?: string | number | undefined;
   }>(),
   {
     defaultEl: true,
     type: undefined,
     placeholder: false,
+    loading: 'eager',
     format: 'avif',
     alt: '',
     width: undefined,

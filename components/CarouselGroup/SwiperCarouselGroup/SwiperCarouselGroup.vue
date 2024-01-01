@@ -76,7 +76,7 @@ withDefaults(
     data: any[];
     responsive: any;
     gap?: number;
-    cardMode: 'horizontal' | 'vertical';
+    cardMode?: 'horizontal' | 'vertical';
   }>(),
   {
     gap: 7,
