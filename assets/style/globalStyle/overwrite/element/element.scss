@@ -22,11 +22,11 @@
 }
 
 .el-skeleton.is-animated {
-  // --el-skeleton-color: #f0f2f5 !important;
-  // --el-skeleton-to-color: #e6e8eb !important;
+  --el-skeleton-color: #f0f2f5 !important;
+  --el-skeleton-to-color: #e6e8eb !important;
 
-  --el-skeleton-color: #353535 !important;
-  --el-skeleton-to-color: #282828 !important;
+  // --el-skeleton-color: #35373a !important;
+  // --el-skeleton-to-color: #2c2d30 !important;
 
   .el-skeleton__item {
     animation-duration: 2s !important;
