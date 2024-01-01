@@ -409,6 +409,7 @@ import { getCountryByOriginalLanguage } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
+import { DEV_SERVER_VIDEO } from '~/services/video';
 
 const props = defineProps<{
   item: any;
@@ -465,13 +466,10 @@ const isOnlyLeft = ref<boolean>(false);
 const isOnlyRight = ref<boolean>(false);
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
-const videoSrc = computed<string>(
-  () =>
-    nuxtConfig.app.production_mode
-      ? `${nuxtConfig.app.serverVideoUrl}/videos` + '/feature/Transformer_5'
-      : 'http://localhost:5002/videos' + '/feature/Transformer_5'
-  // 'http://localhost:5002/videos' + '/feature/Transformer_5'
-  // + '.m3u8'
+const videoSrc = computed<string>(() =>
+  nuxtConfig.app.production_mode
+    ? `${nuxtConfig.app.serverVideoUrl}/videos` + '/feature/Transformer_5'
+    : `${DEV_SERVER_VIDEO}/videos` + '/feature/Transformer_5'
 );
 const videoStates = reactive({
   isLoading: false,

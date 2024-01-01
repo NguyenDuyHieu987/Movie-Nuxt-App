@@ -31,21 +31,21 @@
         alt=""
       /> -->
 
-      <!-- <NuxtImg
-        :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
-        placeholder="/imgs/loading-img-16-9.webp"
-        format="avif"
-        loading="lazy"
-        alt=""
-      /> -->
-
-      <Image
+      <NuxtImg
         :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
         placeholder="/imgs/loading-img-16-9.webp"
         format="avif"
         loading="lazy"
         alt=""
       />
+
+      <!-- <Image
+        :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+        placeholder="/imgs/loading-img-16-9.webp"
+        format="avif"
+        loading="lazy"
+        alt=""
+      /> -->
 
       <div
         v-show="isInHistory"
@@ -137,6 +137,7 @@ import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
+import { DEV_SERVER_VIDEO } from '~/services/video';
 
 const props = defineProps<{
   item: any;
@@ -176,13 +177,10 @@ const timeOut = ref<any>();
 const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
-const videoSrc = computed<string>(
-  () =>
-    nuxtConfig.app.production_mode
-      ? `${nuxtConfig.app.serverVideoUrl}/videos` + '/feature/Transformer_5'
-      : 'http://localhost:5002/videos' + '/feature/Transformer_5'
-  // 'http://localhost:5002/videos' + '/feature/Transformer_5'
-  // + '.m3u8'
+const videoSrc = computed<string>(() =>
+  nuxtConfig.app.production_mode
+    ? `${nuxtConfig.app.serverVideoUrl}/videos` + '/feature/Transformer_5'
+    : `${DEV_SERVER_VIDEO}/videos` + '/feature/Transformer_5'
 );
 
 const getData = async () => {

@@ -195,6 +195,7 @@ import { LoadingSpinner } from '~/components/Loading';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getItemList } from '~/services/list';
+import { DEV_SERVER_VIDEO } from '~/services/video';
 
 const props = defineProps<{
   item: any;
@@ -212,13 +213,10 @@ const isAddToList = ref<boolean>(false);
 const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
-const videoSrc = computed<string>(
-  () =>
-    nuxtConfig.app.production_mode
-      ? `${nuxtConfig.app.serverVideoUrl}/videos` + '/feature/Transformer_5'
-      : 'http://localhost:5002/videos' + '/feature/Transformer_5'
-  // 'http://localhost:5002/videos' + '/feature/Transformer_5'
-  // + '.m3u8'
+const videoSrc = computed<string>(() =>
+  nuxtConfig.app.production_mode
+    ? `${nuxtConfig.app.serverVideoUrl}/videos` + '/feature/Transformer_5'
+    : `${DEV_SERVER_VIDEO}/videos` + '/feature/Transformer_5'
 );
 const videoStates = reactive({
   isLoading: false,
