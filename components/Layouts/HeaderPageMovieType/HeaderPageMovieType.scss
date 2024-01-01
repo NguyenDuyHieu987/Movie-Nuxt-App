@@ -142,5 +142,11 @@
 @media only screen and (max-width: 650px) {
   .header-page-type-movie {
     padding: 8px 15px;
+
+    .header-page-type-movie-wrapper {
+      .header-page-type-movie-title {
+        font-size: 2rem;
+      }
+    }
   }
 }

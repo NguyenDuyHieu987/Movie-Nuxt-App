@@ -30,7 +30,7 @@
 
     <header class="user-header">
       <div
-        v-if="!collapsed && isLogin"
+        v-if="isLogin"
         class="avatar-box"
       >
         <NuxtImg

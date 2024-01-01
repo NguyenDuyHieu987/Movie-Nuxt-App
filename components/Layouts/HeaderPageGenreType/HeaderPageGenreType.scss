@@ -91,5 +91,11 @@
 @media only screen and (max-width: 650px) {
   .header-home-breadcrumb {
     padding: 5px 15px;
+
+    .header-home-breadcrumb-wrapper {
+      .breadcrumb-title {
+        font-size: 2rem;
+      }
+    }
   }
 }
