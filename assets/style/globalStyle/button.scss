@@ -3,7 +3,7 @@
   --btn-background-color-gray1: #252525;
   --btn-hover-background-color-gray: #1b1b1b;
   --btn-border-color: #5a5a5a;
-  --btn-hover-border-color: #000000;
+  --btn-hover-border-color: #ffff;
   --btn-color: #0080ca;
   --btn-danger-color: #ff4d4f;
 }
@@ -37,7 +37,7 @@
   }
 
   &:hover,
-  &:not(:disabled):hover {
+  &:not(:disabled, .ant-btn-text):hover {
     border-color: var(--btn-hover-border-color);
     color: inherit;
   }
@@ -131,7 +131,6 @@
 
   &.default {
     padding: 7px 30px;
-    font-size: 1.5rem;
     height: auto;
     background-color: transparent;
     border-color: var(--border-regular);
@@ -146,6 +145,17 @@
 
     &::after {
       box-shadow: none !important;
+    }
+  }
+
+  &.modern {
+    background-color: transparent;
+    height: 100%;
+    // padding: 0.35vw 1.5vw;
+    padding: 7px 25px;
+
+    &:active {
+      opacity: 0.8;
     }
   }
 
@@ -164,19 +174,6 @@
     &:hover {
       background-size: 200% 100%;
       background-position: 100% center;
-    }
-  }
-
-  &.modern {
-    font-size: 1.5rem;
-    background-color: transparent;
-    border-color: transparent;
-    height: 100%;
-    // padding: 0.35vw 1.5vw;
-    padding: 7px 25px;
-
-    &:active {
-      opacity: 0.8;
     }
   }
 }

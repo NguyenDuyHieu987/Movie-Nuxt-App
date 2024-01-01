@@ -101,10 +101,7 @@
                   class="action-btn"
                   @click="handleAddToList"
                 >
-                  <a-button
-                    type="text"
-                    class="modern add"
-                  >
+                  <a-button class="modern add">
                     <template #icon>
                       <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
                       <Icon v-else name="ic:baseline-plus" /> -->

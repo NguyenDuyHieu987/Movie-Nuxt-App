@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue';
-import { useBreakpoints, useLocalStorage } from '@vueuse/core';
+import { useBreakpoints, useDark, useLocalStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 
 import type { country, genre, user, year } from '@/types';
@@ -7,6 +7,8 @@ import type { country, genre, user, year } from '@/types';
 const breakpoints = useBreakpoints({
   desktop: APP.COLLAPSED_SIDEBAR_WIDTH
 });
+
+// const isDark = useDark();
 
 const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
   [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false

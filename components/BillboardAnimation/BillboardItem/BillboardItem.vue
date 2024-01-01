@@ -179,7 +179,6 @@
         >
           <a-button
             size="large"
-            type="text"
             class="info modern"
           >
             <template #icon>
@@ -213,7 +212,6 @@
         >
           <a-button
             size="large"
-            type="text"
             class="add modern"
           >
             <template #icon>

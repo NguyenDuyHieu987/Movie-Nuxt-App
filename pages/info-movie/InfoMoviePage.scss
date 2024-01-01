@@ -241,11 +241,9 @@
 
                 &.add,
                 &.trailer {
-                  border-color: var(--border-regular);
                   background-color: rgba(55, 55, 55, 0.3);
 
                   &:hover {
-                    border-color: var(--btn-hover-border-color);
                     background-color: rgba(97, 97, 97, 0.4);
                   }
                 }
@@ -280,7 +278,7 @@
               align-items: center;
 
               .ant-btn {
-                padding: 9px 13px;
+                padding: 7px 13px;
 
                 svg {
                   margin-right: 8px;
