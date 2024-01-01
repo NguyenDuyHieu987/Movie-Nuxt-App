@@ -34,16 +34,29 @@
               alt=""
             />
           </div>
-          <div class="poster">
+          <div
+            class="poster"
+            :style="`--dominant-poster-color: ${dataMovie?.dominant_poster_color[0]}, ${dataMovie?.dominant_poster_color[1]},${dataMovie?.dominant_poster_color[2]}`"
+          >
             <div class="poster-wrapper ratio-2-3">
               <NuxtImg
                 :src="getImage(dataMovie?.poster_path, 'poster', 'w-250')"
-                placeholder="/imgs/loading-img-2-3.webp"
                 format="avif"
                 loading="lazy"
                 alt=""
               />
             </div>
+
+            <NuxtLink
+              class="play-now click-active"
+              :to="{
+                path: `/play-movie/${
+                  dataMovie?.id
+                }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
+              }"
+            >
+              Xem phim ngay
+            </NuxtLink>
           </div>
 
           <div class="overlay-backdrop">
@@ -382,7 +395,6 @@
         >
           <h2 class="title-default">Trailer</h2>
           <iframe
-            v-lazy-load
             height="100%"
             width="100%"
             :src="

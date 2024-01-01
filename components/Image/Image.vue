@@ -1,6 +1,6 @@
 <template>
   <img
-    v-if="defaultEl"
+    v-if="!nuxtImg"
     ref="imageRef"
     class="p247-image"
     :src="src"
@@ -34,7 +34,7 @@
 const props = withDefaults(
   defineProps<{
     src: string;
-    defaultEl?: boolean;
+    nuxtImg?: boolean;
     type?: string | 'vertical' | 'horizontal' | 'cast' | undefined;
     placeholder?: string | boolean;
     loading?: 'lazy' | 'eager';
@@ -46,7 +46,7 @@ const props = withDefaults(
     quality?: string | number | undefined;
   }>(),
   {
-    defaultEl: true,
+    nuxtImg: true,
     type: undefined,
     placeholder: false,
     loading: 'eager',

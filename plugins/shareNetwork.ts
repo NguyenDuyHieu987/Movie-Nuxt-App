@@ -9,9 +9,7 @@ export default defineNuxtPlugin({
   async setup(nuxtApp) {
     nuxtApp.vueApp.use(VueSocialSharing, {});
   },
-  hooks: {
-    'app:created': async () => {}
-  },
+  hooks: {},
   parallel: true,
   env: { islands: true }
 });

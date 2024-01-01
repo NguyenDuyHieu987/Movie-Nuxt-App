@@ -74,6 +74,7 @@
       border-radius: 2px;
       cursor: pointer;
       white-space: nowrap;
+      border: 1px solid transparent;
 
       svg {
         margin-left: 20px;
@@ -81,7 +82,7 @@
 
       &[aria-expanded='true'] {
         background-color: transparent;
-        border: 1px solid var(--border-regular);
+        border-color: var(--border-regular);
       }
     }
   }

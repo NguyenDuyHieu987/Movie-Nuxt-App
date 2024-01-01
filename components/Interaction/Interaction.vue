@@ -400,7 +400,7 @@
 </template>
 
 <script setup lang="ts">
-import { CloseBtn } from '~/components/ButtonTemplate';
+import { CloseBtn } from '~/components/Button';
 import { getImage } from '~/services/image';
 
 const props = withDefaults(

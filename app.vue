@@ -7,12 +7,12 @@
       :theme="{
         token: {
           colorPrimary: '#008ddf',
-          fontSize: 15,
           fontFamily: 'Roboto Flex, sans-serif',
-          borderRadius: 2,
-          borderRadiusLG: 5,
+          fontSize: 15,
           lineHeight: 1.5,
-        },
+          borderRadius: 2,
+          borderRadiusLG: 5
+        }
       }"
     /> -->
 

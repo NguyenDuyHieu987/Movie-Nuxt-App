@@ -93,7 +93,7 @@
 </template>
 
 <script setup lang="ts">
-import { CloseBtn } from '~/components/ButtonTemplate';
+import { CloseBtn } from '~/components/Button';
 
 const authStore = useAuthStore();
 </script>

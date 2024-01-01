@@ -179,7 +179,7 @@ const onPointerOverSlider = (e: any) => {
       .querySelector('.movie-card-item')
       .getAttribute('index');
 
-    dominantBackdropColor.value = `rgba(${props.data[indexItem]?.dominant_poster_color[0]}, ${props.data[indexItem]?.dominant_poster_color[1]},${props.data[indexItem]?.dominant_poster_color[2]}, 0.6)`;
+    dominantBackdropColor.value = `rgba(${props.data[indexItem]?.dominant_backdrop_color[0]}, ${props.data[indexItem]?.dominant_backdrop_color[1]},${props.data[indexItem]?.dominant_backdrop_color[2]}, 0.6)`;
   }
 };
 </script>

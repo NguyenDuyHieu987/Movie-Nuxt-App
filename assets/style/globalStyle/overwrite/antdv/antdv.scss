@@ -261,12 +261,17 @@
 
 .ant-input-affix-wrapper {
   border: 1px solid var(--input-border-color);
+  border-radius: 2px;
   box-shadow: none !important;
   font-size: inherit;
   color: inherit;
   transition: all 0s;
 
   &:not(.ant-input-affix-wrapper-disabled) {
+    &.ant-input-affix-wrapper-status-error {
+      border-color: var(--input-border-color-error) !important;
+    }
+
     &:hover {
       border-color: var(--input-border-color);
     }
@@ -606,7 +611,7 @@
         input {
           padding: 0px !important;
           font-size: 1.5rem;
-          line-height: var(--line-height-regular);
+          line-height: inherit;
         }
 
         .ant-input-prefix {

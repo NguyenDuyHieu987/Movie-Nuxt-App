@@ -8,7 +8,6 @@
     .back-page {
       .ant-btn {
         // background-color: var(--background-content-opacity);
-        padding-left: 5px;
 
         &:hover {
           // box-shadow: var(--box-shadow-small);
@@ -34,6 +33,18 @@
         position: relative;
         width: 100%;
 
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -100%;
+          z-index: 1;
+          width: 100%;
+          height: 70%;
+          transform: translateY(-100%);
+          background-color: var(--background-content-color);
+        }
+
         &::after {
           content: '';
           position: absolute;
@@ -45,7 +56,7 @@
           background-image: linear-gradient(
             0deg,
             var(--background-content-color) 0%,
-            rgba(10, 10, 10, 0) 100%
+            rgba(08, 08, 08, 0) 100%
           );
         }
 
@@ -78,6 +89,8 @@
             height: 100%;
             width: 100%;
             object-fit: cover;
+            border-top-left-radius: var(--info-page-backdrop-border-radius);
+            border-top-right-radius: var(--info-page-backdrop-border-radius);
           }
 
           &::before {
@@ -91,7 +104,7 @@
             background-image: linear-gradient(
               35deg,
               var(--background-content-color) 0%,
-              rgba(10, 10, 10, 0) 70%
+              rgba(08, 08, 08, 0) 70%
             );
           }
 
@@ -106,7 +119,7 @@
             background-image: linear-gradient(
               35deg,
               var(--background-content-color) 0%,
-              rgba(10, 10, 10, 0) 70%
+              rgba(08, 08, 08, 0) 70%
             );
           }
         }
@@ -115,7 +128,7 @@
           position: absolute;
           top: 0;
           right: 0;
-          z-index: 1;
+          z-index: 2;
           width: 200px;
           box-shadow: var(--box-shadow-medium);
 
@@ -127,7 +140,38 @@
               height: 100%;
               object-fit: cover;
               background-color: #080808;
+              border-top-right-radius: var(--info-page-backdrop-border-radius);
             }
+          }
+
+          .play-now {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 30%);
+            width: 90%;
+            padding: 7px 20px;
+            background-color: rgba(var(--dominant-poster-color, (0, 141, 223)));
+            color: #fff;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow-small);
+            z-index: 2;
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            height: 20%;
+            width: 100%;
+            background: linear-gradient(
+              to top,
+              var(--background-content-color) 0%,
+              rgba(08, 08, 08, 0) 100%
+            );
           }
         }
       }
@@ -451,7 +495,7 @@
 
         .backdrop-img {
           .poster {
-            width: 150px;
+            width: 180px;
           }
         }
 

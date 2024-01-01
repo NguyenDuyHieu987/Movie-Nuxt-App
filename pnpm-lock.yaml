@@ -65,9 +65,6 @@ dependencies:
   nuxt-icon:
     specifier: ^0.6.8
     version: 0.6.8(nuxt@3.9.0)(rollup@2.79.1)(vite@5.0.10)(vue@3.3.13)
-  nuxt-lazy-load:
-    specifier: ^3.0.4
-    version: 3.0.4(rollup@2.79.1)
   nuxt-storage:
     specifier: ^1.2.2
     version: 1.2.2
@@ -8801,15 +8798,6 @@ packages:
       - supports-color
       - vite
       - vue
-    dev: false
-
-  /nuxt-lazy-load@3.0.4(rollup@2.79.1):
-    resolution: {integrity: sha512-NlJ/E3RPnbpHIhMigVIDHJwRaTsOHP9dVSPoUH9XhHXvSAgjkywGyoFkI21t+4x5Ug1pv13sFalPE8e75SnY4w==}
-    dependencies:
-      '@nuxt/kit': 3.8.2(rollup@2.79.1)
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
     dev: false
 
   /nuxt-link-checker@1.0.5(rollup@2.79.1):

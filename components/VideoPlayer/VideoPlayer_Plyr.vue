@@ -13,13 +13,12 @@
         autoplay
         muted
         controls
-        data-not-lazy
         @timeupdate="onTimeUpdateVideo"
         @play="onPlayVideo"
       >
         <source
           ref="srcVideo"
-          :data-src="videoSrc"
+          :src="videoSrc"
           type="video/mp4"
         />
       </video>

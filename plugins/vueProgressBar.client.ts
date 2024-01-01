@@ -1,4 +1,4 @@
-import VueProgressBar from '@aacassandra/vue3-progressbar';
+// import VueProgressBar from '@aacassandra/vue3-progressbar';
 
 const progressBarOptions = {
   color: 'var(--loading-progress-bar)',

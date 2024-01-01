@@ -41,6 +41,8 @@
   --preview-modal-background-color: #121212;
 
   --tooltip-background-color: #202020;
+
+  --info-page-backdrop-border-radius: 10px;
 }
 
 html {
@@ -170,6 +172,7 @@ legend {
 
 a {
   color: inherit;
+  text-decoration: none;
   transition:
     color 0.15s,
     background-color 0.15s;

@@ -142,9 +142,9 @@
           }"
         >
           <a-button
+            class="play modern"
             size="large"
             type="text"
-            class="play modern"
           >
             <template #icon>
               <!-- <Icon name="ci:play-arrow" class="play" /> -->

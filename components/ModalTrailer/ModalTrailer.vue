@@ -104,7 +104,6 @@
         <!-- Math.floor(Math.random() * dataMovie?.videos?.length)
         : 'https://www.youtube.com/embed/ndl1W4ltcmg' -->
         <iframe
-          v-lazy-load
           height="100%"
           width="100%"
           :src="`https://www.youtube.com/embed/${
@@ -177,7 +176,7 @@
 </template>
 
 <script setup lang="ts">
-import { CloseBtn } from '~/components/ButtonTemplate';
+import { CloseBtn } from '~/components/Button';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
 import { getVideos } from '~/services/video';

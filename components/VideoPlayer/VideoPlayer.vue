@@ -31,7 +31,6 @@
         ref="video"
         :src="videoSrc"
         :poster="backdrop"
-        data-not-lazy
         @loadstart="onLoadStartVideo"
         @loadeddata="onLoadedDataVideo"
         @canplay="onCanPlayVideo"
@@ -43,7 +42,7 @@
         @pause="onPauseVideo"
         @playing="onPLayingVideo"
       >
-        <!-- <source :data-src="blobVideoSrc" ref="srcVideo" type="video/mp4" /> -->
+        <!-- <source src="blobVideoSrc" ref="srcVideo" type="video/mp4" /> -->
       </video>
 
       <div class="float-center">
@@ -753,7 +752,7 @@
 import { useLocalStorage } from '@vueuse/core';
 import Hls from 'hls.js';
 
-import { CloseBtn } from '~/components/ButtonTemplate';
+import { CloseBtn } from '~/components/Button';
 import { LoadingSpinner } from '~/components/Loading';
 import { getImage } from '~/services/image';
 import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';

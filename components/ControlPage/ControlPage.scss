@@ -101,13 +101,18 @@
 
       &.ant-pagination-disabled {
         // display: none;
-        background-color: transparent;
+        background-color: transparent !important;
+
+        button {
+          color: var(--text-color-gray);
+          cursor: not-allowed;
+        }
       }
     }
 
     li {
       display: inline-flex;
-      background-color: #1b1b1b;
+      background-color: #1b1b1b !important;
       border: none;
       height: auto;
       width: auto;
@@ -134,7 +139,7 @@
       }
 
       &.ant-pagination-item-active {
-        background-color: var(--app-background-color);
+        background-color: var(--app-background-color) !important;
         // color: var(--link-text-color);
         color: #fff;
         padding: 0px 2px;

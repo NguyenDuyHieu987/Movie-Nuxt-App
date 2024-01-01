@@ -32,7 +32,6 @@
         preload="metadata"
         autoplay
         muted
-        data-not-lazy
         @loadstart="onLoadStartVideo"
         @loadeddata="onLoadedDataVideo"
         @canplay="onCanPlayVideo"
@@ -44,7 +43,7 @@
         @pause="onPauseVideo"
         @playing="onPLayingVideo"
       >
-        <!-- <source :data-src="blobVideoSrc" ref="srcVideo" type="video/mp4" /> -->
+        <!-- <source src="blobVideoSrc" ref="srcVideo" type="video/mp4" /> -->
       </video>
 
       <div class="float-center">
@@ -742,7 +741,7 @@
 <script setup lang="ts">
 import Hls from 'hls.js';
 
-import { CloseBtn } from '~/components/ButtonTemplate';
+import { CloseBtn } from '~/components/Button';
 import { LoadingSpinner } from '~/components/Loading';
 import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';
 

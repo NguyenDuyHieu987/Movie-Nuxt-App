@@ -45,7 +45,6 @@
     "lodash": "^4.17.21",
     "material-icons": "^1.13.12",
     "nuxt-icon": "^0.6.8",
-    "nuxt-lazy-load": "^3.0.4",
     "nuxt-storage": "^1.2.2",
     "nuxt-swiper": "^1.2.2",
     "path": "^0.12.7",

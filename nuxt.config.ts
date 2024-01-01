@@ -128,7 +128,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-swiper',
     '@nuxt/image',
-    'nuxt-lazy-load',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
@@ -179,24 +178,6 @@ export default defineNuxtConfig({
     format: ['avif', 'webp'],
     domains: ['https://ik.imagekit.io'],
     alias: {}
-  },
-  lazyLoad: {
-    images: false,
-    videos: false,
-    audios: false,
-    iframes: false,
-    native: false,
-    directiveOnly: true,
-
-    // Default image must be in the public folder
-    // defaultImage: '/images/default-image.jpg',
-
-    // To remove class set value to false
-    loadingClass: 'isLoading',
-    loadedClass: 'isLoaded',
-    appendClass: 'lazyLoad',
-
-    observerConfig: {}
   },
   fontMetrics: {},
   googleFonts: {
