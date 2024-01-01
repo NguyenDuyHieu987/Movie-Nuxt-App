@@ -298,9 +298,7 @@ header.header-bar {
     }
 
     .ant-btn.search-btn-mobile {
-      background-color: transparent;
       display: none;
-      border: none;
 
       &:active {
         opacity: 0.8;
@@ -622,7 +620,7 @@ header.header-bar {
       font-size: 1.4rem;
 
       &:hover {
-        background-color: var(--background-hover-dropdown-color);
+        background-color: var(--dropdown-hover-background-color);
       }
     }
   }

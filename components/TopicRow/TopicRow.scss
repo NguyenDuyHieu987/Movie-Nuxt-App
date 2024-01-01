@@ -159,17 +159,11 @@
         flex: 1 0 300px;
 
         .remove-all-btn {
-          min-width: 200px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           margin: 0px auto;
-          border: none;
           height: 36px;
+          min-width: 200px;
           padding: 6px 30px;
           background-color: #000000;
-          transition: all 0.15s;
-          color: inherit;
 
           &:hover {
             color: var(--text-danger-color);

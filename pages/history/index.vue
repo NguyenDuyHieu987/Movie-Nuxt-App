@@ -54,7 +54,7 @@
               <SortTab @onChangeTab="handleChangeTab" />
             </div>
 
-            <Transition name="slide-bottom">
+            <Transition name="slide-top">
               <TransitionGroup
                 v-show="showData"
                 tag="div"
@@ -258,12 +258,17 @@ const getData = async () => {
       // }
     })
     .catch((e) => {})
-    .finally(() => {
+    .finally(async () => {
       loading.value = false;
+
+      await wait(300);
+      showData.value = true;
     });
 };
 
 loading.value = true;
+
+showData.value = false;
 
 getData();
 

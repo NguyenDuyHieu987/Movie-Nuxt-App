@@ -146,26 +146,24 @@
                 Đóng
               </a-button>
               <NuxtLink
-                v-if="isEpisodes"
                 :to="{
-                  path: `/play-tv/${item?.id}__${item?.name
-                    ?.replace(/\s/g, '-')
-                    .toLowerCase()}/tap-1`
+                  path: isEpisodes
+                    ? `/play-tv/${
+                        item?.id
+                      }__${utils.convertPath.toPathInfo_Play(item?.name)}/tap-1`
+                    : `/play-movie/${
+                        item?.id
+                      }__${utils.convertPath.toPathInfo_Play(item?.name)}`
                 }"
                 class="btn-play-now"
               >
-                Xem ngay
-              </NuxtLink>
-              <NuxtLink
-                v-else-if="!isEpisodes"
-                :to="{
-                  path: `/play-movie/${item?.id}__${item?.name
-                    ?.replace(/\s/g, '-')
-                    .toLowerCase()}`
-                }"
-                class="btn-play-now"
-              >
-                Xem ngay
+                <a-button
+                  class="default"
+                  size="large"
+                  type="text"
+                >
+                  Xem ngay
+                </a-button>
               </NuxtLink>
             </div>
           </div>
@@ -187,6 +185,7 @@ const props = defineProps<{
   isEpisodes: boolean;
 }>();
 
+const utils = useUtils();
 const dataMovie = ref<any>({});
 const dataVideos = ref<any[]>([]);
 const loading = ref<boolean>(false);

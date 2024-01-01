@@ -116,24 +116,8 @@
           flex-direction: column;
           gap: 10px;
 
-          .el-button {
-            padding: 13px 17px;
-            background-color: var(--btn-backgroud-color-gray);
-            color: inherit;
-
-            span {
-              width: 100%;
-              margin-left: 0px;
-              font-weight: normal;
-              font-size: 1.5rem;
-            }
-          }
-
           .ant-btn {
-            display: flex;
-            align-items: center;
             background-color: var(--background-content-color);
-            border: 1px solid var(--border-regular);
             padding: 10px 15px;
 
             &:hover {

@@ -36,21 +36,16 @@
     position: absolute;
     top: 100%;
     transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    cursor: pointer;
     margin: 0px auto;
     padding: 10px;
-    font-size: 1.7rem;
     background-color: var(--background-content-color1);
-    border: 1px solid var(--border-regular-btn);
+    border: 1px solid var(--btn-border-color);
     z-index: 1;
-    transition: all 0.15s;
+    cursor: pointer;
 
     i,
     svg {
       color: inherit;
-      font-size: 2rem;
       width: 2rem;
       height: 2rem;
     }

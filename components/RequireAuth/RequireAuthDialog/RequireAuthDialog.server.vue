@@ -44,7 +44,7 @@
           <a-button
             type="text"
             size="large"
-            class="default gradient"
+            class="gradient"
           >
             Đăng nhập
           </a-button>

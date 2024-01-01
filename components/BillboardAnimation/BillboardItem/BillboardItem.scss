@@ -172,7 +172,7 @@
           background-color: rgba(55, 55, 55, 0.3);
 
           &:hover {
-            border-color: var(--btn-border-color-hover);
+            border-color: var(--btn-hover-border-color);
             background-color: rgba(97, 97, 97, 0.4);
           }
         }
@@ -185,7 +185,7 @@
         }
 
         &:hover {
-          border-color: var(--btn-border-color-hover);
+          border-color: var(--btn-hover-border-color);
           background-color: rgba(97, 97, 97, 0);
         }
 

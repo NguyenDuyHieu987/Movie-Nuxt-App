@@ -17,7 +17,7 @@
 
         <NuxtLink to="/login">
           <a-button
-            class="default gradient"
+            class="gradient"
             size="large"
             type="text"
           >

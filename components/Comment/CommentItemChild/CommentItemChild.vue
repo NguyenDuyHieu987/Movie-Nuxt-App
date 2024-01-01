@@ -90,6 +90,7 @@
         >
           <a-button
             class="el-dropdown-link comment"
+            type="text"
             aria-label="dropdown-comment"
           >
             <template #icon>

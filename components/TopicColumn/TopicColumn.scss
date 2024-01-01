@@ -164,16 +164,11 @@
       }
 
       .remove-all-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         margin: 0px auto;
         min-width: 200px;
-        border: none;
         height: 36px;
         padding: 6px 30px;
         background-color: #000000;
-        transition: all 0.15s;
 
         &:hover {
           color: var(--text-danger-color);

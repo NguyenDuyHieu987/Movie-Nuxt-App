@@ -60,7 +60,7 @@
 }
 
 .el-select {
-  border: 1px solid var(--border-dropdown);
+  border: 1px solid var(--dropdown-border-color);
 
   .el-input__wrapper {
     &.is-focus {
@@ -138,7 +138,7 @@
   box-shadow: var(--box-shadow-small) !important;
 
   .el-dropdown-menu {
-    background-color: var(--background-dropdown-color);
+    background-color: var(--dropdown-background-color);
     border-radius: 0px;
 
     .el-dropdown-menu__item {
@@ -152,12 +152,12 @@
       }
 
       &:hover {
-        background-color: var(--background-hover-dropdown-color);
+        background-color: var(--dropdown-hover-background-color);
       }
     }
 
     .el-dropdown-menu__item:not(.is-disabled):focus {
-      background-color: var(--background-hover-dropdown-color);
+      background-color: var(--dropdown-hover-background-color);
     }
   }
 }
@@ -165,7 +165,7 @@
 .el-popper,
 .el-popper.is-dark {
   border-radius: 1px;
-  background-color: var(--background-dropdown-color) !important;
+  background-color: var(--dropdown-background-color) !important;
   font-size: 1.2rem;
   line-height: inherit;
 
@@ -179,7 +179,7 @@
 #el-popper-container-1024 {
   .el-popper {
     border-radius: 1px;
-    background-color: var(--background-dropdown-color);
+    background-color: var(--dropdown-background-color);
 
     a {
       color: inherit;
@@ -191,7 +191,7 @@
       transition: height 0s;
 
       .el-dropdown-menu {
-        background-color: var(--background-dropdown-color);
+        background-color: var(--dropdown-background-color);
 
         .el-dropdown-menu__item {
           padding: 13px 20px;
@@ -204,7 +204,7 @@
           }
 
           &:hover {
-            background-color: var(--background-hover-dropdown-color);
+            background-color: var(--dropdown-hover-background-color);
           }
         }
       }
@@ -257,7 +257,7 @@
 
   .el-popover.popper-search {
     border-radius: 1px;
-    background-color: var(--background-dropdown-color);
+    background-color: var(--dropdown-background-color);
   }
 }
 

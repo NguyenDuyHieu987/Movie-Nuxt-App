@@ -111,7 +111,13 @@
             />
           </svg>
 
-          <span>{{ authStore.subscription?.plan.resolution }}</span>
+          <span>
+            {{
+              !authStore.subscription
+                ? '1080P-HD'
+                : authStore.subscription?.plan.resolution
+            }}
+          </span>
         </li>
 
         <li
@@ -152,6 +158,7 @@
           <div class="list-devices">
             <span
               v-if="
+                !authStore.subscription ||
                 authStore.subscription?.plan.support_devices.includes('phone')
               "
             >
@@ -159,6 +166,7 @@
             </span>
             <span
               v-if="
+                !authStore.subscription ||
                 authStore.subscription?.plan.support_devices.includes('tablet')
               "
             >
@@ -166,6 +174,7 @@
             </span>
             <span
               v-if="
+                !authStore.subscription ||
                 authStore.subscription?.plan.support_devices.includes('phone')
               "
             >

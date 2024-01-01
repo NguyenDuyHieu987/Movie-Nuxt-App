@@ -75,9 +75,6 @@
 
               .ant-btn {
                 font-size: 1.3rem;
-                transition: all 0.15s;
-                background-color: transparent;
-                border: none;
               }
             }
           }
@@ -87,8 +84,6 @@
           .ant-btn {
             height: 33px;
             width: 33px;
-            background-color: transparent;
-            border: none;
             opacity: 0;
 
             &:focus {
@@ -131,14 +126,10 @@
         margin-top: 3px;
 
         & > .ant-btn.reply {
-          display: flex;
-          align-items: center;
-          height: auto;
           padding: 3px 7px;
           padding-right: 15px;
           color: var(--link-text-color);
           font-size: 1.4rem;
-          border: none;
           background-color: transparent;
           border-radius: 20px;
           transition: background-color 0s;
@@ -168,17 +159,10 @@
             padding-left: 13px;
 
             .ant-btn {
-              display: flex;
-              align-items: center;
-              height: auto;
-              padding: 0px;
               color: var(--link-text-color);
-              border: none;
-              background-color: transparent;
 
               svg {
                 margin-right: 5px;
-                font-size: 2.2rem;
                 width: 2.2rem;
                 height: 2.2rem;
               }

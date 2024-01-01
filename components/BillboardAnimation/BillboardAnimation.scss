@@ -185,10 +185,6 @@
     gap: 0.5vw;
 
     .ant-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: transparent;
       padding: 5px;
       // height: 42px;
       // width: 42px;
@@ -196,8 +192,6 @@
       width: 2.5vw;
       border-radius: 50%;
       // border: 1px solid var(--border-regular);
-      border: none;
-      box-shadow: none;
       transition: opacity 0.15s;
 
       svg {

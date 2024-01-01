@@ -1,10 +1,10 @@
 .el-menu.menu-sider-bar {
-  // min-height: calc(100% - calc(2 * var(--header-height)));
   background-color: transparent;
   flex-grow: 1;
   width: 100%;
-  // overflow: hidden;
   border: none;
+  // overflow: hidden;
+
   --el-menu-item-height: var(--menu-item-height) !important;
   --el-menu-sub-item-height: var(--menu-item-height) !important;
   --el-menu-hover-bg-color: var(--menu-item-background-color) !important;

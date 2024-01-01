@@ -146,7 +146,6 @@
             class="add click-active"
             shape="circle"
             size="large"
-            type="text"
             @click.prevent="handleAddToList"
           >
             <template #icon>

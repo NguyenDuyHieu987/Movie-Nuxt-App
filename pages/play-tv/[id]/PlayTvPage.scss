@@ -107,7 +107,7 @@
                   }
 
                   &:hover {
-                    border-color: var(--btn-border-color-hover);
+                    border-color: var(--btn-hover-border-color);
                     background-color: rgba(97, 97, 97, 0.4);
                   }
                 }
@@ -207,13 +207,11 @@
 
                   svg {
                     margin-right: 7px;
-                    font-size: 1.9rem;
                   }
 
                   &.add {
                     svg {
                       margin-left: -7px;
-                      font-size: 2.3rem;
                     }
                   }
                 }
@@ -224,7 +222,6 @@
                   font-size: 1.5rem;
 
                   svg {
-                    font-size: 2.1rem;
                     margin-right: 8px;
                   }
                 }

@@ -15,6 +15,7 @@
             <a-button
               class="click-active"
               size="large"
+              type="text"
             >
               Liên hệ với chúng tôi
             </a-button>

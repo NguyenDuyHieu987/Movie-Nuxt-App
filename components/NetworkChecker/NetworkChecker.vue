@@ -7,18 +7,18 @@
       <div class="left">
         <div class="network-status">
           <!-- <i
-                v-if="isOnline"
-                style="
-                  background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/TzNExlPStE_.png?_nc_eui2=AeGKRA6S_tleHRp0eRJP1pyUkvdItA4UBeOS90i0DhQF49qrFYVM-X648y84vUT4n4TuaLlY51VXP5PC4HPSk9oA');
-                  background-position: 0px -226px;
-                  background-size: 38px 442px;
-                  width: 2.4rem;
-                  height: 2.4rem;
-                  background-repeat: no-repeat;
-                  display: inline-block;
-                  color: #009c49;
-                "
-              ></i> -->
+                  v-if="isOnline"
+                  style="
+                    background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/TzNExlPStE_.png?_nc_eui2=AeGKRA6S_tleHRp0eRJP1pyUkvdItA4UBeOS90i0DhQF49qrFYVM-X648y84vUT4n4TuaLlY51VXP5PC4HPSk9oA');
+                    background-position: 0px -226px;
+                    background-size: 38px 442px;
+                    width: 2.4rem;
+                    height: 2.4rem;
+                    background-repeat: no-repeat;
+                    display: inline-block;
+                    color: #009c49;
+                  "
+                ></i> -->
 
           <svg
             v-if="isOnline"

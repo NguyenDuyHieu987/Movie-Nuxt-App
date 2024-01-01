@@ -30,6 +30,7 @@
 
     .el-dialog__footer {
       padding: 10px 25px;
+      padding-bottom: 15px;
 
       .content {
         display: flex;
@@ -42,7 +43,7 @@
           .overview {
             display: flex;
             text-align: left;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             display: -webkit-box;
@@ -59,19 +60,16 @@
           gap: 10px;
 
           .ant-btn {
-            padding: 8px 23px;
+            padding: 7px 23px;
           }
 
           .btn-play-now {
-            color: inherit;
-            padding: 8px 23px;
             background-color: #ba0025;
-            transition: all 0.3s;
-            border-radius: 3px;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
+            border-radius: 2px;
+
+            .ant-btn {
+              border-color: transparent;
+            }
 
             &:hover {
               background-color: #ba0025ae;
@@ -144,19 +142,16 @@
             gap: 10px;
 
             .ant-btn {
-              padding: 8px 23px;
+              padding: 7px 23px;
             }
 
             .btn-play-now {
-              color: inherit;
-              padding: 8px 23px;
               background-color: #ba0025;
-              transition: all 0.3s;
-              border-radius: 3px;
-              white-space: nowrap;
-              display: flex;
-              align-items: center;
-              font-size: 1.5rem;
+              border-radius: 2px;
+
+              .ant-btn {
+                border-color: transparent;
+              }
 
               &:hover {
                 background-color: #ba0025ae;

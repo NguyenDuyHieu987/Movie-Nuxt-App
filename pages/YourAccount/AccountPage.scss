@@ -220,8 +220,7 @@
         flex-wrap: wrap;
         width: var(--left-width);
 
-        .switch-account-btn,
-        .delete-account-btn {
+        .ant-btn {
           margin-top: auto;
           padding: 7px 25px;
           font-size: 1.4rem;
@@ -230,6 +229,10 @@
           color: var(--link-text-color);
           border: 1px solid var(--app-background-color);
           border-radius: 20px;
+
+          &.switch-account-btn,
+          &.delete-account-btn {
+          }
 
           &:hover {
             color: var(--text-color);
@@ -248,7 +251,7 @@
         .ant-btn {
           &.logout-btn {
             margin: 0px auto;
-            padding: 8px 90px;
+            padding: 7px 90px;
             border-radius: 30px;
             background-color: #d2d2d2;
             box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);

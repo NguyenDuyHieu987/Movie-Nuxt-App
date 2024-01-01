@@ -55,7 +55,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -82,7 +82,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -110,7 +110,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -138,7 +138,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -172,7 +172,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -199,7 +199,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -230,7 +230,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -258,7 +258,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -286,7 +286,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -314,7 +314,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -341,7 +341,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg
@@ -375,7 +375,7 @@
         >
           <a-button
             class="click-active"
-            type="primary"
+            type="text"
           >
             <template #icon>
               <svg

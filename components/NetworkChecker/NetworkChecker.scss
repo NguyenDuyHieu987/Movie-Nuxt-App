@@ -60,18 +60,22 @@
 
 @keyframes network-error-appear {
   from {
+    opacity: 0;
     transform: translate(0%, 120%);
   }
   to {
+    opacity: 1;
     transform: translate(0%, 0%);
   }
 }
 
 @keyframes network-error-disappear {
   from {
+    opacity: 1;
     transform: translate(0%, 0%);
   }
   to {
+    opacity: 0;
     transform: translate(0%, 120%);
   }
 }

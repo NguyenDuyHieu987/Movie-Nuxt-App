@@ -55,7 +55,7 @@
               <a-button
                 type="text"
                 size="large"
-                class="default gradient"
+                class="gradient"
               >
                 Quay về trang chủ
               </a-button>

@@ -1,61 +1,9 @@
 :root {
-  --background-dropdown-color: #121212;
-  --background-select-dropdown-color: #080808;
-  --background-dropdown-selected-color: #303030;
-  --background-hover-dropdown-color: #202020;
-}
-
-.ant-dropdown.dropdown-viewmore {
-  border: none;
-  border-radius: 2px;
-  overflow: hidden;
-  user-select: none;
-
-  .ant-dropdown-menu.dropdown-viewmore {
-    padding: 7px 0px;
-  }
-
-  .ant-dropdown-menu-item {
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.45rem;
-
-    span,
-    a {
-      color: inherit;
-    }
-
-    svg,
-    i {
-      margin-right: 16px;
-      font-size: 1.5rem;
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-
-    .material-icons-outlined {
-      font-size: 2rem;
-    }
-  }
-
-  .ant-dropdown-menu-item:not(.material-icons-outlined) {
-    .anticon {
-      margin-left: 2px;
-      margin-right: 16px;
-
-      svg {
-        margin-right: 0px;
-      }
-    }
-
-    svg {
-      margin-left: -2px;
-      width: 15px;
-      font-size: 1.5rem;
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-  }
+  --dropdown-background-color: #121212;
+  --dropdown-select-background-color: #080808;
+  --dropdown-selected-background-color: #303030;
+  --dropdown-hover-background-color: #202020;
+  --dropdown-border-color: #787878;
 }
 
 .dropdown-viewmore {
@@ -65,7 +13,6 @@
 
       .el-dropdown-menu__item {
         position: relative;
-        border: none;
         padding: 10px 20px;
         font-size: 1.45rem;
         max-height: 42px;
@@ -121,14 +68,12 @@
   &.ant-dropdown {
     display: inline-flex;
     position: relative !important;
-    border: none;
     border-radius: 2px;
     overflow: hidden;
     user-select: none;
 
     .ant-dropdown-menu {
       .ant-dropdown-menu-item {
-        border: none;
         padding: 10px 20px;
         font-size: 1.45rem;
         max-height: 42px;

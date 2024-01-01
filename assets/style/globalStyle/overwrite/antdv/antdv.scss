@@ -75,6 +75,11 @@
 
   .ant-modal-content {
     background-color: var(--background-content-color1);
+    font-size: 1.4rem;
+
+    .ant-modal-body {
+      font-size: inherit;
+    }
 
     .ant-modal-header {
       background-color: var(--background-content-color1);
@@ -90,6 +95,8 @@
   &.ant-modal-confirm {
     .ant-modal-content {
       .ant-modal-confirm-body-wrapper {
+        font-size: inherit;
+
         .ant-modal-confirm-body {
           .ant-modal-confirm-content {
             margin-top: 20px;
@@ -102,9 +109,8 @@
           flex-direction: row;
 
           .ant-btn {
-            height: auto;
             min-width: 60px;
-            font-size: 1.5rem;
+            font-size: inherit;
           }
 
           .ant-btn:first-child {
@@ -112,7 +118,7 @@
 
             &:hover,
             &:focus {
-              border: 1px solid var(--btn-border-color-hover);
+              border: 1px solid var(--btn-hover-border-color);
             }
           }
         }
@@ -123,12 +129,12 @@
 
 .ant-select {
   .ant-select-selector {
-    background-color: var(--background-select-dropdown-color) !important;
+    background-color: var(--dropdown-select-background-color) !important;
   }
 
   &.ant-select-single.ant-select-open {
     .ant-select-selector {
-      border: 0.1px solid var(--border-dropdown) !important;
+      border: 0.1px solid var(--dropdown-border-color) !important;
 
       .ant-select-selection-placeholder,
       .ant-select-selection-item {
@@ -147,7 +153,7 @@
 
   &:not(.ant-select-show-search) {
     .ant-select-selector {
-      border: 0.1px solid var(--border-regular-btn) !important;
+      border: 0.1px solid var(--btn-border-color) !important;
       box-shadow: none !important;
       height: 35px !important;
       transition: all 0s !important;
@@ -177,9 +183,9 @@
 
 .ant-select-dropdown {
   padding: 0px;
-  border: 0.1px solid var(--border-dropdown);
+  border: 0.1px solid var(--dropdown-border-color);
   box-shadow: var(--box-shadow-small);
-  background-color: var(--background-select-dropdown-color);
+  background-color: var(--dropdown-select-background-color);
 
   .rc-virtual-list-holder-inner {
     .ant-select-item {
@@ -188,10 +194,10 @@
       transition: background-color 0.15s ease;
 
       &:hover {
-        background-color: var(--background-hover-dropdown-color);
+        background-color: var(--dropdown-hover-background-color);
 
         &.ant-select-item-option-selected {
-          background-color: var(--background-dropdown-selected-color);
+          background-color: var(--dropdown-selected-background-color);
         }
       }
     }
@@ -201,7 +207,7 @@
     }
 
     .ant-select-item-option-selected {
-      background-color: var(--background-dropdown-selected-color);
+      background-color: var(--dropdown-selected-background-color);
       font-weight: 500;
     }
   }
@@ -219,7 +225,7 @@
   .ant-dropdown-content {
     .ant-dropdown-menu {
       padding: 0px;
-      background-color: var(--background-dropdown-color);
+      background-color: var(--dropdown-background-color);
 
       .ant-dropdown-menu-item {
         padding: 10px 20px;
@@ -228,7 +234,7 @@
       }
 
       .ant-dropdown-menu-item-active {
-        background-color: var(--background-hover-dropdown-color);
+        background-color: var(--dropdown-hover-background-color);
       }
 
       .ant-dropdown-menu-item:first-child {

@@ -6,7 +6,7 @@
     0 3px 6px -4px #000000ba,
     0 6px 16px 0 #00000098,
     0 9px 28px 8px #00000077;
-  background-color: var(--background-dropdown-color);
+  background-color: var(--dropdown-background-color);
 
   &.el-dialog {
     .el-dialog__header {
@@ -56,9 +56,7 @@
       }
 
       .ant-btn {
-        height: 100%;
-        padding: 10px 50px;
-        border-radius: 2px;
+        padding: 7px 50px;
       }
     }
   }
@@ -114,9 +112,7 @@
         border: none;
 
         .ant-btn {
-          padding: 10px 50px;
-          border-radius: 2px;
-          height: 100%;
+          padding: 7px 50px;
         }
       }
     }

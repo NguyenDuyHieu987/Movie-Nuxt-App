@@ -18,6 +18,7 @@
           <div class="list-input-filter">
             <a-button
               class="filter-btn click-active"
+              size="large"
               type="text"
               :disabled="disableBtnFilter"
               @click="handleFilterMovie"
@@ -207,6 +208,8 @@
             </a-select>
 
             <a-button
+              size="large"
+              type="text"
               class="cancel-filter-btn click-active"
               :disabled="disableBtnFilter"
               danger

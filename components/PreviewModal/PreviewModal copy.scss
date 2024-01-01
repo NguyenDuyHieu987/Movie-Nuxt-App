@@ -331,12 +331,8 @@
         }
 
         .ant-btn {
-          color: inherit;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           background-color: var(--btn-background-color-gray);
-          // border-color: var(--border-regular-btn);
+          // border-color: var(--btn-border-color);
           border-color: rgb(var(--dominant-backdrop-color, (90, 90, 90)));
           min-width: auto;
           height: 33px;
@@ -351,7 +347,7 @@
 
           &:hover {
             border-color: var(--border-regular-light);
-            background-color: var(--btn-background-color-gray-hover);
+            background-color: var(--btn-hover-background-color-gray);
           }
 
           &:focus {

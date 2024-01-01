@@ -29,13 +29,10 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    // border: none;
     background-color: transparent;
   }
 
   &.ant-layout-sider-collapsed {
-    // border: none;
-
     ::-webkit-scrollbar,
     ::-webkit-scrollbar-thumb {
       display: none;

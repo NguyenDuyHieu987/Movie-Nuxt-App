@@ -220,9 +220,9 @@
           </template>
         </a-input>
 
-        <el-button
-          round
-          type="primary"
+        <a-button
+          type="text"
+          shape="round"
           class="remove-all-btn"
           @click="deleteAll"
         >
@@ -242,7 +242,7 @@
             </svg>
           </template>
           Xóa tất cả Danh sách phát
-        </el-button>
+        </a-button>
       </div>
     </div>
   </aside>
