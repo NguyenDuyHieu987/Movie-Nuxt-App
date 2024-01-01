@@ -31,21 +31,21 @@
         alt=""
       /> -->
 
-      <NuxtImg
-        :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
-        placeholder="/imgs/loading-img-16-9.webp"
-        format="avif"
-        loading="lazy"
-        alt=""
-      />
-
-      <!-- <Image
+      <!-- <NuxtImg
         :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
         placeholder="/imgs/loading-img-16-9.webp"
         format="avif"
         loading="lazy"
         alt=""
       /> -->
+
+      <Image
+        :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+        placeholder="/imgs/loading-img-16-9.webp"
+        format="avif"
+        loading="lazy"
+        alt=""
+      />
 
       <div
         v-show="isInHistory"
@@ -273,8 +273,9 @@ onMounted(() => {
   stylePreviewModal.rectBound = rect;
 });
 
-const onMouseEnterImg = ({ target }: { target: HTMLElement | any }) => {
-  if (loading.value) return;
+const onMouseEnterImg = ({ target }: { target: EventTarget | any }) => {
+  if (loading.value || window.innerWidth <= APP.SHOW_PREVIEW_MODAL_MIN_WIDTH)
+    return;
 
   const rect = target.getBoundingClientRect();
 

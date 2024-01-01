@@ -437,6 +437,14 @@
   }
 }
 
+@media only screen and (max-width: 850px) {
+  .billboard-item {
+    .billboard-item-body {
+      bottom: 0px;
+    }
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .body-content {
     &.expand {
@@ -507,8 +515,6 @@
 @media only screen and (max-width: 530px) {
   .billboard-item {
     .billboard-item-body {
-      bottom: 25px;
-
       .info {
         .head {
           .head-info {
@@ -538,10 +544,6 @@
 
         .action-btn {
           height: 35px;
-        }
-
-        .action-btn + .action-btn {
-          // margin-left: 10px;
         }
 
         .ant-btn {

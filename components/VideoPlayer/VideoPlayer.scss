@@ -452,6 +452,7 @@ video::-webkit-media-controls {
           calc(var(--progress-height) / 0.75);
 
         svg {
+          fill: #d3d3d3;
           width: var(--icon-size);
           height: var(--icon-size);
           transition: opacity 0.15s;
@@ -459,6 +460,11 @@ video::-webkit-media-controls {
           -ms-user-select: none;
           user-select: none;
           cursor: pointer;
+          transition: all 0.15s;
+
+          &:hover {
+            fill: #fff;
+          }
 
           &:active {
             opacity: 0.8;

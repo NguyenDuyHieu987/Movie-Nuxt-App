@@ -220,8 +220,9 @@ const getData = async () => {
 
 getData();
 
-const onMouseEnter = ({ target }: { target: HTMLElement }) => {
-  if (loading.value) return;
+const onMouseEnter = ({ target }: { target: EventTarget | any }) => {
+  if (loading.value || window.innerWidth <= APP.SHOW_PREVIEW_MODAL_MIN_WIDTH)
+    return;
 
   const rect = target.getBoundingClientRect();
 
