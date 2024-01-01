@@ -27,7 +27,7 @@
       <template #default>
         <div class="img-box">
           <img
-            v-lazy="getImage(item?.poster_path, 'poster')"
+            :src="getImage(item?.poster_path, 'poster')"
             class="ant-image"
             loading="lazy"
             alt=""

@@ -24,7 +24,7 @@
       <template #default>
         <div class="img-box">
           <img
-            v-lazy="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+            :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
             class="ant-image"
             loading="lazy"
             alt=""

@@ -40,24 +40,24 @@
         }
 
         .play-now {
-          margin-top: 15px;
           display: block;
-          color: inherit;
           text-align: center;
-          padding: 6px 15px;
           flex-grow: 1;
+          padding: 6px 15px;
           background-image: linear-gradient(
             to right,
             var(--app-background-color2),
             var(--app-background-color),
             var(--app-background-color2)
           );
-          transition: background 0.4s;
           background-size: 100% 100%;
           background-position: 100% center;
-          border-radius: 2px;
+          color: inherit;
+          margin-top: 15px;
           font-size: 1.5rem;
+          border-radius: 2px;
           user-select: none;
+          transition: background 0.4s;
 
           &:hover {
             background-size: 200% 100%;

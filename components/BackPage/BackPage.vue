@@ -33,7 +33,7 @@
 // const emits = defineEmits<{ onclick: [] }>();
 const emits = defineEmits<{ (e: 'onclick'): void }>();
 // const emits = defineEmits({
-//   onclick() {},
+//   onclick() {}
 // });
 
 const props = defineProps({ fixed: { type: Boolean, default: false } });

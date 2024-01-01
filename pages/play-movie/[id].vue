@@ -20,7 +20,7 @@
             })
           "
         >
-          <span> {{ dataMovie?.name }}</span>
+          {{ dataMovie?.name }}
         </BackPage>
 
         <HistoryProgressBar :historyProgress="historyProgress.percent" />

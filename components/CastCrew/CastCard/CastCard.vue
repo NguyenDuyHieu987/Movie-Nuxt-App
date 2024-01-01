@@ -15,8 +15,7 @@
     <div class="img-box">
       <div class="ant-image">
         <img
-          v-lazy="getPosterCast(item?.profile_path)"
-          :lazy="true"
+          :src="getPosterCast(item?.profile_path)"
           loading="lazy"
           alt=""
         />

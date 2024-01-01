@@ -10,10 +10,10 @@
       class="info-conainer"
     >
       <BackPage
-        :fixed="true"
+        fixed
         @onclick="$router.back()"
       >
-        <span> Quay lại</span>
+        Quay lại
       </BackPage>
 
       <div class="variant-backdrop"></div>
