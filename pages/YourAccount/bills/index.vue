@@ -19,7 +19,8 @@ definePageMeta({
   pageTransition: {
     name: 'slide-left',
     appear: true
-  }
+  },
+  keepalive: false
 });
 
 const store = useStore();

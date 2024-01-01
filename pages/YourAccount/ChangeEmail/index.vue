@@ -201,11 +201,12 @@ import { VerifyPinOTPForm } from '~/components/VerifyForm';
 import { AccountConfirm, ChangeEmail, VerifyEmail } from '~/services/account';
 
 definePageMeta({
-  layout: 'service'
-  // pageTransition: {
-  //   name: 'slide-left',
-  //   appear: true
-  // }
+  layout: 'service',
+  pageTransition: {
+    //   name: 'slide-left',
+    //   appear: true
+  },
+  keepalive: false
 });
 
 const authStore = useAuthStore();

@@ -81,7 +81,8 @@ definePageMeta({
   layout: 'service',
   pageTransition: {
     name: 'slide-bottom'
-  }
+  },
+  keepalive: false
 });
 
 const authStore = useAuthStore();

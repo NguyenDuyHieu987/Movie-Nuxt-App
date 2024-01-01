@@ -163,11 +163,12 @@ import { VerifyPinOTPForm } from '~/components/VerifyForm';
 import { AccountConfirm, ChangePassword } from '~/services/account';
 
 definePageMeta({
-  layout: 'service'
-  // pageTransition: {
-  //   name: 'slide-left',
-  //   appear: true
-  // }
+  layout: 'service',
+  pageTransition: {
+    //   name: 'slide-left',
+    //   appear: true
+  },
+  keepalive: false
 });
 
 const utils = useUtils();
