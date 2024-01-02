@@ -127,7 +127,6 @@
           >
             <a-button
               class="viewmore-btn click-active"
-              size="large"
               type="text"
             >
               <template #icon>

@@ -74,6 +74,10 @@
 
     .action {
       opacity: 1;
+
+      .ant-btn {
+        opacity: 1;
+      }
     }
   }
 
@@ -180,40 +184,20 @@
     position: absolute;
     display: flex;
     flex-direction: row;
+    gap: 10px;
     top: 0;
     right: -12px;
-    opacity: 0;
-    transition: all 0.1s;
-    gap: 5px;
+    transition: all 0.15s;
 
     &:has(.viewmore-btn[aria-expanded='true']) {
       opacity: 1;
     }
 
-    .viewmore-btn.el-button,
-    .remove-btn {
-      .material-icons-outlined {
-      }
-
-      .el-icon {
-        width: auto;
-        height: auto;
-
-        svg {
-          font-size: 1.76rem;
-          height: 1.9rem;
-          width: 1.9rem;
-        }
-      }
-
-      svg.fa-xmark {
-        font-size: 2rem;
-        font-weight: 400;
-      }
+    .el-dropdown {
     }
 
     .ant-btn {
-      transition: all 0s;
+      opacity: 0;
 
       svg {
         height: 2rem;
@@ -230,10 +214,6 @@
           width: 2.5rem;
           height: 2.5rem;
         }
-      }
-
-      &.viewmore-btn {
-        margin-left: 2px;
       }
     }
   }

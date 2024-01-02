@@ -84,12 +84,13 @@
         <el-dropdown
           v-if="userAccount?.id == item?.user_id"
           trigger="click"
+          class="dropdown-viewmore"
           popper-class="dropdown-viewmore"
           placement="bottom-end"
           :show-timeout="0"
         >
           <a-button
-            class="el-dropdown-link comment"
+            class="viewmore-btn click-active"
             type="text"
             aria-label="dropdown-comment"
           >

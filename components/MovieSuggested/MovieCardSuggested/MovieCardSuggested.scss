@@ -65,7 +65,9 @@
     }
 
     .action {
-      opacity: 1;
+      .ant-btn {
+        opacity: 1;
+      }
     }
   }
 
@@ -214,15 +216,16 @@
     flex-direction: row;
     top: 0;
     right: -12px;
-    opacity: 0;
     transition: all 0.1s;
 
     &:has(.viewmore-btn[aria-expanded='true']) {
-      opacity: 1;
+      .ant-btn {
+        opacity: 1;
+      }
     }
 
     .ant-btn {
-      transition: all 0s;
+      opacity: 0;
 
       &:hover,
       &:focus {
@@ -232,9 +235,6 @@
       svg {
         height: 1.8rem;
         width: 1.8rem;
-      }
-
-      &.viewmore-btn {
       }
     }
   }

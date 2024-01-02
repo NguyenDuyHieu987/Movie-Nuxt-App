@@ -1,7 +1,12 @@
 :root {
-  --border-regular: #414141;
-  --border-regular-light: #252525;
+  --border-regular: #393939;
+  --border-regular-light: #303030;
 }
 
 html.dark {
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
 }

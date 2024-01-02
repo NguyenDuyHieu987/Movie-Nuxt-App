@@ -122,13 +122,12 @@
             <el-dropdown
               trigger="click"
               placement="bottom-end"
-              popper-class="dropdown-viewmore"
               class="dropdown-viewmore"
+              popper-class="dropdown-viewmore"
               :show-timeout="0"
             >
               <a-button
                 class="viewmore-btn click-active"
-                size="large"
                 type="text"
               >
                 <template #icon>

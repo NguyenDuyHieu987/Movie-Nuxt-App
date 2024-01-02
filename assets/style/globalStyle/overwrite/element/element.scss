@@ -127,6 +127,12 @@
   }
 }
 
+.el-dropdown {
+  color: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
 .el-popper {
   color: inherit !important;
   font-size: inherit !important;
@@ -148,7 +154,7 @@
 
       .el-dropdown-menu__item {
         padding: 13px 20px;
-        font-size: 1.5rem;
+        font-size: inherit;
         color: inherit !important;
         transition: background-color 0.15s;
 

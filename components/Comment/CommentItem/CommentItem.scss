@@ -39,7 +39,6 @@
         &:hover {
           .more-actions {
             .ant-btn {
-              transition: all 0s;
               opacity: 1;
             }
           }
@@ -82,27 +81,11 @@
 
         .more-actions {
           .ant-btn {
-            height: 33px;
-            width: 33px;
             opacity: 0;
-
-            &:focus {
-              opacity: 1;
-            }
-
-            &[aria-expanded='true'] {
-              opacity: 1;
-            }
 
             svg {
               width: 2rem;
               height: 2rem;
-              transition: all 0.15s;
-              cursor: pointer;
-
-              &:active {
-                opacity: 0.8;
-              }
             }
           }
         }

@@ -4,11 +4,17 @@
   --btn-disabled-background-color: #9494947d;
   --btn-border-color: #808080;
   --btn-hover-border-color: #c1c1c1;
+  --btn-focused-border-color: #0091ff66;
   --btn-primary-color: #0080ca;
   --btn-danger-color: #ff4d4f;
 }
 
 html.dark {
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
 }
 
 .ant-btn {
@@ -49,7 +55,7 @@ html.dark {
   &:focus:not(.not-focusable) {
     color: inherit;
     border-color: var(--app-background-color) !important;
-    outline: 3px solid #0091ff66 !important;
+    outline: 3px solid var(--btn-focused-border-color) !important;
   }
 
   &:active {

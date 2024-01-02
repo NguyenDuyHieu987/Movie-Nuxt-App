@@ -1,4 +1,4 @@
-.your-account {
+.account-page {
   font-size: 1.6rem;
   height: 100%;
 
@@ -8,11 +8,11 @@
     margin: 0px auto;
   }
 
-  .your-account-container {
+  .account-page-container {
     --left-width: 258px;
     padding-top: 20px;
 
-    .your-account-header {
+    .account-page-header {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -271,8 +271,8 @@
 }
 
 html.dark {
-  .your-account {
-    .your-account-container .bottom-zone .right .ant-btn.logout-btn {
+  .account-page {
+    .account-page-container .bottom-zone .right .ant-btn.logout-btn {
       background-color: #353535;
 
       &:hover {
@@ -283,8 +283,8 @@ html.dark {
 }
 
 @media (prefers-color-scheme: dark) {
-  .your-account {
-    .your-account-container .bottom-zone .right .ant-btn.logout-btn {
+  .account-page {
+    .account-page-container .bottom-zone .right .ant-btn.logout-btn {
       background-color: #353535;
 
       &:hover {
@@ -295,11 +295,11 @@ html.dark {
 }
 
 @media only screen and (max-width: 900px) {
-  .your-account {
+  .account-page {
     font-size: 1.5rem;
 
-    .your-account-container {
-      .your-account-header {
+    .account-page-container {
+      .account-page-header {
         gap: 15px;
 
         h1 {
@@ -322,8 +322,8 @@ html.dark {
 }
 
 @media only screen and (max-width: 650px) {
-  .your-account {
-    .your-account-container {
+  .account-page {
+    .account-page-container {
       #danger-zone {
         margin-top: 20px;
         display: flex;
@@ -359,9 +359,9 @@ html.dark {
 }
 
 @media only screen and (max-width: 500px) {
-  .your-account {
-    .your-account-container {
-      .your-account-header {
+  .account-page {
+    .account-page-container {
+      .account-page-header {
         gap: 10px;
 
         h1 {

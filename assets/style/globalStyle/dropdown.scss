@@ -9,7 +9,26 @@
 html.dark {
 }
 
+.el-dropdown {
+  &:has(.ant-btn[aria-expanded='true']) {
+    .ant-btn {
+      border-color: var(--app-background-color) !important;
+      outline: 3px solid var(--btn-focused-border-color) !important;
+    }
+  }
+}
+
 .dropdown-viewmore {
+  &.el-dropdown {
+    &:has(.ant-btn[aria-expanded='true']) {
+      opacity: 1;
+
+      .ant-btn {
+        opacity: 1 !important;
+      }
+    }
+  }
+
   &.el-dropdown__popper {
     .el-dropdown-menu {
       padding: 0px;

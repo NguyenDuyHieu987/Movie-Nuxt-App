@@ -87,23 +87,9 @@
       width: 33px;
       opacity: 0;
 
-      &:focus {
-        opacity: 1;
-      }
-
-      &[aria-expanded='true'] {
-        opacity: 1;
-      }
-
       svg {
         height: 1.8rem;
         width: 1.8rem;
-        cursor: pointer;
-        transition: all 0.15s;
-
-        &:active {
-          opacity: 0.8;
-        }
       }
     }
   }

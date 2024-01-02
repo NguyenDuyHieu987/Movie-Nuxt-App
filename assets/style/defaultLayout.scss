@@ -126,7 +126,7 @@
   }
 }
 
-// .upgrade, .payment, .your-account, .bills
+// .upgrade, .payment, .account-page, .bills
 .body-content:has(.service-page, .change-page, .center-page) {
   background-color: var(--background-content-white);
   margin-left: 0px;

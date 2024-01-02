@@ -5,8 +5,8 @@
   >
     <a-button
       class="viewmore-btn click-active"
-      type="text"
       size="large"
+      type="text"
       shape="circle"
       @click="emits('onClick')"
     >

@@ -1,17 +1,17 @@
 <template>
-  <div class="service-page your-account padding-content">
+  <div class="service-page account-page padding-content">
     <div class="center-page">
       <div v-if="!authStore.loadingUser">
         <div
           v-if="isLogin"
-          class="your-account-container"
+          class="account-page-container"
         >
           <Transition
             appear
             name="slide-bottom"
           >
             <div v-show="showAnimation">
-              <div class="your-account-header">
+              <div class="account-page-header">
                 <h1>Tài khoản của bạn</h1>
                 <div class="join-since">
                   <span>{{ 'Tham gia từ ' + joinSince }} </span>
