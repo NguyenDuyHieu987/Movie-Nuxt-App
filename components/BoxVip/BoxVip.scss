@@ -18,7 +18,7 @@
     padding: var(--padding-box-vip);
     color: var(--text-color-gray);
     border-radius: 2px;
-    width: 300px;
+    width: 290px;
     transition: background-color 0.15s;
 
     .ant-ribbon-wrapper {
@@ -181,14 +181,6 @@
 
     .vip-active-btn {
       opacity: 1;
-    }
-  }
-}
-
-@media only screen and (max-width: 1300px) {
-  .box-vip {
-    .box-vip-container {
-      width: 270px;
     }
   }
 }

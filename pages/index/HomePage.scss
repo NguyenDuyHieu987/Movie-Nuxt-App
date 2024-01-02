@@ -182,6 +182,14 @@
 }
 
 @media only screen and (max-width: 1300px) {
+  .home-page {
+    .home-billBoard {
+      .box-vip {
+        top: 50%;
+      }
+    }
+  }
+
   .body-content:has(.home-page) {
     .home-page {
       .home-content {
