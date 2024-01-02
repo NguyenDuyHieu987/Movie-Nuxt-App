@@ -17,8 +17,8 @@ html.dark {
 .el-dropdown {
   &:has(.ant-btn[aria-expanded='true']) {
     .ant-btn {
-      border-color: var(--app-background-color) !important;
-      outline: 3px solid var(--btn-focused-border-color) !important;
+      border-color: var(--btn-primary-color) !important;
+      outline: var(--btn-focused-outline) !important;
     }
   }
 }
