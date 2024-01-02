@@ -37,6 +37,10 @@
 
   .slick-arrow {
     color: inherit;
+
+    &:hover {
+      color: inherit;
+    }
   }
 }
 

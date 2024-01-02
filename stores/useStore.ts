@@ -13,7 +13,12 @@ const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
 });
 
 export default defineStore('store', () => {
-  const isDark = useDark();
+  const isDark = useDark({
+    selector: 'html',
+    attribute: 'class',
+    valueDark: 'dark',
+    valueLight: ''
+  });
   const collapsed = breakpoints.smaller('desktop');
 
   const openSiderBarFixed = ref<boolean>(false);

@@ -76,7 +76,7 @@
         :hide-after="0"
       >
         <a-button
-          class="click-active"
+          class="not-focusable click-active"
           size="large"
           type="text"
           shape="circle"
@@ -109,7 +109,7 @@
         :hide-after="0"
       >
         <a-button
-          class="click-active"
+          class="not-focusable click-active"
           size="large"
           type="text"
           shape="circle"
@@ -136,7 +136,7 @@
 
     <a-carousel
       ref="billboardPreview"
-      class="carousel-preview-list"
+      class="billboard-preview-list"
       :arrows="true"
       :infinite="false"
       :autoplay="false"
@@ -156,7 +156,7 @@
         v-for="(item, index) in dataModel"
         :key="item.id"
         :index="index"
-        class="carousel-preview-item"
+        class="billboard-preview-item"
         :class="{
           active: (billboard?.innerSlider.currentSlide || 0) == index
         }"

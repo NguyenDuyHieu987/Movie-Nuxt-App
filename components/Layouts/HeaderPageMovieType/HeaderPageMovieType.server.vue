@@ -9,6 +9,7 @@
 
         <el-dropdown
           trigger="hover"
+          class="dropdown-genre"
           popper-class="header-page-type-movie-genre"
           placement="bottom-start"
           :show-timeout="0"
