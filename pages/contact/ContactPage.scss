@@ -30,7 +30,7 @@
 
         .ant-input-affix-wrapper {
           height: 100%;
-          background-color: #d8d8d88b;
+          background-color: #e0e0e057;
           border-radius: 0px;
 
           input {
@@ -45,7 +45,7 @@
           color: var(--text-color);
 
           &:disabled {
-            background-color: #505050;
+            background-color: var(--btn-disabled-background-color);
           }
         }
       }
@@ -84,12 +84,24 @@
         a {
           &:hover {
             text-decoration: underline;
-            color: var(--text-color-invert);
+            color: var(--text-color-black);
           }
 
           &:active {
             opacity: 0.8;
           }
+        }
+      }
+    }
+  }
+}
+
+html.dark {
+  .contact {
+    .contactus-form-section {
+      form.contactus-issue-form {
+        .ant-input-affix-wrapper {
+          background-color: #5252526d;
         }
       }
     }

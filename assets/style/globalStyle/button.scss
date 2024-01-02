@@ -1,11 +1,14 @@
 :root {
+  --btn-background-color-primary: var(--app-background-color);
   --btn-background-color-gray: #1e1e1e;
-  --btn-background-color-gray1: #252525;
-  --btn-hover-background-color-gray: #1b1b1b;
-  --btn-border-color: #5a5a5a;
-  --btn-hover-border-color: #ffff;
-  --btn-color: #0080ca;
+  --btn-disabled-background-color: #9494947d;
+  --btn-border-color: #757575;
+  --btn-hover-border-color: #c1c1c1;
+  --btn-primary-color: #0080ca;
   --btn-danger-color: #ff4d4f;
+}
+
+html.dark {
 }
 
 .ant-btn {
@@ -17,7 +20,7 @@
   color: inherit;
   font-size: 1.5rem;
   line-height: var(--button-line-height);
-  border: 1px solid var(--border-regular);
+  border: 1px solid var(--btn-border-color);
   border-radius: 2px;
   box-shadow: none;
   transition: all 0.15s;
@@ -44,6 +47,7 @@
 
   &:focus {
     color: inherit;
+    border-color: inherit;
   }
 
   &:active {
@@ -129,11 +133,15 @@
     }
   }
 
+  &.submit-btn {
+    color: var(--text-color) !important;
+  }
+
   &.default {
     padding: 7px 30px;
     height: auto;
     background-color: transparent;
-    border-color: var(--border-regular);
+    border: 1px solid var(--btn-border-color);
 
     &:hover {
       border-color: var(--btn-hover-border-color);

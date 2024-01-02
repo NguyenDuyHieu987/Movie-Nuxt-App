@@ -639,3 +639,16 @@
     user-select: none;
   }
 }
+
+.ant-ribbon-wrapper {
+  .ant-ribbon {
+    color: #3f3f3f;
+
+    .ant-ribbon-text {
+      color: inherit;
+    }
+
+    .ant-ribbon-corner {
+    }
+  }
+}

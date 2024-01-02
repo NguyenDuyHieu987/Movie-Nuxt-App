@@ -5,6 +5,7 @@
     "build": "nuxt build",
     "build:gencss": "cross-env NODE_ENV=production run-s gen:css build",
     "dev": "nuxt dev",
+    "dev:wsl": "CHOKIDAR_USEPOLLING=true nuxt dev",
     "dev:gencss": "run-s gen:css dev",
     "generate": "nuxt generate",
     "generate:gencss": "run-s gen:css generate",

@@ -339,15 +339,14 @@
     .billboard-item-body {
       .info {
         .head {
-          max-width: 70%;
+          max-width: 50%;
         }
 
         h1 {
-          max-width: 70%;
+          max-width: 50%;
         }
 
         .overview {
-          max-width: 70%;
         }
       }
     }
@@ -375,6 +374,8 @@
     }
 
     .billboard-item-body {
+      bottom: 20%;
+
       .action {
         .action-btn {
           height: 40px;

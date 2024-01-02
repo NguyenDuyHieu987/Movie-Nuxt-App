@@ -98,23 +98,6 @@
   }
 }
 
-body:has(
-    .body-content-center-page,
-    .body-content-service,
-    .service-page,
-    .change-page,
-    .center-page
-  ) {
-  background-color: #fff;
-
-  footer.footer {
-    .footer-container {
-      max-width: var(--max-width-app);
-      margin: 0px auto;
-    }
-  }
-}
-
 .center-page {
   max-width: var(--max-width-center-page);
   margin: 0px auto;

@@ -169,6 +169,18 @@
   }
 }
 
+@media only screen and (max-width: 1500px) {
+  .home-page {
+    .home-section {
+      &.recommend {
+        .movie-group.vertical {
+          max-height: 330px;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1300px) {
   .body-content:has(.home-page) {
     .home-page {

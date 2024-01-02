@@ -172,6 +172,10 @@ import { RankSection } from '~/components/RankSection';
 import { filterRanks, getRankPlay } from '~/services/ranks';
 import type { formfilterRank, rankSort, rankType } from '~/types';
 
+definePageMeta({
+  zoomOut: true
+});
+
 const utils = useUtils();
 const route = useRoute();
 const router = useRouter();

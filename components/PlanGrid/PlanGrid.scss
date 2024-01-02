@@ -62,11 +62,13 @@
 
         .ant-ribbon {
           background-color: var(--app-background-color1);
+          color: var(--app-background-color1);
 
           .ant-ribbon-text {
             font-weight: 600;
             font-size: 1.4rem;
             font-style: italic;
+            color: #fff;
           }
         }
       }
@@ -179,12 +181,7 @@
               right: 0;
               height: 100%;
               width: 100%;
-              // background-image: linear-gradient(
-              //   to right,
-              //   var(--background-content-color),
-              //   rgba(25, 25, 25)
-              // );
-              background-color: #f3f3f3;
+              background-color: #ededed;
               z-index: -1;
               transition: all 0.3s;
             }
@@ -270,6 +267,16 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+html.dark {
+  .plan-grid .plan-body .plan-table {
+    .plan-grid-feature-table-body tr td {
+      &::after {
+        background-color: #252525;
       }
     }
   }

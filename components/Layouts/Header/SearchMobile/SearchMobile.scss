@@ -1,8 +1,6 @@
 .el-popper.el-popover.popper-search {
-  background-color: var(--dropdown-background-color) !important;
   top: calc(var(--header-height) + 0px) !important;
   width: 96.5vw !important;
-  border-radius: 2px;
   box-shadow: var(--box-shadow-small);
   transition: opacity 0.15s;
 

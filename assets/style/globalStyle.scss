@@ -46,10 +46,20 @@
 }
 
 html {
-  scroll-behavior: auto;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   font-size: 10px;
+  scroll-behavior: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 *,
@@ -64,7 +74,6 @@ html,
 body {
   height: auto;
   width: auto;
-  // color-scheme: dark;
 }
 
 body {

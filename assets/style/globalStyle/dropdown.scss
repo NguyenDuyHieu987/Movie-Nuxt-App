@@ -3,7 +3,11 @@
   --dropdown-select-background-color: #080808;
   --dropdown-selected-background-color: #303030;
   --dropdown-hover-background-color: #202020;
-  --dropdown-border-color: #787878;
+  --dropdown-border-color: #484848;
+}
+
+html.dark {
+  --dropdown-border-color: #484848;
 }
 
 .dropdown-viewmore {
@@ -42,7 +46,7 @@
       }
 
       .separate {
-        border-top: 1px solid var(--border-regular);
+        border-top: 1px solid var(--dropdown-border-color);
       }
 
       .danger-zone {

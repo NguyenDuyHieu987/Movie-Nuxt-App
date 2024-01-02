@@ -171,6 +171,10 @@ import { RankSection } from '~/components/RankSection';
 import { filterRanks, getRankPlay } from '~/services/ranks';
 import type { formfilterRank, rankSort, rankType } from '~/types';
 
+definePageMeta({
+  zoomOut: true
+});
+
 useHead({
   title: 'Bảng xếp hạng',
   htmlAttrs: { lang: 'vi' }

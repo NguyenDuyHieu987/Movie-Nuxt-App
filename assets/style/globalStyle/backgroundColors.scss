@@ -15,4 +15,9 @@
   --background-content-color1: #181818;
   --background-content-color2: #111111;
   --background-content-opacity: #111111e3;
+  --background-content-white: #fff;
+}
+
+html.dark {
+  --background-content-white: #111111;
 }

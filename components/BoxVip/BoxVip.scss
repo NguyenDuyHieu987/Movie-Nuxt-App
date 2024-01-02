@@ -36,10 +36,12 @@
           #0a7db7,
           #00e699
         );
+        color: var(--app-background-color);
         font-size: 1.45rem;
 
         .ant-ribbon-text {
           font-weight: 600;
+          color: #fff;
         }
       }
     }

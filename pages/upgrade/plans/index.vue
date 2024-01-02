@@ -58,6 +58,7 @@ import { PlanGrid } from '~/components/PlanGrid';
 import type { plan } from '~/types';
 
 definePageMeta({
+  zoomOut: true
   // layout: 'service',
   // pageTransition: {
   //   name: 'slide-left',

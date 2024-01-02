@@ -93,9 +93,15 @@ useSeoMeta({
   description: runtimeConfig.public.siteDescription
 });
 
+const route = useRoute();
+
 onMounted(() => {
   // window.history.scrollRestoration = 'auto';
   screen.orientation.addEventListener('change', () => {
+    if (!route.meta?.zoomOut) {
+      return;
+    }
+
     const windowWidth: number = screen.availWidth;
     const windowHeight: number = screen.availHeight;
 
@@ -110,24 +116,24 @@ onMounted(() => {
     }
   });
 
-  window.addEventListener('orientationchange', (e: any) => {
-    // // Lấy kích thước của cửa sổ trình duyệt
-    const windowWidth: number = screen.availWidth;
-    const windowHeight: number = screen.availHeight;
+  // window.addEventListener('orientationchange', (e: any) => {
+  //   if (!route.meta?.zoomOut) {
+  //     return;
+  //   }
 
-    const bodyStyle = document.body.style as any;
+  //   const windowWidth: number = screen.availWidth;
+  //   const windowHeight: number = screen.availHeight;
 
-    if (windowWidth <= 1000) {
-      // // Tính toán tỉ lệ zoom tương ứng (có thể điều chỉnh theo ý muốn)
-      // Ví dụ: zoom nhỏ khi chiều rộng cửa sổ dưới 1000px
+  //   const bodyStyle = document.body.style as any;
 
-      const zoomLevel = windowWidth / windowHeight;
+  //   if (windowWidth <= 1000) {
+  //     const zoomLevel = windowWidth / windowHeight;
 
-      bodyStyle.zoom = zoomLevel;
-    } else {
-      bodyStyle.zoom = 1;
-    }
-  });
+  //     bodyStyle.zoom = zoomLevel;
+  //   } else {
+  //     bodyStyle.zoom = 1;
+  //   }
+  // });
 
   // new ResizeObserver((entries) => {
   //   console.log(entries);

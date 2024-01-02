@@ -60,7 +60,8 @@
         justify-content: space-between;
         padding: 12px 20px;
         padding-right: 10px;
-        border: 1px solid var(--border-regular-invert);
+        border: 1px solid var(--btn-border-color);
+        background-color: #f4f4f489;
         border-radius: 2px;
         cursor: pointer;
         user-select: none;
@@ -96,6 +97,22 @@
 
         &:active {
           opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+html.dark {
+  .payment {
+    .payment-container {
+      .payment-methods {
+        .payment-method {
+          background-color: #2d2d2d45;
+
+          &:hover {
+            background-color: #2e2e2e;
+          }
         }
       }
     }

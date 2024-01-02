@@ -8,13 +8,12 @@ const breakpoints = useBreakpoints({
   desktop: APP.COLLAPSED_SIDEBAR_WIDTH
 });
 
-// const isDark = useDark();
-
 const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
   [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false
 });
 
 export default defineStore('store', () => {
+  const isDark = useDark();
   const collapsed = breakpoints.smaller('desktop');
 
   const openSiderBarFixed = ref<boolean>(false);
@@ -62,6 +61,7 @@ export default defineStore('store', () => {
   };
 
   return {
+    isDark,
     breadCrumbValue,
     collapsed,
     openSiderBarFixed,

@@ -2,10 +2,6 @@
   position: fixed !important;
   top: calc(var(--header-height) + 4px) !important;
 
-  .separate {
-    border-bottom: 1px solid var(--border-regular);
-  }
-
   &.account {
     .el-dropdown-menu {
       &:only-child {
@@ -27,7 +23,7 @@
 
       &:has(.your-account) {
         &:first-child {
-          border-bottom: 1px solid var(--border-regular);
+          border-bottom: 1px solid var(--dropdown-border-color);
         }
       }
 

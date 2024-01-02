@@ -2,24 +2,11 @@
 }
 
 .body-content-service {
-  background-color: #fff;
+  background-color: var(--background-content-white);
   margin-top: var(--header-height);
 
   .body-wrapper {
-    color: var(--text-color-invert);
-
-    --text-color-gray: #6f6f6f;
-    --text-color-gray1: #4d4d4d;
-
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-      &.submit-btn {
-        color: var(--text-color);
-      }
-    }
+    color: var(--text-color-black);
   }
 
   main.main-content {

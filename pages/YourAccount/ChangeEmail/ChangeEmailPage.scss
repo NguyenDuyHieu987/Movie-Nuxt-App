@@ -80,13 +80,12 @@
         font-size: 1.8rem;
         border: 1px solid var(--border-regular);
         width: 100%;
-        // background-color: #2e2e2e;
         background-color: #e1e1e1;
-        color: var(--text-color-invert);
-        transition: all 0.15s;
+        color: inherit;
         border-radius: 2px;
         box-shadow: var(--box-shadow-small1);
         cursor: pointer;
+        transition: all 0.15s;
 
         .left {
           display: flex;
@@ -172,6 +171,18 @@
           &:not(:disabled) {
             background-color: var(--app-background-color);
           }
+        }
+      }
+    }
+  }
+}
+
+html.dark {
+  .change-email {
+    .change-email-container {
+      .form-verify-email {
+        .submit-form-button {
+          background-color: #272727;
         }
       }
     }

@@ -140,25 +140,14 @@
 
 // .upgrade, .payment, .your-account, .bills
 .body-content:has(.service-page, .change-page, .center-page) {
-  --sider-width: 0px;
-  --sider-collapsed-width: 0px;
+  background-color: var(--background-content-white);
   margin-left: 0px;
 
+  --sider-width: 0px;
+  --sider-collapsed-width: 0px;
+
   .body-wrapper {
-    color: var(--text-color-invert);
-
-    --text-color-gray: #6f6f6f;
-    --text-color-gray1: #4d4d4d;
-
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-      &.submit-btn {
-        color: var(--text-color);
-      }
-    }
+    color: var(--text-color-black);
   }
 
   .ant-layout-sider.sider-bar {
@@ -175,11 +164,12 @@
       }
     }
   }
-}
 
-@media (prefers-color-scheme: dark) {
-  .body-content {
-    // background-color: var(--background-content-color);
+  footer.footer {
+    .footer-container {
+      max-width: var(--max-width-app);
+      margin: 0px auto;
+    }
   }
 }
 

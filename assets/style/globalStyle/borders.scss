@@ -1,11 +1,7 @@
 :root {
-  --border-regular: #727272;
-  --border-regular-invert: #535353;
-  --border-regular-light: #ffffff4d;
+  --border-regular: #414141;
+  --border-regular-light: #252525;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --border-regular-light: #383838;
-  }
+html.dark {
 }
