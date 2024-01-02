@@ -194,7 +194,7 @@
                         </a-button> -->
 
                   <a-button
-                    class="switch-account-btn click-active"
+                    class="switch-account-btn click-active not-focusable"
                     type="text"
                     @click="navigateTo('/login')"
                   >

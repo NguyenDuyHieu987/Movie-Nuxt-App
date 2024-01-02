@@ -86,14 +86,14 @@
           color: #008ddf;
         }
 
-        &.updated {
+        &.changed {
           &::before {
             display: none;
           }
         }
 
         &::before {
-          content: 'Viết bình luận...';
+          content: attr(aria-label);
           color: var(--text-placeholder-color);
         }
 

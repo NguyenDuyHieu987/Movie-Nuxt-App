@@ -54,7 +54,7 @@ export function isStringNumber(obj: any): boolean {
   return isString(obj) && NUMBER_REGEX.test(obj);
 }
 
-export function isStringEmpty(str: string): boolean {
+export function isStringEmpty(str: string | null | undefined): boolean {
   return isNull(str) || str === '';
 }
 

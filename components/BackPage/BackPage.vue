@@ -5,6 +5,8 @@
     :class="{ fixed: fixed }"
   >
     <a-button
+      class="not-focusable"
+      :class="{ 'align-left': alignLeft }"
       type="text"
       @click="emits('onclick')"
     >
@@ -36,7 +38,13 @@ const emits = defineEmits<{ (e: 'onclick'): void }>();
 //   onclick() {}
 // });
 
-const props = defineProps({ fixed: { type: Boolean, default: false } });
+const props = defineProps({
+  fixed: { type: Boolean, default: false },
+  alignLeft: {
+    type: Boolean,
+    default: false
+  }
+});
 
 const backPage = ref<HTMLElement>();
 

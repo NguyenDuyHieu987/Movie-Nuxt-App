@@ -282,6 +282,16 @@ html.dark {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .plan-grid .plan-body .plan-table {
+    .plan-grid-feature-table-body tr td {
+      &::after {
+        background-color: #252525;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1100px) {
   .plan-grid {
     --plan-box-selector-size: 150px;

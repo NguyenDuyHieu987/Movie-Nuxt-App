@@ -1,5 +1,5 @@
 :root {
-  --loading-background: #080808;
+  --loading-mask: rgba(0, 0, 0, 0.6);
 
   --loading-app-color: #0080ca;
   --loading-spinner-color: #fff;
@@ -7,8 +7,20 @@
   --loading-progress-bar1: #1cb5e0;
   --loading-progress-bar2: #00dc82;
   --loading-progress-bar3: #1cb5e0;
+
+  --loading-spinner-color: #303030;
 }
 
 .nuxt-loading-indicator {
   height: 3px !important;
+}
+
+html.dark {
+  --loading-spinner-color: #dddddd;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --loading-spinner-color: #dddddd;
+  }
 }

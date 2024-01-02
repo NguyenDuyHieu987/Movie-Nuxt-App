@@ -12,6 +12,7 @@
         :index="index"
       >
         <NuxtLink
+          class="underline"
           :to="{
             path: `/play-tv/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
               dataMovie?.name

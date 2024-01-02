@@ -21,3 +21,9 @@
 html.dark {
   --background-content-white: #111111;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-content-white: #111111;
+  }
+}

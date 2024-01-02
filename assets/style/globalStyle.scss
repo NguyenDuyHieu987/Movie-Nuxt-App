@@ -180,14 +180,20 @@ legend {
 }
 
 a {
-  color: inherit;
+  color: var(--text-link-color);
   text-decoration: none;
   transition:
     color 0.15s,
     background-color 0.15s;
 
+  &.underline {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   &:hover {
-    color: inherit;
+    color: var(--text-link-color-hover);
   }
 }
 
@@ -264,6 +270,8 @@ video {
 }
 
 .click-active {
+  transition: opacity 0.15s;
+
   &:active {
     opacity: 0.8;
   }

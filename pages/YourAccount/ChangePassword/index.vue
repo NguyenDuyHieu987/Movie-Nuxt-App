@@ -15,26 +15,12 @@
                 v-show="!isShowVerifyOTPForm"
                 class="changePass-wrapper"
               >
-                <a-button
-                  class="back-page-btn click-active"
-                  type="text"
+                <NuxtLink
+                  class="back-page-btn"
+                  to="/YourAccount"
                 >
-                  <template #icon>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="2rem"
-                      height="2rem"
-                      role="img"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path
-                        d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20v-2z"
-                      />
-                    </svg>
-                  </template>
-                  <NuxtLink to="/YourAccount"> Tài khoản</NuxtLink>
-                </a-button>
+                  <BackPage align-left> Tài khoản </BackPage>
+                </NuxtLink>
 
                 <div class="changePass-header">
                   <h1>Đổi mật khẩu của bạn</h1>
@@ -158,6 +144,7 @@ import type { Rule } from 'ant-design-vue/es/form';
 import { ElNotification } from 'element-plus';
 import { storeToRefs } from 'pinia';
 
+import { BackPage } from '~/components/BackPage';
 import { RequireAuth } from '~/components/RequireAuth';
 import { VerifyPinOTPForm } from '~/components/VerifyForm';
 import { AccountConfirm, ChangePassword } from '~/services/account';

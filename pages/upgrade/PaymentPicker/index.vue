@@ -11,6 +11,13 @@
             name="slide-left"
           >
             <div v-show="showAnimation">
+              <NuxtLink
+                class="back-page-btn"
+                to="/upgrade/plans"
+              >
+                <BackPage align-left> Chọn lại gói</BackPage>
+              </NuxtLink>
+
               <div class="payment-header">
                 <p class="step">BƯỚC 2/2</p>
 
@@ -165,6 +172,7 @@
 
 <script setup lang="ts">
 import type { plan } from '@/types';
+import { BackPage } from '~/components/BackPage';
 import { RequireAuth } from '~/components/RequireAuth';
 import { getImage } from '~/services/image';
 import { getAllPlan, registerPlan } from '~/services/plans';

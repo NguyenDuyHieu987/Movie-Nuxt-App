@@ -4,18 +4,6 @@
 .body-content {
   margin-top: var(--header-height);
 
-  a {
-    color: var(--link-text-color);
-    text-decoration: none;
-    transition:
-      color 0.15s,
-      background-color 0.15s;
-
-    &:hover {
-      color: var(--link-text-color-hover);
-    }
-  }
-
   .body-wrapper {
     main.main-content {
       margin-left: var(--sider-width);

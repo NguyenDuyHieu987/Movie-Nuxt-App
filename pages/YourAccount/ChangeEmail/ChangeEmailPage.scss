@@ -13,6 +13,7 @@
 
     .back-page-btn {
       margin-bottom: 25px;
+      color: inherit;
     }
 
     .verifyEmail-header {
@@ -178,6 +179,18 @@
 }
 
 html.dark {
+  .change-email {
+    .change-email-container {
+      .form-verify-email {
+        .submit-form-button {
+          background-color: #272727;
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
   .change-email {
     .change-email-container {
       .form-verify-email {

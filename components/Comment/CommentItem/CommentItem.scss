@@ -128,7 +128,7 @@
         & > .ant-btn.reply {
           padding: 3px 7px;
           padding-right: 15px;
-          color: var(--link-text-color);
+          color: var(--text-link-color);
           font-size: 1.4rem;
           background-color: transparent;
           border-radius: 20px;
@@ -144,8 +144,8 @@
             font-size: 2.5rem;
             width: 2.5rem;
             height: 2.5rem;
-            color: var(--link-text-color);
-            fill: var(--link-text-color);
+            color: var(--text-link-color);
+            fill: var(--text-link-color);
 
             &.active {
               transform: rotate(180deg);
@@ -159,7 +159,7 @@
             padding-left: 13px;
 
             .ant-btn {
-              color: var(--link-text-color);
+              color: var(--text-link-color);
 
               svg {
                 margin-right: 5px;

@@ -10,9 +10,12 @@
 
   svg {
     margin: 0px auto;
-    font-size: 2rem;
     width: 2rem;
     height: 2rem;
+
+    path {
+      stroke: var(--loading-spinner-color);
+    }
   }
 
   &.loading-page {
@@ -27,14 +30,6 @@
       height: 4.5rem;
       color: var(--loading-app-color);
 
-      path {
-        stroke: var(--loading-app-color);
-      }
-    }
-  }
-
-  &.app-color {
-    svg {
       path {
         stroke: var(--loading-app-color);
       }

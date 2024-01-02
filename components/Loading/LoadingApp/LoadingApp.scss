@@ -22,8 +22,7 @@ body.loading-mask {
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  // background-color: var(--loading-background);
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--loading-mask);
   opacity: 0;
   z-index: -1;
   overflow: hidden;

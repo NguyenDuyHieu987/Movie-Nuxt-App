@@ -15,6 +15,10 @@
     // justify-content: center;
     padding-top: 20px;
 
+    .back-page-btn {
+      color: inherit;
+    }
+
     .step {
       color: var(--text-color-gray1);
       font-size: 1.4rem;
@@ -104,6 +108,22 @@
 }
 
 html.dark {
+  .payment {
+    .payment-container {
+      .payment-methods {
+        .payment-method {
+          background-color: #2d2d2d45;
+
+          &:hover {
+            background-color: #2e2e2e;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
   .payment {
     .payment-container {
       .payment-methods {

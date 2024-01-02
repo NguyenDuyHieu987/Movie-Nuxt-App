@@ -99,10 +99,22 @@
 html.dark {
   .contact {
     .contactus-form-section {
-      form.contactus-issue-form {
+      form.contactus-issue-form
+        .issue-description-field
         .ant-input-affix-wrapper {
-          background-color: #5252526d;
-        }
+        background-color: #5252526d;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .contact {
+    .contactus-form-section {
+      form.contactus-issue-form
+        .issue-description-field
+        .ant-input-affix-wrapper {
+        background-color: #5252526d;
       }
     }
   }

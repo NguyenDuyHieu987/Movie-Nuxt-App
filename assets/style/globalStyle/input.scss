@@ -6,6 +6,18 @@
   --input-border-color-error: #ff4d4f;
 }
 
-input {
+input,
+textarea {
   color: inherit;
+
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--text-placeholder-color);
+    opacity: 1; /* Firefox */
+  }
+
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--text-placeholder-color);
+  }
 }

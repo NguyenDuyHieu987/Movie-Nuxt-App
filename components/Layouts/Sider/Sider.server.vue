@@ -61,7 +61,7 @@
     <TheMenu />
 
     <template #trigger>
-      <footer class="sider-footer">
+      <footer class="sider-footer click-active">
         <div :class="['trigger-collapse', { collapsed: collapsed }]">
           <svg
             v-if="collapsed"

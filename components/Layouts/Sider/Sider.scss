@@ -147,82 +147,65 @@
   }
 
   .ant-layout-sider-trigger {
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
     background: transparent;
     line-height: inherit;
     height: auto;
     overflow: hidden;
-    transition: all 0s;
-  }
-
-  footer.sider-footer {
-    position: sticky;
-    bottom: 0;
-    width: 100%;
-    min-width: 100%;
-    height: calc(var(--header-height) - 15px);
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    padding: 0px;
-    // background-color: var(--background-content-color);
-    // border-top: 1px solid var(--border-regular-light);
-    // border-right: 1px solid var(--border-regular-light);
     color: inherit;
-    z-index: 2;
-    cursor: pointer;
-    user-select: none;
-    transition: opacity 0.15s;
+    transition: all 0s;
 
-    .trigger-collapse {
-      white-space: nowrap;
-      padding-left: 24px;
+    footer.sider-footer {
       display: flex;
-      align-items: center;
-      transition: all 0.15s;
+      height: calc(var(--header-height) - 15px);
+      width: 100%;
+      min-width: 100%;
+      // background-color: var(--background-content-color);
+      // border-top: 1px solid var(--border-regular-light);
+      // border-right: 1px solid var(--border-regular-light);
+      cursor: pointer;
+      user-select: none;
 
-      &.collapsed {
+      .trigger-collapse {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        padding-left: 24px;
+        transition: all 0.15s;
+
+        &.collapsed {
+          .title-trigger-collapse {
+            &.collapsed {
+              opacity: 1;
+            }
+
+            &.open {
+              opacity: 1;
+            }
+          }
+        }
+
         .title-trigger-collapse {
+          font-size: 1.45rem;
+          user-select: none;
+          transition: all 0s;
+
           &.collapsed {
             opacity: 1;
           }
 
           &.open {
-            opacity: 1;
+            opacity: 0;
           }
         }
-      }
 
-      .title-trigger-collapse {
-        margin-left: 13px;
-        font-size: 1.45rem;
-        user-select: none;
-        transition: all 0s;
-
-        &.collapsed {
-          opacity: 1;
+        svg {
+          margin-right: 13px;
+          height: 2rem;
+          width: 2rem;
         }
-
-        &.open {
-          opacity: 0;
-        }
-      }
-
-      svg {
-        font-size: 1.6rem;
-        height: 2rem;
-        width: 2rem;
-
-        &.icon {
-          width: auto;
-          height: auto;
-          font-size: 2.2rem;
-        }
-      }
-    }
-
-    &:active {
-      .trigger-collapse {
-        opacity: 0.8;
       }
     }
   }

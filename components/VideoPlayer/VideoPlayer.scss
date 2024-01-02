@@ -256,7 +256,7 @@ video::-webkit-media-controls {
       }
 
       .timeline-container {
-        background-color: #080808;
+        background-color: var(--background-content-color);
 
         .img-box {
           width: 100%;
@@ -324,7 +324,6 @@ video::-webkit-media-controls {
         position: absolute;
         height: var(--progress-height);
         width: 100%;
-        // background-color: rgba(10, 10, 10, 0.3);
         background-color: rgba(255, 255, 255, 0.3);
         left: 0;
         top: 0;
@@ -370,7 +369,6 @@ video::-webkit-media-controls {
           // width: 0%;
           width: calc(var(--preview-width) * 100%);
           opacity: 0;
-          // background-color: rgba(0, 0, 0, 0.4);
           background-color: rgba(255, 255, 255, 0.4);
           z-index: 1;
           transition: opacity 0.15s;

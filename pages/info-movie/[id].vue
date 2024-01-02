@@ -290,6 +290,7 @@
                 <template #tagsInfo>
                   <span class="tags-item">
                     <NuxtLink
+                      class="underline"
                       :to="`/discover/year/${dataMovie?.release_date?.slice(
                         0,
                         4
@@ -308,6 +309,7 @@
                 <template #tagsInfo>
                   <span class="tags-item">
                     <NuxtLink
+                      class="underline"
                       :to="`/discover/country/${
                         getCountryByOriginalLanguage(
                           dataMovie?.original_language,
@@ -335,6 +337,7 @@
                     class="tags-item"
                   >
                     <NuxtLink
+                      class="underline"
                       :to="`/discover/genre/${
                         getGenreById(item?.id, store.allGenres)?.short_name
                       }`"

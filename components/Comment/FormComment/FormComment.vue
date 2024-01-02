@@ -43,9 +43,10 @@
           id="contenteditable-root"
           ref="contenteditableInputField"
           :class="{
-            updated: contenteditableInputField!?.innerText.length != 0
+            changed: contenteditableInputField!?.innerText.length > 0
           }"
           contenteditable
+          aria-label="Viết bình luận..."
           @change="handleChange"
           @input="handleChange"
           @focus="handleFocus"
@@ -169,6 +170,7 @@ const emits = defineEmits<{
   onSuccessEditComment: [data: string];
 }>();
 
+const utils = useUtils();
 const store = useStore();
 const authStore = useAuthStore();
 const { isLogin, userAccount } = storeToRefs<any>(authStore);
@@ -331,6 +333,8 @@ const handleFocus = (e: any) => {
     e.target.blur();
     return;
   }
+
+  console.log(contenteditableInputField.value!?.innerText.length);
 
   isFocus.value = true;
   isShowActions.value = true;

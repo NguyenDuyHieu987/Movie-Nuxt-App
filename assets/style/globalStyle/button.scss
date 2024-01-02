@@ -2,7 +2,7 @@
   --btn-background-color-primary: var(--app-background-color);
   --btn-background-color-gray: #1e1e1e;
   --btn-disabled-background-color: #9494947d;
-  --btn-border-color: #757575;
+  --btn-border-color: #808080;
   --btn-hover-border-color: #c1c1c1;
   --btn-primary-color: #0080ca;
   --btn-danger-color: #ff4d4f;
@@ -22,6 +22,7 @@ html.dark {
   line-height: var(--button-line-height);
   border: 1px solid var(--btn-border-color);
   border-radius: 2px;
+  outline: none;
   box-shadow: none;
   transition: all 0.15s;
 
@@ -45,9 +46,10 @@ html.dark {
     color: inherit;
   }
 
-  &:focus {
+  &:focus:not(.not-focusable) {
     color: inherit;
-    border-color: inherit;
+    border-color: var(--app-background-color) !important;
+    outline: 3px solid #0091ff66 !important;
   }
 
   &:active {
