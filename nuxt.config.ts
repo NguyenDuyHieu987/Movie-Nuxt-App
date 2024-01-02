@@ -31,8 +31,8 @@ export default defineNuxtConfig({
         {
           'http-equiv': 'content-type',
           content: 'text/html;charset=utf-8'
-        },
-        { name: 'color-scheme', content: 'only dark' }
+        }
+        // { name: 'color-scheme', content: 'only dark' }
       ],
       link: [
         antdVersion == 4

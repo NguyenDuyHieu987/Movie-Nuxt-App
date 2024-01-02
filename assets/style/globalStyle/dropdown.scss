@@ -3,10 +3,15 @@
   --dropdown-select-background-color: #080808;
   --dropdown-selected-background-color: #303030;
   --dropdown-hover-background-color: #202020;
-  --dropdown-border-color: #484848;
+  --dropdown-border-color: #606060;
 }
 
 html.dark {
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
 }
 
 .el-dropdown {

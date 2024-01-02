@@ -16,6 +16,7 @@
 @import './globalStyle/movieCardItem.scss';
 
 :root {
+  color-scheme: normal !important;
   --header-background: linear-gradient(to bottom, #080808cc 0%, #08080800 100%);
   --header-background-scrolled: #080808e6;
 
@@ -50,16 +51,7 @@ html {
   -webkit-tap-highlight-color: transparent;
   font-size: 10px;
   scroll-behavior: auto;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    // color-scheme: dark !important;
-  }
-}
-
-html.dark {
-  color-scheme: dark;
+  color-scheme: normal !important;
 }
 
 *,
@@ -119,10 +111,12 @@ body {
 ::-moz-selection {
   /* Code for Firefox */
   background-color: #00a9c3;
+  color: #fff;
 }
 
 ::selection {
   background-color: #00a9c3;
+  color: #fff;
 }
 
 ::placeholder {
