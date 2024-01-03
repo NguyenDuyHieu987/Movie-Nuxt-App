@@ -194,10 +194,11 @@ const loading = ref<boolean>(false);
 onBeforeMount(() => {
   const url = window.location.href;
 
-  const access_token = url.match(/#(?:access_token)=([\S\s]*?)&/)?.at(1);
+  const accessToken = url.match(/#(?:access_token)=([\S\s]*?)&/)?.at(1);
+  const authorizationCode = url.match(/(?:code)=([\S\s]*?)&/)?.at(1);
 
-  if (access_token == null) {
-    navigateTo({ path: '/' });
+  if (!accessToken && !authorizationCode) {
+    navigateTo('/login');
     return;
   }
 
@@ -205,10 +206,11 @@ onBeforeMount(() => {
   // store.loadingAppInstance.start();
 
   loginGoogle({
-    accessToken: access_token
+    accessToken,
+    authorizationCode
   })
     .then((response) => {
-      if (!response?.isLogin) {
+      if (response?.isLogin == false) {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,
           message: 'Đăng nhập thất bại.',

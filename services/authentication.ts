@@ -1,3 +1,4 @@
+import type { AxiosRequestHeaders } from 'axios';
 import { makeRequest } from './makeRequest';
 
 const PREFIX_ROUTE = 'auth';
@@ -30,12 +31,29 @@ export function loginFacebook(params: any) {
   });
 }
 
-export function loginGoogle(params: any) {
-  const headers = { Authorization: `Bearer ${params.accessToken}` };
+export function loginGoogle(params: {
+  accessToken?: string;
+  authorizationCode?: string;
+  redirectUri?: string | 'postmessage';
+}) {
+  const headers: AxiosRequestHeaders | any = {};
+  const bodyFormData = new FormData();
+
+  if (params?.accessToken) {
+    headers.Authorization = `Bearer ${params?.accessToken}`;
+  }
+
+  if (params?.authorizationCode) {
+    bodyFormData.append('authorization_code', params.authorizationCode);
+    if (params?.redirectUri) {
+      bodyFormData.append('redirect_uri', params.redirectUri);
+    }
+  }
 
   return makeRequest(`/${PREFIX_ROUTE}/login-google`, {
     method: 'POST',
     headers,
+    data: bodyFormData,
     getResponseHeaders: true
   });
 }

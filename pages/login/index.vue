@@ -262,26 +262,41 @@ onBeforeMount(() => {
   // utils.initGoogleGSIClient();
 });
 
+const initGoogleOauth2Client = (
+  params: {
+    model: 'code' | 'token';
+    ux_mode?: 'popup' | 'redirect';
+  } = {
+    model: 'code',
+    ux_mode: 'redirect'
+  }
+) => {
+  if (params.model == 'code') {
+    tokenClient.value = window.google?.accounts.oauth2.initCodeClient({
+      client_id: nuxtConfig.app.googleOauth2ClientID,
+      scope:
+        'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+      ux_mode: params.ux_mode,
+      select_account: true,
+      redirect_uri: window.location.origin + '/oauth/google',
+      prompt: 'select_account',
+      callback: handleGooglePopupCallback,
+      use_fedcm_for_prompt: true
+    });
+  } else if (params.model == 'token') {
+    tokenClient.value = window.google?.accounts.oauth2.initTokenClient({
+      client_id: nuxtConfig.app.googleOauth2ClientID,
+      scope:
+        'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+      prompt: 'select_account',
+      callback: handleGooglePopupCallback,
+      use_fedcm_for_prompt: true
+    });
+  }
+};
+
 onMounted(async () => {
-  // tokenClient.value = window.google?.accounts.oauth2.initTokenClient({
-  //   client_id: nuxtConfig.app.googleOauth2ClientID,
-  //   scope:
-  //     'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
-  //   prompt: 'select_account',
-  //   callback: handleGooglePopupCallback,
-  //   use_fedcm_for_prompt: true,
-  // });
-  // tokenClient.value = window.google?.accounts.oauth2.initCodeClient({
-  //   client_id: nuxtConfig.app.googleOauth2ClientID,
-  //   scope:
-  //     'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
-  //   ux_mode: 'popup',
-  //   // select_account: true,
-  //   redirect_uri: window.location.origin,
-  //   prompt: 'select_account',
-  //   callback: handleGooglePopupCallback,
-  //   use_fedcm_for_prompt: true,
-  // });
+  initGoogleOauth2Client({ model: 'token', ux_mode: 'redirect' });
 });
 
 const handleLogin = () => {
@@ -358,7 +373,7 @@ const handleClickFacebookLogin = async () => {
     .then((response) => {
       // console.log(response?.result);
 
-      if (!response?.isLogin) {
+      if (response?.isLogin == false) {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,
           message: 'Đăng nhập thất bại.',
@@ -404,22 +419,31 @@ const handleClickFacebookLogin = async () => {
     });
 };
 
-// const handleClickGoogleLogin = async () => {
-//   // tokenClient.value.requestCode();
-//   tokenClient.value.requestAccessToken();
-// };
+const handleClickGoogleLogin = async () => {
+  if (!tokenClient.value) {
+    return;
+  }
 
-const handleClickGoogleLogin = () => {
+  if (tokenClient.value?.l == 'code') {
+    tokenClient.value.requestCode();
+    return;
+  }
+
+  if (tokenClient.value?.l == 'token') {
+    tokenClient.value.requestAccessToken();
+  }
+};
+
+/* const handleClickGoogleLogin = () => {
+  // Google's OAuth 2.0 endpoint for requesting an access token
   const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
 
-  // Create <form> element to submit parameters to OAuth 2.0 endpoint.
+  // Create element to open OAuth 2.0 endpoint in new window.
   const form = document.createElement('form');
-  // Send as a GET request.
   form.setAttribute('method', 'GET');
   form.setAttribute('action', oauth2Endpoint);
 
   // Parameters to pass to OAuth 2.0 endpoint.
-
   const params:
     | {
         client_id: number;
@@ -449,22 +473,25 @@ const handleClickGoogleLogin = () => {
   }
 
   // Add form to page and submit it to open the OAuth 2.0 endpoint.
-
   document.body.appendChild(form);
   form.submit();
-};
+}; */
 
 const handleGooglePopupCallback = (googleOauthResponse: any) => {
-  // console.log(googleOauthResponse);
+  if (!googleOauthResponse) {
+    return;
+  }
 
-  if (googleOauthResponse && googleOauthResponse?.access_token) {
+  if (googleOauthResponse?.access_token || googleOauthResponse?.code) {
     loadingGoogleLogin.value = true;
 
     loginGoogle({
-      accessToken: googleOauthResponse?.access_token
+      accessToken: googleOauthResponse?.access_token,
+      authorizationCode: googleOauthResponse?.code,
+      redirectUri: 'postmessage'
     })
       .then((response) => {
-        if (!response?.isLogin) {
+        if (response?.isLogin == false) {
           ElNotification.error({
             title: MESSAGE.STATUS.FAILED,
             message: 'Đăng nhập thất bại.',
