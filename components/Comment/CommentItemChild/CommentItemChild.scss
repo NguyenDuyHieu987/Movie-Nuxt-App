@@ -8,10 +8,10 @@
   &.focused {
     padding: 7px;
     margin-left: -7px;
-    border-radius: 4px;
-    background-color: #151515;
+    border-radius: 2px;
+    background-color: #131313;
     outline: 1px solid var(--app-background-color);
-    box-shadow: 0 0 7px #008ddfcf;
+    box-shadow: 0 0 8px #008ddfcf;
   }
 
   .comment-item-child-container {

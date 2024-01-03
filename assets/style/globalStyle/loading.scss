@@ -16,11 +16,11 @@
 }
 
 html.dark {
-  --loading-spinner-color: #dddddd;
+  --loading-spinner-color: #ebebeb;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --loading-spinner-color: #dddddd;
+    --loading-spinner-color: #ebebeb;
   }
 }
