@@ -39,15 +39,13 @@ export async function initFacebookSdk() {
         // FB.login(function () {});
 
         window.FB.getLoginStatus((response: any) => {
-          if (response.status === 'connected') {
-            console.log('getLoginStatus:', response);
-          }
+          // if (response.status === 'connected') {
+          //   console.log('getLoginStatus:', response);
+          // }
         });
 
         window.FB.getAuthResponse((response: any) => {
-          if (response.status === 'connected') {
-            console.log('getAuthResponse:', response);
-          }
+          console.log('getAuthResponse:', response);
         });
 
         resolve({ success: true });

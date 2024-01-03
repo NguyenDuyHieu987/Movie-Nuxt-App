@@ -4,8 +4,8 @@
   <svg
     class="close click-active"
     xmlns="http://www.w3.org/2000/svg"
-    width="4rem"
-    height="4rem"
+    width="3.8rem"
+    height="3.8rem"
     viewBox="0 0 24 24"
     fill="currentColor"
   >
