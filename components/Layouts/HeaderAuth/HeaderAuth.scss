@@ -51,17 +51,15 @@ header.header-bar-auth {
       }
 
       .signup-btn {
-        display: inline-flex;
-        align-items: center;
+        display: inline-block;
         background-color: var(--app-background-color);
-        color: inherit !important;
-        padding: 7px 15px;
+        padding: 5px 15px;
+        color: inherit;
         border-radius: 25px;
         font-size: 1.45rem;
-        line-height: normal;
-        text-align: center;
-        transition: background-color 0.15s;
+        line-height: var(--button-line-height);
         user-select: none;
+        transition: background-color 0.15s;
 
         &:hover {
           background-color: var(--app-background-color8);

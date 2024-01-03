@@ -549,13 +549,12 @@ header.header-bar {
     background-color: var(--background-content-color1);
 
     .notification-header {
-      padding: 15px 20px;
-      line-height: normal;
       height: auto;
+      padding: 15px 20px;
       background: transparent;
-      border-bottom: 1px solid var(--border-regular-light);
       font-size: 1.6rem;
       color: inherit;
+      border-bottom: 1px solid var(--border-regular-light);
     }
 
     .ant-dropdown-menu-item-group {

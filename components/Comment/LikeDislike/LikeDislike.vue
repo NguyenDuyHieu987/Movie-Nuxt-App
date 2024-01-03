@@ -20,8 +20,9 @@
       <span
         v-if="like > 0"
         class="total"
-        >{{ like }}</span
       >
+        {{ like }}
+      </span>
     </div>
 
     <div class="dislike">

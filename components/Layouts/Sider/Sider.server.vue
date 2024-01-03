@@ -48,7 +48,7 @@
             popper-class="popper-tooltip"
             placement="right"
           >
-            <div class="user-name-text">
+            <div class="user-name-short">
               <h4>
                 {{ userAccount?.username?.slice(0, 2).toUpperCase() }}
               </h4>

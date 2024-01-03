@@ -7,7 +7,7 @@
   >
     <div class="sider-rank-wrapper">
       <div class="rank-side-header">
-        <h2 class="gradient-title-default underline">
+        <h2 class="rank-side-title gradient-title-default underline">
           <span> Top xem phim</span>
         </h2>
         <ul class="tabs-rank">

@@ -4,6 +4,7 @@
       <div class="detail-rank-header">
         <BackPage
           class="backTo-ranksPage"
+          align-left
           @onclick="
             navigateTo(
               router.options.history.state?.back

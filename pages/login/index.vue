@@ -407,7 +407,6 @@ const handleClickFacebookLogin = async () => {
       navigateTo({ path: urlBack.value });
     })
     .catch((e) => {
-      console.log(e);
       ElNotification.error({
         title: MESSAGE.STATUS.BROKE,
         message: MESSAGE.STATUS.BROKE_MESSAGE,

@@ -2,7 +2,7 @@
   --btn-background-color-primary: var(--app-background-color);
   --btn-background-color-gray: #1e1e1e;
   --btn-disabled-background-color: #9494947d;
-  --btn-border-color: #808080;
+  --btn-border-color: #757575;
   --btn-hover-border-color: #c1c1c1;
   --btn-focused-outline-color: #0091ff4d;
   --btn-primary-color: #0094ea;
@@ -32,6 +32,7 @@ html.dark {
   border-radius: 2px;
   outline: none;
   box-shadow: none;
+  vertical-align: middle;
   transition: all 0.15s;
 
   &::before {
@@ -57,7 +58,7 @@ html.dark {
   &:focus:not(.not-focusable) {
     color: inherit;
     border-color: var(--btn-primary-color) !important;
-    outline: var( --btn-focused-outline)!important;
+    outline: var(--btn-focused-outline) !important;
   }
 
   &:active {

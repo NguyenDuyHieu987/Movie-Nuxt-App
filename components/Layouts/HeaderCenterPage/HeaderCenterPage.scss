@@ -40,8 +40,7 @@ header.header-bar-center-page {
     .helpcenter-logo {
       font-weight: 500;
       font-size: 1.7rem;
-      line-height: normal;
-      color: var(--text-color) !important;
+      color: inherit;
 
       &:hover {
         text-decoration: underline;
@@ -171,7 +170,7 @@ header.header-bar-center-page {
           padding-right: 0px;
 
           a {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 7px;
@@ -181,13 +180,13 @@ header.header-bar-center-page {
             font-weight: 500;
             padding: 5px 10px;
             border-radius: 25px;
-            line-height: normal;
+            line-height: var(--button-line-height);
             border: 1px solid var(--border-regular);
             // background-color: var(--app-background-color);
             // background-color: #003c52;
             color: inherit;
-            transition: background-color 0.15s;
             user-select: none;
+            transition: background-color 0.15s;
 
             &:hover {
               background-color: #282828;

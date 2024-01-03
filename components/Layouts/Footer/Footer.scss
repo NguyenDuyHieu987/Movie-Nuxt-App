@@ -60,8 +60,7 @@ footer.footer {
       .helpcenter-logo {
         font-weight: 500;
         font-size: 1.7rem;
-        line-height: normal;
-        color: var(--text-color) !important;
+        color: inherit;
 
         &:hover {
           text-decoration: underline;

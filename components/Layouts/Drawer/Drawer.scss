@@ -18,12 +18,14 @@
         padding-left: 21px;
 
         .ant-drawer-header-title {
+          height: 100%;
+
           .ant-drawer-title {
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 10px;
-            line-height: normal;
+            line-height: inherit;
 
             svg.close {
               font-size: 2.7rem;

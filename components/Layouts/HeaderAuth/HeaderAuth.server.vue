@@ -28,7 +28,7 @@
           class="signup-btn click-active"
           :to="{ path: '/signup' }"
         >
-          <span> Đăng ký ngay</span>
+          Đăng ký ngay
         </NuxtLink>
       </div>
 
