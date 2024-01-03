@@ -106,7 +106,9 @@ export const useAuthStore = defineStore('auth', () => {
       store.loadingAppInstance.start();
 
       if (userAccount.value?.auth_type == 'facebook') {
-        // window.FB.logout(() => {});
+        window.FB.logout(() => {
+          console.log('Facebook logout');
+        });
       }
 
       LogOut()
