@@ -79,7 +79,7 @@ export declare type user = {
   email: string;
   role: string;
   avatar: string | number;
-  auth_type: string;
+  auth_type: string | 'email' | 'facebook' | 'google';
   created_at: string;
   updated_at: string;
   createdAt?: string;

@@ -1,20 +1,16 @@
-import { initFacebookSdk } from '@/utils/initFacebookSDK';
-
 // export default defineNuxtPlugin((nuxtApp) => {
 //   nuxtApp.hook('app:created', () => {
-//     initFacebookSdk();
+//     utils.initFacebookSdk();
 //   });
 // });
 
 export default defineNuxtPlugin({
   name: 'loadFacebookSDK',
-  async setup(nuxtApp) {
-    // this is the equivalent of a normal functional plugin
-    // initFacebookSdk();
-  },
+  async setup(nuxtApp) {},
   hooks: {
     'app:created': async () => {
-      // initFacebookSdk();
+      const utils = useUtils();
+      utils.initFacebookSdk();
     }
   },
   parallel: true,

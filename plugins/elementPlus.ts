@@ -9,9 +9,7 @@
 
 export default defineNuxtPlugin({
   name: 'elementPlus',
-  async setup(nuxtApp) {
-    // this is the equivalent of a normal functional plugin
-  },
+  async setup(nuxtApp) {},
   hooks: {},
   parallel: true,
   env: { islands: true }

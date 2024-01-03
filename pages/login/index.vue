@@ -259,7 +259,6 @@ const reset = () => {
 
 onBeforeMount(() => {
   utils.initFacebookSdk();
-  // utils.initGoogleGSIClient();
 });
 
 const initGoogleOauth2Client = (
@@ -296,7 +295,7 @@ const initGoogleOauth2Client = (
 };
 
 onMounted(async () => {
-  initGoogleOauth2Client({ model: 'token', ux_mode: 'redirect' });
+  initGoogleOauth2Client({ model: 'code', ux_mode: 'redirect' });
 });
 
 const handleLogin = () => {
@@ -363,7 +362,18 @@ const handleClickFacebookLogin = async () => {
     status: string;
   } = await new Promise(window.FB.login);
 
-  if (!authResponse) return;
+  // const authResponse: any = null;
+
+  // window.FB.login(
+  //   (response: any) => {
+  //     console.log(response);
+  //   },
+  //   {
+  //     scope: 'public_profile,email'
+  //   }
+  // );
+
+  if (!authResponse || status != 'connected') return;
 
   loadingFacebookLogin.value = true;
 

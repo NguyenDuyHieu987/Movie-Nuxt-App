@@ -6,12 +6,10 @@
 
 export default defineNuxtPlugin({
   name: 'iconify',
-  async setup(nuxtApp) {
-    // this is the equivalent of a normal functional plugin
-  },
+  async setup(nuxtApp) {},
   hooks: {
     'app:created': async () => {
-      //     // disableCache('all');
+      // disableCache('all');
     }
   },
   parallel: true,

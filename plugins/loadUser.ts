@@ -10,9 +10,7 @@
 
 export default defineNuxtPlugin({
   name: 'loadUser',
-  async setup(nuxtApp) {
-    // this is the equivalent of a normal functional plugin
-  },
+  async setup(nuxtApp) {},
   hooks: {
     'app:created': async () => {
       // const route = useRoute();

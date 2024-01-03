@@ -22,7 +22,6 @@ export const useUtils = () => {
     handleRemoveItemFromHistory,
     handleRemoveAllitemFromHistory,
     initFacebookSdk,
-    initGoogleGSIClient,
     cookie: customCookie(),
     localStorage: customLocalStorage(),
     dateTimeFormater: dateTimeFormater(),
@@ -112,7 +111,6 @@ export * from './encryptPassword';
 export * from './facebookService';
 export * from './handleAddRemoveItemList_History';
 export * from './initFacebookSDK';
-export * from './initGoogleGSIClient';
 export * from './messageModal';
 export * from './removeVietnameseTones';
 export * from './wait';

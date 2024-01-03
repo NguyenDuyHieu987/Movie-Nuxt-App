@@ -9,9 +9,7 @@
 
 export default defineNuxtPlugin({
   name: 'vueLazyLoad',
-  async setup(nuxtApp) {
-    // this is the equivalent of a normal functional plugin
-  },
+  async setup(nuxtApp) {},
   hooks: {
     // 'app:created': async () => {
     //   const nuxtApp = useNuxtApp();
