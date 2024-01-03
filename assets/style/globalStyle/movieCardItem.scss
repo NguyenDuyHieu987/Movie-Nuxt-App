@@ -10,7 +10,7 @@ $error-image: 'https://ik.imagekit.io/8toa5f2rp/images/svg/error-image.svg';
   &.horizontal,
   &.vertical {
     .img-box {
-      // animation: movie-card-opacity-in 0.7s ease-in forwards;
+      animation: movie-card-opacity-in 0.7s ease-in forwards;
     }
 
     &:hover {
