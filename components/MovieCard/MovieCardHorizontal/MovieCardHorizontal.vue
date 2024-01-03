@@ -31,21 +31,21 @@
         alt=""
       /> -->
 
-      <!-- <NuxtImg
-        :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
-        placeholder="/imgs/loading-img-16-9.webp"
-        format="avif"
-        loading="lazy"
-        alt=""
-      /> -->
-
-      <Image
+      <NuxtImg
         :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
         placeholder="/imgs/loading-img-16-9.webp"
         format="avif"
         loading="lazy"
         alt=""
       />
+
+      <!-- <Image
+        :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+        placeholder="/imgs/loading-img-16-9.webp"
+        format="avif"
+        loading="lazy"
+        alt=""
+      /> -->
 
       <div
         v-show="isInHistory"
