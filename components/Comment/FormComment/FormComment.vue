@@ -43,7 +43,8 @@
           id="contenteditable-root"
           ref="contenteditableInputField"
           :class="{
-            changed: contenteditableInputField!?.innerText.length > 0
+            changed:
+              contenteditableInputField!?.innerText.length > 0 || isChanged
           }"
           contenteditable
           aria-label="Viết bình luận..."
@@ -201,6 +202,7 @@ const replyToFirstEl = computed<string>(() =>
     }
   )
 );
+const isChanged = ref<boolean>(false);
 
 onMounted(() => {
   // window.addEventListener('click', (e: any) => {
@@ -262,6 +264,12 @@ const handleChange = (e: any) => {
       contenteditableInputField.value!.innerHTML.slice(0, 3000);
     e.preventDefault();
     return;
+  }
+
+  if (contenteditableInputField.value!?.innerText.length > 0) {
+    isChanged.value = true;
+  } else {
+    isChanged.value = false;
   }
 
   if (props.commentType == 'children' && props?.replyTo) {
@@ -333,8 +341,6 @@ const handleFocus = (e: any) => {
     e.target.blur();
     return;
   }
-
-  console.log(contenteditableInputField.value!?.innerText.length);
 
   isFocus.value = true;
   isShowActions.value = true;
@@ -422,6 +428,7 @@ const onSubmit = () => {
 };
 
 const handleClickCanel = () => {
+  isChanged.value = false;
   isShowEmoji.value = false;
   isShowActions.value = false;
   contenteditableInputField.value!.innerHTML = '';
