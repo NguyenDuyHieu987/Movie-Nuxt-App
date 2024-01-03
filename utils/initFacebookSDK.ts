@@ -44,10 +44,6 @@ export async function initFacebookSdk() {
           // }
         });
 
-        window.FB.getAuthResponse((response: any) => {
-          console.log('getAuthResponse:', response);
-        });
-
         resolve({ success: true });
       };
     }
