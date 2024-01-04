@@ -143,7 +143,13 @@
                   <div class="row-content">
                     <div class="row-content-item">
                       <div class="left">
-                        <span>Miên phí</span>
+                        <span>
+                          {{
+                            authStore.isVipMember
+                              ? authStore.subscription?.plan.name
+                              : 'Miên phí'
+                          }}
+                        </span>
                       </div>
                       <div class="right">
                         <a-button
@@ -163,7 +169,39 @@
                   <div class="row-content">
                     <div class="row-content-item">
                       <div class="left">
-                        <span>Không có giao dịch nào gần đây</span>
+                        <ul
+                          v-if="bills?.length"
+                          class="bills-list"
+                        >
+                          <li
+                            v-for="(item, index) in bills"
+                            :key="index"
+                            :index="index"
+                            class="bill-item"
+                          >
+                            <span class="index">{{ index + 1 }}</span>
+                            <div class="info">
+                              <p
+                                class="description"
+                                :title="item?.description"
+                              >
+                                {{ item?.description }}
+                              </p>
+
+                              <span
+                                class="status"
+                                :class="item?.status"
+                              >
+                                {{
+                                  billStatus.find(
+                                    (status) => status.value == item?.status
+                                  ).label
+                                }}
+                              </span>
+                            </div>
+                          </li>
+                        </ul>
+                        <span v-else> Không có giao dịch nào gần đây </span>
                       </div>
 
                       <div class="right">
@@ -229,6 +267,7 @@ import { storeToRefs } from 'pinia';
 
 import { RequireAuth } from '~/components/RequireAuth';
 import { ChangeFullname } from '~/services/account';
+import { getBills } from '~/services/bill';
 import { getImage } from '~/services/image';
 
 definePageMeta({
@@ -240,13 +279,43 @@ definePageMeta({
   keepalive: false
 });
 
-const authStore = useAuthStore();
-const utils = useUtils();
-const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const breakPoints = useBreakpoints({
   responesive: 650
 });
+
+const authStore = useAuthStore();
+const utils = useUtils();
+const { isLogin, userAccount } = storeToRefs<any>(authStore);
+const bills = ref<any[]>([]);
+const billStatus = ref<
+  {
+    value: string;
+    label: string;
+  }[]
+>([
+  {
+    value: 'complete',
+    label: 'Thành công'
+  },
+  {
+    value: 'incomplete',
+    label: 'Không thành công'
+  },
+  {
+    value: 'pending',
+    label: 'Chờ xử lý'
+  },
+  {
+    value: 'canceled',
+    label: 'Hủy'
+  },
+  {
+    value: 'expired',
+    label: 'Hết hạn'
+  }
+]);
 const showAnimation = ref<boolean>(false);
+const loadingBills = ref<boolean>(false);
 const isFullNameditable = ref<boolean>(false);
 const loadingEditRowItem = ref<boolean>(false);
 
@@ -270,6 +339,21 @@ useSeoMeta({
   ogDescription: 'Tài khoản của bạn',
   ogLocale: 'vi'
 });
+
+const getData = () => {
+  getBills(1, 10)
+    .then((response) => {
+      bills.value = response?.results;
+    })
+    .catch(() => {})
+    .finally(() => {
+      loadingBills.value = false;
+    });
+};
+
+loadingBills.value = true;
+
+getData();
 
 onBeforeMount(async () => {
   await nextTick();

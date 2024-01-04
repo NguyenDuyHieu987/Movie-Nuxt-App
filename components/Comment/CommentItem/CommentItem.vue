@@ -274,10 +274,7 @@ import {
   LikeDislike
 } from '~/components/Comment';
 import { LoadingCircle, LoadingSpinner } from '~/components/Loading';
-import {
-  DeleteComment,
-  getCommentByMovidId_ParentId
-} from '~/services/comment';
+import { DeleteComment, getCommentChild } from '~/services/comment';
 import { getImage } from '~/services/image';
 
 const props = defineProps<{
@@ -314,11 +311,7 @@ const onClickShowReplies = async () => {
   if (listReplies.value.length == 0) {
     loadingReplies.value = true;
 
-    await getCommentByMovidId_ParentId(
-      props.movieId,
-      props.item?.id!,
-      props.movieType
-    )
+    await getCommentChild(props.movieId, props.item?.id!, props.movieType)
       .then((response) => {
         listReplies.value = response?.results;
         skip.value++;
@@ -335,7 +328,7 @@ const onClickShowReplies = async () => {
 const onLoadMoreReplies = async () => {
   isLoadmoreReplies.value = true;
 
-  await getCommentByMovidId_ParentId(
+  await getCommentChild(
     props.movieId,
     props.item?.id!,
     props.movieType,

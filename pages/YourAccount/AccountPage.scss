@@ -131,6 +131,7 @@
           .row-content-item {
             display: flex;
             justify-content: space-between;
+            gap: 10px;
 
             &.password {
               cursor: default;
@@ -140,6 +141,69 @@
             .left {
               display: flex;
               align-items: center;
+              flex-grow: 1;
+
+              .bills-list {
+                display: flex;
+                flex-direction: row;
+                list-style: none;
+                flex-grow: 1;
+                margin-right: 50px;
+
+                .bill-item {
+                  display: inline-flex;
+                  align-items: center;
+                  flex-grow: 1;
+                  gap: 15px;
+                  padding: 10px 0px;
+                  font-size: 1.4rem;
+                  border-bottom: 0.5px solid var(--border-regular-light);
+
+                  &:not(:only-child, :last-child) {
+                  }
+
+                  .index {
+                    color: var(--text-color-gray);
+                  }
+
+                  .info {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-grow: 1;
+
+                    .description {
+                      max-width: 60%;
+                      display: -webkit-box;
+                      -webkit-line-clamp: 1;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                    }
+
+                    .status {
+                      display: inline-block;
+                      padding: 5px 12px;
+                      font-size: 1.3rem;
+                      border-radius: 2px;
+
+                      &.complete {
+                        background-color: rgba(0, 255, 132, 0.1);
+                      }
+
+                      &.pending,
+                      &.expired,
+                      &.canceled {
+                        background-color: rgba(255, 191, 0, 0.1);
+                      }
+
+                      &.incomplete {
+                        background-color: rgba(255, 0, 0, 0.1);
+                      }
+                    }
+                  }
+                }
+              }
 
               span.label {
                 display: inline-block;
@@ -179,6 +243,8 @@
             }
 
             .right {
+              white-space: nowrap;
+
               a {
                 color: var(--app-background-color);
                 transition: all 0.15s;

@@ -2,7 +2,7 @@ import { makeRequest } from './makeRequest';
 
 const PREFIX_ROUTE = 'comment';
 
-export function getCommentByMovidId(
+export function getCommentParent(
   movieId: string,
   movieType: string,
   skip: number = 1,
@@ -13,7 +13,7 @@ export function getCommentByMovidId(
   );
 }
 
-export function getCommentByMovidId_ParentId(
+export function getCommentChild(
   movieId: string,
   parentId: string,
   movieType: string,

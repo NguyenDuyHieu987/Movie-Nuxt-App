@@ -51,7 +51,7 @@
 <script setup lang="ts">
 import { CommentItem, FormComment } from '~/components/Comment';
 import { LoadingCircle, LoadingSpinner } from '~/components/Loading';
-import { getCommentByMovidId } from '~/services/comment';
+import { getCommentParent } from '~/services/comment';
 import type { commentForm } from '~/types';
 
 const props = defineProps<{
@@ -78,7 +78,7 @@ onMounted(() => {
     ) {
       loadMore.value = true;
 
-      await getCommentByMovidId(
+      await getCommentParent(
         props.dataMovie?.id,
         props.dataMovie?.media_type,
         skip.value
@@ -102,17 +102,13 @@ loading.value = true;
 // useAsyncData(
 //   `${props.dataMovie?.media_type}/${props.dataMovie?.id}`,
 //   () =>
-//     getCommentByMovidId(
+//     getCommentParent(
 //       props.dataMovie?.id,
 //       props.dataMovie?.media_type,
 //       skip.value
 //     )
 // )
-getCommentByMovidId(
-  props.dataMovie?.id,
-  props.dataMovie?.media_type,
-  skip.value
-)
+getCommentParent(props.dataMovie?.id, props.dataMovie?.media_type, skip.value)
   .then((response) => {
     commentsList.value = response?.results;
     total.value = response?.total;
