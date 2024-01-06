@@ -154,7 +154,7 @@
 
               <span
                 v-if="item?.step != 0"
-                class="step-number"
+                class="rank-number"
               >
                 {{ item?.stepText }}
               </span>
