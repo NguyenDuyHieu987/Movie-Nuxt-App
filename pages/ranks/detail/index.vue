@@ -102,7 +102,15 @@
               <div class="count">{{ item?.count }}</div>
             </div>
 
-            <div class="tendency">
+            <div
+              class="tendency"
+              :class="{
+                up: item?.step > 0,
+                down: item?.step < 0,
+                balance: item?.step == 0 && !item?.new,
+                new: item?.step == 0 && item?.new
+              }"
+            >
               <div
                 v-show="$route.query?.sort_by != 'all'"
                 class="tendency-icon"
@@ -154,7 +162,7 @@
 
               <span
                 v-if="item?.step != 0"
-                class="rank-number"
+                class="step-number"
               >
                 {{ item?.stepText }}
               </span>

@@ -185,7 +185,7 @@
               height: 1.5rem;
             }
 
-            .rank-number {
+            .step-number {
               position: absolute;
               color: inherit;
               font-size: 1.2rem;
@@ -195,9 +195,8 @@
             &.up {
               color: #008c31;
 
-              .rank-number {
+              .step-number {
                 top: 0;
-
                 transform: translate(50%, 20%);
               }
             }
@@ -206,9 +205,8 @@
               color: #e81624;
               fill: #e81624;
 
-              .rank-number {
+              .step-number {
                 bottom: 0;
-
                 transform: translate(50%, -50%);
               }
             }
