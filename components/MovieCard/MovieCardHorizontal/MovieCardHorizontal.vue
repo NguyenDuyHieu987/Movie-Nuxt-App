@@ -48,7 +48,7 @@
       /> -->
 
       <div
-        v-show="isInHistory"
+        v-if="isInHistory"
         class="viewed-overlay-bar"
       >
         <div
@@ -58,7 +58,7 @@
       </div>
 
       <div
-        v-show="isEpisodes"
+        v-if="isEpisodes"
         class="lastest-episode"
       ></div>
 
@@ -188,7 +188,7 @@ const getData = async () => {
 
   switch (props?.type || props?.item?.media_type) {
     case 'movie':
-      getMovieById(props.item.id)
+      await getMovieById(props.item.id)
         .then((response) => {
           dataMovie.value = response;
         })
@@ -198,7 +198,7 @@ const getData = async () => {
         });
       break;
     case 'tv':
-      getTvById(props.item.id)
+      await getTvById(props.item.id)
         .then((response) => {
           dataMovie.value = response;
         })
@@ -216,12 +216,9 @@ const getData = async () => {
       isAddToList.value = true;
     }
 
-    // await useAsyncData(
-    //   `itemlist/${store?.userAccount?.id}/${props.item?.id}`,
-    //   () => getItemList(store?.userAccount?.id, props.item?.id)
-    // )
+    // await getItemList(props.item?.id, props.item?.media_type);
     //   .then((response) => {
-    //     if (response.data.value.success == true) {
+    //     if (response?.success == true) {
     //       isAddToList.value = true;
     //     }
     //   })
@@ -232,11 +229,7 @@ const getData = async () => {
       isInHistory.value = true;
       percent.value = dataMovie.value?.history_progress?.percent;
     } else {
-      // useAsyncData(
-      //   `itemhistory/${store?.userAccount?.id}/${props.item?.id}`,
-      //   () => getItemHistory(props.item?.id, props.item?.media_type)
-      // )
-      // getItemHistory(props.item?.id, props.item?.media_type)
+      // await getItemHistory(props.item?.id, props.item?.media_type)
       //   .then((response) => {
       //     if (response.success == true) {
       //       isInHistory.value = true;

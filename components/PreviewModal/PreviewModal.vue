@@ -671,10 +671,10 @@ watch(isTeleport, async () => {
       loading.value = true;
 
       if (props.isEpisodes) {
-        // useAsyncData(`tv/short/${props.item?.id}`, () =>
+        // await useAsyncData(`tv/short/${props.item?.id}`, () =>
         //   getTvById(props.item?.id)
         // )
-        getTvById(props.item?.id)
+        await getTvById(props.item?.id)
           .then((response) => {
             dataMovie.value = response;
           })
@@ -685,10 +685,10 @@ watch(isTeleport, async () => {
             }, 500);
           });
       } else {
-        // useAsyncData(`movie/short/${props.item?.id}`, () =>
+        // await useAsyncData(`movie/short/${props.item?.id}`, () =>
         //   getMovieById(props.item?.id)
         // )
-        getMovieById(props.item?.id)
+        await getMovieById(props.item?.id)
           .then((response) => {
             dataMovie.value = response;
           })

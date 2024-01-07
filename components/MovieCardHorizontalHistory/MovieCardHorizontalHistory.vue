@@ -424,10 +424,10 @@ const getData = async () => {
   switch (props?.type || props?.item?.media_type) {
     case 'movie':
       isEpisodes.value = false;
-      // useAsyncData(`movie/short/${props.item?.movie_id}`, () =>
+      // await useAsyncData(`movie/short/${props.item?.movie_id}`, () =>
       //   getMovieById(props.item?.movie_id)
       // )
-      getMovieById(props.item?.movie_id)
+      await getMovieById(props.item?.movie_id)
         .then((response) => {
           dataMovie.value = response;
         })
@@ -438,10 +438,10 @@ const getData = async () => {
       break;
     case 'tv':
       isEpisodes.value = true;
-      // useAsyncData(`tv/short/${props.item?.movie_id}`, () =>
+      // await useAsyncData(`tv/short/${props.item?.movie_id}`, () =>
       //   getTvById(props.item?.movie_id)
       // )
-      getTvById(props.item?.movie_id)
+      await getTvById(props.item?.movie_id)
         .then((response) => {
           dataMovie.value = response;
         })
@@ -458,12 +458,9 @@ const getData = async () => {
     isAddToList.value = true;
   }
 
-  // await useAsyncData(
-  //   `itemlist/${store?.userAccount?.id}/${props.item?.movie_id}`,
-  //   () => getItemList( props.item?.movie_id)
-  // )
+  // await getItemList(props.item?.id, props.item?.media_type);
   //   .then((response) => {
-  //     if (response.data.value.success == true) {
+  //     if (response?.success == true) {
   //       isAddToList.value = true;
   //     }
   //   })

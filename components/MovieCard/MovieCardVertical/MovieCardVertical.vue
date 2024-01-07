@@ -34,7 +34,7 @@
 
       <div class="info-over-image">
         <div
-          v-show="isInHistory"
+          v-if="isInHistory"
           class="viewed-overlay-bar"
         >
           <div
@@ -54,6 +54,7 @@
             >
               {{ item?.release_date?.slice(0, 4) }}
             </span>
+
             <span
               v-else
               class="release-date"
@@ -67,7 +68,7 @@
           </div>
 
           <div
-            v-show="isEpisodes"
+            v-if="isEpisodes"
             class="lastest-episode"
           ></div>
         </div>
@@ -344,10 +345,6 @@ const getData = async () => {
     if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     } else {
-      // await useAsyncData(
-      //   `itemlist/${store?.userAccount?.id}/${props.item?.id}`,
-      //   () => getItemList(store?.userAccount?.id, props.item?.id)
-      // )
       // getItemList(props.item?.id, props.item?.media_type)
       //   .then((response) => {
       //     if (response.success == true) {
@@ -362,10 +359,6 @@ const getData = async () => {
       isInHistory.value = true;
       percent.value = dataMovie.value?.history_progress.percent;
     } else {
-      // useAsyncData(
-      //   `itemhistory/${store?.userAccount?.id}/${props.item?.id}`,
-      //   () => getItemHistory(props.item?.id, props.item?.media_type)
-      // )
       // getItemHistory(props.item?.id, props.item?.media_type)
       //   .then((response) => {
       //     if (response.success == true) {

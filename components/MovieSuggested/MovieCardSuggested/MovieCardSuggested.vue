@@ -305,10 +305,10 @@ const getData = async () => {
   switch (props?.type || props?.item?.media_type) {
     case 'movie':
       isEpisodes.value = false;
-      // useAsyncData(`movie/short/${props.item?.id}`, () =>
+      // await useAsyncData(`movie/short/${props.item?.id}`, () =>
       //   getMovieById(props.item?.id)
       // )
-      getMovieById(props.item?.id)
+      await getMovieById(props.item?.id)
         .then((response) => {
           dataMovie.value = response;
         })
@@ -319,10 +319,10 @@ const getData = async () => {
       break;
     case 'tv':
       isEpisodes.value = true;
-      // useAsyncData(`tv/short/${props.item?.id}`, () =>
+      // await useAsyncData(`tv/short/${props.item?.id}`, () =>
       //   getTvById(props.item?.id)
       // )
-      getTvById(props.item?.id)
+      await getTvById(props.item?.id)
         .then((response) => {
           dataMovie.value = response;
         })
@@ -340,14 +340,11 @@ const getData = async () => {
     percent.value = dataMovie.value?.history_progress?.percent;
   }
 
-  // await useAsyncData(
-  //   `itemhistory/${store?.userAccount?.id}/${props.item?.id}`,
-  //   () => getItemHistory(props.item?.id)
-  // )
+  // getItemHistory(props.item?.id, props.item?.media_type)
   //   .then((response) => {
-  //     if (response.data.value.success == true) {
+  //     if (response.success == true) {
   //       isInHistory.value = true;
-  //       percent.value = response.data.value?.result?.percent;
+  //       percent.value = response.result?.percent;
   //     }
   //   })
   //   .catch((e) => {
