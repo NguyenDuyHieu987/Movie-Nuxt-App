@@ -337,7 +337,7 @@ export default defineNuxtConfig({
     exclude: []
   },
   routeRules: {
-    '/': { isr: true, prerender: true },
+    '/': { isr: true },
     '/feature/**': { isr: true },
     '/television/**': { isr: true },
     '/discover/**': { isr: true },
