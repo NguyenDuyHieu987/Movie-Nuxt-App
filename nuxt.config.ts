@@ -324,9 +324,9 @@ export default defineNuxtConfig({
   },
   generate: {
     routes: [
-      '/',
-      '/feature',
-      '/television',
+      // '/',
+      // '/feature',
+      // '/television',
       '/upgrade/plans',
       '/login',
       '/signup',
