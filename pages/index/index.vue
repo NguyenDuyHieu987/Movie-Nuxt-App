@@ -59,11 +59,11 @@
       </section>
 
       <section
-        v-show="authStore.isLogin"
+        v-if="authStore.isLogin"
         class="home-section recommend"
       >
         <h2
-          v-show="loadingRecommend || recommends?.length"
+          v-if="loadingRecommend || recommends?.length"
           class="gradient-title-default"
         >
           <span>Gợi ý cho bạn</span>
