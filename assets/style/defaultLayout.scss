@@ -127,15 +127,20 @@
 }
 
 // .upgrade, .payment, .account-page, .bills
-.body-content:has(.service-page, .change-page, .center-page) {
+body:has(.service-page, .change-page, .center-page) {
   background-color: var(--background-content-white);
-  margin-left: 0px;
 
-  --sider-width: 0px;
-  --sider-collapsed-width: 0px;
+  .body-content {
+    --sider-width: 0px;
+    --sider-collapsed-width: 0px;
+  }
 
   .body-wrapper {
     color: var(--text-color-black);
+
+    main.main-content {
+      margin-left: 0px;
+    }
   }
 
   .ant-layout-sider.sider-bar {

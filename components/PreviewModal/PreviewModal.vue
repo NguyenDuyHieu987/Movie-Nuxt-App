@@ -714,20 +714,19 @@ watch(isTeleport, async () => {
   }
 });
 
-const actionBtn = ref<any>(null);
-
 const onClickPreviewModal = (e: any) => {
-  if (!actionBtn.value) {
-    navigateTo({
-      path: props.isEpisodes
-        ? `/info-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-            props.item?.name
-          )}`
-        : `/info-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-            props.item?.name
-          )}`
-    });
-  }
+  // console.log(e.target?.closest('.ant-btn'));
+  // if (!e.target?.closest('.ant-btn')) {
+  //   navigateTo({
+  //     path: props.isEpisodes
+  //       ? `/info-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+  //           props.item?.name
+  //         )}`
+  //       : `/info-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+  //           props.item?.name
+  //         )}`
+  //   });
+  // }
 };
 
 const handleAddToList = (e: any) => {

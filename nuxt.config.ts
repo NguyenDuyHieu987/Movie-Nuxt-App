@@ -344,15 +344,13 @@ export default defineNuxtConfig({
     '/search/**': { isr: true },
     '/ranks/**': { isr: true },
     '/login': {
-      isr: true,
       prerender: true
     },
     '/oauth/**': { isr: true },
     '/signup': {
-      isr: true,
       prerender: true
     },
-    '/ForgotPassword': { isr: true, prerender: true },
+    '/ForgotPassword': { prerender: true },
     '/follow/**': { isr: true },
     '/history/**': { isr: true },
     '/info-movie/**': { isr: true },
@@ -362,8 +360,8 @@ export default defineNuxtConfig({
     '/upgrade/**': { isr: true },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/YourAccount/**': { isr: true },
-    '/help/**': { isr: true, prerender: true },
-    '/contact/**': { isr: true, prerender: true },
+    '/help/**': { prerender: true },
+    '/contact/**': { prerender: true },
     '/contactus': { redirect: '/contact' }
   }
 });
