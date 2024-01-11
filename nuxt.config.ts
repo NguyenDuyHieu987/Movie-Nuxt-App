@@ -305,7 +305,15 @@ export default defineNuxtConfig({
     prerender: {
       routes: [],
       crawlLinks: false,
-      ignore: ['/follow', '/history', '/YourAccount']
+      ignore: [
+        '/follow',
+        '/history',
+        '/YourAccount',
+        '/info-movie',
+        '/info-tv',
+        '/play-movie',
+        '/play-tv'
+      ]
     },
     minify: true,
     compressPublicAssets: { gzip: true, brotli: true },
@@ -352,6 +360,7 @@ export default defineNuxtConfig({
     '/play-movie/**': { isr: true },
     '/play-tv/**': { isr: true },
     '/upgrade/**': { isr: true },
+    '/upgrade/plans': { prerender: true },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/YourAccount/**': { isr: true },
     '/help/**': { prerender: true },
