@@ -7,19 +7,16 @@
   & > [class*='body-content'],
   & > [class^='body-content'],
   & > [class|='body-content'] {
-    display: flex;
     position: relative;
     min-height: calc(100vh - var(--header-height));
   }
 
   .body-wrapper {
     display: flex;
-    flex: auto;
     position: relative;
     flex-direction: column;
     max-width: var(--max-width-app);
     // min-width: var(--min-width-app);
-    // min-width: 0;
     margin: 0px auto;
 
     main.main-content {
