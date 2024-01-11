@@ -302,7 +302,17 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      routes: [],
+      routes: [
+        '/',
+        // '/feature',
+        // '/television',
+        '/upgrade/plans',
+        '/login',
+        '/signup',
+        '/ForgotPassword',
+        '/help',
+        '/contact'
+      ],
       crawlLinks: false,
       ignore: [
         '/discover',
@@ -327,17 +337,7 @@ export default defineNuxtConfig({
     output: {}
   },
   generate: {
-    routes: [
-      // '/',
-      // '/feature',
-      // '/television',
-      '/upgrade/plans',
-      '/login',
-      '/signup',
-      '/ForgotPassword',
-      '/help',
-      '/contact'
-    ],
+    routes: [],
     exclude: []
   },
   routeRules: {
