@@ -303,13 +303,13 @@ export default defineNuxtConfig({
     // preset: 'static',
     prerender: {
       routes: [
-        // '/',
-        // '/feature',
-        // '/television',
-        // '/upgrade/plans',
+        '/',
+        '/feature',
+        '/television',
         '/login',
         '/signup',
         '/ForgotPassword',
+        '/upgrade/plans',
         '/help',
         '/contact'
       ],
