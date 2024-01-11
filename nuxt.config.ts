@@ -341,20 +341,22 @@ export default defineNuxtConfig({
     exclude: []
   },
   routeRules: {
-    '/': { isr: true },
-    '/feature/**': { isr: true },
-    '/television/**': { isr: true },
+    '/': { isr: true, prerender: true },
+    '/feature/**': { isr: true, prerender: true },
+    '/television/**': { isr: true, prerender: true },
     '/discover/**': { isr: true },
     '/search/**': { isr: true },
     '/ranks/**': { isr: true },
     '/login': {
-      isr: true
+      isr: true,
+      prerender: true
     },
     '/oauth/**': { isr: true },
     '/signup': {
-      isr: true
+      isr: true,
+      prerender: true
     },
-    '/ForgotPassword': { isr: true },
+    '/ForgotPassword': { isr: true, prerender: true },
     '/follow/**': { isr: true },
     '/history/**': { isr: true },
     '/info-movie/**': { isr: true },
@@ -362,10 +364,11 @@ export default defineNuxtConfig({
     '/play-movie/**': { isr: true },
     '/play-tv/**': { isr: true },
     '/upgrade/**': { isr: true },
+    '/upgrade/plans': { prerender: true },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/YourAccount/**': { isr: true },
-    '/help/**': { isr: true },
-    '/contact/**': { isr: true },
+    '/help/**': { isr: true, prerender: true },
+    '/contact/**': { isr: true, prerender: true },
     '/contactus': { redirect: '/contact' }
   }
 });
