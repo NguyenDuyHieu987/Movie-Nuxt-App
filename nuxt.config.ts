@@ -132,6 +132,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     // SEO
+    '@nuxtjs/sitemap',
     'nuxt-simple-sitemap'
   ],
   extends: ['nuxt-seo-kit'],
@@ -194,6 +195,7 @@ export default defineNuxtConfig({
   },
   // SEO
   site: {
+    name: 'Phimhay247',
     url: 'https://phimhay247z.org'
   },
   plugins: [],
@@ -303,15 +305,7 @@ export default defineNuxtConfig({
     prerender: {
       routes: [],
       crawlLinks: false,
-      ignore: [
-        '/follow',
-        '/history',
-        '/YourAccount',
-        '/info-movie',
-        '/info-tv',
-        '/play-movie',
-        '/play-tv'
-      ]
+      ignore: ['/follow', '/history', '/YourAccount']
     },
     minify: true,
     compressPublicAssets: { gzip: true, brotli: true },
