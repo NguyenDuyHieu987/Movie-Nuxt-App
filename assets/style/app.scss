@@ -12,16 +12,13 @@
   }
 
   .body-wrapper {
-    display: flex;
     position: relative;
-    flex-direction: column;
     max-width: var(--max-width-app);
     // min-width: var(--min-width-app);
     margin: 0px auto;
 
     main.main-content {
       display: flex;
-      flex: auto;
       flex-direction: column;
 
       & > .container {
