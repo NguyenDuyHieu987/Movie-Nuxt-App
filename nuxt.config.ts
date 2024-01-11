@@ -341,7 +341,7 @@ export default defineNuxtConfig({
     exclude: []
   },
   routeRules: {
-    '/': { isr: true },
+    '/': { isr: true, prerender: false },
     '/feature/**': { isr: true },
     '/television/**': { isr: true },
     '/discover/**': { isr: true },
@@ -362,6 +362,7 @@ export default defineNuxtConfig({
     '/play-movie/**': { isr: true },
     '/play-tv/**': { isr: true },
     '/upgrade/**': { isr: true },
+    '/upgrade/plans': { prerender: false },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/YourAccount/**': { isr: true },
     '/help/**': { isr: true, prerender: true },
