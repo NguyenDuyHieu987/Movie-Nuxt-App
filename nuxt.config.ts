@@ -306,6 +306,9 @@ export default defineNuxtConfig({
       routes: [],
       crawlLinks: false,
       ignore: [
+        '/discover',
+        '/search',
+        '/ranks',
         '/follow',
         '/history',
         '/YourAccount',
