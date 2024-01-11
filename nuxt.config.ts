@@ -303,10 +303,10 @@ export default defineNuxtConfig({
     // preset: 'static',
     prerender: {
       routes: [
-        '/',
+        // '/',
         // '/feature',
         // '/television',
-        '/upgrade/plans',
+        // '/upgrade/plans',
         '/login',
         '/signup',
         '/ForgotPassword',
@@ -341,7 +341,7 @@ export default defineNuxtConfig({
     exclude: []
   },
   routeRules: {
-    '/': { isr: true, prerender: false },
+    '/': { isr: true },
     '/feature/**': { isr: true },
     '/television/**': { isr: true },
     '/discover/**': { isr: true },
@@ -362,11 +362,10 @@ export default defineNuxtConfig({
     '/play-movie/**': { isr: true },
     '/play-tv/**': { isr: true },
     '/upgrade/**': { isr: true },
-    '/upgrade/plans': { prerender: false },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/YourAccount/**': { isr: true },
-    '/help/**': { isr: true, prerender: true },
-    '/contact/**': { isr: true, prerender: true },
+    '/help/**': { isr: true },
+    '/contact/**': { isr: true },
     '/contactus': { redirect: '/contact' }
   }
 });
