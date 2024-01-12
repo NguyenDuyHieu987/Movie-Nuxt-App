@@ -136,11 +136,9 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     // SEO
-    // '@nuxtjs/seo',
-    // '@nuxtjs/sitemap'
-    'nuxt-simple-sitemap'
+    '@nuxtjs/seo',
+    '@nuxtjs/sitemap'
   ],
-  extends: ['nuxt-seo-kit'],
   antd: {
     icons: false
   },
@@ -308,17 +306,7 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      routes: [
-        '/',
-        '/feature',
-        '/television',
-        '/login',
-        '/signup',
-        '/ForgotPassword',
-        '/upgrade/plans',
-        '/help',
-        '/contact'
-      ],
+      routes: [],
       crawlLinks: false,
       ignore: [
         '/discover',
@@ -343,36 +331,58 @@ export default defineNuxtConfig({
     output: {}
   },
   generate: {
-    routes: [],
-    exclude: []
+    routes: [
+      // '/',
+      // '/feature',
+      // '/television',
+      '/login',
+      '/signup',
+      '/ForgotPassword',
+      '/upgrade/plans',
+      '/help',
+      '/contact'
+    ],
+    exclude: [
+      '/discover',
+      '/search',
+      '/ranks',
+      '/follow',
+      '/history',
+      '/YourAccount',
+      '/info-movie',
+      '/info-tv',
+      '/play-movie',
+      '/play-tv'
+    ]
   },
   routeRules: {
     '/': { isr: true },
-    '/feature/**': { isr: true },
-    '/television/**': { isr: true },
+    '/feature/**': { isr: true, prerender: true },
+    '/television/**': { isr: true, prerender: true },
     '/discover/**': { isr: true },
     '/search/**': { isr: true },
     '/ranks/**': { isr: true },
     '/login': {
-      isr: true
+      prerender: true
     },
-    '/oauth/**': { isr: true },
+    '/oauth/**': { prerender: true },
     '/signup': {
-      isr: true
+      prerender: true
     },
-    '/ForgotPassword': { isr: true },
-    '/follow/**': { isr: true },
-    '/history/**': { isr: true },
+    '/ForgotPassword': { prerender: true },
+    '/follow/**': { isr: false },
+    '/history/**': { isr: false },
     '/info-movie/**': { isr: true },
     '/info-tv/**': { isr: true },
     '/play-movie/**': { isr: true },
     '/play-tv/**': { isr: true },
+    '/upgrade/plans': { prerender: true },
     '/upgrade/**': { isr: true },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/plans': { redirect: '/upgrade/plans' },
-    '/YourAccount/**': { isr: true },
-    '/help/**': { isr: true },
-    '/contact/**': { isr: true },
+    '/YourAccount/**': { isr: false },
+    '/help/**': { prerender: true },
+    '/contact/**': { prerender: true },
     '/contactus': { redirect: '/contact' }
   }
 });
