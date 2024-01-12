@@ -53,14 +53,18 @@ export default <RouterConfig>{
       to &&
       routeAllowsScrollToTop !== false &&
       isChangingPage(to, from) &&
-      !isFirstLoad &&
+      // !isFirstLoad &&
       !to.hash
     ) {
       position = { left: 0, top: 0 };
     }
 
     // Hash routes on the same page or first load, no page hook is fired so resolve here
-    if (to.path === from.path || isFirstLoad) {
+    if (
+      to.path === from.path ||
+      // isFirstLoad
+      !isChangingPage(to, from)
+    ) {
       if (from.hash && !to.hash) {
         return { left: 0, top: 0 };
       }
@@ -77,12 +81,15 @@ export default <RouterConfig>{
     // Wait for `page:transition:finish` or `page:finish` depending on if transitions are enabled or not
     const hasTransition = (route: RouteLocationNormalized) => {
       return (
-        !!(route.meta.pageTransition ?? defaultPageTransition) && !isFirstLoad
+        !!(route.meta.pageTransition ?? defaultPageTransition) &&
+        // !isFirstLoad
+        isChangingPage(to, from)
       );
     };
 
     const hookToWait =
-      !isFirstLoad && hasTransition(from) && hasTransition(to)
+      // !isFirstLoad
+      isChangingPage(to, from) && hasTransition(from) && hasTransition(to)
         ? 'page:transition:finish'
         : 'page:finish';
 
@@ -91,7 +98,7 @@ export default <RouterConfig>{
         await nextTick();
 
         if (to.hash) {
-          console.log(`scroll to ${to.hash} after ` + hookToWait);
+          // console.log(`scroll to ${to.hash} after ` + hookToWait);
           const observer = new MutationObserver(async () => {
             const el = document.querySelector(to.hash);
 
