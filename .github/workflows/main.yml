@@ -37,7 +37,7 @@ jobs:
       - name: Create .env file
         run: echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
 
-      - name: Get packages
+      - name: Get current package version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
 
