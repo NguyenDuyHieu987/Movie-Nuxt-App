@@ -46,8 +46,6 @@ jobs:
         run: |
           pnpm install
           npm run build
-        env:
-          CI: ''
 
       - name: Install SSH key
         run: |
