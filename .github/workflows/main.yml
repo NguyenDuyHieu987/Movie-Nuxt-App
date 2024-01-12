@@ -46,8 +46,6 @@ jobs:
         run: |
           rm -rf node_modules
           pnpm install --no-frozen-lockfile
-          pnpm install vue@3.4.4
-          pnpm install nuxt@3.9.0 -D
           npm run build
 
       - name: Install SSH key
