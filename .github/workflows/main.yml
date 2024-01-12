@@ -45,6 +45,7 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           pnpm install --no-frozen-lockfile
+          pnpm install nuxt@3.9.0 -D
           npm run build
 
       - name: Install SSH key
