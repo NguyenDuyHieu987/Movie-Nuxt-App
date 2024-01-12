@@ -92,142 +92,142 @@
     </el-menu-item>
 
     <!-- <el-sub-menu index="/discover/movie" popperClass="sub-menu-popper">
-      <template #title>
-        <el-icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5rem"
-            height="1.5rem"
-            viewBox="0 0 576 512"
-            fill="currentColor"
+        <template #title>
+          <el-icon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5rem"
+              height="1.5rem"
+              viewBox="0 0 576 512"
+              fill="currentColor"
+            >
+              <path
+                d="M0 128c0-35.3 28.7-64 64-64h256c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zm559.1-28.2c10.4 5.6 16.9 16.4 16.9 28.2v256c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64l-14.2-9.5V174.9l14.2-9.5l96-64c9.8-6.5 22.4-7.2 32.9-1.6z"
+              />
+            </svg>
+          </el-icon>
+          <span>Phim lẻ</span>
+        </template>
+  
+        <el-menu-item index="/discover/movie/all">
+          <NuxtLink
+            :to="{
+              path: `/discover/movie/all`,
+            }"
           >
-            <path
-              d="M0 128c0-35.3 28.7-64 64-64h256c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zm559.1-28.2c10.4 5.6 16.9 16.4 16.9 28.2v256c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64l-14.2-9.5V174.9l14.2-9.5l96-64c9.8-6.5 22.4-7.2 32.9-1.6z"
-            />
-          </svg>
-        </el-icon>
-        <span>Phim lẻ</span>
-      </template>
-
-      <el-menu-item index="/discover/movie/all">
-        <NuxtLink
-          :to="{
-            path: `/discover/movie/all`,
-          }"
-        >
-          Tất cả
-        </NuxtLink>
-      </el-menu-item>
-
-      <el-menu-item index="/discover/movie/nowplaying">
-        <NuxtLink
-          :to="{
-            path: `/discover/movie/nowplaying`,
-          }"
-        >
-          Now playing
-        </NuxtLink>
-      </el-menu-item>
-
-      <el-menu-item index="/discover/movie/popular">
-        <NuxtLink
-          :to="{
-            path: `/discover/movie/popular`,
-          }"
-        >
-          Phổ biến
-        </NuxtLink>
-      </el-menu-item>
-
-      <el-menu-item index="/discover/movie/toprated">
-        <NuxtLink
-          :to="{
-            path: `/discover/movie/toprated`,
-          }"
-        >
-          Top đánh giá
-        </NuxtLink>
-      </el-menu-item>
-
-      <el-menu-item index="/discover/movie/upcoming">
-        <NuxtLink
-          :to="{
-            path: `/discover/movie/upcoming`,
-          }"
-        >
-          Sắp công chiếu
-        </NuxtLink>
-      </el-menu-item>
-    </el-sub-menu> -->
+            Tất cả
+          </NuxtLink>
+        </el-menu-item>
+  
+        <el-menu-item index="/discover/movie/nowplaying">
+          <NuxtLink
+            :to="{
+              path: `/discover/movie/nowplaying`,
+            }"
+          >
+            Now playing
+          </NuxtLink>
+        </el-menu-item>
+  
+        <el-menu-item index="/discover/movie/popular">
+          <NuxtLink
+            :to="{
+              path: `/discover/movie/popular`,
+            }"
+          >
+            Phổ biến
+          </NuxtLink>
+        </el-menu-item>
+  
+        <el-menu-item index="/discover/movie/toprated">
+          <NuxtLink
+            :to="{
+              path: `/discover/movie/toprated`,
+            }"
+          >
+            Top đánh giá
+          </NuxtLink>
+        </el-menu-item>
+  
+        <el-menu-item index="/discover/movie/upcoming">
+          <NuxtLink
+            :to="{
+              path: `/discover/movie/upcoming`,
+            }"
+          >
+            Sắp công chiếu
+          </NuxtLink>
+        </el-menu-item>
+      </el-sub-menu> -->
 
     <!-- <el-sub-menu index="tv" popperClass="sub-menu-popper">
-      <template #title>
-        <el-icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5rem"
-            height="1.5rem"
-            viewBox="0 0 512 512"
-            fill="currentColor"
+        <template #title>
+          <el-icon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5rem"
+              height="1.5rem"
+              viewBox="0 0 512 512"
+              fill="currentColor"
+            >
+              <path
+                d="M0 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v320c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zm48 272v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32zM48 240v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32zM48 112v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32zm-256 32v64c0 17.7 14.3 32 32 32h128c17.7 0 32-14.3 32-32v-64c0-17.7-14.3-32-32-32H192c-17.7 0-32 14.3-32 32zm32 160c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h128c17.7 0 32-14.3 32-32v-64c0-17.7-14.3-32-32-32H192z"
+              />
+            </svg>
+          </el-icon>
+          <span>Phim bộ</span>
+        </template>
+  
+        <el-menu-item index="/discover/tv/all">
+          <NuxtLink
+            :to="{
+              path: `/discover/tv/all`,
+            }"
           >
-            <path
-              d="M0 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v320c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zm48 272v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32zM48 240v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32zM48 112v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32zm-256 32v64c0 17.7 14.3 32 32 32h128c17.7 0 32-14.3 32-32v-64c0-17.7-14.3-32-32-32H192c-17.7 0-32 14.3-32 32zm32 160c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h128c17.7 0 32-14.3 32-32v-64c0-17.7-14.3-32-32-32H192z"
-            />
-          </svg>
-        </el-icon>
-        <span>Phim bộ</span>
-      </template>
-
-      <el-menu-item index="/discover/tv/all">
-        <NuxtLink
-          :to="{
-            path: `/discover/tv/all`,
-          }"
-        >
-          Tất cả
-        </NuxtLink>
-      </el-menu-item>
-
-      <el-menu-item index="/discover/tv/airingtoday">
-        <NuxtLink
-          :to="{
-            path: `/discover/tv/airingtoday`,
-          }"
-        >
-          Airing today
-        </NuxtLink>
-      </el-menu-item>
-
-      <el-menu-item index="/discover/tv/ontheair">
-        <NuxtLink
-          :to="{
-            path: `/discover/tv/ontheair`,
-          }"
-        >
-          On the air
-        </NuxtLink>
-      </el-menu-item>
-
-      <el-menu-item index="/discover/tv/popular">
-        <NuxtLink
-          :to="{
-            path: `/discover/tv/popular`,
-          }"
-        >
-          Phổ biến
-        </NuxtLink>
-      </el-menu-item>
-
-      <el-menu-item index="/discover/tv/toprated">
-        <NuxtLink
-          :to="{
-            path: `/discover/tv/toprated`,
-          }"
-        >
-          Top đánh giá
-        </NuxtLink>
-      </el-menu-item>
-    </el-sub-menu> -->
+            Tất cả
+          </NuxtLink>
+        </el-menu-item>
+  
+        <el-menu-item index="/discover/tv/airingtoday">
+          <NuxtLink
+            :to="{
+              path: `/discover/tv/airingtoday`,
+            }"
+          >
+            Airing today
+          </NuxtLink>
+        </el-menu-item>
+  
+        <el-menu-item index="/discover/tv/ontheair">
+          <NuxtLink
+            :to="{
+              path: `/discover/tv/ontheair`,
+            }"
+          >
+            On the air
+          </NuxtLink>
+        </el-menu-item>
+  
+        <el-menu-item index="/discover/tv/popular">
+          <NuxtLink
+            :to="{
+              path: `/discover/tv/popular`,
+            }"
+          >
+            Phổ biến
+          </NuxtLink>
+        </el-menu-item>
+  
+        <el-menu-item index="/discover/tv/toprated">
+          <NuxtLink
+            :to="{
+              path: `/discover/tv/toprated`,
+            }"
+          >
+            Top đánh giá
+          </NuxtLink>
+        </el-menu-item>
+      </el-sub-menu> -->
 
     <el-sub-menu
       index="genres"
@@ -235,7 +235,6 @@
     >
       <template #title>
         <el-icon>
-          <!-- <font-awesome-icon icon="fa-solid fa-list" /> -->
           <!-- <Icon name="fa6-solid:list"></Icon> -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -288,7 +287,6 @@
     >
       <template #title>
         <el-icon>
-          <!-- <font-awesome-icon icon="fa-solid fa-calendar-days" /> -->
           <!-- <Icon name="fa6-regular:calendar-days" />  -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -334,7 +332,6 @@
     >
       <template #title>
         <el-icon>
-          <!-- <font-awesome-icon icon="fa-solid fa-globe" /> -->
           <!-- <Icon name="fa6-solid:globe" /> -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -372,9 +369,9 @@
       <el-icon>
         <!-- <span class="material-icons-outlined"> playlist_play </span> -->
         <!-- <Icon
-          class="material-icons-outlined playlist"
-          name="ic:baseline-playlist-play"
-        /> -->
+            class="material-icons-outlined playlist"
+            name="ic:baseline-playlist-play"
+          /> -->
         <svg
           class="material-icons-outlined playlist"
           xmlns="http://www.w3.org/2000/svg"
@@ -423,7 +420,6 @@
 
     <el-menu-item index="/history">
       <el-icon>
-        <!-- <font-awesome-icon icon="fa-solid fa-clock-rotate-left" /> -->
         <!-- <Icon name="fa6-solid:clock-rotate-left" /> -->
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -444,7 +440,6 @@
 
     <el-menu-item index="/ranks">
       <el-icon>
-        <!-- <font-awesome-icon icon="fa-solid fa-ranking-star" /> -->
         <!-- <Icon name="fa6-solid:ranking-star" /> -->
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -44,8 +44,7 @@ jobs:
 
       - name: Install Dependencies and Build
         run: |
-          rm -rf node_modules
-          pnpm install --no-frozen-lockfile
+          pnpm install --frozen-lockfile
           npm run build
 
       - name: Install SSH key

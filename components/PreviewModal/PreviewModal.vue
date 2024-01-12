@@ -329,7 +329,7 @@
                   {{ item?.name }}
                   <span v-if="isEpisodes">
                     {{
-                      ' - Phần ' + dataMovie?.last_episode_to_air?.season_number
+                      ' - Phần ' + dataMovieRef?.last_episode_to_air?.season_number
                     }}
                   </span>
                 </h3> -->
@@ -362,33 +362,33 @@
 
                   <div class="views-rate">
                     <p class="views">
-                      {{ utils.viewFormatter(dataMovie?.views) }} lượt xem
+                      {{ utils.viewFormatter(dataMovieRef?.views) }} lượt xem
                     </p>
 
                     <p>
                       <span
-                        v-if="dataMovie?.vote_average >= 8"
+                        v-if="dataMovieRef?.vote_average >= 8"
                         style="color: green; font-weight: bold"
                       >
-                        {{ dataMovie?.vote_average.toFixed(2) }}
+                        {{ dataMovieRef?.vote_average.toFixed(2) }}
                       </span>
                       <span
                         v-if="
-                          dataMovie?.vote_average >= 5 &&
-                          dataMovie?.vote_average < 8
+                          dataMovieRef?.vote_average >= 5 &&
+                          dataMovieRef?.vote_average < 8
                         "
                         style="color: yellow; font-weight: bold"
                       >
-                        {{ dataMovie?.vote_average.toFixed(2) }}
+                        {{ dataMovieRef?.vote_average.toFixed(2) }}
                       </span>
                       <span
-                        v-if="dataMovie?.vote_average < 5"
+                        v-if="dataMovieRef?.vote_average < 5"
                         style="color: red; font-weight: bold"
                       >
-                        {{ dataMovie?.vote_average.toFixed(2) }}
+                        {{ dataMovieRef?.vote_average.toFixed(2) }}
                       </span>
                       diểm /
-                      {{ dataMovie?.vote_count + ' lượt' }}
+                      {{ dataMovieRef?.vote_count + ' lượt' }}
                     </p>
                   </div>
                 </div>
@@ -433,7 +433,7 @@ const nuxtConfig = useRuntimeConfig();
 const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
-const dataMovie = ref<any>(props.dataMovie || {});
+const dataMovieRef = ref<any>(props.dataMovie || {});
 // const isEpisodes = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const isAddToList = ref<boolean>(false);
@@ -665,9 +665,9 @@ watch(showVideo, () => {
 watch(isTeleport, async () => {
   if (isTeleport.value == true) {
     showVideo.value = true;
-    dataMovie.value = props.dataMovie;
+    dataMovieRef.value = props.dataMovie;
 
-    if (!dataMovie.value?.id) {
+    if (!dataMovieRef.value?.id) {
       loading.value = true;
 
       if (props.isEpisodes) {
@@ -676,7 +676,7 @@ watch(isTeleport, async () => {
         // )
         await getTvById(props.item?.id)
           .then((response) => {
-            dataMovie.value = response;
+            dataMovieRef.value = response;
           })
           .catch((e) => {})
           .finally(() => {
@@ -690,7 +690,7 @@ watch(isTeleport, async () => {
         // )
         await getMovieById(props.item?.id)
           .then((response) => {
-            dataMovie.value = response;
+            dataMovieRef.value = response;
           })
           .catch((e) => {})
           .finally(() => {
@@ -702,13 +702,13 @@ watch(isTeleport, async () => {
     }
 
     if (authStore.isLogin) {
-      if (dataMovie.value?.in_list) {
+      if (dataMovieRef.value?.in_list) {
         isAddToList.value = true;
       }
 
-      if (dataMovie.value?.history_progress) {
+      if (dataMovieRef.value?.history_progress) {
         isInHistory.value = true;
-        percent.value = dataMovie.value?.history_progress?.percent;
+        percent.value = dataMovieRef.value?.history_progress?.percent;
       }
     }
   }
@@ -738,7 +738,7 @@ const handleAddToList = (e: any) => {
   if (!isAddToList.value) {
     isAddToList.value = true;
     if (
-      !utils.handleAddItemToList(dataMovie.value?.id, props.item?.media_type)
+      !utils.handleAddItemToList(dataMovieRef.value?.id, props.item?.media_type)
     ) {
       isAddToList.value = false;
     }
@@ -746,7 +746,7 @@ const handleAddToList = (e: any) => {
     isAddToList.value = false;
     if (
       !utils.handleRemoveItemFromList(
-        dataMovie.value?.id,
+        dataMovieRef.value?.id,
         props.item?.media_type
       )
     ) {
