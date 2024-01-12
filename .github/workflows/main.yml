@@ -40,8 +40,9 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           npm install --legacy-peer-deps
-          npm install nuxt@3.9.0 -D --force
           npm run build
+        env:
+          CI: false
 
       - name: Install SSH key
         run: |
