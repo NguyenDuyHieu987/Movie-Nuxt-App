@@ -157,4 +157,3 @@ const onBackTop = () => {
 </script>
 
 <style lang="scss" src="~/assets/style/app.scss"></style>
-~/components/NetworkChecker

@@ -93,20 +93,25 @@ export default defineNuxtConfig({
     ]
   },
   experimental: {
-    payloadExtraction: true,
-    viewTransition: true,
+    asyncEntry: true,
+    asyncContext: true,
+    crossOriginPrefetch: true,
     componentIslands: {
       selectiveClient: true
     },
-    restoreState: true,
     headNext: true,
-    asyncContext: true,
-    // inlineSSRStyles: false,
+    payloadExtraction: true,
+    renderJsonPayloads: true,
+    restoreState: true,
+    viewTransition: true,
     defaults: {
       useAsyncData: {
         deep: true
       }
     }
+  },
+  features: {
+    // inlineSSRStyles: false,
   },
   devtools: { enabled: false },
   typescript: {
@@ -194,6 +199,7 @@ export default defineNuxtConfig({
   },
   // SEO
   site: {
+    name: 'Phimhay247',
     url: 'https://phimhay247z.org'
   },
   plugins: [],
@@ -301,9 +307,25 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      routes: [],
       crawlLinks: false,
+      routes: [
+        '/',
+        '/feature',
+        '/television',
+        '/login',
+        '/oauth/google',
+        '/signup',
+        '/ForgotPassword',
+        '/ResetPassword',
+        '/ChangeEmail',
+        '/upgrade/plans',
+        '/help',
+        '/contact'
+      ],
       ignore: [
+        '/discover',
+        '/search',
+        '/ranks',
         '/follow',
         '/history',
         '/YourAccount',
@@ -323,21 +345,11 @@ export default defineNuxtConfig({
     output: {}
   },
   generate: {
-    routes: [
-      // '/',
-      // '/feature',
-      // '/television',
-      '/upgrade/plans',
-      '/login',
-      '/signup',
-      '/ForgotPassword',
-      '/help',
-      '/contact'
-    ],
+    routes: [],
     exclude: []
   },
   routeRules: {
-    '/': { isr: true },
+    '/': { isr: true, prerender: true },
     '/feature/**': { isr: true },
     '/television/**': { isr: true },
     '/discover/**': { isr: true },
@@ -346,20 +358,25 @@ export default defineNuxtConfig({
     '/login': {
       prerender: true
     },
-    '/oauth/**': { isr: true },
+    '/oauth/**': { prerender: true },
     '/signup': {
       prerender: true
     },
     '/ForgotPassword': { prerender: true },
-    '/follow/**': { isr: true },
-    '/history/**': { isr: true },
+    '/ResetPassword': { prerender: true },
+    '/ChangeEmail': { prerender: true },
+    '/follow/**': { isr: false },
+    '/history/**': { isr: false },
     '/info-movie/**': { isr: true },
     '/info-tv/**': { isr: true },
     '/play-movie/**': { isr: true },
     '/play-tv/**': { isr: true },
+    '/upgrade/plans': { prerender: true },
+    '/upgrade/PaymentPicker': { isr: false },
     '/upgrade/**': { isr: true },
     '/upgrade': { redirect: '/upgrade/plans' },
-    '/YourAccount/**': { isr: true },
+    '/plans': { redirect: '/upgrade/plans' },
+    '/YourAccount/**': { isr: false },
     '/help/**': { prerender: true },
     '/contact/**': { prerender: true },
     '/contactus': { redirect: '/contact' }
