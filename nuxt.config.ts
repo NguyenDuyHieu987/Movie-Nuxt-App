@@ -132,9 +132,9 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     // SEO
-    '@nuxtjs/seo',
-    '@nuxtjs/sitemap'
+    'nuxt-simple-sitemap'
   ],
+  extends: ['nuxt-seo-kit'],
   antd: {
     icons: false
   },
@@ -194,7 +194,6 @@ export default defineNuxtConfig({
   },
   // SEO
   site: {
-    name: 'Phimhay247',
     url: 'https://phimhay247z.org'
   },
   plugins: [],
@@ -302,22 +301,9 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      routes: [
-        '/',
-        '/feature',
-        '/television',
-        '/login',
-        '/signup',
-        '/ForgotPassword',
-        '/upgrade/plans',
-        '/help',
-        '/contact'
-      ],
+      routes: [],
       crawlLinks: false,
       ignore: [
-        '/discover',
-        '/search',
-        '/ranks',
         '/follow',
         '/history',
         '/YourAccount',
@@ -337,7 +323,17 @@ export default defineNuxtConfig({
     output: {}
   },
   generate: {
-    routes: [],
+    routes: [
+      // '/',
+      // '/feature',
+      // '/television',
+      '/upgrade/plans',
+      '/login',
+      '/signup',
+      '/ForgotPassword',
+      '/help',
+      '/contact'
+    ],
     exclude: []
   },
   routeRules: {
@@ -348,13 +344,13 @@ export default defineNuxtConfig({
     '/search/**': { isr: true },
     '/ranks/**': { isr: true },
     '/login': {
-      isr: true
+      prerender: true
     },
     '/oauth/**': { isr: true },
     '/signup': {
-      isr: true
+      prerender: true
     },
-    '/ForgotPassword': { isr: true },
+    '/ForgotPassword': { prerender: true },
     '/follow/**': { isr: true },
     '/history/**': { isr: true },
     '/info-movie/**': { isr: true },
@@ -364,8 +360,8 @@ export default defineNuxtConfig({
     '/upgrade/**': { isr: true },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/YourAccount/**': { isr: true },
-    '/help/**': { isr: true },
-    '/contact/**': { isr: true },
+    '/help/**': { prerender: true },
+    '/contact/**': { prerender: true },
     '/contactus': { redirect: '/contact' }
   }
 });
