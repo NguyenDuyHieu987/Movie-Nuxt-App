@@ -93,25 +93,20 @@ export default defineNuxtConfig({
     ]
   },
   experimental: {
-    asyncEntry: true,
-    asyncContext: true,
-    crossOriginPrefetch: true,
+    payloadExtraction: true,
+    viewTransition: true,
     componentIslands: {
       selectiveClient: true
     },
-    headNext: true,
-    payloadExtraction: true,
-    renderJsonPayloads: true,
     restoreState: true,
-    viewTransition: true,
+    headNext: true,
+    asyncContext: true,
+    // inlineSSRStyles: false,
     defaults: {
       useAsyncData: {
         deep: true
       }
     }
-  },
-  features: {
-    // inlineSSRStyles: false,
   },
   devtools: { enabled: false },
   typescript: {
@@ -137,8 +132,6 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     // SEO
-    // '@nuxtjs/seo',
-    // '@nuxtjs/sitemap'
     'nuxt-simple-sitemap'
   ],
   extends: ['nuxt-seo-kit'],
@@ -201,7 +194,6 @@ export default defineNuxtConfig({
   },
   // SEO
   site: {
-    name: 'Phimhay247',
     url: 'https://phimhay247z.org'
   },
   plugins: [],
@@ -309,25 +301,9 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      routes: [
-        '/',
-        '/feature',
-        '/television',
-        '/login',
-        '/oauth/google',
-        '/signup',
-        '/ForgotPassword',
-        '/ResetPassword',
-        '/ChangeEmail',
-        '/upgrade/plans',
-        '/help',
-        '/contact'
-      ],
+      routes: [],
       crawlLinks: false,
       ignore: [
-        '/discover',
-        '/search',
-        '/ranks',
         '/follow',
         '/history',
         '/YourAccount',
@@ -347,11 +323,21 @@ export default defineNuxtConfig({
     output: {}
   },
   generate: {
-    routes: [],
+    routes: [
+      // '/',
+      // '/feature',
+      // '/television',
+      '/upgrade/plans',
+      '/login',
+      '/signup',
+      '/ForgotPassword',
+      '/help',
+      '/contact'
+    ],
     exclude: []
   },
   routeRules: {
-    '/': { isr: true, prerender: true },
+    '/': { isr: true },
     '/feature/**': { isr: true },
     '/television/**': { isr: true },
     '/discover/**': { isr: true },
@@ -360,25 +346,20 @@ export default defineNuxtConfig({
     '/login': {
       prerender: true
     },
-    '/oauth/**': { prerender: true },
+    '/oauth/**': { isr: true },
     '/signup': {
       prerender: true
     },
     '/ForgotPassword': { prerender: true },
-    '/ResetPassword': { prerender: true },
-    '/ChangeEmail': { prerender: true },
-    '/follow/**': { isr: false },
-    '/history/**': { isr: false },
+    '/follow/**': { isr: true },
+    '/history/**': { isr: true },
     '/info-movie/**': { isr: true },
     '/info-tv/**': { isr: true },
     '/play-movie/**': { isr: true },
     '/play-tv/**': { isr: true },
-    '/upgrade/plans': { prerender: true },
-    '/upgrade/PaymentPicker': { isr: false },
     '/upgrade/**': { isr: true },
     '/upgrade': { redirect: '/upgrade/plans' },
-    '/plans': { redirect: '/upgrade/plans' },
-    '/YourAccount/**': { isr: false },
+    '/YourAccount/**': { isr: true },
     '/help/**': { prerender: true },
     '/contact/**': { prerender: true },
     '/contactus': { redirect: '/contact' }
