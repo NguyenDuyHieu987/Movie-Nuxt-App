@@ -302,7 +302,17 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      routes: [],
+      routes: [
+        // '/',
+        // '/feature',
+        // '/television',
+        '/login',
+        '/signup',
+        '/ForgotPassword',
+        '/upgrade/plans',
+        '/help',
+        '/contact'
+      ],
       crawlLinks: false,
       ignore: [
         '/discover',
@@ -327,36 +337,24 @@ export default defineNuxtConfig({
     output: {}
   },
   generate: {
-    routes: [
-      '/',
-      '/feature',
-      '/television',
-      '/login',
-      '/signup',
-      '/ForgotPassword',
-      '/upgrade/plans',
-      '/help',
-      '/contact'
-    ],
+    routes: [],
     exclude: []
   },
   routeRules: {
-    '/': { isr: true, prerender: true },
-    '/feature/**': { isr: true, prerender: true },
-    '/television/**': { isr: true, prerender: true },
+    '/': { isr: true },
+    '/feature/**': { isr: true },
+    '/television/**': { isr: true },
     '/discover/**': { isr: true },
     '/search/**': { isr: true },
     '/ranks/**': { isr: true },
     '/login': {
-      isr: true,
-      prerender: true
+      isr: true
     },
     '/oauth/**': { isr: true },
     '/signup': {
-      isr: true,
-      prerender: true
+      isr: true
     },
-    '/ForgotPassword': { isr: true, prerender: true },
+    '/ForgotPassword': { isr: true },
     '/follow/**': { isr: true },
     '/history/**': { isr: true },
     '/info-movie/**': { isr: true },
@@ -364,11 +362,10 @@ export default defineNuxtConfig({
     '/play-movie/**': { isr: true },
     '/play-tv/**': { isr: true },
     '/upgrade/**': { isr: true },
-    '/upgrade/plans': { prerender: true },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/YourAccount/**': { isr: true },
-    '/help/**': { isr: true, prerender: true },
-    '/contact/**': { isr: true, prerender: true },
+    '/help/**': { isr: true },
+    '/contact/**': { isr: true },
     '/contactus': { redirect: '/contact' }
   }
 });
