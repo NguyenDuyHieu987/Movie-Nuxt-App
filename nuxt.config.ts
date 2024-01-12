@@ -136,9 +136,11 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     // SEO
-    '@nuxtjs/seo',
-    '@nuxtjs/sitemap'
+    // '@nuxtjs/seo',
+    // '@nuxtjs/sitemap'
+    'nuxt-simple-sitemap'
   ],
+  extends: ['nuxt-seo-kit'],
   antd: {
     icons: false
   },
