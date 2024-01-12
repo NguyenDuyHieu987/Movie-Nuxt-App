@@ -101,6 +101,7 @@ export default defineNuxtConfig({
     },
     headNext: true,
     payloadExtraction: true,
+    renderJsonPayloads: true,
     restoreState: true,
     viewTransition: true,
     defaults: {
@@ -136,9 +137,11 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     // SEO
-    '@nuxtjs/seo',
-    '@nuxtjs/sitemap'
+    // '@nuxtjs/seo',
+    // '@nuxtjs/sitemap'
+    'nuxt-simple-sitemap'
   ],
+  extends: ['nuxt-seo-kit'],
   antd: {
     icons: false
   },
@@ -311,7 +314,7 @@ export default defineNuxtConfig({
         '/feature',
         '/television',
         '/login',
-        '/oauth',
+        '/oauth/google',
         '/signup',
         '/ForgotPassword',
         '/ResetPassword',
@@ -322,9 +325,9 @@ export default defineNuxtConfig({
       ],
       crawlLinks: false,
       ignore: [
-        '/discover',
-        '/search',
-        '/ranks',
+        // '/discover',
+        // '/search',
+        // '/ranks',
         '/follow',
         '/history',
         '/YourAccount',
@@ -371,6 +374,7 @@ export default defineNuxtConfig({
     '/play-movie/**': { isr: true },
     '/play-tv/**': { isr: true },
     '/upgrade/plans': { prerender: true },
+    '/upgrade/PaymentPicker': { isr: false },
     '/upgrade/**': { isr: true },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/plans': { redirect: '/upgrade/plans' },
