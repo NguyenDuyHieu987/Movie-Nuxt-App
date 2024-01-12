@@ -66,10 +66,6 @@ definePageMeta({
   // }
 });
 
-const authStore = useAuthStore();
-const selectedPlan = ref<plan>();
-const showAnimation = ref<boolean>(false);
-
 useHead({
   title: 'Nâng cấp tài khoản',
   htmlAttrs: { lang: 'vi' }
@@ -84,6 +80,10 @@ useSeoMeta({
   ogDescription: 'Nâng cấp tài khoản, Dịch vụ, đăng ký gói',
   ogLocale: 'vi'
 });
+
+const authStore = useAuthStore();
+const selectedPlan = ref<plan>();
+const showAnimation = ref<boolean>(false);
 
 onBeforeMount(async () => {
   await nextTick();

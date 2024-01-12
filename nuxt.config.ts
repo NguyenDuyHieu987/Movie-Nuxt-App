@@ -306,7 +306,20 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      routes: [],
+      routes: [
+        '/',
+        '/feature',
+        '/television',
+        '/login',
+        '/oauth',
+        '/signup',
+        '/ForgotPassword',
+        '/ResetPassword',
+        '/ChangeEmail',
+        '/upgrade/plans',
+        '/help',
+        '/contact'
+      ],
       crawlLinks: false,
       ignore: [
         '/discover',
@@ -331,34 +344,13 @@ export default defineNuxtConfig({
     output: {}
   },
   generate: {
-    routes: [
-      // '/',
-      // '/feature',
-      // '/television',
-      '/login',
-      '/signup',
-      '/ForgotPassword',
-      '/upgrade/plans',
-      '/help',
-      '/contact'
-    ],
-    exclude: [
-      '/discover',
-      '/search',
-      '/ranks',
-      '/follow',
-      '/history',
-      '/YourAccount',
-      '/info-movie',
-      '/info-tv',
-      '/play-movie',
-      '/play-tv'
-    ]
+    routes: [],
+    exclude: []
   },
   routeRules: {
-    '/': { isr: true },
-    '/feature/**': { isr: true, prerender: true },
-    '/television/**': { isr: true, prerender: true },
+    '/': { isr: true, prerender: true },
+    '/feature/**': { isr: true },
+    '/television/**': { isr: true },
     '/discover/**': { isr: true },
     '/search/**': { isr: true },
     '/ranks/**': { isr: true },
@@ -370,6 +362,8 @@ export default defineNuxtConfig({
       prerender: true
     },
     '/ForgotPassword': { prerender: true },
+    '/ResetPassword': { prerender: true },
+    '/ChangeEmail': { prerender: true },
     '/follow/**': { isr: false },
     '/history/**': { isr: false },
     '/info-movie/**': { isr: true },

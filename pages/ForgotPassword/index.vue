@@ -93,6 +93,21 @@ definePageMeta({
   }
 });
 
+useHead({
+  title: 'Trợ giúp, Quên mật khẩu',
+  htmlAttrs: { lang: 'vi' }
+});
+
+useSeoMeta({
+  title: 'Trợ giúp, Quên mật khẩu',
+  description: 'Quên mật khẩu của bạn',
+  ogTitle: 'Trợ giúp, Quên mật khẩu',
+  ogType: 'video.movie',
+  // ogUrl: window.location.href,
+  ogDescription: 'Quên mật khẩu của bạn',
+  ogLocale: 'vi'
+});
+
 const utils = useUtils();
 const loadingForgotPassword = ref<boolean>(false);
 const isActionForm = ref<boolean>(false);
@@ -113,21 +128,6 @@ const noteForgotPassword = ref<string>(
 );
 const disabled = computed<boolean>((): boolean => {
   return !utils.isEmailValid(formForgotPassword.email);
-});
-
-useHead({
-  title: 'Trợ giúp, Quên mật khẩu',
-  htmlAttrs: { lang: 'vi' }
-});
-
-useSeoMeta({
-  title: 'Trợ giúp, Quên mật khẩu',
-  description: 'Quên mật khẩu của bạn',
-  ogTitle: 'Trợ giúp, Quên mật khẩu',
-  ogType: 'video.movie',
-  // ogUrl: window.location.href,
-  ogDescription: 'Quên mật khẩu của bạn',
-  ogLocale: 'vi'
 });
 
 const reset = () => {

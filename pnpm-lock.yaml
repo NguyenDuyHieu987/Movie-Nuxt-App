@@ -9,8 +9,8 @@ dependencies:
     specifier: ^1.0.3
     version: 1.0.3(typescript@5.3.3)
   '@ant-design/icons-vue':
-    specifier: ^7.0.1
-    version: 7.0.1(vue@3.4.10)
+    specifier: ^6.1.0
+    version: 6.1.0(vue@3.4.10)
   '@element-plus/icons-vue':
     specifier: ^2.3.1
     version: 2.3.1(vue@3.4.10)
@@ -330,6 +330,7 @@ packages:
       '@ant-design/colors': 6.0.0
       '@ant-design/icons-svg': 4.3.1
       vue: 3.4.10(typescript@5.3.3)
+    dev: true
 
   /@antfu/install-pkg@0.1.1:
     resolution: {integrity: sha512-LyB/8+bSfa0DFGC06zpCEfs89/XoWZwws5ygEa5D+Xsm3OfI+aXQ86VgVG7Acyef+rSZ5HE7J8rrxzrQeM3PjQ==}

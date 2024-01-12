@@ -85,6 +85,21 @@ definePageMeta({
   keepalive: false
 });
 
+useHead({
+  title: 'Thay đỏi Email',
+  htmlAttrs: { lang: 'vi' }
+});
+
+useSeoMeta({
+  title: 'Thay đỏi Email',
+  description: 'Thay đỏi Email của bạn',
+  ogTitle: 'Thay đổi Email',
+  ogType: 'video.movie',
+  // ogUrl: window.location.href,
+  ogDescription: 'Thay đỏi Email của bạn',
+  ogLocale: 'vi'
+});
+
 const authStore = useAuthStore();
 const utils = useUtils();
 const route = useRoute();
@@ -108,21 +123,6 @@ const disabled = computed<boolean>((): boolean => {
   );
 });
 const nuxtLoadingIndicator = useLoadingIndicator();
-
-useHead({
-  title: 'Thay đỏi Email',
-  htmlAttrs: { lang: 'vi' }
-});
-
-useSeoMeta({
-  title: 'Thay đỏi Email',
-  description: 'Thay đỏi Email của bạn',
-  ogTitle: 'Thay đổi Email',
-  ogType: 'video.movie',
-  // ogUrl: window.location.href,
-  ogDescription: 'Thay đỏi Email của bạn',
-  ogLocale: 'vi'
-});
 
 await VerifyChangeEmail(chgEmailToken.value)
   .then((response) => {

@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@aacassandra/vue3-progressbar": "^1.0.3",
-    "@ant-design/icons-vue": "^7.0.1",
+    "@ant-design/icons-vue": "^6.1.0",
     "@element-plus/icons-vue": "^2.3.1",
     "@iconify/vue": "^4.1.1",
     "@nuxt/image": "^1.2.0",
@@ -40,7 +40,7 @@
     "crypto-js": "^4.2.0",
     "dompurify": "^3.0.8",
     "gsap": "^3.12.4",
-    "hls.js": "^1.4.14",
+    "hls.js": "^1.5.1",
     "less": "^4.2.0",
     "less-loader": "^11.1.4",
     "lodash": "^4.17.21",
