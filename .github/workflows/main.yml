@@ -45,8 +45,6 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           pnpm install
-          pnpm install nuxt@3.9.0 -D 
-          pnpm install @types/node@20.10.5 -D 
           npm run build
 
       - name: Install SSH key
