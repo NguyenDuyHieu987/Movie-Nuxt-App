@@ -132,9 +132,9 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     // SEO
+    '@nuxtjs/seo',
     '@nuxtjs/sitemap'
   ],
-  extends: ['nuxt-seo-kit'],
   antd: {
     icons: false
   },
@@ -303,9 +303,9 @@ export default defineNuxtConfig({
     // preset: 'static',
     prerender: {
       routes: [
-        // '/',
-        // '/feature',
-        // '/television',
+        '/',
+        '/feature',
+        '/television',
         '/login',
         '/signup',
         '/ForgotPassword',
