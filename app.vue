@@ -82,7 +82,7 @@ import { RequireAuthDialog } from '~/components/RequireAuth';
 const runtimeConfig = useRuntimeConfig();
 
 useHead({
-  titleTemplate: (titleChunk) => {
+  titleTemplate: (titleChunk: any) => {
     return titleChunk
       ? `${titleChunk} ${runtimeConfig.public.titleSeparator} ${runtimeConfig.public.siteName}`
       : runtimeConfig.public.siteName;
