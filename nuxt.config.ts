@@ -204,7 +204,7 @@ export default defineNuxtConfig({
   },
   plugins: [],
   hooks: {
-    'pages:extend': function (pages) {
+    'pages:extend': function (pages: any) {
       function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
         const pagesToRemove = [];
         for (const page of pages) {
@@ -323,16 +323,16 @@ export default defineNuxtConfig({
         '/contact'
       ],
       ignore: [
-        '/discover',
-        '/search',
-        '/ranks',
-        '/follow',
-        '/history',
-        '/YourAccount',
-        '/info-movie',
-        '/info-tv',
-        '/play-movie',
-        '/play-tv'
+        // '/discover',
+        // '/search',
+        // '/ranks',
+        // '/follow',
+        // '/history',
+        // '/YourAccount',
+        // '/info-movie',
+        // '/info-tv',
+        // '/play-movie',
+        // '/play-tv'
       ]
     },
     minify: true,
