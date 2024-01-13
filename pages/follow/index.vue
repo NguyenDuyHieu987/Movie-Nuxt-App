@@ -132,7 +132,6 @@ import gsap from 'gsap';
 import _ from 'lodash';
 import { storeToRefs } from 'pinia';
 
-// import scrollBottom from 'scroll-bottom';
 import { MovieCardHorizontalFollow } from '~/components/MovieCardHorizontalFollow';
 import { RequireAuth } from '~/components/RequireAuth';
 import { SortTab } from '~/components/SortTab';
@@ -208,7 +207,6 @@ onMounted(() => {
 
     if (
       utils.isScrollBottom() &&
-      // Math.floor(scrollBottom()) == 0 &&
       total.value > limit.value &&
       dataList.value?.length < total.value
     ) {

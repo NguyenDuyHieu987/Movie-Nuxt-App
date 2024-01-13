@@ -83,9 +83,6 @@ dependencies:
   plyr:
     specifier: ^3.7.8
     version: 3.7.8
-  scroll-bottom:
-    specifier: ^0.1.0
-    version: 0.1.0
   swiper:
     specifier: ^11.0.5
     version: 11.0.5
@@ -114,7 +111,7 @@ devDependencies:
     version: 1.4.1(ant-design-vue@3.2.20)(rollup@2.79.1)(vue@3.4.10)
   '@element-plus/nuxt':
     specifier: ^1.0.7
-    version: 1.0.7(@element-plus/icons-vue@2.3.1)(element-plus@2.4.4)(rollup@2.79.1)
+    version: 1.0.7(@element-plus/icons-vue@2.3.1)(element-plus@2.5.1)(rollup@2.79.1)
   '@nuxtjs/fontaine':
     specifier: ^0.4.1
     version: 0.4.1(rollup@2.79.1)
@@ -152,8 +149,8 @@ devDependencies:
     specifier: ^16.3.1
     version: 16.3.1
   element-plus:
-    specifier: ^2.4.4
-    version: 2.4.4(vue@3.4.10)
+    specifier: ^2.5.1
+    version: 2.5.1(vue@3.4.10)
   eslint:
     specifier: ^8.56.0
     version: 8.56.0
@@ -1579,7 +1576,7 @@ packages:
     dependencies:
       vue: 3.4.10(typescript@5.3.3)
 
-  /@element-plus/nuxt@1.0.7(@element-plus/icons-vue@2.3.1)(element-plus@2.4.4)(rollup@2.79.1):
+  /@element-plus/nuxt@1.0.7(@element-plus/icons-vue@2.3.1)(element-plus@2.5.1)(rollup@2.79.1):
     resolution: {integrity: sha512-cRP2iMTzrKKKgfXuWXQ/HAC1vawVeErNZPz7ylA2OfhR+RKPS0UbDy43zytBx/imxhuZbtDI6lPuGAf7TOMYDQ==}
     peerDependencies:
       '@element-plus/icons-vue': '>=0.2.6'
@@ -1587,7 +1584,7 @@ packages:
     dependencies:
       '@element-plus/icons-vue': 2.3.1(vue@3.4.10)
       '@nuxt/kit': 3.9.1(rollup@2.79.1)
-      element-plus: 2.4.4(vue@3.4.10)
+      element-plus: 2.5.1(vue@3.4.10)
       magic-string: 0.27.0
       unplugin: 1.6.0
     transitivePeerDependencies:
@@ -5744,8 +5741,8 @@ packages:
   /electron-to-chromium@1.4.629:
     resolution: {integrity: sha512-5UUkr3k3CZ/k+9Sw7vaaIMyOzMC0XbPyprKI3n0tbKDqkzTDOjK4izm7DxlkueRMim6ZZQ1ja9F7hoFVplHihA==}
 
-  /element-plus@2.4.4(vue@3.4.10):
-    resolution: {integrity: sha512-TlKubXJgxwhER0dw+8ULn9hr9kZjraV4R6Q/eidwWUwCKxwXYPBGmMKsZ/85tlxlhMYbcLZd/YZh6G3QkHX4fg==}
+  /element-plus@2.5.1(vue@3.4.10):
+    resolution: {integrity: sha512-ylX9h2U125/nesPlLWgfPkI1rID9EiGROlgf0QkzBUjx+/d4w/YqS+IqZZZC5yvQPhKYu9aMDqEBzOurwn4Cnw==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
@@ -10674,10 +10671,6 @@ packages:
       '@types/json-schema': 7.0.15
       ajv: 6.12.6
       ajv-keywords: 3.5.2(ajv@6.12.6)
-
-  /scroll-bottom@0.1.0:
-    resolution: {integrity: sha512-wBgCcBm6axHhWUKAuTBsRlnUuoOrlVm/5PBMO9UKlZQ43ypj7QmsR4EY/Zpw277GY6r65KgfY9w0eVUPLjGKXQ==}
-    dev: false
 
   /scroll-into-view-if-needed@2.2.31:
     resolution: {integrity: sha512-dGCXy99wZQivjmjIqihaBQNjryrz5rueJY7eHfTdyWEiR4ttYpsajb14rn9s5d4DY4EcY6+4+U/maARBXJedkA==}
