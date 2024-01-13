@@ -95,6 +95,7 @@
         &::before {
           content: attr(aria-label);
           color: var(--text-placeholder-color);
+          cursor: text;
         }
 
         &::-webkit-scrollbar {
