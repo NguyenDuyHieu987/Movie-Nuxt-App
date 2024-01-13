@@ -45,6 +45,7 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           pnpm install --frozen-lockfile
+          pnpm i vue@3.4.10
           npm run build
 
       - name: Install SSH key
