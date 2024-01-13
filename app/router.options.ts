@@ -38,9 +38,9 @@ export default <RouterConfig>{
     //   return savedPosition;
     // }
 
-    if (!isChangingPage(to, from) && !isFirstLoad) {
-      nuxtApp.callHook('page:loading:end');
-    }
+    // if (!isChangingPage(to, from) && !isFirstLoad) {
+    //   nuxtApp.callHook('page:loading:end');
+    // }
 
     const routeAllowsScrollToTop =
       typeof to.meta.scrollToTop === 'function'

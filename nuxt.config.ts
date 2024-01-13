@@ -323,16 +323,16 @@ export default defineNuxtConfig({
         '/contact'
       ],
       ignore: [
-        // '/discover',
-        // '/search',
-        // '/ranks',
-        // '/follow',
-        // '/history',
-        // '/YourAccount',
-        // '/info-movie',
-        // '/info-tv',
-        // '/play-movie',
-        // '/play-tv'
+        '/discover',
+        '/search',
+        '/ranks',
+        '/follow',
+        '/history',
+        '/YourAccount',
+        '/info-movie',
+        '/info-tv',
+        '/play-movie',
+        '/play-tv'
       ]
     },
     minify: true,

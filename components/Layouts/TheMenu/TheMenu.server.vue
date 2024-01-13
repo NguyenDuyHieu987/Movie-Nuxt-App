@@ -15,8 +15,6 @@
     :show-timeout="0"
     :hide-timeout="0"
   >
-    <!-- :forceSubMenuRender="true" -->
-
     <el-menu-item index="/">
       <el-icon> <HomeOutlined /></el-icon>
 
