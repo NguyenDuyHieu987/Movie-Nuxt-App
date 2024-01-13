@@ -47,6 +47,8 @@ jobs:
           pnpm install --frozen-lockfile
           pnpm i vue@3.4.10
           npm run build
+        env:
+          CI: false
 
       - name: Install SSH key
         run: |
