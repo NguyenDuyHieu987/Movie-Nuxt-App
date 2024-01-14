@@ -316,8 +316,6 @@ export default defineNuxtConfig({
         '/oauth/google',
         '/signup',
         '/ForgotPassword',
-        '/ResetPassword',
-        '/ChangeEmail',
         '/upgrade/plans',
         '/help',
         '/contact'
@@ -363,8 +361,8 @@ export default defineNuxtConfig({
       prerender: true
     },
     '/ForgotPassword': { prerender: true },
-    '/ResetPassword': { prerender: true },
-    '/ChangeEmail': { prerender: true },
+    '/ResetPassword': { isr: false },
+    '/ChangeEmail': { isr: false },
     '/follow/**': { isr: false },
     '/history/**': { isr: false },
     '/info-movie/**': { isr: true },

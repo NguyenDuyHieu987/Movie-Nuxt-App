@@ -153,7 +153,7 @@ useSeoMeta({
 
 await VerifyResetPassword(rstPwdToken.value)
   .then((response) => {
-    if (response.success) {
+    if (response?.success) {
       formResetPassword.username = response?.result.username;
       formResetPassword.email = response?.result.email;
     } else {
