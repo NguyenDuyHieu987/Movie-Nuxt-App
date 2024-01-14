@@ -44,7 +44,10 @@ jobs:
 
       - name: Install Dependencies and Build
         run: |
+          npm cache clean --force
+          pnpm store prune
           pnpm install
+          pnpm i @popperjs/core
           npm run build
 
       - name: Install SSH key
