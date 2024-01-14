@@ -10,7 +10,7 @@
           @finish="handleLogin"
         >
           <h1 class="title-login gradient-title-default">
-            <span>Đăng nhập </span>
+            <span> Đăng nhập </span>
           </h1>
 
           <a-form-item
@@ -239,9 +239,8 @@ const urlBack = computed(() =>
         '/forgotpassword',
         '/resetpassword',
         '/changeemail'
-      ].some(
-        (item) =>
-          router.options.history.state?.back.toLowerCase().startsWith(item)
+      ].some((item) =>
+        router.options.history.state?.back.toLowerCase().startsWith(item)
       )
       ? '/'
       : router.options.history.state.back
