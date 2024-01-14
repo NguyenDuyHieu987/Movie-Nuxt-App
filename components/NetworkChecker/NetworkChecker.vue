@@ -93,7 +93,7 @@ onErrorCaptured((err) => {
 
 watch(
   isOnline,
-  (newVal, oldVal) => {
+  async (newVal, oldVal) => {
     if (isOnline.value == false) {
       throw createError({
         fatal: true,
@@ -107,9 +107,15 @@ watch(
     if (oldVal == true && newVal == false) {
       showOffline.value = true;
       showOnline.value = false;
+
+      await wait(5000);
+      showOffline.value = false;
     } else if (oldVal == false && newVal == true) {
       showOffline.value = false;
       showOnline.value = true;
+
+      await wait(5000);
+      showOnline.value = false;
     }
   },
   {
