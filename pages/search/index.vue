@@ -9,9 +9,8 @@
         v-show="
           searchData?.length || searchDataMovie?.length || searchDataTv?.length
         "
-        ref="select"
         v-model:value="activeTabSearch"
-        style="width: 170px"
+        class="movie-type-select"
         placeholder=""
         @change="handleChangeType"
       >

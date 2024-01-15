@@ -5,6 +5,11 @@
     justify-content: space-between;
     gap: 10px;
     flex-wrap: wrap;
+
+    .movie-type-select {
+      margin-left: auto;
+      width: 150px;
+    }
   }
 
   .search-section {

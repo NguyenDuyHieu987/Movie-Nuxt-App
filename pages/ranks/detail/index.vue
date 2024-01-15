@@ -23,7 +23,8 @@
         <div class="rank-sortBy">
           <a-select
             v-model:value="formFilterRank.sortBy"
-            style="width: 170px"
+            class="rank-sortBy-select"
+            style="width: 150px"
             placeholder="Xắp sếp theo"
             @change="handleChangeType"
           >
