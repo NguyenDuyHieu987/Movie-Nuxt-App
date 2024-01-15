@@ -265,7 +265,7 @@ export default defineNuxtConfig({
       include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
     },
     css: {
-      transformer: 'lightningcss',
+      transformer: 'postcss',
       preprocessorOptions: {
         scss: {
           additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
