@@ -136,7 +136,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
-    'nuxt-purgecss',
+    // 'nuxt-purgecss',
     // SEO
     '@nuxtjs/sitemap'
   ],
@@ -270,7 +270,7 @@ export default defineNuxtConfig({
           additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
         }
       },
-      // transformer: 'lightningcss',
+      transformer: 'postcss',
       lightningcss: {}
       // postcss: {}
     },
