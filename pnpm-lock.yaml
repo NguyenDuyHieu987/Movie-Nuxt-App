@@ -151,6 +151,9 @@ devDependencies:
   '@vue/test-utils':
     specifier: ^2.4.3
     version: 2.4.3(vue@3.4.13)
+  autoprefixer:
+    specifier: ^10.4.16
+    version: 10.4.16(postcss@8.4.33)
   cross-env:
     specifier: ^7.0.3
     version: 7.0.3
@@ -226,6 +229,9 @@ devDependencies:
   nuxt-simple-robots:
     specifier: 4.0.0-rc.11
     version: 4.0.0-rc.11(@nuxt/devtools@1.0.8)(@vue/compiler-core@3.4.13)(axios@1.6.5)(nuxt@3.9.1)(postcss@8.4.33)(rollup@2.79.1)(vite@5.0.11)(vue@3.4.13)(webpack@5.89.0)
+  postcss:
+    specifier: ^8.4.33
+    version: 8.4.33
   prettier:
     specifier: ^3.2.2
     version: 3.2.2
