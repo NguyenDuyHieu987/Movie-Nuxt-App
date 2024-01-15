@@ -13,9 +13,6 @@ console.log('antdVersion:', antdVersion);
 
 export default defineNuxtConfig({
   app: {
-    rootId: '__nuxt',
-    buildAssetsDir: '/_nuxt/',
-    keepalive: true,
     head: {
       title: 'Phimhay247',
       charset: 'utf-8',
@@ -56,6 +53,9 @@ export default defineNuxtConfig({
         }
       ]
     },
+    rootId: '__nuxt',
+    buildAssetsDir: '/_nuxt/',
+    keepalive: true,
     pageTransition: { name: 'page', mode: 'out-in', appear: true }
   },
   runtimeConfig: {
@@ -223,6 +223,7 @@ export default defineNuxtConfig({
   },
   build: {
     // analyze: true,
+    transpile: isProduction ? ['ant-design-vue', 'element-plus'] : []
   },
   components: {
     dirs: [
@@ -260,7 +261,9 @@ export default defineNuxtConfig({
       noExternal: []
     },
     optimizeDeps: {
-      include: ['./components/**/*.vue']
+      include: !isProduction
+        ? ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
+        : []
     },
     css: {
       preprocessorOptions: {
@@ -302,7 +305,8 @@ export default defineNuxtConfig({
       hmr: {
         overlay: true
       }
-    }
+    },
+    test: {}
   },
   nitro: {
     // preset: 'static',
