@@ -136,6 +136,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
+    'nuxt-purgecss',
     // SEO
     '@nuxtjs/sitemap'
   ],
@@ -264,12 +265,14 @@ export default defineNuxtConfig({
       include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
     },
     css: {
+      transformer: 'lightningcss',
       preprocessorOptions: {
         scss: {
           additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
         }
       },
-      lightningcss: {}
+      lightningcss: {},
+      postcss: {}
     },
     build: {
       sourcemap: 'hidden',
