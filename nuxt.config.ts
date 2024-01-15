@@ -261,9 +261,7 @@ export default defineNuxtConfig({
       noExternal: []
     },
     optimizeDeps: {
-      include: !isProduction
-        ? ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
-        : []
+      include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
     },
     css: {
       preprocessorOptions: {
