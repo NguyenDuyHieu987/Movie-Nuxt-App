@@ -271,8 +271,8 @@ export default defineNuxtConfig({
           additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
         }
       },
-      lightningcss: {},
-      postcss: {}
+      lightningcss: {}
+      // postcss: {}
     },
     build: {
       sourcemap: 'hidden',
