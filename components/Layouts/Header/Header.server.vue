@@ -302,8 +302,8 @@ const handleChangeInput = (query: string) => {
         });
 
       // navigateTo(
-      //   `/search?q=${query?.replaceAll(' ', '+').toLowerCase()}`
-      //   // query: { q: query?.replaceAll(' ', '+').toLowerCase() },
+      //   `/search?q=${query?.replaceAll(' ', '+')}`
+      //   // query: { q: query?.replaceAll(' ', '+') },
       // );
     }, 50);
     // }, 700);
@@ -320,8 +320,8 @@ const handleChangeInput = (query: string) => {
 const handleSearch = (value: string) => {
   if (value.length > 0) {
     navigateTo(
-      `/search?q=${value?.replaceAll(' ', '+').toLowerCase()}`
-      // query: { q: value?.replaceAll(' ', '+').toLowerCase() },
+      `/search?q=${value?.replaceAll(' ', '+')}`
+      // query: { q: value?.replaceAll(' ', '+') },
     );
 
     // valueInput.value = '';

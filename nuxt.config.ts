@@ -9,7 +9,7 @@ import svgLoader from 'vite-svg-loader';
 
 const antdVersion: number = +version.split('.')[0];
 
-console.log('antdVersion:', antdVersion);
+console.log('Antd version:', antdVersion);
 
 export default defineNuxtConfig({
   app: {
@@ -265,14 +265,14 @@ export default defineNuxtConfig({
       include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
     },
     css: {
-      transformer: 'postcss',
       preprocessorOptions: {
         scss: {
           additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
         }
       },
-      lightningcss: {},
-      postcss: {}
+      // transformer: 'lightningcss',
+      lightningcss: {}
+      // postcss: {}
     },
     build: {
       sourcemap: 'hidden',
