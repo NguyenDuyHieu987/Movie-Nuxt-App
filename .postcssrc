@@ -1,6 +1,6 @@
 {
-    "plugins": {
-        "tailwindcss": {},
-        "autoprefixer": {}
-    }
+  "syntax": "postcss-scss",
+  "plugins": {
+    "autoprefixer": {}
+  }
 }
