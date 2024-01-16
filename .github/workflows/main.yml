@@ -76,4 +76,6 @@ jobs:
           key: ${{ secrets.PHIMHAY247_PK }}
           script: |
             cd ${{secrets.TARGET}}
-            /home/${{ secrets.PHIMHAY247_USERNAME }}/.nvm/versions/node/v20.10.0/bin/pm2 reload ecosystem.config.cjs
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            pm2 reload ecosystem.config.cjs
