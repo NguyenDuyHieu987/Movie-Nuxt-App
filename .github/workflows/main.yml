@@ -74,4 +74,4 @@ jobs:
           key: ${{ secrets.PHIMHAY247_PK }}
           script: |
             cd /home/phimhay247z/htdocs/phimhay247z.org
-            /home/azure/.nvm/versions/node/v20.10.0/bin/pm2 reload ecosystem.config.cjs
+            /home/${{ secrets.PHIMHAY247_USERNAME }}/.nvm/versions/node/v20.10.0/bin/pm2 reload ecosystem.config.cjs
