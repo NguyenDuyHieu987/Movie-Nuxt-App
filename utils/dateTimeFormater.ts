@@ -90,7 +90,7 @@ function fromNow(
         if (diffMinutes > 1) {
           fromNowStr = Math.round(diffMinutes) + ' phút trước';
         } else {
-          // const diffSeconds = Math.round(diff / 1000);
+          // const diffSeconds = Math.round(diff / ONE_SECOND);
 
           // fromNowStr = Math.round(diffSeconds) + ' giây trước';
 

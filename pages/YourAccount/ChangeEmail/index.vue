@@ -528,7 +528,7 @@ const handleSubmitChangeEmail = () => {
             email: formChangeEmail.newEmail,
             exp_after: +response.exp_offset
           },
-          +response.exp_offset / (60 * 60)
+          +response.exp_offset * ONE_SECOND
         );
 
         noteChangeEmail.value = `Chúng tôi đã gửi email kèm hướng dẫn thay đổi email đến ${

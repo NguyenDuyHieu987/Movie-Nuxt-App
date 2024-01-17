@@ -3,7 +3,7 @@ function setWithExpiry(key: string, value: any, ttl: number) {
 
   const item = {
     value,
-    expiry: now.getTime() + ttl
+    expiry: Math.round(now.getTime() + ttl)
   };
 
   if (process.client) {
@@ -58,7 +58,7 @@ export function getWithExpiry_ExpRemain(key: any) {
       }
       return null;
     } else {
-      item.value.exp_after = (item.expiry - nowTime) / 1000;
+      item.value.exp_after = Math.round((item.expiry - nowTime) / ONE_SECOND);
 
       if (process.client) {
         window.localStorage.setItem(key, JSON.stringify(item));
