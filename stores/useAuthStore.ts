@@ -40,6 +40,10 @@ export const useAuthStore = defineStore('auth', () => {
             }
 
             if (
+              utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) !=
+                response.headers.get('Authorization') ||
+              utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) !=
+                utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
               utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) == null
             ) {
               utils.localStorage.setWithExpiry(

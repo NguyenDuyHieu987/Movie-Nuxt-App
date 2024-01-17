@@ -7,5 +7,5 @@ export const TOKEN = {
     COOKIE_VRF_EMAIL_TOKEN: 'vrf_email_token',
     COOKIE_CHG_PASSWORD_TOKEN: 'chg_pwd_token'
   },
-  OFFSET: { USER_TOKEN: ONE_DAY }
+  OFFSET: { USER_TOKEN: ONE_HOUR }
 };

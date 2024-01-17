@@ -62,7 +62,8 @@ export function getUserToken(params: { user_token: string }) {
   const headers = { Authorization: `Bearer ${params.user_token}` };
 
   return makeRequest(`/${PREFIX_ROUTE}/getuser`, {
-    headers
+    headers,
+    getResponseHeaders: true
   });
 }
 
