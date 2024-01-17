@@ -3,30 +3,28 @@ import { makeRequest } from './makeRequest';
 const PREFIX_ROUTE = 'account';
 
 export function AccountConfirm(
-  params:
-    | {
-        oldPassword: string;
-        newPassword: string;
-        logOutAllDevice: boolean;
-        email: string;
-        newEmail: string;
-      }
-    | any,
+  params: {
+    oldPassword?: string;
+    newPassword?: string;
+    logOutAllDevice?: boolean;
+    email?: string;
+    newEmail?: string;
+  },
   type: string
 ) {
   const bodyFormData = new FormData();
 
   switch (type) {
     case 'change-password':
-      bodyFormData.append('old_password', params.oldPassword);
-      bodyFormData.append('new_password', params.newPassword);
-      bodyFormData.append('logout_all_device', params.logOutAllDevice);
+      bodyFormData.append('old_password', params.oldPassword!);
+      bodyFormData.append('new_password', params.newPassword!);
+      bodyFormData.append('logout_all_device', `${params.logOutAllDevice!}`);
       break;
     case 'email':
-      bodyFormData.append('email', params.email);
+      bodyFormData.append('email', params.email!);
       break;
     case 'change-email':
-      bodyFormData.append('new_email', params.newEmail);
+      bodyFormData.append('new_email', params.newEmail!);
       break;
   }
 
@@ -94,9 +92,11 @@ export function VerifyResetPassword(rstPwdToken: string) {
 export function ResetPassword(params: {
   rstPwdToken: string;
   newPassword: string;
+  logOutAllDevice: boolean;
 }) {
   const bodyFormData = new FormData();
   bodyFormData.append('new_password', params.newPassword);
+  bodyFormData.append('logout_all_device', `${params.logOutAllDevice}`);
 
   return makeRequest(`/${PREFIX_ROUTE}/reset-password`, {
     method: 'POST',

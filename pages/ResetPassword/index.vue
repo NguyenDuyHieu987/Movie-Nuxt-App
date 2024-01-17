@@ -74,6 +74,14 @@
                   />
                 </a-form-item>
 
+                <a-form-item class="logout-all-device">
+                  <a-checkbox
+                    v-model:checked="formResetPassword.logOutAllDevice"
+                  >
+                    Đăng xuất khỏi tất cả các thiết bị
+                  </a-checkbox>
+                </a-form-item>
+
                 <a-form-item>
                   <a-button
                     class="submit-form-button submit-btn click-active"
@@ -117,11 +125,13 @@ const formResetPassword = reactive<{
   email: string;
   newPassword: string;
   confirmNewPassword: string;
+  logOutAllDevice: boolean;
 }>({
   username: '',
   email: '',
   newPassword: '',
-  confirmNewPassword: ''
+  confirmNewPassword: '',
+  logOutAllDevice: false
 });
 const showAnimation = ref<boolean>(false);
 const isActionForm = ref<boolean>(false);
@@ -222,7 +232,8 @@ const handleSubmit = () => {
 
   ResetPassword({
     rstPwdToken: rstPwdToken.value,
-    newPassword: formResetPassword.confirmNewPassword
+    newPassword: formResetPassword.confirmNewPassword,
+    logOutAllDevice: formResetPassword.logOutAllDevice
   })
     .then((response) => {
       // console.log(response);

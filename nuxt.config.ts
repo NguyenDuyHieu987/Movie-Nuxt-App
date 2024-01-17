@@ -138,6 +138,7 @@ export default defineNuxtConfig({
     'nuxt-gtag',
     // 'nuxt-purgecss',
     // SEO
+    // '@nuxtjs/seo',
     '@nuxtjs/sitemap'
   ],
   extends: ['nuxt-seo-kit'],
