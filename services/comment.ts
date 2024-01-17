@@ -9,7 +9,7 @@ export function getCommentParent(
   limit: number = 20
 ) {
   return makeRequest(
-    `/${PREFIX_ROUTE}/get-all/${movieType}/${movieId}?skip=${skip}&limit=${limit}`
+    `/${PREFIX_ROUTE}/get-parent/${movieType}/${movieId}?skip=${skip}&limit=${limit}`
   );
 }
 
@@ -21,7 +21,7 @@ export function getCommentChild(
   limit: number = 10
 ) {
   return makeRequest(
-    `/${PREFIX_ROUTE}/get/${movieType}/${movieId}/${parentId}?skip=${skip}&limit=${limit}`
+    `/${PREFIX_ROUTE}/get-child/${movieType}/${movieId}/${parentId}?skip=${skip}&limit=${limit}`
   );
 }
 
