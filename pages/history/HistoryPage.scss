@@ -1,6 +1,6 @@
 .history-page {
   --history-sidebar-width: 340px;
-  // min-height: calc(101vh - var(--header-height));
+  overflow-y: scroll;
 
   .history-container {
     & > div {

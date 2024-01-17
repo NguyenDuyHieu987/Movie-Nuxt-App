@@ -1,6 +1,6 @@
 .follow-page {
   --follow-sidebar-width: 350px;
-  // min-height: calc(101vh - var(--header-height));
+  overflow-y: scroll;
 
   .follow-container {
     .follow-main-content {
