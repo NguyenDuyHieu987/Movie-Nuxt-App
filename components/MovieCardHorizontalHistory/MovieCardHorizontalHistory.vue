@@ -395,7 +395,7 @@ const getData = async () => {
   // Is 2nd onwards
   if (props?.prevItem) {
     const diff = prev_date_old.getTime() - date_old.getTime();
-    const diffDays = diff / (1000 * 3600 * 24);
+    const diffDays = diff / ONE_DAY;
 
     // Is today
     if (

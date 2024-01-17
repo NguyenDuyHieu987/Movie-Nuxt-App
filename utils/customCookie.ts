@@ -1,6 +1,6 @@
 function setCookie(cname: string, cvalue: any, exp: number) {
   const d = new Date();
-  d.setTime(d.getTime() + exp * 3600 * 1000);
+  d.setTime(d.getTime() + exp * ONE_HOUR);
   const expires = 'expires=' + d.toUTCString();
 
   if (process.client) {

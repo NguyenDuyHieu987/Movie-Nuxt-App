@@ -48,7 +48,7 @@ function fromNow(
   const now = new Date();
 
   const diff = now.getTime() - dateObj.getTime();
-  const diffDays = diff / (1000 * 3600 * 24);
+  const diffDays = diff / ONE_DAY;
 
   let fromNowStr: string = '';
 
@@ -80,12 +80,12 @@ function fromNow(
         }
       }
     } else {
-      const diffHours = diff / (1000 * 3600);
+      const diffHours = diff / ONE_HOUR;
 
       if (diffHours > 1) {
         fromNowStr = Math.round(diffHours) + ' giờ trước';
       } else {
-        const diffMinutes = Math.round(diff / (1000 * 60));
+        const diffMinutes = Math.round(diff / ONE_MINUTE);
 
         if (diffMinutes > 1) {
           fromNowStr = Math.round(diffMinutes) + ' phút trước';

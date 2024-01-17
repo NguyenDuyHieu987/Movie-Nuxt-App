@@ -53,11 +53,15 @@ export const useAuthStore = defineStore('auth', () => {
           }
         })
         .catch((e) => {
-          ElNotification.error({
-            title: MESSAGE.STATUS.BROKE,
-            message: MESSAGE.STATUS.BROKE_MESSAGE,
-            duration: MESSAGE.DURATION.DEFAULT
-          });
+          window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
+
+          // if (e?.status != 401 || e?.status != 403) {
+          //   ElNotification.error({
+          //     title: MESSAGE.STATUS.BROKE,
+          //     message: MESSAGE.STATUS.BROKE_MESSAGE,
+          //     duration: MESSAGE.DURATION.DEFAULT
+          //   });
+          // }
         })
         .finally(async () => {
           loadingUser.value = false;
