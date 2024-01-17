@@ -95,7 +95,7 @@ const formFilter = ref<formfilter>({
   page: 1
 });
 const yearRoute = computed<number | string>(() =>
-  utils.isNumber(route.params.year)
+  utils.isStringNumber(route.params.year)
     ? +route.params.year
     : 'Trước năm ' + route.params.year?.slice(-4)
 );
