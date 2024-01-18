@@ -525,9 +525,7 @@ const handleGooglePopupCallback = (googleOauthResponse: any) => {
 
         utils.localStorage.setWithExpiry(
           TOKEN.NAME.USER_TOKEN,
-          {
-            user_token: response.headers.get('Authorization')
-          },
+          response.headers.get('Authorization'),
           TOKEN.OFFSET.USER_TOKEN
         );
         // navigateTo({ path: '/' });
