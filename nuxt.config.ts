@@ -273,8 +273,8 @@ export default defineNuxtConfig({
       },
       transformer: 'postcss',
       lightningcss: {
-        errorRecovery: true,
-        inputSourceMap: 'sass'
+        // errorRecovery: true,
+        // inputSourceMap: 'sass'
       }
       // postcss: {}
     },
