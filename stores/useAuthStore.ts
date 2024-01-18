@@ -3,7 +3,7 @@ import { ElNotification } from 'element-plus';
 import { defineStore } from 'pinia';
 
 import type { subscription, user } from '@/types';
-import { getUserToken, LogOut } from '~/services/authentication';
+import { getUserByToken, LogOut } from '~/services/authentication';
 import { getMySubscription } from '~/services/subscription';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -24,12 +24,14 @@ export const useAuthStore = defineStore('auth', () => {
   const loadUser = async () => {
     loadingUser.value = true;
 
-    if (
-      utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) != null ||
-      utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) != null
-    ) {
-      await getUserToken({
-        user_token: utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
+    const localUserToken = utils.localStorage.getWithExpiry(
+      TOKEN.NAME.USER_TOKEN
+    );
+    const cookieUserToken = utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN);
+
+    if (localUserToken != null || cookieUserToken != null) {
+      await getUserByToken({
+        userToken: localUserToken || cookieUserToken
       })
         .then((response) => {
           if (response?.isLogin == true) {
@@ -40,15 +42,14 @@ export const useAuthStore = defineStore('auth', () => {
             }
 
             if (
-              utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) !=
-                response.headers.get('Authorization') ||
-              utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) !=
-                utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
-              utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) == null
+              localUserToken != response.headers.get('Authorization') ||
+              localUserToken != utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
+              localUserToken == null
             ) {
               utils.localStorage.setWithExpiry(
                 TOKEN.NAME.USER_TOKEN,
-                utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN),
+                utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
+                  response.headers.get('Authorization'),
                 TOKEN.OFFSET.USER_TOKEN
               );
             }

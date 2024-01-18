@@ -58,8 +58,8 @@ export function loginGoogle(params: {
   });
 }
 
-export function getUserToken(params: { user_token: string }) {
-  const headers = { Authorization: `Bearer ${params.user_token}` };
+export function getUserByToken(params: { userToken: string }) {
+  const headers = { Authorization: `Bearer ${params.userToken}` };
 
   return makeRequest(`/${PREFIX_ROUTE}/getuser`, {
     headers,

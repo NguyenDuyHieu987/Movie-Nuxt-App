@@ -1,4 +1,4 @@
-import { getUserToken } from '~/services/authentication';
+import { getUserByToken } from '~/services/authentication';
 
 export default defineEventHandler(async (event) => {
   const utils = useUtils();
@@ -12,8 +12,8 @@ export default defineEventHandler(async (event) => {
   // getUserFromDBbyCookie is a placeholder
   // made up for this example. You can fetch
   // data from wherever you want here
-  const { result: user } = await getUserToken({
-    user_token: utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
+  const { result: user } = await getUserByToken({
+    userToken: utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
   });
 
   if (user) {
