@@ -5,15 +5,15 @@
   .tab-item {
     padding: 6px 20px;
     user-select: none;
-    // background-color: #00000097;
+    /* background-color: #00000097; */
     font-size: 1.4rem;
     border-radius: 7px;
     cursor: pointer;
     transition: all 0.15s;
 
     &.active {
-      // background-color: #23232397;
-      // box-shadow: var(--box-shadow-small);
+      /* background-color: #23232397;
+      box-shadow: var(--box-shadow-small); */
       background-color: #e3e3e3;
       color: var(--text-color-inverted);
     }

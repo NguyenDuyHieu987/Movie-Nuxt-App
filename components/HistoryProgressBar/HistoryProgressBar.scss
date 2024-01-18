@@ -4,8 +4,8 @@
   overflow: hidden;
 
   .ant-progress-inner {
-    // height: 80px !important;
-    // width: 80px !important;
+    /* height: 80px !important;
+    width: 80px !important; */
     background-color: #3535358a;
 
     .ant-progress-bg {
@@ -15,7 +15,7 @@
         var(--app-background-color),
         var(--loading-progress-bar2)
       ) !important;
-      // transition: width 0.3s;
+      /* transition: width 0.3s; */
     }
   }
 
@@ -27,8 +27,8 @@
       color: #008049;
     }
 
-    // & > span {
-    //   font-size: 1.3rem;
-    // }
+    /* & > span {
+      font-size: 1.3rem;
+    } */
   }
 }

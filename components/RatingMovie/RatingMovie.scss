@@ -1,5 +1,5 @@
 .rating-movie {
-  // white-space: nowrap;
+  /* white-space: nowrap; */
 
   .rate-bar {
     display: inline-flex;
@@ -9,7 +9,7 @@
 
     .label {
       white-space: nowrap;
-      // margin-right: 0.3rem;
+      /* margin-right: 0.3rem; */
       margin-right: 1rem;
       color: var(--text-label-color);
     }
@@ -31,11 +31,11 @@
         }
       }
 
-      // .ant-rate-star-zero {
-      //   svg {
-      //     color: #fff;
-      //   }
-      // }
+      /* .ant-rate-star-zero {
+        svg {
+          color: #fff;
+        }
+      } */
 
       .ant-rate-star-full svg {
         color: #ffea00;
@@ -69,8 +69,8 @@
         }
       }
 
-      .ant-rate-star {
-      }
+      /*  .ant-rate-star {
+      } */
 
       .el-rate .el-rate__icon {
         font-size: 2rem;

@@ -2,7 +2,7 @@
   position: absolute;
   top: calc(var(--header-height) * 0.9);
   width: 100%;
-  // min-height: 200px;
+  /* min-height: 200px; */
   height: 0px;
   background-color: #181818f0;
   opacity: 0;
@@ -41,8 +41,8 @@
           fill: var(--text-color-gray);
         }
 
-        .left {
-        }
+        /* .left {
+        } */
 
         .right {
           display: flex;
@@ -115,8 +115,8 @@
             &:hover {
               background-color: #202020ed;
 
-              .search-query-suggested {
-              }
+              /* .search-query-suggested {
+              } */
 
               .remove-search-history {
                 z-index: 1;

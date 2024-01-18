@@ -54,8 +54,8 @@
         transition: all 0.3s;
 
         &[lazy='error'] {
-          // width: auto;
-          // margin: 0px auto;
+          /* width: auto;
+          margin: 0px auto; */
           background-image: url($server-image + '/images/svg/error-image.svg');
           background-size: 50%;
           background-repeat: no-repeat;
@@ -94,16 +94,16 @@
   &:hover {
     background-color: var(--background-content-color1);
 
-    .info {
+    /* .info {
       // color: #fff;
-    }
+    } */
   }
 }
 
 .movie-rank-item + .movie-rank-item {
   border-top: 1px solid var(--border-regular);
 
-  &:last-child {
+  /* &:last-child {
     // border-bottom: 1px solid var(--border-regular);
-  }
+  } */
 }

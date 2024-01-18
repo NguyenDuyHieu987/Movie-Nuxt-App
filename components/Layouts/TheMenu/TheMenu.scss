@@ -3,13 +3,13 @@
   flex-grow: 1;
   width: 100%;
   border: none;
-  // overflow: hidden;
+  /* overflow: hidden; */
 
   --el-menu-item-height: var(--menu-item-height) !important;
   --el-menu-sub-item-height: var(--menu-item-height) !important;
   --el-menu-hover-bg-color: var(--menu-item-background-color) !important;
 
-  &.el-menu--collapse {
+  /* &.el-menu--collapse {
     // .el-sub-menu {
     //   .el-sub-menu__title {
     //     span {
@@ -27,7 +27,7 @@
     //     overflow: hidden;
     //   }
     // }
-  }
+  } */
 
   .el-sub-menu {
     margin-top: 3px;
@@ -70,8 +70,8 @@
         color: var(--menu-active-text-color);
       }
 
-      .el-menu.el-menu--inline {
-      }
+      /* .el-menu.el-menu--inline {
+      } */
     }
 
     .el-menu.el-menu--inline {

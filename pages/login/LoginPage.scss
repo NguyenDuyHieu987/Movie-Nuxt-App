@@ -18,7 +18,7 @@
       position: relative;
       box-shadow: var(--box-shadow-large);
       z-index: 1;
-      // background-color: var(--background-content-color);
+      /* background-color: var(--background-content-color); */
       background-color: rgba(0, 0, 0, 0.9);
       width: 550px;
       min-height: 630px;
@@ -26,10 +26,10 @@
       border-radius: 2px;
 
       .login-form {
-        // position: absolute;
-        // inset: 3px;
-        // z-index: 3;
-        // background-color: var(--background-content-color);
+        /* position: absolute;
+        inset: 3px;
+        z-index: 3;
+        background-color: var(--background-content-color); */
         padding: 30px 70px;
 
         .title-login {
@@ -94,10 +94,6 @@
           font-size: 1.5rem;
           background-color: var(--background-content-color);
           border: 1px solid var(--border-regular);
-
-          &:disabled {
-            // color: #707070;
-          }
         }
 
         .bottom-form {
@@ -121,11 +117,8 @@
             padding: 10px 15px;
 
             &:hover {
-              // border-color: var(--app-background-color);
+              /* border-color: var(--app-background-color); */
               background-color: var(--background-content-color1);
-            }
-
-            &:active {
             }
 
             &.ant-btn-loading {
@@ -166,8 +159,6 @@
             }
 
             img {
-              // height: 100%;
-              // width: 100%;
               width: 18px;
               height: 18px;
             }

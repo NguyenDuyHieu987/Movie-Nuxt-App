@@ -15,7 +15,7 @@
     display: flex;
     position: relative;
     max-width: var(--max-width-app);
-    // min-width: var(--min-width-app);
+    /* min-width: var(--min-width-app); */
     margin: 0px auto;
 
     main.main-content {
@@ -42,7 +42,7 @@
     width: 45px;
     border-radius: 50%;
     background-color: #080808da !important;
-    // background-color: var(--background-content-color);
+    /* background-color: var(--background-content-color); */
     color: var(--text-color);
     box-shadow: var(--box-shadow-small) !important;
     border: 1px solid var(--border-regular);

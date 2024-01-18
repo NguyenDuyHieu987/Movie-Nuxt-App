@@ -2,10 +2,10 @@
   position: relative;
   z-index: 1;
 
-  .gradient-title-default {
+  /* .gradient-title-default {
     // margin-top: 0px;
     // margin-top: 15px;
-  }
+  } */
 
   .el-skeleton.is-animated.movie-group-related-skeleton {
     position: relative;
@@ -15,14 +15,14 @@
     background-color: var(--background-content-color);
     flex-wrap: wrap;
 
-    .movie-card-item-related {
-    }
+    /*  .movie-card-item-related {
+    } */
 
     .ing-box {
       position: relative;
       overflow: hidden;
-      // border-top-right-radius: 5px;
-      // border-top-left-radius: 5px;
+      /*  border-top-right-radius: 5px;
+      border-top-left-radius: 5px; */
       border-radius: 5px;
       transition: all 0.3s;
       cursor: default;
@@ -57,9 +57,9 @@
         margin-top: 10px;
       }
 
-      .el-skeleton__item.el-skeleton__text {
+      /* .el-skeleton__item.el-skeleton__text {
         // height: 18px;
-      }
+      } */
     }
   }
 
@@ -86,11 +86,11 @@
     }
   }
 
-  .recommend-section {
+  /* .recommend-section {
     .gradient-title-default {
       // margin-top: 20px;
     }
-  }
+  } */
 }
 
 @media only screen and (max-width: 1100px) {

@@ -14,18 +14,18 @@
       .back-page {
         z-index: 2;
 
-        .ant-btn {
+        /* .ant-btn {
           // background: linear-gradient(
           //   0deg,
           //   var(--background-content-color) 0%,
           //   rgba(7, 7, 7, 0) 100%
           // );
-        }
+        } */
       }
 
       .progress-history {
         .ant-progress-text {
-          // margin-left: 0px;
+          /* margin-left: 0px; */
           font-size: 1.3rem;
         }
       }
@@ -40,8 +40,8 @@
         width: 100%;
         z-index: 1;
 
-        iframe {
-        }
+        /* iframe {
+        } */
       }
     }
 
@@ -66,7 +66,7 @@
           }
 
           .rating-movie {
-            // margin-top: 10px;
+            /* margin-top: 10px; */
             margin-top: 5px;
           }
 
@@ -83,10 +83,10 @@
               height: 42px;
               color: inherit;
 
-              .ant-btn {
+              /* .ant-btn {
                 svg {
                 }
-              }
+              } */
             }
 
             .left {
@@ -137,14 +137,14 @@
           gap: 10px;
           width: 35%;
 
-          .tags + .tags {
+          /* .tags + .tags {
             // margin-top: 10px;
-          }
+          } */
 
-          .tags {
+          /* .tags {
             .tags-item {
             }
-          }
+          } */
         }
       }
 
@@ -161,14 +161,14 @@
           flex-direction: column;
           flex-grow: 1;
 
-          .list-episodes {
-          }
+          /* .list-episodes {
+          } */
 
           .comment {
             width: 100%;
 
-            .comment-title {
-            }
+            /* .comment-title {
+            } */
           }
         }
 

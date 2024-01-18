@@ -30,7 +30,7 @@
 
   --menu-text-color: #c8c8c8;
   --menu-active-text-color: #fff;
-  // --menu-item-background-color: #0000005a;
+  /* --menu-item-background-color: #0000005a; */
   --menu-item-background-color: linear-gradient(
     to right,
     #08080880 0,
@@ -71,7 +71,7 @@ body {
 body {
   background-color: var(--background-content-color);
   color: var(--text-color);
-  // font-size: clamp(1.4rem, 1vw, 10rem);
+  /* font-size: clamp(1.4rem, 1vw, 10rem); */
   font-size: 1.5rem;
   font-weight: 400;
   font-variant: normal;
@@ -79,9 +79,9 @@ body {
   font-family: 'Roboto Flex', sans-serif;
   text-rendering: optimizeSpeed;
 
-  &::-webkit-scrollbar {
-    // display: none;
-  }
+  /*   &::-webkit-scrollbar {
+    display: none;
+  } */
 }
 
 ::-webkit-scrollbar {
@@ -90,8 +90,8 @@ body {
   height: 14px;
 }
 
-::-webkit-scrollbar-track {
-}
+/* ::-webkit-scrollbar-track {
+} */
 
 ::-webkit-scrollbar-thumb {
   border-radius: 15px;
@@ -150,12 +150,12 @@ dl {
   border: 0;
 }
 
-p,
+/* p,
 span,
 ol,
 ul {
   // line-height: 1.8;
-}
+} */
 
 h1,
 h2,
@@ -216,8 +216,8 @@ a {
   padding-bottom: 150%;
 }
 
-// img,
-// button,
+/* img,
+button, */
 .logo {
   user-select: none;
   -moz-user-select: none;
@@ -241,7 +241,7 @@ video {
       var(--app-background-color7),
       var(--app-background-color3)
     );
-    // background-size: 200% auto;
+    /* background-size: 200% auto; */
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -252,14 +252,13 @@ video {
       animation: textclip 3s linear infinite;
     }
   }
-
-  @keyframes textclip {
-    from {
-      background-position: 0% center;
-    }
-    to {
-      background-position: 200% center;
-    }
+}
+@keyframes textclip {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: 200% center;
   }
 }
 
@@ -272,9 +271,9 @@ video {
 }
 
 @media only screen and (max-width: 900px) {
-  html {
+  /*   html {
     // font-size: 9px;
-  }
+  } */
 
   body {
     font-size: 1.4rem;

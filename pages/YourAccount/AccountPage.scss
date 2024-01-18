@@ -3,7 +3,7 @@
   height: 100%;
 
   .center-page {
-    // max-width: var(--max-width-center-page);
+    /* max-width: var(--max-width-center-page); */
     max-width: 1024px;
     margin: 0px auto;
   }
@@ -159,8 +159,8 @@
                   font-size: 1.4rem;
                   border-bottom: 0.5px solid var(--border-regular-light);
 
-                  &:not(:only-child, :last-child) {
-                  }
+                  /*  &:not(:only-child, :last-child) {
+                  } */
 
                   .index {
                     color: var(--text-color-gray);
@@ -290,15 +290,15 @@
           margin-top: auto;
           padding: 7px 25px;
           font-size: 1.4rem;
-          // width: 70%;
-          // max-width: 180px;
+          /* width: 70%;
+          max-width: 180px; */
           color: var(--text-link-color);
           border: 1px solid var(--app-background-color);
           border-radius: 20px;
 
-          &.switch-account-btn,
+          /* &.switch-account-btn,
           &.delete-account-btn {
-          }
+          } */
 
           &:hover {
             color: var(--text-color);
@@ -379,8 +379,8 @@ html.dark {
             width: 228px;
           }
 
-          &.info-account {
-          }
+          /* &.info-account {
+          } */
         }
       }
     }
@@ -405,10 +405,10 @@ html.dark {
         .account-grid-row {
           flex-direction: column;
 
-          &.info-account {
+          /* &.info-account {
             .row-label {
             }
-          }
+          } */
 
           .row-label {
             width: 100%;
@@ -416,8 +416,8 @@ html.dark {
             margin-bottom: 15px;
           }
 
-          .row-content {
-          }
+          /* .row-content {
+          } */
         }
       }
     }
@@ -439,13 +439,13 @@ html.dark {
         }
       }
 
-      .account-grid {
+      /* .account-grid {
         .account-grid-row {
           .row-label {
             // width: 190px;
           }
         }
-      }
+      } */
     }
   }
 }

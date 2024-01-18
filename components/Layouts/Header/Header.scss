@@ -5,7 +5,7 @@ header.header-bar {
   top: 0;
   width: 100%;
   background: var(--header-background);
-  // border-bottom: 0.25px solid var(--border-regular-light);
+  /* border-bottom: 0.25px solid var(--border-regular-light); */
   z-index: var(--header-z-index);
   transition: background-color 0.2s ease;
   transition-delay: 0.2s;
@@ -83,39 +83,39 @@ header.header-bar {
       }
     }
 
-    // .menu-header {
-    //   display: flex;
-    //   flex-direction: row;
-    //   list-style-type: none;
-    //   margin-left: 25px;
+    /* .menu-header {
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      margin-left: 25px;
 
-    //   .menu-header-item {
-    //     cursor: pointer;
-    //     user-select: none;
-    //     white-space: nowrap;
-    //     transition: all 0.3s;
+      .menu-header-item {
+        cursor: pointer;
+        user-select: none;
+        white-space: nowrap;
+        transition: all 0.3s;
 
-    //     a {
-    //       color: #d9d9d9 !important;
-    //     }
+        a {
+          color: #d9d9d9 !important;
+        }
 
-    //     & + .menu-header-item {
-    //       margin-left: 20px;
-    //     }
+        & + .menu-header-item {
+          margin-left: 20px;
+        }
 
-    //     &.active {
-    //       a {
-    //         color: #fff !important;
-    //       }
-    //     }
+        &.active {
+          a {
+            color: #fff !important;
+          }
+        }
 
-    //     &:hover {
-    //       a {
-    //         color: var(--text-color-gray) !important;
-    //       }
-    //     }
-    //   }
-    // }
+        &:hover {
+          a {
+            color: var(--text-color-gray) !important;
+          }
+        }
+      }
+    } */
   }
 
   .search-header-box {
@@ -136,16 +136,16 @@ header.header-bar {
         border-radius: 20px;
         background: var(--search-background);
 
-        &:hover {
+        /* &:hover {
           // box-shadow: var(--box-shadow-small1);
-        }
+        } */
 
         &:has(.ant-input-affix-wrapper-focused) {
           background: var(--search-focus-background);
-          // box-shadow: var(--box-shadow-small);
+          /* box-shadow: var(--box-shadow-small); */
 
           .ant-input-affix-wrapper {
-            // border-color: var(--search-focus-border-color);
+            /* border-color: var(--search-focus-border-color); */
             color: var(--menu-active-text-color);
 
             .ant-input {
@@ -175,7 +175,7 @@ header.header-bar {
           height: var(--search-height);
           padding-left: 18px;
           color: var(--menu-text-color);
-          // border: 1px solid var(--search-border-color);
+          /* border: 1px solid var(--search-border-color); */
           border: none;
           border-top-left-radius: calc(var(--search-height) / 2);
           border-bottom-left-radius: calc(var(--search-height) / 2);
@@ -207,7 +207,7 @@ header.header-bar {
             display: flex;
             align-items: center;
             background: transparent;
-            // border: 1px solid var(--search-border-color);
+            /* border: 1px solid var(--search-border-color); */
             border: none;
             transition: color 0.15s;
             height: var(--search-height);
@@ -219,8 +219,8 @@ header.header-bar {
             line-height: 0;
 
             svg {
-              // color: inherit;
-              // color: var(--app-background-color);
+              /* color: inherit;
+              color: var(--app-background-color); */
               color: var(--menu-text-color);
               width: 1.8rem;
               height: 1.8rem;
@@ -396,8 +396,8 @@ header.header-bar {
             border-radius: 25px;
             line-height: var(--button-line-height);
             border: 1px solid var(--border-regular);
-            // background-color: var(--app-background-color);
-            // background-color: #003c52;
+            /*  background-color: var(--app-background-color);
+            background-color: #003c52; */
             color: inherit;
             user-select: none;
             transition: background-color 0.15s;
@@ -405,8 +405,8 @@ header.header-bar {
             &:hover {
               background-color: #282828;
               border: 1px solid transparent;
-              // background-color: var(--app-background-color8);
-              // background-color: #0043743c;
+              /* background-color: var(--app-background-color8);
+              background-color: #0043743c; */
             }
           }
 
@@ -444,22 +444,22 @@ header.header-bar {
     }
   }
 
-  // .el-popover.popper-search {
-  //   left: 50% !important;
-  //   transform: translateX(-50%);
-  //   width: 100% !important;
+  /* .el-popover.popper-search {
+    left: 50% !important;
+    transform: translateX(-50%);
+    width: 100% !important;
 
-  //   .section-title.search {
-  //     margin-top: 0px;
-  //   }
+    .section-title.search {
+      margin-top: 0px;
+    }
 
-  //   .ant-input-group-addon {
-  //     .ant-input-search-button {
-  //       display: flex;
-  //       align-items: center;
-  //     }
-  //   }
-  // }
+    .ant-input-group-addon {
+      .ant-input-search-button {
+        display: flex;
+        align-items: center;
+      }
+    }
+  } */
 }
 
 @media only screen and (max-width: 800px) {
@@ -467,8 +467,8 @@ header.header-bar {
     .search-header-box {
       display: none;
 
-      .ant-input-search.search-header {
-      }
+      /* .ant-input-search.search-header {
+      } */
     }
 
     .right-header {
@@ -482,11 +482,11 @@ header.header-bar {
             padding-right: 0px;
           }
 
-          &.notification {
+          /* &.notification {
           }
 
           &.login-header {
-          }
+          } */
         }
       }
     }

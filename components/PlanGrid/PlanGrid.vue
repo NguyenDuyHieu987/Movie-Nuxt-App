@@ -84,6 +84,7 @@
                 v-for="(item, index) in plans"
                 :key="index"
                 :index="index"
+                class="plan-grid-feature-row"
                 :class="{ selected: item.id == selected }"
                 :style="{
                   '--background-image': `url(${getImage(

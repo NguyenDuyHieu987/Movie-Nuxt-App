@@ -47,7 +47,7 @@
       }
     }
 
-    ul.list-episodes {
+    .list-episodes {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
       gap: 7px;
@@ -61,13 +61,12 @@
         width: 12px;
       }
 
-      li {
+      .episode-item {
         display: inline-block;
-        // margin-top: 7px;
-        // margin-right: 7px;
+        /* margin-top: 7px;
+        margin-right: 7px; */
 
-        a,
-        span {
+        a {
           display: inline-block;
           text-align: center;
           min-width: 70px;
@@ -86,8 +85,7 @@
         }
 
         &.active {
-          a,
-          span {
+          a {
             background: linear-gradient(
               45deg,
               var(--app-background-color7),
@@ -112,8 +110,7 @@
         }
 
         &:active {
-          a,
-          span {
+          a {
             opacity: 0.8;
           }
         }

@@ -18,7 +18,7 @@
       background: var(--search-background);
 
       &:has(.ant-input-affix-wrapper-focused) {
-        // background: var(--search-focus-background);
+        /* background: var(--search-focus-background); */
 
         .ant-input-affix-wrapper {
           color: var(--menu-active-text-color);
@@ -50,7 +50,7 @@
         border: 1px solid var(--border-regular-light);
         height: 40px;
         padding-left: 16px;
-        // border-right: none;
+        /* border-right: none; */
         transition: all 0s;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
@@ -137,7 +137,7 @@
 
 .certain-category-search-dropdown {
   background-color: var(--background-content-color);
-  // top: calc(var(--header-height) - 10px) !important;
+  /* top: calc(var(--header-height) - 10px) !important; */
   position: fixed !important;
 
   .rc-virtual-list-holder {

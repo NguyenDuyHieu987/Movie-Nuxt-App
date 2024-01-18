@@ -5,7 +5,7 @@
   .info-conainer {
     position: relative;
 
-    .back-page {
+    /* .back-page {
       .ant-btn {
         // background-color: var(--background-content-opacity);
 
@@ -13,7 +13,7 @@
           // box-shadow: var(--box-shadow-small);
         }
       }
-    }
+    } */
 
     .variant-backdrop {
       position: relative;
@@ -75,7 +75,7 @@
             object-fit: cover;
             opacity: 0.5;
             filter: blur(150px);
-            // border-radius: 23%;
+            /* border-radius: 23%; */
           }
         }
 
@@ -83,7 +83,7 @@
           position: relative;
           z-index: 1;
           width: 100%;
-          // overflow: hidden;
+          /* overflow: hidden; */
 
           img {
             height: 100%;
@@ -106,8 +106,8 @@
               var(--background-content-color) 0%,
               rgba(08, 08, 08, 0) 70%
             );
-            // box-shadow: inset 25vw -4vw 10px 10px var(--background-content-color);
-            // border-radius: 50%;
+            /* box-shadow: inset 25vw -4vw 10px 10px var(--background-content-color);
+            border-radius: 50%; */
           }
 
           &::after {
@@ -132,7 +132,7 @@
           right: 0;
           z-index: 2;
           width: 200px;
-          // box-shadow: var(--box-shadow-medium);
+          /* box-shadow: var(--box-shadow-medium); */
 
           .poster-wrapper {
             width: 100%;
@@ -183,7 +183,6 @@
         left: 0;
         right: 0;
         bottom: 10%;
-        // top: 0;
         z-index: 1;
         max-width: 1900px;
         margin: 0px auto;
@@ -219,10 +218,10 @@
               min-height: 40px;
               height: 42px;
 
-              .ant-btn {
+              /* .ant-btn {
                 svg {
                 }
-              }
+              } */
             }
 
             .left {
@@ -230,7 +229,7 @@
               flex-direction: row;
               align-items: center;
               gap: 13px;
-              // gap: 0.7vw;
+              /* gap: 0.7vw; */
 
               .ant-btn {
                 svg {
@@ -316,14 +315,14 @@
             .tags-overview {
               margin-top: 22px;
 
-              .text {
+              /* .text {
                 // display: block;
                 // text-align: justify;
-              }
+              } */
             }
 
             .rating-movie {
-              // margin-top: 10px;
+              /* margin-top: 10px; */
               margin-top: 5px;
             }
 
@@ -339,14 +338,14 @@
             width: 35%;
             margin-top: 74px;
 
-            .tags + .tags {
+            /* .tags + .tags {
               // margin-top: 10px;
-            }
+            } */
 
-            .tags {
+            /* .tags {
               .tags-item {
               }
-            }
+            } */
           }
         }
 
@@ -378,8 +377,8 @@
         }
       }
 
-      .comment {
-      }
+      /* .comment {
+      } */
     }
   }
 }

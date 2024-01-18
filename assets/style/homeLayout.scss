@@ -1,5 +1,5 @@
-.home-layout {
-}
+/* .home-layout {
+} */
 
 .body-content.home {
   min-height: calc(101vh - var(--header-height));
@@ -12,8 +12,8 @@
   main.main-content {
     margin-left: 0px;
 
-    & > .container {
-    }
+    /* & > .container {
+    } */
   }
 
   header.header-bar,
@@ -22,9 +22,9 @@
     transition-delay: initial;
     transition: all 0s;
 
-    .ant-input-search.search-header {
+    /* .ant-input-search.search-header {
       // --search-border-color: transparent;
-    }
+    } */
 
     &.scrolled {
       transition: background-color 0.2s ease;
@@ -37,9 +37,9 @@
     transition-delay: initial;
     transition: all 0s;
 
-    .ant-input-search.search-header {
+    /* .ant-input-search.search-header {
       // --search-border-color: transparent;
-    }
+    } */
 
     &.scrolled {
       transition: background-color 0.2s ease;

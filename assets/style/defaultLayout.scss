@@ -1,5 +1,5 @@
-.default-layout {
-}
+/* .default-layout {
+} */
 
 .body-content {
   margin-top: var(--header-height);
@@ -8,8 +8,8 @@
     main.main-content {
       margin-left: var(--sider-width);
 
-      & > .container {
-      }
+      /* & > .container {
+      } */
     }
   }
 
@@ -22,7 +22,7 @@
     }
   }
 
-  // &.home
+  /* &.home */
   &:has(.home-page) {
     margin-top: 0px;
     min-height: calc(101vh - var(--header-height));
@@ -48,9 +48,9 @@
       transition-delay: initial;
       transition: all 0s;
 
-      .ant-input-search.search-header {
+      /* .ant-input-search.search-header {
         // --search-border-color: transparent;
-      }
+      } */
 
       &.scrolled {
         transition: background-color 0.2s ease;
@@ -126,7 +126,7 @@
   }
 }
 
-// .upgrade, .payment, .account-page, .bills
+/* .upgrade, .payment, .account-page, .bills */
 body:has(.service-page, .change-page, .center-page) {
   background-color: var(--background-content-white);
 

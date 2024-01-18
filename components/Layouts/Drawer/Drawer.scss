@@ -1,6 +1,6 @@
 .ant-drawer:has(.menu-drawer),
 .ant-drawer.menu-drawer {
-  // margin-top: var(--header-height);
+  /* margin-top: var(--header-height); */
 
   .ant-drawer-content-wrapper {
     transition: all 0.15s ease;
@@ -79,18 +79,18 @@
             }
           }
 
-          .user-name-text {
-          }
+          /* .user-name-text {
+          } */
         }
 
         &::-webkit-scrollbar {
-          // display: none;
+          /* display: none; */
           width: 12px;
         }
 
-        &::-webkit-scrollbar-thumb {
+        /*  &::-webkit-scrollbar-thumb {
           // display: none;
-        }
+        } */
       }
     }
   }
@@ -162,8 +162,8 @@
       }
     }
 
-    .user-name-text {
-    }
+    /* .user-name-text {
+    } */
   }
 
   .el-drawer__close-btn {
@@ -176,22 +176,22 @@
     overflow-x: hidden;
 
     &::-webkit-scrollbar {
-      // display: none;
+      /* display: none; */
       width: 12px;
     }
 
-    &::-webkit-scrollbar-thumb {
+    /* &::-webkit-scrollbar-thumb {
       // display: none;
-    }
+    } */
   }
 }
 
-// @media only screen and (min-width: 900px) {
-//   .el-overlay:has(.el-drawer) {
-//     display: none;
-//   }
+/* @media only screen and (min-width: 900px) {
+  .el-overlay:has(.el-drawer) {
+    display: none;
+  }
 
-//   .el-drawer {
-//     display: none;
-//   }
-// }
+  .el-drawer {
+    display: none;
+  }
+} */

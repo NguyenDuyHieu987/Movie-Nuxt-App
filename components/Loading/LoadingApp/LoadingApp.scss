@@ -33,14 +33,14 @@ body.loading-mask {
     z-index: var(--loading-app-z-index);
     transition: all 0.3s;
 
-    .app-loading-container {
+    /* .app-loading-container {
       .logo {
         .icon-loading {
           svg {
           }
         }
       }
-    }
+    } */
   }
 
   .app-loading-container {

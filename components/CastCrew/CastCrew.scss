@@ -17,8 +17,8 @@
       .content-skeleton {
         margin-top: 5px;
 
-        .el-skeleton__item.el-skeleton__text {
-        }
+        /* .el-skeleton__item.el-skeleton__text {
+        } */
       }
     }
 
@@ -30,15 +30,15 @@
           &:hover {
             .ant-tabs-tab-btn {
               color: inherit;
-              // color: transparent;
-              // display: inline;
-              // -webkit-text-fill-color: transparent;
-              // -webkit-background-clip: text;
-              // background-image: linear-gradient(
-              //   to right,
-              //   var(--app-background-color2),
-              //   var(--app-background-color3)
-              // );
+              /* color: transparent;
+              display: inline;
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+              background-image: linear-gradient(
+                to right,
+                var(--app-background-color2),
+                var(--app-background-color3)
+              ); */
             }
           }
 
@@ -59,15 +59,15 @@
 
           .ant-tabs-tab-btn {
             color: var(--app-background-color);
-            // color: transparent;
-            // display: inline;
-            // -webkit-text-fill-color: transparent;
-            // -webkit-background-clip: text;
-            // background-image: linear-gradient(
-            //   to right,
-            //   var(--app-background-color2),
-            //   var(--app-background-color3)
-            // );
+            /* color: transparent;
+            display: inline;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(
+              to right,
+              var(--app-background-color2),
+              var(--app-background-color3)
+            ); */
           }
         }
 

@@ -3,7 +3,7 @@
   height: 100%;
 
   .upgrade-container {
-    // max-width: var(--max-width-center-page);
+    /* max-width: var(--max-width-center-page); */
     max-width: 1024px;
     margin: 0px auto;
 
@@ -20,10 +20,10 @@
         padding-left: 16px;
         list-style-type: square;
 
-        .checkmark-group-row {
+        /* .checkmark-group-row {
           svg {
           }
-        }
+        } */
       }
     }
 

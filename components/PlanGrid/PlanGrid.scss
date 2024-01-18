@@ -145,7 +145,7 @@
       }
 
       .plan-grid-feature-table-body {
-        tr {
+        .plan-grid-feature-row {
           position: relative;
           height: var(--plan-box-selector-size);
           transition: transform 0.15s;
@@ -192,18 +192,6 @@
             transform: translateX(2%);
             box-shadow: var(--box-shadow-medium1);
 
-            @keyframes linear-fade {
-              from {
-                opacity: 0;
-                width: 100%;
-              }
-
-              to {
-                width: 0%;
-                opacity: 1;
-              }
-            }
-
             &::after {
               opacity: 0.7;
             }
@@ -237,7 +225,7 @@
             }
           }
 
-          &:nth-child(even):not(:last-child) {
+          /* &:nth-child(even):not(:last-child) {
             // border-top: 1px solid var(--border-regular-light);
             // border-bottom: 1px solid var(--border-regular-light);
 
@@ -245,7 +233,7 @@
               // border-top: 1px solid #929292;
               // border-bottom: 1px solid #929292;
             }
-          }
+          } */
 
           td {
             text-align: center;
@@ -279,6 +267,18 @@ html.dark {
         background-color: #252525;
       }
     }
+  }
+}
+
+@keyframes linear-fade {
+  from {
+    opacity: 0;
+    width: 100%;
+  }
+
+  to {
+    width: 0%;
+    opacity: 1;
   }
 }
 
@@ -320,11 +320,11 @@ html.dark {
       }
     }
 
-    .plan-body {
+    /* .plan-body {
       .plan-table {
         .plan-header {
         }
       }
-    }
+    } */
   }
 }

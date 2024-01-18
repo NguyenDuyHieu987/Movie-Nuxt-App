@@ -16,8 +16,8 @@
 
       .nav-action {
         width: 100%;
-        // width: var(--width);
-        // margin-bottom: 15px;
+        /* width: var(--width);
+        margin-bottom: 15px; */
         height: 49px;
 
         .sort-tab {
@@ -34,7 +34,6 @@
             z-index: 1;
             top: var(--header-height);
             background-color: #080808e6;
-            // background-color: red;
             transition: background-color 0.25s;
             transition-delay: 0.3s;
           }
@@ -42,7 +41,7 @@
       }
 
       .movie-follow {
-        // max-width: 850px;
+        /* max-width: 850px; */
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -51,7 +50,6 @@
 
       .skeleton-loadmore {
         .el-skeleton.is-animated {
-          // margin-left: 28px;
           position: relative;
           display: flex;
           width: 100%;
@@ -106,20 +104,20 @@
     }
   }
 
-  // .slide-left-enter-active,
-  // .slide-left-leave-active {
-  //   transition: all 0.3s;
-  // }
+  /* .slide-left-enter-active,
+  .slide-left-leave-active {
+    transition: all 0.3s;
+  }
 
-  // .slide-left-enter-from {
-  //   opacity: 0;
-  //   transform: translateX(-100%);
-  // }
+  .slide-left-enter-from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
 
-  // .slide-left-leave-to {
-  //   opacity: 0;
-  //   transform: translateX(100%);
-  // }
+  .slide-left-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
+  } */
 }
 
 #topic-follow-column-teleport {
@@ -128,7 +126,7 @@
   background-color: var(--background-content-color);
   padding: 15px 0px 0px 15px;
   max-width: 350px;
-  // margin-right: 3px;
+  /* margin-right: 3px; */
   height: 100%;
   z-index: 2;
 }
@@ -137,12 +135,12 @@
   .body-wrapper {
     margin-left: 0px;
     margin-right: auto;
-    // max-width: 1100px;
+    /* max-width: 1100px; */
   }
 
   #topic-follow-column-teleport {
     margin-left: 0px;
-    // margin-left: auto;
+    /* margin-left: auto; */
   }
 }
 
@@ -233,8 +231,8 @@
           .bottom {
             flex-direction: column-reverse;
 
-            .box-btn {
-            }
+            /* .box-btn {
+            } */
 
             .widget {
               width: 100%;

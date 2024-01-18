@@ -5,13 +5,13 @@ footer.footer {
   justify-content: center;
   text-align: center;
   flex-direction: column;
-  // background-color: var(--background-content-color);
-  // background: linear-gradient(
-  //     10deg,
-  //     rgba(0, 141, 223, 0) 58%,
-  //     var(--app-background-color) 128%
-  //   ),
-  //   var(--background-content-color);
+  /* background-color: var(--background-content-color);
+  background: linear-gradient(
+      10deg,
+      rgba(0, 141, 223, 0) 58%,
+      var(--app-background-color) 128%
+    ),
+    var(--background-content-color); */
   font-size: 1.4rem;
   color: inherit;
   border-top: 1px solid var(--border-regular-light);
@@ -74,7 +74,6 @@ footer.footer {
     }
 
     .copyright {
-      // margin-top: 15px;
       width: 75%;
       margin-top: 30px;
       padding-top: 25px;

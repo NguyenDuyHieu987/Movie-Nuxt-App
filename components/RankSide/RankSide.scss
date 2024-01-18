@@ -48,7 +48,7 @@
         border-radius: 25px;
 
         &:hover {
-          // background-color: var(--app-background-color);
+          /* background-color: var(--app-background-color); */
           background-color: #242424;
         }
       }
@@ -62,59 +62,59 @@
         overflow: hidden;
 
         &.active {
-          // background-color: var(--app-background-color);
+          /* background-color: var(--app-background-color); */
           background-color: #242424;
           box-shadow: var(--box-shadow-small);
 
           span {
             -webkit-text-fill-color: transparent;
-            -webkit-background-clip: text;
+            background-clip: text;
             background-image: linear-gradient(
               to right,
               var(--app-background-color7),
               var(--app-background-color3)
             );
 
-            // &::before {
-            //   content: '';
-            //   position: absolute;
-            //   border-top: 10px solid #009fd0;
-            //   border-right: 10px solid transparent;
-            //   border-left: 10px solid transparent;
+            /* &::before {
+              content: '';
+              position: absolute;
+              border-top: 10px solid #009fd0;
+              border-right: 10px solid transparent;
+              border-left: 10px solid transparent;
 
-            //   // border-top-left-radius: 0px;
-            //   // border-bottom-left-radius: 0px;
-            //   // border-top-right-radius: 0px;
-            //   // border-bottom-right-radius: 30px;
+              // border-top-left-radius: 0px;
+              // border-bottom-left-radius: 0px;
+              // border-top-right-radius: 0px;
+              // border-bottom-right-radius: 30px;
 
-            //   // box-shadow: 10px 0px 0px 0px #00607e;
-            //   width: 15px;
-            //   height: 10px;
-            //   // bottom: 0px;
-            //   // left: -15px;
-            //   bottom: -7px;
-            //   left: 50%;
-            //   z-index: 0;
-            //   transform: translate(-50%);
-            // }
+              // box-shadow: 10px 0px 0px 0px #00607e;
+              width: 15px;
+              height: 10px;
+              // bottom: 0px;
+              // left: -15px;
+              bottom: -7px;
+              left: 50%;
+              z-index: 0;
+              transform: translate(-50%);
+            } */
 
-            // &::after {
-            //   content: '';
-            //   position: absolute;
-            //   border-top-left-radius: 0px;
-            //   border-bottom-left-radius: 0px;
-            //   border-top-right-radius: 30px;
-            //   border-bottom-right-radius: 0px;
-            //   transform: rotate(180deg);
+            /* &::after {
+              content: '';
+              position: absolute;
+              border-top-left-radius: 0px;
+              border-bottom-left-radius: 0px;
+              border-top-right-radius: 30px;
+              border-bottom-right-radius: 0px;
+              transform: rotate(180deg);
 
-            //   box-shadow: 10px 0px 0px 0px #00607e;
-            //   width: 15px;
-            //   height: 10px;
-            //   bottom: 0px;
-            //   right: -15px;
-            //   // left: 50%;
-            //   // transform: translate(-50%);
-            // }
+              box-shadow: 10px 0px 0px 0px #00607e;
+              width: 15px;
+              height: 10px;
+              bottom: 0px;
+              right: -15px;
+              // left: 50%;
+              // transform: translate(-50%);
+            } */
           }
         }
       }

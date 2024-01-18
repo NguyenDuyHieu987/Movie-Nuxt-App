@@ -52,7 +52,7 @@
       .username {
         display: inline-block;
         -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
+        background-clip: text;
         font-weight: 500;
         background-image: linear-gradient(
           to right,
@@ -70,10 +70,10 @@
         font-size: 1.45rem;
         margin-top: 5px;
 
-        .description {
+        /* .description {
           .vip-number {
           }
-        }
+        } */
       }
     }
 
@@ -116,8 +116,8 @@
           fill: var(--app-background-color);
         }
 
-        &.ads {
-        }
+        /*  &.ads {
+        } */
 
         &.support-devices {
           .list-devices {

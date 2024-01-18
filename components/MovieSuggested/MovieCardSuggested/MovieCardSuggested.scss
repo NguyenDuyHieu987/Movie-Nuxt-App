@@ -56,13 +56,13 @@
   }
 
   &:hover {
-    .img-box {
-    }
+    /* .img-box {
+    } */
 
-    .info {
+    /* .info {
       .title {
       }
-    }
+    } */
 
     .action {
       .ant-btn {
@@ -92,9 +92,9 @@
         transition: all 0.15s;
 
         &[lazy='error'] {
-          // width: 30% !important;
-          // margin: 0px auto;
-          // object-fit: contain !important;
+          /* width: 30% !important;
+          margin: 0px auto;
+          object-fit: contain !important; */
           background-image: url('https://ik.imagekit.io/8toa5f2rp/images/svg/error-image.svg');
           background-size: 30%;
           background-repeat: no-repeat;
@@ -288,9 +288,9 @@
   }
 }
 
-// body:has(.ant-btn.ant-dropdown-open) {
-//   overflow: hidden;
-// }
+/* body:has(.ant-btn.ant-dropdown-open) {
+  overflow: hidden;
+} */
 
 @media only screen and (max-width: 1500px) {
   .movie-card-item {
@@ -322,7 +322,6 @@
     gap: 5px;
 
     .img-box {
-      // flex: 1 0 auto !important;
       flex: 1 0 100%;
       max-width: 100%;
     }

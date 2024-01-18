@@ -1,13 +1,4 @@
 .loading-circle {
-  @keyframes loading-circle {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
   svg {
     margin: 0px auto;
     width: 2rem;
@@ -38,5 +29,14 @@
 
   svg.loading-icon {
     animation: loading-circle 1.2s linear infinite;
+  }
+}
+
+@keyframes loading-circle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

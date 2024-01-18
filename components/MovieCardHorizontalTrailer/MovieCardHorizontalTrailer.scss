@@ -18,14 +18,14 @@
     .content-skeleton {
       margin-top: 7px;
 
-      .el-skeleton__item.el-skeleton__text {
+      /* .el-skeleton__item.el-skeleton__text {
         // height: 18px;
-      }
+      } */
     }
   }
 
-  a.img-wrapper {
-  }
+  /*  a.img-wrapper {
+  } */
 
   .img-box {
     position: relative;
@@ -39,7 +39,7 @@
       transition: all 0s;
 
       &[lazy='error'] {
-        // width: 40% !important;
+        /* width: 40% !important; */
         background-size: 40%;
       }
     }
@@ -125,10 +125,10 @@
 }
 
 @media only screen and (max-width: 1500px) {
-  .body-content.expand {
+  /* .body-content.expand {
     .movie-card-item.trailer {
     }
-  }
+  } */
 
   .movie-card-item.trailer {
     width: 270px;

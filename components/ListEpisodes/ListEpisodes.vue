@@ -81,6 +81,7 @@
               :id="`episode-${item?.episode_number}`"
               :key="item.id"
               :index="index"
+              class="episode-item"
               :class="{ active: currentEpisode == item?.episode_number }"
             >
               <a

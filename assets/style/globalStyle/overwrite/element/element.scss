@@ -22,8 +22,9 @@
 }
 
 .el-skeleton.is-animated {
-  // --el-skeleton-color: #f0f2f5 !important;
-  // --el-skeleton-to-color: #e6e8eb !important;
+  /*   --el-skeleton-color: #f0f2f5 !important;
+  --el-skeleton-to-color: #e6e8eb !important;
+ */
 
   --el-skeleton-color: #35373a !important;
   --el-skeleton-to-color: #2c2d30 !important;
@@ -76,7 +77,7 @@
 
     &.is-focus {
       .el-input__wrapper {
-        // box-shadow: 0 0 0 1px #fff !important;
+        /*         box-shadow: 0 0 0 1px #fff !important; */
 
         &.is-focus {
           box-shadow: 0 0 0 1px #a0a0a0 !important;
@@ -93,7 +94,7 @@
 
 .el-select-dropdown {
   border-radius: 2px !important;
-  // border: 0.1px solid var(--border-regular-light);
+  /* border: 0.1px solid var(--border-regular-light); */
 }
 
 .el-overlay {
@@ -101,7 +102,7 @@
 }
 
 .el-popup-parent--hidden {
-  // overflow: visible !important;
+  /* overflow: visible !important; */
 
   .header-bar,
   .header-bar-service,
@@ -190,7 +191,7 @@
   &.popper-tooltip {
     background-color: var(--tooltip-background-color) !important;
     border: none !important;
-    // padding: 10px 18px;
+    /* padding: 10px 18px; */
     padding: 7px 15px;
     box-shadow: var(--box-shadow-small);
     width: max-content;
@@ -221,7 +222,7 @@
 
 #el-popper-container-1024 {
   .el-menu--popup-container.sub-menu-popper {
-    // max-height: 100vh;
+    /* max-height: 100vh; */
     max-height: 99.4vh;
     overflow-y: auto;
 
@@ -335,12 +336,8 @@
     .el-slider__button-wrapper {
       cursor: pointer;
 
-      &:hover,
-      &.hover {
-      }
-
       .el-slider__button {
-        // border: none;
+        /* border: none; */
         cursor: pointer;
 
         &:hover,

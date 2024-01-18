@@ -17,7 +17,7 @@
     .signup-form-container {
       position: relative;
       box-shadow: var(--box-shadow-large);
-      // background-color: var(--background-content-color);
+      /* background-color: var(--background-content-color); */
       background-color: rgba(0, 0, 0, 0.9);
       min-height: 670px;
       max-height: 95vh;
@@ -32,10 +32,6 @@
       }
 
       .signup-form {
-        // position: absolute;
-        // inset: 3px;
-        // z-index: 3;
-        // background-color: var(--background-content-color);
         padding: 30px 70px;
 
         .title-signup {
@@ -52,10 +48,6 @@
           padding: 10px 15px;
           border: 1px solid var(--border-regular);
           background-color: var(--background-content-color);
-
-          &:disabled {
-            // color: #707070;
-          }
         }
 
         .bottom-form {
@@ -75,66 +67,9 @@
           display: none !important;
         }
       }
-
-      // &::before {
-      //   content: '';
-      //   position: absolute;
-      //   top: 50%;
-      //   left: 50%;
-      //   transform: translate(-50%, -50%);
-      //   width: 500px;
-      //   height: 500px;
-      //   background-image: linear-gradient(
-      //     45deg,
-      //     var(--app-background-color),
-      //     var(--loading-progress-bar2),
-      //     var(--loading-progress-bar1)
-      //   );
-      //   z-index: 1;
-      //   animation: animate 10s linear infinite;
-      //   transform-origin: top left;
-      // }
-
-      // &::after {
-      //   content: '';
-      //   position: absolute;
-      //   top: 50%;
-      //   left: 50%;
-      //   transform: translate(-50%, -50%);
-      //   width: 500px;
-      //   height: 500px;
-      //   background-image: linear-gradient(
-      //     45deg,
-      //     var(--app-background-color),
-      //     var(--loading-progress-bar2),
-      //     var(--loading-progress-bar1)
-      //   );
-      //   z-index: 1;
-      //   animation: animate 10s linear infinite;
-      //   transform-origin: top left;
-      //   animation-delay: -4.9s;
-      // }
-
-      @keyframes animate {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes animate-reverse {
-        0% {
-          transform: rotate(360deg);
-        }
-        100% {
-          transform: rotate(0deg);
-        }
-      }
     }
 
-    .verify-signup {
+    /* .verify-signup {
       .verify-signup-container {
         .back-btn {
         }
@@ -142,21 +77,21 @@
         .verify-form {
         }
       }
-    }
+    } */
   }
 }
 
-@media only screen and (max-width: 660px) {
+/* @media only screen and (max-width: 660px) {
   .signup {
     .signup-container {
       .signup-form-container {
-        .signup-form {
+         .signup-form {
           // padding: 30px 50px;
         }
       }
     }
   }
-}
+} */
 
 @media only screen and (max-width: 600px) {
   .signup {

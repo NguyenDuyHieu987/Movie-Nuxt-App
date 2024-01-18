@@ -6,7 +6,7 @@
   --detail-rank-container-width: 1400px;
 
   .detail-rank-container {
-    // max-width: var(--max-width-center-page);
+    /* max-width: var(--max-width-center-page); */
     max-width: var(--detail-rank-container-width);
     min-width: 1000px;
     margin: 0px auto;
@@ -51,9 +51,9 @@
       box-shadow: var(--box-shadow-small);
 
       .detail-rank-section-header {
-        // display: flex;
-        // flex-direction: row;
-        // align-items: center;
+        /* display: flex;
+        flex-direction: row;
+        align-items: center; */
         white-space: nowrap;
         background-color: var(--background-content-color1);
         color: var(--text-color-gray1);
@@ -86,8 +86,8 @@
         background-color: #222222;
 
         .detail-rank-section-item {
-          // display: flex;
-          // flex-direction: row;
+          /* display: flex;
+          flex-direction: row; */
 
           & > div {
             padding: var(--padding-rank-detail-section);

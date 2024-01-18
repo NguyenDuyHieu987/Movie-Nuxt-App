@@ -11,7 +11,7 @@
       gap: 10px;
       z-index: 2;
 
-      .back-page {
+      /* .back-page {
         .ant-btn {
           // background: linear-gradient(
           //   0deg,
@@ -19,11 +19,11 @@
           //   rgba(7, 7, 7, 0) 100%
           // );
         }
-      }
+      } */
 
       .progress-history {
         .ant-progress-text {
-          // margin-left: 0px;
+          /* margin-left: 0px; */
           font-size: 1.3rem;
         }
       }
@@ -38,8 +38,8 @@
         width: 100%;
         z-index: 1;
 
-        iframe {
-        }
+        /* iframe {
+        } */
       }
     }
 
@@ -65,7 +65,7 @@
           }
 
           .rating-movie {
-            // margin-top: 10px;
+            /* margin-top: 10px; */
             margin-top: 5px;
           }
 
@@ -82,10 +82,10 @@
               height: 42px;
               color: inherit;
 
-              .ant-btn {
+              /* .ant-btn {
                 svg {
                 }
-              }
+              } */
             }
 
             .left {
@@ -135,9 +135,9 @@
           gap: 10px;
           width: 35%;
 
-          .tags + .tags {
+          /* .tags + .tags {
             // margin-top: 10px;
-          }
+          } */
 
           .tags {
             .tags-item {
@@ -295,9 +295,6 @@
 
           .detail-content-left {
             width: 100%;
-
-            .action {
-            }
           }
 
           .detail-content-right {

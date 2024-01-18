@@ -5,7 +5,7 @@
   .info-conainer {
     position: relative;
 
-    .back-page {
+    /* .back-page {
       .ant-btn {
         // background-color: var(--background-content-opacity);
 
@@ -13,7 +13,7 @@
           // box-shadow: var(--box-shadow-small);
         }
       }
-    }
+    } */
 
     .variant-backdrop {
       position: relative;
@@ -75,14 +75,14 @@
             object-fit: cover;
             opacity: 0.5;
             filter: blur(150px);
-            // border-radius: 23%;
+            /* border-radius: 23%; */
           }
         }
 
         .backdrop-wrapper {
           position: relative;
           width: 100%;
-          // overflow: hidden;
+          /* overflow: hidden; */
           z-index: 1;
 
           img {
@@ -181,7 +181,6 @@
         left: 0;
         right: 0;
         bottom: 10%;
-        // top: 0;
         z-index: 1;
         max-width: 1900px;
         margin: 0px auto;
@@ -217,10 +216,10 @@
               min-height: 40px;
               height: 42px;
 
-              .ant-btn {
+              /* .ant-btn {
                 svg {
                 }
-              }
+              } */
             }
 
             .left {
@@ -228,7 +227,7 @@
               flex-direction: row;
               align-items: center;
               gap: 13px;
-              // gap: 0.7vw;
+              /* gap: 0.7vw; */
 
               .ant-btn {
                 svg {
@@ -314,14 +313,14 @@
             .tags-overview {
               margin-top: 22px;
 
-              .text {
+              /* .text {
                 // display: block;
                 // text-align: justify;
-              }
+              } */
             }
 
             .rating-movie {
-              // margin-top: 10px;
+              /* margin-top: 10px; */
               margin-top: 5px;
             }
 
@@ -341,14 +340,14 @@
             width: 35%;
             margin-top: 74px;
 
-            .tags + .tags {
+            /* .tags + .tags {
               // margin-top: 10px;
-            }
+            } */
 
-            .tags {
+            /* .tags {
               .tags-item {
               }
-            }
+            } */
           }
         }
 
@@ -380,8 +379,8 @@
         }
       }
 
-      .comment {
-      }
+      /* .comment {
+      } */
     }
   }
 }
@@ -525,19 +524,8 @@
 @media only screen and (max-width: 650px) {
   .tv-info {
     .info-conainer {
-      .variant-backdrop {
-      }
-
       .main-info {
-        .backdrop-img {
-        }
-
         .tv-content {
-          .head-content {
-            .action {
-            }
-          }
-
           .main-content {
             flex-direction: column;
             justify-content: unset;

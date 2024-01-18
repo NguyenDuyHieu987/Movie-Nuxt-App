@@ -4,12 +4,12 @@ header.header-bar-center-page {
   left: 0;
   top: 0;
   width: 100%;
-  // background: linear-gradient(to bottom, #080808 0, #08080800 100%);
+  /* background: linear-gradient(to bottom, #080808 0, #08080800 100%); */
   background: var(--background-content-color);
-  // border-bottom: 0.25px solid var(--border-regular-light);
+  /* border-bottom: 0.25px solid var(--border-regular-light); */
   z-index: var(--header-z-index);
-  // transition: background-color 0.25s;
-  // transition-delay: 0.3s;
+  /* transition: background-color 0.25s; */
+  /* transition-delay: 0.3s; */
 
   .header-bar-center-page-container {
     display: flex;
@@ -39,7 +39,7 @@ header.header-bar-center-page {
 
     .helpcenter-logo {
       font-weight: 500;
-      font-size: 1.7rem;
+      font-size: 1.6rem;
       color: inherit;
 
       &:hover {
@@ -182,8 +182,8 @@ header.header-bar-center-page {
             border-radius: 25px;
             line-height: var(--button-line-height);
             border: 1px solid var(--border-regular);
-            // background-color: var(--app-background-color);
-            // background-color: #003c52;
+            /* background-color: var(--app-background-color) */
+            /* background-color: #003c52; */
             color: inherit;
             user-select: none;
             transition: background-color 0.15s;
@@ -191,8 +191,8 @@ header.header-bar-center-page {
             &:hover {
               background-color: #282828;
               border: 1px solid transparent;
-              // background-color: var(--app-background-color8);
-              // background-color: #0043743c;
+              /* background-color: var(--app-background-color8) */
+              /* background-color: #0043743c; */
             }
           }
 
@@ -211,10 +211,10 @@ header.header-bar-center-page {
       padding: 0px 15px;
     }
 
-    .left-header {
+    /* .left-header {
       .logo {
       }
-    }
+    } */
   }
 
   .el-popover {
@@ -245,12 +245,12 @@ header.header-bar-center-page {
       display: flex;
       align-items: center;
 
-      ul.menu-header {
+      /* ul.menu-header {
         li.menu-item {
           &.login-header {
           }
         }
-      }
+      } */
     }
   }
 }

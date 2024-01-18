@@ -6,13 +6,13 @@
   --dropdown-border-color: #606060;
 }
 
-html.dark {
+/* html.dark {
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
   }
-}
+} */
 
 .el-dropdown {
   &:has(.ant-btn[aria-expanded='true']) {

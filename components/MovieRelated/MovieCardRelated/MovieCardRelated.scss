@@ -1,16 +1,16 @@
-.movie-group.related {
+/* .movie-group.related {
   // display: grid;
   // .movie-card-item.horizontal:first-child {
   //   grid-column: span 3;
   //   grid-row: span 2;
   // }
-}
+} */
 
 .movie-card-item-related {
   display: flex;
   flex-direction: column;
   width: calc((100% - (5 * 20px)) / 6);
-  // height: 380px;
+  /* height: 380px; */
   border-radius: 5px;
   overflow: hidden;
   box-shadow: var(--box-shadow-medium1);
@@ -21,8 +21,8 @@
       position: relative;
       height: 8vw;
       overflow: hidden;
-      // border-top-right-radius: 5px;
-      // border-top-left-radius: 5px;
+      /* border-top-right-radius: 5px;
+      border-top-left-radius: 5px; */
       border-radius: 5px;
 
       .el-skeleton__item.skeleton-img {
@@ -54,9 +54,9 @@
         margin-top: 10px;
       }
 
-      .el-skeleton__item.el-skeleton__text {
+      /* .el-skeleton__item.el-skeleton__text {
         // height: 18px;
-      }
+      } */
     }
   }
 
@@ -98,8 +98,8 @@
         transform: translate(-50%, -50%);
         z-index: 1;
 
-        .loading-video {
-        }
+        /* .loading-video {
+        } */
       }
     }
 
@@ -222,10 +222,10 @@
       }
     }
 
-    &:hover {
+    /* &:hover {
       .title {
       }
-    }
+    } */
   }
 
   &:hover {
@@ -253,7 +253,7 @@
 @media only screen and (max-width: 2000px) {
   .movie-card-item-related {
     width: calc((100% - (4 * 20px)) / 5);
-    // height: 365px;
+    /* height: 365px; */
   }
 }
 
@@ -266,26 +266,26 @@
 @media only screen and (max-width: 1300px) {
   .movie-card-item-related {
     width: calc((100% - (2 * 20px)) / 3);
-    // height: 370px;
+    /* height: 370px; */
   }
 }
 
 @media only screen and (max-width: 1100px) {
   .movie-card-item-related {
-    // height: 335px;
+    /* height: 335px; */
   }
 }
 
 @media only screen and (max-width: 900px) {
   .movie-card-item-related {
-    // height: 330px;
+    /* height: 330px; */
   }
 }
 
 @media only screen and (max-width: 650px) {
   .movie-card-item-related {
     width: calc((100% - (1 * 20px)) / 2);
-    // height: 340px;
+    /* height: 340px; */
   }
 }
 

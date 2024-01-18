@@ -57,7 +57,7 @@
           &.is-active {
             width: 44px;
             background-color: var(--app-background-color);
-            // color: var(--text-link-color);
+            /* color: var(--text-link-color); */
             color: #fff;
             font-weight: normal;
             border-radius: 2px;
@@ -100,7 +100,7 @@
       }
 
       &.ant-pagination-disabled {
-        // display: none;
+        /* display: none; */
         background-color: transparent !important;
 
         button {
@@ -133,26 +133,26 @@
         transition: all 0s;
 
         &:hover {
-          // color: inherit;
+          /* color: inherit; */
           color: var(--text-link-color);
         }
       }
 
       &.ant-pagination-item-active {
         background-color: var(--app-background-color) !important;
-        // color: var(--text-link-color);
+        /* color: var(--text-link-color); */
         color: #fff;
         padding: 0px 2px;
         border-radius: 2px;
         font-weight: normal;
 
+        /* a {
+        } */
+
         &:hover {
           a {
             color: inherit;
           }
-        }
-
-        a {
         }
       }
     }
@@ -163,8 +163,8 @@
       width: 40px;
       line-height: 40px;
 
-      .anticon {
-      }
+      /* .anticon {
+      } */
 
       svg {
         fill: inherit;

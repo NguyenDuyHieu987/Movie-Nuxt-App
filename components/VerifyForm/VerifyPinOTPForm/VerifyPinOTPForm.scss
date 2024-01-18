@@ -34,16 +34,16 @@
 
         h1 {
           font-size: 3rem;
-          // font-size: 2.7rem;
-          // margin-bottom: 5px;
+          /* font-size: 2.7rem;
+          margin-bottom: 5px; */
         }
 
         p {
           font-size: 1.8rem;
         }
 
-        strong {
-        }
+        /* strong {
+        } */
       }
 
       .ant-input-affix-wrapper {
@@ -78,12 +78,12 @@
         &.resend {
           .count-down-btn {
             margin: 0px auto;
-            // min-width: 100px;
+            /* min-width: 100px; */
             background-color: transparent;
 
-            // &[disabled] {
-            //   color: #b3b3b3;
-            // }
+            /* &[disabled] {
+              color: #b3b3b3;
+            } */
           }
         }
 
@@ -92,7 +92,7 @@
             text-align: center;
           }
 
-          .ant-col.ant-form-item-control {
+          /* .ant-col.ant-form-item-control {
             .ant-form-item-control-input-content {
               // .ant-input-number {
               //   border-color: transparent;
@@ -114,22 +114,22 @@
               //   }
               // }
             }
-          }
+          } */
         }
       }
 
       .verify-form-button {
         font-size: 1.5rem;
-        // margin-top: 20px;
+        /* margin-top: 20px; */
         width: 100%;
 
         &:not(:disabled) {
           background-color: var(--app-background-color);
         }
 
-        &:disabled {
+        /* &:disabled {
           // background-color: transparent;
-        }
+        } */
       }
     }
   }

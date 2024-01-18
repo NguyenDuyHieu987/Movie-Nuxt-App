@@ -22,7 +22,7 @@
         .filter-label {
           font-weight: bold;
           white-space: nowrap;
-          // text-align: right;
+          /* text-align: right; */
           width: 130px;
           margin-top: 6px;
           font-size: 1.6rem;
@@ -37,8 +37,8 @@
           width: 100%;
           flex-grow: 1;
 
-          .swiper-wrapper {
-          }
+          /* .swiper-wrapper {
+          } */
 
           .filter-option {
             display: flex;

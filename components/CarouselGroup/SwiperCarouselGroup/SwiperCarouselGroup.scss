@@ -45,9 +45,9 @@
   position: relative;
 
   .swiper-wrapper {
-    // gap: var(--card-movie-gap);
+    /* gap: var(--card-movie-gap); */
 
-    .swiper-slide {
+    /* .swiper-slide {
       // &:first-child {
       //   padding-left: 0px;
       // }
@@ -57,7 +57,7 @@
       // }
 
       // padding: 0px calc(var(--card-movie-gap) / 2);
-    }
+    } */
 
     .swiper-slide:hover {
       z-index: 1;
@@ -77,8 +77,8 @@
     position: absolute;
     align-items: center;
     justify-content: center;
-    // top: 50%;
-    // transform: translateY(-50%);
+    /* top: 50%;
+    transform: translateY(-50%); */
     top: 0;
     bottom: 0;
     z-index: 2;
@@ -100,7 +100,7 @@
 
     &:hover {
       svg {
-        // color: #fff;
+        /* color: #fff; */
         color: var(--app-background-color);
         transform: scale(1.2);
       }

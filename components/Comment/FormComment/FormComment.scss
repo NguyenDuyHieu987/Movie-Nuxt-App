@@ -68,9 +68,9 @@
         max-height: 200px;
         overflow-y: scroll;
         color: inherit;
-        // height: 25px !important;
-        // min-height: 25px !important;
-        // max-height: 25px !important;
+        /* height: 25px !important;
+        min-height: 25px !important;
+        max-height: 25px !important; */
         padding-left: 3px;
         padding-top: 0px;
         padding-bottom: 2px;
@@ -109,13 +109,13 @@
       position: relative;
 
       &::after {
-        // display: none;
+        /* display: none; */
         position: absolute;
         font-size: 1.3rem;
-        // top: 50%;
-        // transform: translateY(-50%);
+        /* top: 50%;
+        transform: translateY(-50%); */
         bottom: 5px;
-        // right: 8px;
+        /* right: 8px; */
         right: 2px;
         z-index: 1;
       }
@@ -171,7 +171,7 @@
             font-size: 1.4rem;
 
             &.comment-btn {
-              // color: var(--app-background-color);
+              /* color: var(--app-background-color); */
 
               &:not(:disabled) {
                 background-color: var(--app-background-color);

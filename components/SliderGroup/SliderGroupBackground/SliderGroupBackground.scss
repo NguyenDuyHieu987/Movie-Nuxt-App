@@ -28,10 +28,10 @@ body:has(.slider-group .slider-group-wrapper.dragging) {
       left: 0;
       right: 0;
       z-index: 0;
-      // background-color: rgba(0, 128, 174, 0.6);
+      /* background-color: rgba(0, 128, 174, 0.6); */
       background-color: var(--dominant-backdrop-color, rgba(0, 128, 174, 0.6));
       opacity: 0.5;
-      // filter: blur(10px);
+      /* filter: blur(10px); */
     }
 
     .slider-group-background-list {
@@ -64,14 +64,14 @@ body:has(.slider-group .slider-group-wrapper.dragging) {
         }
       }
 
-      &.dragging {
+      /* &.dragging {
         // cursor: grab;
 
         .slider-item {
           // pointer-events: none;
           // cursor: grab;
         }
-      }
+      } */
     }
   }
 
