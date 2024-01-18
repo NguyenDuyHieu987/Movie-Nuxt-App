@@ -136,7 +136,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
-    'nuxt-purgecss',
+    // 'nuxt-purgecss',
     // SEO
     // '@nuxtjs/seo',
     '@nuxtjs/sitemap'
