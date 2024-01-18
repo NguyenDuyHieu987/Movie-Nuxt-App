@@ -271,7 +271,7 @@ export default defineNuxtConfig({
           additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
         }
       },
-      transformer: 'lightningcss',
+      transformer: 'postcss',
       lightningcss: {
         errorRecovery: true,
         inputSourceMap: 'sass'
