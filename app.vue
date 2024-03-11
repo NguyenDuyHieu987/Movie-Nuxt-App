@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <div id="append-to" />
-    <div id="preview-modal" />
+    <a-extract-style>
+      <div id="append-to" />
+      <div id="preview-modal" />
 
-    <!-- <a-config-provider
+      <!-- <a-config-provider
       :theme="{
         token: {
           colorPrimary: '#008ddf',
@@ -16,7 +17,7 @@
       }"
     /> -->
 
-    <!-- <ClientOnly>
+      <!-- <ClientOnly>
       <vue-progress-bar
         style="
           background: linear-gradient(
@@ -29,55 +30,53 @@
       />
     </ClientOnly> -->
 
-    <NuxtLoadingIndicator
-      color="linear-gradient(
+      <NuxtLoadingIndicator
+        color="linear-gradient(
             90deg,
             var(--loading-progress-bar1),
             var(--loading-progress-bar2),
             var(--loading-progress-bar3)
           )"
-      :height="3"
-      :throttle="300"
-    />
+        :height="3"
+        :throttle="300"
+      />
 
-    <SeoKit />
-    <!-- <OgImageStatic /> -->
+      <LoadingApp />
+      <RequireAuthDialog />
+      <NetworkChecker />
 
-    <LoadingApp />
-    <RequireAuthDialog />
-    <NetworkChecker />
+      <div class="app-wrapper">
+        <NuxtLayout>
+          <!-- :keepalive="{ exclude: [] }"  -->
+          <NuxtPage />
 
-    <div class="app-wrapper">
-      <NuxtLayout>
-        <!-- :keepalive="{ exclude: [] }"  -->
-        <NuxtPage />
-
-        <el-backtop
-          class="app-back-top click-active"
-          :visibility-height="600"
-          @click="onBackTop"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="2.5rem"
-            height="2.5rem"
-            viewBox="0 0 24 24"
-            fill="currentColor"
+          <el-backtop
+            class="app-back-top click-active"
+            :visibility-height="600"
+            @click="onBackTop"
           >
-            <path
-              d="m4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8l-8 8z"
-            />
-          </svg>
-        </el-backtop>
-      </NuxtLayout>
-    </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="2.5rem"
+              height="2.5rem"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="m4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8l-8 8z"
+              />
+            </svg>
+          </el-backtop>
+        </NuxtLayout>
+      </div>
+    </a-extract-style>
   </div>
 </template>
 
 <script setup lang="ts">
 import { LoadingApp } from '~/components/Loading';
-import { NetworkChecker } from '~/components/NetworkChecker';
 import { RequireAuthDialog } from '~/components/RequireAuth';
+import { NetworkChecker } from '~/components/NetworkChecker';
 
 const runtimeConfig = useRuntimeConfig();
 

@@ -268,7 +268,9 @@
         </div>
 
         <div class="related-content">
-          <div class="left"><Comment :dataMovie="dataMovie" /></div>
+          <div class="left">
+            <Comment :dataMovie="dataMovie" />
+          </div>
           <div class="right">
             <MovieSuggested :dataMovie="dataMovie" />
           </div>
@@ -279,27 +281,25 @@
 </template>
 
 <script setup lang="ts">
-import _ from 'lodash';
-
-import { BackPage } from '~/components/BackPage';
-import { Comment } from '~/components/Comment';
-import { HistoryProgressBar } from '~/components/HistoryProgressBar';
-import { Interaction } from '~/components/Interaction';
 import { LoadingSpinner } from '~/components/Loading';
-import { MovieSuggested } from '~/components/MovieSuggested';
+import { BackPage } from '~/components/BackPage';
+import { VideoPlayer } from '~/components/VideoPlayer';
+import { HistoryProgressBar } from '~/components/HistoryProgressBar';
+import { Tags } from '~/components/Tags';
 import { Overview } from '~/components/Overview';
 import { RatingMovie } from '~/components/RatingMovie';
-import { Tags } from '~/components/Tags';
-import { VideoPlayer } from '~/components/VideoPlayer';
+import { Interaction } from '~/components/Interaction';
+import { Comment } from '~/components/Comment';
+import { MovieSuggested } from '~/components/MovieSuggested';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
+import { getMovieById, UpdateViewMovie } from '~/services/movie';
 import { getItemList } from '~/services/list';
-import { getMovieById } from '~/services/movie';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
-import { UpdateView } from '~/services/updateView';
+import throttle from 'lodash/throttle';
 
 definePageMeta({
   pageTransition: {
@@ -498,7 +498,7 @@ const onPLayVideoPlayer = (e: any) => {
   isPlayVideo.value = true;
 };
 
-const throttleUpdateHistory = _.throttle(updateHistory, 1000);
+const throttleUpdateHistory = throttle(updateHistory, 1000);
 
 const onTimeUpdateVideoPlayer = (e: any) => {
   if (!isPlayVideo.value) {
@@ -521,7 +521,7 @@ const onTimeUpdateVideoPlayer = (e: any) => {
 
     if (seconds.value > e.duration / 2) {
       if (isUpdateView.value == true) {
-        UpdateView(movieId.value, 'movie')
+        UpdateViewMovie(movieId.value)
           .then((response) => {
             if (response?.success) {
               // Do something
@@ -570,4 +570,7 @@ const scrollToComment = () => {
 };
 </script>
 
-<style lang="scss" src="./PlayMoviePage.scss"></style>
+<!-- <style lang="scss" src="./PlayMoviePage.scss"></style> -->
+<style lang="scss">
+@import url('./PlayMoviePage.scss');
+</style>

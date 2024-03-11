@@ -412,22 +412,22 @@
 </template>
 
 <script setup lang="ts">
-import { BackPage } from '~/components/BackPage';
-import { CastCrew } from '~/components/CastCrew';
-import { Comment } from '~/components/Comment';
-import { HistoryProgressBar } from '~/components/HistoryProgressBar';
-import { Interaction } from '~/components/Interaction';
 import { LoadingSpinner } from '~/components/Loading';
-import { MovieRelated } from '~/components/MovieRelated';
+import { BackPage } from '~/components/BackPage';
+import { Tags } from '~/components/Tags';
 import { Overview } from '~/components/Overview';
 import { RatingMovie } from '~/components/RatingMovie';
-import { Tags } from '~/components/Tags';
+import { Interaction } from '~/components/Interaction';
+import { HistoryProgressBar } from '~/components/HistoryProgressBar';
+import { MovieRelated } from '~/components/MovieRelated';
+import { CastCrew } from '~/components/CastCrew';
+import { Comment } from '~/components/Comment';
+import { getMovieById } from '~/services/movie';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
-import { getMovieById } from '~/services/movie';
 import { getRating } from '~/services/rating';
 
 definePageMeta({

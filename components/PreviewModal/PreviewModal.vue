@@ -784,4 +784,7 @@ const onClickVolumeOff = () => {
 };
 </script>
 
-<style lang="scss" src="./PreviewModal.scss"></style>
+<!-- <style lang="scss" src="./PreviewModal.scss"></style> -->
+<style lang="scss">
+@import url('./PreviewModal.scss');
+</style>

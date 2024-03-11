@@ -130,31 +130,31 @@
         "functions": false
       }
     ],
-    "simple-import-sort/imports": [
-      "warn",
-      {
-        "groups": [
-          [
-            // Side effect imports.
-            "^\\u0000",
-            // Packages. `vue` related packages come first.
-            "^vue",
-            "^@?~?#?\\w",
-            // Internal packages.
-            "^(src|components|config|pages|services|server|types|utils|stores)(/.*|$)",
-            // Parent imports. Put `..` last.
-            "^\\.\\.(?!/?$)",
-            "^\\.\\./?$",
-            // Other relative imports. Put same-folder imports and `.` last.
-            "^\\./(?=.*/)(?!/?$)",
-            "^\\.(?!/?$)",
-            "^\\./?$",
-            // Style imports.
-            "^.+\\.s?css$"
-          ]
-        ]
-      }
-    ],
+    // "simple-import-sort/imports": [
+    //   "warn",
+    //   {
+    //     "groups": [
+    //       [
+    //         // Side effect imports.
+    //         "^\\u0000",
+    //         // Packages. `vue` related packages come first.
+    //         "^vue",
+    //         "^@?~?#?\\w",
+    //         // Internal packages.
+    //         "^(src|components|config|pages|services|server|types|utils|stores)(/.*|$)",
+    //         // Parent imports. Put `..` last.
+    //         "^\\.\\.(?!/?$)",
+    //         "^\\.\\./?$",
+    //         // Other relative imports. Put same-folder imports and `.` last.
+    //         "^\\./(?=.*/)(?!/?$)",
+    //         "^\\.(?!/?$)",
+    //         "^\\./?$",
+    //         // Style imports.
+    //         "^.+\\.s?css$"
+    //       ]
+    //     ]
+    //   }
+    // ],
     "simple-import-sort/exports": "warn"
   },
   "overrides": [

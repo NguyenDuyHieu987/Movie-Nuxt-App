@@ -165,7 +165,7 @@
 </template>
 
 <script setup lang="ts">
-import _ from 'lodash';
+import reject from 'lodash/reject';
 
 import { addRankSearch } from '~/services/ranks';
 import {
@@ -205,11 +205,11 @@ const handleRemoveSearchHistory = async (id: string) => {
   await removeSearchHistory(id)
     .then((response) => {
       if (response?.success) {
-        dataSearchHistory.value = _.reject(dataSearchHistory.value, (x) => {
+        dataSearchHistory.value = reject(dataSearchHistory.value, (x) => {
           return x.id === id;
         });
 
-        store.dataSearchHistory = _.reject(store.dataSearchHistory, (x) => {
+        store.dataSearchHistory = reject(store.dataSearchHistory, (x) => {
           return x.id === id;
         });
       }
@@ -221,15 +221,15 @@ const handleRemoveSearchHistoryInSearchResults = async (id: string) => {
   await removeSearchHistory(id)
     .then((response) => {
       if (response?.success) {
-        dataSearch.value = _.reject(dataSearch.value, (x) => {
+        dataSearch.value = reject(dataSearch.value, (x) => {
           return x?.type == 'history' && x.id === id;
         });
 
-        dataSearchHistory.value = _.reject(dataSearchHistory.value, (x) => {
+        dataSearchHistory.value = reject(dataSearchHistory.value, (x) => {
           return x.id === id;
         });
 
-        store.dataSearchHistory = _.reject(store.dataSearchHistory, (x) => {
+        store.dataSearchHistory = reject(store.dataSearchHistory, (x) => {
           return x.id === id;
         });
       }

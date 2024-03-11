@@ -3,9 +3,7 @@ import { version } from 'ant-design-vue';
 import type { NuxtPage } from 'nuxt/schema';
 import { resolve } from 'path';
 import { isProduction } from 'std-env';
-import { fileURLToPath } from 'url';
 import svgLoader from 'vite-svg-loader';
-// import resolveAntDVComponents from './utils/autoImportsAntdv';
 
 const antdVersion: number = +version.split('.')[0];
 
@@ -32,12 +30,12 @@ export default defineNuxtConfig({
         // { name: 'color-scheme', content: 'only dark' }
       ],
       link: [
-        antdVersion == 4
-          ? {
-              rel: 'stylesheet',
-              href: isProduction ? '/css/antdv4.css' : '/css/antdv4.dev.css'
-            }
-          : {}
+        // antdVersion == 4
+        //   ? {
+        //       rel: 'stylesheet',
+        //       href: isProduction ? '/css/antdv4.css' : '/css/antdv4.dev.css'
+        //     }
+        //   : {}
       ],
       script: [
         {
@@ -96,9 +94,7 @@ export default defineNuxtConfig({
     asyncEntry: true,
     asyncContext: true,
     crossOriginPrefetch: true,
-    componentIslands: {
-      selectiveClient: true
-    },
+    componentIslands: true,
     headNext: true,
     payloadExtraction: true,
     renderJsonPayloads: true,
@@ -111,7 +107,7 @@ export default defineNuxtConfig({
     }
   },
   features: {
-    // inlineSSRStyles: false,
+    inlineStyles: false
   },
   devtools: { enabled: false },
   typescript: {
@@ -127,7 +123,6 @@ export default defineNuxtConfig({
     '~/assets/style/globalStyle.scss'
   ],
   modules: [
-    // antdVersion == 4 ? '@ant-design-vue/nuxt' : resolveAntDVComponents,
     '@ant-design-vue/nuxt',
     '@element-plus/nuxt',
     '@pinia/nuxt',
@@ -143,6 +138,7 @@ export default defineNuxtConfig({
   ],
   extends: ['nuxt-seo-kit'],
   antd: {
+    extractStyle: true,
     icons: false
   },
   elementPlus: {
@@ -207,35 +203,35 @@ export default defineNuxtConfig({
   plugins: [],
   hooks: {
     'pages:extend': function (pages: any) {
-      function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
-        const pagesToRemove = [];
-        for (const page of pages) {
-          if (page.file && pattern.test(page.file)) {
-            pagesToRemove.push(page);
-          } else {
-            removePagesMatching(pattern, page.children);
-          }
-        }
-        for (const page of pagesToRemove) {
-          pages.splice(pages.indexOf(page), 1);
-        }
-      }
-      removePagesMatching(/\/components\//, pages);
+      // function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
+      //   const pagesToRemove = [];
+      //   for (const page of pages) {
+      //     if (page.file && pattern.test(page.file)) {
+      //       pagesToRemove.push(page);
+      //     } else {
+      //       removePagesMatching(pattern, page.children);
+      //     }
+      //   }
+      //   for (const page of pagesToRemove) {
+      //     pages.splice(pages.indexOf(page), 1);
+      //   }
+      // }
+      // removePagesMatching(/\/components\//, pages);
     }
   },
   build: {
     // analyze: true,
-    transpile: isProduction ? ['ant-design-vue', 'element-plus'] : []
   },
   components: {
     dirs: [
       {
-        pathPrefix: false,
-        extensions: ['.vue']
+        path: '~/components',
+        extensions: ['.vue'],
+        pathPrefix: false
       }
     ]
   },
-  vue: { defineModel: true, propsDestructure: true },
+  vue: { propsDestructure: true },
   ssr: true,
   sourcemap: {
     server: true,
@@ -282,8 +278,8 @@ export default defineNuxtConfig({
       sourcemap: 'hidden',
       ssrManifest: true,
       assetsDir: '_nuxt/',
-      cssMinify: 'lightningcss',
-      reportCompressedSize: false,
+      // cssMinify: 'lightningcss',
+      reportCompressedSize: true,
       minify: 'terser',
       terserOptions: {
         ecma: 2020,
@@ -291,7 +287,7 @@ export default defineNuxtConfig({
         parse: {
           html5_comments: false
         },
-        compress: false,
+        compress: true,
         toplevel: true,
         mangle: {},
         format: {
@@ -349,7 +345,14 @@ export default defineNuxtConfig({
         driver: 'redis'
       }
     },
-    output: {}
+    output: {},
+    rollupConfig: {
+      output: {
+        // manualChunks: {
+        //   lodash: ['lodash']
+        // }
+      }
+    }
   },
   generate: {
     routes: [],

@@ -45,15 +45,15 @@
 
 <script setup lang="ts">
 import {
-  DislikeFilled,
-  DislikeOutlined,
   LikeFilled,
-  LikeOutlined
+  LikeOutlined,
+  DislikeFilled,
+  DislikeOutlined
 } from '@ant-design/icons-vue';
 import { ElNotification } from 'element-plus';
 
 import {
-  CheckLikeDislike,
+  // CheckLikeDislike,
   DisLikeComment,
   LikeComment
 } from '~/services/comment';
@@ -196,4 +196,7 @@ const handleDisLikeComment = () => {
 };
 </script>
 
-<style lang="scss" src="./LikeDislike.scss"></style>
+<!-- <style lang="scss" src="./LikeDislike.scss"></style> -->
+<style lang="scss">
+@import url('./LikeDislike.scss');
+</style>

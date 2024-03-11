@@ -279,9 +279,9 @@
 </template>
 <script setup lang="ts">
 import { getGenreById } from '~/services/genres';
-import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
-import { getItemList } from '~/services/list';
+// import { getItemList } from '~/services/list';
+// import { getItemHistory } from '~/services/history';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
 import type { genre } from '~/types';
@@ -433,10 +433,14 @@ const handleAddToList = (e: any) => {
 
 const handleClickGenreItem = (genreItem: genre) => {
   navigateTo(
-    `/discover/genre/${getGenreById(genreItem.id, store?.allGenres)
-      ?.short_name}`
+    `/discover/genre/${
+      getGenreById(genreItem.id, store?.allGenres)?.short_name
+    }`
   );
 };
 </script>
 
-<style lang="scss" src="./MovieCardVertical.scss"></style>
+<!-- <style lang="scss" src="./MovieCardVertical.scss"></style> -->
+<style lang="scss">
+@import url('./MovieCardVertical.scss');
+</style>

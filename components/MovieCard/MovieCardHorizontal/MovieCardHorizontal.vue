@@ -131,9 +131,10 @@
 </template>
 
 <script setup lang="ts">
-import { Image } from '~/components/Image';
+// import { Image } from '~/components/Image';
 import { PreviewModal } from '~/components/PreviewModal';
-import { getItemHistory } from '~/services/history';
+// import { getItemList } from '~/services/list';
+// import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
@@ -311,4 +312,7 @@ const onMouseLeaveCard = () => {
   }
 };
 </script>
-<style lang="scss" src="./MovieCardHorizontal.scss"></style>
+<!-- <style lang="scss" src="./MovieCardHorizontal.scss"></style> -->
+<style lang="scss">
+@import url('./MovieCardHorizontal.scss');
+</style>

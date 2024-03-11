@@ -120,14 +120,13 @@
 </template>
 
 <script setup lang="ts">
-import 'vue3-emoji-picker/css';
+import { CommentMovie, EditComment } from '~/services/comment';
+import { getImage } from '~/services/image';
 import EmojiPicker from 'vue3-emoji-picker';
+import 'vue3-emoji-picker/css';
 import DOMPurify from 'dompurify';
 import { ElNotification } from 'element-plus';
 import { storeToRefs } from 'pinia';
-
-import { CommentMovie, EditComment } from '~/services/comment';
-import { getImage } from '~/services/image';
 import type { commentForm } from '~/types';
 
 // const props = defineProps({
@@ -442,4 +441,7 @@ const onSelectEmoji = (emoji: any) => {
 };
 </script>
 
-<style lang="scss" src="./FormComment.scss"></style>
+<!-- <style lang="scss" src="./FormComment.scss"></style> -->
+<style lang="scss">
+@import url('./FormComment.scss');
+</style>

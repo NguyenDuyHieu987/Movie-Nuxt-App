@@ -87,6 +87,10 @@
         background-color: transparent;
         border: none;
         outline: none;
+
+        &:hover {
+          color: var(--text-link-color);
+        }
       }
 
       .ant-pagination-item-link {

@@ -14,8 +14,6 @@ export const genAntdStyle = async () => {
   }
 };
 
-// genAntdStyle();
-
 export const genAntdStyleDarkMode = async () => {
   const css = extractStyle((node) => {
     return h(

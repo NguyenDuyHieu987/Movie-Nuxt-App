@@ -417,16 +417,16 @@
 import { BillboardAnimation } from '~/components/BillboardAnimation';
 import { BoxVip } from '~/components/BoxVip';
 import {
-  SlickCarouselGroup,
+  // SlickCarouselGroup,
   SwiperCarouselGroup
 } from '~/components/CarouselGroup';
 import {
   LoadingSectionHorizontal,
   LoadingSectionVertical
 } from '~/components/Loading';
+import { SliderGroupBackground } from '~/components/SliderGroup';
 import { MovieCardHorizontal, MovieCardVertical } from '~/components/MovieCard';
 import { MovieCardHorizontalTrailer } from '~/components/MovieCardHorizontalTrailer';
-import { SliderGroupBackground } from '~/components/SliderGroup';
 import { ViewMoreBar } from '~/components/ViewMoreBar';
 import { getMoviesByGenres } from '~/services/discover';
 import { getNowPlaying, getTopRated, getUpComing } from '~/services/movieSlug';

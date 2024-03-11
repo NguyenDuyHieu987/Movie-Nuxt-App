@@ -6,7 +6,7 @@ header.header-bar {
   width: 100%;
   background: var(--header-background);
   /* border-bottom: 0.25px solid var(--border-regular-light); */
-  z-index: var(--header-z-index);
+  z-index: calc(var(--header-z-index) + 1);
   transition: background-color 0.2s ease;
   transition-delay: 0.2s;
 

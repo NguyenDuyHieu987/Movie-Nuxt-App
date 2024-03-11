@@ -224,10 +224,10 @@
 </template>
 
 <script setup lang="ts">
-import { BillboardAnimation } from '~/components/BillboardAnimation';
-import { SwiperCarouselGroup } from '~/components/CarouselGroup';
 import { HeaderPageGenreType } from '~/components/Layouts';
+import { BillboardAnimation } from '~/components/BillboardAnimation';
 import { LoadingSectionHorizontal } from '~/components/Loading';
+import { SwiperCarouselGroup } from '~/components/CarouselGroup';
 import { MovieCardHorizontal } from '~/components/MovieCard';
 import { getGenreById } from '~/services/genres';
 import { FilterMovieSlug } from '~/services/movieSlug';

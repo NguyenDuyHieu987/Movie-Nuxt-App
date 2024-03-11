@@ -1,6 +1,7 @@
 <template>
+  <!-- v-model:visible="openDrawer" -->
   <a-drawer
-    v-model:visible="openDrawer"
+    v-model:open="openDrawer"
     class="menu-drawer"
     placement="left"
     :closable="false"

@@ -1,1 +1,1 @@
-export { default as Tags } from './Tags.server.vue';
+export { default as Tags } from './Tags.vue';

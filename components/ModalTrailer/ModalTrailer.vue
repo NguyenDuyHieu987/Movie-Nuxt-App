@@ -4,8 +4,9 @@
     to="#append-to"
   >
     <div class="modal-trailer-wrapper">
+      <!-- v-model:visible="isTeleport" -->
       <!-- <a-modal
-      v-model:visible="isTeleport"
+      v-model:open="isTeleport"
       class="modal-trailer"
       :width="1300"
       centered

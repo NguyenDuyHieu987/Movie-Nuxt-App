@@ -63,14 +63,14 @@
 </template>
 
 <script setup lang="ts">
-import type { country, formfilter } from '@/types';
-import { ControlPage } from '~/components/ControlPage';
 import { DiscoverHead } from '~/components/DiscoverHead';
-import { FilterBar } from '~/components/FilterBar';
-import { LoadingSpinner } from '~/components/Loading';
+// import { FilterBar } from '~/components/FilterBar';
 import { MovieCardHorizontal } from '~/components/MovieCard';
+import { LoadingSpinner } from '~/components/Loading';
+import { ControlPage } from '~/components/ControlPage';
 import { getCountryByShortName } from '~/services/country';
-import { FilterMovie, getMovieByCountry } from '~/services/discover';
+import { getMovieByCountry } from '~/services/discover';
+import type { country, formfilter } from '@/types';
 
 definePageMeta({
   pageTransition: {

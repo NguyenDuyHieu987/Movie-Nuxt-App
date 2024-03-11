@@ -8,9 +8,10 @@
 <script setup lang="ts">
 defineProps<{
   tagsLabel: string;
-  link?: boolean | false;
-  multiple?: boolean | false;
 }>();
 </script>
 
-<style lang="scss" scoped src="./Tags.scss"></style>
+<!-- <style lang="scss" src="./Tags.scss" scoped></style> -->
+<style lang="scss" scoped>
+@import url('./Tags.scss');
+</style>

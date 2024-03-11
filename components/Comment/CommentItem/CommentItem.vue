@@ -261,21 +261,27 @@
 </template>
 
 <script setup lang="ts">
-import DOMPurify from 'dompurify';
-import { ElNotification } from 'element-plus';
-import _ from 'lodash';
-import { storeToRefs } from 'pinia';
-
-import type { commentForm } from '@/types';
+// import {
+//   FormComment,
+//   CommentContent,
+//   CommentItemChild,
+//   LikeDislike
+// } from '~/components/Comment';
+import FormComment from '~/components/Comment/FormComment/FormComment.vue';
+import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';
+import CommentItemChild from '~/components/Comment/CommentItemChild/CommentItemChild.vue';
+import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
 import {
-  CommentContent,
-  CommentItemChild,
-  FormComment,
-  LikeDislike
-} from '~/components/Comment';
-import { LoadingCircle, LoadingSpinner } from '~/components/Loading';
+  // LoadingCircle,
+  LoadingSpinner
+} from '~/components/Loading';
 import { DeleteComment, getCommentChild } from '~/services/comment';
+import { ElNotification } from 'element-plus';
 import { getImage } from '~/services/image';
+import DOMPurify from 'dompurify';
+import reject from 'lodash/reject';
+import { storeToRefs } from 'pinia';
+import type { commentForm } from '@/types';
 
 const props = defineProps<{
   movieId: string;
@@ -381,7 +387,7 @@ const handleRemoveComment = () => {
   })
     .then((response) => {
       if (response?.success) {
-        commentsList.value = _.reject(commentsList.value, (x: commentForm) => {
+        commentsList.value = reject(commentsList.value, (x: commentForm) => {
           return x!.id === props.item?.id;
         });
 
@@ -405,4 +411,7 @@ const handleRemoveComment = () => {
 };
 </script>
 
-<style lang="scss" src="./CommentItem.scss"></style>
+<!-- <style lang="scss" src="./CommentItem.scss"></style> -->
+<style lang="scss">
+@import url('./CommentItem.scss');
+</style>

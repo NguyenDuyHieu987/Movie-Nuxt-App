@@ -127,17 +127,16 @@
 </template>
 
 <script setup lang="ts">
-import { useBreakpoints } from '@vueuse/core';
-import gsap from 'gsap';
-import _ from 'lodash';
-import { storeToRefs } from 'pinia';
-
-import { MovieCardHorizontalFollow } from '~/components/MovieCardHorizontalFollow';
-import { RequireAuth } from '~/components/RequireAuth';
-import { SortTab } from '~/components/SortTab';
 import { TopicColumn } from '~/components/TopicColumn';
 import { TopicRow } from '~/components/TopicRow';
+import { SortTab } from '~/components/SortTab';
+import { MovieCardHorizontalFollow } from '~/components/MovieCardHorizontalFollow';
+import { RequireAuth } from '~/components/RequireAuth';
 import { getList, searchList } from '~/services/list';
+import { useBreakpoints } from '@vueuse/core';
+import gsap from 'gsap';
+import reject from 'lodash/reject';
+import { storeToRefs } from 'pinia';
 
 definePageMeta({
   // middleware: ['require-auth']
@@ -274,7 +273,7 @@ getData();
 
 const getDataWhenRemoveList = (data: number) => {
   // dataList.value = data;
-  dataList.value = _.reject(dataList.value, (x) => {
+  dataList.value = reject(dataList.value, (x) => {
     return x.movie_id === data;
   });
   total.value = dataList.value?.length;

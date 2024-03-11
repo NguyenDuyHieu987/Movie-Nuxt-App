@@ -77,9 +77,9 @@
 </template>
 
 <script setup lang="ts">
-import { ControlPage } from '~/components/ControlPage';
-import { LoadingSpinner } from '~/components/Loading';
 import { MovieCardHorizontal } from '~/components/MovieCard';
+import { LoadingSpinner } from '~/components/Loading';
+import { ControlPage } from '~/components/ControlPage';
 import { addRankSearch } from '~/services/ranks';
 import { addSearch, addSearchHistory, getDaTaSearch } from '~/services/search';
 

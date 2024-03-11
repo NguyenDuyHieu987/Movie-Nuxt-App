@@ -21,9 +21,8 @@
           "
         >
           {{ dataMovie?.name }}
+          <HistoryProgressBar :historyProgress="historyProgress.percent" />
         </BackPage>
-
-        <HistoryProgressBar :historyProgress="historyProgress.percent" />
       </div>
 
       <div class="video">
@@ -298,28 +297,26 @@
 </template>
 
 <script setup lang="ts">
-import _ from 'lodash';
-
-import { BackPage } from '~/components/BackPage';
-import { Comment } from '~/components/Comment';
-import { HistoryProgressBar } from '~/components/HistoryProgressBar';
-import { Interaction } from '~/components/Interaction';
-import { ListEpisodes } from '~/components/ListEpisodes';
 import { LoadingSpinner } from '~/components/Loading';
-import { MovieSuggested } from '~/components/MovieSuggested';
+import { BackPage } from '~/components/BackPage';
+import { VideoPlayer } from '~/components/VideoPlayer';
+import { HistoryProgressBar } from '~/components/HistoryProgressBar';
+import { Tags } from '~/components/Tags';
 import { Overview } from '~/components/Overview';
 import { RatingMovie } from '~/components/RatingMovie';
-import { Tags } from '~/components/Tags';
-import { VideoPlayer } from '~/components/VideoPlayer';
+import { Interaction } from '~/components/Interaction';
 import { getCountryByOriginalLanguage } from '~/services/country';
+import { ListEpisodes } from '~/components/ListEpisodes';
+import { Comment } from '~/components/Comment';
+import { MovieSuggested } from '~/components/MovieSuggested';
+import { getTvById, UpdateViewTv } from '~/services/tv';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
-import { getTvById } from '~/services/tv';
-import { UpdateView } from '~/services/updateView';
+import throttle from 'lodash/throttle';
 
 definePageMeta({
   pageTransition: {
@@ -545,7 +542,7 @@ const onPLayVideoPlayer = (e: any) => {
   isPlayVideo.value = true;
 };
 
-const throttleUpdateHistory = _.throttle(updateHistory, 1000);
+const throttleUpdateHistory = throttle(updateHistory, 1000);
 
 const onTimeUpdateVideoPlayer = (e: any) => {
   if (!isPlayVideo.value) {
@@ -568,7 +565,7 @@ const onTimeUpdateVideoPlayer = (e: any) => {
 
     if (seconds.value > e.duration / 2) {
       if (isUpdateView.value == true) {
-        UpdateView(movieId.value, 'tv')
+        UpdateViewTv(movieId.value)
           .then((response) => {
             if (response?.success) {
               // Do something
@@ -616,4 +613,7 @@ const scrollToComment = () => {
 };
 </script>
 
-<style lang="scss" src="./PlayTvPage.scss"></style>
+<!-- <style lang="scss" src="./PlayTvPage.scss"></style> -->
+<style lang="scss">
+@import url('./PlayTvPage.scss');
+</style>

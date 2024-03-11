@@ -56,4 +56,7 @@ const handleClickCollapse = () => {
 };
 </script>
 
-<style lang="scss" src="./CommentContent.scss"></style>
+<!-- <style lang="scss" src="./CommentContent.scss"></style> -->
+<style lang="scss">
+@import url('./CommentContent.scss');
+</style>

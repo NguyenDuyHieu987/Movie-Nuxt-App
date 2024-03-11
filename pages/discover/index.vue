@@ -47,11 +47,14 @@
 </template>
 
 <script setup lang="ts">
-import type { formfilter, typeMovie } from '@/types';
-import { ControlPage } from '~/components/ControlPage';
+import type { formfilter } from '@/types';
 import { FilterSection } from '~/components/FilterSection';
+import {
+  // MovieCardHorizontal,
+  MovieCardVertical
+} from '~/components/MovieCard';
 import { LoadingSpinner } from '~/components/Loading';
-import { MovieCardHorizontal, MovieCardVertical } from '~/components/MovieCard';
+import { ControlPage } from '~/components/ControlPage';
 import { FilterMovie } from '~/services/discover';
 
 definePageMeta({

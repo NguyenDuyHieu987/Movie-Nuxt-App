@@ -216,10 +216,10 @@
 </template>
 
 <script setup lang="ts">
-import { BillboardAnimation } from '~/components/BillboardAnimation';
-import { SwiperCarouselGroup } from '~/components/CarouselGroup';
 import { HeaderPageMovieType } from '~/components/Layouts';
+import { BillboardAnimation } from '~/components/BillboardAnimation';
 import { LoadingSectionHorizontal } from '~/components/Loading';
+import { SwiperCarouselGroup } from '~/components/CarouselGroup';
 import { MovieCardHorizontal } from '~/components/MovieCard';
 import {
   getMovies,

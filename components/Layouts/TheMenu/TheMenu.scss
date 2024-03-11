@@ -3,7 +3,7 @@
   flex-grow: 1;
   width: 100%;
   border: none;
-  /* overflow: hidden; */
+  min-height: 100%;
 
   --el-menu-item-height: var(--menu-item-height) !important;
   --el-menu-sub-item-height: var(--menu-item-height) !important;

@@ -49,8 +49,13 @@
 </template>
 
 <script setup lang="ts">
-import { CommentItem, FormComment } from '~/components/Comment';
-import { LoadingCircle, LoadingSpinner } from '~/components/Loading';
+// import { FormComment, CommentItem } from '~/components/Comment';
+import FormComment from '~/components/Comment/FormComment/FormComment.vue';
+import CommentItem from '~/components/Comment/CommentItem/CommentItem.vue';
+import {
+  // LoadingCircle,
+  LoadingSpinner
+} from '~/components/Loading';
 import { getCommentParent } from '~/services/comment';
 import type { commentForm } from '~/types';
 
@@ -120,4 +125,7 @@ getCommentParent(props.dataMovie?.id, props.dataMovie?.media_type, skip.value)
   });
 </script>
 
-<style lang="scss" src="./Comment.scss"></style>
+<!-- <style lang="scss" src="./Comment.scss"></style> -->
+<style lang="scss">
+@import url('./Comment.scss');
+</style>

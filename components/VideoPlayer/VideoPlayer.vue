@@ -1646,4 +1646,7 @@ const handleClickVideoPlayer = () => {
 };
 </script>
 
-<style lang="scss" src="./VideoPlayer.scss"></style>
+<!-- <style lang="scss" src="./VideoPlayer.scss" scoped></style> -->
+<style lang="scss">
+@import url('./VideoPlayer.scss');
+</style>

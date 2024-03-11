@@ -49,12 +49,15 @@
 </template>
 
 <script setup lang="ts">
-import type { formfilter, typeTv } from '@/types';
-import { ControlPage } from '~/components/ControlPage';
 import { FilterSection } from '~/components/FilterSection';
+import {
+  // MovieCardHorizontal,
+  MovieCardVertical
+} from '~/components/MovieCard';
 import { LoadingSpinner } from '~/components/Loading';
-import { MovieCardHorizontal, MovieCardVertical } from '~/components/MovieCard';
+import { ControlPage } from '~/components/ControlPage';
 import { FilterTvSlug } from '~/services/TvSlug';
+import type { formfilter } from '@/types';
 
 definePageMeta({
   pageTransition: {

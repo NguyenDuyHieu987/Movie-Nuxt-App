@@ -12,7 +12,7 @@ export function getTvById(
 }
 
 export function UpdateViewTv(movieId: number | string) {
-  return makeRequest(`/${PREFIX_ROUTE}/updateview/${movieId}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/update-view/${movieId}`, {
     method: 'POST'
   });
 }

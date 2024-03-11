@@ -142,4 +142,7 @@ const handleRating = (value: number) => {
 };
 </script>
 
-<style lang="scss" src="./RatingMovie.scss"></style>
+<!-- <style lang="scss" src="./RatingMovie.scss"></style> -->
+<style lang="scss">
+@import url('./RatingMovie.scss');
+</style>

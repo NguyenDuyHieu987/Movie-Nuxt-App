@@ -62,7 +62,6 @@
 import { LoadingSpinner } from '~/components/Loading';
 import { MovieCardSuggested } from '~/components/MovieSuggested';
 import { getSimilar } from '~/services/similar';
-import { getTrending } from '~/services/trending';
 
 const props = defineProps<{
   dataMovie: any;
@@ -137,4 +136,7 @@ getSimilar(props?.dataMovie.media_type, props?.dataMovie.id, page.value, 15)
 // loading.value = false;
 </script>
 
-<style lang="scss" src="./MovieSuggested.scss"></style>
+<!-- <style lang="scss" src="./MovieSuggested.scss"></style> -->
+<style lang="scss">
+@import url('./MovieSuggested.scss');
+</style>

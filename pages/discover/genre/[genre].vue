@@ -61,14 +61,14 @@
 </template>
 
 <script setup lang="ts">
-import type { formfilter, genre } from '@/types';
-import { ControlPage } from '~/components/ControlPage';
 import { DiscoverHead } from '~/components/DiscoverHead';
-import { FilterBar } from '~/components/FilterBar';
+// import { FilterBar } from '~/components/FilterBar';
 import { LoadingSpinner } from '~/components/Loading';
+import { ControlPage } from '~/components/ControlPage';
 import { MovieCardHorizontal } from '~/components/MovieCard';
-import { FilterMovie, getMoviesByGenres } from '~/services/discover';
+import { getMoviesByGenres } from '~/services/discover';
 import { getGenreByShortName } from '~/services/genres';
+import type { formfilter, genre } from '@/types';
 
 definePageMeta({
   pageTransition: {
