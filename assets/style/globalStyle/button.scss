@@ -93,6 +93,7 @@
     box-shadow: none;
 
     &:hover {
+      color: inherit;
       border-color: transparent;
     }
   }
