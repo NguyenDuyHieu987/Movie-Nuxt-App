@@ -107,4 +107,7 @@ const onRouteToPaymentPage = () => {
 };
 </script>
 
-<style lang="scss" src="./UpgradePage.scss"></style>
+<!-- <style lang="scss" src="./UpgradePage.scss"></style> -->
+<style lang="scss">
+@import url('./UpgradePage.scss');
+</style>

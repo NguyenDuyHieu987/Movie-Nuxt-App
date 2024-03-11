@@ -27,4 +27,7 @@ useSeoMeta({
 });
 </script>
 
-<style lang="scss" src="./HelpPage.scss"></style>
+<!-- <style lang="scss" src="./HelpPage.scss"></style> -->
+<style lang="scss">
+@import url('./HelpPage.scss');
+</style>

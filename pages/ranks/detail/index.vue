@@ -335,4 +335,7 @@ const handleChangeType = (activeKey: any) => {
 };
 </script>
 
-<style lang="scss" src="./DetailRank.scss"></style>
+<!-- <style lang="scss" src="./DetailRank.scss"></style> -->
+<style lang="scss">
+@import url('./DetailRank.scss');
+</style>

@@ -228,4 +228,7 @@ getTrending(pageRecommend.value, 20)
 // loadingRecommend.value = false;
 </script>
 
-<style lang="scss" src="./MovieRelated.scss"></style>
+<!-- <style lang="scss" src="./MovieRelated.scss"></style> -->
+<style lang="scss">
+@import url('./MovieRelated.scss');
+</style>

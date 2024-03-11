@@ -34,4 +34,7 @@ const handleChangeTab = (value: string) => {
 };
 </script>
 
-<style lang="scss" src="./SortTab.scss"></style>
+<!-- <style lang="scss" src="./SortTab.scss"></style> -->
+<style lang="scss">
+@import url('./SortTab.scss');
+</style>

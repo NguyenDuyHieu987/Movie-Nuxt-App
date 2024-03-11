@@ -372,4 +372,7 @@ const handleChange = () => {
 };
 </script>
 
-<style lang="scss" src="./FilterBar.scss"></style>
+<!-- <style lang="scss" src="./FilterBar.scss"></style> -->
+<style lang="scss">
+@import url('./FilterBar.scss');
+</style>

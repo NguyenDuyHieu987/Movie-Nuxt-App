@@ -171,4 +171,7 @@ const compareRanks = (ranks: any): any[] => {
 };
 </script>
 
-<style lang="scss" src="./RankSection.scss"></style>
+<!-- <style lang="scss" src="./RankSection.scss"></style> -->
+<style lang="scss">
+@import url('./RankSection.scss');
+</style>

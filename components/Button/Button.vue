@@ -18,4 +18,7 @@ type MyButtonProps = ButtonProps & {};
 withDefaults(defineProps<MyButtonProps>(), {});
 </script>
 
-<style lang="scss" src="./Button.scss"></style>
+<!-- <style lang="scss" src="./Button.scss"></style> -->
+<style lang="scss">
+@import url('./Button.scss');
+</style>

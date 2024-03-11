@@ -443,4 +443,7 @@ const leave = (el: any, done: () => void) => {
 };
 </script>
 
-<style lang="scss" src="./HistoryPage.scss"></style>
+<!-- <style lang="scss" src="./HistoryPage.scss"></style> -->
+<style lang="scss">
+@import url('./HistoryPage.scss');
+</style>

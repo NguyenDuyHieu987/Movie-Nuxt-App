@@ -284,4 +284,7 @@ const handleClickBack = async () => {
 };
 </script>
 
-<style lang="scss" src="./VerifyPinOTPForm.scss"></style>
+<!-- <style lang="scss" src="./VerifyPinOTPForm.scss"></style> -->
+<style lang="scss">
+@import url('./VerifyPinOTPForm.scss');
+</style>

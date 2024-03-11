@@ -20,4 +20,7 @@ import { getImage } from '~/services/image';
 const store = useStore();
 </script>
 
-<style lang="scss" src="./LoadingApp.scss"></style>
+<!-- <style lang="scss" src="./LoadingApp.scss"></style> -->
+<style lang="scss">
+@import url('./LoadingApp.scss');
+</style>

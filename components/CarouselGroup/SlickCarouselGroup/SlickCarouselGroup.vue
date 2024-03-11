@@ -114,4 +114,7 @@ const slickResponsive = computed(() => {
 const slickCarousel = ref();
 </script>
 
-<style lang="scss" src="./SlickCarouselGroup.scss"></style>
+<!-- <style lang="scss" src="./SlickCarouselGroup.scss"></style> -->
+<style lang="scss">
+@import url('./SlickCarouselGroup.scss');
+</style>

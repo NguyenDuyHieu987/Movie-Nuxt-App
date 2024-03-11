@@ -707,4 +707,7 @@ const handleChangeType = (activeKey: any) => {
 };
 </script>
 
-<style lang="scss" src="./RankPage.scss"></style>
+<!-- <style lang="scss" src="./RankPage.scss"></style> -->
+<style lang="scss">
+@import url('./RankPage.scss');
+</style>

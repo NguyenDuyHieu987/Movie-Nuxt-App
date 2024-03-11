@@ -413,4 +413,7 @@ watch(
 );
 </script>
 
-<style src="../TelevisionPage.scss" lang="scss"></style>
+<!-- <style src="../TelevisionPage.scss" lang="scss"></style> -->
+<style lang="scss">
+@import url('../TelevisionPage.scss');
+</style>

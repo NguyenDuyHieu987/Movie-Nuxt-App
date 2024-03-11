@@ -311,4 +311,7 @@ onMounted(() => {
 });
 </script>
 
-<style src="./TopicRow.scss" lang="scss"></style>
+<!-- <style src="./TopicRow.scss" lang="scss"></style> -->
+<style lang="scss">
+@import url('./TopicRow.scss');
+</style>

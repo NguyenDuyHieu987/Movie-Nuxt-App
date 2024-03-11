@@ -50,4 +50,7 @@ useSeoMeta({
 });
 </script>
 
-<style lang="scss" src="./VnpaySuccessPage.scss"></style>
+<!-- <style lang="scss" src="./VnpaySuccessPage.scss"></style> -->
+<style lang="scss">
+@import url('./VnpaySuccessPage.scss');
+</style>

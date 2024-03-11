@@ -420,4 +420,7 @@ onBeforeMount(() => {
 });
 </script>
 
-<style lang="scss" src="./Interaction.scss"></style>
+<!-- <style lang="scss" src="./Interaction.scss"></style> -->
+<style lang="scss">
+@import url('./Interaction.scss');
+</style>

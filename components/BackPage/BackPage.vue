@@ -59,4 +59,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" src="./BackPage.scss"></style>
+<!-- <style lang="scss" src="./BackPage.scss"></style> -->
+<style lang="scss">
+@import url('./BackPage.scss');
+</style>

@@ -233,4 +233,7 @@ const onChangePage = async (pageSelected: number) => {
 };
 </script>
 
-<style lang="scss" src="./SearchPage.scss"></style>
+<!-- <style lang="scss" src="./SearchPage.scss"></style> -->
+<style lang="scss">
+@import url('./SearchPage.scss');
+</style>

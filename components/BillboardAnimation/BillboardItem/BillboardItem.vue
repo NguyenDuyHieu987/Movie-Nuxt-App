@@ -300,4 +300,7 @@ const handleAddToList = () => {
 };
 </script>
 
-<style lang="scss" src="./BillboardItem.scss"></style>
+<!-- <style lang="scss" src="./BillboardItem.scss"></style> -->
+<style lang="scss">
+@import url('./BillboardItem.scss');
+</style>

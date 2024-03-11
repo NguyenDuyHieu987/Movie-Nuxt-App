@@ -450,4 +450,7 @@ const leave = (el: any, done: () => void) => {
 };
 </script>
 
-<style lang="scss" src="./FollowPage.scss"></style>
+<!-- <style lang="scss" src="./FollowPage.scss"></style> -->
+<style lang="scss">
+@import url('./FollowPage.scss');
+</style>

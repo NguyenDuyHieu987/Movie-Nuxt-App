@@ -58,4 +58,7 @@ defineProps<{
 // });
 </script>
 
-<style lang="scss" src="./ControlPage.scss"></style>
+<!-- <style lang="scss" src="./ControlPage.scss"></style> -->
+<style lang="scss">
+@import url('./ControlPage.scss');
+</style>

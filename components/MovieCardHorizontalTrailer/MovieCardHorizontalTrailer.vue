@@ -146,4 +146,8 @@ const getData = async () => {
 
 getData();
 </script>
-<style lang="scss" src="./MovieCardHorizontalTrailer.scss"></style>
+
+<!-- <style lang="scss" src="./MovieCardHorizontalTrailer.scss"></style> -->
+<style lang="scss">
+@import url('./MovieCardHorizontalTrailer.scss');
+</style>

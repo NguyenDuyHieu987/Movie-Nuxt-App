@@ -60,4 +60,8 @@ onBeforeMount(async () => {
   loading.value = false;
 });
 </script>
-<style lang="scss" src="./CastCard.scss"></style>
+
+<!-- <style lang="scss" src="./CastCard.scss"></style> -->
+<style lang="scss">
+@import url('./CastCard.scss');
+</style>

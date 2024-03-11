@@ -26,4 +26,7 @@ const loading = defineModel<boolean>('loading', {
 });
 </script>
 
-<style lang="scss" src="./LoadingSectionVertical.scss"></style>
+<!-- <style lang="scss" src="./LoadingSectionVertical.scss"></style> -->
+<style lang="scss">
+@import url('./LoadingSectionVertical.scss');
+</style>

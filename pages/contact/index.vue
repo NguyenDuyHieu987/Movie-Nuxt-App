@@ -152,4 +152,7 @@ const quickHelps = ref<[{ title: string; path: string }]>([
 ]);
 </script>
 
-<style lang="scss" src="./ContactPage.scss"></style>
+<!-- <style lang="scss" src="./ContactPage.scss"></style> -->
+<style lang="scss">
+@import url('./ContactPage.scss');
+</style>

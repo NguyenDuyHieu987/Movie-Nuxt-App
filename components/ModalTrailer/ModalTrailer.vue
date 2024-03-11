@@ -238,4 +238,7 @@ watch(isTeleport, async () => {
 });
 </script>
 
-<style lang="scss" src="./ModalTrailer.scss"></style>
+<!-- <style lang="scss" src="./ModalTrailer.scss"></style> -->
+<style lang="scss">
+@import url('./ModalTrailer.scss');
+</style>

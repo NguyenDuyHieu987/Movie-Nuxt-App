@@ -270,4 +270,8 @@ const handleChangeBillboardActiveItem = (index: number) => {
   billboard.value!.goTo(index);
 };
 </script>
-<style lang="scss" src="./BillboardAnimation.scss"></style>
+
+<!-- <style lang="scss" src="./BillboardAnimation.scss"></style> -->
+<style lang="scss">
+@import url('./BillboardAnimation.scss');
+</style>

@@ -6,4 +6,7 @@
 
 <script setup lang="ts"></script>
 
-<style lang="scss" src="./Dropdown.scss"></style>
+<!-- <style lang="scss" src="./Dropdown.scss"></style> -->
+<style lang="scss">
+@import url('./Dropdown.scss');
+</style>

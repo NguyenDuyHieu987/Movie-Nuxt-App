@@ -271,4 +271,7 @@ const handleDBClickPlanOpiton = (plan: plan) => {
 };
 </script>
 
-<style lang="scss" src="./PlanGrid.scss"></style>
+<!-- <style lang="scss" src="./PlanGrid.scss"></style> -->
+<style lang="scss">
+@import url('./PlanGrid.scss');
+</style>

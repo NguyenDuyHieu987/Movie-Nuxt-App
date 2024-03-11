@@ -332,4 +332,7 @@ const handleClickStripeMethod = () => {
 };
 </script>
 
-<style lang="scss" src="./PaymentPickerPage.scss"></style>
+<!-- <style lang="scss" src="./PaymentPickerPage.scss"></style> -->
+<style lang="scss">
+@import url('./PaymentPickerPage.scss');
+</style>

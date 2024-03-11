@@ -449,4 +449,7 @@ watch(
 );
 </script>
 
-<style src="../FeaturePage.scss" lang="scss"></style>
+<!-- <style src="../FeaturePage.scss" lang="scss"></style> -->
+<style lang="scss">
+@import url('../FeaturePage.scss');
+</style>

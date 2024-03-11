@@ -85,4 +85,7 @@ withDefaults(
 );
 </script>
 
-<style lang="scss" src="./SwiperCarouselGroup.scss"></style>
+<!-- <style lang="scss" src="./SwiperCarouselGroup.scss"></style> -->
+<style lang="scss">
+@import url('./SwiperCarouselGroup.scss');
+</style>

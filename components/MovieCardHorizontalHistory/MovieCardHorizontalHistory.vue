@@ -502,4 +502,8 @@ const handleRemoveFromHistory = async () => {
   }
 };
 </script>
-<style lang="scss" src="./MovieCardHorizontalHistory.scss"></style>
+
+<!-- <style lang="scss" src="./MovieCardHorizontalHistory.scss"></style> -->
+<style lang="scss">
+@import url('./MovieCardHorizontalHistory.scss');
+</style>

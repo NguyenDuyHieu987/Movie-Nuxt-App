@@ -218,4 +218,7 @@ const handleClickAtiveVipBtn = () => {
 };
 </script>
 
-<style lang="scss" src="./BoxVip.scss"></style>
+<!-- <style lang="scss" src="./BoxVip.scss"></style> -->
+<style lang="scss">
+@import url('./BoxVip.scss');
+</style>

@@ -579,4 +579,7 @@ const handleClickBack = async () => {
 };
 </script>
 
-<style lang="scss" src="./ChangeEmailPage.scss"></style>
+<!-- <style lang="scss" src="./ChangeEmailPage.scss"></style> -->
+<style lang="scss">
+@import url('./ChangeEmailPage.scss');
+</style>

@@ -97,4 +97,7 @@ const onScollSlider = (e: any) => {
 };
 </script>
 
-<style lang="scss" src="./SliderGroup.scss"></style>
+<!-- <style lang="scss" src="./SliderGroup.scss"></style> -->
+<style lang="scss">
+@import url('./SliderGroup.scss');
+</style>

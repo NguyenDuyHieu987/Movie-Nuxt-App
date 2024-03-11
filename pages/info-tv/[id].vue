@@ -633,4 +633,7 @@ const scrollToComment = () => {
 };
 </script>
 
-<style lang="scss" src="./InfoTvPage.scss"></style>
+<!-- <style lang="scss" src="./InfoTvPage.scss"></style> -->
+<style lang="scss">
+@import url('./InfoTvPage.scss');
+</style>

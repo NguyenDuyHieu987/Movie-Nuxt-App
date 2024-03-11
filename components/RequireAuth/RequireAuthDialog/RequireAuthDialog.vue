@@ -101,4 +101,7 @@ import { CloseBtn } from '~/components/Button';
 const authStore = useAuthStore();
 </script>
 
-<style lang="scss" src="./RequireAuthDialog.scss"></style>
+<!-- <style lang="scss" src="./RequireAuthDialog.scss"></style> -->
+<style lang="scss">
+@import url('./RequireAuthDialog.scss');
+</style>

@@ -323,4 +323,7 @@ const handleClickBack = async () => {
 };
 </script>
 
-<style lang="scss" src="./VerifySignUpForm.scss"></style>
+<!-- <style lang="scss" src="./VerifySignUpForm.scss"></style> -->
+<style lang="scss">
+@import url('./VerifySignUpForm.scss');
+</style>

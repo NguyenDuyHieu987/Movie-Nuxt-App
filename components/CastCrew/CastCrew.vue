@@ -171,4 +171,7 @@ getCredits(props.dataMovie?.id)
 // );
 </script>
 
-<style lang="scss" src="./CastCrew.scss"></style>
+<!-- <style lang="scss" src="./CastCrew.scss"></style> -->
+<style lang="scss">
+@import url('./CastCrew.scss');
+</style>

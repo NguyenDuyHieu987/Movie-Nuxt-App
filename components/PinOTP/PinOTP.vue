@@ -136,4 +136,7 @@ const handlePastePin = (e: any) => {
 };
 </script>
 
-<style lang="scss" src="./PinOTP.scss"></style>
+<!-- <style lang="scss" src="./PinOTP.scss"></style> -->
+<style lang="scss">
+@import url('./PinOTP.scss');
+</style>

@@ -17,4 +17,7 @@
 
 <script setup lang="ts"></script>
 
-<style scoped lang="scss" src="./CloseBtn.scss"></style>
+<!-- <style lang="scss" src="./CloseBtn.scss" coped></style> -->
+<style lang="scss" scoped>
+@import url('./CloseBtn.scss');
+</style>

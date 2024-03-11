@@ -190,4 +190,7 @@ const cancelFilter = () => {
 };
 </script>
 
-<style lang="scss" src="../DiscoverPage.scss"></style>
+<!-- <style lang="scss" src="../DiscoverPage.scss"></style> -->
+<style lang="scss">
+@import url('../DiscoverPage.scss');
+</style>

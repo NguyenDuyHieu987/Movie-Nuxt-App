@@ -338,4 +338,8 @@ const onCanPlayVideo = () => {
   video.value!.play().catch(() => {});
 };
 </script>
-<style lang="scss" src="./MovieCardRelated.scss"></style>
+
+<!-- <style lang="scss" src="./MovieCardRelated.scss"></style> -->
+<style lang="scss">
+@import url('./MovieCardRelated.scss');
+</style>

@@ -543,4 +543,7 @@ const handleClickBack = async () => {
 };
 </script>
 
-<style lang="scss" src="./SignupPage.scss"></style>
+<!-- <style lang="scss" src="./SignupPage.scss"></style> -->
+<style lang="scss">
+@import url('./SignupPage.scss');
+</style>

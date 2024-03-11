@@ -83,4 +83,7 @@ defineProps<{
 }>();
 </script>
 
-<style src="./DiscoverHead.scss" lang="scss"></style>
+<!-- <style src="./DiscoverHead.scss" lang="scss"></style> -->
+<style lang="scss">
+@import url('./DiscoverHead.scss');
+</style>

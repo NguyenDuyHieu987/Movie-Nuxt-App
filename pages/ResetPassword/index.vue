@@ -271,4 +271,7 @@ const handleSubmit = () => {
 };
 </script>
 
-<style lang="scss" src="./ResetPassword.scss"></style>
+<!-- <style lang="scss" src="./ResetPassword.scss"></style> -->
+<style lang="scss">
+@import url('./ResetPassword.scss');
+</style>

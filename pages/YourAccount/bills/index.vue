@@ -43,4 +43,7 @@ useSeoMeta({
 });
 </script>
 
-<style scoped lang="scss" src="./BillsPage.scss"></style>
+<!-- <style lang="scss" src="./BillsPage.scss"></style> -->
+<style lang="scss">
+@import url('./BillsPage.scss');
+</style>

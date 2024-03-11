@@ -351,4 +351,7 @@ const onFilter = () => {
 };
 </script>
 
-<style lang="scss" src="./FilterSection.scss"></style>
+<!-- <style lang="scss" src="./FilterSection.scss"></style> -->
+<style lang="scss">
+@import url('./FilterSection.scss');
+</style>

@@ -206,4 +206,7 @@ const handleTabClick = (activeKey: any) => {
 };
 </script>
 
-<style lang="scss" src="./RankSide.scss"></style>
+<!-- <style lang="scss" src="./RankSide.scss"></style> -->
+<style lang="scss">
+@import url('./RankSide.scss');
+</style>

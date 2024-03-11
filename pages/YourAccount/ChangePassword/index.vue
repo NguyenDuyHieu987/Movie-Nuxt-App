@@ -479,4 +479,7 @@ const handleClickBack = async () => {
 };
 </script>
 
-<style lang="scss" src="./ChangePasswordPage.scss"></style>
+<!-- <style lang="scss" src="./ChangePasswordPage.scss"></style> -->
+<style lang="scss">
+@import url('./ChangePasswordPage.scss');
+</style>

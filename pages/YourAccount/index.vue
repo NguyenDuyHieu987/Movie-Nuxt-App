@@ -195,7 +195,7 @@
                                 {{
                                   billStatus.find(
                                     (status) => status.value == item?.status
-                                  ).label
+                                  )?.label
                                 }}
                               </span>
                             </div>
@@ -287,12 +287,7 @@ const authStore = useAuthStore();
 const utils = useUtils();
 const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const bills = ref<any[]>([]);
-const billStatus = ref<
-  {
-    value: string;
-    label: string;
-  }[]
->([
+const billStatus = reactive<{ value: string; label: string }[]>([
   {
     value: 'complete',
     label: 'Thành công'
@@ -479,4 +474,7 @@ const handleClickSaveRowItem = (e: any) => {
 };
 </script>
 
-<style lang="scss" src="./AccountPage.scss"></style>
+<!-- <style lang="scss" src="./AccountPage.scss"></style> -->
+<style lang="scss">
+@import url('./AccountPage.scss');
+</style>

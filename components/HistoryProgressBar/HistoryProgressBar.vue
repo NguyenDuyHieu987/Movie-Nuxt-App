@@ -30,4 +30,7 @@ const props = defineProps<{
 }>();
 </script>
 
-<style lang="scss" src="./HistoryProgressBar.scss"></style>
+<!-- <style lang="scss" src="./HistoryProgressBar.scss"></style> -->
+<style lang="scss">
+@import url('./HistoryProgressBar.scss');
+</style>

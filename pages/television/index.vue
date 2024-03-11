@@ -353,3 +353,6 @@ getData();
 </script>
 
 <style src="./TelevisionPage.scss" lang="scss"></style>
+<style lang="scss">
+@import url('./TelevisionPage.scss');
+</style>
