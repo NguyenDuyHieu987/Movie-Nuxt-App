@@ -84,7 +84,7 @@
         &.resend {
           .count-down-btn {
             margin: 0px auto;
-            // min-width: 100px;
+            /* min-width: 100px; */
             background-color: transparent;
 
             // &[disabled] {
@@ -96,25 +96,25 @@
         &.pin-otp {
           .ant-col.ant-form-item-control {
             .ant-form-item-control-input-content {
-              // .ant-input-number {
-              //   border-color: transparent;
-              //   box-shadow: none;
-              //   border-radius: 2px;
-              //   border-bottom-color: #fff;
-              //   background-color: #202020;
-              //   font-size: 4rem;
+              /* .ant-input-number {
+                border-color: transparent;
+                box-shadow: none;
+                border-radius: 2px;
+                border-bottom-color: #fff;
+                background-color: #202020;
+                font-size: 4rem;
 
-              //   input {
-              //     text-align: center;
-              //     height: 50px;
-              //   }
+                input {
+                  text-align: center;
+                  height: 50px;
+                }
 
-              //   &.ant-input-number-focused {
-              //     .ant-input-number-input-wrap {
-              //       outline: 1px solid var(--app-background-color);
-              //     }
-              //   }
-              // }
+                &.ant-input-number-focused {
+                  .ant-input-number-input-wrap {
+                    outline: 1px solid var(--app-background-color);
+                  }
+                }
+              } */
             }
           }
         }
@@ -122,7 +122,7 @@
 
       .verify-form-button {
         font-size: 1.5rem;
-        // margin-top: 20px;
+        /* margin-top: 20px;  */
         width: 100%;
 
         &:not(:disabled) {
@@ -130,7 +130,7 @@
         }
 
         &:disabled {
-          // background-color: transparent;
+          /* background-color: transparent; */
         }
       }
     }
