@@ -203,20 +203,20 @@ export default defineNuxtConfig({
   plugins: [],
   hooks: {
     'pages:extend': function (pages: any) {
-      // function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
-      //   const pagesToRemove = [];
-      //   for (const page of pages) {
-      //     if (page.file && pattern.test(page.file)) {
-      //       pagesToRemove.push(page);
-      //     } else {
-      //       removePagesMatching(pattern, page.children);
-      //     }
-      //   }
-      //   for (const page of pagesToRemove) {
-      //     pages.splice(pages.indexOf(page), 1);
-      //   }
-      // }
-      // removePagesMatching(/\/components\//, pages);
+      function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
+        const pagesToRemove = [];
+        for (const page of pages) {
+          if (page.file && pattern.test(page.file)) {
+            pagesToRemove.push(page);
+          } else {
+            removePagesMatching(pattern, page.children);
+          }
+        }
+        for (const page of pagesToRemove) {
+          pages.splice(pages.indexOf(page), 1);
+        }
+      }
+      removePagesMatching(/\/components\//, pages);
     }
   },
   build: {
@@ -278,7 +278,7 @@ export default defineNuxtConfig({
       sourcemap: 'hidden',
       ssrManifest: true,
       assetsDir: '_nuxt/',
-      // cssMinify: 'lightningcss',
+      cssMinify: 'lightningcss',
       reportCompressedSize: true,
       minify: 'terser',
       terserOptions: {
