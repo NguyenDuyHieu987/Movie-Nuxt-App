@@ -266,12 +266,9 @@ export default defineNuxtConfig({
           additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
         }
       },
-      transformer: 'postcss',
-      lightningcss: {
-        // errorRecovery: true,
-        // inputSourceMap: 'sass'
-      }
-      // postcss: {}
+      // transformer: 'lightningcss',
+      lightningcss: {},
+      postcss: {}
     },
     build: {
       sourcemap: 'hidden',
@@ -279,7 +276,7 @@ export default defineNuxtConfig({
       assetsDir: '_nuxt/',
       // cssMinify: 'lightningcss',
       reportCompressedSize: true,
-      minify: 'terser',
+      // minify: 'terser',
       terserOptions: {
         ecma: 2020,
         sourceMap: true,
