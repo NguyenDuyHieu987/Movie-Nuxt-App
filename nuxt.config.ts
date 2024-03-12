@@ -271,8 +271,10 @@ export default defineNuxtConfig({
       postcss: {}
     },
     build: {
-      sourcemap: 'hidden',
+      ssr: true,
+      manifest: true,
       ssrManifest: true,
+      sourcemap: 'hidden',
       assetsDir: '_nuxt/',
       // cssMinify: 'lightningcss',
       reportCompressedSize: true,
