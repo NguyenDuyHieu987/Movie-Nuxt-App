@@ -271,7 +271,7 @@ export default defineNuxtConfig({
       postcss: {}
     },
     build: {
-      ssr: true,
+      // ssr: true,
       manifest: true,
       ssrManifest: true,
       sourcemap: 'hidden',
@@ -345,6 +345,7 @@ export default defineNuxtConfig({
     },
     output: {},
     rollupConfig: {
+      input: {},
       output: {
         // manualChunks: {
         //   lodash: ['lodash']
