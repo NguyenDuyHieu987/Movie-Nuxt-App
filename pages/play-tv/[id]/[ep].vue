@@ -297,7 +297,6 @@
 </template>
 
 <script setup lang="ts">
-import throttle from 'lodash/throttle';
 import { LoadingSpinner } from '~/components/Loading';
 import { BackPage } from '~/components/BackPage';
 import { VideoPlayer } from '~/components/VideoPlayer';
@@ -317,6 +316,7 @@ import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
+import throttle from 'lodash/throttle';
 
 definePageMeta({
   pageTransition: {
