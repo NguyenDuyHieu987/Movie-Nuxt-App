@@ -345,7 +345,7 @@ export default defineNuxtConfig({
     },
     output: {},
     rollupConfig: {
-      input: {},
+      // input: {},
       output: {
         // manualChunks: {
         //   lodash: ['lodash']
