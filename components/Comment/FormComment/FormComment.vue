@@ -79,21 +79,21 @@
               />
             </svg>
 
-            <ClientOnly>
-              <EmojiPicker
-                v-if="isShowEmoji"
-                :class="'emoji-picker-' + comment?.id"
-                :native="true"
-                :display-recent="true"
-                :static-texts="{
-                  placeholder: 'Tìm kiếm biểu tượng cảm xúc'
-                }"
-                :hide-group-names="true"
-                :disable-sticky-group-names="true"
-                :disable-skin-tones="true"
-                @select="onSelectEmoji"
-              />
-            </ClientOnly>
+            <!-- <ClientOnly> -->
+            <EmojiPicker
+              v-if="isShowEmoji"
+              :class="'emoji-picker-' + comment?.id"
+              :native="true"
+              :display-recent="true"
+              :static-texts="{
+                placeholder: 'Tìm kiếm biểu tượng cảm xúc'
+              }"
+              :hide-group-names="true"
+              :disable-sticky-group-names="true"
+              :disable-skin-tones="true"
+              @select="onSelectEmoji"
+            />
+            <!-- </ClientOnly> -->
           </div>
           <div class="right">
             <a-button
@@ -120,10 +120,10 @@
 </template>
 
 <script setup lang="ts">
-import { CommentMovie, EditComment } from '~/services/comment';
-import { getImage } from '~/services/image';
 import EmojiPicker from 'vue3-emoji-picker';
 import 'vue3-emoji-picker/css';
+import { CommentMovie, EditComment } from '~/services/comment';
+import { getImage } from '~/services/image';
 import DOMPurify from 'dompurify';
 import { ElNotification } from 'element-plus';
 import { storeToRefs } from 'pinia';
