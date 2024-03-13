@@ -120,12 +120,12 @@
 </template>
 
 <script setup lang="ts">
-import EmojiPicker from 'vue3-emoji-picker';
-import 'vue3-emoji-picker/css';
 import { CommentMovie, EditComment } from '~/services/comment';
 import { getImage } from '~/services/image';
-import DOMPurify from 'dompurify';
+import EmojiPicker from 'vue3-emoji-picker';
+import 'vue3-emoji-picker/css';
 import { ElNotification } from 'element-plus';
+import DOMPurify from 'dompurify';
 import { storeToRefs } from 'pinia';
 import type { commentForm } from '~/types';
 
