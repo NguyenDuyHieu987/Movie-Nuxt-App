@@ -137,6 +137,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding-bottom: calc(var(--header-height));
     overflow-y: hidden;
 
     .menu-sider-bar {
@@ -152,15 +153,15 @@
     z-index: 2;
     background: transparent;
     line-height: inherit;
-    height: auto;
+    height: calc(var(--header-height) - 15px);
     overflow: hidden;
     color: inherit;
     transition: all 0s;
 
     footer.sider-footer {
       display: flex;
-      height: calc(var(--header-height) - 15px);
       width: 100%;
+      height: 100%;
       min-width: 100%;
       /* background-color: var(--background-content-color);
       border-top: 1px solid var(--border-regular-light);

@@ -79,21 +79,21 @@
               />
             </svg>
 
-            <!-- <ClientOnly> -->
-            <EmojiPicker
-              v-if="isShowEmoji"
-              :class="'emoji-picker-' + comment?.id"
-              :native="true"
-              :display-recent="true"
-              :static-texts="{
-                placeholder: 'Tìm kiếm biểu tượng cảm xúc'
-              }"
-              :hide-group-names="true"
-              :disable-sticky-group-names="true"
-              :disable-skin-tones="true"
-              @select="onSelectEmoji"
-            />
-            <!-- </ClientOnly> -->
+            <ClientOnly>
+              <EmojiPicker
+                v-if="isShowEmoji"
+                :class="'emoji-picker-' + comment?.id"
+                :native="true"
+                :display-recent="true"
+                :static-texts="{
+                  placeholder: 'Tìm kiếm biểu tượng cảm xúc'
+                }"
+                :hide-group-names="true"
+                :disable-sticky-group-names="true"
+                :disable-skin-tones="true"
+                @select="onSelectEmoji"
+              />
+            </ClientOnly>
           </div>
           <div class="right">
             <a-button
