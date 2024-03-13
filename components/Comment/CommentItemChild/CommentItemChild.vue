@@ -175,10 +175,7 @@
 </template>
 
 <script setup lang="ts">
-// import { FormComment, CommentContent, LikeDislike } from '~/components/Comment';
-import FormComment from '~/components/Comment/FormComment/FormComment.vue';
-import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';
-import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
+import { FormComment, CommentContent, LikeDislike } from '~/components/Comment';
 import { DeleteComment } from '~/services/comment';
 import { getImage } from '~/services/image';
 import { ElNotification } from 'element-plus';

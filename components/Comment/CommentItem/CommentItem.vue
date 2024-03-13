@@ -261,16 +261,12 @@
 </template>
 
 <script setup lang="ts">
-// import {
-//   FormComment,
-//   CommentContent,
-//   CommentItemChild,
-//   LikeDislike
-// } from '~/components/Comment';
-import FormComment from '~/components/Comment/FormComment/FormComment.vue';
-import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';
-import CommentItemChild from '~/components/Comment/CommentItemChild/CommentItemChild.vue';
-import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
+import {
+  FormComment,
+  CommentContent,
+  CommentItemChild,
+  LikeDislike
+} from '~/components/Comment';
 import {
   // LoadingCircle,
   LoadingSpinner

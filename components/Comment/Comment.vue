@@ -49,9 +49,7 @@
 </template>
 
 <script setup lang="ts">
-// import { FormComment, CommentItem } from '~/components/Comment';
-import FormComment from '~/components/Comment/FormComment/FormComment.vue';
-import CommentItem from '~/components/Comment/CommentItem/CommentItem.vue';
+import { FormComment, CommentItem } from '~/components/Comment';
 import {
   // LoadingCircle,
   LoadingSpinner
