@@ -133,10 +133,10 @@ export default defineNuxtConfig({
     'nuxt-gtag',
     // 'nuxt-purgecss',
     // SEO
-    '@nuxtjs/seo',
+    // '@nuxtjs/seo',
     '@nuxtjs/sitemap'
   ],
-  // extends: ['nuxt-seo-kit'],
+  extends: ['nuxt-seo-kit'],
   antd: {
     extractStyle: true,
     icons: false
