@@ -187,12 +187,19 @@ export default defineNuxtConfig({
     preload: false,
     display: 'swap',
     families: {
+      // Roboto: true,
       Roboto: { wght: '100..700', ital: '100..700' },
-      'Roboto Flex': { wght: '100..700', ital: '100..700' },
+      'Roboto Flex': {
+        wght: true,
+        regular: 400,
+        normal: 400
+      },
       Lobster: {
-        wght: [400],
-        ital: [400]
-      }
+        wght: true,
+        regular: 400,
+        normal: 400
+      },
+      subsets: ['cyrillic', 'cyrillic-ext', 'latin', 'latin-ext', 'vietnamese']
     }
   },
   // SEO
