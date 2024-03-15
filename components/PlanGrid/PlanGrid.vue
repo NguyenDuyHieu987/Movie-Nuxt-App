@@ -204,9 +204,9 @@
 </template>
 
 <script setup lang="ts">
-import type { plan } from '@/types';
 import { getImage } from '~/services/image';
 import { getAllPlan } from '~/services/plans';
+import type { plan } from '@/types';
 
 const emits = defineEmits<{
   onSelectPlan: [selected: plan];
@@ -271,7 +271,7 @@ const handleDBClickPlanOpiton = (plan: plan) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./PlanGrid.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./PlanGrid.scss"></style>
+<!-- <style lang="scss">
 @import url('./PlanGrid.scss');
-</style>
+</style> -->

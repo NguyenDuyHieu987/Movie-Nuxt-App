@@ -224,11 +224,16 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderPageGenreType } from '~/components/Layouts';
-import { BillboardAnimation } from '~/components/BillboardAnimation';
-import { LoadingSectionHorizontal } from '~/components/Loading';
-import { SwiperCarouselGroup } from '~/components/CarouselGroup';
-import { MovieCardHorizontal } from '~/components/MovieCard';
+// import { HeaderPageGenreType } from '~/components/Layouts';
+// import { BillboardAnimation } from '~/components/BillboardAnimation';
+// import { LoadingSectionHorizontal } from '~/components/Loading';
+// import { SwiperCarouselGroup } from '~/components/CarouselGroup';
+// import { MovieCardHorizontal } from '~/components/MovieCard';
+import HeaderPageGenreType from '~/components/Layouts/HeaderPageGenreType/HeaderPageGenreType.server.vue';
+import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
+import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
+import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
+import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
 import { getGenreById } from '~/services/genres';
 import { FilterMovieSlug } from '~/services/movieSlug';
 import type { formfilter, genre } from '~/types';
@@ -449,7 +454,7 @@ watch(
 );
 </script>
 
-<!-- <style src="../FeaturePage.scss" lang="scss"></style> -->
-<style lang="scss">
+<style src="../FeaturePage.scss" lang="scss"></style>
+<!-- <style lang="scss">
 @import url('../FeaturePage.scss');
-</style>
+</style> -->

@@ -175,9 +175,10 @@
 </template>
 
 <script setup lang="ts">
-import { CloseBtn } from '~/components/Button';
-import { getMovieById } from '~/services/movie';
-import { getTvById } from '~/services/tv';
+// import { CloseBtn } from '~/components/Button';
+import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
+// import { getMovieById } from '~/services/movie';
+// import { getTvById } from '~/services/tv';
 import { getVideos } from '~/services/video';
 
 const props = defineProps<{
@@ -238,7 +239,7 @@ watch(isTeleport, async () => {
 });
 </script>
 
-<!-- <style lang="scss" src="./ModalTrailer.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./ModalTrailer.scss"></style>
+<!-- <style lang="scss">
 @import url('./ModalTrailer.scss');
-</style>
+</style> -->

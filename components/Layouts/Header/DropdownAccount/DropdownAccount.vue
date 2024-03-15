@@ -88,4 +88,7 @@ const handleLogout = () => {
 };
 </script>
 
-<style lang="scss" src="./DropdownAccount.scss"></style>
+<!-- <style lang="scss" src="./DropdownAccount.scss"></style> -->
+<style lang="scss">
+@import url('./DropdownAccount.scss');
+</style>

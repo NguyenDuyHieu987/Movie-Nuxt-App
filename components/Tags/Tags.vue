@@ -11,7 +11,7 @@ defineProps<{
 }>();
 </script>
 
-<!-- <style lang="scss" src="./Tags.scss" scoped></style> -->
-<style lang="scss" scoped>
+<style lang="scss" src="./Tags.scss" scoped></style>
+<!-- <style lang="scss" scoped>
 @import url('./Tags.scss');
-</style>
+</style> -->

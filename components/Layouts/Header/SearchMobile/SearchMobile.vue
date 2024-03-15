@@ -78,3 +78,6 @@ const handleSearch = (value: string) => {
 </script>
 
 <style lang="scss" src="./SearchMobile.scss"></style>
+<!-- <style lang="scss">
+@import url('./SearchMobile.scss');
+</style> -->

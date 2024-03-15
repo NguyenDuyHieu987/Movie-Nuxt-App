@@ -171,11 +171,13 @@
 </template>
 
 <script setup lang="ts">
-import type { plan } from '@/types';
-import { BackPage } from '~/components/BackPage';
-import { RequireAuth } from '~/components/RequireAuth';
+// import { BackPage } from '~/components/BackPage';
+// import { RequireAuth } from '~/components/RequireAuth';
+import BackPage from '~/components/BackPage/BackPage.vue';
+import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { getImage } from '~/services/image';
 import { getAllPlan, registerPlan } from '~/services/plans';
+import type { plan } from '@/types';
 
 definePageMeta({
   layout: 'service',
@@ -332,7 +334,7 @@ const handleClickStripeMethod = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./PaymentPickerPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./PaymentPickerPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./PaymentPickerPage.scss');
-</style>
+</style> -->

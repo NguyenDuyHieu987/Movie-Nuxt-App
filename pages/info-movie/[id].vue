@@ -412,16 +412,26 @@
 </template>
 
 <script setup lang="ts">
-import { LoadingSpinner } from '~/components/Loading';
-import { BackPage } from '~/components/BackPage';
-import { Tags } from '~/components/Tags';
-import { Overview } from '~/components/Overview';
-import { RatingMovie } from '~/components/RatingMovie';
-import { Interaction } from '~/components/Interaction';
-import { HistoryProgressBar } from '~/components/HistoryProgressBar';
-import { MovieRelated } from '~/components/MovieRelated';
-import { CastCrew } from '~/components/CastCrew';
-import { Comment } from '~/components/Comment';
+// import { LoadingSpinner } from '~/components/Loading';
+// import { BackPage } from '~/components/BackPage';
+// import { Tags } from '~/components/Tags';
+// import { Overview } from '~/components/Overview';
+// import { RatingMovie } from '~/components/RatingMovie';
+// import { Interaction } from '~/components/Interaction';
+// import { HistoryProgressBar } from '~/components/HistoryProgressBar';
+// import { MovieRelated } from '~/components/MovieRelated';
+// import { CastCrew } from '~/components/CastCrew';
+// import { Comment } from '~/components/Comment';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import BackPage from '~/components/BackPage/BackPage.vue';
+import Tags from '~/components/Tags/Tags.vue';
+import Overview from '~/components/Overview/Overview.server.vue';
+import RatingMovie from '~/components/RatingMovie/RatingMovie.vue';
+import Interaction from '~/components/Interaction/Interaction.vue';
+import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';
+import MovieRelated from '~/components/MovieRelated/MovieRelated.vue';
+import CastCrew from '~/components/CastCrew/CastCrew.vue';
+import Comment from '~/components/Comment/Comment.vue';
 import { getMovieById } from '~/services/movie';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
@@ -628,7 +638,7 @@ const scrollToComment = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./InfoMoviePage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./InfoMoviePage.scss"></style>
+<!-- <style lang="scss">
 @import url('./InfoMoviePage.scss');
-</style>
+</style> -->

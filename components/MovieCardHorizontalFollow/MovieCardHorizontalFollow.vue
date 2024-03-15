@@ -358,7 +358,7 @@ const handleRemoveFromList = async () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./MovieCardHorizontalFollow.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./MovieCardHorizontalFollow.scss"></style>
+<!-- <style lang="scss">
 @import url('./MovieCardHorizontalFollow.scss');
-</style>
+</style> -->

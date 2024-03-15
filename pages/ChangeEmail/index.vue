@@ -72,7 +72,7 @@
 import { ElNotification } from 'element-plus';
 
 import {
-  AccountConfirm,
+  // AccountConfirm,
   ChangeEmail,
   VerifyChangeEmail
 } from '~/services/account';
@@ -218,7 +218,7 @@ const handleClickBack = async () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./ChangeEmailPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./ChangeEmailPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./ChangeEmailPage.scss');
-</style>
+</style> -->

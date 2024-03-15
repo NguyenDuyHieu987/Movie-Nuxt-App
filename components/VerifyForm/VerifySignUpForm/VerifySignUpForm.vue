@@ -174,7 +174,8 @@
 </template>
 
 <script setup lang="ts">
-import { PinOTP } from '~/components/PinOTP';
+// import { PinOTP } from '~/components/PinOTP';
+import PinOTP from '~/components/PinOTP/PinOTP.vue';
 
 const props = defineProps({
   email: {

@@ -269,6 +269,6 @@ const handleChangeEpisode = (item: any) => {
 </script>
 
 <style lang="scss" src="./ListEpisodes.scss" scoped></style>
-<style lang="scss" scoped>
+<!-- <style lang="scss" scoped>
 @import url('./ListEpisodes.scss');
-</style>
+</style> -->

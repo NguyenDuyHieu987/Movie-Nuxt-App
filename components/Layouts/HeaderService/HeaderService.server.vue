@@ -61,12 +61,12 @@
 </template>
 
 <script setup lang="ts">
-import { MenuOutlined } from '@ant-design/icons-vue';
-import _ from 'lodash';
-import { storeToRefs } from 'pinia';
-
-import { DropdownAccount, Notification } from '~/components/Layouts/Header';
+// import { Notification, DropdownAccount } from '~/components/Layouts/Header';
+import Notification from '~/components/Layouts/Header/Notification/Notification.vue';
+import DropdownAccount from '~/components/Layouts/Header/DropdownAccount/DropdownAccount.vue';
 import { getImage } from '~/services/image';
+import { MenuOutlined } from '@ant-design/icons-vue';
+import { storeToRefs } from 'pinia';
 
 const store = useStore();
 const authStore = useAuthStore();
@@ -83,3 +83,6 @@ const handleLogout = () => {
 </script>
 
 <style lang="scss" src="./HeaderService.scss"></style>
+<!-- <style lang="scss">
+@import url('./HeaderService.scss');
+</style> -->

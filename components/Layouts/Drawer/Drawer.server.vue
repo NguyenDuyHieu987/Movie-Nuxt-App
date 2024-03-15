@@ -114,9 +114,9 @@
 </template>
 
 <script setup lang="ts">
+// import { TheMenu } from '~/components/Layouts';
+import TheMenu from '~/components/Layouts/TheMenu/TheMenu.server.vue';
 import { storeToRefs } from 'pinia';
-
-import { TheMenu } from '~/components/Layouts';
 import { getImage } from '~/services/image';
 
 const store = useStore();
@@ -142,3 +142,6 @@ router.beforeResolve(() => {
 </script>
 
 <style lang="scss" src="./Drawer.scss"></style>
+<!-- <style lang="scss">
+@import url('./Drawer.scss');
+</style> -->

@@ -61,7 +61,7 @@ onBeforeMount(async () => {
 });
 </script>
 
-<!-- <style lang="scss" src="./CastCard.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./CastCard.scss"></style>
+<!-- <style lang="scss">
 @import url('./CastCard.scss');
-</style>
+</style> -->

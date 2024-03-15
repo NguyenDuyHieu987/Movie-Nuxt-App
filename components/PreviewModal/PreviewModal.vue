@@ -402,14 +402,14 @@
 </template>
 
 <script setup lang="ts">
-import gsap from 'gsap';
-
-import { LoadingSpinner } from '~/components/Loading';
+// import { LoadingSpinner } from '~/components/Loading';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
 import { DEV_SERVER_VIDEO } from '~/services/video';
+import gsap from 'gsap';
 
 const props = defineProps<{
   item: any;
@@ -784,7 +784,7 @@ const onClickVolumeOff = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./PreviewModal.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./PreviewModal.scss"></style>
+<!-- <style lang="scss">
 @import url('./PreviewModal.scss');
-</style>
+</style> -->

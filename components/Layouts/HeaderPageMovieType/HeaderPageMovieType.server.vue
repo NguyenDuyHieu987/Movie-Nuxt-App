@@ -94,3 +94,6 @@ const handleSelectGenre = (item: genre) => {
 </script>
 
 <style lang="scss" src="./HeaderPageMovieType.scss"></style>
+<!-- <style lang="scss">
+@import url('./HeaderPageMovieType.scss');
+</style> -->

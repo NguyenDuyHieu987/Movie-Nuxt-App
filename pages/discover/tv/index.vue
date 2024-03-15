@@ -49,13 +49,17 @@
 </template>
 
 <script setup lang="ts">
-import { FilterSection } from '~/components/FilterSection';
-import {
-  // MovieCardHorizontal,
-  MovieCardVertical
-} from '~/components/MovieCard';
-import { LoadingSpinner } from '~/components/Loading';
-import { ControlPage } from '~/components/ControlPage';
+// import { FilterSection } from '~/components/FilterSection';
+// import {
+//   // MovieCardHorizontal,
+//   MovieCardVertical
+// } from '~/components/MovieCard';
+// import { LoadingSpinner } from '~/components/Loading';
+// import { ControlPage } from '~/components/ControlPage';
+import FilterSection from '~/components/FilterSection/FilterSection.vue';
+import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { FilterTvSlug } from '~/services/TvSlug';
 import type { formfilter } from '@/types';
 
@@ -173,7 +177,7 @@ const cancelFilter = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="../DiscoverPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="../DiscoverPage.scss"></style>
+<!-- <style lang="scss">
 @import url('../DiscoverPage.scss');
-</style>
+</style> -->

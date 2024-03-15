@@ -253,7 +253,7 @@ const handleSubmit = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./ForgotPassword.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./ForgotPassword.scss"></style>
+<!-- <style lang="scss">
 @import url('./ForgotPassword.scss');
-</style>
+</style> -->

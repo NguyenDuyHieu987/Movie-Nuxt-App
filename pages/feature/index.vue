@@ -216,11 +216,16 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderPageMovieType } from '~/components/Layouts';
-import { BillboardAnimation } from '~/components/BillboardAnimation';
-import { LoadingSectionHorizontal } from '~/components/Loading';
-import { SwiperCarouselGroup } from '~/components/CarouselGroup';
-import { MovieCardHorizontal } from '~/components/MovieCard';
+// import { HeaderPageMovieType } from '~/components/Layouts';
+// import { BillboardAnimation } from '~/components/BillboardAnimation';
+// import { LoadingSectionHorizontal } from '~/components/Loading';
+// import { SwiperCarouselGroup } from '~/components/CarouselGroup';
+// import { MovieCardHorizontal } from '~/components/MovieCard';
+import HeaderPageMovieType from '~/components/Layouts/HeaderPageMovieType/HeaderPageMovieType.server.vue';
+import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
+import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
+import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
+import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
 import {
   getMovies,
   getNowPlaying,
@@ -360,7 +365,7 @@ const { data: dataBilboard, pending } = await useAsyncData(
 getData();
 </script>
 
-<!-- <style src="./FeaturePage.scss" lang="scss"></style> -->
-<style lang="scss">
+<style src="./FeaturePage.scss" lang="scss"></style>
+<!-- <style lang="scss">
 @import url('./FeaturePage.scss');
-</style>
+</style> -->

@@ -305,7 +305,7 @@ onMounted(() => {
 });
 </script>
 
-<!-- <style src="./TopicColumn.scss" lang="scss"></style> -->
-<style lang="scss">
+<style src="./TopicColumn.scss" lang="scss"></style>
+<!-- <style lang="scss">
 @import url('./TopicColumn.scss');
-</style>
+</style> -->

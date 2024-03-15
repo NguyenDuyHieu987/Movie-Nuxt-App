@@ -400,7 +400,8 @@
 </template>
 
 <script setup lang="ts">
-import { CloseBtn } from '~/components/Button';
+// import { CloseBtn } from '~/components/Button';
+import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
 import { getImage } from '~/services/image';
 
 const props = withDefaults(
@@ -420,7 +421,7 @@ onBeforeMount(() => {
 });
 </script>
 
-<!-- <style lang="scss" src="./Interaction.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./Interaction.scss"></style>
+<!-- <style lang="scss">
 @import url('./Interaction.scss');
-</style>
+</style> -->

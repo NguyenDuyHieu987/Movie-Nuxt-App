@@ -184,7 +184,7 @@ const onPointerOverSlider = (e: any) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./SliderGroupBackground.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./SliderGroupBackground.scss"></style>
+<!-- <style lang="scss">
 @import url('./SliderGroupBackground.scss');
-</style>
+</style> -->

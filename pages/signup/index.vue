@@ -213,11 +213,11 @@
 </template>
 
 <script setup lang="ts">
+// import { VerifySignUpForm } from '~/components/VerifyForm';
+import VerifySignUpForm from '~/components/VerifyForm/VerifySignUpForm/VerifySignUpForm.vue';
 import { LockOutlined, UserOutlined } from '@ant-design/icons-vue';
 import type { Rule } from 'ant-design-vue/es/form';
 import { ElNotification } from 'element-plus';
-
-import { VerifySignUpForm } from '~/components/VerifyForm';
 import { signUp, verifySignUp } from '~/services/authentication';
 
 definePageMeta({
@@ -543,7 +543,7 @@ const handleClickBack = async () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./SignupPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./SignupPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./SignupPage.scss');
-</style>
+</style> -->

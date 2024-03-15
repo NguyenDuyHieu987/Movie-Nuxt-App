@@ -55,7 +55,6 @@
 
 <script setup lang="ts">
 import { ElNotification } from 'element-plus';
-
 import { addRankRate } from '~/services/ranks';
 import { rating } from '~/services/rating';
 
@@ -142,7 +141,7 @@ const handleRating = (value: number) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./RatingMovie.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./RatingMovie.scss"></style>
+<!-- <style lang="scss">
 @import url('./RatingMovie.scss');
-</style>
+</style> -->

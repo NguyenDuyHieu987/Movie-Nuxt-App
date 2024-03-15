@@ -176,10 +176,9 @@
 </template>
 
 <script setup lang="ts">
-import { BackPage } from '~/components/BackPage';
-import { LoadingSpinner } from '~/components/Loading';
-import { RankSection } from '~/components/RankSection';
-import { filterRanks, getRankPlay } from '~/services/ranks';
+// import { BackPage } from '~/components/BackPage';
+import BackPage from '~/components/BackPage/BackPage.vue';
+import { filterRanks } from '~/services/ranks';
 import type { formfilterRank, rankSort, rankType } from '~/types';
 
 definePageMeta({
@@ -335,7 +334,7 @@ const handleChangeType = (activeKey: any) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./DetailRank.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./DetailRank.scss"></style>
+<!-- <style lang="scss">
 @import url('./DetailRank.scss');
-</style>
+</style> -->

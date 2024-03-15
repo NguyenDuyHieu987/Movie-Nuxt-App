@@ -60,7 +60,7 @@ const props = defineProps<{ isOpen: boolean }>();
 const emits = defineEmits<{ onClick: [] }>();
 </script>
 
-<!-- <style lang="scss" src="./ViewMoreBar.scss" scoped></style> -->
-<style lang="scss" scoped>
+<style lang="scss" src="./ViewMoreBar.scss" scoped></style>
+<!-- <style lang="scss" scoped>
 @import url('./ViewMoreBar.scss');
-</style>
+</style> -->

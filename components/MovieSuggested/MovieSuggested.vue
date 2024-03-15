@@ -59,7 +59,8 @@
 </template>
 
 <script setup lang="ts">
-import { LoadingSpinner } from '~/components/Loading';
+// import { LoadingSpinner } from '~/components/Loading';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { MovieCardSuggested } from '~/components/MovieSuggested';
 import { getSimilar } from '~/services/similar';
 
@@ -136,7 +137,7 @@ getSimilar(props?.dataMovie.media_type, props?.dataMovie.id, page.value, 15)
 // loading.value = false;
 </script>
 
-<!-- <style lang="scss" src="./MovieSuggested.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./MovieSuggested.scss"></style>
+<!-- <style lang="scss">
 @import url('./MovieSuggested.scss');
-</style>
+</style> -->

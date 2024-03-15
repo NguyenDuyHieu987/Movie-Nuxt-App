@@ -107,11 +107,11 @@
 
 <script setup lang="ts">
 // import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
+// import { TheMenu } from '~/components/Layouts';
+import TheMenu from '~/components/Layouts/TheMenu/TheMenu.server.vue';
 import { useLocalStorage } from '@vueuse/core';
-import { storeToRefs } from 'pinia';
-
-import { TheMenu } from '~/components/Layouts';
 import { getImage } from '~/services/image';
+import { storeToRefs } from 'pinia';
 
 const store = useStore();
 const authStore = useAuthStore();
@@ -171,4 +171,7 @@ const handleCollapse = () => {
 };
 </script>
 
-<style lang="scss" src="./Sider.scss"></style>
+<!-- <style lang="scss" src="./Sider.scss"></style> -->
+<style lang="scss">
+@import url('./Sider.scss');
+</style>

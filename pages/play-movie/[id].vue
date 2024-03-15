@@ -281,16 +281,26 @@
 </template>
 
 <script setup lang="ts">
-import { LoadingSpinner } from '~/components/Loading';
-import { BackPage } from '~/components/BackPage';
-import { VideoPlayer } from '~/components/VideoPlayer';
-import { HistoryProgressBar } from '~/components/HistoryProgressBar';
-import { Tags } from '~/components/Tags';
-import { Overview } from '~/components/Overview';
-import { RatingMovie } from '~/components/RatingMovie';
-import { Interaction } from '~/components/Interaction';
-import { Comment } from '~/components/Comment';
-import { MovieSuggested } from '~/components/MovieSuggested';
+// import { LoadingSpinner } from '~/components/Loading';
+// import { BackPage } from '~/components/BackPage';
+// import { VideoPlayer } from '~/components/VideoPlayer';
+// import { HistoryProgressBar } from '~/components/HistoryProgressBar';
+// import { Tags } from '~/components/Tags';
+// import { Overview } from '~/components/Overview';
+// import { RatingMovie } from '~/components/RatingMovie';
+// import { Interaction } from '~/components/Interaction';
+// import { Comment } from '~/components/Comment';
+// import { MovieSuggested } from '~/components/MovieSuggested';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import BackPage from '~/components/BackPage/BackPage.vue';
+import VideoPlayer from '~/components/VideoPlayer/VideoPlayer.vue';
+import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';
+import Tags from '~/components/Tags/Tags.vue';
+import Overview from '~/components/Overview/Overview.server.vue';
+import RatingMovie from '~/components/RatingMovie/RatingMovie.vue';
+import Interaction from '~/components/Interaction/Interaction.vue';
+import Comment from '~/components/Comment/Comment.vue';
+import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';
@@ -570,7 +580,7 @@ const scrollToComment = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./PlayMoviePage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./PlayMoviePage.scss"></style>
+<!-- <style lang="scss">
 @import url('./PlayMoviePage.scss');
-</style>
+</style> -->

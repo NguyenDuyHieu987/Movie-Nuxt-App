@@ -80,3 +80,6 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" src="./Notification.scss"></style>
+<!-- <style lang="scss">
+@import url('./Notification.scss');
+</style> -->

@@ -190,7 +190,8 @@
 </template>
 
 <script setup lang="ts">
-import { LoadingSpinner } from '~/components/Loading';
+// import { LoadingSpinner } from '~/components/Loading';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getItemList } from '~/services/list';
@@ -339,7 +340,7 @@ const onCanPlayVideo = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./MovieCardRelated.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./MovieCardRelated.scss"></style>
+<!-- <style lang="scss">
 @import url('./MovieCardRelated.scss');
-</style>
+</style> -->

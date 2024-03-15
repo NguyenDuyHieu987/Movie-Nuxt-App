@@ -31,7 +31,7 @@
 
 <script setup lang="ts"></script>
 
-<!-- <style lang="scss" src="./RequireAuth.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./RequireAuth.scss"></style>
+<!-- <style lang="scss">
 @import url('./RequireAuth.scss');
-</style>
+</style> -->

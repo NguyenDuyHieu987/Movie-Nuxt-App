@@ -338,3 +338,6 @@ const handleClickSearchHistoryItem = (e: any, item: any) => {
 </script>
 
 <style lang="scss" src="./SearchDropdown.scss"></style>
+<!-- <style lang="scss">
+@import url('./SearchDropdown.scss');
+</style> -->

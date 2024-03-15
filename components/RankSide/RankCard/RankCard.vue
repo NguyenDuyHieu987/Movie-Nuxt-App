@@ -104,7 +104,7 @@ const loading = ref<boolean>(false);
 // loading.value = false;
 </script>
 
-<!-- <style lang="scss" src="./RankCard.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./RankCard.scss"></style>
+<!-- <style lang="scss">
 @import url('./RankCard.scss');
-</style>
+</style> -->

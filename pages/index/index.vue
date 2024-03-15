@@ -414,20 +414,29 @@
 </template>
 
 <script setup lang="ts">
-import { BillboardAnimation } from '~/components/BillboardAnimation';
-import { BoxVip } from '~/components/BoxVip';
-import {
-  // SlickCarouselGroup,
-  SwiperCarouselGroup
-} from '~/components/CarouselGroup';
-import {
-  LoadingSectionHorizontal,
-  LoadingSectionVertical
-} from '~/components/Loading';
-import { SliderGroupBackground } from '~/components/SliderGroup';
-import { MovieCardHorizontal, MovieCardVertical } from '~/components/MovieCard';
-import { MovieCardHorizontalTrailer } from '~/components/MovieCardHorizontalTrailer';
-import { ViewMoreBar } from '~/components/ViewMoreBar';
+// import { BillboardAnimation } from '~/components/BillboardAnimation';
+// import { BoxVip } from '~/components/BoxVip';
+// import {
+//   // SlickCarouselGroup,
+//   SwiperCarouselGroup
+// } from '~/components/CarouselGroup';
+// import {
+//   LoadingSectionHorizontal,
+//   LoadingSectionVertical
+// } from '~/components/Loading';
+// import { SliderGroupBackground } from '~/components/SliderGroup';
+// import { MovieCardHorizontal, MovieCardVertical } from '~/components/MovieCard';
+// import { MovieCardHorizontalTrailer } from '~/components/MovieCardHorizontalTrailer';
+// import { ViewMoreBar } from '~/components/ViewMoreBar';
+import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
+import BoxVip from '~/components/BoxVip/BoxVip.vue';
+import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
+import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
+import LoadingSectionVertical from '~/components/Loading/LoadingSection/LoadingSectionVertical/LoadingSectionVertical.vue';
+import SliderGroupBackground from '~/components/SliderGroup/SliderGroupBackground/SliderGroupBackground.vue';
+import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
+import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
+import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
 import { getMoviesByGenres } from '~/services/discover';
 import { getNowPlaying, getTopRated, getUpComing } from '~/services/movieSlug';
 import { getMyRecommend } from '~/services/recommend';
@@ -785,7 +794,7 @@ const handleLoadMoreRecommend = async () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./HomePage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./HomePage.scss"></style>
+<!-- <style lang="scss">
 @import url('./HomePage.scss');
-</style>
+</style> -->

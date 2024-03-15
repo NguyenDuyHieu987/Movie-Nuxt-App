@@ -96,12 +96,13 @@
 </template>
 
 <script setup lang="ts">
-import { CloseBtn } from '~/components/Button';
+// import { CloseBtn } from '~/components/Button';
+import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
 
 const authStore = useAuthStore();
 </script>
 
-<!-- <style lang="scss" src="./RequireAuthDialog.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./RequireAuthDialog.scss"></style>
+<!-- <style lang="scss">
 @import url('./RequireAuthDialog.scss');
-</style>
+</style> -->

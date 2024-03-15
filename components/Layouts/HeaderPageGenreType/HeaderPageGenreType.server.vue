@@ -37,3 +37,6 @@ const genreTitle = ref<string>(
 </script>
 
 <style lang="scss" src="./HeaderPageGenreType.scss"></style>
+<!-- <style lang="scss">
+@import url('./HeaderPageGenreType.scss');
+</style> -->

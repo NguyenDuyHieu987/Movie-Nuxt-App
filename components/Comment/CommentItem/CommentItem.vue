@@ -261,16 +261,21 @@
 </template>
 
 <script setup lang="ts">
-import {
-  FormComment,
-  CommentContent,
-  CommentItemChild,
-  LikeDislike
-} from '~/components/Comment';
-import {
-  // LoadingCircle,
-  LoadingSpinner
-} from '~/components/Loading';
+// import {
+//   FormComment,
+//   CommentContent,
+//   CommentItemChild,
+//   LikeDislike
+// } from '~/components/Comment';
+// import {
+//   // LoadingCircle,
+//   LoadingSpinner
+// } from '~/components/Loading';
+import FormComment from '~/components/Comment/FormComment/FormComment.vue';
+import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';
+import CommentItemChild from '~/components/Comment/CommentItemChild/CommentItemChild.vue';
+import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { DeleteComment, getCommentChild } from '~/services/comment';
 import { ElNotification } from 'element-plus';
 import { getImage } from '~/services/image';
@@ -407,7 +412,7 @@ const handleRemoveComment = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./CommentItem.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./CommentItem.scss"></style>
+<!-- <style lang="scss">
 @import url('./CommentItem.scss');
-</style>
+</style> -->

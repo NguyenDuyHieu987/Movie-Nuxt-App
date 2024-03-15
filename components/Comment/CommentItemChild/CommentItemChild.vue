@@ -175,7 +175,10 @@
 </template>
 
 <script setup lang="ts">
-import { FormComment, CommentContent, LikeDislike } from '~/components/Comment';
+// import { FormComment, CommentContent, LikeDislike } from '~/components/Comment';
+import FormComment from '~/components/Comment/FormComment/FormComment.vue';
+import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';
+import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
 import { DeleteComment } from '~/services/comment';
 import { getImage } from '~/services/image';
 import { ElNotification } from 'element-plus';
@@ -317,7 +320,7 @@ const onClickReplyTo = async () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./CommentItemChild.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./CommentItemChild.scss"></style>
+<!-- <style lang="scss">
 @import url('./CommentItemChild.scss');
-</style>
+</style> -->

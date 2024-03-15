@@ -77,9 +77,12 @@
 </template>
 
 <script setup lang="ts">
-import { MovieCardHorizontal } from '~/components/MovieCard';
-import { LoadingSpinner } from '~/components/Loading';
-import { ControlPage } from '~/components/ControlPage';
+// import { MovieCardHorizontal } from '~/components/MovieCard';
+// import { LoadingSpinner } from '~/components/Loading';
+// import { ControlPage } from '~/components/ControlPage';
+import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { addRankSearch } from '~/services/ranks';
 import { addSearch, addSearchHistory, getDaTaSearch } from '~/services/search';
 
@@ -233,7 +236,7 @@ const onChangePage = async (pageSelected: number) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./SearchPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./SearchPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./SearchPage.scss');
-</style>
+</style> -->

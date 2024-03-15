@@ -54,7 +54,8 @@
 </template>
 
 <script setup lang="ts">
-import { PlanGrid } from '~/components/PlanGrid';
+// import { PlanGrid } from '~/components/PlanGrid';
+import PlanGrid from '~/components/PlanGrid/PlanGrid.vue';
 import type { plan } from '~/types';
 
 definePageMeta({
@@ -107,7 +108,7 @@ const onRouteToPaymentPage = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./UpgradePage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./UpgradePage.scss"></style>
+<!-- <style lang="scss">
 @import url('./UpgradePage.scss');
-</style>
+</style> -->

@@ -36,7 +36,7 @@ const onClickViewMore = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./Overview.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./Overview.scss"></style>
+<!-- <style lang="scss">
 @import url('./Overview.scss');
-</style>
+</style> -->

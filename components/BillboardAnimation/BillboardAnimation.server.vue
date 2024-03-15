@@ -216,7 +216,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { BillboardItem } from '~/components/BillboardAnimation';
+import BillboardItem from '~/components/BillboardAnimation/BillboardItem/BillboardItem.vue';
 import { getImage } from '~/services/image';
 
 const billboard = ref();
@@ -271,7 +271,7 @@ const handleChangeBillboardActiveItem = (index: number) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./BillboardAnimation.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./BillboardAnimation.scss"></style>
+<!-- <style lang="scss">
 @import url('./BillboardAnimation.scss');
-</style>
+</style> -->

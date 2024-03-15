@@ -15,12 +15,12 @@
 
 <script setup lang="ts">
 import LoadingAppIcon from '~/assets/svgs/loading-app.svg?component';
-import { getImage } from '~/services/image';
+// import { getImage } from '~/services/image';
 
 const store = useStore();
 </script>
 
-<!-- <style lang="scss" src="./LoadingApp.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./LoadingApp.scss"></style>
+<!-- <style lang="scss">
 @import url('./LoadingApp.scss');
-</style>
+</style> -->

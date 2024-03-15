@@ -133,7 +133,8 @@
 </template>
 
 <script setup lang="ts">
-import { CastCard } from '~/components/CastCrew';
+// import { CastCard } from '~/components/CastCrew';
+import CastCard from '~/components/CastCrew/CastCard/CastCard.vue';
 import { SliderGroup } from '~/components/SliderGroup';
 import { getCredits } from '~/services/credit';
 

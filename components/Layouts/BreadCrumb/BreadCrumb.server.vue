@@ -131,3 +131,6 @@ const path = computed<any[]>(() => {
 </script>
 
 <style lang="scss" src="./BreadCrumb.scss"></style>
+<!-- <style lang="scss">
+@import url('./BreadCrumb.scss');
+</style> -->

@@ -6,7 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import { Header } from '~/components/Layouts';
+// import { Header } from '~/components/Layouts';
+import Header from '~/components/Layouts/Header/Header.server.vue';
 </script>
 
 <style lang="scss">

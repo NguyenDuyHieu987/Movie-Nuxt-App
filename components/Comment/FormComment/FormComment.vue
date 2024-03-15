@@ -441,7 +441,7 @@ const onSelectEmoji = (emoji: any) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./FormComment.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./FormComment.scss"></style>
+<!-- <style lang="scss">
 @import url('./FormComment.scss');
-</style>
+</style> -->

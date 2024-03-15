@@ -749,13 +749,14 @@
 </template>
 
 <script setup lang="ts">
-import { useLocalStorage } from '@vueuse/core';
-import Hls from 'hls.js';
-
-import { CloseBtn } from '~/components/Button';
-import { LoadingSpinner } from '~/components/Loading';
+// import { CloseBtn } from '~/components/Button';
+// import { LoadingSpinner } from '~/components/Loading';
+import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { getImage } from '~/services/image';
 import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';
+import { useLocalStorage } from '@vueuse/core';
+import Hls from 'hls.js';
 
 const props = withDefaults(
   defineProps<{
@@ -1646,7 +1647,7 @@ const handleClickVideoPlayer = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./VideoPlayer.scss" scoped></style> -->
-<style lang="scss">
+<style lang="scss" src="./VideoPlayer.scss" scoped></style>
+<!-- <style lang="scss">
 @import url('./VideoPlayer.scss');
-</style>
+</style> -->

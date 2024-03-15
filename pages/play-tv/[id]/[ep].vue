@@ -297,20 +297,31 @@
 </template>
 
 <script setup lang="ts">
-import { LoadingSpinner } from '~/components/Loading';
-import { BackPage } from '~/components/BackPage';
-import { VideoPlayer } from '~/components/VideoPlayer';
-import { HistoryProgressBar } from '~/components/HistoryProgressBar';
-import { Tags } from '~/components/Tags';
-import { Overview } from '~/components/Overview';
-import { RatingMovie } from '~/components/RatingMovie';
-import { Interaction } from '~/components/Interaction';
-import { getCountryByOriginalLanguage } from '~/services/country';
-import { ListEpisodes } from '~/components/ListEpisodes';
-import { Comment } from '~/components/Comment';
-import { MovieSuggested } from '~/components/MovieSuggested';
+// import { LoadingSpinner } from '~/components/Loading';
+// import { BackPage } from '~/components/BackPage';
+// import { VideoPlayer } from '~/components/VideoPlayer';
+// import { HistoryProgressBar } from '~/components/HistoryProgressBar';
+// import { Tags } from '~/components/Tags';
+// import { Overview } from '~/components/Overview';
+// import { RatingMovie } from '~/components/RatingMovie';
+// import { Interaction } from '~/components/Interaction';
+// import { ListEpisodes } from '~/components/ListEpisodes';
+// import { Comment } from '~/components/Comment';
+// import { MovieSuggested } from '~/components/MovieSuggested';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import BackPage from '~/components/BackPage/BackPage.vue';
+import VideoPlayer from '~/components/VideoPlayer/VideoPlayer.vue';
+import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';
+import Tags from '~/components/Tags/Tags.vue';
+import Overview from '~/components/Overview/Overview.server.vue';
+import RatingMovie from '~/components/RatingMovie/RatingMovie.vue';
+import Interaction from '~/components/Interaction/Interaction.vue';
+import ListEpisodes from '~/components/ListEpisodes/ListEpisodes.vue';
+import Comment from '~/components/Comment/Comment.vue';
+import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
 import { getTvById, UpdateViewTv } from '~/services/tv';
 import { getGenreById } from '~/services/genres';
+import { getCountryByOriginalLanguage } from '~/services/country';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
@@ -613,7 +624,7 @@ const scrollToComment = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./PlayTvPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./PlayTvPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./PlayTvPage.scss');
-</style>
+</style> -->

@@ -42,15 +42,18 @@
 </template>
 
 <script setup lang="ts">
+// import {
+//   // BreadCrumb,
+//   Drawer,
+//   Footer,
+//   Header,
+//   Sider
+// } from '~/components/Layouts';
+import Drawer from '~/components/Layouts/Drawer/Drawer.server.vue';
+import Footer from '~/components/Layouts/Footer/Footer.server.vue';
+import Header from '~/components/Layouts/Header/Header.server.vue';
+import Sider from '~/components/Layouts/Sider/Sider.server.vue';
 import { storeToRefs } from 'pinia';
-
-import {
-  // BreadCrumb,
-  Drawer,
-  Footer,
-  Header,
-  Sider
-} from '~/components/Layouts';
 
 const store = useStore();
 const authStore = useAuthStore();

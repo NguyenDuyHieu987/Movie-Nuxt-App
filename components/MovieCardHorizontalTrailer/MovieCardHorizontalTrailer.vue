@@ -89,7 +89,8 @@
 </template>
 
 <script setup lang="ts">
-import { ModalTrailer } from '~/components/ModalTrailer';
+// import { ModalTrailer } from '~/components/ModalTrailer';
+import ModalTrailer from '~/components/ModalTrailer/ModalTrailer.vue';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 
@@ -147,7 +148,7 @@ const getData = async () => {
 getData();
 </script>
 
-<!-- <style lang="scss" src="./MovieCardHorizontalTrailer.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./MovieCardHorizontalTrailer.scss"></style>
+<!-- <style lang="scss">
 @import url('./MovieCardHorizontalTrailer.scss');
-</style>
+</style> -->

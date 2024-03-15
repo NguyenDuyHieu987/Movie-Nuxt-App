@@ -545,7 +545,7 @@ const handleGooglePopupCallback = (googleOauthResponse: any) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./LoginPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./LoginPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./LoginPage.scss');
-</style>
+</style> -->

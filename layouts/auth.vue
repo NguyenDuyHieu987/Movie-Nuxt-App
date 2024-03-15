@@ -34,7 +34,8 @@
 </template>
 
 <script setup lang="ts">
-import { HeaderAuth } from '~/components/Layouts';
+// import { HeaderAuth } from '~/components/Layouts';
+import HeaderAuth from '~/components/Layouts/HeaderAuth/HeaderAuth.server.vue';
 import { getImage } from '~/services/image';
 
 const image = ref<number>(Math.floor(Math.random() * 3) + 1);
@@ -46,4 +47,4 @@ onBeforeMount(() => {
 });
 </script>
 
-<style lang="scss" scoped src="~/assets/style/authLayout.scss"></style>
+<style lang="scss" src="~/assets/style/authLayout.scss" scoped></style>

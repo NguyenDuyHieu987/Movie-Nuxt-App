@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { getListEpisode } from '~/services/episode';
-import { getSeason } from '~/services/season';
+// import { getSeason } from '~/services/season';
 
 const props = defineProps<{
   dataMovie: any;
@@ -88,7 +88,7 @@ if (dataEpisode.value.length == 0) {
 //   });
 </script>
 
-<!-- <style lang="scss" src="./LastestEpisodes.scss" scoped></style> -->
-<style lang="scss" scoped>
+<style lang="scss" src="./LastestEpisodes.scss" scoped></style>
+<!-- <style lang="scss" scoped>
 @import url('./LastestEpisodes.scss');
-</style>
+</style> -->

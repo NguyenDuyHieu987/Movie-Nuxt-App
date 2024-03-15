@@ -345,8 +345,6 @@
 </template>
 
 <script setup lang="ts">
-import _ from 'lodash';
-
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';

@@ -3,14 +3,14 @@
     <div class="left-header">
       <div class="logo">
         <NuxtLink :to="{ path: '/' }">
-          <nuxt-img
+          <NuxtImg
             :src="getImage('logo.png', 'logo')"
             alt=""
             :height="30"
             :width="30"
             preload
           />
-          <span> PhimHay247 </span>
+          <span> PhimHay247</span>
         </NuxtLink>
       </div>
     </div>
@@ -47,9 +47,8 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-
 import { getImage } from '~/services/image';
+import { storeToRefs } from 'pinia';
 
 const authStore = useAuthStore();
 const { isLogin } = storeToRefs<any>(authStore);
@@ -59,3 +58,6 @@ onMounted(() => {});
 </script>
 
 <style lang="scss" src="./HeaderAuth.scss"></style>
+<!-- <style lang="scss">
+@import url('./HeaderAuth.scss');
+</style> -->

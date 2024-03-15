@@ -63,11 +63,15 @@
 </template>
 
 <script setup lang="ts">
-import { DiscoverHead } from '~/components/DiscoverHead';
-// import { FilterBar } from '~/components/FilterBar';
-import { MovieCardHorizontal } from '~/components/MovieCard';
-import { LoadingSpinner } from '~/components/Loading';
-import { ControlPage } from '~/components/ControlPage';
+// import { DiscoverHead } from '~/components/DiscoverHead';
+// // import { FilterBar } from '~/components/FilterBar';
+// import { MovieCardHorizontal } from '~/components/MovieCard';
+// import { LoadingSpinner } from '~/components/Loading';
+// import { ControlPage } from '~/components/ControlPage';
+import DiscoverHead from '~/components/DiscoverHead/DiscoverHead.vue';
+import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { getCountryByShortName } from '~/services/country';
 import { getMovieByCountry } from '~/services/discover';
 import type { country, formfilter } from '@/types';
@@ -190,7 +194,7 @@ const cancelFilter = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="../DiscoverPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="../DiscoverPage.scss"></style>
+<!-- <style lang="scss">
 @import url('../DiscoverPage.scss');
-</style>
+</style> -->

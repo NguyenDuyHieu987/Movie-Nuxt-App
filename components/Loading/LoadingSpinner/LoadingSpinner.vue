@@ -31,7 +31,7 @@ defineProps({
 });
 </script>
 
-<!-- <style lang="scss" src="./LoadingSpinner.scss" scoped></style> -->
-<style lang="scss" scoped>
+<style lang="scss" src="./LoadingSpinner.scss" scoped></style>
+<!-- <style lang="scss" scoped>
 @import url('./LoadingSpinner.scss');
-</style>
+</style> -->

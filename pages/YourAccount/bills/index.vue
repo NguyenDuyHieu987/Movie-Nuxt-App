@@ -10,9 +10,9 @@
 </template>
 
 <script setup lang="ts">
+// import { RequireAuth } from '~/components/RequireAuth';
+import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { storeToRefs } from 'pinia';
-
-import { RequireAuth } from '~/components/RequireAuth';
 
 definePageMeta({
   layout: 'service',
@@ -43,7 +43,7 @@ useSeoMeta({
 });
 </script>
 
-<!-- <style lang="scss" src="./BillsPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./BillsPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./BillsPage.scss');
-</style>
+</style> -->

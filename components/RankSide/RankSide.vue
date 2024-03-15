@@ -61,7 +61,8 @@
 </template>
 
 <script setup lang="ts">
-import { RankCard } from '~/components/RankSide';
+// import { RankCard } from '~/components/RankSide';
+import RankCard from '~/components/RankSide/RankCard/RankCard.vue';
 import { getRanking } from '~/services/ranks';
 
 interface tab {
@@ -206,7 +207,7 @@ const handleTabClick = (activeKey: any) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./RankSide.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./RankSide.scss"></style>
+<!-- <style lang="scss">
 @import url('./RankSide.scss');
-</style>
+</style> -->

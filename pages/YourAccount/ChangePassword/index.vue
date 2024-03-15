@@ -140,14 +140,16 @@
 </template>
 
 <script setup lang="ts">
-import type { Rule } from 'ant-design-vue/es/form';
+// import { BackPage } from '~/components/BackPage';
+// import { RequireAuth } from '~/components/RequireAuth';
+// import { VerifyPinOTPForm } from '~/components/VerifyForm';
+import BackPage from '~/components/BackPage/BackPage.vue';
+import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
+import VerifyPinOTPForm from '~/components/VerifyForm/VerifyPinOTPForm/VerifyPinOTPForm.vue';
 import { ElNotification } from 'element-plus';
 import { storeToRefs } from 'pinia';
-
-import { BackPage } from '~/components/BackPage';
-import { RequireAuth } from '~/components/RequireAuth';
-import { VerifyPinOTPForm } from '~/components/VerifyForm';
 import { AccountConfirm, ChangePassword } from '~/services/account';
+import type { Rule } from 'ant-design-vue/es/form';
 
 definePageMeta({
   layout: 'service',
@@ -479,7 +481,7 @@ const handleClickBack = async () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./ChangePasswordPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./ChangePasswordPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./ChangePasswordPage.scss');
-</style>
+</style> -->

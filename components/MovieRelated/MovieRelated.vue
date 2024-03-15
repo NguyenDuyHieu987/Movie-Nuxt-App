@@ -147,7 +147,8 @@
 </template>
 
 <script setup lang="ts">
-import { MovieCardRelated } from '~/components/MovieRelated';
+// import { MovieCardRelated } from '~/components/MovieRelated';
+import MovieCardRelated from '~/components/MovieRelated/MovieCardRelated/MovieCardRelated.vue';
 import { ViewMoreBar } from '~/components/ViewMoreBar';
 import { getSimilar } from '~/services/similar';
 import { getTrending } from '~/services/trending';
@@ -228,7 +229,7 @@ getTrending(pageRecommend.value, 20)
 // loadingRecommend.value = false;
 </script>
 
-<!-- <style lang="scss" src="./MovieRelated.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./MovieRelated.scss"></style>
+<!-- <style lang="scss">
 @import url('./MovieRelated.scss');
-</style>
+</style> -->

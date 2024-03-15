@@ -637,3 +637,6 @@ watchEffect(() => {
 </script>
 
 <style lang="scss" src="./TheMenu.scss"></style>
+<!-- <style lang="scss">
+@import url('./TheMenu.scss');
+</style> -->

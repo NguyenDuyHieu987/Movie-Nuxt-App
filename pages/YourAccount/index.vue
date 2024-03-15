@@ -262,13 +262,13 @@
 </template>
 
 <script setup lang="ts">
-import { useBreakpoints } from '@vueuse/core';
-import { storeToRefs } from 'pinia';
-
-import { RequireAuth } from '~/components/RequireAuth';
+// import { RequireAuth } from '~/components/RequireAuth';
+import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { ChangeFullname } from '~/services/account';
 import { getBills } from '~/services/bill';
 import { getImage } from '~/services/image';
+import { useBreakpoints } from '@vueuse/core';
+import { storeToRefs } from 'pinia';
 
 definePageMeta({
   layout: 'service',
@@ -474,7 +474,7 @@ const handleClickSaveRowItem = (e: any) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./AccountPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./AccountPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./AccountPage.scss');
-</style>
+</style> -->

@@ -196,7 +196,7 @@ const handleDisLikeComment = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./LikeDislike.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./LikeDislike.scss"></style>
+<!-- <style lang="scss">
 @import url('./LikeDislike.scss');
-</style>
+</style> -->

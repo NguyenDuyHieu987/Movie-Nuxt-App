@@ -51,7 +51,7 @@ useSeoMeta({
 });
 </script>
 
-<!-- <style lang="scss" src="./StripeSuccessPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./StripeSuccessPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./StripeSuccessPage.scss');
-</style>
+</style> -->

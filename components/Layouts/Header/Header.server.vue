@@ -142,15 +142,17 @@
 
 <script setup lang="ts">
 import { MenuOutlined } from '@ant-design/icons-vue';
-import { storeToRefs } from 'pinia';
-
-import {
-  DropdownAccount,
-  Notification,
-  // SearchCard,
-  SearchDropdown,
-  SearchMobile
-} from '~/components/Layouts/Header';
+// import {
+//   DropdownAccount,
+//   Notification,
+//   // SearchCard,
+//   SearchDropdown,
+//   SearchMobile
+// } from '~/components/Layouts/Header';
+import DropdownAccount from '~/components/Layouts/Header/DropdownAccount/DropdownAccount.vue';
+import Notification from '~/components/Layouts/Header/Notification/Notification.vue';
+import SearchDropdown from '~/components/Layouts/Header/SearchDropdown/SearchDropdown.vue';
+import SearchMobile from '~/components/Layouts/Header/SearchMobile/SearchMobile.vue';
 import { getImage } from '~/services/image';
 import {
   getDaTaSearch,
@@ -158,6 +160,7 @@ import {
   getDaTaSearchInHistory,
   getDaTaTopSearch
 } from '~/services/search';
+import { storeToRefs } from 'pinia';
 
 const store = useStore();
 const authStore = useAuthStore();
@@ -354,4 +357,7 @@ const handleBlurSearchInput = (e: any) => {
 };
 </script>
 
-<style lang="scss" src="./Header.scss"></style>
+<!-- <style lang="scss" src="./Header.scss"></style> -->
+<style lang="scss">
+@import url('./Header.scss');
+</style>

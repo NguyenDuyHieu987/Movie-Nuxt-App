@@ -49,11 +49,14 @@
 </template>
 
 <script setup lang="ts">
-import { FormComment, CommentItem } from '~/components/Comment';
-import {
-  // LoadingCircle,
-  LoadingSpinner
-} from '~/components/Loading';
+// import { FormComment, CommentItem } from '~/components/Comment';
+// import {
+//   // LoadingCircle,
+//   LoadingSpinner
+// } from '~/components/Loading';
+import FormComment from '~/components/Comment/FormComment/FormComment.vue';
+import CommentItem from '~/components/Comment/CommentItem/CommentItem.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { getCommentParent } from '~/services/comment';
 import type { commentForm } from '~/types';
 
