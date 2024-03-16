@@ -49,7 +49,7 @@
 
       <div class="video-preview">
         <video
-          v-show="showVideo"
+          v-if="showVideo"
           id="video-player"
           ref="video"
           :src="videoSrc"
@@ -62,7 +62,7 @@
 
         <div class="float-center">
           <div
-            v-show="videoStates.isLoading"
+            v-if="videoStates.isLoading"
             class="loading-video"
           >
             <LazyLoadingSpinner :width="25" />
