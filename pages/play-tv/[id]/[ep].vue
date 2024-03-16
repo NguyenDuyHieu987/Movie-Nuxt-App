@@ -21,8 +21,8 @@
           "
         >
           {{ dataMovie?.name }}
-          <HistoryProgressBar :historyProgress="historyProgress.percent" />
         </BackPage>
+        <HistoryProgressBar :historyProgress="historyProgress.percent" />
       </div>
 
       <div class="video">
