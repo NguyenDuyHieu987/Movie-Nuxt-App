@@ -280,7 +280,6 @@ import { DeleteComment, getCommentChild } from '~/services/comment';
 import { ElNotification } from 'element-plus';
 import { getImage } from '~/services/image';
 import DOMPurify from 'dompurify';
-import reject from 'lodash/reject';
 import { storeToRefs } from 'pinia';
 import type { commentForm } from '@/types';
 
@@ -388,9 +387,12 @@ const handleRemoveComment = () => {
   })
     .then((response) => {
       if (response?.success) {
-        commentsList.value = reject(commentsList.value, (x: commentForm) => {
-          return x!.id === props.item?.id;
-        });
+        commentsList.value = _lodash_Reject(
+          commentsList.value,
+          (x: commentForm) => {
+            return x!.id === props.item?.id;
+          }
+        );
 
         ElNotification.success({
           title: MESSAGE.STATUS.SUCCESS,

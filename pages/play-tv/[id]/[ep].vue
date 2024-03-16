@@ -288,7 +288,7 @@
           </div>
 
           <div class="right">
-            <MovieSuggested :dataMovie="dataMovie" />
+            <LazyMovieSuggested :dataMovie="dataMovie" />
           </div>
         </div>
       </div>
@@ -318,8 +318,7 @@ import RatingMovie from '~/components/RatingMovie/RatingMovie.vue';
 import Interaction from '~/components/Interaction/Interaction.vue';
 import ListEpisodes from '~/components/ListEpisodes/ListEpisodes.vue';
 import Comment from '~/components/Comment/Comment.vue';
-import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
-import throttle from 'lodash/throttle';
+// import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
 import { getTvById, UpdateViewTv } from '~/services/tv';
 import { getGenreById } from '~/services/genres';
 import { getCountryByOriginalLanguage } from '~/services/country';
@@ -553,7 +552,7 @@ const onPLayVideoPlayer = (e: any) => {
   isPlayVideo.value = true;
 };
 
-const throttleUpdateHistory = throttle(updateHistory, 1000);
+const throttleUpdateHistory = _lodash_Throttle(updateHistory, 1000);
 
 const onTimeUpdateVideoPlayer = (e: any) => {
   if (!isPlayVideo.value) {

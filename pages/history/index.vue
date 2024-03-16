@@ -138,7 +138,6 @@ import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { getHistory, searchHistory } from '~/services/history';
 import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';
-import reject from 'lodash/reject';
 import { storeToRefs } from 'pinia';
 
 definePageMeta({
@@ -276,7 +275,7 @@ getData();
 
 const getDataWhenRemoveHistory = (data: number) => {
   // dataHistory.value = data;
-  dataHistory.value = reject(dataHistory.value, (x) => {
+  dataHistory.value = _lodash_Reject(dataHistory.value, (x) => {
     return x.movie_id === data;
   });
   total.value = dataHistory.value?.length;

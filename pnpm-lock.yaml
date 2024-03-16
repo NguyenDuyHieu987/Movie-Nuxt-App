@@ -214,6 +214,9 @@ devDependencies:
   nuxt-gtag:
     specifier: ^2.0.5
     version: 2.0.5
+  nuxt-lodash:
+    specifier: ^2.5.3
+    version: 2.5.3
   nuxt-og-image:
     specifier: 3.0.0-rc.45
     version: 3.0.0-rc.45(@lezer/common@1.2.1)(@nuxt/devtools@1.0.8)(@vue/compiler-core@3.4.21)(axios@1.6.7)(nuxt@3.10.3)(postcss@8.4.35)(vite@5.1.6)(vue@3.4.21)(webpack@5.90.3)
@@ -8349,6 +8352,17 @@ packages:
       - vite
       - vue
       - webpack
+    dev: true
+
+  /nuxt-lodash@2.5.3:
+    resolution: {integrity: sha512-LCJ40tGQTHkfk8rQoGqtb0mFgRVt8U+pc3S352DsI39yF3olqgxlsm28wdJMIcWHuxLgf5X+DwxmZhrAHXNS5g==}
+    dependencies:
+      '@nuxt/kit': 3.10.3
+      '@types/lodash-es': 4.17.12
+      lodash-es: 4.17.21
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   /nuxt-og-image@1.5.9:

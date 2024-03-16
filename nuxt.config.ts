@@ -131,6 +131,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
+    'nuxt-lodash',
     // 'nuxt-purgecss',
     // SEO
     // '@nuxtjs/seo',
@@ -161,6 +162,17 @@ export default defineNuxtConfig({
   },
   gtag: {
     id: process.env.GOOGLE_ANALYTICS_ID
+  },
+  lodash: {
+    prefix: '_lodash_',
+    prefixSkip: false,
+    upperAfterPrefix: true,
+    exclude: ['map'],
+    alias: [
+      ['camelCase', 'stringToCamelCase'], // => stringToCamelCase
+      ['kebabCase', 'stringToKebab'], // => stringToKebab
+      ['isDate', 'isLodashDate'] // => _isLodashDate
+    ]
   },
   image: {
     // provider: 'cloudinary',

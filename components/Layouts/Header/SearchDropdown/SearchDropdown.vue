@@ -165,8 +165,6 @@
 </template>
 
 <script setup lang="ts">
-import reject from 'lodash/reject';
-
 import { addRankSearch } from '~/services/ranks';
 import {
   addSearch,
@@ -205,13 +203,19 @@ const handleRemoveSearchHistory = async (id: string) => {
   await removeSearchHistory(id)
     .then((response) => {
       if (response?.success) {
-        dataSearchHistory.value = reject(dataSearchHistory.value, (x) => {
-          return x.id === id;
-        });
+        dataSearchHistory.value = _lodash_Reject(
+          dataSearchHistory.value,
+          (x) => {
+            return x.id === id;
+          }
+        );
 
-        store.dataSearchHistory = reject(store.dataSearchHistory, (x) => {
-          return x.id === id;
-        });
+        store.dataSearchHistory = _lodash_Reject(
+          store.dataSearchHistory,
+          (x) => {
+            return x.id === id;
+          }
+        );
       }
     })
     .catch((e) => {});
@@ -221,17 +225,23 @@ const handleRemoveSearchHistoryInSearchResults = async (id: string) => {
   await removeSearchHistory(id)
     .then((response) => {
       if (response?.success) {
-        dataSearch.value = reject(dataSearch.value, (x) => {
+        dataSearch.value = _lodash_Reject(dataSearch.value, (x) => {
           return x?.type == 'history' && x.id === id;
         });
 
-        dataSearchHistory.value = reject(dataSearchHistory.value, (x) => {
-          return x.id === id;
-        });
+        dataSearchHistory.value = _lodash_Reject(
+          dataSearchHistory.value,
+          (x) => {
+            return x.id === id;
+          }
+        );
 
-        store.dataSearchHistory = reject(store.dataSearchHistory, (x) => {
-          return x.id === id;
-        });
+        store.dataSearchHistory = _lodash_Reject(
+          store.dataSearchHistory,
+          (x) => {
+            return x.id === id;
+          }
+        );
       }
     })
     .catch((e) => {});
