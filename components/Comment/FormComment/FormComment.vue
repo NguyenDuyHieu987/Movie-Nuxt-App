@@ -79,21 +79,10 @@
               />
             </svg>
 
-            <ClientOnly>
-              <EmojiPicker
-                v-if="isShowEmoji"
-                :class="'emoji-picker-' + comment?.id"
-                :native="true"
-                :display-recent="true"
-                :static-texts="{
-                  placeholder: 'Tìm kiếm biểu tượng cảm xúc'
-                }"
-                :hide-group-names="true"
-                :disable-sticky-group-names="true"
-                :disable-skin-tones="true"
-                @select="onSelectEmoji"
-              />
-            </ClientOnly>
+            <LazyEmojiPicker
+              v-if="isShowEmoji"
+              @select="onSelectEmoji"
+            />
           </div>
           <div class="right">
             <a-button
@@ -120,10 +109,9 @@
 </template>
 
 <script setup lang="ts">
+// import EmojiPicker from '~/components/Comment/EmojiPicker/EmojiPicker.vue';
 import { CommentMovie, EditComment } from '~/services/comment';
 import { getImage } from '~/services/image';
-import EmojiPicker from 'vue3-emoji-picker';
-import 'vue3-emoji-picker/css';
 import { ElNotification } from 'element-plus';
 import DOMPurify from 'dompurify';
 import { storeToRefs } from 'pinia';
@@ -202,20 +190,6 @@ const replyToFirstEl = computed<string>(() =>
   )
 );
 const isChanged = ref<boolean>(false);
-
-onMounted(() => {
-  // window.addEventListener('click', (e: any) => {
-  //   if (
-  //     !e.target.closest('.emoji-picker-' + props.comment?.id) &&
-  //     !e.target.closest('.comment-form .actions-container .left .emoticon')
-  //   ) {
-  //     console.log(isShowEmoji.value);
-  //     if (isShowEmoji.value) {
-  //       isShowEmoji.value = false;
-  //     }
-  //   }
-  // });
-});
 
 watchEffect(async () => {
   if (props.isShowFormComment) {

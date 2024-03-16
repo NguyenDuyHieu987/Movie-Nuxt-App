@@ -202,7 +202,7 @@
             :id="item?.id"
             class="list-replies"
           >
-            <CommentItemChild
+            <LazyCommentItemChild
               v-for="(item1, index) in listReplies"
               :key="item1?.id"
               v-model:listReplies="listReplies"
@@ -249,7 +249,7 @@
             class="loading-replies"
           /> -->
 
-          <LoadingSpinner
+          <LazyLoadingSpinner
             v-show="loadingReplies || isLoadmoreReplies"
             class="loading-replies"
             :width="25"
@@ -273,9 +273,9 @@
 // } from '~/components/Loading';
 import FormComment from '~/components/Comment/FormComment/FormComment.vue';
 import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';
-import CommentItemChild from '~/components/Comment/CommentItemChild/CommentItemChild.vue';
+// import CommentItemChild from '~/components/Comment/CommentItemChild/CommentItemChild.vue';
 import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
-import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { DeleteComment, getCommentChild } from '~/services/comment';
 import { ElNotification } from 'element-plus';
 import { getImage } from '~/services/image';

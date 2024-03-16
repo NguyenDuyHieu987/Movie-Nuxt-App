@@ -50,7 +50,7 @@
             v-show="loadMore"
             class="loading-suggested"
           >
-            <LoadingSpinner :width="35" />
+            <LazyLoadingSpinner :width="35" />
           </div>
         </template>
       </el-skeleton>
@@ -60,7 +60,7 @@
 
 <script setup lang="ts">
 // import { LoadingSpinner } from '~/components/Loading';
-import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { MovieCardSuggested } from '~/components/MovieSuggested';
 import { getSimilar } from '~/services/similar';
 

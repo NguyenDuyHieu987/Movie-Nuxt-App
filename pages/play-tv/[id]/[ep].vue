@@ -1,6 +1,6 @@
 <template>
   <div class="play-tv padding-content">
-    <LoadingSpinner
+    <LazyLoadingSpinner
       v-if="loading"
       class="loading-page"
     />
@@ -308,7 +308,7 @@
 // import { ListEpisodes } from '~/components/ListEpisodes';
 // import { Comment } from '~/components/Comment';
 // import { MovieSuggested } from '~/components/MovieSuggested';
-import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import BackPage from '~/components/BackPage/BackPage.vue';
 import VideoPlayer from '~/components/VideoPlayer/VideoPlayer.vue';
 import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';
@@ -319,6 +319,7 @@ import Interaction from '~/components/Interaction/Interaction.vue';
 import ListEpisodes from '~/components/ListEpisodes/ListEpisodes.vue';
 import Comment from '~/components/Comment/Comment.vue';
 import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
+import throttle from 'lodash/throttle';
 import { getTvById, UpdateViewTv } from '~/services/tv';
 import { getGenreById } from '~/services/genres';
 import { getCountryByOriginalLanguage } from '~/services/country';
@@ -327,7 +328,6 @@ import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
-import throttle from 'lodash/throttle';
 
 definePageMeta({
   pageTransition: {
