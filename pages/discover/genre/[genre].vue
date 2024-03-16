@@ -72,7 +72,7 @@ import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.v
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { getMoviesByGenres } from '~/services/discover';
 import { getGenreByShortName } from '~/services/genres';
-import type { formfilter, genre } from '@/types';
+import type { genre } from '@/types';
 
 definePageMeta({
   pageTransition: {
@@ -88,16 +88,7 @@ const genres = ref<genre[]>(store.allGenres);
 const page = ref<number>(+route.query?.page || 1);
 const totalPage = ref<number>(100);
 const pageSize = ref<number>(20);
-const isFilter = ref<boolean>(false);
 const loading = ref<boolean>(false);
-const formFilter = ref<formfilter>({
-  type: 'all',
-  sortBy: '',
-  genre: '',
-  year: '',
-  country: '',
-  page: 1
-});
 const genreRoute = computed<genre>(
   () => getGenreByShortName(route.params.genre, store.allGenres)!
 );
@@ -172,25 +163,6 @@ const onChangePage = (
   page.value = pageSelected;
   router.push({ query: { page: pageSelected } });
   getData();
-};
-
-const setDataFiltered = (data: any[], formSelect: formfilter) => {
-  nuxtLoadingIndicator.start();
-
-  dataDiscover.value = data;
-  formFilter.value = formSelect;
-  isFilter.value = true;
-  page.value = formSelect.page!;
-  metaHead.value = 'Danh sách phim đã lọc';
-
-  nuxtLoadingIndicator.finish();
-};
-
-const cancelFilter = () => {
-  isFilter.value = false;
-  // getData();
-  metaHead.value = 'Thể loại: ' + genreRoute.value.name_vietsub;
-  refreshNuxtData(`discover/genre/all/${route.params.genre}/${page.value}`);
 };
 </script>
 

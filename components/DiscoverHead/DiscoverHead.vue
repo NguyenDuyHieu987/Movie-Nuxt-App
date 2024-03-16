@@ -7,11 +7,11 @@
       <Swiper
         class="filter-swiper genres"
         :modules="[
-          // SwiperFreeMode,
-          // SwiperNavigation,
+          SwiperNavigation,
+          SwiperFreeMode
 
-          Navigation,
-          FreeMode
+          // Navigation,
+          // FreeMode
         ]"
         :speed="500"
         :slides-per-view="'auto'"
@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { FreeMode, Navigation } from 'swiper/modules';
+// import { FreeMode, Navigation } from 'swiper/modules';
 
 const isFixed = ref<boolean>(false);
 

@@ -74,7 +74,7 @@ import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.v
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { getCountryByShortName } from '~/services/country';
 import { getMovieByCountry } from '~/services/discover';
-import type { country, formfilter } from '@/types';
+import type { country } from '@/types';
 
 definePageMeta({
   pageTransition: {
@@ -90,16 +90,7 @@ const countries = ref<country[]>(store.allCountries);
 const page = ref<number>(+route.query?.page || 1);
 const totalPage = ref<number>(100);
 const pageSize = ref<number>(20);
-const isFilter = ref<boolean>(false);
 const loading = ref<boolean>(false);
-const formFilter = ref<formfilter>({
-  type: 'all',
-  sortBy: '',
-  genre: '',
-  year: '',
-  country: '',
-  page: 1
-});
 const countryRoute = computed<country>(() =>
   getCountryByShortName(route.params.country, store.allCountries)
 );
@@ -172,25 +163,6 @@ const onChangePage = (
   page.value = pageSelected;
   router.push({ query: { page: pageSelected } });
   getData();
-};
-
-const setDataFiltered = (data: any[], formSelect: formfilter) => {
-  nuxtLoadingIndicator.start();
-
-  dataDiscover.value = data;
-  formFilter.value = formSelect;
-  isFilter.value = true;
-  page.value = formSelect.page!;
-  metaHead.value = 'Danh sách phim đã lọc';
-
-  nuxtLoadingIndicator.finish();
-};
-
-const cancelFilter = () => {
-  isFilter.value = false;
-  // getData();
-  refreshNuxtData(`discover/country/all/${route.params.country}/${page.value}`);
-  metaHead.value = 'Quốc gia: ' + countryRoute.value.name;
 };
 </script>
 

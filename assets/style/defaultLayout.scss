@@ -20,6 +20,16 @@
         margin-left: var(--sider-collapsed-width);
       }
     }
+
+    .discover-head.fixed {
+      .discover-head-wrapper {
+        left: var(--sider-collapsed-width);
+      }
+
+      .filter-swiper {
+        width: calc(100vw - var(--sider-collapsed-width) - 30px);
+      }
+    }
   }
 
   /* &.home */

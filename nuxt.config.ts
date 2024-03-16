@@ -155,8 +155,8 @@ export default defineNuxtConfig({
     storesDirs: ['./stores/**']
   },
   swiper: {
-    // modules: ['navigation', 'virtual', 'free-mode', 'scrollbar', 'autoplay'],
-    modules: [],
+    modules: ['navigation', 'virtual', 'free-mode', 'scrollbar', 'autoplay'],
+    // modules: [],
     styleLang: 'css'
   },
   gtag: {

@@ -71,7 +71,7 @@ import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/Movi
 import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { getMoviesByYear } from '~/services/discover';
-import type { formfilter, year } from '@/types';
+import type { year } from '@/types';
 
 definePageMeta({
   pageTransition: {
@@ -88,16 +88,7 @@ const years = ref<year[]>(store.allYears);
 const page = ref<number>(+route.query?.page || 1);
 const totalPage = ref<number>(100);
 const pageSize = ref<number>(20);
-const isFilter = ref<boolean>(false);
 const loading = ref<boolean>(false);
-const formFilter = ref<formfilter>({
-  type: 'all',
-  sortBy: '',
-  genre: '',
-  year: '',
-  country: '',
-  page: 1
-});
 const yearRoute = computed<number | string>(() =>
   utils.isStringNumber(route.params.year)
     ? +route.params.year
@@ -149,13 +140,14 @@ const { data: dataDiscoverCache, pending } = await useAsyncData(
   `discover/year/all/${route.params.year}/${page.value}`,
   () => getMoviesByYear(route.params.year, '', page.value),
   {
+    watch: [page, route],
+    deep: true
     // transform: (data: any) => {
     //   totalPage.value = data?.total;
     //   pageSize.value = data?.page_size;
     //   loading.value = false;
     //   return data.results;
     // },
-    // server: false,
   }
 );
 
@@ -165,6 +157,13 @@ dataDiscover.value = dataDiscoverCache.value.results;
 totalPage.value = dataDiscoverCache.value?.total;
 pageSize.value = dataDiscoverCache.value?.page_size;
 
+watchEffect(() => {
+  if (route.params.year) {
+    console.log(route.params.year);
+    console.log(utils.isStringNumber(route.params.year));
+  }
+});
+
 const onChangePage = (
   pageSelected: number
   // pageSize
@@ -172,25 +171,6 @@ const onChangePage = (
   page.value = pageSelected;
   router.push({ query: { page: pageSelected } });
   getData();
-};
-
-const setDataFiltered = (data: any[], formSelect: formfilter) => {
-  nuxtLoadingIndicator.start();
-
-  dataDiscover.value = data;
-  formFilter.value = formSelect;
-  isFilter.value = true;
-  page.value = formSelect.page!;
-  metaHead.value = 'Danh sách phim đã lọc';
-
-  nuxtLoadingIndicator.finish();
-};
-
-const cancelFilter = () => {
-  isFilter.value = false;
-  // getData();
-  refreshNuxtData(`discover/year/all/${route.params.year}/${page.value}`);
-  metaHead.value = 'Năm: ' + yearRoute.value;
 };
 </script>
 

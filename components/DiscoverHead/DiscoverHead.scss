@@ -5,13 +5,15 @@
   &.fixed {
     .discover-head-wrapper {
       position: fixed;
+      left: var(--sider-width);
       top: var(--header-height);
       background: var(--header-background-scrolled);
       z-index: var(--header-z-index);
     }
 
     .filter-swiper {
-      width: calc(100vw - var(--sider-collapsed-width));
+      left: 0;
+      width: calc(100vw - var(--sider-width) - 30px);
     }
   }
 

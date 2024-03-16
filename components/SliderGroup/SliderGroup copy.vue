@@ -7,13 +7,13 @@
         // SwiperAutoplay,
         // SwiperNavigation,
 
-        // SwiperFreeMode,
-        // SwiperVirtual,
-        // SwiperScrollbar,
+        SwiperScrollbar,
+        SwiperFreeMode,
+        SwiperVirtual
 
-        Scrollbar,
-        FreeMode,
-        Virtual
+        // Scrollbar,
+        // FreeMode,
+        // Virtual
       ]"
       :breakpoints="responsive"
       :space-between="7"
@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import { FreeMode, Scrollbar, Virtual } from 'swiper/modules';
+// import { FreeMode, Scrollbar, Virtual } from 'swiper/modules';
 
 const store = useStore();
 const isEndScrollbrDrag = ref<boolean>(false);

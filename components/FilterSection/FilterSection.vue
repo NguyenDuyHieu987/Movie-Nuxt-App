@@ -69,11 +69,11 @@
             <Swiper
               class="filter-options"
               :modules="[
-                //  SwiperFreeMode,
-                //  SwiperNavigation
+                SwiperFreeMode,
+                SwiperNavigation
 
-                Navigation,
-                FreeMode
+                // Navigation,
+                // FreeMode
               ]"
               :speed="500"
               :slides-per-view="'auto'"
@@ -143,11 +143,11 @@
             <Swiper
               class="filter-options"
               :modules="[
-                //  SwiperFreeMode,
-                //  SwiperNavigation
+                SwiperFreeMode,
+                SwiperNavigation
 
-                Navigation,
-                FreeMode
+                // Navigation,
+                // FreeMode
               ]"
               :speed="500"
               :slides-per-view="'auto'"
@@ -218,11 +218,11 @@
             <Swiper
               class="filter-options"
               :modules="[
-                //  SwiperFreeMode,
-                //  SwiperNavigation
+                SwiperFreeMode,
+                SwiperNavigation
 
-                Navigation,
-                FreeMode
+                // Navigation,
+                // FreeMode
               ]"
               :slides-per-group="5"
               :speed="500"
@@ -311,7 +311,7 @@
 
 <script setup lang="ts">
 import { CaretRightFilled } from '@ant-design/icons-vue';
-import { FreeMode, Navigation } from 'swiper/modules';
+// import { FreeMode, Navigation } from 'swiper/modules';
 
 import type { country, formfilter, genre, sortby, year } from '@/types';
 import { getAllSortBy } from '~/services/sortby';

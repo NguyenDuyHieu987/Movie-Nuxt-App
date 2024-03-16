@@ -69,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { Navigation, Virtual } from 'swiper/modules';
+// import { Navigation, Virtual } from 'swiper/modules';
 
 withDefaults(
   defineProps<{

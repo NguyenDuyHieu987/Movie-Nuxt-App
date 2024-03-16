@@ -13,10 +13,10 @@
         class="slider-group-background-list"
         ref="slider"
         :modules="[
-          // SwiperFreeMode,
-          // SwiperScrollbar,
-          Scrollbar,
-          FreeMode,
+          SwiperFreeMode,
+          SwiperScrollbar,
+          // Scrollbar,
+          // FreeMode,
         ]"
         :speed="500"
         :slides-per-view="'auto'"

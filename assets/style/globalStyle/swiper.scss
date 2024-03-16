@@ -1,4 +1,6 @@
 .swiper.swiper-horizontal {
+  position: relative;
+
   .swiper-wrapper {
   }
 
@@ -6,12 +8,12 @@
   .swiper-button-next {
     display: flex;
     position: absolute;
-    // top: 50%;
-    // transform: translateY(-50%);
     align-items: center;
     justify-content: center;
-    top: 0;
-    bottom: 0;
+    // top: 0;
+    // bottom: 0;
+    // top: 50%;
+    // transform: translateY(-50%);
     height: 100%;
     width: 30px;
     color: var(--text-color);
