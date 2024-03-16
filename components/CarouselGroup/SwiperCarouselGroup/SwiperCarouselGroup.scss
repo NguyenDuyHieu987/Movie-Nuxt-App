@@ -42,7 +42,6 @@
 
 .carousel-swiper {
   overflow: visible;
-  position: relative;
 
   .swiper-wrapper {
     /* gap: var(--card-movie-gap); */
@@ -79,11 +78,12 @@
     justify-content: center;
     /* top: 50%;
     transform: translateY(-50%); */
-    // top: 0;
-    // bottom: 0;
+    top: 0;
+    bottom: 0;
     z-index: 2;
     height: 100%;
     width: 30px;
+    margin: 0;
     padding: 0px 0px;
     color: inherit;
     opacity: 0;
