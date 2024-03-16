@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 // import { Header } from '~/components/Layouts';
-import Header from '~/components/Layouts/Header/Header.server.vue';
+import Header from '~/components/Layouts/Header/Header.vue';
 </script>
 
 <style lang="scss">
