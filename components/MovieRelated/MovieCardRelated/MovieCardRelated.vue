@@ -308,9 +308,12 @@ const onMouseEnter = () => {
 };
 
 const onMouseLeave = () => {
-  if (video.value! && !video.value!.paused && showVideo.value) {
+  if (showVideo.value) {
     showVideo.value = false;
-    video.value!.pause();
+
+    if (video.value! && !video.value!.paused && showVideo.value) {
+      video.value!.pause();
+    }
   }
 };
 
