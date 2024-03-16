@@ -5,11 +5,11 @@
       :class="cardMode"
       :modules="[
         // SwiperAutoplay,
-        // SwiperNavigation,
-        // SwiperVirtual,
+        SwiperNavigation,
+        SwiperVirtual
 
-        Navigation,
-        Virtual
+        // Navigation,
+        // Virtual
       ]"
       :breakpoints="responsive"
       :space-between="gap || 7"
