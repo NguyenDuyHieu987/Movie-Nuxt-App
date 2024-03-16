@@ -298,9 +298,12 @@ const handleAddToList = (e: any) => {
 };
 
 const onMouseEnter = () => {
-  if (video.value! && video.value!.paused && !showVideo.value) {
+  if (!showVideo.value) {
     showVideo.value = true;
-    video.value!.play().catch(() => {});
+
+    if (video.value! && video.value!.paused && !showVideo.value) {
+      video.value!.play().catch(() => {});
+    }
   }
 };
 
