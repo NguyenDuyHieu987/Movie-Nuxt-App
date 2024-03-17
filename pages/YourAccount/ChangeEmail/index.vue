@@ -357,7 +357,7 @@ const handleSubmitVerifyEmail = async () => {
       });
     })
     .finally(() => {
-      nuxtLoadingIndicator.finish({});
+      nuxtLoadingIndicator.finish();
       loadingVerifyEmail.value = false;
     });
 };
@@ -567,7 +567,7 @@ const handleSubmitChangeEmail = () => {
     })
     .finally(() => {
       loadingChangeEmail.value = false;
-      nuxtLoadingIndicator.finish({});
+      nuxtLoadingIndicator.finish();
     });
 };
 

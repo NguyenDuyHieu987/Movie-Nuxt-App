@@ -128,7 +128,7 @@ const getData = async () => {
     .catch((e) => {})
     .finally(() => {
       loading.value = false;
-      nuxtLoadingIndicator.finish({});
+      nuxtLoadingIndicator.finish();
     });
 };
 

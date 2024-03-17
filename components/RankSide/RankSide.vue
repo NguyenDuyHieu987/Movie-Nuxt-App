@@ -115,12 +115,12 @@ const getData = async (activeKey: string) => {
         .catch((e) => {})
         .finally(() => {
           loading.value = false;
-          nuxtLoadingIndicator.finish({});
+          nuxtLoadingIndicator.finish();
         });
 
       // refreshNuxtData('ranking/all/1');
       loading.value = false;
-      nuxtLoadingIndicator.finish({});
+      nuxtLoadingIndicator.finish();
       break;
     case 'week':
       // useAsyncData(`ranking/all/2`, () => getRanking(2, 10))
@@ -131,7 +131,7 @@ const getData = async (activeKey: string) => {
         .catch((e) => {})
         .finally(() => {
           loading.value = false;
-          nuxtLoadingIndicator.finish({});
+          nuxtLoadingIndicator.finish();
         });
 
       break;
@@ -144,7 +144,7 @@ const getData = async (activeKey: string) => {
         .catch((e) => {})
         .finally(() => {
           loading.value = false;
-          nuxtLoadingIndicator.finish({});
+          nuxtLoadingIndicator.finish();
         });
 
       break;
@@ -157,7 +157,7 @@ const getData = async (activeKey: string) => {
         .catch((e) => {})
         .finally(() => {
           loading.value = false;
-          nuxtLoadingIndicator.finish({});
+          nuxtLoadingIndicator.finish();
         });
 
       break;

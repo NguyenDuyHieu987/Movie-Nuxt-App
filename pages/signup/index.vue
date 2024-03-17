@@ -411,7 +411,7 @@ const handleSignUp = async (e: any) => {
       });
     })
     .finally(() => {
-      nuxtLoadingIndicator.finish({});
+      nuxtLoadingIndicator.finish();
       loadingSignUp.value = false;
     });
 };

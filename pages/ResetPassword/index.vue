@@ -266,7 +266,7 @@ const handleSubmit = () => {
     })
     .finally(() => {
       loadingResetPassword.value = false;
-      nuxtLoadingIndicator.finish({});
+      nuxtLoadingIndicator.finish();
     });
 };
 </script>

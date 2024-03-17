@@ -204,7 +204,7 @@ const handleSubmit = () => {
     })
     .finally(() => {
       loadingChangeEmail.value = false;
-      nuxtLoadingIndicator.finish({});
+      nuxtLoadingIndicator.finish();
     });
 };
 
