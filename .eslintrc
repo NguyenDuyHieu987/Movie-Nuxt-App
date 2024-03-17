@@ -92,10 +92,10 @@
     ],
     "vue/v-on-event-hyphenation": "off",
     "vue/no-unused-vars": "off",
-    "vue/component-definition-name-casing": [
-      "error",
-      "PascalCase"
-    ],
+    // "vue/component-definition-name-casing": [
+    //   "error",
+    //   "PascalCase"
+    // ],
     // "vue/component-name-in-template-casing": [
     //   "error",
     //   "PascalCase",
