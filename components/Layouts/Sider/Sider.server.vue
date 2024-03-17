@@ -109,7 +109,6 @@
 // import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
 // import { TheMenu } from '~/components/Layouts';
 import TheMenu from '~/components/Layouts/TheMenu/TheMenu.server.vue';
-import { useLocalStorage } from '@vueuse/core';
 import { getImage } from '~/services/image';
 import { storeToRefs } from 'pinia';
 
@@ -118,13 +117,10 @@ const authStore = useAuthStore();
 const { collapsed, openSiderBarFixed } = storeToRefs<any>(store);
 const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const siderScrolled = ref<boolean>(false);
-const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
-  [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false
-});
 
 onMounted(() => {
   if (
-    appStorageStates.value[STORAGE.APP_STATES.COLLAPSED_SIDEBAR] == true ||
+    store.appStorageStates[STORAGE.APP_STATES.COLLAPSED_SIDEBAR] == true ||
     window.innerWidth < APP.COLLAPSED_SIDEBAR_WIDTH
   ) {
     store.collapsed = true;

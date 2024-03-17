@@ -186,6 +186,7 @@ definePageMeta({
 });
 
 const utils = useUtils();
+const store = useStore();
 const authStore = useAuthStore();
 const route = useRoute();
 const router = useRouter();
@@ -241,8 +242,9 @@ onBeforeMount(() => {
         response.headers.get('Authorization'),
         TOKEN.OFFSET.USER_TOKEN
       );
-      navigateTo({ path: '/' });
-      // navigateTo({ path: urlBack.value });
+
+      // navigateTo({ path: '/' });
+      navigateTo({ path: store.urlLoginBack });
     })
     .catch((e) => {
       navigateTo({ path: '/login' });

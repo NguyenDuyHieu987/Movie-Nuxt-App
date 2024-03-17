@@ -218,6 +218,7 @@ useSeoMeta({
 });
 
 const nuxtConfig = useRuntimeConfig();
+const store = useStore();
 const authStore = useAuthStore();
 const router: any = useRouter();
 const route = useRoute();
@@ -231,21 +232,6 @@ const formLogin = reactive<any>({
   rememberMe: true
 });
 const tokenClient = ref<any>();
-const urlBack = computed(() =>
-  router.options.history.state?.back
-    ? [
-        '/signup',
-        '/oauth',
-        '/forgotpassword',
-        '/resetpassword',
-        '/changeemail'
-      ].some((item) =>
-        router.options.history.state?.back.toLowerCase().startsWith(item)
-      )
-      ? '/'
-      : router.options.history.state.back
-    : '/'
-);
 const disabled = computed<boolean>((): boolean => {
   return !(utils.isEmailValid(formLogin.username) && formLogin.password);
 });
@@ -257,6 +243,21 @@ const reset = () => {
 };
 
 onBeforeMount(() => {
+  store.appStorageStates[STORAGE.APP_STATES.URL_LOGIN_BACK] = router.options
+    .history.state?.back
+    ? [
+        '/signup',
+        '/oauth',
+        '/forgotpassword',
+        '/resetpassword',
+        '/changeemail'
+      ].some((item) =>
+        router.options.history.state?.back.toLowerCase().startsWith(item)
+      )
+      ? '/'
+      : router.options.history.state.back
+    : '/';
+
   utils.initFacebookSdk();
 });
 
@@ -294,7 +295,7 @@ const initGoogleOauth2Client = (
 };
 
 onMounted(async () => {
-  initGoogleOauth2Client({ model: 'code', ux_mode: 'redirect' });
+  initGoogleOauth2Client({ model: 'token', ux_mode: 'redirect' });
 });
 
 const handleLogin = () => {
@@ -323,7 +324,7 @@ const handleLogin = () => {
 
         // navigateTo({ path: '/' });
 
-        navigateTo({ path: urlBack.value });
+        navigateTo({ path: store.urlLoginBack });
 
         reset();
       } else if (response?.isNotExist == true) {
@@ -413,7 +414,7 @@ const handleClickFacebookLogin = async () => {
       );
 
       // navigateTo({ path: '/' });
-      navigateTo({ path: urlBack.value });
+      navigateTo({ path: store.urlLoginBack });
     })
     .catch((e) => {
       ElNotification.error({
@@ -528,8 +529,9 @@ const handleGooglePopupCallback = (googleOauthResponse: any) => {
           response.headers.get('Authorization'),
           TOKEN.OFFSET.USER_TOKEN
         );
+
         // navigateTo({ path: '/' });
-        navigateTo({ path: urlBack.value });
+        navigateTo({ path: store.urlLoginBack });
       })
       .catch((e) => {
         ElNotification.error({

@@ -8,11 +8,12 @@ const breakpoints = useBreakpoints({
   desktop: APP.COLLAPSED_SIDEBAR_WIDTH
 });
 
-const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
-  [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false
-});
-
 export default defineStore('store', () => {
+  const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
+    [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false,
+    [STORAGE.APP_STATES.URL_LOGIN_BACK]: '/'
+  });
+
   const isDark = useDark({
     selector: 'html',
     attribute: 'class',
@@ -32,6 +33,9 @@ export default defineStore('store', () => {
   const allGenres = ref<genre[]>([]);
   const allCountries = ref<country[]>([]);
   const allYears = ref<year[]>([]);
+  const urlLoginBack = computed<string>(() =>
+    appStorageStates.value[STORAGE.APP_STATES.URL_LOGIN_BACK].toString()
+  );
 
   watch(collapsed, (oldVal, newVal) => {
     appStorageStates.value[STORAGE.APP_STATES.COLLAPSED_SIDEBAR] =
@@ -67,6 +71,7 @@ export default defineStore('store', () => {
 
   return {
     isDark,
+    appStorageStates,
     breadCrumbValue,
     collapsed,
     openSiderBarFixed,
@@ -80,6 +85,7 @@ export default defineStore('store', () => {
     allGenres,
     allCountries,
     allYears,
+    urlLoginBack,
     toogleSidebar,
     toogleDrawer
   };
