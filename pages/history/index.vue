@@ -5,7 +5,7 @@
         v-if="authStore.isLogin"
         class="history-container"
       >
-        <div v-if="!loading">
+        <div v-show="!loading">
           <TopicRow
             v-show="responsive"
             v-model:dataRow="dataHistory"
@@ -155,7 +155,7 @@ const total = ref<number>(0);
 const skip = ref<number>(1);
 const limit = ref<number>(20);
 const dataHistory = ref<any[]>([]);
-const loading = ref<boolean>(true);
+const loading = ref<boolean>(false);
 const loadingSearch = ref<boolean>(false);
 const isFixedNavActiom = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
