@@ -92,17 +92,17 @@
     ],
     "vue/v-on-event-hyphenation": "off",
     "vue/no-unused-vars": "off",
-    // "vue/component-definition-name-casing": [
-    //   "error",
-    //   "PascalCase"
-    // ],
-    // "vue/component-name-in-template-casing": [
-    //   "error",
-    //   "PascalCase",
-    //   {
-    //     "registeredComponentsOnly": true
-    //   }
-    // ],
+    "vue/component-options-name-casing": [
+      "error",
+      "PascalCase"
+    ],
+    "vue/component-name-in-template-casing": [
+      "error",
+      "PascalCase",
+      {
+        "registeredComponentsOnly": true
+      }
+    ],
     "vue/html-indent": [
       "off",
       2,
@@ -170,7 +170,9 @@
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/semi": "off",
-        "prefer-const": "warn"
+        "prefer-const": "warn",
+        "eslint-plugin-vue/component-name-in-template-casing": "off",
+        "eslint-plugin-vue/component-options-name-casing": "off"
       }
     }
   ],

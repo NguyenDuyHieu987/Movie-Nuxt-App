@@ -52,7 +52,7 @@
         <NuxtLayout>
           <NuxtPage
             :keepalive="{
-              exclude: ['follow', 'history']
+              exclude: ['follow', 'Follow', 'history', 'History']
             }"
           />
 
