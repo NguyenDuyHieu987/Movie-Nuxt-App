@@ -10,15 +10,17 @@
 
 export default defineNuxtPlugin({
   name: 'loadUser',
-  async setup(nuxtApp) {},
+  async setup(nuxtApp) {
+    const authStore = useAuthStore();
+
+    authStore.loadUser();
+  },
   hooks: {
     'app:created': async () => {
       // const route = useRoute();
       // route.matched[0].meta.layout != 'auth'
-
-      const authStore = useAuthStore();
-
-      authStore.loadUser();
+      // const authStore = useAuthStore();
+      // authStore.loadUser();
       // authStore.loadSubscription();
     }
   },
