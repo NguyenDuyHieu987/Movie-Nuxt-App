@@ -89,9 +89,9 @@ const page = ref<number>(+route.query?.page || 1);
 const totalPage = ref<number>(100);
 const pageSize = ref<number>(20);
 const loading = ref<boolean>(false);
-const yearRoute = computed<number | string>(() =>
-  utils.isStringNumber(route.params.year)
-    ? +route.params.year
+const yearRoute = ref<string>(
+  !isNaN(route.params.year) || utils.isStringNumber(route.params.year)
+    ? route.params.year
     : 'Trước năm ' + route.params.year?.slice(-4)
 );
 const metaHead = ref<string>('Năm: ' + yearRoute.value);
@@ -140,8 +140,6 @@ const { data: dataDiscoverCache, pending } = await useAsyncData(
   `discover/year/all/${route.params.year}/${page.value}`,
   () => getMoviesByYear(route.params.year, '', page.value),
   {
-    watch: [page, route],
-    deep: true
     // transform: (data: any) => {
     //   totalPage.value = data?.total;
     //   pageSize.value = data?.page_size;
@@ -156,13 +154,6 @@ dataDiscover.value = dataDiscoverCache.value.results;
 
 totalPage.value = dataDiscoverCache.value?.total;
 pageSize.value = dataDiscoverCache.value?.page_size;
-
-watchEffect(() => {
-  if (route.params.year) {
-    console.log(route.params.year);
-    console.log(utils.isStringNumber(route.params.year));
-  }
-});
 
 const onChangePage = (
   pageSelected: number

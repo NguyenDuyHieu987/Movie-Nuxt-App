@@ -65,7 +65,7 @@ export function getMoviesByYear(
   const utils = useUtils();
 
   const url =
-    utils.isNumber(year) || utils.isStringNumber(year)
+    !isNaN(+year) || utils.isNumber(year) || utils.isStringNumber(year)
       ? `/${PREFIX_ROUTE}/all?sort_by=${sort_by}&primary_release_date_gte=${year}-01-01&primary_release_date_lte=${year}-12-30&page=${page}&limit=${limit}`
       : `/${PREFIX_ROUTE}/all?sort_by=${sort_by}&primary_release_date_lte=${year.slice(
           -4
