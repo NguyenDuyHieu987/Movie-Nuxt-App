@@ -102,6 +102,10 @@
         font-size: inherit;
 
         .ant-modal-confirm-body {
+          .ant-modal-confirm-title {
+            flex: auto;
+          }
+
           .ant-modal-confirm-content {
             margin-top: 20px;
             margin-left: 0px !important;
@@ -111,6 +115,7 @@
         .ant-modal-confirm-btns {
           display: flex;
           flex-direction: row;
+          justify-content: flex-end;
 
           .ant-btn {
             min-width: 60px;
