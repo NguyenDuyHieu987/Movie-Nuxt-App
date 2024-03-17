@@ -147,7 +147,7 @@ definePageMeta({
   key: 'follow'
   // middleware: ['require-auth']
 });
-defineOptions({ name: 'History' });
+defineOptions({ name: 'Follow' });
 
 const store = useStore();
 const authStore = useAuthStore();
