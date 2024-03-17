@@ -116,6 +116,7 @@
     </el-skeleton> -->
 
     <LazyPreviewModal
+      v-if="isTeleportPreviewModal"
       v-model:isTeleport="isTeleportPreviewModal"
       v-model:style="stylePreviewModal"
       :item="item"

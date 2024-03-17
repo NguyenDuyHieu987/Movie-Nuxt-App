@@ -1,8 +1,6 @@
 <template>
-  <Teleport
-    :disabled="!isTeleport"
-    to="#append-to"
-  >
+  <!-- :disabled="!isTeleport" -->
+  <Teleport to="#append-to">
     <div class="modal-trailer-wrapper">
       <!-- v-model:visible="isTeleport" -->
       <!-- <a-modal

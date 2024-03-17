@@ -80,6 +80,7 @@
     </el-skeleton> -->
 
     <ModalTrailer
+      v-if="isOpenModalTrailer"
       v-model:isTeleport="isOpenModalTrailer"
       :is-open-modal-trailer="isOpenModalTrailer"
       :item="item"

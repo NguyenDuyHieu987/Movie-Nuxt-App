@@ -1,8 +1,6 @@
 <template>
-  <Teleport
-    v-if="isTeleport"
-    to="#preview-modal"
-  >
+  <!-- v-if="isTeleport" -->
+  <Teleport to="#preview-modal">
     <div class="preview-overlay">
       <div
         ref="previewModal"
@@ -66,6 +64,7 @@
                   ref="video"
                   :src="videoSrc"
                   autoplay
+                  muted
                   @loadstart="onLoadStartVideo"
                   @waiting="onWaitingVideo"
                   @playing="onPLayingVideo"
@@ -473,7 +472,7 @@ const videoSrc = computed<string>(() =>
 );
 const videoStates = reactive({
   isLoading: false,
-  isVolumeOff: false
+  isVolumeOff: true
 });
 
 onMounted(() => {
@@ -654,7 +653,7 @@ watch(showVideo, () => {
   if (video.value) {
     if (showVideo.value) {
       showVideo.value = true;
-      video.value!.play();
+      video.value!.play().catch(() => {});
     } else {
       showVideo.value = false;
       video.value!.pause();
