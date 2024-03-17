@@ -16,13 +16,13 @@ export default defineNuxtPlugin({
     authStore.loadUser();
   },
   hooks: {
-    'app:created': async () => {
-      // const route = useRoute();
-      // route.matched[0].meta.layout != 'auth'
-      // const authStore = useAuthStore();
-      // authStore.loadUser();
-      // authStore.loadSubscription();
-    }
+    // 'app:created': async () => {
+    //   // const route = useRoute();
+    //   // route.matched[0].meta.layout != 'auth'
+    //   const authStore = useAuthStore();
+    //   authStore.loadUser();
+    //   // authStore.loadSubscription();
+    // }
   },
   parallel: true,
   env: { islands: true }
