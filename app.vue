@@ -49,8 +49,11 @@
 
       <div class="app-wrapper">
         <NuxtLayout>
-          <!-- :keepalive="{ exclude: [] }"  -->
-          <NuxtPage />
+          <NuxtPage
+            :keepalive="{
+              exclude: ['follow', 'history']
+            }"
+          />
 
           <el-backtop
             class="app-back-top click-active"

@@ -144,9 +144,10 @@ import reject from 'lodash/reject';
 import { storeToRefs } from 'pinia';
 
 definePageMeta({
-  keepalive: false
+  key: 'follow'
   // middleware: ['require-auth']
 });
+defineOptions({ name: 'Follow' });
 
 const store = useStore();
 const authStore = useAuthStore();

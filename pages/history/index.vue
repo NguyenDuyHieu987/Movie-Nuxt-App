@@ -141,9 +141,10 @@ import gsap from 'gsap';
 import { storeToRefs } from 'pinia';
 
 definePageMeta({
-  keepalive: false
+  key: 'history'
   // middleware: ['require-auth'],
 });
+defineOptions({ name: 'History' });
 
 const store = useStore();
 const authStore = useAuthStore();
