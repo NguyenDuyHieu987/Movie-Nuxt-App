@@ -5,7 +5,7 @@
         v-if="authStore.isLogin"
         class="follow-container"
       >
-        <div v-show="!loading">
+        <div v-if="!loading">
           <TopicRow
             v-show="responsive"
             v-model:dataRow="dataList"
@@ -271,10 +271,9 @@ const getData = async () => {
 };
 
 loading.value = true;
-
 showData.value = false;
 
-getData();
+await getData();
 
 const getDataWhenRemoveList = (data: number) => {
   // dataList.value = data;

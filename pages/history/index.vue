@@ -5,7 +5,7 @@
         v-if="authStore.isLogin"
         class="history-container"
       >
-        <div v-show="!loading">
+        <div v-if="!loading">
           <TopicRow
             v-show="responsive"
             v-model:dataRow="dataHistory"
@@ -268,10 +268,9 @@ const getData = async () => {
 };
 
 loading.value = true;
-
 showData.value = false;
 
-getData();
+await getData();
 
 const getDataWhenRemoveHistory = (data: number) => {
   // dataHistory.value = data;
