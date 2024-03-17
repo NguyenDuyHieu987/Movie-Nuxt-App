@@ -44,6 +44,8 @@ jobs:
 
       - name: Install Dependencies and Build
         run: |
+          npm uninstall nuxt-seo-kit
+          npm uninstall nuxt-simple-sitemap
           npm install --legacy-peer-deps
           npm run build
 
