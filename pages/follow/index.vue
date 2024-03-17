@@ -273,9 +273,7 @@ const getData = async () => {
 loading.value = true;
 showData.value = false;
 
-if (authStore.isLogin) {
-  getData();
-}
+getData();
 
 const getDataWhenRemoveList = (data: number) => {
   // dataList.value = data;

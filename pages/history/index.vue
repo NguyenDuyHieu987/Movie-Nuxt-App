@@ -270,9 +270,7 @@ const getData = async () => {
 loading.value = true;
 showData.value = false;
 
-if (authStore.isLogin) {
-  getData();
-}
+getData();
 
 const getDataWhenRemoveHistory = (data: number) => {
   // dataHistory.value = data;
