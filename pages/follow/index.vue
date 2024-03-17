@@ -158,7 +158,7 @@ const debounce = ref<any>();
 const total = ref<number>(0);
 const skip = ref<number>(1);
 const limit = ref<number>(20);
-const loading = ref<boolean>(false);
+const loading = ref<boolean>(true);
 const loadingSearch = ref<boolean>(false);
 const isFixedNavActiom = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
@@ -262,12 +262,12 @@ const getData = async () => {
       // }
     })
     .catch((e) => {})
-    .finally(async () => {});
+    .finally(async () => {
+      loading.value = false;
 
-  loading.value = false;
-
-  await wait(300);
-  showData.value = true;
+      await wait(300);
+      showData.value = true;
+    });
 };
 
 loading.value = true;
