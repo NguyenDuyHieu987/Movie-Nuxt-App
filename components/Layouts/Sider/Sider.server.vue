@@ -133,7 +133,7 @@ onMounted(() => {
   const menu: HTMLElement | null = document.querySelector(
     '.sider-bar .ant-layout-sider-children'
   );
-  const sider_header = document.querySelector(
+  const siderHeader = document.querySelector(
     '.sider-bar .sider-header'
   ) as HTMLElement;
 
