@@ -141,6 +141,7 @@ import gsap from 'gsap';
 import { storeToRefs } from 'pinia';
 
 definePageMeta({
+  keepalive: false
   // middleware: ['require-auth'],
 });
 

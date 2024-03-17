@@ -144,6 +144,7 @@ import reject from 'lodash/reject';
 import { storeToRefs } from 'pinia';
 
 definePageMeta({
+  keepalive: false
   // middleware: ['require-auth']
 });
 
