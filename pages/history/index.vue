@@ -232,6 +232,9 @@ onMounted(() => {
 });
 
 const getData = async () => {
+  loading.value = true;
+  showData.value = false;
+
   // await useAsyncData(
   //   `history/get/${store.userAccount?.id}/${activeTab.value}/1`,
   //   () => getHistory(activeTab.value, 1)
@@ -267,10 +270,7 @@ const getData = async () => {
     });
 };
 
-loading.value = true;
-showData.value = false;
-
-await getData();
+getData();
 
 const getDataWhenRemoveHistory = (data: number) => {
   // dataHistory.value = data;
