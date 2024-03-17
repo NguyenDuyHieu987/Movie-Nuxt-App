@@ -317,7 +317,7 @@ const searchHistoryEvent = (e: any) => {
         .catch((e) => {})
         .finally(() => {
           loadingSearch.value = false;
-          nuxtLoadingIndicator.finish();
+          nuxtLoadingIndicator.finish({});
         });
     }, 500);
   } else if (e.target.value.length == 0) {
@@ -358,7 +358,7 @@ const handleChangeTab = async (value: string) => {
         })
         .catch((e) => {})
         .finally(() => {
-          nuxtLoadingIndicator.finish();
+          nuxtLoadingIndicator.finish({});
         });
       break;
     case 'movie':
@@ -378,7 +378,7 @@ const handleChangeTab = async (value: string) => {
         })
         .catch((e) => {})
         .finally(() => {
-          nuxtLoadingIndicator.finish();
+          nuxtLoadingIndicator.finish({});
         });
       break;
     case 'tv':
@@ -398,7 +398,7 @@ const handleChangeTab = async (value: string) => {
         })
         .catch((e) => {})
         .finally(() => {
-          nuxtLoadingIndicator.finish();
+          nuxtLoadingIndicator.finish({});
         });
       break;
   }

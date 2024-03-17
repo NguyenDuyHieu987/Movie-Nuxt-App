@@ -39,6 +39,7 @@
           )"
         :height="3"
         :throttle="300"
+        :duration="2000"
       />
 
       <!-- <SeoKit /> -->

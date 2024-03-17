@@ -115,7 +115,7 @@ const handleTryAgain = async () => {
   nuxtLoadingIndicator.start();
   reloadNuxtApp();
   await refreshNuxtData();
-  nuxtLoadingIndicator.finish();
+  nuxtLoadingIndicator.finish({});
 };
 </script>
 

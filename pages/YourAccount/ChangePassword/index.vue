@@ -347,7 +347,7 @@ const handleSubmit = async () => {
       });
     })
     .finally(() => {
-      nuxtLoadingIndicator.finish();
+      nuxtLoadingIndicator.finish({});
       loadingChangePassword.value = false;
     });
 };

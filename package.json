@@ -99,7 +99,7 @@
     "nuxt-delay-hydration": "^1.3.3",
     "nuxt-gtag": "^2.0.5",
     "nuxt-lodash": "^2.5.3",
-    "nuxt-og-image": "3.0.0-rc.45",
+    "nuxt-og-image": "3.0.0-rc.47",
     "nuxt-purgecss": "^2.0.0",
     "nuxt-seo-experiments": "4.0.0-rc.5",
     "nuxt-seo-kit": "^1.3.13",
