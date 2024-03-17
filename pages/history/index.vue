@@ -259,12 +259,12 @@ const getData = async () => {
       // }
     })
     .catch((e) => {})
-    .finally(async () => {
-      loading.value = false;
+    .finally(async () => {});
 
-      await wait(300);
-      showData.value = true;
-    });
+  loading.value = false;
+
+  await wait(300);
+  showData.value = true;
 };
 
 loading.value = true;
