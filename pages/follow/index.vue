@@ -235,9 +235,6 @@ onMounted(() => {
 });
 
 const getData = async () => {
-  loading.value = true;
-  showData.value = false;
-
   // await useAsyncData(
   //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
   //   () => getList(activeTab.value, 1)
@@ -273,7 +270,12 @@ const getData = async () => {
     });
 };
 
-getData();
+loading.value = true;
+showData.value = false;
+
+if (authStore.isLogin) {
+  getData();
+}
 
 const getDataWhenRemoveList = (data: number) => {
   // dataList.value = data;

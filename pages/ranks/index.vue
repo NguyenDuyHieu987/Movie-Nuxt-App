@@ -491,26 +491,26 @@ const getData = async () => {
   nuxtLoadingIndicator.finish();
 };
 
-loading.value = true;
+// loading.value = true;
 
-const { data: ranksDataCache, pending } = await useAsyncData(
-  `ranks/filter/${JSON.stringify(formFilterRank.value)}`,
-  () => filterRanks(formFilterRank.value),
-  {
-    // transform: (data: any) => {
-    //   totalPage.value = data?.total;
-    //   pageSize.value = data?.page_size;
-    //   loading.value = false;
-    //   return data.results;
-    // },
-    // server: false,
-  }
-);
+// const { data: ranksDataCache, pending } = await useAsyncData(
+//   `ranks/filter/${JSON.stringify(formFilterRank.value)}`,
+//   () => filterRanks(formFilterRank.value),
+//   {
+//     // transform: (data: any) => {
+//     //   totalPage.value = data?.total;
+//     //   pageSize.value = data?.page_size;
+//     //   loading.value = false;
+//     //   return data.results;
+//     // },
+//     // server: false,
+//   }
+// );
 
-ranksData.value = compareRanks(ranksDataCache.value);
-pageSize.value = ranksDataCache.value?.page_size;
+// ranksData.value = compareRanks(ranksDataCache.value);
+// pageSize.value = ranksDataCache.value?.page_size;
 
-loading.value = false;
+// loading.value = false;
 
 // // Phim lẻ
 
