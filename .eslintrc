@@ -170,9 +170,7 @@
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/semi": "off",
-        "prefer-const": "warn",
-        "eslint-plugin-vue/component-name-in-template-casing": "off",
-        "eslint-plugin-vue/component-options-name-casing": "off"
+        "prefer-const": "warn"
       }
     }
   ],
