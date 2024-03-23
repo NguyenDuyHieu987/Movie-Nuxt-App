@@ -46,6 +46,8 @@ jobs:
         run: |
           npm install --legacy-peer-deps
           npm run build
+        env:
+          CI: true
 
       - name: Install SSH key
         run: |
