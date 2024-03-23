@@ -45,7 +45,6 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           npm install --legacy-peer-deps
-          npm i nuxt@3.10.3 -D
           npm run build
 
       - name: Install SSH key
