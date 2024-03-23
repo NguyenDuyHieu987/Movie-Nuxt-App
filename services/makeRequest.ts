@@ -30,13 +30,13 @@ export async function makeRequest(
     withCredentials: true
   });
 
-  const userToken = utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN);
+  // const userToken = utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN);
 
-  if (userToken && !options?.noAuthHeaders) {
-    if (!options.headers?.Authorization) {
-      headers.Authorization = `Bearer ${userToken}`;
-    }
-  }
+  // if (userToken && !options?.noAuthHeaders) {
+  //   if (!options.headers?.Authorization) {
+  //     headers.Authorization = `Bearer ${userToken}`;
+  //   }
+  // }
 
   return await api(url, {
     ...options,
