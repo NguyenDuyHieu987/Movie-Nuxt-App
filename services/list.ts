@@ -7,10 +7,6 @@ export function getList(
   skip: number = 1,
   limit: number = 20
 ) {
-  const authStore = useAuthStore();
-
-  if (!authStore.isLogin) return new Promise(() => {});
-
   return makeRequest(
     `/${PREFIX_ROUTE}/get-all/${type}?skip=${skip}&limit=${limit}`
   );
