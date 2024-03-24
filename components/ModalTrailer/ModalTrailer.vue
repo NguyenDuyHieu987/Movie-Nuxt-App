@@ -155,6 +155,7 @@
                       }__${utils.convertPath.toPathInfo_Play(item?.name)}`
                 }"
                 class="btn-play-now"
+                @click="isTeleport = false"
               >
                 <a-button
                   class="default"

@@ -8,12 +8,12 @@ const breakpoints = useBreakpoints({
   desktop: APP.COLLAPSED_SIDEBAR_WIDTH
 });
 
-export default defineStore('store', () => {
-  const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
-    [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false,
-    [STORAGE.APP_STATES.URL_LOGIN_BACK]: '/'
-  });
+const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
+  [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false,
+  [STORAGE.APP_STATES.URL_LOGIN_BACK]: '/'
+});
 
+export default defineStore('store', () => {
   const isDark = useDark({
     selector: 'html',
     attribute: 'class',
