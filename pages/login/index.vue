@@ -191,6 +191,7 @@
 
 <script setup lang="ts">
 import { LockOutlined, UserOutlined } from '@ant-design/icons-vue';
+import { useLocalStorage } from '@vueuse/core';
 import { ElNotification } from 'element-plus';
 
 import { LogIn, loginFacebook, loginGoogle } from '~/services/authentication';
@@ -235,6 +236,9 @@ const tokenClient = ref<any>();
 const disabled = computed<boolean>((): boolean => {
   return !(utils.isEmailValid(formLogin.username) && formLogin.password);
 });
+const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
+  [STORAGE.APP_STATES.URL_LOGIN_BACK]: '/'
+});
 
 const reset = () => {
   formLogin.username = '';
@@ -243,7 +247,7 @@ const reset = () => {
 };
 
 onBeforeMount(() => {
-  store.appStorageStates[STORAGE.APP_STATES.URL_LOGIN_BACK] = router.options
+  appStorageStates.value[STORAGE.APP_STATES.URL_LOGIN_BACK] = router.options
     .history.state?.back
     ? [
         '/signup',

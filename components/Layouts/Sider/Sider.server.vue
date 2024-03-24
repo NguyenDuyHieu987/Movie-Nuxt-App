@@ -111,6 +111,7 @@
 import TheMenu from '~/components/Layouts/TheMenu/TheMenu.server.vue';
 import { getImage } from '~/services/image';
 import { storeToRefs } from 'pinia';
+import { useLocalStorage } from '@vueuse/core';
 
 const store = useStore();
 const authStore = useAuthStore();
@@ -118,9 +119,13 @@ const { collapsed, openSiderBarFixed } = storeToRefs<any>(store);
 const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const siderScrolled = ref<boolean>(false);
 
+const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
+  [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false
+});
+
 onMounted(() => {
   if (
-    store.appStorageStates[STORAGE.APP_STATES.COLLAPSED_SIDEBAR] == true ||
+    appStorageStates.value[STORAGE.APP_STATES.COLLAPSED_SIDEBAR] == true ||
     window.innerWidth < APP.COLLAPSED_SIDEBAR_WIDTH
   ) {
     store.collapsed = true;

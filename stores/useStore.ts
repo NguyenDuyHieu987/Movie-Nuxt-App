@@ -37,9 +37,8 @@ export default defineStore('store', () => {
     appStorageStates.value[STORAGE.APP_STATES.URL_LOGIN_BACK].toString()
   );
 
-  watch(collapsed, (oldVal, newVal) => {
-    appStorageStates.value[STORAGE.APP_STATES.COLLAPSED_SIDEBAR] =
-      collapsed.value;
+  watch(collapsed, (newVal, oldVal) => {
+    appStorageStates.value[STORAGE.APP_STATES.COLLAPSED_SIDEBAR] = newVal;
 
     if (oldVal) {
       openSiderBarFixed.value = false;
@@ -71,7 +70,6 @@ export default defineStore('store', () => {
 
   return {
     isDark,
-    appStorageStates,
     breadCrumbValue,
     collapsed,
     openSiderBarFixed,
