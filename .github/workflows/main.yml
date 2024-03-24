@@ -44,8 +44,8 @@ jobs:
 
       - name: Install Dependencies and Build
         run: |
-          npm ci
-          npm run build
+          pnpm install
+          pnpm build
         env:
           CI: true
 
