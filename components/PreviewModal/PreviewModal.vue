@@ -661,57 +661,59 @@ watch(showVideo, () => {
   }
 });
 
-watch(isTeleport, async () => {
-  if (isTeleport.value == true) {
-    showVideo.value = true;
-    dataMovieRef.value = props.dataMovie;
+const getData = async () => {
+  showVideo.value = true;
+  dataMovieRef.value = props.dataMovie;
 
-    if (!dataMovieRef.value?.id) {
-      loading.value = true;
+  if (!dataMovieRef.value?.id) {
+    loading.value = true;
 
-      if (props.isEpisodes) {
-        // await useAsyncData(`tv/short/${props.item?.id}`, () =>
-        //   getTvById(props.item?.id)
-        // )
-        await getTvById(props.item?.id)
-          .then((response) => {
-            dataMovieRef.value = response;
-          })
-          .catch((e) => {})
-          .finally(() => {
-            setTimeout(() => {
-              loading.value = false;
-            }, 500);
-          });
-      } else {
-        // await useAsyncData(`movie/short/${props.item?.id}`, () =>
-        //   getMovieById(props.item?.id)
-        // )
-        await getMovieById(props.item?.id)
-          .then((response) => {
-            dataMovieRef.value = response;
-          })
-          .catch((e) => {})
-          .finally(() => {
-            setTimeout(() => {
-              loading.value = false;
-            }, 500);
-          });
-      }
+    if (props.isEpisodes) {
+      // await useAsyncData(`tv/short/${props.item?.id}`, () =>
+      //   getTvById(props.item?.id)
+      // )
+      await getTvById(props.item?.id)
+        .then((response) => {
+          dataMovieRef.value = response;
+        })
+        .catch((e) => {})
+        .finally(() => {});
+    } else {
+      // await useAsyncData(`movie/short/${props.item?.id}`, () =>
+      //   getMovieById(props.item?.id)
+      // )
+      await getMovieById(props.item?.id)
+        .then((response) => {
+          dataMovieRef.value = response;
+        })
+        .catch((e) => {})
+        .finally(() => {});
     }
 
-    if (authStore.isLogin) {
-      if (dataMovieRef.value?.in_list) {
-        isAddToList.value = true;
-      }
+    setTimeout(() => {
+      loading.value = false;
+    }, 500);
+  }
 
-      if (dataMovieRef.value?.history_progress) {
-        isInHistory.value = true;
-        percent.value = dataMovieRef.value?.history_progress?.percent;
-      }
+  if (authStore.isLogin) {
+    if (dataMovieRef.value?.in_list) {
+      isAddToList.value = true;
+    }
+
+    if (dataMovieRef.value?.history_progress) {
+      isInHistory.value = true;
+      percent.value = dataMovieRef.value?.history_progress?.percent;
     }
   }
+};
+
+watch(isTeleport, async () => {
+  if (isTeleport.value == true) {
+    getData();
+  }
 });
+
+getData();
 
 const onClickPreviewModal = (e: any) => {
   // console.log(e.target?.closest('.ant-btn'));
