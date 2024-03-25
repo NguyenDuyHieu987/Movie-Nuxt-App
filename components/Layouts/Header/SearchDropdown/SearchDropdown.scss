@@ -30,6 +30,8 @@
 
     .search-dropdown-wrapper {
       .search-dropdown-header {
+        position: sticky;
+        top: 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -70,9 +72,6 @@
       }
 
       .search-results {
-        max-height: 70vh;
-        overflow-y: scroll;
-
         .search-dropdown-header {
           padding: var(--padding-search-dropdown);
           padding-bottom: 0px;
@@ -82,6 +81,8 @@
           display: flex;
           flex-direction: column;
           font-size: 1.4rem;
+          max-height: 60vh;
+          overflow-y: scroll;
 
           .search-results-item {
             display: flex;
@@ -132,15 +133,15 @@
       }
 
       .search-history {
-        max-height: 20vh;
         padding: var(--padding-search-dropdown);
-        overflow-y: scroll;
 
         .search-history-list {
           display: flex;
           flex-wrap: wrap;
           gap: 7px;
           font-size: 1.4rem;
+          max-height: 20vh;
+          overflow-y: scroll;
 
           .search-history-item {
             display: flex;
@@ -197,9 +198,6 @@
       }
 
       .top-search {
-        max-height: 70vh;
-        overflow-y: scroll;
-
         .search-dropdown-header {
           padding: var(--padding-search-dropdown);
           padding-bottom: 0px;
@@ -209,6 +207,8 @@
           display: flex;
           flex-direction: column;
           font-size: 1.4rem;
+          max-height: 60vh;
+          overflow-y: scroll;
 
           .top-search-item {
             display: flex;
