@@ -27,7 +27,7 @@
             gap: 10px;
             line-height: inherit;
 
-            svg.close {
+            svg.close-drawer {
               font-size: 2.7rem;
               cursor: pointer;
               transition: 0.15s;
@@ -50,10 +50,10 @@
 
       .ant-drawer-body {
         padding: 0px 0px 24px 0px;
-        overflow-y: scroll;
-        overflow-x: hidden;
 
         header.user-header {
+          position: sticky;
+          top: 0;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -62,6 +62,7 @@
           border-bottom: 1px solid var(--border-regular-light);
           color: inherit;
           font-size: 1.5rem;
+          z-index: 1;
 
           .avatar-box {
             display: flex;
@@ -83,14 +84,29 @@
           } */
         }
 
+        .drawer-menu {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          overflow-y: hidden;
+
+          .menu-sider-bar {
+            max-height: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+
+            &:hover {
+              scrollbar-color: #7e7e7e transparent;
+            }
+          }
+        }
+
         &::-webkit-scrollbar {
           /* display: none; */
           width: 12px;
         }
-
-        /*  &::-webkit-scrollbar-thumb {
-          // display: none;
-        } */
       }
     }
   }
@@ -174,15 +190,12 @@
     padding: 0px 0px 24px 0px;
     overflow-y: scroll;
     overflow-x: hidden;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
       /* display: none; */
       width: 12px;
     }
-
-    /* &::-webkit-scrollbar-thumb {
-      // display: none;
-    } */
   }
 }
 

@@ -52,6 +52,8 @@ html {
   font-size: 10px;
   scroll-behavior: auto;
   color-scheme: normal !important;
+  scrollbar-width: auto;
+  scrollbar-color: #a4a4a4 transparent;
 }
 
 *,
@@ -78,20 +80,16 @@ body {
   line-height: var(--line-height-regular);
   font-family: 'Roboto Flex', sans-serif;
   text-rendering: optimizeSpeed;
-
-  /*   &::-webkit-scrollbar {
-    display: none;
-  } */
 }
 
 ::-webkit-scrollbar {
   width: 14px;
   background-color: transparent;
-  height: 14px;
 }
 
-/* ::-webkit-scrollbar-track {
-} */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
 
 ::-webkit-scrollbar-thumb {
   border-radius: 15px;
@@ -106,6 +104,10 @@ body {
   &:active {
     background-color: #7e7e7e;
   }
+}
+
+::-webkit-scrollbar-button:single-button {
+  // display: block;
 }
 
 ::-moz-selection {

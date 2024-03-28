@@ -79,7 +79,6 @@
   header.sider-header {
     position: sticky;
     top: 0;
-    z-index: 2;
     height: var(--header-height);
     display: flex;
     flex: 0 0 auto;
@@ -89,6 +88,7 @@
     background-color: transparent;
     /* border-bottom: 1px solid var(--border-regular-light); */
     padding: 0px;
+    z-index: 1;
 
     .user-header {
       display: flex;
@@ -144,6 +144,12 @@
       max-height: 100%;
       overflow-y: scroll;
       overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
+
+      &:hover {
+        scrollbar-color: #7e7e7e transparent;
+      }
     }
   }
 

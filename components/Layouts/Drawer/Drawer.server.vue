@@ -11,7 +11,7 @@
   >
     <template #title>
       <svg
-        class="close"
+        class="close-drawer"
         xmlns="http://www.w3.org/2000/svg"
         width="2.5rem"
         height="2.5rem"
@@ -56,7 +56,9 @@
       </h4>
     </header>
 
-    <TheMenu :no-collapse="true" />
+    <div class="drawer-menu">
+      <TheMenu :no-collapse="true" />
+    </div>
   </a-drawer>
 
   <!-- <ClientOnly>
