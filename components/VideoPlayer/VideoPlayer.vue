@@ -756,7 +756,7 @@ import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
 import { getImage } from '~/services/image';
 import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
-import Hls from 'hls.js';
+// import Hls from 'hls.js';
 
 const props = withDefaults(
   defineProps<{
@@ -941,22 +941,20 @@ const initVideo = async (newVideoUrl: string) => {
 };
 
 const loadM3u8Video = () => {
-  if (Hls.isSupported()) {
-    const hls = new Hls();
-    console.log(videoSrc.value);
-
-    hls.on(Hls.Events.ERROR, (event, data) => {
-      console.error(`hls.js error: ${data.type} - ${data.details}`);
-    });
-    hls.loadSource(
-      'http://localhost:5002/static/videos/feature/Transformer_5/Transformer_5.m3u8'
-    );
-    hls.attachMedia(video.value!);
-
-    console.log('HLS.js is supported');
-  } else {
-    console.error('HLS is not supported on your browser, but native HLS is');
-  }
+  // if (Hls.isSupported()) {
+  //   const hls = new Hls();
+  //   console.log(videoSrc.value);
+  //   hls.on(Hls.Events.ERROR, (event, data) => {
+  //     console.error(`hls.js error: ${data.type} - ${data.details}`);
+  //   });
+  //   hls.loadSource(
+  //     'http://localhost:5002/static/videos/feature/Transformer_5/Transformer_5.m3u8'
+  //   );
+  //   hls.attachMedia(video.value!);
+  //   console.log('HLS.js is supported');
+  // } else {
+  //   console.error('HLS is not supported on your browser, but native HLS is');
+  // }
 };
 
 watch(
