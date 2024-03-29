@@ -264,19 +264,17 @@ onBeforeMount(async () => {
   windowWidth.value = window.innerWidth;
 });
 
-if (authStore.isLogin) {
-  //  useAsyncData(
-  //   `itemlist/${authStore.userAccount?.id}/${props.item?.id}`,
-  //   () => getItemList(props.item?.id, props.item?.media_type)
-  // )
-  getItemList(props.item?.id, props.item?.media_type)
-    .then((response) => {
-      if (response.success == true) {
-        isAddToList.value = true;
-      }
-    })
-    .catch((e) => {});
-}
+//  useAsyncData(
+//   `itemlist/${authStore.userAccount?.id}/${props.item?.id}`,
+//   () => getItemList(props.item?.id, props.item?.media_type)
+// )
+getItemList(props.item?.id, props.item?.media_type)
+  .then((response) => {
+    if (response.success == true) {
+      isAddToList.value = true;
+    }
+  })
+  .catch((e) => {});
 
 const handleAddToList = () => {
   if (!authStore.isLogin) {
