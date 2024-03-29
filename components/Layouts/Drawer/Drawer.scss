@@ -94,12 +94,12 @@
             max-height: 100%;
             overflow-y: scroll;
             overflow-x: hidden;
-            scrollbar-width: thin;
-            scrollbar-color: transparent transparent;
+            // scrollbar-width: thin;
+            // scrollbar-color: transparent transparent;
 
-            &:hover {
-              scrollbar-color: #7e7e7e transparent;
-            }
+            // &:hover {
+            //   scrollbar-color: #7e7e7e transparent;
+            // }
           }
         }
 
