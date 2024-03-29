@@ -250,6 +250,7 @@ export default defineNuxtConfig({
     // analyze: true,
   },
   components: {
+    global: true,
     dirs: [
       {
         path: '~/components',
