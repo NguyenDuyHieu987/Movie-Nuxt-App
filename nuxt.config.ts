@@ -1,9 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { version } from 'ant-design-vue';
 import type { NuxtPage } from 'nuxt/schema';
-import { resolve } from 'path';
+import path, { resolve } from 'path';
 import { isProduction } from 'std-env';
 import svgLoader from 'vite-svg-loader';
+import { fileURLToPath } from 'url';
 
 const antdVersion: number = +version.split('.')[0];
 
@@ -81,7 +82,12 @@ export default defineNuxtConfig({
     }
   },
   alias: {
-    '@': resolve(__dirname, './')
+    '@': path.resolve(__dirname, './'),
+    components: fileURLToPath(new URL('./components', import.meta.url)),
+    common: fileURLToPath(new URL('./common', import.meta.url)),
+    services: fileURLToPath(new URL('./services', import.meta.url)),
+    utils: fileURLToPath(new URL('./utils', import.meta.url)),
+    stores: fileURLToPath(new URL('./stores', import.meta.url))
   },
   imports: {
     dirs: [
@@ -95,7 +101,7 @@ export default defineNuxtConfig({
     asyncContext: true,
     crossOriginPrefetch: true,
     componentIslands: {
-      selectiveClient: true
+      selectiveClient: 'deep'
     },
     headNext: true,
     payloadExtraction: true,
