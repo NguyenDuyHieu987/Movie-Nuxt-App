@@ -251,13 +251,13 @@ export default defineNuxtConfig({
   },
   components: {
     // global: true,
-    dirs: [
-      // {
-      //   path: '~/components',
-      //   extensions: ['.vue'],
-      //   pathPrefix: false
-      // }
-    ]
+    // dirs: [
+    //   {
+    //     path: '~/components',
+    //     extensions: ['.vue'],
+    //     pathPrefix: false
+    //   }
+    // ]
   },
   vue: { propsDestructure: true },
   ssr: true,
@@ -381,6 +381,11 @@ export default defineNuxtConfig({
         // }
       }
     }
+  },
+  webpack: {
+    optimization: {},
+    optimizeCSS: true,
+    postcss: {}
   },
   generate: {
     routes: [],
