@@ -75,7 +75,7 @@
                     v-show="videoStates.isLoading"
                     class="loading-video"
                   >
-                    <LazyLoadingSpinner :width="25" />
+                    <LoadingSpinner :width="25" />
                   </div>
                 </div>
 
@@ -402,7 +402,7 @@
 
 <script setup lang="ts">
 // import { LoadingSpinner } from '~/components/Loading';
-// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';

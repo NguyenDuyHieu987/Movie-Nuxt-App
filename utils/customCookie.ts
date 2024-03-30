@@ -34,7 +34,6 @@ function getCookie(cname: string) {
 export const customCookie = () => {
   return {
     setCookie,
-    getCookie,
-    getWithExpiry_ExpRemain
+    getCookie
   };
 };

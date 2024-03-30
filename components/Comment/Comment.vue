@@ -23,7 +23,7 @@
         v-show="!loading"
         class="list-comment"
       >
-        <LazyCommentItem
+        <CommentItem
           v-for="(item, index) in commentsList"
           :key="item?.id"
           v-model:commentsList="commentsList"
@@ -39,7 +39,7 @@
         class="loading-comment"
       /> -->
 
-      <LazyLoadingSpinner
+      <LoadingSpinner
         v-show="loading || loadMore"
         class="loading-comment"
         :width="35"
@@ -55,8 +55,8 @@
 //   LoadingSpinner
 // } from '~/components/Loading';
 import FormComment from '~/components/Comment/FormComment/FormComment.vue';
-// import CommentItem from '~/components/Comment/CommentItem/CommentItem.vue';
-// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import CommentItem from '~/components/Comment/CommentItem/CommentItem.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { getCommentParent } from '~/services/comment';
 import type { commentForm } from '~/types';
 

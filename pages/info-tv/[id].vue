@@ -1,6 +1,6 @@
 <template>
   <div class="tv-info">
-    <LazyLoadingSpinner
+    <LoadingSpinner
       v-if="loading"
       class="loading-page"
     />
@@ -429,7 +429,7 @@
 // import { MovieRelated } from '~/components/MovieRelated';
 // import { CastCrew } from '~/components/CastCrew';
 // import { Comment } from '~/components/Comment';
-// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import BackPage from '~/components/BackPage/BackPage.vue';
 import Tags from '~/components/Tags/Tags.vue';
 import Interaction from '~/components/Interaction/Interaction.vue';

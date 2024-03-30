@@ -1,6 +1,6 @@
 <template>
   <div class="play-movie padding-content">
-    <LazyLoadingSpinner
+    <LoadingSpinner
       v-if="loading"
       class="loading-page"
     />
@@ -272,7 +272,7 @@
             <Comment :dataMovie="dataMovie" />
           </div>
           <div class="right">
-            <LazyMovieSuggested :dataMovie="dataMovie" />
+            <MovieSuggested :dataMovie="dataMovie" />
           </div>
         </div>
       </div>
@@ -291,7 +291,7 @@
 // import { Interaction } from '~/components/Interaction';
 // import { Comment } from '~/components/Comment';
 // import { MovieSuggested } from '~/components/MovieSuggested';
-// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import BackPage from '~/components/BackPage/BackPage.vue';
 import VideoPlayer from '~/components/VideoPlayer/VideoPlayer.vue';
 // const VideoPlayer = defineAsyncComponent(
@@ -303,7 +303,7 @@ import Overview from '~/components/Overview/Overview.server.vue';
 import RatingMovie from '~/components/RatingMovie/RatingMovie.vue';
 import Interaction from '~/components/Interaction/Interaction.vue';
 import Comment from '~/components/Comment/Comment.vue';
-// import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
+import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';

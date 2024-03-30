@@ -3,7 +3,7 @@
     <div class="home-billBoard">
       <BillboardAnimation v-model:data="trendings" />
 
-      <LazyBoxVip />
+      <BoxVip />
     </div>
 
     <div class="home-content">
@@ -429,7 +429,7 @@
 // import { MovieCardHorizontalTrailer } from '~/components/MovieCardHorizontalTrailer';
 // import { ViewMoreBar } from '~/components/ViewMoreBar';
 import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
-// import BoxVip from '~/components/BoxVip/BoxVip.vue';
+import BoxVip from '~/components/BoxVip/BoxVip.vue';
 import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
 import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
 import LoadingSectionVertical from '~/components/Loading/LoadingSection/LoadingSectionVertical/LoadingSectionVertical.vue';

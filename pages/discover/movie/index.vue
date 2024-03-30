@@ -33,7 +33,7 @@
         />
       </div>
 
-      <LazyLoadingSpinner
+      <LoadingSpinner
         v-else
         class="loading-page"
       />
@@ -58,7 +58,7 @@
 // import { ControlPage } from '~/components/ControlPage';
 import FilterSection from '~/components/FilterSection/FilterSection.vue';
 import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
-// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { FilterMovieSlug } from '~/services/movieSlug';
 import type { formfilter } from '@/types';
