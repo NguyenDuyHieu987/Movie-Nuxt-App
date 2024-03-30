@@ -214,35 +214,35 @@ const getData = async () => {
       break;
   }
 
-  if (authStore.isLogin) {
-    if (dataMovie.value?.in_list) {
-      isAddToList.value = true;
-    }
+  // if (authStore.isLogin) {
+  if (dataMovie.value?.in_list) {
+    isAddToList.value = true;
+  }
 
-    // await getItemList(props.item?.id, props.item?.media_type);
+  // await getItemList(props.item?.id, props.item?.media_type);
+  //   .then((response) => {
+  //     if (response?.success == true) {
+  //       isAddToList.value = true;
+  //     }
+  //   })
+  //   .catch((e) => {
+  //   });
+
+  if (dataMovie.value?.history_progress) {
+    isInHistory.value = true;
+    percent.value = dataMovie.value?.history_progress?.percent;
+  } else {
+    // await getItemHistory(props.item?.id, props.item?.media_type)
     //   .then((response) => {
-    //     if (response?.success == true) {
-    //       isAddToList.value = true;
+    //     if (response.success == true) {
+    //       isInHistory.value = true;
+    //       percent.value = response?.result?.percent;
     //     }
     //   })
     //   .catch((e) => {
     //   });
-
-    if (dataMovie.value?.history_progress) {
-      isInHistory.value = true;
-      percent.value = dataMovie.value?.history_progress?.percent;
-    } else {
-      // await getItemHistory(props.item?.id, props.item?.media_type)
-      //   .then((response) => {
-      //     if (response.success == true) {
-      //       isInHistory.value = true;
-      //       percent.value = response?.result?.percent;
-      //     }
-      //   })
-      //   .catch((e) => {
-      //   });
-    }
   }
+  // }
 };
 
 getData();

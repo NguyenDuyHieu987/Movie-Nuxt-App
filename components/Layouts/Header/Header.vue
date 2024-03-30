@@ -186,7 +186,7 @@ const getData = async () => {
   // if (authStore.isLogin) {
   loadingSearchHistory.value = true;
 
-  await getDaTaSearchHistory(1, 10)
+  getDaTaSearchHistory(1, 10)
     .then((response) => {
       dataSearchHistory.value = response?.results;
       store.dataSearchHistory = response?.results;
@@ -199,7 +199,7 @@ const getData = async () => {
 
   loadingTopSearch.value = true;
 
-  await useAsyncData(`search/top-search/1/10`, () => getDaTaTopSearch(1, 10))
+  useAsyncData(`search/top-search/1/10`, () => getDaTaTopSearch(1, 10))
     .then((response) => {
       dataTopSearch.value = response.data.value?.results;
     })

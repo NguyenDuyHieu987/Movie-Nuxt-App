@@ -318,7 +318,7 @@ const getData = async () => {
 
   switch (props?.type || props?.item?.media_type) {
     case 'movie':
-      getMovieById(props.item.id)
+      await getMovieById(props.item.id)
         .then((response) => {
           dataMovie.value = response;
         })
@@ -328,7 +328,7 @@ const getData = async () => {
         });
       break;
     case 'tv':
-      getTvById(props.item.id)
+      await getTvById(props.item.id)
         .then((response) => {
           dataMovie.value = response;
         })
@@ -341,35 +341,35 @@ const getData = async () => {
       break;
   }
 
-  if (authStore.isLogin) {
-    if (dataMovie.value?.in_list) {
-      isAddToList.value = true;
-    } else {
-      // getItemList(props.item?.id, props.item?.media_type)
-      //   .then((response) => {
-      //     if (response.success == true) {
-      //       isAddToList.value = true;
-      //     }
-      //   })
-      //   .catch((e) => {
-      //   });
-    }
-
-    if (dataMovie.value?.history_progress) {
-      isInHistory.value = true;
-      percent.value = dataMovie.value?.history_progress.percent;
-    } else {
-      // getItemHistory(props.item?.id, props.item?.media_type)
-      //   .then((response) => {
-      //     if (response.success == true) {
-      //       isInHistory.value = true;
-      //       percent.value = response.result?.percent;
-      //     }
-      //   })
-      //   .catch((e) => {
-      //   });
-    }
+  // if (authStore.isLogin) {
+  if (dataMovie.value?.in_list) {
+    isAddToList.value = true;
+  } else {
+    // getItemList(props.item?.id, props.item?.media_type)
+    //   .then((response) => {
+    //     if (response.success == true) {
+    //       isAddToList.value = true;
+    //     }
+    //   })
+    //   .catch((e) => {
+    //   });
   }
+
+  if (dataMovie.value?.history_progress) {
+    isInHistory.value = true;
+    percent.value = dataMovie.value?.history_progress.percent;
+  } else {
+    // getItemHistory(props.item?.id, props.item?.media_type)
+    //   .then((response) => {
+    //     if (response.success == true) {
+    //       isInHistory.value = true;
+    //       percent.value = response.result?.percent;
+    //     }
+    //   })
+    //   .catch((e) => {
+    //   });
+  }
+  // }
 };
 
 getData();
