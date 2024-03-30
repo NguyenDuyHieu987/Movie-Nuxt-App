@@ -436,6 +436,7 @@ import LoadingSectionVertical from '~/components/Loading/LoadingSection/LoadingS
 import SliderGroupBackground from '~/components/SliderGroup/SliderGroupBackground/SliderGroupBackground.vue';
 import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
 import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
+import MovieCardHorizontalTrailer from '~/components/MovieCardHorizontalTrailer/MovieCardHorizontalTrailer.vue';
 import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
 import { getMoviesByGenres } from '~/services/discover';
 import { getNowPlaying, getTopRated, getUpComing } from '~/services/movieSlug';
