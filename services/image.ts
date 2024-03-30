@@ -14,9 +14,7 @@ export async function makeImageRequest(
   const nuxtConfig = useRuntimeConfig();
 
   const api = axios.create({
-    baseURL: nuxtConfig.app.production_mode
-      ? nuxtConfig.app.serverVideoUrl
-      : DEV_SERVER_IMAGE,
+    baseURL: isProduction ? nuxtConfig.app.serverVideoUrl : DEV_SERVER_IMAGE,
     withCredentials: true
   });
 
@@ -37,13 +35,13 @@ export function getImage(
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
 
-  const URL_IMAGE = nuxtConfig.app.production_mode
+  const URL_IMAGE = isProduction
     ? nuxtConfig.app.serverImageUrl
     : `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
-  if (crop.length == 0 || !nuxtConfig.app.production_mode) {
+  if (crop.length == 0 || !isProduction) {
     return `${URL_IMAGE}/images/${type}/${path}`;
   }
 

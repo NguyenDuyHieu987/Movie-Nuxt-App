@@ -183,19 +183,19 @@ const valueInput = ref<string>(route.query?.q);
 const isFocusSearchInput = ref<boolean>(false);
 
 const getData = async () => {
-  if (authStore.isLogin) {
-    loadingSearchHistory.value = true;
+  // if (authStore.isLogin) {
+  loadingSearchHistory.value = true;
 
-    await getDaTaSearchHistory(1, 10)
-      .then((response) => {
-        dataSearchHistory.value = response?.results;
-        store.dataSearchHistory = response?.results;
-      })
-      .catch((e) => {})
-      .finally(() => {
-        loadingSearchHistory.value = false;
-      });
-  }
+  await getDaTaSearchHistory(1, 10)
+    .then((response) => {
+      dataSearchHistory.value = response?.results;
+      store.dataSearchHistory = response?.results;
+    })
+    .catch((e) => {})
+    .finally(() => {
+      loadingSearchHistory.value = false;
+    });
+  // }
 
   loadingTopSearch.value = true;
 

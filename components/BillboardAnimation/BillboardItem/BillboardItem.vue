@@ -264,6 +264,7 @@ onBeforeMount(async () => {
   windowWidth.value = window.innerWidth;
 });
 
+// if (authStore.isLogin) {
 //  useAsyncData(
 //   `itemlist/${authStore.userAccount?.id}/${props.item?.id}`,
 //   () => getItemList(props.item?.id, props.item?.media_type)
@@ -275,6 +276,7 @@ getItemList(props.item?.id, props.item?.media_type)
     }
   })
   .catch((e) => {});
+// }
 
 const handleAddToList = () => {
   if (!authStore.isLogin) {

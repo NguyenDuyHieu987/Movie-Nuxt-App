@@ -738,6 +738,7 @@ const getData = async () => {
       loadingTvOnTheAir.value = false;
     });
 
+  // if (authStore.isLogin) {
   // useAsyncData('recommend/get/1', () =>
   //   getMyRecommend(skipRecommend.value)
   // )
@@ -750,6 +751,7 @@ const getData = async () => {
     .finally(() => {
       loadingRecommend.value = false;
     });
+  // }
 };
 
 // const { results: trendings, pending } = await getTrending(1);
