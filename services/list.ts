@@ -17,9 +17,7 @@ export function searchList(query: string, type: string = 'all') {
 }
 
 export function getItemList(movieId: string, media_type: string) {
-  return makeRequest(
-    `/${PREFIX_ROUTE}/get/${media_type}/${movieId}?api=hieu987`
-  );
+  return makeRequest(`/${PREFIX_ROUTE}/get/${media_type}/${movieId}`);
 }
 
 export function addItemList(params: { movie_id: string; media_type: string }) {
