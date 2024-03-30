@@ -85,13 +85,13 @@
             </section>
 
             <ViewMoreBar
-              v-show="recommends.length"
+              v-show="recommends?.length"
               :isOpen="viewMoreRecommend"
               @onClick="viewMoreRecommend = !viewMoreRecommend"
             />
 
             <a-button
-              v-show="recommends.length"
+              v-show="recommends?.length"
               class="loadmore-btn"
               type="text"
               :loading="loadMoreRecommend"
