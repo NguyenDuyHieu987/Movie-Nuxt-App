@@ -250,13 +250,13 @@ export default defineNuxtConfig({
     // analyze: true,
   },
   components: {
-    global: true,
+    // global: true,
     dirs: [
-      {
-        path: '~/components',
-        extensions: ['.vue'],
-        pathPrefix: false
-      }
+      // {
+      //   path: '~/components',
+      //   extensions: ['.vue'],
+      //   pathPrefix: false
+      // }
     ]
   },
   vue: { propsDestructure: true },
