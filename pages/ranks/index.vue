@@ -157,7 +157,7 @@
         </div>
       </div>
 
-      <LazyLoadingSpinner
+      <LoadingSpinner
         v-else
         :width="40"
         class="loading-page"
@@ -169,7 +169,7 @@
 <script setup lang="ts">
 // import { LoadingSpinner } from '~/components/Loading';
 // import { RankSection } from '~/components/RankSection';
-// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import RankSection from '~/components/RankSection/RankSection.vue';
 import { filterRanks, getRankPlay } from '~/services/ranks';
 import type { formfilterRank, rankSort, rankType } from '~/types';
