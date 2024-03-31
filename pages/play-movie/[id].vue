@@ -1,6 +1,6 @@
 <template>
   <div class="play-movie padding-content">
-    <LoadingSpinner
+    <LazyLoadingSpinner
       v-if="loading"
       class="loading-page"
     />
@@ -291,7 +291,7 @@
 // import { Interaction } from '~/components/Interaction';
 // import { Comment } from '~/components/Comment';
 // import { MovieSuggested } from '~/components/MovieSuggested';
-import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import BackPage from '~/components/BackPage/BackPage.vue';
 import VideoPlayer from '~/components/VideoPlayer/VideoPlayer.vue';
 // const VideoPlayer = defineAsyncComponent(

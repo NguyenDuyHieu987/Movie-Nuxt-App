@@ -51,7 +51,7 @@
         />
       </div>
 
-      <LoadingSpinner
+      <LazyLoadingSpinner
         v-else
         class="loading-page"
       />
@@ -80,8 +80,8 @@
 // import { MovieCardHorizontal } from '~/components/MovieCard';
 // import { LoadingSpinner } from '~/components/Loading';
 // import { ControlPage } from '~/components/ControlPage';
-import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
-import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+// import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
+// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { addRankSearch } from '~/services/ranks';
 import { addSearch, addSearchHistory, getDaTaSearch } from '~/services/search';
