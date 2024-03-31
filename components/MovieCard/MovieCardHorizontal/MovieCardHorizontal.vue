@@ -115,7 +115,7 @@
     <!-- </template>
     </el-skeleton> -->
 
-    <PreviewModal
+    <LazyPreviewModal
       v-if="isTeleportPreviewModal"
       v-model:isTeleport="isTeleportPreviewModal"
       v-model:style="stylePreviewModal"
@@ -134,7 +134,7 @@
 <script setup lang="ts">
 // import { Image } from '~/components/Image';
 // import { PreviewModal } from '~/components/PreviewModal';
-import PreviewModal from '~/components/PreviewModal/PreviewModal.vue';
+// import PreviewModal from '~/components/PreviewModal/PreviewModal.vue';
 // import { getItemList } from '~/services/list';
 // import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';

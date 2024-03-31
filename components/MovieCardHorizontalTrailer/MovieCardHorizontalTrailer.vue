@@ -79,7 +79,7 @@
     <!-- </template>
     </el-skeleton> -->
 
-    <ModalTrailer
+    <LazyModalTrailer
       v-if="isOpenModalTrailer"
       v-model:isTeleport="isOpenModalTrailer"
       :is-open-modal-trailer="isOpenModalTrailer"
