@@ -1,5 +1,6 @@
 import axios, { type AxiosRequestConfig } from 'axios';
 import { makeRequest } from './makeRequest';
+import { isProduction } from 'std-env';
 
 export const SERVER_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
 export const DEV_SERVER_IMAGE = 'http://localhost:5002';
@@ -53,13 +54,13 @@ export function getServerImage(path: string, type: string, crop = ''): string {
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
 
-  const URL_IMAGE = nuxtConfig.app.production_mode
+  const URL_IMAGE = isProduction
     ? nuxtConfig.app.serverImageUrl
     : `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
-  if (crop.length == 0 || !nuxtConfig.app.production_mode)
+  if (crop.length == 0 || !isProduction)
     return `${URL_IMAGE}/static/images/${type}/${path}`;
 
   return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
