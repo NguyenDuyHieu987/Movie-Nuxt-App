@@ -169,14 +169,14 @@
           .ant-btn {
             height: 30px;
             font-size: 1.4rem;
+            border-radius: 20px;
 
             &.comment-btn {
+              padding: 6.5px 15px;
               /* color: var(--app-background-color); */
 
               &:not(:disabled) {
                 background-color: var(--app-background-color);
-                padding: 6.5px 15px;
-                border-radius: 20px;
 
                 &:hover {
                   background-color: var(--app-background-color3);
