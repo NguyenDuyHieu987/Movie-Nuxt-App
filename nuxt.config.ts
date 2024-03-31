@@ -101,7 +101,7 @@ export default defineNuxtConfig({
     asyncContext: true,
     crossOriginPrefetch: true,
     componentIslands: {
-      selectiveClient: 'deep'
+      selectiveClient: true
     },
     headNext: true,
     payloadExtraction: true,

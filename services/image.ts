@@ -1,5 +1,4 @@
 import axios, { type AxiosRequestConfig } from 'axios';
-import { isProduction } from 'std-env';
 import { makeRequest } from './makeRequest';
 
 export const SERVER_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
@@ -14,7 +13,9 @@ export async function makeImageRequest(
   const nuxtConfig = useRuntimeConfig();
 
   const api = axios.create({
-    baseURL: isProduction ? nuxtConfig.app.serverVideoUrl : DEV_SERVER_IMAGE,
+    baseURL: nuxtConfig.app.production_mode
+      ? nuxtConfig.app.serverVideoUrl
+      : DEV_SERVER_IMAGE,
     withCredentials: true
   });
 
@@ -35,13 +36,13 @@ export function getImage(
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
 
-  const URL_IMAGE = isProduction
+  const URL_IMAGE = nuxtConfig.app.production_mode
     ? nuxtConfig.app.serverImageUrl
     : `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
-  if (crop.length == 0 || !isProduction) {
+  if (crop.length == 0 || !nuxtConfig.app.production_mode) {
     return `${URL_IMAGE}/images/${type}/${path}`;
   }
 
@@ -52,13 +53,13 @@ export function getServerImage(path: string, type: string, crop = ''): string {
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
 
-  const URL_IMAGE = isProduction
+  const URL_IMAGE = nuxtConfig.app.production_mode
     ? nuxtConfig.app.serverImageUrl
     : `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
-  if (crop.length == 0 || !isProduction)
+  if (crop.length == 0 || !nuxtConfig.app.production_mode)
     return `${URL_IMAGE}/static/images/${type}/${path}`;
 
   return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
