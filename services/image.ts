@@ -49,10 +49,11 @@ export function getImage(
 }
 
 export function getServerImage(path: string, type: string, crop = ''): string {
+  const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
 
   const URL_IMAGE = isProduction
-    ? DEV_SERVER_IMAGE
+    ? nuxtConfig.app.serverImageUrl
     : `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
