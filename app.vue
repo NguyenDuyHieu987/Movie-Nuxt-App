@@ -86,17 +86,13 @@ import { NetworkChecker } from '~/components/NetworkChecker';
 
 const runtimeConfig = useRuntimeConfig();
 
-useHead({
-  titleTemplate: (titleChunk: any) => {
-    return titleChunk
-      ? `${titleChunk} ${runtimeConfig.public.titleSeparator} ${runtimeConfig.public.siteName}`
-      : runtimeConfig.public.siteName;
-  }
-});
-
-useSeoMeta({
-  description: runtimeConfig.public.siteDescription
-});
+// useHead({
+//   titleTemplate: (title) => {
+//     return title
+//       ? `${title} ${runtimeConfig.public.titleSeparator?.toString()} ${runtimeConfig.public.siteName?.toString()}`
+//       : runtimeConfig.public.siteName;
+//   }
+// });
 
 const route = useRoute();
 

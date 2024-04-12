@@ -4,7 +4,7 @@
     :class="{
       expand: collapsed || openSiderBarFixed,
       fixed: openSiderBarFixed
-      // home: $route.meta.name?.includes('home')
+      // home: $route.name?.includes('home')
     }"
   >
     <Header />

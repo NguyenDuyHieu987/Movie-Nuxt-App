@@ -14,6 +14,9 @@
       >
         <!-- variant="image"  -->
         <el-skeleton-item class="skeleton-img ratio-16-9" />
+
+        <el-skeleton-item style="width: 85%" />
+        <el-skeleton-item style="width: 60%" />
       </div>
     </template>
     <template #default> <slot name="content" /> </template>

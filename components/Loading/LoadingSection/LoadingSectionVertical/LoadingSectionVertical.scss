@@ -10,9 +10,11 @@
 
   .img-box {
     display: flex;
+    flex-direction: column;
     width: calc((100% - (9 * var(--gap))) / 10);
     min-width: 177px;
     flex-shrink: 0;
+    gap: 10px;
 
     .el-skeleton__item.skeleton-img {
       width: 100%;

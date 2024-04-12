@@ -223,7 +223,7 @@ onMounted(() => {
 
     const st = window.scrollY || document.documentElement.scrollTop;
 
-    if (route.meta.name?.includes('home')) {
+    if (route.name?.includes('home')) {
       if (st > lastScrollTop) {
         // downscroll code
         if (window.scrollY >= billboardItem!?.offsetHeight) {
