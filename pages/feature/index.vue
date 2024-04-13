@@ -339,7 +339,7 @@ const getData = async () => {
     });
 
   // await useAsyncData('movie/toprated/1', () => getTopRated(4))
-  await getTopRated(4)
+  getTopRated(4)
     .then((response) => {
       topRateds.value = response?.results.slice(0, 12);
     })

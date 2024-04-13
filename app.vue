@@ -80,9 +80,12 @@
 </template>
 
 <script setup lang="ts">
-import { LoadingApp } from '~/components/Loading';
-import { RequireAuthDialog } from '~/components/RequireAuth';
-import { NetworkChecker } from '~/components/NetworkChecker';
+// import { LoadingApp } from '~/components/Loading';
+// import { RequireAuthDialog } from '~/components/RequireAuth';
+// import { NetworkChecker } from '~/components/NetworkChecker';
+import LoadingApp from '~/components/Loading/LoadingApp/LoadingApp.server.vue';
+import RequireAuthDialog from '~/components/RequireAuth/RequireAuthDialog/RequireAuthDialog.vue';
+import NetworkChecker from '~/components/NetworkChecker/NetworkChecker.vue';
 
 const runtimeConfig = useRuntimeConfig();
 
