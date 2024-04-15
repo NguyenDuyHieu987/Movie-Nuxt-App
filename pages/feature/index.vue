@@ -309,9 +309,9 @@ const getData = async () => {
   // await nextTick();
 
   // useAsyncData('movie/nowplaying/1', () => getNowPlaying(1))
-  getNowPlaying(1)
+  getNowPlaying(1, 12)
     .then((response) => {
-      nowPlayings.value = response?.results.slice(0, 12);
+      nowPlayings.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -319,9 +319,9 @@ const getData = async () => {
     });
 
   // useAsyncData(`movie/popular/1`, () => getPopular(2))
-  getPopular(2)
+  getPopular(2, 12)
     .then((response) => {
-      populars.value = response?.results.slice(0, 12);
+      populars.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -329,9 +329,9 @@ const getData = async () => {
     });
 
   // useAsyncData('movie/upcoming/1', () => getUpComing(3))
-  getUpComing(3)
+  getUpComing(3, 12)
     .then((response) => {
-      upComings.value = response?.results.slice(0, 12);
+      upComings.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -339,9 +339,9 @@ const getData = async () => {
     });
 
   // await useAsyncData('movie/toprated/1', () => getTopRated(4))
-  getTopRated(4)
+  getTopRated(4, 12)
     .then((response) => {
-      topRateds.value = response?.results.slice(0, 12);
+      topRateds.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -351,7 +351,7 @@ const getData = async () => {
 
 const { data: dataBilboard, pending } = await useAsyncData(
   'movie/all/1',
-  () => getMovies(1),
+  () => getMovies(1, 20),
   {
     // default: () => {
     //   return { results: trendingsCache.value || [] };

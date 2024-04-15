@@ -379,20 +379,20 @@ const onMouseEnter = ({ target }: { target: HTMLElement }) => {
 
   const rect = target.getBoundingClientRect();
 
-  const offsetX = rect.left;
-  const offsetY = window.scrollY + rect.top;
+  const offsetX = rect?.left;
+  const offsetY = window.scrollY + rect?.top;
 
   // left.value = offsetX + target.offsetWidth / 2 - width / 2;
   // top.value = offsetY + target.offsetHeight / 2 - height / 2;
 
-  left.value = offsetX + target.offsetWidth / 2;
-  top.value = offsetY + target.offsetHeight / 2;
+  left.value = offsetX + target?.offsetWidth / 2;
+  top.value = offsetY + target?.offsetHeight / 2;
 
-  offsetWidth.value = target.offsetWidth;
-  offsetHeight.value = target.offsetHeight;
+  offsetWidth.value = target?.offsetWidth;
+  offsetHeight.value = target?.offsetHeight;
 
-  imgHeight.value = target.querySelector('img')!.offsetHeight;
-  imgWidth.value = target.querySelector('img')!.offsetWidth;
+  imgHeight.value = target.querySelector('img')!?.offsetHeight;
+  imgWidth.value = target.querySelector('img')!?.offsetWidth;
 
   rectBound.value = rect;
 
@@ -401,7 +401,6 @@ const onMouseEnter = ({ target }: { target: HTMLElement }) => {
   }, 700);
 
   target.addEventListener('pointerleave', () => {
-    // isTeleportPreviewModal.value = false;
     clearTimeout(timeOut.value);
   });
 };
@@ -440,7 +439,7 @@ const handleClickGenreItem = (genreItem: genre) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./MovieCardVertical.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./MovieCardVertical.scss"></style>
+<!-- <style lang="scss">
 @import url('./MovieCardVertical.scss');
-</style>
+</style> -->

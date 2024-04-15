@@ -4,24 +4,26 @@ import type { formfilter } from '~/types';
 
 const PREFIX_ROUTE = 'tv';
 
-export function getTvs(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/all?page=${page}`);
+export function getTvs(page: number = 1, limit: number = 12) {
+  return makeRequest(`/${PREFIX_ROUTE}/all?page=${page}&limit=${limit}`);
 }
 
-export function getTvAiringToday(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/airingtoday?page=${page}`);
+export function getTvAiringToday(page: number = 1, limit: number = 12) {
+  return makeRequest(
+    `/${PREFIX_ROUTE}/airingtoday?page=${page}&limit=${limit}`
+  );
 }
 
-export function getTvOntheAir(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/ontheair?page=${page}`);
+export function getTvOntheAir(page: number = 1, limit: number = 12) {
+  return makeRequest(`/${PREFIX_ROUTE}/ontheair?page=${page}&limit=${limit}`);
 }
 
-export function getTvPopular(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/popular?page=${page}`);
+export function getTvPopular(page: number = 1, limit: number = 12) {
+  return makeRequest(`/${PREFIX_ROUTE}/popular?page=${page}&limit=${limit}`);
 }
 
-export function getTvTopRated(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/toprated?page=${page}`);
+export function getTvTopRated(page: number = 1, limit: number = 12) {
+  return makeRequest(`/${PREFIX_ROUTE}/toprated?page=${page}&limit=${limit}`);
 }
 
 export function FilterTvSlug(formFilter: formfilter) {

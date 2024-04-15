@@ -4,24 +4,24 @@ import type { formfilter } from '@/types';
 
 const PREFIX_ROUTE = 'movie';
 
-export function getMovies(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/all?page=${page}`);
+export function getMovies(page: number = 1, limit: number = 12) {
+  return makeRequest(`/${PREFIX_ROUTE}/all?page=${page}&limit=${limit}`);
 }
 
-export function getNowPlaying(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/nowplaying?page=${page}`);
+export function getNowPlaying(page: number = 1, limit: number = 12) {
+  return makeRequest(`/${PREFIX_ROUTE}/nowplaying?page=${page}&limit=${limit}`);
 }
 
-export function getPopular(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/popular?page=${page}`);
+export function getPopular(page: number = 1, limit: number = 12) {
+  return makeRequest(`/${PREFIX_ROUTE}/popular?page=${page}&limit=${limit}`);
 }
 
-export function getTopRated(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/toprated?page=${page}`);
+export function getTopRated(page: number = 1, limit: number = 12) {
+  return makeRequest(`/${PREFIX_ROUTE}/toprated?page=${page}&limit=${limit}`);
 }
 
-export function getUpComing(page: number = 1) {
-  return makeRequest(`/${PREFIX_ROUTE}/upcoming?page=${page}`);
+export function getUpComing(page: number = 1, limit: number = 12) {
+  return makeRequest(`/${PREFIX_ROUTE}/upcoming?page=${page}&limit=${limit}`);
 }
 
 export function FilterMovieSlug(formFilter: formfilter) {

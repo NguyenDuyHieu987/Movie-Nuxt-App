@@ -79,7 +79,7 @@
     <!-- </template>
     </el-skeleton> -->
 
-    <ModalTrailer
+    <LazyModalTrailer
       v-if="isOpenModalTrailer"
       v-model:isTeleport="isOpenModalTrailer"
       :is-open-modal-trailer="isOpenModalTrailer"
@@ -91,7 +91,7 @@
 
 <script setup lang="ts">
 // import { ModalTrailer } from '~/components/ModalTrailer';
-import ModalTrailer from '~/components/ModalTrailer/ModalTrailer.vue';
+// import ModalTrailer from '~/components/ModalTrailer/ModalTrailer.vue';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 

@@ -115,7 +115,7 @@
     <!-- </template>
     </el-skeleton> -->
 
-    <PreviewModal
+    <LazyPreviewModal
       v-if="isTeleportPreviewModal"
       v-model:isTeleport="isTeleportPreviewModal"
       v-model:style="stylePreviewModal"
@@ -134,7 +134,7 @@
 <script setup lang="ts">
 // import { Image } from '~/components/Image';
 // import { PreviewModal } from '~/components/PreviewModal';
-import PreviewModal from '~/components/PreviewModal/PreviewModal.vue';
+// import PreviewModal from '~/components/PreviewModal/PreviewModal.vue';
 // import { getItemList } from '~/services/list';
 // import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
@@ -250,19 +250,19 @@ getData();
 onMounted(() => {
   const rect = cardItem.value!?.getBoundingClientRect();
 
-  const offsetX = rect.left;
-  const offsetY = window.scrollY + rect.top;
+  const offsetX = rect?.left;
+  const offsetY = window.scrollY + rect?.top;
 
-  stylePreviewModal.left = offsetX + cardItem.value!.offsetWidth / 2;
-  stylePreviewModal.top = offsetY + cardItem.value!.offsetHeight / 2;
+  stylePreviewModal.left = offsetX + cardItem.value!?.offsetWidth / 2;
+  stylePreviewModal.top = offsetY + cardItem.value!?.offsetHeight / 2;
 
-  stylePreviewModal.offsetWidth = cardItem.value!.offsetWidth;
-  stylePreviewModal.offsetHeight = cardItem.value!.offsetHeight;
+  stylePreviewModal.offsetWidth = cardItem.value!?.offsetWidth;
+  stylePreviewModal.offsetHeight = cardItem.value!?.offsetHeight;
 
   stylePreviewModal.imgHeight =
-    cardItem.value!.querySelector('img')!.offsetHeight;
+    cardItem.value!.querySelector('img')!?.offsetHeight;
   stylePreviewModal.imgWidth =
-    cardItem.value!.querySelector('img')!.offsetWidth;
+    cardItem.value!.querySelector('img')!?.offsetWidth;
 
   stylePreviewModal.rectBound = rect;
 });
@@ -273,17 +273,17 @@ const onMouseEnterImg = ({ target }: { target: EventTarget | any }) => {
 
   const rect = target.getBoundingClientRect();
 
-  const offsetX = rect.left;
-  const offsetY = window.scrollY + rect.top;
+  const offsetX = rect?.left;
+  const offsetY = window.scrollY + rect?.top;
 
-  stylePreviewModal.left = offsetX + target.offsetWidth / 2;
-  stylePreviewModal.top = offsetY + target.offsetHeight / 2;
+  stylePreviewModal.left = offsetX + target?.offsetWidth / 2;
+  stylePreviewModal.top = offsetY + target?.offsetHeight / 2;
 
-  stylePreviewModal.offsetWidth = target.offsetWidth;
-  stylePreviewModal.offsetHeight = target.offsetHeight;
+  stylePreviewModal.offsetWidth = target?.offsetWidth;
+  stylePreviewModal.offsetHeight = target?.offsetHeight;
 
-  stylePreviewModal.imgHeight = target.querySelector('img')!.offsetHeight;
-  stylePreviewModal.imgWidth = target.querySelector('img')!.offsetWidth;
+  stylePreviewModal.imgHeight = target.querySelector('img')!?.offsetHeight;
+  stylePreviewModal.imgWidth = target.querySelector('img')!?.offsetWidth;
 
   stylePreviewModal.rectBound = rect;
 
@@ -315,7 +315,7 @@ const onMouseLeaveCard = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./MovieCardHorizontal.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./MovieCardHorizontal.scss"></style>
+<!-- <style lang="scss">
 @import url('./MovieCardHorizontal.scss');
-</style>
+</style> -->

@@ -350,10 +350,11 @@ const getData = async () => {
   // )
   FilterMovieSlug({
     ...formFilter.value,
-    type: 'nowplaying'
+    type: 'nowplaying',
+    limit: 12
   })
     .then((response) => {
-      nowPlayings.value = response?.results.slice(0, 12);
+      nowPlayings.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -373,10 +374,11 @@ const getData = async () => {
   // )
   FilterMovieSlug({
     ...formFilter.value,
-    type: 'popular'
+    type: 'popular',
+    limit: 12
   })
     .then((response) => {
-      populars.value = response?.results.slice(0, 12);
+      populars.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -396,10 +398,11 @@ const getData = async () => {
   // )
   FilterMovieSlug({
     ...formFilter.value,
-    type: 'upcoming'
+    type: 'upcoming',
+    limit: 12
   })
     .then((response) => {
-      upComings.value = response?.results.slice(0, 12);
+      upComings.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -419,10 +422,11 @@ const getData = async () => {
   // )
   FilterMovieSlug({
     ...formFilter.value,
-    type: 'toprated'
+    type: 'toprated',
+    limit: 12
   })
     .then((response) => {
-      topRateds.value = response?.results.slice(0, 12);
+      topRateds.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {

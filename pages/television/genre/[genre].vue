@@ -336,9 +336,9 @@ const getData = async () => {
   //   }}`,
   //   () => FilterTvSlug({ ...formFilter.value, type: 'airingtoday' })
   // )
-  FilterTvSlug({ ...formFilter.value, type: 'airingtoday' })
+  FilterTvSlug({ ...formFilter.value, type: 'airingtoday', limit: 12 })
     .then((response) => {
-      airingTodays.value = response?.results.slice(0, 12);
+      airingTodays.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -352,9 +352,9 @@ const getData = async () => {
   //   }}`,
   //   () => FilterTvSlug({ ...formFilter.value, type: 'ontheair' })
   // )
-  FilterTvSlug({ ...formFilter.value, type: 'ontheair' })
+  FilterTvSlug({ ...formFilter.value, type: 'ontheair', limit: 12 })
     .then((response) => {
-      onTheAirs.value = response?.results.slice(0, 12);
+      onTheAirs.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -368,9 +368,9 @@ const getData = async () => {
   //   }}`,
   //   () => FilterTvSlug({ ...formFilter.value, type: 'popular' })
   // )
-  FilterTvSlug({ ...formFilter.value, type: 'popular' })
+  FilterTvSlug({ ...formFilter.value, type: 'popular', limit: 12 })
     .then((response) => {
-      populars.value = response?.results.slice(0, 12);
+      populars.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -384,9 +384,9 @@ const getData = async () => {
   //   }}`,
   //   () => FilterTvSlug({ ...formFilter.value, type: 'toprated' })
   // )
-  FilterTvSlug({ ...formFilter.value, type: 'toprated' })
+  FilterTvSlug({ ...formFilter.value, type: 'toprated', limit: 12 })
     .then((response) => {
-      topRateds.value = response?.results.slice(0, 12);
+      topRateds.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {

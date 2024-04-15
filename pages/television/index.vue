@@ -301,9 +301,9 @@ const getData = async () => {
   // await nextTick();
 
   // useAsyncData('tv/airingtoday/1', () => getTvAiringToday(1))
-  getTvAiringToday(1)
+  getTvAiringToday(1, 12)
     .then((response) => {
-      airingTodays.value = response?.results.slice(0, 12);
+      airingTodays.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -311,9 +311,9 @@ const getData = async () => {
     });
 
   // useAsyncData(`tv/ontheair/1`, () => getTvOntheAir(2))
-  getTvOntheAir(2)
+  getTvOntheAir(2, 12)
     .then((response) => {
-      onTheAirs.value = response?.results.slice(0, 12);
+      onTheAirs.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -321,9 +321,9 @@ const getData = async () => {
     });
 
   // useAsyncData('tv/popular/1', () => getTvPopular(3))
-  getTvPopular(3)
+  getTvPopular(3, 12)
     .then((response) => {
-      populars.value = response?.results.slice(0, 12);
+      populars.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -331,9 +331,9 @@ const getData = async () => {
     });
 
   // useAsyncData('tv/toprated/1', () => getTvTopRated(4))
-  getTvTopRated(4)
+  getTvTopRated(4, 12)
     .then((response) => {
-      topRateds.value = response?.results.slice(0, 12);
+      topRateds.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {

@@ -677,9 +677,9 @@ const getData = async () => {
   // await nextTick();
 
   // useAsyncData('movie/nowplaying/1', () => getNowPlaying(1))
-  getNowPlaying(1)
+  getNowPlaying(1, 12)
     .then((response) => {
-      nowPlayings.value = response?.results.slice(0, 12);
+      nowPlayings.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -689,9 +689,9 @@ const getData = async () => {
   // useAsyncData(`genres/hoat-hinh/views_desc/1`, () =>
   //   getMoviesByGenres('hoat-hinh', 'views_desc', 1)
   // )
-  getMoviesByGenres('hoat-hinh', 'views_desc', 1)
+  getMoviesByGenres('hoat-hinh', 'views_desc', 1, 12)
     .then((response) => {
-      animations.value = response?.results.slice(0, 12);
+      animations.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -699,9 +699,9 @@ const getData = async () => {
     });
 
   // useAsyncData('tv/airingtoday/1', () => getTvAiringToday(1))
-  getTvAiringToday(1)
+  getTvAiringToday(1, 12)
     .then((response) => {
-      tvAiringTodays.value = response?.results.slice(0, 12);
+      tvAiringTodays.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -709,9 +709,9 @@ const getData = async () => {
     });
 
   // useAsyncData('movie/upcoming/1', () => getUpComing(1))
-  getUpComing(1)
+  getUpComing(1, 15)
     .then((response) => {
-      upComings.value = response?.results.slice(0, 15);
+      upComings.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -719,9 +719,9 @@ const getData = async () => {
     });
 
   // useAsyncData('movie/toprated/1', () => getTopRated(1))
-  getTopRated(1)
+  getTopRated(1, 12)
     .then((response) => {
-      topRateds.value = response?.results.slice(0, 12);
+      topRateds.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
@@ -729,9 +729,9 @@ const getData = async () => {
     });
 
   // useAsyncData('tv/ontheair/1', () => getTvOntheAir(1))
-  getTvOntheAir(1)
+  getTvOntheAir(1, 12)
     .then((response) => {
-      tvOnTheAirs.value = response?.results.slice(0, 12);
+      tvOnTheAirs.value = response?.results;
     })
     .catch((e) => {})
     .finally(() => {
