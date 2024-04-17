@@ -110,7 +110,7 @@
     "sass": "^1.75.0",
     "std-env": "^3.7.0",
     "terser": "^5.30.3",
-    "typescript": "5.4.0",
+    "typescript": "5.4",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
     "vite-svg-loader": "^5.1.0",
