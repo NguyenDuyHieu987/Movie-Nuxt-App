@@ -55,7 +55,16 @@ export default defineNuxtConfig({
     rootId: '__nuxt',
     buildAssetsDir: '/_nuxt/',
     keepalive: true,
-    pageTransition: { name: 'page', mode: 'out-in', appear: true }
+    pageTransition: { name: 'page', mode: 'out-in', appear: true },
+    templateParams: {
+      separator: '|',
+      separatorDash: '-'
+    },
+    // titleTemplate: '%s %separator %siteName',
+    titleTemplate: (title: any) => {
+      return title ? `${title} %separator %siteName` : '%siteName';
+    },
+    description: 'Xem phim Online 24/7'
   },
   runtimeConfig: {
     app: {
@@ -76,7 +85,6 @@ export default defineNuxtConfig({
       siteUrl: 'https://phimhay247z.org',
       siteName: 'Phimhay247',
       titleSeparator: '|',
-      siteDescription: 'Xem phim Online 24/7',
       language: 'vi',
       trailingSlash: false
     }
@@ -115,9 +123,9 @@ export default defineNuxtConfig({
     }
   },
   features: {
-    inlineStyles: false
+    inlineStyles: true
   },
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   typescript: {
     strict: true
   },
@@ -165,7 +173,6 @@ export default defineNuxtConfig({
   },
   swiper: {
     modules: ['navigation', 'virtual', 'free-mode', 'scrollbar', 'autoplay'],
-    // modules: [],
     styleLang: 'css'
   },
   gtag: {
@@ -225,7 +232,8 @@ export default defineNuxtConfig({
   // SEO
   site: {
     name: 'Phimhay247',
-    url: 'https://phimhay247z.org'
+    url: 'https://phimhay247z.org',
+    trailingSlash: false
   },
   plugins: [],
   hooks: {
@@ -250,15 +258,23 @@ export default defineNuxtConfig({
     // analyze: true,
   },
   components: {
-    // global: true,
-    // dirs: [
-    //   {
-    //     path: '~/components',
-    //     extensions: ['.vue'],
-    //     pathPrefix: false
-    //     island: true
-    //   }
-    // ]
+    global: false,
+    loader: true,
+    generateMetadata: true,
+    dirs: [
+      {
+        path: '~/components/global',
+        global: true,
+        extensions: ['.vue'],
+        pathPrefix: false
+      },
+      {
+        path: '~/components',
+        global: false,
+        extensions: ['.vue'],
+        pathPrefix: false
+      }
+    ]
   },
   vue: { propsDestructure: true },
   ssr: true,
@@ -293,7 +309,9 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
+          // additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
+          additionalData:
+            '@use "~/assets/style/globalStyle/_variables.scss" as *;'
         }
       },
       transformer: 'postcss',
@@ -302,11 +320,15 @@ export default defineNuxtConfig({
     },
     build: {
       // ssr: true,
+      modulePreload: {
+        // polyfill: false
+      },
       manifest: true,
       ssrManifest: true,
       sourcemap: 'hidden',
       assetsDir: '_nuxt/',
       // cssMinify: 'lightningcss',
+      cssCodeSplit: true,
       reportCompressedSize: true,
       minify: 'terser',
       terserOptions: {
