@@ -19,7 +19,5 @@
         "./components/*/index.vue"
       ],
     },
-  },
-  "esModuleInterop": true,
-  "allowSyntheticDefaultImports": true,
+  }
 }
