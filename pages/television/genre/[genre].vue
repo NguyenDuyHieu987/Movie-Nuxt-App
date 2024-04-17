@@ -222,12 +222,12 @@
 // import { LoadingSectionHorizontal } from '~/components/Loading';
 // import { MovieCardHorizontal } from '~/components/MovieCard';
 import HeaderPageGenreType from '~/components/Layouts/HeaderPageGenreType/HeaderPageGenreType.server.vue';
-import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
+import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.vue';
 import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
 import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
 import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
 import { getGenreById } from '~/services/genres';
-import { FilterTvSlug } from '~/services/TvSlug';
+import { FilterTvSlug } from '~/services/tvSlug';
 import type { formfilter, genre } from '~/types';
 
 definePageMeta({

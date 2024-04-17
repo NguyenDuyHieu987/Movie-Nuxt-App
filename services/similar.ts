@@ -8,7 +8,5 @@ export function getSimilar(
   page: number = 1,
   limit: number = 20
 ) {
-  return makeRequest(
-    `/${PREFIX_ROUTE}/${type}/${movieId}?page=${page}&limit=${limit}`
-  );
+  return makeRequest(`/${PREFIX_ROUTE}/${type}/${movieId}`, { page, limit });
 }

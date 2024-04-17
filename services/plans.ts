@@ -15,7 +15,7 @@ export function registerPlan(
   const bodyFormData = new FormData();
   bodyFormData.append('method', payment_method);
 
-  return makeRequest(`/${PREFIX_ROUTE}/register/${id}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/register/${id}`, null, {
     method: 'POST',
     data: bodyFormData
   });

@@ -7,13 +7,16 @@ export function getHistory(
   skip: number = 1,
   limit: number = 20
 ) {
-  return makeRequest(
-    `/${PREFIX_ROUTE}/get-all/${type}?skip=${skip}&limit=${limit}`
-  );
+  return makeRequest(`/${PREFIX_ROUTE}/get-all/${type}`, {
+    skip,
+    limit
+  });
 }
 
 export function searchHistory(query: string, type: string = 'all') {
-  return makeRequest(`/${PREFIX_ROUTE}/search/${type}?query=${query}`);
+  return makeRequest(`/${PREFIX_ROUTE}/search/${type}`, {
+    query
+  });
 }
 
 export function getItemHistory(movieId: string, media_type: string) {
@@ -36,7 +39,7 @@ export function add_update_History(params: {
   bodyFormData.append('percent', params.percent.toFixed(3));
   bodyFormData.append('seconds', params.seconds.toString());
 
-  return makeRequest(`/${PREFIX_ROUTE}/add`, {
+  return makeRequest(`/${PREFIX_ROUTE}/add`, null, {
     method: 'POST',
     data: bodyFormData
   });
@@ -52,14 +55,14 @@ export function removeItemHistory(params: {
   bodyFormData.append('movie_id', params.movie_id);
   bodyFormData.append('media_type', params.media_type);
 
-  return makeRequest(`/${PREFIX_ROUTE}/remove`, {
+  return makeRequest(`/${PREFIX_ROUTE}/remove`, null, {
     method: 'DELETE',
     data: bodyFormData
   });
 }
 
 export function removeAllItemHistory() {
-  return makeRequest(`/${PREFIX_ROUTE}/clear`, {
+  return makeRequest(`/${PREFIX_ROUTE}/clear`, null, {
     method: 'DELETE'
   });
 }

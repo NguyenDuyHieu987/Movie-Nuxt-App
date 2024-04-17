@@ -8,7 +8,12 @@
 
     <DiscoverHead
       :initialSlide="
-        years.findIndex((item1) => item1.name == route.params?.year)
+        years.findIndex(
+          (item) =>
+            (utils.isNumber(item?.name) || utils.isStringNumber(item?.name)
+              ? item?.name
+              : utils.convertPath.toPath(item?.name)) == route.params?.year
+        )
       "
     >
       <SwiperSlide
@@ -16,10 +21,19 @@
         :key="item?.name"
         :index="index"
         :class="{
-          active: item.name == route.params?.year
+          active:
+            (utils.isNumber(item?.name) || utils.isStringNumber(item?.name)
+              ? item?.name
+              : utils.convertPath.toPath(item?.name)) == route.params?.year
         }"
       >
-        <NuxtLink :to="`/discover/year/${item.name}`">
+        <NuxtLink
+          :to="`/discover/year/${
+            utils.isNumber(item?.name) || utils.isStringNumber(item?.name)
+              ? item?.name
+              : utils.convertPath.toPath(item?.name)
+          }`"
+        >
           {{ item?.name }}
         </NuxtLink>
       </SwiperSlide>

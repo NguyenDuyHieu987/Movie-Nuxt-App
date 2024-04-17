@@ -8,7 +8,7 @@
 
     <DiscoverHead
       :initialSlide="
-        genres.findIndex((item1) => item1.short_name == route.params?.genre)
+        genres.findIndex((item) => item?.short_name == route.params?.genre)
       "
     >
       <SwiperSlide
@@ -16,7 +16,7 @@
         :key="item?.id"
         :index="index"
         :class="{
-          active: item.short_name == route.params?.genre
+          active: item?.short_name == route.params?.genre
         }"
       >
         <NuxtLink :to="`/discover/genre/${item.short_name}`">

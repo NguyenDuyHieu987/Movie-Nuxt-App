@@ -290,199 +290,210 @@ const getData = async () => {
 
   nuxtLoadingIndicator.start();
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify(formFilterRank.value)}`,
-    () => filterRanks(formFilterRank.value)
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify(formFilterRank.value)}`,
+  //   () => filterRanks(formFilterRank.value)
+  // )
+  await filterRanks(formFilterRank.value)
     .then((response) => {
-      ranksData.value = compareRanks(response.data.value);
-      pageSize.value = response.data.value?.page_size;
+      ranksData.value = compareRanks(response);
+      pageSize.value = response?.page_size;
     })
     .catch((e) => {})
     .finally(() => {});
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      mediaType: 'movie'
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, mediaType: 'movie' })
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     mediaType: 'movie'
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, mediaType: 'movie' })
+  // )
+  await filterRanks({ ...formFilterRank.value, mediaType: 'movie' })
     .then((response) => {
-      ranksMovie.value = compareRanks(response.data.value);
+      ranksMovie.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      mediaType: 'tv'
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, mediaType: 'tv' })
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     mediaType: 'tv'
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, mediaType: 'tv' })
+  // )
+  await filterRanks({ ...formFilterRank.value, mediaType: 'tv' })
     .then((response) => {
-      ranksTV.value = compareRanks(response.data.value);
+      ranksTV.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Hoạt hình
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      genre: 16
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, genre: 16 }),
-    {
-      // transform: (data: any) => {
-      //   return compareRanks(data);
-      // },
-    }
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     genre: 16
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, genre: 16 }),
+  //   {
+  //     // transform: (data: any) => {
+  //     //   return compareRanks(data);
+  //     // },
+  //   }
+  // )
+  await filterRanks({ ...formFilterRank.value, genre: 16 })
     .then((response) => {
-      ranksAnimation.value = compareRanks(response.data.value);
+      ranksAnimation.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Hành động
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      genre: 28
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, genre: 28 }),
-    {
-      // transform: (data: any) => {
-      //   return compareRanks(data);
-      // },
-    }
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     genre: 28
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, genre: 28 }),
+  //   {
+  //     // transform: (data: any) => {
+  //     //   return compareRanks(data);
+  //     // },
+  //   }
+  // )
+  await filterRanks({ ...formFilterRank.value, genre: 28 })
     .then((response) => {
-      ranksAction.value = compareRanks(response.data.value);
+      ranksAction.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Kinh dị
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      genre: 27
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, genre: 27 }),
-    {
-      // transform: (data: any) => {
-      //   return compareRanks(data);
-      // },
-    }
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     genre: 27
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, genre: 27 }),
+  //   {
+  //     // transform: (data: any) => {
+  //     //   return compareRanks(data);
+  //     // },
+  //   }
+  // )
+  await filterRanks({ ...formFilterRank.value, genre: 27 })
     .then((response) => {
-      ranksHorror.value = compareRanks(response.data.value);
+      ranksHorror.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Drama
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      genre: 18
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, genre: 18 }),
-    {
-      // transform: (data: any) => {
-      //   return compareRanks(data);
-      // },
-    }
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     genre: 18
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, genre: 18 }),
+  //   {
+  //     // transform: (data: any) => {
+  //     //   return compareRanks(data);
+  //     // },
+  //   }
+  // )
+  await filterRanks({ ...formFilterRank.value, genre: 18 })
     .then((response) => {
-      ranksDrama.value = compareRanks(response.data.value);
+      ranksDrama.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Khoa học viễn tưởng
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      genre: 18
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, genre: 18 }),
-    {
-      // transform: (data: any) => {
-      //   return compareRanks(data);
-      // },
-    }
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     genre: 18
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, genre: 18 }),
+  //   {
+  //     // transform: (data: any) => {
+  //     //   return compareRanks(data);
+  //     // },
+  //   }
+  // )
+  await filterRanks({ ...formFilterRank.value, genre: 18 })
     .then((response) => {
-      ranksScienceFiction.value = compareRanks(response.data.value);
+      ranksScienceFiction.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Âu Mỹ
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      country: 'en'
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, country: 'en' }),
-    {
-      // transform: (data: any) => {
-      //   return compareRanks(data);
-      // },
-    }
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     country: 'en'
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, country: 'en' }),
+  //   {
+  //     // transform: (data: any) => {
+  //     //   return compareRanks(data);
+  //     // },
+  //   }
+  // )
+  await filterRanks({ ...formFilterRank.value, country: 'en' })
     .then((response) => {
-      ranksEN.value = compareRanks(response.data.value);
+      ranksEN.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Trung Quốc
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      country: 'cn'
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, country: 'cn' }),
-    {
-      // transform: (data: any) => {
-      //   return compareRanks(data);
-      // },
-    }
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     country: 'cn'
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, country: 'cn' }),
+  //   {
+  //     // transform: (data: any) => {
+  //     //   return compareRanks(data);
+  //     // },
+  //   }
+  // )
+  await filterRanks({ ...formFilterRank.value, country: 'cn' })
     .then((response) => {
-      ranksChina.value = compareRanks(response.data.value);
+      ranksChina.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Nhật Bản
 
-  await useAsyncData(
-    `ranks/filter/${JSON.stringify({
-      ...formFilterRank.value,
-      country: 'ja'
-    })}`,
-    () => filterRanks({ ...formFilterRank.value, country: 'ja' }),
-    {
-      // transform: (data: any) => {
-      //   return compareRanks(data);
-      // },
-    }
-  )
+  // await useAsyncData(
+  //   `ranks/filter/${JSON.stringify({
+  //     ...formFilterRank.value,
+  //     country: 'ja'
+  //   })}`,
+  //   () => filterRanks({ ...formFilterRank.value, country: 'ja' }),
+  //   {
+  //     // transform: (data: any) => {
+  //     //   return compareRanks(data);
+  //     // },
+  //   }
+  // )
+  await filterRanks({ ...formFilterRank.value, country: 'ja' })
     .then((response) => {
-      ranksJapan.value = compareRanks(response.data.value);
+      ranksJapan.value = compareRanks(response);
     })
     .catch((e) => {})
     .finally(() => {});
@@ -491,12 +502,15 @@ const getData = async () => {
   nuxtLoadingIndicator.finish();
 };
 
+getData();
+
 // loading.value = true;
 
 // const { data: ranksDataCache, pending } = await useAsyncData(
 //   `ranks/filter/${JSON.stringify(formFilterRank.value)}`,
 //   () => filterRanks(formFilterRank.value),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   totalPage.value = data?.total;
 //     //   pageSize.value = data?.page_size;
@@ -521,6 +535,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, mediaType: 'movie' }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -528,7 +543,6 @@ const getData = async () => {
 // );
 
 // ranksMovie.value = compareRanks(ranksMovieCache.value);
-// // ranksTV.value = ranksMovieCache.value!;
 
 // // Phim bộ
 
@@ -539,6 +553,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, mediaType: 'tv' }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -546,7 +561,6 @@ const getData = async () => {
 // );
 
 // ranksTV.value = compareRanks(ranksTVCache.value);
-// // ranksTV.value = ranksTVCache.value!;
 
 // // Hoạt hình
 
@@ -557,6 +571,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, genre: 16 }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -564,7 +579,6 @@ const getData = async () => {
 // );
 
 // ranksAnimation.value = compareRanks(ranksAnimationCache.value);
-// // ranksTV.value = ranksAnimationCache.value!;
 
 // // Hành động
 
@@ -575,6 +589,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, genre: 28 }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -582,7 +597,6 @@ const getData = async () => {
 // );
 
 // ranksAction.value = compareRanks(ranksActionCache.value);
-// // ranksTV.value = ranksActionCache.value!;
 
 // // Kinh dị
 
@@ -593,6 +607,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, genre: 27 }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -600,7 +615,6 @@ const getData = async () => {
 // );
 
 // ranksHorror.value = compareRanks(ranksHorrorCache.value);
-// // ranksTV.value = ranksHorrorCache.value!;
 
 // // Drama
 
@@ -611,6 +625,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, genre: 18 }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -618,7 +633,6 @@ const getData = async () => {
 // );
 
 // ranksDrama.value = compareRanks(ranksDramaCache.value);
-// // ranksTV.value = ranksDramaCache.value!;
 
 // // Khoa học viễn tưởng
 
@@ -629,6 +643,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, genre: 18 }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -636,7 +651,6 @@ const getData = async () => {
 // );
 
 // ranksScienceFiction.value = compareRanks(ranksScienceFictionCache.value);
-// // ranksTV.value = ranksScienceFictionCache.value!;
 
 // // Âu Mỹ
 
@@ -647,6 +661,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, country: 'en' }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -654,7 +669,6 @@ const getData = async () => {
 // );
 
 // ranksEN.value = compareRanks(ranksENCache.value);
-// // ranksTV.value = ranksENCache.value!;
 
 // // Trung Quốc
 
@@ -665,6 +679,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, country: 'cn' }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -672,7 +687,6 @@ const getData = async () => {
 // );
 
 // ranksChina.value = compareRanks(ranksChinaCache.value);
-// // ranksTV.value = ranksChinaCache.value!;
 
 // // Nhật Bản
 
@@ -683,6 +697,7 @@ const getData = async () => {
 //   })}`,
 //   () => filterRanks({ ...formFilterRank.value, country: 'ja' }),
 //   {
+//     lazy: true
 //     // transform: (data: any) => {
 //     //   return compareRanks(data);
 //     // },
@@ -690,9 +705,6 @@ const getData = async () => {
 // );
 
 // ranksJapan.value = compareRanks(ranksJapanCache.value);
-// // ranksTV.value = ranksJapanCache.value!;
-
-getData();
 
 watch(
   () => formFilterRank.value,

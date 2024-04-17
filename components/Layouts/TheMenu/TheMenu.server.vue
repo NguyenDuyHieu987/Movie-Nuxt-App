@@ -305,7 +305,7 @@
         v-for="(item, index) in years"
         :key="item?.name"
         :index="`/discover/year/${
-          utils.isNumber(item?.name)
+          utils.isNumber(item?.name) || utils.isStringNumber(item?.name)
             ? item?.name
             : utils.convertPath.toPath(item?.name)
         }`"
@@ -313,7 +313,7 @@
         <NuxtLink
           :to="{
             path: `/discover/year/${
-              utils.isNumber(item?.name)
+              utils.isNumber(item?.name) || utils.isStringNumber(item?.name)
                 ? item?.name
                 : utils.convertPath.toPath(item?.name)
             }`

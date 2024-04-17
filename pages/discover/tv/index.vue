@@ -60,7 +60,7 @@ import FilterSection from '~/components/FilterSection/FilterSection.vue';
 import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
 import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
-import { FilterTvSlug } from '~/services/TvSlug';
+import { FilterTvSlug } from '~/services/tvSlug';
 import type { formfilter } from '@/types';
 
 definePageMeta({

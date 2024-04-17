@@ -8,9 +8,10 @@ export function getCommentParent(
   skip: number = 1,
   limit: number = 20
 ) {
-  return makeRequest(
-    `/${PREFIX_ROUTE}/get-parent/${movieType}/${movieId}?skip=${skip}&limit=${limit}`
-  );
+  return makeRequest(`/${PREFIX_ROUTE}/get-parent/${movieType}/${movieId}`, {
+    skip,
+    limit
+  });
 }
 
 export function getCommentChild(
@@ -21,7 +22,11 @@ export function getCommentChild(
   limit: number = 10
 ) {
   return makeRequest(
-    `/${PREFIX_ROUTE}/get-child/${movieType}/${movieId}/${parentId}?skip=${skip}&limit=${limit}`
+    `/${PREFIX_ROUTE}/get-child/${movieType}/${movieId}/${parentId}`,
+    {
+      skip,
+      limit
+    }
   );
 }
 
@@ -41,6 +46,7 @@ export function CommentMovie(params: {
 
   return makeRequest(
     `/${PREFIX_ROUTE}/post/${params.movieType}/${params.movieId}`,
+    null,
     {
       method: 'POST',
       data: bodyFormData
@@ -62,6 +68,7 @@ export function EditComment(params: {
 
   return makeRequest(
     `/${PREFIX_ROUTE}/edit/${params.movieType}/${params.movieId}`,
+    null,
     {
       method: 'PUT',
       data: bodyFormData
@@ -83,6 +90,7 @@ export function DeleteComment(params: {
 
   return makeRequest(
     `/${PREFIX_ROUTE}/delete/${params.movieType}/${params.movieId}`,
+    null,
     {
       method: 'DELETE',
       data: bodyFormData
@@ -91,13 +99,13 @@ export function DeleteComment(params: {
 }
 
 export function LikeComment(params: { id: string }) {
-  return makeRequest(`/${PREFIX_ROUTE}/like/${params.id}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/like/${params.id}`, null, {
     method: 'POST'
   });
 }
 
 export function DisLikeComment(params: { id: string }) {
-  return makeRequest(`/${PREFIX_ROUTE}/dislike/${params.id}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/dislike/${params.id}`, null, {
     method: 'POST'
   });
 }

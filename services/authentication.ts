@@ -14,7 +14,7 @@ export function LogIn(params: any) {
   bodyFormData.append('email', params.email);
   bodyFormData.append('password', params.password);
 
-  return makeRequest(`/${PREFIX_ROUTE}/login`, {
+  return makeRequest(`/${PREFIX_ROUTE}/login`, null, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -24,7 +24,7 @@ export function LogIn(params: any) {
 export function loginFacebook(params: any) {
   const headers = { Authorization: `Bearer ${params.accessToken}` };
 
-  return makeRequest(`/${PREFIX_ROUTE}/login-facebook`, {
+  return makeRequest(`/${PREFIX_ROUTE}/login-facebook`, null, {
     method: 'POST',
     headers,
     getResponseHeaders: true
@@ -50,7 +50,7 @@ export function loginGoogle(params: {
     }
   }
 
-  return makeRequest(`/${PREFIX_ROUTE}/login-google`, {
+  return makeRequest(`/${PREFIX_ROUTE}/login-google`, null, {
     method: 'POST',
     headers,
     data: bodyFormData,
@@ -61,7 +61,7 @@ export function loginGoogle(params: {
 export function getUserByToken(params: { userToken: string }) {
   const headers = { Authorization: `Bearer ${params.userToken}` };
 
-  return makeRequest(`/${PREFIX_ROUTE}/getuser`, {
+  return makeRequest(`/${PREFIX_ROUTE}/getuser`, null, {
     headers,
     getResponseHeaders: true
   });
@@ -75,7 +75,7 @@ export function verifySignUp(params: any, type: string) {
   bodyFormData.append('full_name', params.full_name);
   // bodyFormData.append('avatar', params.avatar);
 
-  return makeRequest(`/${PREFIX_ROUTE}/verify-signup/${type}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/verify-signup/${type}`, null, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -88,7 +88,7 @@ export function signUp(params: { otp: string; vrfSignupToken: string }) {
 
   const headers = { Authorization: `Bearer ${params.vrfSignupToken}` };
 
-  return makeRequest(`/${PREFIX_ROUTE}/signup`, {
+  return makeRequest(`/${PREFIX_ROUTE}/signup`, null, {
     method: 'POST',
     // headers: headers,
     data: bodyFormData,
@@ -100,7 +100,7 @@ export function forgotPassword(email: string, type: string) {
   const bodyFormData = new FormData();
   bodyFormData.append('email', email);
 
-  return makeRequest(`/${PREFIX_ROUTE}/forgot-password/${type}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/forgot-password/${type}`, null, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -108,7 +108,7 @@ export function forgotPassword(email: string, type: string) {
 }
 
 export function LogOut() {
-  return makeRequest(`/${PREFIX_ROUTE}/logout`, {
+  return makeRequest(`/${PREFIX_ROUTE}/logout`, null, {
     method: 'POST'
   });
 }

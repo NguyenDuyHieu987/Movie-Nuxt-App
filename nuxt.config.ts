@@ -259,6 +259,8 @@ export default defineNuxtConfig({
   },
   components: {
     global: false,
+    loader: true,
+    generateMetadata: true,
     dirs: [
       {
         path: '~/components/global',

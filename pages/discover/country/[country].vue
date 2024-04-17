@@ -8,9 +8,7 @@
 
     <DiscoverHead
       :initial-slide="
-        countries.findIndex(
-          (item1) => item1.short_name == route.params?.country
-        )
+        countries.findIndex((item) => item?.short_name == route.params?.country)
       "
     >
       <SwiperSlide
@@ -18,7 +16,7 @@
         :key="item?.iso_639_1"
         :index="index"
         :class="{
-          active: item.short_name == route.params?.country
+          active: item?.short_name == route.params?.country
         }"
       >
         <NuxtLink :to="`/discover/country/${item.short_name}`">

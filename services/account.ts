@@ -28,7 +28,7 @@ export function AccountConfirm(
       break;
   }
 
-  return makeRequest(`/${PREFIX_ROUTE}/confirm/${type}`, {
+  return makeRequest(`/${PREFIX_ROUTE}/confirm/${type}`, null, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -39,7 +39,7 @@ export function ChangePassword(params: { otp: string; chgPwdToken: string }) {
   const bodyFormData = new FormData();
   bodyFormData.append('otp', params.otp);
 
-  return makeRequest(`/${PREFIX_ROUTE}/change-password`, {
+  return makeRequest(`/${PREFIX_ROUTE}/change-password`, null, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -50,14 +50,16 @@ export function VerifyEmail(params: { otp: string; vrfEmailToken: string }) {
   const bodyFormData = new FormData();
   bodyFormData.append('otp', params.otp);
 
-  return makeRequest(`/${PREFIX_ROUTE}/verify-email`, {
+  return makeRequest(`/${PREFIX_ROUTE}/verify-email`, null, {
     method: 'POST',
     data: bodyFormData
   });
 }
 
 export function VerifyChangeEmail(chgEmailToken: string) {
-  return makeRequest(`/${PREFIX_ROUTE}/change-email?token=${chgEmailToken}`);
+  return makeRequest(`/${PREFIX_ROUTE}/change-email`, {
+    token: chgEmailToken
+  });
 }
 
 export function ChangeEmail(params: {
@@ -67,7 +69,7 @@ export function ChangeEmail(params: {
   const bodyFormData = new FormData();
   bodyFormData.append('new_email', params.newEmail);
 
-  return makeRequest(`/${PREFIX_ROUTE}/change-email`, {
+  return makeRequest(`/${PREFIX_ROUTE}/change-email`, null, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -78,7 +80,7 @@ export function ChangeFullname(newfullName: string) {
   const bodyFormData = new FormData();
   bodyFormData.append('new_full_name', newfullName);
 
-  return makeRequest(`/${PREFIX_ROUTE}/change-fullname`, {
+  return makeRequest(`/${PREFIX_ROUTE}/change-fullname`, null, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true
@@ -86,7 +88,9 @@ export function ChangeFullname(newfullName: string) {
 }
 
 export function VerifyResetPassword(rstPwdToken: string) {
-  return makeRequest(`/${PREFIX_ROUTE}/reset-password?token=${rstPwdToken}`);
+  return makeRequest(`/${PREFIX_ROUTE}/reset-password`, {
+    token: rstPwdToken
+  });
 }
 
 export function ResetPassword(params: {
@@ -98,7 +102,7 @@ export function ResetPassword(params: {
   bodyFormData.append('new_password', params.newPassword);
   bodyFormData.append('logout_all_device', `${params.logOutAllDevice}`);
 
-  return makeRequest(`/${PREFIX_ROUTE}/reset-password`, {
+  return makeRequest(`/${PREFIX_ROUTE}/reset-password`, null, {
     method: 'POST',
     data: bodyFormData,
     getResponseHeaders: true

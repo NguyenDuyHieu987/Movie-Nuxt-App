@@ -9,7 +9,12 @@
 
 export default defineNuxtPlugin({
   name: 'elementPlus',
-  async setup(nuxtApp) {},
+  async setup(nuxtApp) {
+    // nuxtApp.vueApp.provide(ID_INJECTION_KEY, {
+    //   prefix: Math.floor(Math.random() * 10000),
+    //   current: 0
+    // });
+  },
   hooks: {},
   parallel: true,
   env: { islands: true }

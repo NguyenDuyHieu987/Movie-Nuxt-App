@@ -16,6 +16,7 @@ export function rating(params: {
 
   return makeRequest(
     `/${PREFIX_ROUTE}/${params.media_type}/${params.movie_id}`,
+    null,
     {
       method: 'POST',
       data: bodyFormData

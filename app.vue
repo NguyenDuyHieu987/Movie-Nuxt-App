@@ -31,12 +31,7 @@
     </ClientOnly> -->
 
       <NuxtLoadingIndicator
-        color="linear-gradient(
-            90deg,
-            var(--loading-progress-bar1),
-            var(--loading-progress-bar2),
-            var(--loading-progress-bar3)
-          )"
+        color="linear-gradient(90deg, var(--loading-progress-bar1), var(--loading-progress-bar2), var(--loading-progress-bar3))"
         :height="3"
         :throttle="300"
         :duration="2000"

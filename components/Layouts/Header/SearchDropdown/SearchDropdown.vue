@@ -113,52 +113,56 @@
           </div>
         </div>
 
-        <div
-          v-if="dataTopSearch?.length && !isShowSearchResults"
-          class="top-search"
-        >
-          <div class="search-dropdown-header top-search">
-            <div class="left">Tìm kiếm phố biến</div>
-            <div class="right click-active">
-              <NuxtLink
-                class="view-all"
-                to="/ranks?type=hot-search"
-                @click="isFocusSearchInput = false"
-              >
-                Tất cả
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1.2rem"
-                  height="1.2rem"
-                  viewBox="0 0 320 512"
-                  fill="currentColor"
+        <ClientOnly>
+          <div
+            v-if="
+              !loadingTopSearch && dataTopSearch?.length && !isShowSearchResults
+            "
+            class="top-search"
+          >
+            <div class="search-dropdown-header top-search">
+              <div class="left">Tìm kiếm phố biến</div>
+              <div class="right click-active">
+                <NuxtLink
+                  class="view-all"
+                  to="/ranks?type=hot-search"
+                  @click="isFocusSearchInput = false"
                 >
-                  <path
-                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-                  />
-                </svg>
-              </NuxtLink>
+                  Tất cả
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1.2rem"
+                    height="1.2rem"
+                    viewBox="0 0 320 512"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+                    />
+                  </svg>
+                </NuxtLink>
+              </div>
             </div>
-          </div>
 
-          <div class="top-search-list">
-            <div
-              v-for="(item, index) in dataTopSearch"
-              :key="index"
-              :index="index"
-              class="top-search-item"
-              @click="(e) => handleClickTopSearchItem(e, item)"
-            >
-              <span
-                class="rank-top-search"
-                :style="{ '--rank-opacity': Math.abs(index - 10) / 10 }"
+            <div class="top-search-list">
+              <div
+                v-for="(item, index) in dataTopSearch"
+                :key="index"
+                :index="index"
+                class="top-search-item"
+                @click="(e) => handleClickTopSearchItem(e, item)"
               >
-                {{ index + 1 }}
-              </span>
-              <p class="search-query">{{ item?.name || item?.query }}</p>
+                <span
+                  class="rank-top-search"
+                  :style="{ '--rank-opacity': Math.abs(index - 10) / 10 }"
+                >
+                  {{ index + 1 }}
+                </span>
+                <p class="search-query">{{ item?.name || item?.query }}</p>
+              </div>
             </div>
           </div>
-        </div>
+        </ClientOnly>
       </div>
     </div>
   </div>
@@ -175,9 +179,11 @@ import {
 const props = withDefaults(
   defineProps<{
     loadingSearch: boolean;
+    loadingTopSearch: boolean;
   }>(),
   {
-    loadingSearch: false
+    loadingSearch: false,
+    loadingTopSearch: false
   }
 );
 

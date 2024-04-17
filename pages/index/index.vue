@@ -428,7 +428,7 @@
 // import { MovieCardHorizontal, MovieCardVertical } from '~/components/MovieCard';
 // import { MovieCardHorizontalTrailer } from '~/components/MovieCardHorizontalTrailer';
 // import { ViewMoreBar } from '~/components/ViewMoreBar';
-import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.server.vue';
+import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.vue';
 import BoxVip from '~/components/BoxVip/BoxVip.vue';
 import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
 import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
@@ -442,7 +442,7 @@ import { getMoviesByGenres } from '~/services/discover';
 import { getNowPlaying, getTopRated, getUpComing } from '~/services/movieSlug';
 import { getMyRecommend } from '~/services/recommend';
 import { getTrending } from '~/services/trending';
-import { getTvAiringToday, getTvOntheAir } from '~/services/TvSlug';
+import { getTvAiringToday, getTvOntheAir } from '~/services/tvSlug';
 
 definePageMeta({
   // layout: 'home',

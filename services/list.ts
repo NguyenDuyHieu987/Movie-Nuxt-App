@@ -7,13 +7,14 @@ export function getList(
   skip: number = 1,
   limit: number = 20
 ) {
-  return makeRequest(
-    `/${PREFIX_ROUTE}/get-all/${type}?skip=${skip}&limit=${limit}`
-  );
+  return makeRequest(`/${PREFIX_ROUTE}/get-all/${type}`, {
+    skip,
+    limit
+  });
 }
 
 export function searchList(query: string, type: string = 'all') {
-  return makeRequest(`/${PREFIX_ROUTE}/search/${type}?query=${query}`);
+  return makeRequest(`/${PREFIX_ROUTE}/search/${type}`, { query });
 }
 
 export function getItemList(movieId: string, media_type: string) {
@@ -25,7 +26,7 @@ export function addItemList(params: { movie_id: string; media_type: string }) {
   bodyFormData.append('movie_id', params.movie_id);
   bodyFormData.append('media_type', params.media_type);
 
-  return makeRequest(`/${PREFIX_ROUTE}/add`, {
+  return makeRequest(`/${PREFIX_ROUTE}/add`, null, {
     method: 'POST',
     data: bodyFormData
   });
@@ -41,14 +42,14 @@ export function removeItemList(params: {
   bodyFormData.append('movie_id', params.movie_id);
   bodyFormData.append('media_type', params.media_type);
 
-  return makeRequest(`/${PREFIX_ROUTE}/remove`, {
+  return makeRequest(`/${PREFIX_ROUTE}/remove`, null, {
     method: 'DELETE',
     data: bodyFormData
   });
 }
 
 export function removeAllItemList() {
-  return makeRequest(`/${PREFIX_ROUTE}/clear`, {
+  return makeRequest(`/${PREFIX_ROUTE}/clear`, null, {
     method: 'DELETE'
   });
 }
