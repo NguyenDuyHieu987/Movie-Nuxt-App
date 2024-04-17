@@ -79,8 +79,8 @@
     "autoprefixer": "^10.4.19",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
-    "element-plus": "^2.6.3",
-    "eslint": "^9.0.0",
+    "element-plus": "^2.7.0",
+    "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -110,12 +110,15 @@
     "sass": "^1.75.0",
     "std-env": "^3.7.0",
     "terser": "^5.30.3",
-    "typescript": "5.4.3",
+    "typescript": "5.4.5",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
     "vite-svg-loader": "^5.1.0",
     "vitest": "^1.5.0",
     "vue-gtag-next": "^1.14.0",
     "vue-tsc": "^2.0.13"
+  },
+  "engines": {
+    "node": ">=18.x"
   }
 }
