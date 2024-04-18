@@ -6,13 +6,8 @@ on:
       - main
 
 jobs:
-  # deploy:
-  windows-install:
-    runs-on: windows-latest
-    # runs-on: ${{ matrix.os }}
-    # strategy:
-    #   matrix:
-    #     os: [ubuntu-latest, windows-latest]
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
       # - name: Clean workspace
@@ -60,15 +55,6 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           npm install --legacy-peer-deps
-        env:
-          CI: true
-
-  ubuntu-tasks:
-    needs: windows-install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Dependencies and Build
-        run: |
           npm run build
 
       - name: Install SSH key
@@ -84,7 +70,6 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          whereis .output/server/index.mjs
           rsync -r --update --delete-after ./.output/public ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
 
           rsync -r --update --delete-after ./.output/server ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
