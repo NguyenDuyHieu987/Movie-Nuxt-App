@@ -267,13 +267,13 @@ export default defineNuxtConfig({
         global: true,
         extensions: ['.vue'],
         pathPrefix: false
-      },
-      {
-        path: '~/components',
-        global: false,
-        extensions: ['.vue'],
-        pathPrefix: false
       }
+      // {
+      //   path: '~/components',
+      //   global: false,
+      //   extensions: ['.vue'],
+      //   pathPrefix: false
+      // }
     ]
   },
   vue: { propsDestructure: true },
@@ -295,8 +295,7 @@ export default defineNuxtConfig({
         'ant-design-vue/dist': 'ant-design-vue/dist',
         'ant-design-vue/es': 'ant-design-vue/es',
         'ant-design-vue/lib': 'ant-design-vue/es',
-        'ant-design-vue': 'ant-design-vue/es',
-        'element-plus/es': 'element-plus/es'
+        'ant-design-vue': 'ant-design-vue/es'
       }
     },
     plugins: [svgLoader({})],

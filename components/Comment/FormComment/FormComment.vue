@@ -79,7 +79,7 @@
               />
             </svg>
 
-            <LazyEmojiPicker
+            <EmojiPicker
               v-if="isShowEmoji"
               @select="onSelectEmoji"
             />
@@ -109,7 +109,7 @@
 </template>
 
 <script setup lang="ts">
-// import EmojiPicker from '~/components/Comment/EmojiPicker/EmojiPicker.vue';
+import EmojiPicker from '~/components/Comment/EmojiPicker/EmojiPicker.vue';
 import { CommentMovie, EditComment } from '~/services/comment';
 import { getImage } from '~/services/image';
 import { ElNotification } from 'element-plus';
