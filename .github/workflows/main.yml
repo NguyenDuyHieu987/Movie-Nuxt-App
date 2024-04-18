@@ -46,7 +46,7 @@ jobs:
       # --legacy-peer-deps
       - name: Install Dependencies and Build
         run: |
-          yarn install
+          yarn install --ignore-engines
           npm run build
         env:
           CI: true
