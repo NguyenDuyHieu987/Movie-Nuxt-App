@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       # - name: Clean workspace
@@ -49,6 +49,7 @@ jobs:
       # --legacy-peer-deps
       - name: Install Dependencies and Build
         run: |
+          nvm --version
           npm install --legacy-peer-deps
           npm run build
         env:
