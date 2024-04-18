@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clean workspace
-        uses: AutoModality/action-clean@v1
+      # - name: Clean workspace
+      #   uses: AutoModality/action-clean@v1
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -49,6 +49,7 @@ jobs:
       # --legacy-peer-deps
       - name: Install Dependencies and Build
         run: |
+          npm --version
           npm install --legacy-peer-deps
           npm run build
         env:
