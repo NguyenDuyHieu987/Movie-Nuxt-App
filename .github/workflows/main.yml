@@ -31,9 +31,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # node-version-file: '.nvmrc'
-          # registry-url: 'https://registry.npmjs.org/'
-          node-version: 19.9.0
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org/'
+          # node-version: 19.9.0
 
       - name: Create .env file
         run: echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
