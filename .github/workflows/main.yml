@@ -63,6 +63,7 @@ jobs:
           npm run build
         env:
           CI: true
+
   ubuntu-tasks:
     needs: windows-install
     runs-on: ubuntu-latest
@@ -80,6 +81,7 @@ jobs:
 
       - name: Deploy to Server
         run: |
+          whereis .output/server/index.mjs
           rsync -r --update --delete-after ./.output/public ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
 
           rsync -r --update --delete-after ./.output/server ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
