@@ -7,7 +7,11 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    # runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
     steps:
       # - name: Clean workspace
@@ -31,17 +35,17 @@ jobs:
       #       nvm use node
       #     fi
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version-file: '.nvmrc'
-      #     registry-url: 'https://registry.npmjs.org/'
-      #     # node-version: 19.9.0
-
       - name: Setup Node.js
-        uses: dcodeIO/setup-node-nvm@master
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.12.2
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org/'
+          # node-version: 19.9.0
+
+      # - name: Setup Node.js with nvm
+      #   uses: dcodeIO/setup-node-nvm@master
+      #   with:
+      #     node-version: 20.12.2
 
       - name: Create .env file
         run: echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
@@ -54,7 +58,6 @@ jobs:
       # --legacy-peer-deps
       - name: Install Dependencies and Build
         run: |
-          nvm --version
           npm install --legacy-peer-deps
           npm run build
         env:
