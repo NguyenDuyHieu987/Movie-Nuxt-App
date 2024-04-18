@@ -60,7 +60,6 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           npm install --legacy-peer-deps
-          npm run build
         env:
           CI: true
 
@@ -68,6 +67,10 @@ jobs:
     needs: windows-install
     runs-on: ubuntu-latest
     steps:
+      - name: Install Dependencies and Build
+        run: |
+          npm run build
+
       - name: Install SSH key
         run: |
           mkdir -p ~/.ssh
