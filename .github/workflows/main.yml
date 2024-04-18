@@ -57,6 +57,7 @@ jobs:
 
       # --legacy-peer-deps
       - name: Install Dependencies and Build
+        if: matrix.os == 'windows-latest'
         run: |
           npm install --legacy-peer-deps
           npm run build
