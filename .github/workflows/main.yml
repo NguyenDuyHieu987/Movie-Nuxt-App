@@ -6,12 +6,13 @@ on:
       - main
 
 jobs:
-  deploy:
-    # runs-on: ubuntu-latest
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
+  # deploy:
+  windows-install:
+    runs-on: windows-latest
+    # runs-on: ${{ matrix.os }}
+    # strategy:
+    #   matrix:
+    #     os: [ubuntu-latest, windows-latest]
 
     steps:
       # - name: Clean workspace
@@ -57,13 +58,15 @@ jobs:
 
       # --legacy-peer-deps
       - name: Install Dependencies and Build
-        if: matrix.os == 'windows-latest'
         run: |
           npm install --legacy-peer-deps
           npm run build
         env:
           CI: true
-
+  ubuntu-tasks:
+    needs: windows-install
+    runs-on: ubuntu-latest
+    steps:
       - name: Install SSH key
         run: |
           mkdir -p ~/.ssh
