@@ -26,9 +26,9 @@ function format(date: string, formats?: string) {
       newDate =
         dateObj.toLocaleDateString('vi-VN', options2).replace(',', ' năm') +
         ', lúc ' +
-        dateObj.toLocaleTimeString('en-US').split(':')[0] +
+        dateObj.toLocaleTimeString('vi-VN').split(':')[0] +
         ':' +
-        dateObj.toLocaleTimeString('en-US').split(':')[1];
+        dateObj.toLocaleTimeString('vi-VN').split(':')[1];
       break;
     default:
       newDate = dateObj.toLocaleDateString('vi-VN', options1);

@@ -130,11 +130,11 @@
 // import { SortTab } from '~/components/SortTab';
 // import { MovieCardHorizontalHistory } from '~/components/MovieCardHorizontalHistory';
 // import { RequireAuth } from '~/components/RequireAuth';
-import TopicColumn from '~/components/TopicColumn/TopicColumn.vue';
-import TopicRow from '~/components/TopicRow/TopicRow.vue';
-import SortTab from '~/components/SortTab/SortTab.vue';
-import MovieCardHorizontalHistory from '~/components/MovieCardHorizontalHistory/MovieCardHorizontalHistory.vue';
-import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
+// import TopicColumn from '~/components/TopicColumn/TopicColumn.vue';
+// import TopicRow from '~/components/TopicRow/TopicRow.vue';
+// import SortTab from '~/components/SortTab/SortTab.vue';
+// import MovieCardHorizontalHistory from '~/components/MovieCardHorizontalHistory/MovieCardHorizontalHistory.vue';
+// import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { getHistory, searchHistory } from '~/services/history';
 import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';

@@ -221,11 +221,11 @@
 // import { LoadingSectionHorizontal } from '~/components/Loading';
 // import { SwiperCarouselGroup } from '~/components/CarouselGroup';
 // import { MovieCardHorizontal } from '~/components/MovieCard';
-import HeaderPageMovieType from '~/components/Layouts/HeaderPageMovieType/HeaderPageMovieType.vue';
-import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.vue';
-import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
-import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
-import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
+// import HeaderPageMovieType from '~/components/Layouts/HeaderPageMovieType/HeaderPageMovieType.vue';
+// import BillboardAnimation from '~/components/BillboardAnimation/BillboardAnimation.vue';
+// import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
+// import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
+// import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
 import {
   getMovies,
   getNowPlaying,

@@ -12,7 +12,7 @@ export const useAuthStore = defineStore('auth', () => {
   const role = computed<string>(() => userAccount.value?.role || 'normal');
   const isLogin = computed<boolean>(() => !!userAccount.value);
   const isVipMember = computed<boolean>(
-    () => !!subscription.value && subscription.value?.vip != 0
+    () => !!subscription.value && subscription.value?.plan.vip != 0
   );
   const isOpenRequireAuthDialog = ref<boolean>(false);
   const loadingUser = ref<boolean>(true);
@@ -29,7 +29,7 @@ export const useAuthStore = defineStore('auth', () => {
     );
     const cookieUserToken = utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN);
 
-    if (localUserToken != null || cookieUserToken != null) {
+    if (localUserToken || cookieUserToken) {
       await getUserByToken({
         userToken: localUserToken || cookieUserToken
       })
@@ -110,7 +110,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
   };
 
-  function logOut() {
+  const logOut = async () => {
     if (isLogin.value) {
       store.loadingAppInstance.start();
 
@@ -118,7 +118,7 @@ export const useAuthStore = defineStore('auth', () => {
         window.FB.logout(() => {});
       }
 
-      LogOut()
+      await LogOut()
         .then(async (response) => {
           if (response?.isLogout == true) {
             navigateTo('/login');
@@ -142,11 +142,11 @@ export const useAuthStore = defineStore('auth', () => {
             duration: MESSAGE.DURATION.DEFAULT
           });
         })
-        .finally(() => {
+        .finally(async () => {
           store.loadingAppInstance.finish();
         });
     }
-  }
+  };
 
   return {
     userAccount,

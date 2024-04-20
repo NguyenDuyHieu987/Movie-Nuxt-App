@@ -171,12 +171,15 @@
 </template>
 
 <script setup lang="ts">
+import { ElNotification } from 'element-plus';
 // import { BackPage } from '~/components/BackPage';
 // import { RequireAuth } from '~/components/RequireAuth';
-import BackPage from '~/components/BackPage/BackPage.vue';
-import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
+// import BackPage from '~/components/BackPage/BackPage.vue';
+// import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { getImage } from '~/services/image';
 import { getAllPlan, registerPlan } from '~/services/plans';
+import { getBill } from '~/services/bill';
+
 import type { plan } from '@/types';
 
 definePageMeta({
@@ -227,6 +230,7 @@ definePageMeta({
   keepalive: false
 });
 
+const nuxtConfig = useRuntimeConfig();
 const store = useStore();
 const authStore = useAuthStore();
 const route = useRoute();
@@ -305,13 +309,24 @@ const handleClickMoMoMethod = () => {};
 
 const handleClickZaloPayMethod = () => {};
 
-const handleClickVNPayMethod = () => {
+const handleClickVNPayMethod = async () => {
   store.loadingAppInstance.start();
 
-  registerPlan(planSelected.value!.id, 'VNPAY')
+  await registerPlan(planSelected.value!.id, 'VNPAY')
     .then((response) => {
-      window.open(response?.url);
-      // window.location = response?.url;
+      if (response?.isRegistered) {
+        ElNotification.warning({
+          title: MESSAGE.STATUS.WARN,
+          message: 'You have currently signed up for a subscription',
+          duration: MESSAGE.DURATION.DEFAULT
+        });
+        return;
+      }
+
+      if (response?.success) {
+        window.open(response?.url);
+        // window.location = response?.url;
+      }
     })
     .catch(() => {})
     .finally(() => {
@@ -319,18 +334,68 @@ const handleClickVNPayMethod = () => {
     });
 };
 
-const handleClickStripeMethod = () => {
+const handleClickStripeMethod = async () => {
   store.loadingAppInstance.start();
 
-  registerPlan(planSelected.value!.id, 'STRIPE')
+  await registerPlan(planSelected.value!.id, 'STRIPE')
     .then((response) => {
-      window.open(response?.url);
-      // window.location = response?.url;
+      if (response?.isRegistered) {
+        ElNotification.warning({
+          title: MESSAGE.STATUS.WARN,
+          message: 'Hiện tại bạn đã đăng ký 1 subscription rồi',
+          duration: MESSAGE.DURATION.DEFAULT
+        });
+        return;
+      }
+
+      if (response?.success) {
+        window.open(response?.url);
+        // window.location = response?.url;
+
+        getStatusInvoice(response.invoice_id);
+        // return new WebSocket(
+        //   nuxtConfig.app?.production_mode
+        //     ? nuxtConfig.app?.apiGateway
+        //     : 'ws://localhost:5000'
+        // );
+      }
     })
+    // .then((socket: WebSocket | undefined) => {
+    //   if (socket) {
+    //     console.log(socket);
+    //     // Xử lý khi nhận được tin nhắn từ máy chủ
+    //     socket.onmessage = (event) => {
+    //       console.log('Received message from server:', event);
+    //     };
+
+    //     // Gửi yêu cầu đến máy chủ thông qua kết nối WebSocket
+    //     socket.send('Hello from client');
+
+    //     socket.close();
+
+    //     socket.onclose = () => {
+    //       console.log('Disconnected from server');
+    //     };
+    //   }
+    // })
     .catch(() => {})
     .finally(() => {
       store.loadingAppInstance.finish();
     });
+};
+
+const getStatusInvoice = async (id: string) => {
+  await getBill(id)
+    .then((response) => {
+      if (response?.success) {
+        if (response?.result?.status == 'complete') {
+          navigateTo('/upgrade/state/Stripe/success');
+          return;
+        }
+        setTimeout(async () => await getStatusInvoice(id), 500);
+      }
+    })
+    .catch(() => {});
 };
 </script>
 

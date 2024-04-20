@@ -145,7 +145,7 @@
 
               .bills-list {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 list-style: none;
                 flex-grow: 1;
                 margin-right: 50px;
@@ -156,6 +156,7 @@
                   flex-grow: 1;
                   gap: 15px;
                   padding: 10px 0px;
+                  padding-bottom: 5px;
                   font-size: 1.4rem;
                   border-bottom: 0.5px solid var(--border-regular-light);
 

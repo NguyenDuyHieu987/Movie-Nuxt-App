@@ -1,12 +1,17 @@
 <template>
-  <div
-    v-if="isLogin"
-    class="service-page bills padding-content"
-  >
-    <div class="center-page">This is Bills page</div>
+  <div class="service-page bills-page padding-content">
+    <div class="center-page">
+      <div v-if="!authStore.loadingUser">
+        <div
+          v-if="isLogin"
+          class="bills-page-container"
+        >
+          This is Bills page
+        </div>
+        <RequireAuth v-else="!isLogin" />
+      </div>
+    </div>
   </div>
-
-  <RequireAuth v-if="!isLogin" />
 </template>
 
 <script setup lang="ts">

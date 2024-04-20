@@ -38,11 +38,13 @@ export async function initFacebookSdk() {
 
         // FB.login(function () {});
 
-        window.FB.getLoginStatus((response: any) => {
-          // if (response.status === 'connected') {
-          //   console.log('getLoginStatus:', response);
-          // }
-        });
+        if (nuxtConfig.app?.production_mode) {
+          window.FB.getLoginStatus((response: any) => {
+            // if (response.status === 'connected') {
+            //   console.log('getLoginStatus:', response);
+            // }
+          });
+        }
 
         resolve({ success: true });
       };

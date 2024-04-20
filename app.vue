@@ -31,7 +31,7 @@
     </ClientOnly> -->
 
       <NuxtLoadingIndicator
-        color="linear-gradient(90deg, var(--loading-progress-bar1), var(--loading-progress-bar2), var(--loading-progress-bar3))"
+        color="linear-gradient(90deg, var(--loading-progress-bar1), var(--loading-progress-bar2))"
         :height="3"
         :throttle="300"
         :duration="2000"
@@ -78,9 +78,9 @@
 // import { LoadingApp } from '~/components/Loading';
 // import { RequireAuthDialog } from '~/components/RequireAuth';
 // import { NetworkChecker } from '~/components/NetworkChecker';
-import LoadingApp from '~/components/Loading/LoadingApp/LoadingApp.server.vue';
-import RequireAuthDialog from '~/components/RequireAuth/RequireAuthDialog/RequireAuthDialog.vue';
-import NetworkChecker from '~/components/NetworkChecker/NetworkChecker.vue';
+// import LoadingApp from '~/components/Loading/LoadingApp/LoadingApp.server.vue';
+// import RequireAuthDialog from '~/components/RequireAuth/RequireAuthDialog/RequireAuthDialog.vue';
+// import NetworkChecker from '~/components/NetworkChecker/NetworkChecker.vue';
 
 const runtimeConfig = useRuntimeConfig();
 

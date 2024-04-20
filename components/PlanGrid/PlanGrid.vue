@@ -209,11 +209,11 @@ import { getAllPlan } from '~/services/plans';
 import type { plan } from '@/types';
 
 const emits = defineEmits<{
-  onSelectPlan: [selected: plan];
+  onSelectPlan: [selected: plan | undefined];
 }>();
 
 const authStore = useAuthStore();
-// const plans = ref<plan[]>([]);
+const plans = ref<plan[]>([]);
 const loading = ref<boolean>(false);
 const selected = ref<string>('');
 
@@ -236,22 +236,35 @@ const selected = ref<string>('');
 //   });
 // });
 
-loading.value = true;
+// loading.value = true;
 
-const { data: plans } = await useAsyncData(`plan/all`, () => getAllPlan(), {
-  transform: (data) => {
-    return data.results;
-  }
+// const { data: plans } = await useLazyAsyncData(`plan/all`, () => getAllPlan(), {
+//   transform: (data) => {
+//     return data.results;
+//   }
+// });
+
+// loading.value = false;
+
+onBeforeMount(async () => {
+  loading.value = true;
+
+  await getAllPlan()
+    .then((response) => {
+      plans.value = response?.results;
+    })
+    .catch(() => {})
+    .finally(() => {
+      loading.value = false;
+    });
+
+  selected.value = plans.value.find((item: plan) => item.order == 3)!.id;
+
+  emits(
+    'onSelectPlan',
+    plans.value.find((item: plan) => item.order == 3)
+  );
 });
-
-loading.value = false;
-
-selected.value = plans.value.find((item: plan) => item.order == 3)!.id;
-
-emits(
-  'onSelectPlan',
-  plans.value.find((item: plan) => item.order == 3)
-);
 
 const handleClickPlanOpiton = (plan: plan) => {
   if (selected.value == plan.id) return;

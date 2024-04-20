@@ -103,7 +103,6 @@ export declare type subscription = {
   billing_cycle_anchor: string;
   interval: 'day' | 'week' | 'month' | 'year';
   interval_count: number | 1;
-  vip: number | 0;
   plan: plan;
   status:
     | 'trialing'
@@ -118,6 +117,41 @@ export declare type subscription = {
   createdAt?: string;
   updatedAt?: string;
 } | null;
+
+export declare type Invoice = {
+  id: string;
+  account_id: string;
+  session_id: string;
+  customer_id: string;
+  subscription_id: string;
+  invoice_id: string;
+  description: string;
+  session: object;
+  subscription: object;
+  invoice: object;
+  customer_details: object;
+  unit_amount: number;
+  quantity: number;
+  amount_total: number;
+  amount_due: number;
+  amount_paid: number;
+  amount_remaining: number;
+  amount_discount: number;
+  amount_tax: number;
+  currency: 'vnd' | 'usd';
+  items: any[];
+  status: 'complete' | 'pending' | 'incomplete' | 'canceled' | 'expired';
+  payment_status: 'paid' | 'unpaid' | 'error';
+  payment_method: 'momo' | 'zalopay' | 'vnpay' | 'stripe';
+  period_start: string;
+  period_end: string;
+  url: string;
+  success_url: string;
+  created_at: string;
+  updated_at: string;
+  createdAt?: string;
+  updatedAt?: string;
+};
 
 export declare type commentForm = {
   id: string;

@@ -214,7 +214,7 @@
 
 <script setup lang="ts">
 // import { VerifySignUpForm } from '~/components/VerifyForm';
-import VerifySignUpForm from '~/components/VerifyForm/VerifySignUpForm/VerifySignUpForm.vue';
+// import VerifySignUpForm from '~/components/VerifyForm/VerifySignUpForm/VerifySignUpForm.vue';
 import { LockOutlined, UserOutlined } from '@ant-design/icons-vue';
 import type { Rule } from 'ant-design-vue/es/form';
 import { ElNotification } from 'element-plus';

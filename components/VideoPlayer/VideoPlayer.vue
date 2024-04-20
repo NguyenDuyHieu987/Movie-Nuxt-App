@@ -751,8 +751,8 @@
 <script setup lang="ts">
 // import { CloseBtn } from '~/components/Button';
 // import { LoadingSpinner } from '~/components/Loading';
-import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
-import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+// import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
+// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { getImage } from '~/services/image';
 import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
@@ -1631,7 +1631,10 @@ const onKeyDownVideo = (e: any) => {
         document.exitFullscreen();
       } else {
         videoStates.isFullScreen = true;
-        window.screen.orientation.lock('landscape');
+        window.screen.orientation
+          .lock('landscape')
+          .then(function () {})
+          .catch(function () {});
         videoPlayer.value!.requestFullscreen();
       }
       break;

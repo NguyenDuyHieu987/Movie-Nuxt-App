@@ -11,7 +11,7 @@
 
         <div class="logo">
           <NuxtLink :to="{ path: '/' }">
-            <nuxt-img
+            <NuxtImg
               :src="getImage('logo.png', 'logo')"
               alt=""
               :height="30"

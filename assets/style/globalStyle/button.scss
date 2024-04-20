@@ -75,7 +75,7 @@
     }
   }
 
-  &.ant-btn-dangerous:not([disabled]) {
+  &.ant-btn-dangerous.ant-btn-primary:not([disabled]) {
     background-color: var(--btn-danger-color);
     // color: var(--btn-danger-color);
     border-color: var(--btn-danger-color);

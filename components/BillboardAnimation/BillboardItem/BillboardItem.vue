@@ -19,7 +19,7 @@
     <div class="billboard-item-body">
       <div class="info">
         <div class="head">
-          <!-- <nuxt-img
+          <!-- <NuxtImg
             class="pngegg"
             :src="getImage('pngegg.png', 'misc')"
             alt=""

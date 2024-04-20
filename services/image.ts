@@ -38,7 +38,8 @@ export function getImage(
   const utils = useUtils();
 
   const URL_IMAGE = nuxtConfig.app.production_mode
-    ? nuxtConfig.app.serverImageUrl
+    ? // ? nuxtConfig.app.serverImageUrl
+      `${DEV_SERVER_IMAGE}/static`
     : `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
@@ -47,7 +48,8 @@ export function getImage(
     return `${URL_IMAGE}/images/${type}/${path}`;
   }
 
-  return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
+  return `${URL_IMAGE}/images/${type}/${path}`;
+  // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
 }
 
 export function getServerImage(path: string, type: string, crop = ''): string {

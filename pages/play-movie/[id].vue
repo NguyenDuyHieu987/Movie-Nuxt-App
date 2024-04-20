@@ -291,19 +291,16 @@
 // import { Interaction } from '~/components/Interaction';
 // import { Comment } from '~/components/Comment';
 // import { MovieSuggested } from '~/components/MovieSuggested';
-import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
-import BackPage from '~/components/BackPage/BackPage.vue';
-import VideoPlayer from '~/components/VideoPlayer/VideoPlayer.vue';
-// const VideoPlayer = defineAsyncComponent(
-//   () => import('~/components/VideoPlayer/VideoPlayer.vue')
-// );
-import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';
-import Tags from '~/components/Tags/Tags.vue';
-import Overview from '~/components/Overview/Overview.server.vue';
-import RatingMovie from '~/components/RatingMovie/RatingMovie.vue';
-import Interaction from '~/components/Interaction/Interaction.vue';
-import Comment from '~/components/Comment/Comment.vue';
-import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
+// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+// import BackPage from '~/components/BackPage/BackPage.vue';
+// import VideoPlayer from '~/components/VideoPlayer/VideoPlayer.vue';
+// import HistoryProgressBar from '~/components/HistoryProgressBar/HistoryProgressBar.vue';
+// import Tags from '~/components/Tags/Tags.vue';
+// import Overview from '~/components/Overview/Overview.server.vue';
+// import RatingMovie from '~/components/RatingMovie/RatingMovie.vue';
+// import Interaction from '~/components/Interaction/Interaction.vue';
+// import Comment from '~/components/Comment/Comment.vue';
+// import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';

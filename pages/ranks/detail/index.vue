@@ -177,7 +177,7 @@
 
 <script setup lang="ts">
 // import { BackPage } from '~/components/BackPage';
-import BackPage from '~/components/BackPage/BackPage.vue';
+// import BackPage from '~/components/BackPage/BackPage.vue';
 import { filterRanks } from '~/services/ranks';
 import type { formfilterRank, rankSort, rankType } from '~/types';
 

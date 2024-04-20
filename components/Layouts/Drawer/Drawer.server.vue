@@ -94,7 +94,7 @@
 
       <header class="user-header">
         <div class="avatar-box" v-if="!collapsed && isLogin">
-          <nuxt-img
+          <NuxtImg
             class="avatar"
             :src="
               !isNaN(+userAccount?.avatar)

@@ -55,7 +55,8 @@
 
 <script setup lang="ts">
 // import { PlanGrid } from '~/components/PlanGrid';
-import PlanGrid from '~/components/PlanGrid/PlanGrid.vue';
+// import PlanGrid from '~/components/PlanGrid/PlanGrid.vue';
+// import { getAllPlan } from '~/services/plans';
 import type { plan } from '~/types';
 
 definePageMeta({
@@ -85,6 +86,18 @@ useSeoMeta({
 const authStore = useAuthStore();
 const selectedPlan = ref<plan>();
 const showAnimation = ref<boolean>(false);
+// const plans = ref<plan[]>([]);
+const loading = ref<boolean>(false);
+
+// loading.value = true;
+
+// const { data: plans } = await useLazyAsyncData(`plan/all`, () => getAllPlan(), {
+//   transform: (data) => {
+//     return data.results;
+//   }
+// });
+
+// loading.value = false;
 
 onBeforeMount(async () => {
   await nextTick();
@@ -92,7 +105,7 @@ onBeforeMount(async () => {
   showAnimation.value = true;
 });
 
-const handleOnSelectPlan = (plan: plan) => {
+const handleOnSelectPlan = (plan: plan | undefined) => {
   selectedPlan.value = plan;
 };
 

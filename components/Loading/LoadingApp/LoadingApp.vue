@@ -3,9 +3,12 @@
     class="app-loading"
     :class="{ active: store.loadingApp }"
   >
-    <div class="app-loading-container">
+    <div
+      v-if="store.loadingApp"
+      class="app-loading-container"
+    >
       <div class="logo">
-        <!-- <nuxt-img :src="getImage('logo.png', 'logo', 'w-70')" alt="" /> -->
+        <!-- <NuxtImg :src="getImage('logo.png', 'logo', 'w-70')" alt="" /> -->
 
         <div class="icon-loading"><LoadingAppIcon /></div>
       </div>

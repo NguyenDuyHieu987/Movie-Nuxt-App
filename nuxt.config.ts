@@ -237,43 +237,41 @@ export default defineNuxtConfig({
   },
   plugins: [],
   hooks: {
-    'pages:extend': function (pages: any) {
-      function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
-        const pagesToRemove = [];
-        for (const page of pages) {
-          if (page.file && pattern.test(page.file)) {
-            pagesToRemove.push(page);
-          } else {
-            removePagesMatching(pattern, page.children);
-          }
-        }
-        for (const page of pagesToRemove) {
-          pages.splice(pages.indexOf(page), 1);
-        }
-      }
-      removePagesMatching(/\/components\//, pages);
-    }
+    // 'pages:extend': function (pages: any) {
+    //   function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
+    //     const pagesToRemove = [];
+    //     for (const page of pages) {
+    //       if (page.file && pattern.test(page.file)) {
+    //         pagesToRemove.push(page);
+    //       } else {
+    //         removePagesMatching(pattern, page.children);
+    //       }
+    //     }
+    //     for (const page of pagesToRemove) {
+    //       pages.splice(pages.indexOf(page), 1);
+    //     }
+    //   }
+    //   removePagesMatching(/\/components\//, pages);
+    // }
   },
   build: {
     // analyze: true,
   },
   components: {
     global: false,
-    loader: true,
-    generateMetadata: true,
     dirs: [
       {
         path: '~/components/global',
         global: true,
         extensions: ['.vue'],
         pathPrefix: false
+      },
+      {
+        path: '~/components',
+        global: false,
+        extensions: ['.vue'],
+        pathPrefix: false
       }
-      // {
-      //   path: '~/components',
-      //   global: false,
-      //   extensions: ['.vue'],
-      //   pathPrefix: false
-      // }
     ]
   },
   vue: { propsDestructure: true },
@@ -415,12 +413,12 @@ export default defineNuxtConfig({
     exclude: []
   },
   routeRules: {
-    '/': { isr: true, prerender: true },
-    '/feature/**': { isr: true },
-    '/television/**': { isr: true },
-    '/discover/**': { isr: true },
-    '/search/**': { isr: true },
-    '/ranks/**': { isr: true },
+    '/': { swr: true, prerender: true },
+    '/feature/**': { swr: true },
+    '/television/**': { swr: true },
+    '/discover/**': { swr: true },
+    '/search/**': { swr: true },
+    '/ranks/**': { swr: true },
     '/login': {
       prerender: true
     },
@@ -429,20 +427,20 @@ export default defineNuxtConfig({
       prerender: true
     },
     '/ForgotPassword': { prerender: true },
-    '/ResetPassword': { isr: false },
-    '/ChangeEmail': { isr: false },
-    '/follow/**': { isr: false },
-    '/history/**': { isr: false },
-    '/info-movie/**': { isr: true },
-    '/info-tv/**': { isr: true },
-    '/play-movie/**': { isr: true },
-    '/play-tv/**': { isr: true },
+    '/ResetPassword': { swr: false },
+    '/ChangeEmail': { swr: false },
+    '/follow/**': { swr: false },
+    '/history/**': { swr: false },
+    '/info-movie/**': { swr: true },
+    '/info-tv/**': { swr: true },
+    '/play-movie/**': { swr: true },
+    '/play-tv/**': { swr: true },
     '/upgrade/plans': { prerender: true },
-    '/upgrade/PaymentPicker': { isr: false },
-    '/upgrade/**': { isr: true },
+    '/upgrade/PaymentPicker': { swr: false },
+    '/upgrade/**': { swr: true },
     '/upgrade': { redirect: '/upgrade/plans' },
     '/plans': { redirect: '/upgrade/plans' },
-    '/YourAccount/**': { isr: false },
+    '/YourAccount/**': { swr: false },
     '/help/**': { prerender: true },
     '/contact/**': { prerender: true },
     '/contactus': { redirect: '/contact' }

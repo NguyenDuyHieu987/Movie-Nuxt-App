@@ -36,7 +36,7 @@
         <div class="footer-section default">
           <div class="logo">
             <NuxtLink :to="{ path: '/' }">
-              <nuxt-img
+              <NuxtImg
                 :src="getImage('logo.png', 'logo', 'w-60')"
                 loading="lazy"
                 alt=""

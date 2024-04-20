@@ -18,7 +18,7 @@
       </div>
 
       <!-- <div class="image-auth responsive">
-          <nuxt-img
+          <NuxtImg
             :src="
               getImage(
                 `Background_Auth${image_mobile}.jpg`,

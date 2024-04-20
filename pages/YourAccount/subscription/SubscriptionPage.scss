@@ -1,0 +1,80 @@
+.subscription-page {
+  height: 100%;
+
+  .center-page {
+    max-width: 900px;
+    margin: 0px auto;
+  }
+
+  .subscription-page-container {
+    padding-top: 10px;
+
+    .subscription-page-header {
+      margin-bottom: 10px;
+    }
+
+    .subscription-info-list {
+      .subscription-info-item {
+        display: flex;
+        padding: 15px 2px 15px 2px;
+        border-bottom: 1px solid var(--border-regular);
+
+        label {
+          position: relative;
+          display: inline-block;
+          width: 250px;
+          flex-shrink: 0;
+          font-size: 1.8rem;
+          color: var(--text-color-gray);
+          cursor: default;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            background-color: var(--border-regular);
+          }
+        }
+
+        .subscription-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          flex-grow: 1;
+          text-align: center;
+        }
+
+        a.subscription-info {
+          transition: all 0.15s;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      margin: 0px auto;
+      margin-top: 50px;
+
+      .extend-btn {
+        width: 100px;
+        background-color: var(--app-background-color);
+      }
+
+      .cancel-extend-btn {
+      }
+    }
+  }
+}

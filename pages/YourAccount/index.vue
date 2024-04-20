@@ -153,12 +153,19 @@
                       </div>
                       <div class="right">
                         <a-button
+                          v-if="!authStore.isVipMember"
                           class="upgrade-btn click-active"
                           type="text"
                           @click="navigateTo('/upgrade/plans')"
                         >
                           Nâng cấp
                         </a-button>
+                        <NuxtLink
+                          v-else
+                          to="/YourAccount/subscription"
+                        >
+                          Chi tiết
+                        </NuxtLink>
                       </div>
                     </div>
                   </div>
