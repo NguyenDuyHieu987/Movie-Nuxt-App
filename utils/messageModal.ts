@@ -4,15 +4,16 @@ import {
   QuestionCircleOutlined
 } from '@ant-design/icons-vue';
 import { Modal } from 'ant-design-vue';
+import type { ModalFuncProps } from 'ant-design-vue';
 
-interface optionsConfirm {
+declare type optionsConfirm = {
   title: string;
   message: string;
   okText?: string;
   cancelText?: string;
   onOk: () => any;
   onCancel: () => any;
-}
+} & ModalFuncProps;
 
 export function conrfirmMessageModal(options: optionsConfirm) {
   Modal.confirm({
@@ -23,7 +24,7 @@ export function conrfirmMessageModal(options: optionsConfirm) {
     okButtonProps: {
       type: 'primary',
       size: 'middle',
-      danger: true
+      danger: options.okButtonProps?.danger
     },
     cancelButtonProps: { type: 'default', size: 'middle' },
     cancelText: options?.cancelText || 'Không',

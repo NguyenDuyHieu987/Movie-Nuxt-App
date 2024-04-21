@@ -291,6 +291,7 @@ const removeAllFollowList = () => {
     utils.conrfirmMessageModal({
       title: 'Thông Báo',
       message: 'Bạn có muốn xóa toàn bộ Danh sách phát không?',
+      okButtonProps: { danger: true },
       onOk: async function () {
         if (await utils.handleRemoveAllitemFromList()) {
           dataList.value = [];

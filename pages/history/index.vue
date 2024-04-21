@@ -288,6 +288,7 @@ const removeAllHistoryList = () => {
     utils.conrfirmMessageModal({
       title: 'Thông Báo',
       message: 'Bạn có muốn xóa toàn bộ Lịch sử xem không?',
+      okButtonProps: { danger: true },
       onOk: async function () {
         if (await utils.handleRemoveAllitemFromHistory()) {
           dataHistory.value = [];
