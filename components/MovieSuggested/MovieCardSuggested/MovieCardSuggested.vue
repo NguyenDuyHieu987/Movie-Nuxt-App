@@ -375,15 +375,21 @@ const handleAddToList = () => {
 };
 
 const onClickPlay = () => {
-  navigateTo({
-    path: isEpisodes.value
-      ? `/play-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-          props.item?.name
-        )}/tap-1`
-      : `/play-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-          props.item?.name
-        )}`
-  });
+  return navigateTo(
+    {
+      path: isEpisodes.value
+        ? `/play-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+            props.item?.name
+          )}/tap-1`
+        : `/play-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+            props.item?.name
+          )}`
+    },
+    {
+      replace: true,
+      open: { target: '_self' }
+    }
+  );
 };
 </script>
 

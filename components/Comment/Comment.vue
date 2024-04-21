@@ -71,6 +71,28 @@ const skip = ref<number>(1);
 const total = ref<number>(0);
 const loadMore = ref<boolean>(false);
 
+loading.value = true;
+
+// useAsyncData(
+//   `${props.dataMovie?.media_type}/${props.dataMovie?.id}`,
+//   () =>
+//     getCommentParent(
+//       props.dataMovie?.id,
+//       props.dataMovie?.media_type,
+//       skip.value
+//     )
+// )
+getCommentParent(props.dataMovie?.id, props.dataMovie?.media_type, skip.value)
+  .then((response) => {
+    commentsList.value = response?.results;
+    total.value = response?.total;
+    skip.value = 2;
+  })
+  .catch((e) => {})
+  .finally(() => {
+    loading.value = false;
+  });
+
 onMounted(() => {
   window.onscroll = async () => {
     if (commentsList.value?.length == 0) {
@@ -102,28 +124,6 @@ onMounted(() => {
     }
   };
 });
-
-loading.value = true;
-
-// useAsyncData(
-//   `${props.dataMovie?.media_type}/${props.dataMovie?.id}`,
-//   () =>
-//     getCommentParent(
-//       props.dataMovie?.id,
-//       props.dataMovie?.media_type,
-//       skip.value
-//     )
-// )
-getCommentParent(props.dataMovie?.id, props.dataMovie?.media_type, skip.value)
-  .then((response) => {
-    commentsList.value = response?.results;
-    total.value = response?.total;
-    skip.value = 2;
-  })
-  .catch((e) => {})
-  .finally(() => {
-    loading.value = false;
-  });
 </script>
 
 <!-- <style lang="scss" src="./Comment.scss"></style> -->
