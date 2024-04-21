@@ -25,7 +25,7 @@ export function conrfirmMessageModal(options: optionsConfirm) {
       size: 'middle',
       danger: true
     },
-    cancelButtonProps: { type: 'default', size: 'large' },
+    cancelButtonProps: { type: 'default', size: 'middle' },
     cancelText: options?.cancelText || 'Không',
     centered: true,
     maskClosable: true,
