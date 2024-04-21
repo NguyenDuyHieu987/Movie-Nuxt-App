@@ -1225,9 +1225,7 @@ const onCanPlayVideo = () => {
     videoStates.isLoading = false;
   }
 
-  if (video.value!.ended) {
-    return;
-  }
+  if (!video.value || video.value!.ended) return;
 
   video.value!.play().catch(() => {
     if (videoStates.isPlayVideo) {
@@ -1237,6 +1235,8 @@ const onCanPlayVideo = () => {
 };
 
 const onLoadedDataVideo = () => {
+  if (!video.value) return;
+
   // console.log('loaded start video');
   if (video.value!.muted) {
     video.value!.muted = false;
@@ -1251,6 +1251,8 @@ const onTimeUpdateVideo = (e: any) => {
   const percent = e.target.currentTime / e.target.duration;
   progressBar.value!?.style.setProperty('--progress-width', percent.toString());
 
+  if (!video.value) return;
+
   emits('onTimeUpdate', {
     seconds: video.value!.currentTime,
     percent: video.value!.currentTime / video.value!.duration,
@@ -1262,7 +1264,7 @@ const onProgressVideo = (e: any) => {
   // console.log('buffered:', video.value.buffered.end(0));
   // console.log('seekable:', video.value.seekable.end(0));
 
-  if (videoStates.isLoaded) {
+  if (videoStates.isLoaded && video.value) {
     const bufferedLength: number = video.value!.buffered.length;
 
     for (let i = 0; i < bufferedLength; i++) {
