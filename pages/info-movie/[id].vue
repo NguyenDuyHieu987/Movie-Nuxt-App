@@ -441,10 +441,12 @@ import { getItemList } from '~/services/list';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
-  pageTransition: {
-    name: 'fade'
-  }
+  key: 'info-movie'
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
+defineOptions({ name: 'info-movie' });
 
 const nuxtApp = useNuxtApp();
 const store = useStore();
@@ -539,8 +541,8 @@ const { data: dataMovie } = await useAsyncData(
   `movie/detail/${movieId.value}/videos`,
   () => getMovieById(movieId.value, 'videos'),
   {
+    lazy: true
     // server: false,
-    // lazy: true,
     // immediate: false,
   }
 );

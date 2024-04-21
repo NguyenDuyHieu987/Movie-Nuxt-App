@@ -26,26 +26,85 @@
       }"
       @click="handleClickVideoPlayer"
     >
-      <video
-        id="video-player"
-        ref="video"
-        :src="videoSrc"
-        :poster="backdrop"
-        @loadstart="onLoadStartVideo"
-        @loadeddata="onLoadedDataVideo"
-        @canplay="onCanPlayVideo"
-        @timeupdate="onTimeUpdateVideo"
-        @ended="onEndedVideo"
-        @waiting="onWaitingVideo"
-        @progress="onProgressVideo"
-        @play="onPlayVideo"
-        @pause="onPauseVideo"
-        @playing="onPLayingVideo"
+      <div class="ratio-16-9"></div>
+      <div
+        class="box-video"
+        v-if="!loadingData"
       >
-        <!-- <source src="blobVideoSrc" ref="srcVideo" type="video/mp4" /> -->
-      </video>
+        <video
+          v-if="isEligibleUser"
+          id="video-player"
+          ref="video"
+          :src="videoSrc"
+          :poster="backdrop"
+          @loadstart="onLoadStartVideo"
+          @loadeddata="onLoadedDataVideo"
+          @canplay="onCanPlayVideo"
+          @timeupdate="onTimeUpdateVideo"
+          @ended="onEndedVideo"
+          @waiting="onWaitingVideo"
+          @progress="onProgressVideo"
+          @play="onPlayVideo"
+          @pause="onPauseVideo"
+          @playing="onPLayingVideo"
+        >
+          <!-- <source src="blobVideoSrc" ref="srcVideo" type="video/mp4" /> -->
+        </video>
 
-      <div class="float-center">
+        <div
+          v-else
+          class="require-vip"
+        >
+          <!-- <div class="ratio-16-9"></div> -->
+          <div class="require-vip-wrapper">
+            <div
+              v-if="authStore.vipNumber == 0"
+              class="require-vip-message"
+            >
+              <span>
+                Bạn cần nâng cấp tài khoản lên
+                <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim.
+              </span>
+              <NuxtLink
+                class="underline"
+                :to="{
+                  path: `/upgrade/plans`,
+                  query: {
+                    order: movieVipNumber
+                  }
+                }"
+              >
+                Nâng cấp ngay
+              </NuxtLink>
+            </div>
+            <div
+              v-else
+              class="require-vip-message"
+            >
+              <span>
+                Bạn cần nâng cấp tài khoản lên
+                <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim
+              </span>
+              <NuxtLink
+                class="underline"
+                :to="{
+                  path: `/upgrade/plans`,
+                  query: {
+                    order: movieVipNumber
+                  }
+                }"
+              >
+                Nâng cấp ngay
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        v-if="isEligibleUser"
+        class="float-center"
+      >
         <div
           v-show="
             (videoStates.isLoading &&
@@ -142,10 +201,11 @@
       </div>
 
       <div
+        v-if="isEligibleUser"
         class="overlay-controls-animation"
         :class="{
           active: videoStates.isActiveControlsAnimation,
-          rewind: videoStates.isRewind
+          rewind: videoStates.isRewind.enable
         }"
       >
         <div class="box-icon">
@@ -191,6 +251,7 @@
       </div>
 
       <div
+        v-if="isEligibleUser"
         ref="timeline"
         class="timeline"
         :class="{
@@ -200,7 +261,7 @@
         }"
       >
         <div class="timeline-container">
-          <div class="img-box">
+          <div class="img-box ratio-16-9">
             <canvas
               ref="canvasPreviewImg"
               class="canvas-preview-img"
@@ -214,6 +275,7 @@
 
       <!-- v-show="videoStates.isLoaded || mounted" -->
       <div
+        v-if="isEligibleUser"
         class="controls"
         :class="{
           scrubbing: videoStates.isScrubbingProgressBar
@@ -484,6 +546,7 @@
       </div>
 
       <div
+        v-if="isEligibleUser"
         class="video-mask"
         tabindex="-1"
         @click="onClickVideo"
@@ -504,6 +567,7 @@
       ></div>
 
       <div
+        v-if="isEligibleUser"
         class="settings"
         :class="{
           active: settingStates.enable && !videoStates.isHideControls,
@@ -761,13 +825,12 @@ import { useLocalStorage } from '@vueuse/core';
 const props = withDefaults(
   defineProps<{
     dataMovie: any;
-    // isInHistory: boolean;
-    // historyProgress: { duration: number; percent: number; seconds: number };
+    loadingData: boolean;
     backdrop: string;
     videoUrl: string;
   }>(),
   {
-    // isInHistory: false,
+    loadingData: true
   }
 );
 
@@ -777,7 +840,14 @@ const emits = defineEmits<{
 }>();
 
 const nuxtConfig = useRuntimeConfig();
+const authStore = useAuthStore();
 const route = useRoute();
+const movieVipNumber = computed<number>(() => props.dataMovie?.vip || 0);
+const isEligibleUser = computed<boolean>(
+  () =>
+    (!props.loadingData && movieVipNumber.value == 0) ||
+    authStore.vipNumber! > movieVipNumber.value
+);
 const videoSrc = computed<string>(
   () =>
     nuxtConfig.app.production_mode
@@ -960,6 +1030,8 @@ const loadM3u8Video = () => {
 watch(
   () => props.videoUrl,
   (newVal, oldVal) => {
+    if (!isEligibleUser.value) return;
+
     // initVideo(newVal);
 
     if (props.dataMovie?.media_type == 'tv') {
@@ -1012,6 +1084,8 @@ const windowTouchEnd = () => {
 };
 
 const clearVideoPlayer = () => {
+  if (!isEligibleUser.value && !video.value) return;
+
   if (!video.value!.paused) {
     video.value!.pause();
   }
@@ -1036,6 +1110,8 @@ onBeforeMount(() => {
 
 onMounted(() => {
   mounted.value = true;
+
+  if (!isEligibleUser.value) return;
 
   if (video.value!.autoplay) {
     video.value!.autoplay = false;
@@ -1278,28 +1354,24 @@ const onClickReplayVideo = () => {
   video.value!.play();
 };
 
-const playVideo = () => {
+const playVideo = async () => {
   video.value!.play();
   videoStates.isPlayVideo = true;
 
-  new Promise((resolve, reject) => {
-    resolve((videoStates.isActiveControlsAnimation = false));
-  }).then(() => {
-    videoStates.isActiveControlsAnimation = true;
-  });
+  videoStates.isActiveControlsAnimation = false;
+  await wait(10);
+  videoStates.isActiveControlsAnimation = true;
 
   videoStates.isRewind.enable = false;
 };
 
-const pauseVideo = () => {
+const pauseVideo = async () => {
   video.value!.pause();
   videoStates.isPlayVideo = false;
 
-  new Promise((resolve, reject) => {
-    resolve((videoStates.isActiveControlsAnimation = false));
-  }).then(() => {
-    videoStates.isActiveControlsAnimation = true;
-  });
+  videoStates.isActiveControlsAnimation = false;
+  await wait(10);
+  videoStates.isActiveControlsAnimation = true;
 
   videoStates.isRewind.enable = false;
 };
@@ -1326,7 +1398,7 @@ const onClickVideo = (e: any) => {
   }
 };
 
-const rewindVideo = (value: number) => {
+const rewindVideo = async (value: number) => {
   if (video.value!.currentTime != 0) {
     video.value!.currentTime -= value;
     checkEndedVideo();
@@ -1341,11 +1413,9 @@ const rewindVideo = (value: number) => {
       video.value!.play();
     }
 
-    new Promise((resolve, reject) => {
-      resolve((videoStates.isActiveControlsAnimation = false));
-    }).then(() => {
-      videoStates.isActiveControlsAnimation = true;
-    });
+    videoStates.isActiveControlsAnimation = false;
+    await wait(10);
+    videoStates.isActiveControlsAnimation = true;
 
     videoStates.isRewind.enable = true;
     videoStates.isRewind.replay = true;
@@ -1357,7 +1427,7 @@ const onClickRewind = () => {
   rewindVideo(10);
 };
 
-const forwardVideo = (value: number) => {
+const forwardVideo = async (value: number) => {
   if (!videoStates.isEndedVideo) {
     video.value!.currentTime += value;
     checkEndedVideo();
@@ -1368,11 +1438,9 @@ const forwardVideo = (value: number) => {
       percent.toString()
     );
 
-    new Promise((resolve, reject) => {
-      resolve((videoStates.isActiveControlsAnimation = false));
-    }).then(() => {
-      videoStates.isActiveControlsAnimation = true;
-    });
+    videoStates.isActiveControlsAnimation = false;
+    await wait(10);
+    videoStates.isActiveControlsAnimation = true;
 
     videoStates.isRewind.enable = true;
     videoStates.isRewind.replay = false;

@@ -88,9 +88,9 @@ import { getMoviesByYear } from '~/services/discover';
 import type { year } from '@/types';
 
 definePageMeta({
-  pageTransition: {
-    // name: 'fade'
-  }
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
 
 const utils = useUtils();

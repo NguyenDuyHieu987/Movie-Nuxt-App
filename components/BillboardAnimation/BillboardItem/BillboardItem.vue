@@ -93,9 +93,7 @@
               v-else
               class="release-date"
             >
-              {{
-                item?.last_air_date ? item?.last_air_date : item?.first_air_date
-              }}
+              {{ item?.first_air_date }}
             </p>
 
             <!-- <p class="genres">

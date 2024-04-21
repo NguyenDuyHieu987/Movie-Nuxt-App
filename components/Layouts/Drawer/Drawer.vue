@@ -117,7 +117,7 @@
 
 <script setup lang="ts">
 // import { TheMenu } from '~/components/Layouts';
-import TheMenu from '~/components/Layouts/TheMenu/TheMenu.server.vue';
+// import TheMenu from '~/components/Layouts/TheMenu/TheMenu.vue';
 import { storeToRefs } from 'pinia';
 import { getImage } from '~/services/image';
 

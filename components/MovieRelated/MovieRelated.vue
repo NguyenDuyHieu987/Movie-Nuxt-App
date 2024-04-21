@@ -148,8 +148,8 @@
 
 <script setup lang="ts">
 // import { MovieCardRelated } from '~/components/MovieRelated';
-import MovieCardRelated from '~/components/MovieRelated/MovieCardRelated/MovieCardRelated.vue';
-import { ViewMoreBar } from '~/components/ViewMoreBar';
+// import MovieCardRelated from '~/components/MovieRelated/MovieCardRelated/MovieCardRelated.vue';
+// import { ViewMoreBar } from '~/components/ViewMoreBar';
 import { getSimilar } from '~/services/similar';
 import { getTrending } from '~/services/trending';
 
@@ -166,31 +166,39 @@ const viewMore = ref<boolean>(false);
 const loadingSimilar = ref<boolean>(false);
 const loadingRecommend = ref<boolean>(false);
 
-loadingSimilar.value = true;
-loadingRecommend.value = true;
+watch(
+  () => props.dataMovie,
+  (newVal, oldVal) => {
+    if (!oldVal && newVal) {
+      loadingSimilar.value = true;
+      loadingRecommend.value = true;
 
-getSimilar(
-  props?.dataMovie.media_type,
-  props?.dataMovie.id,
-  pageSimilar.value,
-  20
-)
-  .then((response) => {
-    dataSimilar.value = response?.results;
-  })
-  .catch((e) => {})
-  .finally(() => {
-    loadingSimilar.value = false;
-  });
+      getSimilar(
+        props?.dataMovie.media_type,
+        props?.dataMovie.id,
+        pageSimilar.value,
+        20
+      )
+        .then((response) => {
+          dataSimilar.value = response?.results;
+        })
+        .catch((e) => {})
+        .finally(() => {
+          loadingSimilar.value = false;
+        });
 
-getTrending(pageRecommend.value, 20)
-  .then((response) => {
-    dataRecommend.value = response?.results;
-  })
-  .catch((e) => {})
-  .finally(() => {
-    loadingRecommend.value = false;
-  });
+      getTrending(pageRecommend.value, 20)
+        .then((response) => {
+          dataRecommend.value = response?.results;
+        })
+        .catch((e) => {})
+        .finally(() => {
+          loadingRecommend.value = false;
+        });
+    }
+  },
+  { immediate: true }
+);
 
 // const { data: dataSimilar } = await useAsyncData(
 //   `similar/${props?.dataMovie.media_type}/${props?.dataMovie.id}/${pageSimilar.value}`,

@@ -25,5 +25,5 @@ export default defineNuxtPlugin({
     // }
   },
   parallel: true,
-  env: { islands: true }
+  env: { islands: false }
 });

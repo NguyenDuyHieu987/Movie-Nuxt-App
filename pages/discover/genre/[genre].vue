@@ -75,9 +75,9 @@ import { getGenreByShortName } from '~/services/genres';
 import type { genre } from '@/types';
 
 definePageMeta({
-  pageTransition: {
-    // name: 'fade'
-  }
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
 
 const route = useRoute();

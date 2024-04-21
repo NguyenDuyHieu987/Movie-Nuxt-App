@@ -449,10 +449,12 @@ import { getItemList } from '~/services/list';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
-  pageTransition: {
-    name: 'fade'
-  }
+  key: 'info-tv'
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
+defineOptions({ name: 'info-tv' });
 
 const nuxtApp = useNuxtApp();
 const store = useStore();
@@ -490,10 +492,10 @@ const getData = async () => {
 
   // await nextTick();
 
-  // await useAsyncData(`tv/detail/${movieId.value}/videos`, () =>
-  //   getTvById(movieId.value, 'videos')
+  // await useAsyncData(`tv/detail/${movieId.value}/videos,episodes`, () =>
+  //   getTvById(movieId.value, 'videos,episodes')
   // )
-  await getTvById(movieId.value, 'videos')
+  await getTvById(movieId.value, 'videos,episodes')
     .then((response) => {
       dataMovie.value = response;
 
@@ -547,8 +549,11 @@ onBeforeMount(() => {
 loading.value = true;
 
 const { data: dataMovie } = await useAsyncData(
-  `tv/detail/${movieId.value}/videos,episodes`,
-  () => getTvById(movieId.value, 'videos,episodes')
+  `tv/detail/${movieId.value}/videos`,
+  () => getTvById(movieId.value, 'videos'),
+  {
+    lazy: true
+  }
 );
 
 isAddToList.value = dataMovie.value?.in_list == true;

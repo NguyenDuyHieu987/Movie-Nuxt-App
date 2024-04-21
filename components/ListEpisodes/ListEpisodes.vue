@@ -51,8 +51,7 @@
     </h2>
 
     <div
-      v-show="dataEpisode?.length"
-      v-loading="loading"
+      v-loading="loading && dataEpisode?.length != 0"
       class="list-episodes-wrapper"
       element-loading-text="Đang tải tập..."
       element-loading-background="rgba(0, 0, 0, 0.6)"
@@ -63,11 +62,11 @@
       >
         <template #template>
           <el-skeleton-item
-            v-for="(item, index) in dataEpisode"
+            v-for="(item, index) in dataEpisode?.length || 20"
             :key="index"
+            :index="index"
             class="episode-item"
             variant="button"
-            :index="index"
           />
         </template>
 
@@ -146,7 +145,7 @@ const currentEpisode = ref<number>(
     ? +route.params?.ep?.replace('tap-', '')
     : 1
 );
-const loading = ref(false);
+const loading = ref<boolean>(false);
 
 const emitUrlCode = () => {
   // const url_code_movie = dataSeason.episodes?.find(
@@ -182,42 +181,51 @@ const getData = async () => {
 
 // getData();
 
-if (dataEpisode.value.length == 0) {
-  loading.value = true;
+watch(
+  () => props.dataMovie,
+  (newVal, oldVal) => {
+    if (!oldVal && newVal && dataEpisode.value.length == 0) {
+      loading.value = true;
 
-  getListEpisode(props.dataMovie?.id, props?.dataMovie?.season_id)
-    .then((response) => {
-      dataEpisode.value = response?.results
-        .filter((item: any) => item.air_date != null)
-        .reverse();
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loading.value = false;
+      getListEpisode(props.dataMovie?.id, props?.dataMovie?.season_id)
+        .then((response) => {
+          dataEpisode.value = response?.results
+            .filter((item: any) => item.air_date != null)
+            .reverse();
+        })
+        .catch((e) => {})
+        .finally(() => {
+          loading.value = false;
+        });
+    }
+  },
+  { immediate: true }
+);
+
+watchEffect(() => {
+  if (dataEpisode.value?.length > 0) {
+    emitUrlCode();
+
+    emit(
+      'changeEpisode',
+      dataEpisode.value.find(
+        (item) => item?.episode_number == currentEpisode.value
+      )
+    );
+
+    const episode = document.getElementById(
+      `episode-${currentEpisode.value}`
+    ) as HTMLElement;
+
+    listEpisodes.value?.scrollTo({
+      top: episode?.offsetTop,
+      behavior: 'smooth'
     });
-}
-
-onMounted(() => {
-  emitUrlCode();
-
-  emit(
-    'changeEpisode',
-    dataEpisode.value.find(
-      (item) => item?.episode_number == currentEpisode.value
-    )
-  );
-
-  const episode = document.getElementById(
-    `episode-${currentEpisode.value}`
-  ) as HTMLElement;
-
-  listEpisodes.value!.scrollTo({
-    top: episode?.offsetTop,
-    behavior: 'smooth'
-  });
-
+  }
   // episode.scrollIntoView();
 });
+
+onMounted(() => {});
 
 const handleChangeSeason = async (value: string) => {
   selectedSeasonId.value = value;
@@ -268,7 +276,7 @@ const handleChangeEpisode = (item: any) => {
 };
 </script>
 
-<style lang="scss" src="./ListEpisodes.scss" scoped></style>
-<!-- <style lang="scss" scoped>
+<style lang="scss" src="./ListEpisodes.scss"></style>
+<!-- <style lang="scss">
 @import url('./ListEpisodes.scss');
 </style> -->

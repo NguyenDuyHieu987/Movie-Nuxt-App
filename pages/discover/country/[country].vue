@@ -75,9 +75,9 @@ import { getMovieByCountry } from '~/services/discover';
 import type { country } from '@/types';
 
 definePageMeta({
-  pageTransition: {
-    // name: 'fade'
-  }
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
 
 const route = useRoute();

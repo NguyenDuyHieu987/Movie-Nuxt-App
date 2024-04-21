@@ -27,15 +27,14 @@
 </template>
 
 <script setup lang="ts">
+// import {
+//   // BreadCrumb,
+//   Drawer,
+//   Footer,
+//   Header,
+//   Sider
+// } from '~/components/Layouts';
 import { storeToRefs } from 'pinia';
-
-import {
-  // BreadCrumb,
-  Drawer,
-  Footer,
-  Header,
-  Sider
-} from '~/components/Layouts';
 
 const store = useStore();
 const authStore = useAuthStore();

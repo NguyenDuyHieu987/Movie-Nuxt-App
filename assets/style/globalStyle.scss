@@ -182,6 +182,7 @@ a {
   transition:
     color 0.15s,
     background-color 0.15s;
+  cursor: pointer;
 
   &.underline {
     &:hover {

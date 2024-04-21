@@ -150,10 +150,10 @@ import { MenuOutlined } from '@ant-design/icons-vue';
 //   SearchDropdown,
 //   SearchMobile
 // } from '~/components/Layouts/Header';
-import DropdownAccount from '~/components/Layouts/Header/DropdownAccount/DropdownAccount.vue';
-import Notification from '~/components/Layouts/Header/Notification/Notification.vue';
-import SearchDropdown from '~/components/Layouts/Header/SearchDropdown/SearchDropdown.vue';
-import SearchMobile from '~/components/Layouts/Header/SearchMobile/SearchMobile.vue';
+// import DropdownAccount from '~/components/Layouts/Header/DropdownAccount/DropdownAccount.vue';
+// import Notification from '~/components/Layouts/Header/Notification/Notification.vue';
+// import SearchDropdown from '~/components/Layouts/Header/SearchDropdown/SearchDropdown.vue';
+// import SearchMobile from '~/components/Layouts/Header/SearchMobile/SearchMobile.vue';
 import { getImage } from '~/services/image';
 import {
   getDaTaSearch,

@@ -301,14 +301,11 @@ const responsiveHorizoltal = computed<any>((): any => ({
 }));
 
 const getData = async () => {
-  loadingNowPlaying.value = true;
-  loadingTopRated.value = true;
-  loadingUpComing.value = true;
-  loadingPopular.value = true;
-
   // await nextTick();
 
-  // useAsyncData('movie/nowplaying/1', () => getNowPlaying(1))
+  // useAsyncData('movie/nowplaying/1', () => getNowPlaying(1, 12), {
+  //   lazy: true
+  // })
   getNowPlaying(1, 12)
     .then((response) => {
       nowPlayings.value = response?.results;
@@ -318,7 +315,9 @@ const getData = async () => {
       loadingNowPlaying.value = false;
     });
 
-  // useAsyncData(`movie/popular/1`, () => getPopular(2))
+  // useAsyncData(`movie/popular/1`, () => getPopular(2, 12), {
+  //   lazy: true
+  // })
   getPopular(2, 12)
     .then((response) => {
       populars.value = response?.results;
@@ -328,7 +327,9 @@ const getData = async () => {
       loadingPopular.value = false;
     });
 
-  // useAsyncData('movie/upcoming/1', () => getUpComing(3))
+  // useAsyncData('movie/upcoming/1', () => getUpComing(3, 12), {
+  //   lazy: true
+  // })
   getUpComing(3, 12)
     .then((response) => {
       upComings.value = response?.results;
@@ -338,7 +339,9 @@ const getData = async () => {
       loadingUpComing.value = false;
     });
 
-  // await useAsyncData('movie/toprated/1', () => getTopRated(4))
+  // useAsyncData('movie/toprated/1', () => getTopRated(4, 12), {
+  //   lazy: true
+  // })
   getTopRated(4, 12)
     .then((response) => {
       topRateds.value = response?.results;
@@ -353,7 +356,6 @@ const { data: dataBilboard, pending } = await useAsyncData(
   'movie/all/1',
   () => getMovies(1, 20),
   {
-    // lazy: true,
     // default: () => {
     //   return { results: trendingsCache.value || [] };
     // },

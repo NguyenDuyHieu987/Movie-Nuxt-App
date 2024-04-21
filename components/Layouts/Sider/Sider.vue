@@ -108,7 +108,7 @@
 <script setup lang="ts">
 // import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
 // import { TheMenu } from '~/components/Layouts';
-import TheMenu from '~/components/Layouts/TheMenu/TheMenu.server.vue';
+// import TheMenu from '~/components/Layouts/TheMenu/TheMenu.vue';
 import { getImage } from '~/services/image';
 import { storeToRefs } from 'pinia';
 import { useLocalStorage } from '@vueuse/core';

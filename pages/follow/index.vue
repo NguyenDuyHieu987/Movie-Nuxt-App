@@ -144,7 +144,7 @@ import reject from 'lodash/reject';
 import { storeToRefs } from 'pinia';
 
 definePageMeta({
-  key: 'follow'
+  key: 'Follow'
   // middleware: ['require-auth']
 });
 defineOptions({ name: 'Follow' });

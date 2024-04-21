@@ -84,9 +84,7 @@
 
       <div class="right">
         <div
-          v-if="
-            item?.release_date || item?.last_air_date || item?.first_air_date
-          "
+          v-if="item?.release_date || item?.first_air_date"
           class="release-date-wrapper"
         >
           <p
@@ -99,11 +97,7 @@
             v-else
             class="release-date"
           >
-            {{
-              item?.last_air_date?.slice(0, 4)
-                ? item?.last_air_date?.slice(0, 4)
-                : item?.first_air_date?.slice(0, 4)
-            }}
+            {{ item?.first_air_date?.slice(0, 4) }}
           </p>
         </div>
 

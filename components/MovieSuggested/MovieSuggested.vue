@@ -60,8 +60,8 @@
 
 <script setup lang="ts">
 // import { LoadingSpinner } from '~/components/Loading';
-import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
-import { MovieCardSuggested } from '~/components/MovieSuggested';
+// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+// import { MovieCardSuggested } from '~/components/MovieSuggested';
 import { getSimilar } from '~/services/similar';
 
 const props = defineProps<{
@@ -84,8 +84,8 @@ onMounted(() => {
       loadMore.value = true;
 
       await getSimilar(
-        props?.dataMovie.media_type,
-        props?.dataMovie.id,
+        props?.dataMovie?.media_type,
+        props?.dataMovie?.id,
         page.value,
         15
       )
@@ -103,24 +103,37 @@ onMounted(() => {
   };
 });
 
-loading.value = true;
+watch(
+  () => props.dataMovie,
+  (newVal, oldVal) => {
+    if (!oldVal && newVal) {
+      loading.value = true;
 
-getSimilar(props?.dataMovie.media_type, props?.dataMovie.id, page.value, 15)
-  .then((response) => {
-    dataSuggested.value = response?.results;
-    page.value = 2;
-  })
-  .catch((e) => {})
-  .finally(() => {
-    loading.value = false;
-  });
+      getSimilar(
+        props?.dataMovie?.media_type,
+        props?.dataMovie?.id,
+        page.value,
+        15
+      )
+        .then((response) => {
+          dataSuggested.value = response?.results;
+          page.value = 2;
+        })
+        .catch((e) => {})
+        .finally(() => {
+          loading.value = false;
+        });
+    }
+  },
+  { immediate: true }
+);
 
 // const { data: dataSuggested } = await useAsyncData(
-//   `similar/${props?.dataMovie.media_type}/${props?.dataMovie.id}/${page.value}`,
+//   `similar/${props?.dataMovie?.media_type}/${props?.dataMovie?.id}/${page.value}`,
 //   () =>
 //     getSimilar(
-//       props?.dataMovie.media_type,
-//       props?.dataMovie.id,
+//       props?.dataMovie?.media_type,
+//       props?.dataMovie?.id,
 //       page.value,
 //       15
 //     ),

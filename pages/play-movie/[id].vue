@@ -52,6 +52,7 @@
             v-model:isInHistory="isInHistory"
             v-model:historyProgress="historyProgress"
             :dataMovie="dataMovie"
+            :loadingData="pending"
             videoUrl="/feature/Transformer_5"
             :backdrop="
               getImage(
@@ -311,10 +312,12 @@ import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
-  pageTransition: {
-    name: 'fade'
-  }
+  key: 'play-movie'
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
+defineOptions({ name: 'play-movie' });
 
 const store = useStore();
 const authStore = useAuthStore();
@@ -403,9 +406,12 @@ onMounted(() => {
 
 loading.value = true;
 
-const { data: dataMovie } = await useAsyncData(
+const { data: dataMovie, pending } = await useAsyncData(
   `movie/detail/${movieId.value}`,
-  () => getMovieById(movieId.value)
+  () => getMovieById(movieId.value),
+  {
+    lazy: true
+  }
 );
 
 isAddToList.value = dataMovie.value?.in_list == true;

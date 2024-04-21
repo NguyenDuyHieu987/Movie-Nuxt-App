@@ -1,7 +1,9 @@
 <template>
   <div class="home-page">
     <div class="home-billBoard">
+      <!-- <NuxtIsland> -->
       <BillboardAnimation v-model:data="trendings" />
+      <!-- </NuxtIsland> -->
 
       <BoxVip />
     </div>

@@ -51,6 +51,7 @@
             v-model:isInHistory="isInHistory"
             v-model:historyProgress="historyProgress"
             :dataMovie="dataMovie"
+            :loadingData="loading"
             :videoUrl="'/television/' + urlCodeMovie"
             :backdrop="
               getImage(
@@ -329,10 +330,12 @@ import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
-  pageTransition: {
-    name: 'fade'
-  }
+  key: 'play-tv'
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
+defineOptions({ name: 'play-tv' });
 
 const utils = useUtils();
 const store = useStore();
@@ -373,7 +376,7 @@ const getData = async () => {
 
   // await nextTick();
 
-  // await useAsyncData(`tv/detail/${movieId.value}`, () =>
+  // await useAsyncData(`tv/detail/${movieId.value}/seasons,episodes`, () =>
   //   getTvById(movieId.value, 'seasons,episodes')
   // )
   getTvById(movieId.value, 'seasons,episodes')
@@ -426,8 +429,11 @@ onMounted(() => {
 loading.value = true;
 
 const { data: dataMovie } = await useAsyncData(
-  `tv/detail/${movieId.value}/episodes`,
-  () => getTvById(movieId.value, 'episodes')
+  `tv/detail/${movieId.value}`,
+  () => getTvById(movieId.value),
+  {
+    lazy: true
+  }
 );
 
 isAddToList.value = dataMovie.value?.in_list == true;

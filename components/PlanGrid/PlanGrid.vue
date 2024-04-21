@@ -208,12 +208,22 @@ import { getImage } from '~/services/image';
 import { getAllPlan } from '~/services/plans';
 import type { plan } from '@/types';
 
+const props = withDefaults(
+  defineProps<{
+    plans: plan[];
+    order?: string | number;
+  }>(),
+  {
+    order: 3
+  }
+);
+
 const emits = defineEmits<{
   onSelectPlan: [selected: plan | undefined];
 }>();
 
 const authStore = useAuthStore();
-const plans = ref<plan[]>([]);
+// const plans = ref<plan[]>([]);
 const loading = ref<boolean>(false);
 const selected = ref<string>('');
 
@@ -223,10 +233,10 @@ const selected = ref<string>('');
 // await useAsyncData(`plan/all`, () => getAllPlan())
 //   .then((response) => {
 //     plans.value = response.data.value?.results;
-//     selected.value = plans.value.find((item: plan) => item.order == 3)!.id;
+//     selected.value = plans.value.find((item: plan) => item.order == props.order)!.id;
 //     emits(
 //       'onSelectPlan',
-//       plans.value.find((item: plan) => item.order == 3)
+//       plans.value.find((item: plan) => item.order == props.order)
 //     );
 //   })
 //   .catch((e) => {
@@ -247,24 +257,34 @@ const selected = ref<string>('');
 // loading.value = false;
 
 onBeforeMount(async () => {
-  loading.value = true;
+  // loading.value = true;
 
-  await getAllPlan()
-    .then((response) => {
-      plans.value = response?.results;
-    })
-    .catch(() => {})
-    .finally(() => {
-      loading.value = false;
-    });
-
-  selected.value = plans.value.find((item: plan) => item.order == 3)!.id;
+  // await getAllPlan()
+  //   .then((response) => {
+  //     props.plans = response?.results;
+  //   })
+  //   .catch(() => {})
+  //   .finally(() => {
+  //     loading.value = false;
+  //   });
 
   emits(
     'onSelectPlan',
-    plans.value.find((item: plan) => item.order == 3)
+    props.plans.find((item: plan) => item.order == props.order)
   );
 });
+
+watch(
+  () => props.order,
+  () => {
+    if (props.order) {
+      selected.value = props.plans.find(
+        (item: plan) => item.order == props.order
+      )!.id;
+    }
+  },
+  { immediate: true }
+);
 
 const handleClickPlanOpiton = (plan: plan) => {
   if (selected.value == plan.id) return;

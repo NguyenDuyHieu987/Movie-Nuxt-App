@@ -8,9 +8,12 @@
     color: var(--text-label-color);
   }
 
-  .list-lastest-episodes.skeleton {
-    .ant-skeleton {
-      margin: 7px 7px 0px 0px;
+  .el-skeleton.is-animated {
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 100%;
+
+    .el-skeleton__item.episode-item {
     }
   }
 

@@ -14,6 +14,7 @@ export const useAuthStore = defineStore('auth', () => {
   const isVipMember = computed<boolean>(
     () => !!subscription.value && subscription.value?.plan.vip != 0
   );
+  const vipNumber = computed<number>(() => subscription.value?.plan?.vip || 0);
   const isOpenRequireAuthDialog = ref<boolean>(false);
   const loadingUser = ref<boolean>(true);
   const loadingSubscription = ref<boolean>(true);
@@ -23,6 +24,8 @@ export const useAuthStore = defineStore('auth', () => {
 
   const loadUser = async () => {
     loadingUser.value = true;
+
+    await nextTick();
 
     const localUserToken = utils.localStorage.getWithExpiry(
       TOKEN.NAME.USER_TOKEN
@@ -154,6 +157,7 @@ export const useAuthStore = defineStore('auth', () => {
     isLogin,
     role,
     isVipMember,
+    vipNumber,
     isOpenRequireAuthDialog,
     loadingUser,
     loadUser,

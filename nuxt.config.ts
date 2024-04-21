@@ -53,7 +53,7 @@ export default defineNuxtConfig({
       ]
     },
     rootId: '__nuxt',
-    buildAssetsDir: '/_nuxt/',
+    // buildAssetsDir: '/_nuxt/',
     keepalive: true,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
     templateParams: {
@@ -123,7 +123,7 @@ export default defineNuxtConfig({
     }
   },
   features: {
-    inlineStyles: true
+    inlineStyles: false
   },
   devtools: { enabled: true },
   typescript: {
@@ -271,6 +271,9 @@ export default defineNuxtConfig({
         global: false,
         extensions: ['.vue'],
         pathPrefix: false
+        // island: true,
+        // isAsync: true,
+        // ignore: ['*.ts']
       }
     ]
   },
@@ -324,7 +327,7 @@ export default defineNuxtConfig({
       manifest: true,
       ssrManifest: true,
       sourcemap: 'hidden',
-      assetsDir: '_nuxt/',
+      // assetsDir: '_nuxt/',
       // cssMinify: 'lightningcss',
       cssCodeSplit: true,
       reportCompressedSize: true,

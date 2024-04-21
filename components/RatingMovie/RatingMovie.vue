@@ -65,7 +65,7 @@ const props = defineProps<{
 
 const authStore = useAuthStore();
 const disabledRate = ref<boolean>(!!props.ratedValue);
-const myRate = ref<number>(props.ratedValue || props.dataMovie?.vote_average);
+const myRate = ref<number>(props?.ratedValue || props.dataMovie?.vote_average);
 const vote_Average = ref<number>(props.dataMovie?.vote_average);
 const vote_Count = ref<number>(props.dataMovie?.vote_count);
 
@@ -81,6 +81,18 @@ const tooltipRating = ref<string[]>([
   'Rất hay',
   'Tuyệt hay'
 ]);
+
+watch(
+  () => props.dataMovie,
+  (newVal, oldVal) => {
+    if (!oldVal && newVal) {
+      myRate.value = props.dataMovie?.vote_average;
+      vote_Average.value = props.dataMovie?.vote_average;
+      vote_Count.value = props.dataMovie?.vote_count;
+    }
+  },
+  { immediate: true }
+);
 
 watchEffect(() => {
   if (props.ratedValue) {

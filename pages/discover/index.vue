@@ -62,9 +62,9 @@ import { FilterMovie } from '~/services/discover';
 import type { formfilter } from '@/types';
 
 definePageMeta({
-  pageTransition: {
-    // name: 'fade'
-  }
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
 
 const route = useRoute();

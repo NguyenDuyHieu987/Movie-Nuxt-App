@@ -91,11 +91,7 @@
             v-else
             class="year"
           >
-            {{
-              dataMovie?.last_air_date?.slice(0, 4)
-                ? dataMovie?.last_air_date?.slice(0, 4)
-                : dataMovie?.first_air_date?.slice(0, 4)
-            }}
+            {{ dataMovie?.first_air_date?.slice(0, 4) }}
           </p>
 
           <p class="views">

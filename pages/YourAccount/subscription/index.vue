@@ -84,7 +84,7 @@
               <label>Hóa đơn</label>
               <NuxtLink
                 :to="`/YourAccount/bills/${authStore.subscription?.latest_invoice}`"
-                class="subscription-info"
+                class="subscription-info underline"
               >
                 Chi tiết
               </NuxtLink>

@@ -134,8 +134,8 @@
 
 <script setup lang="ts">
 // import { CastCard } from '~/components/CastCrew';
-import CastCard from '~/components/CastCrew/CastCard/CastCard.vue';
-import { SliderGroup } from '~/components/SliderGroup';
+// import CastCard from '~/components/CastCrew/CastCard/CastCard.vue';
+// import { SliderGroup } from '~/components/SliderGroup';
 import { getCredits } from '~/services/credit';
 
 const props = defineProps<{
@@ -146,17 +146,23 @@ const dataCredit = ref<any>(props.dataMovie?.credits);
 const loading = ref<boolean>(false);
 const activeTabCast = ref<string>('cast');
 
-loading.value = true;
+watch(
+  () => props.dataMovie,
+  (newVal, oldVal) => {
+    if (!oldVal && newVal) {
+      loading.value = true;
 
-// useAsyncData(`credits/${props.dataMovie?.id}`, () =>
-//   getCredits(props.dataMovie?.id)
-// )
-getCredits(props.dataMovie?.id)
-  .then((response) => {
-    dataCredit.value = response;
-    loading.value = false;
-  })
-  .finally(() => {});
+      getCredits(props.dataMovie?.id)
+        .then((response) => {
+          dataCredit.value = response;
+        })
+        .finally(() => {
+          loading.value = false;
+        });
+    }
+  },
+  { immediate: true }
+);
 
 // const { data: dataCredit, pending } = await useAsyncData(
 //   `credits/${props.dataMovie?.id}`,

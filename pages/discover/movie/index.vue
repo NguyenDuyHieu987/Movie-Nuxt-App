@@ -64,9 +64,9 @@ import { FilterMovieSlug } from '~/services/movieSlug';
 import type { formfilter } from '@/types';
 
 definePageMeta({
-  pageTransition: {
-    // name: 'fade'
-  }
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
 
 const store = useStore();

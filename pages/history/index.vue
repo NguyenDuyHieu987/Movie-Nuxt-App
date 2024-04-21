@@ -141,7 +141,7 @@ import gsap from 'gsap';
 import { storeToRefs } from 'pinia';
 
 definePageMeta({
-  key: 'history'
+  key: 'History'
   // middleware: ['require-auth'],
 });
 defineOptions({ name: 'History' });

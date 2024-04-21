@@ -32,13 +32,17 @@
         appear
         name="slide-left"
       >
-        <div v-show="showAnimation">
-          <PlanGrid @onSelectPlan="handleOnSelectPlan" />
+        <div v-show="!loading && showAnimation">
+          <PlanGrid
+            :plans="plans"
+            :order="route.query?.order"
+            @onSelectPlan="handleOnSelectPlan"
+          />
         </div>
       </Transition>
 
       <div
-        v-show="showAnimation"
+        v-show="!loading && showAnimation"
         class="submit-btn-container"
       >
         <a-button
@@ -56,7 +60,7 @@
 <script setup lang="ts">
 // import { PlanGrid } from '~/components/PlanGrid';
 // import PlanGrid from '~/components/PlanGrid/PlanGrid.vue';
-// import { getAllPlan } from '~/services/plans';
+import { getAllPlan } from '~/services/plans';
 import type { plan } from '~/types';
 
 definePageMeta({
@@ -84,20 +88,21 @@ useSeoMeta({
 });
 
 const authStore = useAuthStore();
+const route = useRoute();
 const selectedPlan = ref<plan>();
 const showAnimation = ref<boolean>(false);
 // const plans = ref<plan[]>([]);
 const loading = ref<boolean>(false);
 
-// loading.value = true;
+loading.value = true;
 
-// const { data: plans } = await useLazyAsyncData(`plan/all`, () => getAllPlan(), {
-//   transform: (data) => {
-//     return data.results;
-//   }
-// });
+const { data: plans } = await useAsyncData(`plan/all`, () => getAllPlan(), {
+  transform: (data) => {
+    return data.results;
+  }
+});
 
-// loading.value = false;
+loading.value = false;
 
 onBeforeMount(async () => {
   await nextTick();

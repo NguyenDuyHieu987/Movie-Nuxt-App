@@ -64,9 +64,9 @@ import { FilterTvSlug } from '~/services/tvSlug';
 import type { formfilter } from '@/types';
 
 definePageMeta({
-  pageTransition: {
-    // name: 'fade'
-  }
+  // pageTransition: {
+  //   name: 'fade'
+  // }
 });
 
 const store = useStore();
