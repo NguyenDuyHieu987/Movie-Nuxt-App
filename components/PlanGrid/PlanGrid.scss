@@ -61,8 +61,21 @@
         left: 0;
 
         .ant-ribbon {
-          background-color: var(--app-background-color1);
-          color: var(--app-background-color1);
+          // background-color: var(--app-background-color1);
+          // color: var(--app-background-color1);
+          background-color: var(--app-background-color3);
+
+          &.vip-1 {
+            background-color: var(--app-background-color3);
+          }
+
+          &.vip-2 {
+            background-color: #e2c90d;
+          }
+
+          &.vip-3 {
+            background-color: #e26c0d;
+          }
 
           .ant-ribbon-text {
             font-weight: 600;

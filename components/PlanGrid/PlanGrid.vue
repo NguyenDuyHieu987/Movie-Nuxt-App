@@ -29,6 +29,7 @@
           >
             <!-- <div class="vip-number">VIP {{ item?.vip }}</div> -->
             <a-badge-ribbon
+              :class="`vip-${item?.vip}`"
               :text="'VIP ' + item?.vip"
               placement="start"
             />
