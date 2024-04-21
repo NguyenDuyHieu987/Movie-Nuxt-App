@@ -22,7 +22,7 @@ export function conrfirmMessageModal(options: optionsConfirm) {
     okText: options?.okText || 'Có',
     okButtonProps: {
       type: 'primary',
-      size: 'large',
+      size: 'middle',
       danger: true
     },
     cancelButtonProps: { type: 'default', size: 'large' },
