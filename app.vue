@@ -89,7 +89,7 @@
 // import RequireAuthDialog from '~/components/RequireAuth/RequireAuthDialog/RequireAuthDialog.vue';
 // import NetworkChecker from '~/components/NetworkChecker/NetworkChecker.vue';
 
-const runtimeConfig = useRuntimeConfig();
+// const runtimeConfig = useRuntimeConfig();
 
 // useHead({
 //   titleTemplate: (title) => {
