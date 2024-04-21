@@ -17,6 +17,17 @@
       </template>
       <template #default> -->
 
+    <!-- :to="{
+        path: isEpisodes
+          ? `/play-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+              props.item?.name
+            )}/tap-1`
+          : `/play-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
+              props.item?.name
+            )}`,
+        force: true,
+        replace: true
+      }" -->
     <div
       class="img-box"
       @click="onClickPlay"
