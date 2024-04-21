@@ -23,7 +23,7 @@
 <script setup lang="ts">
 // import { Drawer, Footer, HeaderCenterPage } from '~/components/Layouts';
 // import Drawer from '~/components/Layouts/Drawer/Drawer.vue';
-// import Footer from '~/components/Layouts/Footer/Footer.server.vue';
+// import Footer from '~/components/Layouts/Footer/Footer.vue';
 // import HeaderCenterPage from '~/components/Layouts/HeaderCenterPage/HeaderCenterPage.vue';
 </script>
 

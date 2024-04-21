@@ -50,7 +50,7 @@
 //   Sider
 // } from '~/components/Layouts';
 // import Drawer from '~/components/Layouts/Drawer/Drawer.vue';
-// import Footer from '~/components/Layouts/Footer/Footer.server.vue';
+// import Footer from '~/components/Layouts/Footer/Footer.vue';
 // import Header from '~/components/Layouts/Header/Header.vue';
 // import Sider from '~/components/Layouts/Sider/Sider.vue';
 import { storeToRefs } from 'pinia';

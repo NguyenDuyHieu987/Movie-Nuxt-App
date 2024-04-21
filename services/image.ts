@@ -37,10 +37,11 @@ export function getImage(
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
 
-  const URL_IMAGE = nuxtConfig.app.production_mode
-    ? // ? nuxtConfig.app.serverImageUrl
-      `${DEV_SERVER_IMAGE}/static`
-    : `${DEV_SERVER_IMAGE}/static`;
+  // const URL_IMAGE = nuxtConfig.app.production_mode
+  //   ? nuxtConfig.app.serverImageUrl
+  //   : `${DEV_SERVER_IMAGE}/static`;
+
+  const URL_IMAGE = `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
@@ -48,21 +49,23 @@ export function getImage(
     return `${URL_IMAGE}/images/${type}/${path}`;
   }
 
-  return `${URL_IMAGE}/images/${type}/${path}`;
   // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
+  return `${URL_IMAGE}/images/${type}/${path}`;
 }
 
 export function getServerImage(path: string, type: string, crop = ''): string {
   const utils = useUtils();
 
-  const URL_IMAGE = isProduction ? SERVER_IMAGE : `${DEV_SERVER_IMAGE}/static`;
+  // const URL_IMAGE = isProduction ? SERVER_IMAGE : `${DEV_SERVER_IMAGE}/static`;
+  const URL_IMAGE = `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
   if (crop.length == 0 || !isProduction)
-    return `${URL_IMAGE}/static/images/${type}/${path}`;
+    return `${URL_IMAGE}/images/${type}/${path}`;
 
-  return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
+  // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
+  return `${URL_IMAGE}/images/${type}/${path}`;
 }
 
 export function getPosterCast(path: string): string {
