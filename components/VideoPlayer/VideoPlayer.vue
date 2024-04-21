@@ -32,7 +32,7 @@
         v-if="!loadingData"
       >
         <video
-          v-if="isEligibleUser"
+          v-if="isEligibleToWatch"
           id="video-player"
           ref="video"
           :src="videoSrc"
@@ -101,18 +101,14 @@
         </div>
       </div>
 
-      <div
-        v-if="isEligibleUser"
-        class="float-center"
-      >
+      <div class="float-center">
         <div
           v-show="
             (videoStates.isLoading &&
               !videoStates.isEndedVideo &&
               !videoStates.isRewind.enable) ||
-            !mounted
-            // &&
-            // videoStates.isLoaded
+            !mounted ||
+            loadingData
           "
           class="loading-video"
         >
@@ -135,8 +131,9 @@
 
           <LoadingSpinner />
         </div>
-        <!--  -->
+
         <div
+          v-if="isEligibleToWatch"
           v-show="videoStates.isEndedVideo"
           class="replay"
         >
@@ -163,6 +160,7 @@
         </div>
 
         <div
+          v-if="isEligibleToWatch"
           v-show="
             videoStates.isShowNotify && isInHistory && !videoStates.isLoading
           "
@@ -201,7 +199,7 @@
       </div>
 
       <div
-        v-if="isEligibleUser"
+        v-if="isEligibleToWatch"
         class="overlay-controls-animation"
         :class="{
           active: videoStates.isActiveControlsAnimation,
@@ -251,7 +249,7 @@
       </div>
 
       <div
-        v-if="isEligibleUser"
+        v-if="isEligibleToWatch"
         ref="timeline"
         class="timeline"
         :class="{
@@ -275,7 +273,7 @@
 
       <!-- v-show="videoStates.isLoaded || mounted" -->
       <div
-        v-if="isEligibleUser"
+        v-if="isEligibleToWatch"
         class="controls"
         :class="{
           scrubbing: videoStates.isScrubbingProgressBar
@@ -546,7 +544,7 @@
       </div>
 
       <div
-        v-if="isEligibleUser"
+        v-if="isEligibleToWatch"
         class="video-mask"
         tabindex="-1"
         @click="onClickVideo"
@@ -557,6 +555,7 @@
       ></div>
 
       <div
+        v-if="!loadingData && isEligibleToWatch"
         class="background-controls"
         :style="{
           backgroundImage: `url(${getImage(
@@ -567,7 +566,7 @@
       ></div>
 
       <div
-        v-if="isEligibleUser"
+        v-if="isEligibleToWatch"
         class="settings"
         :class="{
           active: settingStates.enable && !videoStates.isHideControls,
@@ -825,6 +824,7 @@ import { useLocalStorage } from '@vueuse/core';
 const props = withDefaults(
   defineProps<{
     dataMovie: any;
+    episode?: any;
     loadingData: boolean;
     backdrop: string;
     videoUrl: string;
@@ -842,8 +842,10 @@ const emits = defineEmits<{
 const nuxtConfig = useRuntimeConfig();
 const authStore = useAuthStore();
 const route = useRoute();
-const movieVipNumber = computed<number>(() => props.dataMovie?.vip || 0);
-const isEligibleUser = computed<boolean>(
+const movieVipNumber = computed<number>(
+  () => props.dataMovie?.vip || props?.episode?.vip || 0
+);
+const isEligibleToWatch = computed<boolean>(
   () =>
     (!props.loadingData && movieVipNumber.value == 0) ||
     authStore.vipNumber! > movieVipNumber.value
@@ -1028,13 +1030,13 @@ const loadM3u8Video = () => {
 };
 
 watch(
-  () => props.videoUrl,
+  () => props.episode,
   (newVal, oldVal) => {
-    if (!isEligibleUser.value) return;
+    if (!isEligibleToWatch.value) return;
 
     // initVideo(newVal);
 
-    if (props.dataMovie?.media_type == 'tv') {
+    if (props.dataMovie?.media_type == 'tv' && newVal && video.value) {
       video.value!.pause();
       video.value!.src = videoSrc.value;
       video.value!.load();
@@ -1084,7 +1086,7 @@ const windowTouchEnd = () => {
 };
 
 const clearVideoPlayer = () => {
-  if (!isEligibleUser.value && !video.value) return;
+  if (!isEligibleToWatch.value && !video.value) return;
 
   if (!video.value!.paused) {
     video.value!.pause();
@@ -1111,7 +1113,7 @@ onBeforeMount(() => {
 onMounted(() => {
   mounted.value = true;
 
-  if (!isEligibleUser.value) return;
+  if (!isEligibleToWatch.value) return;
 
   if (video.value!.autoplay) {
     video.value!.autoplay = false;

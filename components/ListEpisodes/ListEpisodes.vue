@@ -104,6 +104,13 @@
                     : item?.episode_number
                 }}
               </a>
+              <span
+                v-if="item?.vip > 0"
+                :class="`vip vip-${item?.vip}`"
+                :title="`VIP ${item?.vip}`"
+              >
+                VIP {{ item?.vip }}
+              </span>
             </li>
           </ul>
         </template>

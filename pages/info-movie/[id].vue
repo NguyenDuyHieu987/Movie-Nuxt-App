@@ -1,14 +1,11 @@
 <template>
   <div class="movie-info">
-    <LoadingSpinner
+    <!-- <LoadingSpinner
       v-if="loading"
       class="loading-page"
-    />
+    /> -->
 
-    <div
-      v-else
-      class="info-conainer"
-    >
+    <div class="info-conainer">
       <BackPage
         fixed
         @onclick="$router.back()"
@@ -39,6 +36,13 @@
             :style="`--dominant-poster-color: ${dataMovie?.dominant_poster_color[0]}, ${dataMovie?.dominant_poster_color[1]},${dataMovie?.dominant_poster_color[2]}`"
           >
             <div class="poster-wrapper ratio-2-3">
+              <a-badge-ribbon
+                v-if="dataMovie?.vip > 0"
+                :text="'VIP ' + dataMovie?.vip"
+                placement="start"
+                :class="`vip-${dataMovie?.vip}`"
+              />
+
               <NuxtImg
                 :src="getImage(dataMovie?.poster_path, 'poster', 'w-250')"
                 format="avif"

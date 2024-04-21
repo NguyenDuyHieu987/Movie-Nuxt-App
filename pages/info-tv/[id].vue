@@ -1,14 +1,11 @@
 <template>
   <div class="tv-info">
-    <LoadingSpinner
+    <!-- <LoadingSpinner
       v-if="loading"
       class="loading-page"
-    />
+    /> -->
 
-    <div
-      v-else
-      class="info-conainer"
-    >
+    <div class="info-conainer">
       <BackPage
         fixed
         @onclick="$router.back()"
@@ -469,7 +466,7 @@ const isAddToList = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
 const percentProgressHistory = ref<number>(0);
 const release_date = computed<string>(
-  () => dataMovie.value?.last_air_date || dataMovie.value?.first_air_date || ''
+  () => dataMovie.value?.first_air_date || ''
 );
 const ratedValue = ref<number | undefined>();
 const windowWidth = ref<number>(1200);

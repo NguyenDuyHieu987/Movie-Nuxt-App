@@ -1,14 +1,11 @@
 <template>
   <div class="play-movie padding-content">
-    <LoadingSpinner
+    <!-- <LoadingSpinner
       v-if="loading"
       class="loading-page"
-    />
+    /> -->
 
-    <div
-      v-else
-      class="play-container"
-    >
+    <div class="play-container">
       <div class="top-page">
         <BackPage
           @onclick="

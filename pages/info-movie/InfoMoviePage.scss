@@ -135,7 +135,36 @@
           /* box-shadow: var(--box-shadow-medium); */
 
           .poster-wrapper {
+            position: relative;
             width: 100%;
+
+            .ant-ribbon-wrapper {
+              position: absolute;
+              left: 0;
+              z-index: 1;
+
+              .ant-ribbon {
+                background-color: var(--app-background-color);
+
+                &.vip-1 {
+                  background-color: var(--app-background-color);
+                }
+
+                &.vip-2 {
+                  background-color: #e2c90d;
+                }
+
+                &.vip-3 {
+                  background-color: #e26c0d;
+                }
+
+                .ant-ribbon-text {
+                  font-weight: 600;
+                  color: #fff;
+                  font-style: italic;
+                }
+              }
+            }
 
             img {
               width: 100%;
@@ -160,6 +189,10 @@
             border-radius: 20px;
             box-shadow: var(--box-shadow-small);
             z-index: 2;
+
+            &:hover {
+              background-color: var(--app-background-color);
+            }
           }
 
           &::after {

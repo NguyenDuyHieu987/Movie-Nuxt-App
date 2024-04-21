@@ -29,15 +29,15 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 5px;
+    // margin-bottom: 5px;
+    margin-bottom: 13px;
   }
 
   .list-episodes-wrapper {
     padding: 7px;
 
     .el-skeleton.is-animated {
-      padding-top: 7px;
-      width: auto;
+      width: 100%;
 
       .el-skeleton__item.el-skeleton__button.episode-item {
         display: inline-block;
@@ -58,25 +58,52 @@
       overflow-x: hidden;
 
       &::-webkit-scrollbar {
-        width: 12px;
+        // width: 12px;
       }
 
       .episode-item {
+        position: relative;
         display: inline-block;
         /* margin-top: 7px;
         margin-right: 7px; */
+        cursor: pointer;
+
+        .vip {
+          position: absolute;
+          display: inline-block;
+          top: -2px;
+          right: -2px;
+          z-index: 1;
+          padding: 0.7px 5px;
+          background-color: var(--app-background-color);
+          font-size: 0.9rem;
+          font-weight: 600;
+          border-radius: 2px;
+
+          &.vip-1 {
+            background-color: var(--app-background-color);
+          }
+
+          &.vip-2 {
+            background-color: #e2c90d;
+          }
+
+          &.vip-3 {
+            background-color: #e26c0d;
+          }
+        }
 
         a {
           display: inline-block;
           text-align: center;
           min-width: 70px;
+          width: 100%;
           padding: 8px 23px;
           background: linear-gradient(45deg, #080808, #2f2f2f);
           border-radius: 3px;
           color: inherit;
           user-select: none;
           white-space: nowrap;
-          cursor: pointer;
           transition: all 0.15s;
 
           &:visited {

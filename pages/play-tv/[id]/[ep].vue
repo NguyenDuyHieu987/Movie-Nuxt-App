@@ -1,14 +1,11 @@
 <template>
   <div class="play-tv padding-content">
-    <LoadingSpinner
+    <!-- <LoadingSpinner
       v-if="loading"
       class="loading-page"
-    />
+    /> -->
 
-    <div
-      v-else
-      class="play-container"
-    >
+    <div class="play-container">
       <div class="top-page">
         <BackPage
           @onclick="
@@ -51,7 +48,8 @@
             v-model:isInHistory="isInHistory"
             v-model:historyProgress="historyProgress"
             :dataMovie="dataMovie"
-            :loadingData="loading"
+            :episode="currentEpisode"
+            :loadingData="loading || currentEpisode == null"
             :videoUrl="'/television/' + urlCodeMovie"
             :backdrop="
               getImage(
@@ -282,7 +280,7 @@
             <ListEpisodes
               :dataMovie="dataMovie"
               @changeUrlCode="(data: string) => getUrlCode(data)"
-              @changeEpisode="(data: any) => getCurrentEpisode(data)"
+              @changeEpisode="(data: any) => onChangeEpisode(data)"
             />
 
             <Comment :dataMovie="dataMovie" />
@@ -362,10 +360,10 @@ const historyProgress = ref<{
   seconds: 0
 });
 const release_date = computed<string>(
-  () => dataMovie.value?.last_air_date || dataMovie.value?.first_air_date || ''
+  () => dataMovie.value?.first_air_date || ''
 );
 const ratedValue = ref<number | undefined>();
-const currentEpisode = ref<any>({});
+const currentEpisode = ref<any>();
 const windowWidth = ref<number>(1200);
 const movieId = computed<string>((): string =>
   utils.convertPath.parsePathInfo_Play(route.params?.id)
@@ -549,7 +547,7 @@ const getUrlCode = (urlCode: string) => {
   urlCodeMovie.value = urlCode;
 };
 
-const getCurrentEpisode = (episode: any) => {
+const onChangeEpisode = (episode: any) => {
   currentEpisode.value = episode;
 };
 
