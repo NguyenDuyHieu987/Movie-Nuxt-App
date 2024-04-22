@@ -6,7 +6,7 @@
     placement="left"
     :closable="false"
     width="var(--drawer-width)"
-    :autofocus="false"
+    :autofocus="true"
     :force-render="false"
   >
     <template #title>
@@ -57,7 +57,18 @@
     </header>
 
     <div class="drawer-menu">
-      <TheMenu :no-collapse="true" />
+      <Suspense>
+        <TheMenu :no-collapse="true" />
+
+        <template #fallback>
+          <div class="loading-menu">
+            <LoadingSpinner
+              class="loading-app-color center"
+              :width="35"
+            />
+          </div>
+        </template>
+      </Suspense>
     </div>
   </a-drawer>
 

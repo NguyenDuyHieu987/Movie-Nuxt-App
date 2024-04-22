@@ -10,6 +10,17 @@
     --loading-spinner-color: var(--loading-app-color);
   }
 
+  &.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &.loading-app-color {
+    --loading-spinner-color: var(--loading-app-color);
+  }
+
   .ytp-spinner {
     position: relative;
     width: var(--width);

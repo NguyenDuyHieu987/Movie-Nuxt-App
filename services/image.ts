@@ -2,7 +2,7 @@ import axios, { type AxiosRequestConfig } from 'axios';
 import { makeRequest } from './makeRequest';
 import { isProduction } from 'std-env';
 
-export const SERVER_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
+export const SERVER_IMAGE = 'https://ik.imagekit.io/z8fhvnk8u';
 export const DEV_SERVER_IMAGE = 'http://localhost:5002';
 
 const PREFIX_ROUTE = 'images';
@@ -37,11 +37,11 @@ export function getImage(
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
 
-  // const URL_IMAGE = nuxtConfig.app.production_mode
-  //   ? nuxtConfig.app.serverImageUrl
-  //   : `${DEV_SERVER_IMAGE}/static`;
+  const URL_IMAGE = nuxtConfig.app.production_mode
+    ? nuxtConfig.app.serverImageUrl
+    : `${DEV_SERVER_IMAGE}/static`;
 
-  const URL_IMAGE = `${DEV_SERVER_IMAGE}/static`;
+  // const URL_IMAGE = `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
@@ -49,23 +49,23 @@ export function getImage(
     return `${URL_IMAGE}/images/${type}/${path}`;
   }
 
-  // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
-  return `${URL_IMAGE}/images/${type}/${path}`;
+  return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
+  // return `${URL_IMAGE}/images/${type}/${path}`;
 }
 
 export function getServerImage(path: string, type: string, crop = ''): string {
   const utils = useUtils();
 
-  // const URL_IMAGE = isProduction ? SERVER_IMAGE : `${DEV_SERVER_IMAGE}/static`;
-  const URL_IMAGE = `${DEV_SERVER_IMAGE}/static`;
+  const URL_IMAGE = isProduction ? SERVER_IMAGE : `${DEV_SERVER_IMAGE}/static`;
+  // const URL_IMAGE = `${DEV_SERVER_IMAGE}/static`;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
   if (crop.length == 0 || !isProduction)
     return `${URL_IMAGE}/images/${type}/${path}`;
 
-  // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
-  return `${URL_IMAGE}/images/${type}/${path}`;
+  return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
+  // return `${URL_IMAGE}/images/${type}/${path}`;
 }
 
 export function getPosterCast(path: string): string {

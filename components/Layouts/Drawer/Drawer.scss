@@ -50,6 +50,7 @@
 
       .ant-drawer-body {
         flex: 0 1 auto;
+        height: 100%;
         padding: 0px 0px 24px 0px;
         overflow: hidden;
 
@@ -91,6 +92,13 @@
           flex-direction: column;
           height: 100%;
           overflow-y: hidden;
+
+          .loading-menu {
+            height: 100%;
+
+            .loading-spinner {
+            }
+          }
 
           .menu-sider-bar {
             max-height: 100%;

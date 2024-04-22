@@ -6,7 +6,9 @@
           v-if="isLogin"
           class="bills-page-container"
         >
-          This is Bills page
+          <div class="bills-page-header">
+            <h2>Danh sách hóa đơn</h2>
+          </div>
         </div>
         <RequireAuth v-else="!isLogin" />
       </div>
