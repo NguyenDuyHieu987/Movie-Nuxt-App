@@ -70,6 +70,7 @@ export default defineNuxtConfig({
     app: {
       production_mode: isProduction,
       apiGateway: process.env.API_GATEWAY,
+      mediaApiGateway: process.env.MEDIA_API_GATEWAY,
       serverImageUrl: process.env.SERVER_IMAGE_URL,
       serverVideoUrl: process.env.SERVER_VIDEO_URL,
       adminWebsiteUrl: process.env.ADMIN_WEBSITE_URL,

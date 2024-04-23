@@ -14,7 +14,7 @@ export async function makeVideoRequest(
 
   const api = axios.create({
     baseURL: nuxtConfig.app.production_mode
-      ? nuxtConfig.app.serverVideoUrl
+      ? nuxtConfig.app.mediaApiGateway
       : DEV_SERVER_VIDEO,
     withCredentials: true
   });

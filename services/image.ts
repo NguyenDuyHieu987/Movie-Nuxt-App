@@ -15,7 +15,7 @@ export async function makeImageRequest(
 
   const api = axios.create({
     baseURL: nuxtConfig.app.production_mode
-      ? nuxtConfig.app.serverVideoUrl
+      ? nuxtConfig.app.mediaApiGateway
       : DEV_SERVER_IMAGE,
     withCredentials: true
   });
