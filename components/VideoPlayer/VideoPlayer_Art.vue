@@ -30,7 +30,7 @@ const nuxtConfig = useRuntimeConfig();
 const videoSrc = computed<string>(
   () =>
     nuxtConfig.app.production_mode
-      ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl
+      ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl + '.mp4'
       : `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
   // `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
   // + '.m3u8'
