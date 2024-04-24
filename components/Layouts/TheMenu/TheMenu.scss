@@ -156,13 +156,13 @@
 
       a {
         display: inline-block;
-        background-image: linear-gradient(
-          45deg,
-          var(--app-background-color),
-          #0988c8,
-          #04d6f2
-        );
-        padding: 5px 12px;
+        // background-image: linear-gradient(
+        //   45deg,
+        //   var(--app-background-color),
+        //   #0988c8,
+        //   #04d6f2
+        // );
+        padding: 5px 0px;
         line-height: var(--button-line-height);
         color: #fff;
         border-radius: 5px;
