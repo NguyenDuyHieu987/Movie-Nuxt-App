@@ -80,6 +80,17 @@
               </span>
             </div>
             <div class="detail-bill-info-item">
+              <label>Trạng thái</label>
+              <span class="detail-bill-info">
+                <el-tag
+                  :type="invoiceStatus?.type || 'primary'"
+                  effect="plain"
+                >
+                  {{ invoiceStatus?.label }}
+                </el-tag>
+              </span>
+            </div>
+            <div class="detail-bill-info-item">
               <label>Đơn vị tiền tệ</label>
               <span class="detail-bill-info">
                 {{ invoice?.currency.toUpperCase() + ` - ${currencyName}` }}
@@ -104,7 +115,7 @@
 import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { getInvoice } from '~/services/invoice';
 import { storeToRefs } from 'pinia';
-import type { Invoice } from '~/types';
+import type { Invoice, InvoiceStatus } from '~/types';
 
 definePageMeta({
   layout: 'service',
@@ -131,6 +142,36 @@ const currencyName = computed<string>(() => {
       return 'Việt Nam đồng';
   }
 });
+const invoiceListStatus = reactive<InvoiceStatus[]>([
+  {
+    value: 'complete',
+    type: 'success',
+    label: 'Thành công'
+  },
+  {
+    value: 'incomplete',
+    type: 'danger',
+    label: 'Không thành công'
+  },
+  {
+    value: 'pending',
+    type: 'warning',
+    label: 'Chờ xử lý'
+  },
+  {
+    value: 'canceled',
+    type: 'info',
+    label: 'Hủy'
+  },
+  {
+    value: 'expired',
+    type: 'info',
+    label: 'Hết hạn'
+  }
+]);
+const invoiceStatus = computed<InvoiceStatus | undefined>(() =>
+  invoiceListStatus.find((status) => status.value == invoice.value?.status)
+);
 const loading = ref<boolean>(false);
 
 useHead({

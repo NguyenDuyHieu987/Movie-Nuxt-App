@@ -195,16 +195,29 @@
                                 {{ item?.description }}
                               </p>
 
-                              <span
+                              <!-- <span
                                 class="status"
                                 :class="item?.status"
                               >
                                 {{
-                                  billStatus.find(
+                                  billLístStatus.find(
                                     (status) => status.value == item?.status
                                   )?.label
                                 }}
-                              </span>
+                              </span> -->
+
+                              <!-- <a-tag color="success">
+                                <template #icon>
+                                  <check-circle-outlined />
+                                </template>
+                              </a-tag> -->
+
+                              <el-tag
+                                :type="getBillStatus(item)?.type || 'primary'"
+                                effect="plain"
+                              >
+                                {{ getBillStatus(item)?.label }}
+                              </el-tag>
                             </div>
                           </li>
                         </ul>
@@ -276,6 +289,7 @@ import { getBills } from '~/services/bill';
 import { getImage } from '~/services/image';
 import { useBreakpoints } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
+import type { Invoice, InvoiceStatus } from '~/types';
 
 definePageMeta({
   layout: 'service',
@@ -293,26 +307,31 @@ const breakPoints = useBreakpoints({
 const authStore = useAuthStore();
 const utils = useUtils();
 const { isLogin, userAccount } = storeToRefs<any>(authStore);
-const bills = ref<any[]>([]);
-const billStatus = reactive<{ value: string; label: string }[]>([
+const bills = ref<Invoice[]>([]);
+const billLístStatus = reactive<InvoiceStatus[]>([
   {
     value: 'complete',
+    type: 'success',
     label: 'Thành công'
   },
   {
     value: 'incomplete',
+    type: 'danger',
     label: 'Không thành công'
   },
   {
     value: 'pending',
+    type: 'warning',
     label: 'Chờ xử lý'
   },
   {
     value: 'canceled',
+    type: 'info',
     label: 'Hủy'
   },
   {
     value: 'expired',
+    type: 'info',
     label: 'Hết hạn'
   }
 ]);
@@ -478,6 +497,10 @@ const handleClickSaveRowItem = (e: any) => {
 
       loadingEditRowItem.value = false;
     });
+};
+
+const getBillStatus = (item: any): InvoiceStatus | undefined => {
+  return billLístStatus.find((status) => status.value == item?.status);
 };
 </script>
 

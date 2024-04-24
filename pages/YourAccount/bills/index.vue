@@ -9,6 +9,7 @@
           <div class="bills-page-header">
             <h2>Danh sách hóa đơn</h2>
           </div>
+          <div>{{ invoices }}</div>
         </div>
         <RequireAuth v-else="!isLogin" />
       </div>
@@ -20,6 +21,8 @@
 // import { RequireAuth } from '~/components/RequireAuth';
 import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { storeToRefs } from 'pinia';
+import { getInvoices } from '~/services/invoice';
+import type { Invoice } from '~/types';
 
 definePageMeta({
   layout: 'service',
@@ -33,6 +36,8 @@ definePageMeta({
 const store = useStore();
 const authStore = useAuthStore();
 const { isLogin } = storeToRefs<any>(authStore);
+const invoices = ref<Invoice[]>([]);
+const loading = ref<boolean>(false);
 
 useHead({
   title: 'Lịch sử giao dịch, Hóa đơn',
@@ -47,6 +52,19 @@ useSeoMeta({
   // ogUrl: window.location.href,
   ogDescription: 'Hóa đơn của bạn. Lịch sử giao dịch',
   ogLocale: 'vi'
+});
+
+onBeforeMount(() => {
+  loading.value = true;
+
+  getInvoices(1, 20)
+    .then((response) => {
+      invoices.value = response?.results;
+    })
+    .catch(() => {})
+    .finally(() => {
+      loading.value = false;
+    });
 });
 </script>
 

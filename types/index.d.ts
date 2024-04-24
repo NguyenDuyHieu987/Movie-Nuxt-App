@@ -153,6 +153,12 @@ export declare type Invoice = {
   updatedAt?: string;
 };
 
+export declare type InvoiceStatus = {
+  value: string;
+  type: string;
+  label: string;
+};
+
 export declare type commentForm = {
   id: string;
   user_id: string;

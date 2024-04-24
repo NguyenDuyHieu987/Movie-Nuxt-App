@@ -126,7 +126,7 @@ export default defineNuxtConfig({
   features: {
     inlineStyles: false
   },
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   typescript: {
     strict: true
   },
