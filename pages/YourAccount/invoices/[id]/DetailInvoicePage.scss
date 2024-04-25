@@ -1,19 +1,19 @@
-.detail-bill-page {
+.detail-invoice-page {
   .center-page {
     /* max-width: var(--max-width-center-page); */
     max-width: 900px;
     margin: 0px auto;
   }
 
-  .detail-bill-page-container {
+  .detail-invoice-page-container {
     padding-top: 10px;
 
-    .detail-bill-page-header {
+    .detail-invoice-page-header {
       margin-bottom: 10px;
     }
 
-    .detail-bill-info-list {
-      .detail-bill-info-item {
+    .detail-invoice-info-list {
+      .detail-invoice-info-item {
         display: flex;
         padding: 15px 2px 15px 2px;
         border-bottom: 1px solid var(--border-regular);
@@ -40,16 +40,24 @@
           }
         }
 
-        .detail-bill-info {
+        .detail-invoice-info {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           flex-grow: 1;
           text-align: center;
+
+          a.invoice-url {
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            max-width: 150px;
+            text-overflow: ellipsis;
+          }
         }
 
-        a.detail-bill-info {
+        a.detail-invoice-info {
           transition: all 0.15s;
 
           &:hover {

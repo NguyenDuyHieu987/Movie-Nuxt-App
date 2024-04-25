@@ -214,7 +214,7 @@
 
                               <el-tag
                                 :type="getBillStatus(item)?.type || 'primary'"
-                                effect="plain"
+                                effect="light"
                               >
                                 {{ getBillStatus(item)?.label }}
                               </el-tag>
@@ -227,7 +227,7 @@
                       <div class="right">
                         <NuxtLink
                           class="click-active"
-                          to="/YourAccount/bills"
+                          to="/YourAccount/invoices"
                         >
                           Xem thêm
                         </NuxtLink>
@@ -499,8 +499,8 @@ const handleClickSaveRowItem = (e: any) => {
     });
 };
 
-const getBillStatus = (item: any): InvoiceStatus | undefined => {
-  return billLístStatus.find((status) => status.value == item?.status);
+const getBillStatus = (invoice: Invoice): InvoiceStatus | undefined => {
+  return billLístStatus.find((item) => item.value == invoice?.status);
 };
 </script>
 

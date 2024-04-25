@@ -1,4 +1,11 @@
-function format(date: string, formats?: string) {
+function format(
+  date: string,
+  formats?: string,
+  options?: { format?: 'iso' | 'utc' | 'locale'; dateOnly?: boolean } = {
+    format: 'locale',
+    dateOnly: true
+  }
+) {
   const dateObj = new Date(date);
   const options1: any = {
     year: 'numeric',
@@ -15,7 +22,9 @@ function format(date: string, formats?: string) {
 
   switch (formats) {
     case 'L':
-      newDate = dateObj.toLocaleDateString('vi-VN', options1);
+      newDate = options.dateOnly
+        ? dateObj.toLocaleDateString('vi-VN', options1)
+        : dateObj.toLocaleString();
       break;
     case 'LL':
       newDate = dateObj
@@ -31,7 +40,9 @@ function format(date: string, formats?: string) {
         dateObj.toLocaleTimeString('vi-VN').split(':')[1];
       break;
     default:
-      newDate = dateObj.toLocaleDateString('vi-VN', options1);
+      newDate = options.dateOnly
+        ? dateObj.toLocaleDateString('vi-VN', options1)
+        : dateObj.toLocaleString();
       break;
   }
 

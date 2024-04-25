@@ -1,26 +1,28 @@
 <template>
-  <div class="service-page detail-bill-page padding-content">
+  <div class="service-page detail-invoice-page padding-content">
     <div class="center-page">
       <div v-if="!authStore.loadingUser">
         <div
           v-if="isLogin"
-          class="detail-bill-page-container"
+          class="detail-invoice-page-container"
         >
-          <div class="detail-bill-page-header">
+          <div class="detail-invoice-page-header">
             <h2>Chi tiết hóa đơn</h2>
           </div>
 
           <div
             v-if="!loading"
-            class="detail-bill-info-list"
+            class="detail-invoice-info-list"
           >
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
               <label>Mô tả</label>
-              <span class="detail-bill-info">{{ invoice?.description }} </span>
+              <span class="detail-invoice-info"
+                >{{ invoice?.description }}
+              </span>
             </div>
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
               <label>Đơn giá</label>
-              <span class="detail-bill-info">
+              <span class="detail-invoice-info">
                 {{
                   new Intl.NumberFormat('vi-VN', {
                     style: 'currency',
@@ -29,15 +31,15 @@
                 }}
               </span>
             </div>
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
               <label>Số lượng</label>
-              <span class="detail-bill-info">
+              <span class="detail-invoice-info">
                 {{ invoice?.quantity }}
               </span>
             </div>
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
               <label>Giảm giá</label>
-              <span class="detail-bill-info">
+              <span class="detail-invoice-info">
                 {{
                   new Intl.NumberFormat('vi-VN', {
                     style: 'currency',
@@ -46,9 +48,9 @@
                 }}
               </span>
             </div>
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
               <label>Thuế</label>
-              <span class="detail-bill-info">
+              <span class="detail-invoice-info">
                 {{
                   new Intl.NumberFormat('vi-VN', {
                     style: 'currency',
@@ -57,9 +59,9 @@
                 }}
               </span>
             </div>
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
               <label>Tổng tiền thanh toán</label>
-              <span class="detail-bill-info">
+              <span class="detail-invoice-info">
                 {{
                   new Intl.NumberFormat('vi-VN', {
                     style: 'currency',
@@ -68,9 +70,9 @@
                 }}
               </span>
             </div>
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
               <label>Tổng tiền đã thanh toán</label>
-              <span class="detail-bill-info">
+              <span class="detail-invoice-info">
                 {{
                   new Intl.NumberFormat('vi-VN', {
                     style: 'currency',
@@ -79,32 +81,61 @@
                 }}
               </span>
             </div>
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
               <label>Trạng thái</label>
-              <span class="detail-bill-info">
+              <span class="detail-invoice-info">
                 <el-tag
                   :type="invoiceStatus?.type || 'primary'"
-                  effect="plain"
+                  effect="light"
                 >
                   {{ invoiceStatus?.label }}
                 </el-tag>
               </span>
             </div>
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
+              <label>Trạng thái thanh toán</label>
+              <span class="detail-invoice-info">
+                <el-tag
+                  :type="invoicePaymentStatus?.type || 'primary'"
+                  effect="light"
+                >
+                  {{ invoicePaymentStatus?.label }}
+                </el-tag>
+              </span>
+            </div>
+            <div class="detail-invoice-info-item">
+              <label>Phương thanh toán</label>
+              <span class="detail-invoice-info">
+                {{ invoice?.payment_method.toUpperCase() }}
+              </span>
+            </div>
+            <div class="detail-invoice-info-item">
+              <label>Liên kết thanh toán</label>
+              <div class="detail-invoice-info">
+                <NuxtLink
+                  class="invoice-url underline"
+                  :to="invoice?.url"
+                  target="_blank"
+                >
+                  {{ invoice?.url }}
+                </NuxtLink>
+              </div>
+            </div>
+            <div class="detail-invoice-info-item">
               <label>Đơn vị tiền tệ</label>
-              <span class="detail-bill-info">
+              <span class="detail-invoice-info">
                 {{ invoice?.currency.toUpperCase() + ` - ${currencyName}` }}
               </span>
             </div>
-            <div class="detail-bill-info-item">
+            <div class="detail-invoice-info-item">
               <label>Ngày tạo</label>
-              <span class="detail-bill-info">
+              <span class="detail-invoice-info">
                 {{ utils.dateTimeFormater.format(invoice?.created_at!, 'LLL') }}
               </span>
             </div>
           </div>
         </div>
-        <RequireAuth v-else="!isLogin" />
+        <RequireAuth v-else />
       </div>
     </div>
   </div>
@@ -165,12 +196,34 @@ const invoiceListStatus = reactive<InvoiceStatus[]>([
   },
   {
     value: 'expired',
-    type: 'info',
+    type: 'danger',
     label: 'Hết hạn'
   }
 ]);
+const invoiceListPaymentStatus = reactive<InvoiceStatus[]>([
+  {
+    value: 'paid',
+    type: 'success',
+    label: 'Đã thanh toán'
+  },
+  {
+    value: 'unpaid',
+    type: 'warning',
+    label: 'Chưa thanh toán'
+  },
+  {
+    value: 'error',
+    type: 'danger',
+    label: 'Lỗi'
+  }
+]);
 const invoiceStatus = computed<InvoiceStatus | undefined>(() =>
-  invoiceListStatus.find((status) => status.value == invoice.value?.status)
+  invoiceListStatus.find((item) => item.value == invoice.value?.status)
+);
+const invoicePaymentStatus = computed<InvoiceStatus | undefined>(() =>
+  invoiceListPaymentStatus.find(
+    (item) => item.value == invoice.value?.payment_status
+  )
 );
 const loading = ref<boolean>(false);
 
@@ -205,4 +258,4 @@ onBeforeMount(async () => {
 });
 </script>
 
-<style lang="scss" src="./DetailBillPage.scss"></style>
+<style lang="scss" src="./DetailInvoicePage.scss"></style>
