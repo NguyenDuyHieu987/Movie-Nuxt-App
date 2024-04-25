@@ -283,7 +283,7 @@
 
 <script setup lang="ts">
 // import { RequireAuth } from '~/components/RequireAuth';
-import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
+// import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { ChangeFullname } from '~/services/account';
 import { getBills } from '~/services/bill';
 import { getImage } from '~/services/image';

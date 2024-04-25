@@ -143,7 +143,7 @@
 
 <script setup lang="ts">
 // import { RequireAuth } from '~/components/RequireAuth';
-import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
+// import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { getInvoice } from '~/services/invoice';
 import { storeToRefs } from 'pinia';
 import type { Invoice, InvoiceStatus } from '~/types';

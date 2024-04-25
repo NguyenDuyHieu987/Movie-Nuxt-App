@@ -143,9 +143,9 @@
 // import { BackPage } from '~/components/BackPage';
 // import { RequireAuth } from '~/components/RequireAuth';
 // import { VerifyPinOTPForm } from '~/components/VerifyForm';
-import BackPage from '~/components/BackPage/BackPage.vue';
-import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
-import VerifyPinOTPForm from '~/components/VerifyForm/VerifyPinOTPForm/VerifyPinOTPForm.vue';
+// import BackPage from '~/components/BackPage/BackPage.vue';
+// import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
+// import VerifyPinOTPForm from '~/components/VerifyForm/VerifyPinOTPForm/VerifyPinOTPForm.vue';
 import { ElNotification } from 'element-plus';
 import { storeToRefs } from 'pinia';
 import { AccountConfirm, ChangePassword } from '~/services/account';
