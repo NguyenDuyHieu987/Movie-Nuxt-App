@@ -6,170 +6,170 @@
           v-if="isLogin"
           class="change-email-container"
         >
-          <Transition
+          <!-- <Transition
             appear
             name="slide-left"
           >
-            <div v-show="showAnimation">
-              <div v-show="!isShowVerifyOTPForm && !isChangeEmailForm">
-                <NuxtLink
-                  class="back-page-btn"
-                  to="/YourAccount"
-                >
-                  <BackPage align-left> Tài khoản </BackPage>
-                </NuxtLink>
+            <div v-show="showAnimation"> -->
+          <div v-show="!isShowVerifyOTPForm && !isChangeEmailForm">
+            <NuxtLink
+              class="back-page-btn"
+              to="/YourAccount"
+            >
+              <BackPage align-left> Tài khoản </BackPage>
+            </NuxtLink>
 
-                <div class="verifyEmail-header">
-                  <div class="note">
+            <div class="verifyEmail-header">
+              <div class="note">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="8rem"
+                  height="8rem"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5l-9-4zm7 10c0 4.52-2.98 8.69-7 9.93c-4.02-1.24-7-5.41-7-9.93V6.3l7-3.11l7 3.11V11zm-11.59.59L6 13l4 4l8-8l-1.41-1.42L10 14.17z"
+                  />
+                </svg>
+                <h1>Trước tiên, Hãy xác nhận Email này là của bạn</h1>
+                <p>
+                  Trước khi cấp phép thực hiện bất kỳ thay đổi nào, chúng tôi
+                  cần đảm bảo đây là bạn.
+                </p>
+              </div>
+            </div>
+
+            <a-form
+              :model="formVerifyEmail"
+              name="verify-email-form"
+              class="form-verify-email"
+              :class="{ disabled: loadingVerifyEmail }"
+              hide-required-mark
+              @finish="handleSubmitVerifyEmail"
+            >
+              <a-form-item
+                class="email"
+                name="email"
+              >
+                <button
+                  class="submit-form-button submit-btn click-active"
+                  html-type="submit"
+                >
+                  <div class="left">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="8rem"
-                      height="8rem"
+                      width="3rem"
+                      height="3rem"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
                       <path
-                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5l-9-4zm7 10c0 4.52-2.98 8.69-7 9.93c-4.02-1.24-7-5.41-7-9.93V6.3l7-3.11l7 3.11V11zm-11.59.59L6 13l4 4l8-8l-1.41-1.42L10 14.17z"
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5l8-5v10zm-8-7L4 6h16l-8 5z"
                       />
                     </svg>
-                    <h1>Trước tiên, Hãy xác nhận Email này là của bạn</h1>
-                    <p>
-                      Trước khi cấp phép thực hiện bất kỳ thay đổi nào, chúng
-                      tôi cần đảm bảo đây là bạn.
-                    </p>
+                    <span> {{ authStore.userAccount?.email }}</span>
                   </div>
-                </div>
 
-                <a-form
-                  :model="formVerifyEmail"
-                  name="verify-email-form"
-                  class="form-verify-email"
-                  :class="{ disabled: loadingVerifyEmail }"
-                  hide-required-mark
-                  @finish="handleSubmitVerifyEmail"
-                >
-                  <a-form-item
-                    class="email"
-                    name="email"
-                  >
-                    <button
-                      class="submit-form-button submit-btn click-active"
-                      html-type="submit"
+                  <div class="right">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="2.4rem"
+                      height="2.4rem"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
                     >
-                      <div class="left">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="3rem"
-                          height="3rem"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path
-                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5l8-5v10zm-8-7L4 6h16l-8 5z"
-                          />
-                        </svg>
-                        <span> {{ authStore.userAccount?.email }}</span>
-                      </div>
+                      <path
+                        d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </a-form-item>
+            </a-form>
+          </div>
 
-                      <div class="right">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="2.4rem"
-                          height="2.4rem"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path
-                            d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
-                          />
-                        </svg>
-                      </div>
-                    </button>
-                  </a-form-item>
-                </a-form>
-              </div>
+          <VerifyPinOTPForm
+            v-model:isShowForm="isShowVerifyOTPForm"
+            v-model:otpExpOffset="otpExpOffset"
+            v-model:loadingResend="loadingResend"
+            v-model:disabled_countdown="disabled_countdown"
+            v-model:loadingVerify="loadingVerify"
+            :email="authStore.userAccount?.email"
+            :token="vrfEmailToken"
+            @on-verify="handleVerify"
+            @on-resend="handleResendVerifyEmail"
+            @on-click-back="handleClickBack"
+          >
+            <template #title>
+              <h1>Xác nhận Email của bạn</h1>
 
-              <VerifyPinOTPForm
-                v-model:isShowForm="isShowVerifyOTPForm"
-                v-model:otpExpOffset="otpExpOffset"
-                v-model:loadingResend="loadingResend"
-                v-model:disabled_countdown="disabled_countdown"
-                v-model:loadingVerify="loadingVerify"
-                :email="authStore.userAccount?.email"
-                :token="vrfEmailToken"
-                @on-verify="handleVerify"
-                @on-resend="handleResendVerifyEmail"
-                @on-click-back="handleClickBack"
+              <p>
+                {{ titleVerify }}
+                <strong> {{ authStore.userAccount?.email }}</strong>
+              </p>
+            </template>
+          </VerifyPinOTPForm>
+
+          <div
+            v-show="isChangeEmailForm"
+            class="form-change-email-wrapper"
+          >
+            <div class="changeEmail-header">
+              <h1>Thay đổi Email của bạn</h1>
+              <p
+                class="note"
+                :class="{
+                  'is-sended':
+                    changeEmailLocalStr.exp_after > 0 &&
+                    changeEmailLocalStr.email == formChangeEmail.newEmail
+                }"
               >
-                <template #title>
-                  <h1>Xác nhận Email của bạn</h1>
-
-                  <p>
-                    {{ titleVerify }}
-                    <strong> {{ authStore.userAccount?.email }}</strong>
-                  </p>
-                </template>
-              </VerifyPinOTPForm>
-
-              <div
-                v-show="isChangeEmailForm"
-                class="form-change-email-wrapper"
-              >
-                <div class="changeEmail-header">
-                  <h1>Thay đổi Email của bạn</h1>
-                  <p
-                    class="note"
-                    :class="{
-                      'is-sended':
-                        changeEmailLocalStr.exp_after > 0 &&
-                        changeEmailLocalStr.email == formChangeEmail.newEmail
-                    }"
-                  >
-                    {{ noteChangeEmail }}
-                  </p>
-                </div>
-
-                <a-form
-                  :model="formChangeEmail"
-                  :rules="rules"
-                  name="change-email-form"
-                  class="form-change-email"
-                  :class="{ disabled: loadingVerifyEmail }"
-                  hide-required-mark
-                  @finish="handleSubmitChangeEmail"
-                >
-                  <a-form-item
-                    label="Email"
-                    name="newEmail"
-                  >
-                    <a-input
-                      v-model:value="formChangeEmail.newEmail"
-                      placeholder="Nhập email mới bạn muốn thay đổi..."
-                      allow-clear
-                      @change="onChangeNewEmail"
-                    >
-                    </a-input>
-                  </a-form-item>
-
-                  <a-form-item
-                    class="submit"
-                    name="submit"
-                  >
-                    <a-button
-                      class="submit-form-button submit-btn click-active"
-                      type="primary"
-                      html-type="submit"
-                      size="large"
-                      :loading="loadingChangeEmail"
-                      :disabled="isActionFormChangeEmail || disabled"
-                    >
-                      Thay đổi email
-                    </a-button>
-                  </a-form-item>
-                </a-form>
-              </div>
+                {{ noteChangeEmail }}
+              </p>
             </div>
-          </Transition>
+
+            <a-form
+              :model="formChangeEmail"
+              :rules="rules"
+              name="change-email-form"
+              class="form-change-email"
+              :class="{ disabled: loadingVerifyEmail }"
+              hide-required-mark
+              @finish="handleSubmitChangeEmail"
+            >
+              <a-form-item
+                label="Email"
+                name="newEmail"
+              >
+                <a-input
+                  v-model:value="formChangeEmail.newEmail"
+                  placeholder="Nhập email mới bạn muốn thay đổi..."
+                  allow-clear
+                  @change="onChangeNewEmail"
+                >
+                </a-input>
+              </a-form-item>
+
+              <a-form-item
+                class="submit"
+                name="submit"
+              >
+                <a-button
+                  class="submit-form-button submit-btn click-active"
+                  type="primary"
+                  html-type="submit"
+                  size="large"
+                  :loading="loadingChangeEmail"
+                  :disabled="isActionFormChangeEmail || disabled"
+                >
+                  Thay đổi email
+                </a-button>
+              </a-form-item>
+            </a-form>
+          </div>
+          <!-- </div>
+          </Transition> -->
         </div>
         <RequireAuth v-else />
       </div>
@@ -192,8 +192,8 @@ import type { Rule } from 'ant-design-vue/es/form';
 definePageMeta({
   layout: 'service',
   pageTransition: {
-    //   name: 'slide-left',
-    //   appear: true
+    name: 'slide-left',
+    appear: true
   },
   keepalive: false
 });

@@ -6,132 +6,132 @@
           v-if="isLogin"
           class="changePass-container"
         >
-          <Transition
+          <!-- <Transition
             appear
             name="slide-left"
           >
-            <div v-show="showAnimation">
-              <div
-                v-show="!isShowVerifyOTPForm"
-                class="changePass-wrapper"
-              >
-                <NuxtLink
-                  class="back-page-btn"
-                  to="/YourAccount"
-                >
-                  <BackPage align-left> Tài khoản </BackPage>
-                </NuxtLink>
+            <div v-show="showAnimation"> -->
+          <div
+            v-show="!isShowVerifyOTPForm"
+            class="changePass-wrapper"
+          >
+            <NuxtLink
+              class="back-page-btn"
+              to="/YourAccount"
+            >
+              <BackPage align-left> Tài khoản </BackPage>
+            </NuxtLink>
 
-                <div class="changePass-header">
-                  <h1>Đổi mật khẩu của bạn</h1>
-                  <p>
-                    Để bảo vệ tài khoản bạn nên đặt một mật khẩu duy nhất dài ít
-                    nhất 6 ký tự.
-                  </p>
-                </div>
-                <a-form
-                  :model="formChangePassword"
-                  :rules="rules"
-                  name="change-password-form"
-                  class="form-change-password"
-                  hide-required-mark
-                  @finish="handleSubmit"
-                >
-                  <a-form-item
-                    label="Mật khẩu cũ"
-                    name="oldPassword"
-                    :rules="[
-                      {
-                        required: true,
-                        message: 'Vui lòng nhập mật khẩu cũ!',
-                        trigger: ['change', 'blur']
-                      }
-                      // {
-                      //   message: 'Mật khẩu cũ phải có ít nhất 6 ký tụ!',
-                      //   min: 6,
-                      //   trigger: ['change', 'blur'],
-                      // },
-                    ]"
-                    has-feedback
-                  >
-                    <a-input-password
-                      v-model:value="formChangePassword.oldPassword"
-                      placeholder="Mật khẩu cũ..."
-                      allow-clear
-                    />
-                  </a-form-item>
-
-                  <a-form-item
-                    label="Mật khẩu mới"
-                    name="newPassword"
-                    has-feedback
-                  >
-                    <a-input-password
-                      v-model:value="formChangePassword.newPassword"
-                      placeholder="Mật khẩu mới..."
-                      allow-clear
-                    >
-                    </a-input-password>
-                  </a-form-item>
-
-                  <a-form-item
-                    label="Xác nhận lại"
-                    name="confirmNewPassword"
-                    has-feedback
-                  >
-                    <a-input-password
-                      v-model:value="formChangePassword.confirmNewPassword"
-                      placeholder="Xác nhận lại mật khẩu mới..."
-                      allow-clear
-                    />
-                  </a-form-item>
-
-                  <a-form-item class="logout-all-device">
-                    <a-checkbox
-                      v-model:checked="formChangePassword.logOutAllDevice"
-                    >
-                      Đăng xuất khỏi tất cả các thiết bị
-                    </a-checkbox>
-                  </a-form-item>
-
-                  <a-form-item>
-                    <a-button
-                      class="submit-form-button submit-btn click-active"
-                      type="primary"
-                      html-type="submit"
-                      size="large"
-                      :loading="loadingChangePassword"
-                      :disabled="disabled"
-                    >
-                      Đổi mật khẩu
-                    </a-button>
-                  </a-form-item>
-                </a-form>
-              </div>
-
-              <VerifyPinOTPForm
-                v-model:isShowForm="isShowVerifyOTPForm"
-                v-model:otpExpOffset="otpExpOffset"
-                v-model:loadingResend="loadingResend"
-                v-model:disabled_countdown="disabled_countdown"
-                v-model:loadingVerify="loadingVerify"
-                :email="authStore.userAccount?.email"
-                :token="chgPwdToken"
-                @on-verify="handleVerify"
-                @on-resend="handleResendVerifyEmail"
-                @on-click-back="handleClickBack"
-              >
-                <template #title>
-                  <h1>Xác nhận thay đổi mật khẩu của bạn</h1>
-
-                  <p>
-                    {{ titleVerify }}
-                    <strong> {{ authStore.userAccount?.email }}</strong>
-                  </p>
-                </template>
-              </VerifyPinOTPForm>
+            <div class="changePass-header">
+              <h1>Đổi mật khẩu của bạn</h1>
+              <p>
+                Để bảo vệ tài khoản bạn nên đặt một mật khẩu duy nhất dài ít
+                nhất 6 ký tự.
+              </p>
             </div>
-          </Transition>
+            <a-form
+              :model="formChangePassword"
+              :rules="rules"
+              name="change-password-form"
+              class="form-change-password"
+              hide-required-mark
+              @finish="handleSubmit"
+            >
+              <a-form-item
+                label="Mật khẩu cũ"
+                name="oldPassword"
+                :rules="[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập mật khẩu cũ!',
+                    trigger: ['change', 'blur']
+                  }
+                  // {
+                  //   message: 'Mật khẩu cũ phải có ít nhất 6 ký tụ!',
+                  //   min: 6,
+                  //   trigger: ['change', 'blur'],
+                  // },
+                ]"
+                has-feedback
+              >
+                <a-input-password
+                  v-model:value="formChangePassword.oldPassword"
+                  placeholder="Mật khẩu cũ..."
+                  allow-clear
+                />
+              </a-form-item>
+
+              <a-form-item
+                label="Mật khẩu mới"
+                name="newPassword"
+                has-feedback
+              >
+                <a-input-password
+                  v-model:value="formChangePassword.newPassword"
+                  placeholder="Mật khẩu mới..."
+                  allow-clear
+                >
+                </a-input-password>
+              </a-form-item>
+
+              <a-form-item
+                label="Xác nhận lại"
+                name="confirmNewPassword"
+                has-feedback
+              >
+                <a-input-password
+                  v-model:value="formChangePassword.confirmNewPassword"
+                  placeholder="Xác nhận lại mật khẩu mới..."
+                  allow-clear
+                />
+              </a-form-item>
+
+              <a-form-item class="logout-all-device">
+                <a-checkbox
+                  v-model:checked="formChangePassword.logOutAllDevice"
+                >
+                  Đăng xuất khỏi tất cả các thiết bị
+                </a-checkbox>
+              </a-form-item>
+
+              <a-form-item>
+                <a-button
+                  class="submit-form-button submit-btn click-active"
+                  type="primary"
+                  html-type="submit"
+                  size="large"
+                  :loading="loadingChangePassword"
+                  :disabled="disabled"
+                >
+                  Đổi mật khẩu
+                </a-button>
+              </a-form-item>
+            </a-form>
+          </div>
+
+          <VerifyPinOTPForm
+            v-model:isShowForm="isShowVerifyOTPForm"
+            v-model:otpExpOffset="otpExpOffset"
+            v-model:loadingResend="loadingResend"
+            v-model:disabled_countdown="disabled_countdown"
+            v-model:loadingVerify="loadingVerify"
+            :email="authStore.userAccount?.email"
+            :token="chgPwdToken"
+            @on-verify="handleVerify"
+            @on-resend="handleResendVerifyEmail"
+            @on-click-back="handleClickBack"
+          >
+            <template #title>
+              <h1>Xác nhận thay đổi mật khẩu của bạn</h1>
+
+              <p>
+                {{ titleVerify }}
+                <strong> {{ authStore.userAccount?.email }}</strong>
+              </p>
+            </template>
+          </VerifyPinOTPForm>
+          <!-- </div>
+          </Transition> -->
         </div>
         <RequireAuth v-else />
       </div>
@@ -154,8 +154,8 @@ import type { Rule } from 'ant-design-vue/es/form';
 definePageMeta({
   layout: 'service',
   pageTransition: {
-    //   name: 'slide-left',
-    //   appear: true
+    name: 'slide-left',
+    appear: true
   },
   keepalive: false
 });
