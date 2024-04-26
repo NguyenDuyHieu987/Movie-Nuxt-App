@@ -2,102 +2,100 @@
   <div class="service-page reset-password padding-content">
     <div class="center-page">
       <div class="resetPass-container">
-        <Transition
+        <!-- <Transition
           appear
           name="slide-bottom"
         >
-          <div v-show="showAnimation">
-            <div class="resetPass-wrapper">
-              <div class="resetPass-header">
-                <h1>Đặt lại mật khẩu của bạn</h1>
-                <p>
-                  Để bảo vệ tài khoản bạn nên đặt một mật khẩu duy nhất dài ít
-                  nhất 6 ký tự.
-                </p>
-              </div>
-              <a-form
-                :model="formResetPassword"
-                :rules="rules"
-                name="reset-password-form"
-                class="form-change-password"
-                hide-required-mark
-                @finish="handleSubmit"
-              >
-                <a-form-item
-                  label="Tài khoản"
-                  name="username"
-                >
-                  <a-input
-                    v-model:value="formResetPassword.username"
-                    placeholder="..."
-                    disabled
-                  >
-                  </a-input>
-                </a-form-item>
-
-                <a-form-item
-                  label="Email"
-                  name="email"
-                >
-                  <a-input
-                    v-model:value="formResetPassword.email"
-                    placeholder="..."
-                    disabled
-                  >
-                  </a-input>
-                </a-form-item>
-
-                <a-form-item
-                  label="Mật khẩu mới"
-                  name="newPassword"
-                  has-feedback
-                >
-                  <a-input-password
-                    v-model:value="formResetPassword.newPassword"
-                    placeholder="Mật khẩu mới..."
-                    allow-clear
-                    :disabled="isDisabledForm"
-                  >
-                  </a-input-password>
-                </a-form-item>
-
-                <a-form-item
-                  label="Xác nhận lại"
-                  name="confirmNewPassword"
-                  has-feedback
-                >
-                  <a-input-password
-                    v-model:value="formResetPassword.confirmNewPassword"
-                    placeholder="Xác nhận lại mật khẩu mới..."
-                    allow-clear
-                    :disabled="isDisabledForm"
-                  />
-                </a-form-item>
-
-                <a-form-item class="logout-all-device">
-                  <a-checkbox
-                    v-model:checked="formResetPassword.logOutAllDevice"
-                  >
-                    Đăng xuất khỏi tất cả các thiết bị
-                  </a-checkbox>
-                </a-form-item>
-
-                <a-form-item>
-                  <a-button
-                    class="submit-form-button submit-btn click-active"
-                    type="primary"
-                    html-type="submit"
-                    size="large"
-                    :loading="loadingResetPassword"
-                    :disabled="isDisabledForm || disabled"
-                  >
-                    Đặt lại mật khẩu
-                  </a-button>
-                </a-form-item>
-              </a-form>
-            </div>
+          <div v-show="showAnimation"> -->
+        <div class="resetPass-wrapper">
+          <div class="resetPass-header">
+            <h1>Đặt lại mật khẩu của bạn</h1>
+            <p>
+              Để bảo vệ tài khoản bạn nên đặt một mật khẩu duy nhất dài ít nhất
+              6 ký tự.
+            </p>
           </div>
-        </Transition>
+          <a-form
+            :model="formResetPassword"
+            :rules="rules"
+            name="reset-password-form"
+            class="form-change-password"
+            hide-required-mark
+            @finish="handleSubmit"
+          >
+            <a-form-item
+              label="Tài khoản"
+              name="username"
+            >
+              <a-input
+                v-model:value="formResetPassword.username"
+                placeholder="..."
+                disabled
+              >
+              </a-input>
+            </a-form-item>
+
+            <a-form-item
+              label="Email"
+              name="email"
+            >
+              <a-input
+                v-model:value="formResetPassword.email"
+                placeholder="..."
+                disabled
+              >
+              </a-input>
+            </a-form-item>
+
+            <a-form-item
+              label="Mật khẩu mới"
+              name="newPassword"
+              has-feedback
+            >
+              <a-input-password
+                v-model:value="formResetPassword.newPassword"
+                placeholder="Mật khẩu mới..."
+                allow-clear
+                :disabled="isDisabledForm"
+              >
+              </a-input-password>
+            </a-form-item>
+
+            <a-form-item
+              label="Xác nhận lại"
+              name="confirmNewPassword"
+              has-feedback
+            >
+              <a-input-password
+                v-model:value="formResetPassword.confirmNewPassword"
+                placeholder="Xác nhận lại mật khẩu mới..."
+                allow-clear
+                :disabled="isDisabledForm"
+              />
+            </a-form-item>
+
+            <a-form-item class="logout-all-device">
+              <a-checkbox v-model:checked="formResetPassword.logOutAllDevice">
+                Đăng xuất khỏi tất cả các thiết bị
+              </a-checkbox>
+            </a-form-item>
+
+            <a-form-item>
+              <a-button
+                class="submit-form-button submit-btn click-active"
+                type="primary"
+                html-type="submit"
+                size="large"
+                :loading="loadingResetPassword"
+                :disabled="isDisabledForm || disabled"
+              >
+                Đặt lại mật khẩu
+              </a-button>
+            </a-form-item>
+          </a-form>
+        </div>
+        <!-- </div>
+        </Transition> -->
       </div>
     </div>
   </div>
@@ -112,7 +110,8 @@ import { ResetPassword, VerifyResetPassword } from '~/services/account';
 definePageMeta({
   layout: 'service',
   pageTransition: {
-    name: 'slide-bottom'
+    name: 'slide-bottom',
+    appear: true
   }
 });
 

@@ -2,67 +2,67 @@
   <div class="service-page change-email padding-content">
     <div class="change-page">
       <div class="change-email-container">
-        <Transition
+        <!-- <Transition
           appear
           name="slide-bottom"
         >
-          <div v-show="showAnimation">
-            <div class="changeEmail-header">
-              <h1>Xác nhận thay đổi Email của bạn</h1>
-              <p>
-                Vui lòng kiểm tra lại thông tin trước khi thay đổi email của bạn
-              </p>
-            </div>
+          <div v-show="showAnimation"> -->
+        <div class="changeEmail-header">
+          <h1>Xác nhận thay đổi Email của bạn</h1>
+          <p>
+            Vui lòng kiểm tra lại thông tin trước khi thay đổi email của bạn
+          </p>
+        </div>
 
-            <a-form
-              :model="formChangeEmail"
-              name="change-email-form"
-              class="form-change-email"
-              hide-required-mark
-              @finish="handleSubmit"
+        <a-form
+          :model="formChangeEmail"
+          name="change-email-form"
+          class="form-change-email"
+          hide-required-mark
+          @finish="handleSubmit"
+        >
+          <a-form-item
+            label="Email cũ"
+            name="oldEmail"
+          >
+            <a-input
+              v-model:value="formChangeEmail.oldEmail"
+              placeholder="..."
+              disabled
             >
-              <a-form-item
-                label="Email cũ"
-                name="oldEmail"
-              >
-                <a-input
-                  v-model:value="formChangeEmail.oldEmail"
-                  placeholder="..."
-                  disabled
-                >
-                </a-input>
-              </a-form-item>
+            </a-input>
+          </a-form-item>
 
-              <a-form-item
-                label="Email mới"
-                name="newEmail"
-              >
-                <a-input
-                  v-model:value="formChangeEmail.newEmail"
-                  placeholder="..."
-                  disabled
-                >
-                </a-input>
-              </a-form-item>
+          <a-form-item
+            label="Email mới"
+            name="newEmail"
+          >
+            <a-input
+              v-model:value="formChangeEmail.newEmail"
+              placeholder="..."
+              disabled
+            >
+            </a-input>
+          </a-form-item>
 
-              <a-form-item
-                class="submit"
-                name="submit"
-              >
-                <a-button
-                  class="submit-form-button submit-btn click-active"
-                  type="primary"
-                  html-type="submit"
-                  size="large"
-                  :loading="loadingChangeEmail"
-                  :disabled="isDisabledForm || disabled"
-                >
-                  Thay đổi email
-                </a-button>
-              </a-form-item>
-            </a-form>
-          </div>
-        </Transition>
+          <a-form-item
+            class="submit"
+            name="submit"
+          >
+            <a-button
+              class="submit-form-button submit-btn click-active"
+              type="primary"
+              html-type="submit"
+              size="large"
+              :loading="loadingChangeEmail"
+              :disabled="isDisabledForm || disabled"
+            >
+              Thay đổi email
+            </a-button>
+          </a-form-item>
+        </a-form>
+        <!-- </div>
+        </Transition> -->
       </div>
     </div>
   </div>
@@ -80,7 +80,8 @@ import {
 definePageMeta({
   layout: 'service',
   pageTransition: {
-    name: 'slide-bottom'
+    name: 'slide-bottom',
+    appear: true
   },
   keepalive: false
 });
