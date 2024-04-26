@@ -199,7 +199,8 @@ import { LogIn, loginFacebook, loginGoogle } from '~/services/authentication';
 definePageMeta({
   layout: 'auth',
   pageTransition: {
-    name: 'slide-top'
+    name: 'slide-top',
+    appear: true
   }
 });
 
