@@ -49,6 +49,14 @@
                     }).format(value!)
                   }}
                 </template>
+                <template v-if="column.dataIndex === 'action'">
+                  <NuxtLink
+                    class="underline"
+                    :to="`/YourAccount/invoices/${record?.id}`"
+                  >
+                    Chi tiết
+                  </NuxtLink>
+                </template>
               </template>
             </a-table>
           </div>
@@ -158,6 +166,11 @@ const columns: TableColumnType[] = [
     title: 'Ngày tạo',
     dataIndex: 'createdAt',
     sorter: true,
+    width: 200
+  },
+  {
+    title: 'Hành động',
+    dataIndex: 'action',
     width: 200
   }
 ];
