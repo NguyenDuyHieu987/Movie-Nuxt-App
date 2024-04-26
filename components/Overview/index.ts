@@ -1,1 +1,1 @@
-export { default as Overview } from './Overview.server.vue';
+export { default as Overview } from './Overview.vue';
