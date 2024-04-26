@@ -77,7 +77,7 @@
                   new Intl.NumberFormat('vi-VN', {
                     style: 'currency',
                     currency: invoice?.currency.toUpperCase()
-                  }).format(invoice?.amount_paid!)
+                  }).format(invoice?.amount_paid || 0)
                 }}
               </span>
             </div>
