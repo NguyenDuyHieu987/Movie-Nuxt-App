@@ -61,7 +61,10 @@
     <TheMenu />
 
     <template #trigger>
-      <footer class="sider-footer click-active">
+      <footer
+        :title="collapsed ? 'Mở sidebar' : 'Đóng sidebar'"
+        class="sider-footer click-active"
+      >
         <div :class="['trigger-collapse', { collapsed: collapsed }]">
           <svg
             v-if="collapsed"
