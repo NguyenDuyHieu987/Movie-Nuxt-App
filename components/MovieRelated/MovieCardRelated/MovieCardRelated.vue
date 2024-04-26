@@ -105,6 +105,7 @@
               item?.name
             )}`
       }"
+      target="_top"
     >
       <p
         class="title"
