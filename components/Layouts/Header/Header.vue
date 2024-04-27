@@ -369,7 +369,7 @@ const handleBlurSearchInput = (e: any) => {
 };
 </script>
 
-<!-- <style lang="scss" src="./Header.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./Header.scss"></style>
+<!-- <style lang="scss">
 @import url('./Header.scss');
-</style>
+</style> -->
