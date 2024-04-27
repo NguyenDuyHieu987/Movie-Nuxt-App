@@ -117,7 +117,7 @@ header.header-bar-service {
             height: 35px;
             width: 35px;
             border-radius: 50%;
-            opacity: 0.7;
+            opacity: 0.8;
 
             img {
               width: 100%;
@@ -133,6 +133,10 @@ header.header-bar-service {
           &[aria-expanded='true'] {
             svg {
               fill: var(--menu-active-text-color);
+            }
+
+            .user-avatar {
+              opacity: 1;
             }
           }
 
