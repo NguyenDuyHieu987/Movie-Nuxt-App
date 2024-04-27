@@ -9,7 +9,8 @@
       class="el-dropdown-link account"
       aria-label="dropdown-account"
     >
-      <!-- <el-icon class="el-icon--right">
+      <!-- class="el-icon--right" -->
+      <!-- <el-icon >
         <svg
           class="user-outlined"
           xmlns="http://www.w3.org/2000/svg"

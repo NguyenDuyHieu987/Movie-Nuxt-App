@@ -6,7 +6,8 @@
     :show-timeout="0"
   >
     <span class="el-dropdown-link notification">
-      <el-icon class="el-icon--right">
+      <!-- class="el-icon--right" -->
+      <el-icon>
         <a-badge
           :count="3"
           :overflow-count="9"
