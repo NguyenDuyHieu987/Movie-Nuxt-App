@@ -8,6 +8,7 @@
     .ant-drawer-content,
     .ant-drawer-content.menu-drawer {
       background-color: var(--background-content-color);
+      overflow: visible;
 
       .ant-drawer-header {
         background-color: transparent;
@@ -49,9 +50,11 @@
       }
 
       .ant-drawer-body {
+        display: flex;
+        flex-direction: column;
         flex: 0 1 auto;
         height: 100%;
-        padding: 0px 0px 24px 0px;
+        padding: 0px 0px 0px 0px;
         overflow: hidden;
 
         header.user-header {
@@ -88,8 +91,6 @@
         }
 
         .drawer-menu {
-          display: flex;
-          flex-direction: column;
           height: 100%;
           overflow-y: hidden;
 
@@ -101,10 +102,10 @@
           }
 
           .menu-sider-bar {
-            max-height: 100%;
-            overflow-y: scroll;
+            height: 100%;
+            overflow-y: auto;
             overflow-x: hidden;
-            padding-bottom: calc(var(--header-height) - 15px);
+            // padding-bottom: calc(var(--header-height) - 15px);
             // scrollbar-width: thin;
             // scrollbar-color: transparent transparent;
 
