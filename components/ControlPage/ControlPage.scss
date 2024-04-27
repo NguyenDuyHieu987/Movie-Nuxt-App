@@ -72,6 +72,15 @@
     flex-direction: row;
     font-size: 1.6rem;
 
+    &.ant-pagination.ant-pagination-mini {
+      .ant-pagination-prev,
+      .ant-pagination-next,
+      .ant-pagination-item {
+        height: auto;
+        line-height: inherit;
+      }
+    }
+
     .ant-pagination-prev,
     .ant-pagination-next {
       margin: 0px;
