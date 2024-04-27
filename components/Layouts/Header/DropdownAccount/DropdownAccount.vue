@@ -9,7 +9,7 @@
       class="el-dropdown-link account"
       aria-label="dropdown-account"
     >
-      <el-icon class="el-icon--right">
+      <!-- <el-icon class="el-icon--right">
         <svg
           class="user-outlined"
           xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,33 @@
             d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"
           />
         </svg>
-      </el-icon>
+      </el-icon> -->
+      <div class="user-avatar">
+        <NuxtImg
+          v-if="isLogin"
+          class="avatar"
+          :src="
+            !isNaN(+userAccount?.avatar)
+              ? getImage(
+                  `account${userAccount?.avatar}.jpg`,
+                  'user_avatar',
+                  'w-50'
+                )
+              : userAccount?.avatar
+          "
+          loading="lazy"
+          alt=""
+          preload
+        />
+        <NuxtImg
+          v-else
+          class="avatar"
+          :src="getImage(`common_user_avatar.png`, 'user_avatar', 'w-50')"
+          loading="lazy"
+          alt=""
+          preload
+        />
+      </div>
     </span>
 
     <template #dropdown>
@@ -77,6 +103,7 @@
 </template>
 
 <script setup lang="ts">
+import { getImage } from '~/services/image';
 import { storeToRefs } from 'pinia';
 
 const utils = useUtils();

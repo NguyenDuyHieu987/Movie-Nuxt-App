@@ -21,7 +21,6 @@
           <NuxtImg
             class="avatar"
             :src="
-              // `/images/account_avatar/account${userAccount?.avatar}.jpg`
               !isNaN(+userAccount?.avatar)
                 ? getImage(
                     `account${userAccount?.avatar}.jpg`,
