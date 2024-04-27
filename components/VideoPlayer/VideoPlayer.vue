@@ -558,10 +558,11 @@
         v-if="!loadingData && isEligibleToWatch"
         class="background-controls"
         :style="{
-          backgroundImage: `url(${getImage(
-            'background-gradient-opacity.png',
-            'background/gradient'
-          )})`
+          // backgroundImage: `url(${getImage(
+          //   'background-gradient-opacity.png',
+          //   'background/gradient'
+          // )})`
+          backgroundImage: `url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAACbCAYAAACj6PGsAAAAAXNSR0IArs4c6QAAAPVJREFUOE9lyNdHBQAARvHb3nvvuu2997jNe29TJJEkkkgSSSSJJJFEEkkiSfRH5rycl76Hn+MLBP4thidW4qh4SJBEKkmSqRRJpdIkncqATMmisiWHypU8Kl8KqEIokmKqREqpMimnKqSSqoJqqaGCUkvVST3VII1UEzRLC9UqbVS7dFCd0CXdVI/0Un3STw3IIDUEwzJCjcoYNS4TVEgmqSmZpmZgVuaosESoqMxTC7AoS9QyrMAqrME6bMAmbME27MAu7ME+HMAhHMExnMApnME5XMAlXME13MAt3ME9PMAjPMEzvMArvME7fMAnfME3/MDvH+JDJTFIrPkwAAAAAElFTkSuQmCC)`
         }"
       ></div>
 
