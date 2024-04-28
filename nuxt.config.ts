@@ -238,6 +238,7 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     preload: true,
+    download: true,
     display: 'swap',
     families: {
       // Roboto: true,
@@ -252,8 +253,16 @@ export default defineNuxtConfig({
         // regular: 400,
         // normal: 400
       }
-      // subsets: ['cyrillic', 'cyrillic-ext', 'latin', 'latin-ext', 'vietnamese']
-    }
+    },
+    subsets: [
+      'cyrillic',
+      'cyrillic-ext',
+      'greek',
+      'greek-ext',
+      'latin',
+      'latin-ext',
+      'vietnamese'
+    ]
   },
   // SEO
   site: {
