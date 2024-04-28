@@ -226,13 +226,13 @@ export default defineNuxtConfig({
       weights: [400],
       styles: ['normal', 'italic'],
       subsets: [
-        'cyrillic-ext',
         'cyrillic',
-        'greek-ext',
+        'cyrillic-ext',
         'greek',
-        'vietnamese',
+        'greek-ext',
+        'latin',
         'latin-ext',
-        'latin'
+        'vietnamese'
       ]
     }
   },
@@ -242,18 +242,13 @@ export default defineNuxtConfig({
     download: true,
     display: 'swap',
     families: {
-      // Roboto: true,
       Roboto: { wght: '100..700', ital: '100..700' },
       'Roboto Flex': {
-        wght: 400,
-        regular: true,
-        normal: 400
+        // wght: 400,
+        // regular: true,
+        // normal: 400
       },
-      Lobster: {
-        wght: 400,
-        regular: true,
-        normal: 400
-      }
+      Lobster: true
     },
     subsets: [
       'cyrillic',
