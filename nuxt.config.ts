@@ -146,6 +146,7 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     '@nuxt/image',
     '@nuxtjs/fontaine',
+    '@nuxt/fonts',
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     'nuxt-lodash',
@@ -211,6 +212,15 @@ export default defineNuxtConfig({
     alias: {}
   },
   fontMetrics: {},
+  fonts: {
+    families: [
+      { name: 'Roboto', provider: 'local' },
+      { name: 'Roboto Flex', provider: 'local' },
+      { name: 'Roboto', provider: 'google' },
+      { name: 'Roboto Flex', provider: 'google' },
+      { name: 'Lobster', provider: 'google' }
+    ]
+  },
   googleFonts: {
     preload: true,
     display: 'swap',
