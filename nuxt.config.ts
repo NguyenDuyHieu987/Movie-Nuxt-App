@@ -237,6 +237,7 @@ export default defineNuxtConfig({
     }
   },
   googleFonts: {
+    prefetch: true,
     preload: true,
     download: true,
     display: 'swap',
@@ -244,14 +245,14 @@ export default defineNuxtConfig({
       // Roboto: true,
       Roboto: { wght: '100..700', ital: '100..700' },
       'Roboto Flex': {
-        // wght: true,
-        // regular: 400,
-        // normal: 400
+        wght: 400,
+        regular: true,
+        normal: 400
       },
       Lobster: {
-        // wght: true,
-        // regular: 400,
-        // normal: 400
+        wght: 400,
+        regular: true,
+        normal: 400
       }
     },
     subsets: [
