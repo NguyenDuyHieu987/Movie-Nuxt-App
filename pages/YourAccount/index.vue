@@ -188,12 +188,13 @@
                       >
                         <span class="index">{{ index + 1 }}</span>
                         <div class="info">
-                          <p
-                            class="description"
+                          <NuxtLink
+                            class="description underline click-active"
                             :title="item?.description"
+                            :to="`/YourAccount/invoices/${item?.id}`"
                           >
                             {{ item?.description }}
-                          </p>
+                          </NuxtLink>
 
                           <!-- <span
                                 class="status"

@@ -172,7 +172,7 @@
               align-items: center;
               flex-grow: 1;
 
-              .bills-list {
+              ul.bills-list {
                 display: flex;
                 flex-direction: column;
                 list-style: none;
@@ -209,6 +209,7 @@
                       -webkit-box-orient: vertical;
                       overflow: hidden;
                       text-overflow: ellipsis;
+                      color: var(--text-color);
                     }
 
                     .status {

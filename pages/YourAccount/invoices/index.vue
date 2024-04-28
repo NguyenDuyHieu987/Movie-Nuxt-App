@@ -6,6 +6,12 @@
           v-if="isLogin"
           class="invoices-page-container"
         >
+          <NuxtLink
+            class="back-page-btn"
+            to="/YourAccount"
+          >
+            <BackPage align-left>Tài khoản</BackPage>
+          </NuxtLink>
           <div class="invoices-page-header">
             <h2>Danh sách hóa đơn</h2>
           </div>

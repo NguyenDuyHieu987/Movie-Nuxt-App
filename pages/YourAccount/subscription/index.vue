@@ -6,6 +6,13 @@
           v-if="isLogin"
           class="subscription-page-container"
         >
+          <NuxtLink
+            class="back-page-btn"
+            to="/YourAccount"
+          >
+            <BackPage align-left> Tài khoản </BackPage>
+          </NuxtLink>
+
           <div class="subscription-page-header">
             <h2>Gói đăng ký của bạn</h2>
           </div>

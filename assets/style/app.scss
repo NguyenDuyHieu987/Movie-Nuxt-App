@@ -103,14 +103,16 @@
 
 .change-page {
   max-width: var(--max-width-change-page);
+}
+
+.center-page,
+.change-page {
   margin: 0px auto;
 
   .back-page-btn {
-    display: flex;
-    align-items: center;
-    padding: 0px;
-    margin-bottom: 10px;
+    display: inline-block;
     font-size: inherit;
+    color: inherit;
 
     svg {
       margin-right: 7px;
