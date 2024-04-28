@@ -213,6 +213,7 @@ export default defineNuxtConfig({
   },
   fontMetrics: {},
   fonts: {
+    priority: ['local', 'google'],
     families: [
       { name: 'Roboto', provider: 'local' },
       { name: 'RobotoFlex', provider: 'local' },
@@ -220,7 +221,20 @@ export default defineNuxtConfig({
       { name: 'Roboto', provider: 'google' },
       { name: 'RobotoFlex', provider: 'google' },
       { name: 'Lobster', provider: 'google' }
-    ]
+    ],
+    defaults: {
+      weights: [400],
+      styles: ['normal', 'italic'],
+      subsets: [
+        'cyrillic-ext',
+        'cyrillic',
+        'greek-ext',
+        'greek',
+        'vietnamese',
+        'latin-ext',
+        'latin'
+      ]
+    }
   },
   googleFonts: {
     preload: true,
