@@ -77,7 +77,7 @@
 
       <div class="right-header">
         <ClientOnly>
-          <!-- <el-skeleton
+          <el-skeleton
             :loading="loadingUser"
             animated
           >
@@ -91,31 +91,31 @@
               />
             </template>
 
-            <template #default> -->
-          <ul class="menu-header">
-            <li class="menu-item search-mobile">
-              <SearchMobile
-                v-model:valueInput="valueInput"
-                v-model:loading="loadingSearch"
-                @change="handleChangeInput(valueInput)"
-                @search="handleSearch"
-              />
-            </li>
+            <template #default>
+              <ul class="menu-header">
+                <li class="menu-item search-mobile">
+                  <SearchMobile
+                    v-model:valueInput="valueInput"
+                    v-model:loading="loadingSearch"
+                    @change="handleChangeInput(valueInput)"
+                    @search="handleSearch"
+                  />
+                </li>
 
-            <li
-              v-if="isLogin"
-              class="menu-item notification"
-              :show-timeout="0"
-              :hide-timeout="0"
-            >
-              <Notification />
-            </li>
+                <li
+                  v-if="isLogin"
+                  class="menu-item notification"
+                  :show-timeout="0"
+                  :hide-timeout="0"
+                >
+                  <Notification />
+                </li>
 
-            <li class="menu-item account">
-              <DropdownAccount />
-            </li>
+                <li class="menu-item account">
+                  <DropdownAccount />
+                </li>
 
-            <!-- <li v-else class="menu-item login-header">
+                <!-- <li v-else class="menu-item login-header">
                       <NuxtLink to="/login">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -134,9 +134,9 @@
                         <span> Đăng Nhập</span>
                       </NuxtLink>
                     </li> -->
-          </ul>
-          <!-- </template>
-          </el-skeleton> -->
+              </ul>
+            </template>
+          </el-skeleton>
           <template #fallback>
             <el-skeleton
               :loading="true"

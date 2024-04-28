@@ -25,7 +25,7 @@
 
       <div class="right-header">
         <ClientOnly>
-          <!-- <el-skeleton
+          <el-skeleton
             :loading="loadingUser"
             animated
           >
@@ -39,23 +39,23 @@
               />
             </template>
 
-            <template #default> -->
-          <ul class="menu-header">
-            <li
-              v-if="isLogin"
-              class="menu-item notification"
-              :show-timeout="0"
-              :hide-timeout="0"
-            >
-              <Notification />
-            </li>
+            <template #default>
+              <ul class="menu-header">
+                <li
+                  v-if="isLogin"
+                  class="menu-item notification"
+                  :show-timeout="0"
+                  :hide-timeout="0"
+                >
+                  <Notification />
+                </li>
 
-            <li class="menu-item account">
-              <DropdownAccount />
-            </li>
-          </ul>
-          <!-- </template>
-          </el-skeleton> -->
+                <li class="menu-item account">
+                  <DropdownAccount />
+                </li>
+              </ul>
+            </template>
+          </el-skeleton>
           <template #fallback>
             <el-skeleton
               :loading="true"
