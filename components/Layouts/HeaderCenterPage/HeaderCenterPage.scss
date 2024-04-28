@@ -71,6 +71,7 @@ header.header-bar-center-page {
       flex-direction: row;
       height: 100%;
       list-style: none;
+      gap: 10px;
 
       li.menu-item {
         display: flex;
@@ -87,6 +88,25 @@ header.header-bar-center-page {
           user-select: none;
           cursor: pointer;
           outline: none;
+          // margin-left: 5px;
+
+          .user-avatar {
+            overflow: hidden;
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            opacity: 0.8;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+
+            &:hover {
+              opacity: 1;
+            }
+          }
 
           svg {
             fill: var(--menu-text-color);
@@ -95,6 +115,10 @@ header.header-bar-center-page {
           &[aria-expanded='true'] {
             svg {
               fill: var(--menu-active-text-color);
+            }
+
+            .user-avatar {
+              opacity: 1;
             }
           }
 
