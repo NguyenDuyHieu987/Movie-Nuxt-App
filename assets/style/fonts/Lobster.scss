@@ -6,5 +6,7 @@
   font-weight: 400;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Lobster/Lobster-regular.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Lobster/Lobster-regular.woff2') format('woff2'),
+    url('~/assets/fonts/Lobster/Lobster-regular.ttf') format('truetype');
 }

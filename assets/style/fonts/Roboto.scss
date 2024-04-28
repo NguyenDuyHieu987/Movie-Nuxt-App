@@ -6,7 +6,9 @@
   font-weight: 100;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-100.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-100.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-100.ttf') format('truetype');
 }
 
 @font-face {
@@ -15,7 +17,9 @@
   font-weight: 100;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-100italic.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-100italic.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-100italic.ttf') format('truetype');
 }
 
 @font-face {
@@ -24,7 +28,9 @@
   font-weight: 300;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-300.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-300.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-300.ttf') format('truetype');
 }
 
 @font-face {
@@ -33,7 +39,9 @@
   font-weight: 300;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-300italic.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-300italic.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-300italic.ttf') format('truetype');
 }
 
 @font-face {
@@ -42,7 +50,9 @@
   font-weight: 400;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-regular.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-regular.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -51,7 +61,9 @@
   font-weight: 400;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-italic.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-italic.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-italic.ttf') format('truetype');
 }
 
 @font-face {
@@ -60,7 +72,9 @@
   font-weight: 500;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-500.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-500.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-500.ttf') format('truetype');
 }
 
 @font-face {
@@ -69,7 +83,9 @@
   font-weight: 500;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-500italic.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-500italic.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-500italic.ttf') format('truetype');
 }
 
 @font-face {
@@ -78,7 +94,9 @@
   font-weight: 700;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-700.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-700.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-700.ttf') format('truetype');
 }
 
 @font-face {
@@ -87,5 +105,7 @@
   font-weight: 700;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/Roboto/Roboto-700italic.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/Roboto/Roboto-700italic.woff2') format('woff2'),
+    url('~/assets/fonts/Roboto/Roboto-700italic.ttf') format('truetype');
 }

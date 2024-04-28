@@ -34,7 +34,9 @@
   font-weight: 400;
   font-stretch: 100%;
   font-display: swap;
-  src: url('~/assets/fonts/RobotoFlex/RobotoFlex-regular.woff2') format('woff2');
+  src:
+    url('~/assets/fonts/RobotoFlex/RobotoFlex-regular.woff2') format('woff2'),
+    url('~/assets/fonts/RobotoFlex/RobotoFlex-regular.ttf') format('truetype');
 }
 
 @font-face {
