@@ -215,9 +215,10 @@ export default defineNuxtConfig({
   fonts: {
     families: [
       { name: 'Roboto', provider: 'local' },
-      { name: 'Roboto Flex', provider: 'local' },
+      { name: 'RobotoFlex', provider: 'local' },
+      { name: 'Lobster', provider: 'local' },
       { name: 'Roboto', provider: 'google' },
-      { name: 'Roboto Flex', provider: 'google' },
+      { name: 'RobotoFlex', provider: 'google' },
       { name: 'Lobster', provider: 'google' }
     ]
   },
