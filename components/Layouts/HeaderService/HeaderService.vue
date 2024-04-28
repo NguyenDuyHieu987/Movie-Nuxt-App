@@ -24,37 +24,55 @@
       </div>
 
       <div class="right-header">
-        <el-skeleton
-          :loading="loadingUser"
-          animated
-        >
-          <template #template>
-            <el-skeleton-item
-              v-for="(item, index) in 2"
-              :key="index"
-              class="menu-item skeleton"
-              variant="button"
-              :index="index"
-            />
-          </template>
+        <ClientOnly>
+          <!-- <el-skeleton
+            :loading="loadingUser"
+            animated
+          >
+            <template #template>
+              <el-skeleton-item
+                v-for="(item, index) in 2"
+                :key="index"
+                class="menu-item skeleton"
+                variant="button"
+                :index="index"
+              />
+            </template>
 
-          <template #default>
-            <ul class="menu-header">
-              <li
-                v-if="isLogin"
-                class="menu-item notification"
-                :show-timeout="0"
-                :hide-timeout="0"
-              >
-                <Notification />
-              </li>
+            <template #default> -->
+          <ul class="menu-header">
+            <li
+              v-if="isLogin"
+              class="menu-item notification"
+              :show-timeout="0"
+              :hide-timeout="0"
+            >
+              <Notification />
+            </li>
 
-              <li class="menu-item account">
-                <DropdownAccount />
-              </li>
-            </ul>
+            <li class="menu-item account">
+              <DropdownAccount />
+            </li>
+          </ul>
+          <!-- </template>
+          </el-skeleton> -->
+          <template #fallback>
+            <el-skeleton
+              :loading="true"
+              animated
+            >
+              <template #template>
+                <el-skeleton-item
+                  v-for="(item, index) in 2"
+                  :key="index"
+                  class="menu-item skeleton"
+                  variant="button"
+                  :index="index"
+                />
+              </template>
+            </el-skeleton>
           </template>
-        </el-skeleton>
+        </ClientOnly>
       </div>
     </div>
   </header>

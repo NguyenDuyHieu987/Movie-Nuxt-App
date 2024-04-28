@@ -212,7 +212,7 @@ export default defineNuxtConfig({
   },
   fontMetrics: {},
   googleFonts: {
-    preload: false,
+    preload: true,
     display: 'swap',
     families: {
       // Roboto: true,
