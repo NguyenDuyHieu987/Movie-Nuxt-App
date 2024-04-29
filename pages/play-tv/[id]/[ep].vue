@@ -44,7 +44,7 @@
               allowfullscreen
             ></iframe> -->
 
-          <VideoPlayer
+          <LazyVideoPlayer
             v-model:isInHistory="isInHistory"
             v-model:historyProgress="historyProgress"
             :dataMovie="dataMovie"
