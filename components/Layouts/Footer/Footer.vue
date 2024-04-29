@@ -115,7 +115,7 @@
 import { getImage } from '~/services/image';
 </script>
 
-<style lang="scss" src="./Footer.scss" scoped></style>
-<!-- <style lang="scss" scoped>
+<!-- <style lang="scss" src="./Footer.scss" scoped></style> -->
+<style lang="scss" scoped>
 @import url('./Footer.scss');
-</style> -->
+</style>
