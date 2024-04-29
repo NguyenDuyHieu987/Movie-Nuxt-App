@@ -44,7 +44,7 @@
               allowfullscreen
             ></iframe> -->
 
-          <LazyVideoPlayer
+          <VideoPlayer
             v-model:isInHistory="isInHistory"
             v-model:historyProgress="historyProgress"
             :dataMovie="dataMovie"
@@ -283,7 +283,7 @@
               @changeEpisode="(data: any) => onChangeEpisode(data)"
             />
 
-            <Comment :dataMovie="dataMovie" />
+            <LazyComment :dataMovie="dataMovie" />
           </div>
 
           <div class="right">
