@@ -636,4 +636,4 @@ watchEffect(() => {
 });
 </script>
 
-<style lang="scss" src="./TheMenuRTL.scss"></style>
+<style lang="scss" src="./TheMenuRTL.scss" scoped></style>
