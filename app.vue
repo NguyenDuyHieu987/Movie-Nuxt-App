@@ -37,8 +37,6 @@
         :duration="2000"
       />
 
-      <!-- <SeoKit /> -->
-
       <LoadingApp />
       <RequireAuthDialog />
       <NetworkChecker />
