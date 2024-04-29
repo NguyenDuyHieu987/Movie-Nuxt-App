@@ -24,17 +24,13 @@ header.header-bar {
     background: var(--header-background-scrolled);
   }
 
-  &:has(.menu-btn.desktop) {
-    padding-left: var(--padding-home);
-    padding-right: calc(var(--padding-home) - 20px);
-  }
-
   .left-header {
     display: flex;
     align-items: center;
     gap: 20px;
 
     .menu-btn {
+      display: none;
       height: auto;
       background: transparent;
       border: none;
@@ -42,28 +38,22 @@ header.header-bar {
       color: inherit;
       transition: opacity 0.25s;
 
-      &.desktop {
-        svg {
-          font-size: 2rem;
-        }
+      &.show {
+        display: flex;
       }
 
-      &.mobile {
-        display: none;
+      .anticon-menu {
+        font-size: 2rem;
+      }
 
-        .anticon-menu {
-          font-size: 2rem;
-        }
+      svg.menu {
+        font-size: 2.4rem;
+      }
 
-        svg.menu {
-          font-size: 2.4rem;
-        }
-
-        svg.close {
-          margin-left: -2px;
-          margin-right: -2.5px;
-          font-size: 3rem;
-        }
+      svg.close {
+        margin-left: -2px;
+        margin-right: -2.5px;
+        font-size: 3rem;
       }
 
       &:active {
@@ -452,21 +442,9 @@ header.header-bar {
       padding: 0px 15px;
     }
 
-    &:has(.menu-btn.desktop) {
-      .header-bar-container {
-        padding: 0px 15px;
-      }
-    }
-
     .left-header {
       .menu-btn {
-        &.mobile {
-          display: flex;
-        }
-
-        &.desktop {
-          display: none;
-        }
+        display: flex;
       }
     }
   }
@@ -524,12 +502,6 @@ header.header-bar {
   header.header-bar {
     .header-bar-container {
       padding: 0px 15px;
-    }
-
-    &:has(.menu-btn.desktop) {
-      .header-bar-container {
-        padding: 0px 15px;
-      }
     }
 
     .left-header {

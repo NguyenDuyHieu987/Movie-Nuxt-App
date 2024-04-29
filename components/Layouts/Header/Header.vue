@@ -6,7 +6,10 @@
     <div class="header-bar-container">
       <div class="left-header">
         <button
-          class="menu-btn mobile"
+          class="menu-btn"
+          :class="{
+            show: props.layout == 'service' || props.layout == 'center-page'
+          }"
           @click="store.toogleDrawer()"
         >
           <MenuOutlined />
