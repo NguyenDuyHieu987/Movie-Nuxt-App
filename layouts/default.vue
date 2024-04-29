@@ -16,11 +16,6 @@
       <Sider />
       <Drawer />
 
-      <!-- <section
-          v-show="isLogin && $route.path == '/follow'"
-          id="topic-follow-column-teleport"
-        ></section> -->
-
       <main class="main-content">
         <!-- <BreadCrumb /> -->
 
@@ -32,11 +27,6 @@
           v-show="$route.path != '/follow' && $route.path != '/history'"
         />
       </main>
-
-      <!-- <section
-          v-show="isLogin && $route.path == '/history'"
-          id="topic-history-column-teleport"
-        ></section> -->
     </div>
   </div>
 </template>

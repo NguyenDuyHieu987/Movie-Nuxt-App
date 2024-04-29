@@ -16,7 +16,6 @@
       <Drawer />
 
       <main class="main-content">
-        <!-- <BreadCrumb /> -->
         <div class="container">
           <slot />
         </div>
