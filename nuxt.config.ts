@@ -55,6 +55,7 @@ export default defineNuxtConfig({
     rootId: '__nuxt',
     // buildAssetsDir: '/_nuxt/',
     keepalive: true,
+    layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
     templateParams: {
       separator: '|',

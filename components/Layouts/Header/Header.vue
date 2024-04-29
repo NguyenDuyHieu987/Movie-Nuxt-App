@@ -25,7 +25,10 @@
         </div>
       </div>
 
-      <div class="search-header-box">
+      <div
+        v-if="props.layout == 'default'"
+        class="search-header-box"
+      >
         <a-input-search
           v-model:value="valueInput"
           class="search-header"
@@ -180,6 +183,11 @@ import {
   getDaTaTopSearch
 } from '~/services/search';
 import { storeToRefs } from 'pinia';
+import type { AppLayout } from '~/types';
+
+const props = withDefaults(defineProps<{ layout?: AppLayout }>(), {
+  layout: 'default'
+});
 
 const store = useStore();
 const authStore = useAuthStore();

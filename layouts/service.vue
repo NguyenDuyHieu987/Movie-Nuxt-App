@@ -1,6 +1,6 @@
 <template>
   <div class="body-content-service">
-    <HeaderService />
+    <Header layout="service" />
 
     <div
       id="body-wrapper"

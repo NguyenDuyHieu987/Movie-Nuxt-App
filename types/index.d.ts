@@ -1,3 +1,12 @@
+export declare type AppLayout =
+  | 'default'
+  | 'center-page'
+  | 'auth'
+  | 'error'
+  | 'home'
+  | 'oauth'
+  | 'service';
+
 export declare interface genre {
   id: number;
   name_vietsub: string;
