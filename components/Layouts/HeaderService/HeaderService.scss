@@ -74,10 +74,13 @@ header.header-bar-service {
   .right-header {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     height: 100%;
+    min-width: 200px;
 
     .el-skeleton.is-animated {
       display: flex;
+      width: auto;
       gap: 15px;
 
       .menu-item.el-skeleton__item.el-skeleton__button {
