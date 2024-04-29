@@ -25,7 +25,7 @@
       </svg>
 
       <div class="logo">
-        <NuxtLink :to="{ path: '/' }"> PhimHay247 </NuxtLink>
+        <NuxtLink to="/"><span>PhimHay247</span></NuxtLink>
       </div>
     </template>
 

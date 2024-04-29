@@ -16,14 +16,14 @@
         </button>
 
         <div class="logo">
-          <NuxtLink :to="{ path: '/' }">
+          <NuxtLink to="/">
             <NuxtImg
               :src="getImage('logo.png', 'logo', 'w-45')"
               alt=""
               :height="30"
               :width="30"
             />
-            <span> PhimHay247 </span>
+            <span> PhimHay247</span>
           </NuxtLink>
         </div>
       </div>
