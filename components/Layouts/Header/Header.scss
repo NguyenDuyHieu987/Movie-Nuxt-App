@@ -16,7 +16,7 @@ header.header-bar {
     align-items: center;
     height: 100%;
     max-width: var(--max-width-app);
-    padding: 0px 20px;
+    padding: 0px 24px;
     margin: 0px auto;
   }
 
@@ -432,6 +432,14 @@ header.header-bar {
           }
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  header.header-bar {
+    .header-bar-container {
+      padding: 0px 20px;
     }
   }
 }

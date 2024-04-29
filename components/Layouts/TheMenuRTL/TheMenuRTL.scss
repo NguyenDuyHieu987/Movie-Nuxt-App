@@ -27,10 +27,9 @@
 
   .el-menu-item {
     flex-direction: row-reverse;
-    padding-left: 7px !important;
     margin-top: 3px;
     // margin-left: 3px;
-    margin-left: 13px;
+    margin-left: -1px;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     transition: all 0s;
@@ -105,7 +104,7 @@
     margin-top: 3px;
     margin-left: 3px;
     transition: all 0s;
-    padding-left: 10px;
+    // padding-left: 10px;
 
     .el-sub-menu__icon-arrow {
       right: 10px;
@@ -113,7 +112,7 @@
 
     .el-sub-menu__title {
       flex-direction: row-reverse;
-      padding-left: 7px !important;
+      padding-left: 17px !important;
       border-top-left-radius: 25px;
       border-bottom-left-radius: 25px;
       margin-bottom: 3px;

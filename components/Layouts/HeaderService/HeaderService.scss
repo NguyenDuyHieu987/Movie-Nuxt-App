@@ -17,7 +17,7 @@ header.header-bar-service {
     align-items: center;
     height: 100%;
     max-width: var(--max-width-app);
-    padding: 0px 20px;
+    padding: 0px 24px;
     margin: 0px auto;
   }
 
@@ -205,6 +205,14 @@ header.header-bar-service {
           top: calc(var(--header-height) / 1.46) !important;
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  header.header-bar-service {
+    .header-bar-service-container {
+      padding: 0px 20px;
     }
   }
 }
