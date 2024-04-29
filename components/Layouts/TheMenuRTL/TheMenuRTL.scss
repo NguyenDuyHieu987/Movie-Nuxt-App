@@ -1,4 +1,4 @@
-.el-menu.menu-sider-bar-rtl {
+.el-menu.menu-sider-bar.rtl {
   background-color: transparent;
   flex-grow: 1;
   width: 100%;
@@ -22,7 +22,7 @@
 
     .el-sub-menu {
       .el-sub-menu__title {
-        padding-left: 18px;
+        padding-left: 18px !important;
       }
     }
   }
@@ -113,7 +113,7 @@
 
     .el-sub-menu__title {
       flex-direction: row-reverse;
-      padding-left: 7px;
+      padding-left: 7px !important;
       border-top-left-radius: 25px;
       border-bottom-left-radius: 25px;
       margin-bottom: 3px;
@@ -178,7 +178,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .el-menu.menu-sider-bar-rtl {
+  .el-menu.menu-sider-bar.rtl {
     .el-menu-item {
       .el-icon {
         svg:not(.material-icons-outlined) {

@@ -3,7 +3,7 @@
     :collapse="openSiderBarFixed || props.noCollapse ? false : collapsed"
     :default-openeds="state.openKeys"
     :default-active="state.selectedKeys"
-    class="menu-sider-bar-rtl"
+    class="menu-sider-bar rtl"
     theme="dark"
     popper-effect="dark"
     background-color="transparent"
@@ -636,4 +636,4 @@ watchEffect(() => {
 });
 </script>
 
-<style lang="scss" src="./TheMenuRTL.scss" scoped></style>
+<style lang="scss" src="./TheMenuRTL.scss"></style>
