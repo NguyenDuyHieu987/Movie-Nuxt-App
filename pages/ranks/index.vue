@@ -287,7 +287,6 @@ const compareRanks = (ranks: any): any[] => {
 
 const getData = async () => {
   loading.value = true;
-
   nuxtLoadingIndicator.start();
 
   // await useAsyncData(
