@@ -9,18 +9,16 @@
   --el-menu-item-height: var(--menu-item-height) !important;
   --el-menu-sub-item-height: var(--menu-item-height) !important;
   --el-menu-hover-bg-color: var(--menu-item-background-color) !important;
+  // --el-menu-base-level-padding: 20px;
   --menu-active-text-color: #0092ba;
 
   &.el-menu--collapse {
-    // .el-menu-item {
-    //   a {
-    //     width: 0px;
-    //     opacity: 0;
-    //     overflow: hidden;
-    //   }
-    // }
+    .el-menu-item {
+    }
 
     .el-sub-menu {
+      padding-left: 0px;
+
       .el-sub-menu__title {
         padding-left: 18px !important;
       }
@@ -31,7 +29,8 @@
     flex-direction: row-reverse;
     padding-left: 7px !important;
     margin-top: 3px;
-    margin-left: 3px;
+    // margin-left: 3px;
+    margin-left: 13px;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     transition: all 0s;
@@ -106,6 +105,7 @@
     margin-top: 3px;
     margin-left: 3px;
     transition: all 0s;
+    padding-left: 10px;
 
     .el-sub-menu__icon-arrow {
       right: 10px;
