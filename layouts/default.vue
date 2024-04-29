@@ -14,7 +14,7 @@
       class="body-wrapper"
     >
       <Sider />
-      <LazyDrawer />
+      <Drawer />
 
       <main class="main-content">
         <!-- <BreadCrumb /> -->
