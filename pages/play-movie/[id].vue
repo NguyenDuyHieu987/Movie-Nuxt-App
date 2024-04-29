@@ -270,7 +270,7 @@
             <LazyComment :dataMovie="dataMovie" />
           </div>
           <div class="right">
-            <MovieSuggested :dataMovie="dataMovie" />
+            <LazyMovieSuggested :dataMovie="dataMovie" />
           </div>
         </div>
       </div>
