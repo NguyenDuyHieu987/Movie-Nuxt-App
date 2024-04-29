@@ -1,4 +1,4 @@
-.el-menu.menu-sider-bar.rtl {
+.el-menu.menu-sider-bar-rtl {
   background-color: transparent;
   flex-grow: 1;
   width: 100%;
@@ -178,7 +178,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .el-menu.menu-sider-bar.rtl {
+  .el-menu.menu-sider-bar-rtl {
     .el-menu-item {
       .el-icon {
         svg:not(.material-icons-outlined) {
