@@ -29,12 +29,12 @@
   --search-focus-border-color: #5c5c5c;
 
   --menu-text-color: #c8c8c8;
+  --menu-hover-text-color: #fff;
   --menu-active-text-color: #fff;
-  /* --menu-item-background-color: #0000005a; */
   --menu-item-background-color: linear-gradient(
     to right,
-    #08080880 0,
-    #08080850 70%,
+    #08080870 0%,
+    #08080840 50%,
     #08080800 100%
   );
   --menu-inline-submenu-background-color: #12121265;

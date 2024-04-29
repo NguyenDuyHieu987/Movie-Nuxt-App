@@ -57,7 +57,7 @@
       </div>
     </header>
 
-    <TheMenu />
+    <TheMenuRTL />
 
     <template #trigger>
       <footer

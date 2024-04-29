@@ -1,13 +1,15 @@
-.el-menu.menu-sider-bar {
+.el-menu.menu-sider-bar.rtl {
   background-color: transparent;
   flex-grow: 1;
   width: 100%;
   border: none;
   min-height: 100%;
+  direction: rtl;
 
   --el-menu-item-height: var(--menu-item-height) !important;
   --el-menu-sub-item-height: var(--menu-item-height) !important;
   --el-menu-hover-bg-color: var(--menu-item-background-color) !important;
+  --menu-active-text-color: #0092ba;
 
   /* &.el-menu--collapse {
     // .el-sub-menu {
@@ -39,6 +41,7 @@
     }
 
     .el-sub-menu__title {
+      flex-direction: row-reverse;
       border-top-left-radius: 25px;
       border-bottom-left-radius: 25px;
       margin-bottom: 3px;
@@ -97,6 +100,7 @@
   }
 
   .el-menu-item {
+    flex-direction: row-reverse;
     margin-top: 3px;
     margin-left: 3px;
     border-top-left-radius: 30px;
