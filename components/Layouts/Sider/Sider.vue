@@ -57,7 +57,7 @@
       </div>
     </header>
 
-    <LazyTheMenuRTL />
+    <TheMenuRTL />
 
     <template #trigger>
       <footer
