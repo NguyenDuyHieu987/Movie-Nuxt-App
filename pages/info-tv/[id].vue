@@ -408,7 +408,7 @@
           />
         </div>
 
-        <LazyComment :dataMovie="dataMovie" />
+        <Comment :dataMovie="dataMovie" />
       </div>
     </div>
   </div>

@@ -267,10 +267,10 @@
 
         <div class="related-content">
           <div class="left">
-            <LazyComment :dataMovie="dataMovie" />
+            <Comment :dataMovie="dataMovie" />
           </div>
           <div class="right">
-            <LazyMovieSuggested :dataMovie="dataMovie" />
+            <MovieSuggested :dataMovie="dataMovie" />
           </div>
         </div>
       </div>
