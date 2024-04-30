@@ -86,6 +86,7 @@
         background-color: #222222;
 
         .detail-rank-section-item {
+          position: relative;
           /* display: flex;
           flex-direction: row; */
 
@@ -156,6 +157,10 @@
           }
 
           .tendency {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
             display: inline-flex;
             position: relative;
             align-items: center;
