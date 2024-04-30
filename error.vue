@@ -119,4 +119,51 @@ const handleTryAgain = async () => {
 };
 </script>
 
-<style lang="scss" src="./assets/style/errorPage.scss"></style>
+<style lang="scss">
+.ant-result.error-page {
+  .ant-result-image {
+    margin-bottom: 0px;
+
+    svg {
+      transform: scale(0.8);
+    }
+  }
+
+  .ant-result-title {
+    font-size: 2.3rem;
+    color: inherit;
+  }
+
+  .ant-result-subtitle {
+    h3 {
+      font-size: 1.6rem;
+    }
+  }
+
+  .ant-result-extra {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+
+    & > * {
+      margin-right: 0px;
+    }
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+
+    .ant-btn {
+      padding: 7px 30px;
+
+      /* &:hover {
+      } */
+    }
+  }
+}
+</style>
