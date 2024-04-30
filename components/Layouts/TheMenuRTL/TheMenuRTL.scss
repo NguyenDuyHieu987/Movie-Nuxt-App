@@ -1,4 +1,4 @@
-.el-menu.menu-sider-bar.rtl {
+.el-menu.menu-sider-bar-rtl {
   background-color: transparent;
   flex-grow: 1;
   width: 100%;
@@ -17,10 +17,10 @@
     }
 
     .el-sub-menu {
-      padding-left: 0px;
+      // padding-left: 0px;
 
       .el-sub-menu__title {
-        padding-left: 18px !important;
+        // padding-left: 18px !important;
       }
     }
   }
@@ -28,8 +28,8 @@
   .el-menu-item {
     flex-direction: row-reverse;
     margin-top: 3px;
-    // margin-left: 3px;
-    margin-left: -1px;
+    margin-left: 3px;
+    // margin-left: -1px;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     transition: all 0s;
@@ -58,7 +58,7 @@
     }
 
     &:hover {
-      background: var(--el-menu-hover-bg-color) !important;
+      background: var(--el-menu-hover-bg-color);
       color: var(--menu-hover-text-color);
 
       a {
@@ -69,6 +69,7 @@
     &.is-active {
       color: var(--menu-active-text-color);
       background: var(--el-menu-hover-bg-color);
+      background: red;
 
       a {
         color: var(--menu-active-text-color);
@@ -104,7 +105,6 @@
     margin-top: 3px;
     margin-left: 3px;
     transition: all 0s;
-    // padding-left: 10px;
 
     .el-sub-menu__icon-arrow {
       right: 10px;
@@ -112,15 +112,14 @@
 
     .el-sub-menu__title {
       flex-direction: row-reverse;
-      padding-left: 17px !important;
+      // padding-left: 17px !important;
       border-top-left-radius: 25px;
       border-bottom-left-radius: 25px;
-      margin-bottom: 3px;
       user-select: none;
       transition: color 0s;
 
       &:hover {
-        background: var(--el-menu-hover-bg-color) !important;
+        background: var(--el-menu-hover-bg-color);
         color: var(--menu-hover-text-color);
       }
 
@@ -137,7 +136,7 @@
 
     &.is-opened {
       .el-sub-menu__title {
-        background: var(--el-menu-hover-bg-color) !important;
+        background: var(--el-menu-hover-bg-color);
         color: var(--menu-active-text-color);
       }
 
@@ -177,7 +176,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .el-menu.menu-sider-bar.rtl {
+  .el-menu.menu-sider-bar-rtl {
     .el-menu-item {
       .el-icon {
         svg:not(.material-icons-outlined) {

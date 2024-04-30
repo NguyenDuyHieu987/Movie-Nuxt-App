@@ -60,7 +60,7 @@
     }
 
     &:hover {
-      background: var(--el-menu-hover-bg-color) !important;
+      background: var(--el-menu-hover-bg-color);
       color: var(--menu-hover-text-color);
 
       a {
@@ -119,7 +119,7 @@
       transition: color 0s;
 
       &:hover {
-        background: var(--el-menu-hover-bg-color) !important;
+        background: var(--el-menu-hover-bg-color);
         color: var(--menu-hover-text-color);
       }
 
@@ -136,7 +136,7 @@
 
     &.is-opened {
       .el-sub-menu__title {
-        background: var(--el-menu-hover-bg-color) !important;
+        background: var(--el-menu-hover-bg-color);
         color: var(--menu-active-text-color);
       }
 
