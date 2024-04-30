@@ -176,7 +176,7 @@
   .carousel-arrow {
     position: absolute;
     /* bottom: 20%; */
-    bottom: 150px;
+    bottom: 160px;
     right: var(--padding-home);
     z-index: 2;
     display: flex;
@@ -212,7 +212,7 @@
     right: var(--padding-home);
     z-index: 1;
     width: 30%;
-    min-width: 500px;
+    min-width: 550px;
     user-select: none;
 
     .slick-slider,
@@ -223,7 +223,7 @@
 
     .slick-track {
       display: flex;
-      gap: 10px;
+      gap: 12px;
     }
 
     .billboard-preview-item {
@@ -253,7 +253,7 @@
       .img-box {
         display: flex;
         position: relative;
-        border-radius: 6px;
+        border-radius: 8px;
         overflow: hidden;
 
         &::before {
@@ -277,7 +277,7 @@
       .info {
         display: flex;
         justify-content: center;
-        margin-top: 5px;
+        margin-top: 10px;
         color: var(--text-color-gray);
         font-size: 0.8vw;
         /* transition: all 0.15s; */
