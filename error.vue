@@ -119,4 +119,4 @@ const handleTryAgain = async () => {
 };
 </script>
 
-<style lang="scss" src="~/assets/style/errorPage.scss"></style>
+<style lang="scss" src="./assets/style/errorPage.scss"></style>
