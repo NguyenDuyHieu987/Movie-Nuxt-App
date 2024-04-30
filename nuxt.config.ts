@@ -243,12 +243,9 @@ export default defineNuxtConfig({
     download: true,
     display: 'swap',
     families: {
-      Roboto: { wght: '100..700', ital: '100..700' },
-      'Roboto Flex': {
-        // wght: 400,
-        // regular: true,
-        // normal: 400
-      },
+      // Roboto: { wght: '100..700', ital: '100..700' },
+      Inter: { wght: '100..700' },
+      'Noto Sans': { wght: '100..700' },
       Lobster: true
     },
     subsets: [
