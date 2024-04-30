@@ -4,18 +4,19 @@
       <div id="append-to" />
       <div id="preview-modal" />
 
-      <!-- <a-config-provider
-      :theme="{
-        token: {
-          colorPrimary: '#008ddf',
-          fontFamily: 'Roboto Flex, sans-serif',
-          fontSize: 15,
-          lineHeight: 1.5,
-          borderRadius: 2,
-          borderRadiusLG: 5
-        }
-      }"
-    /> -->
+      <a-config-provider
+        :theme="{
+          token: {
+            // colorPrimary: '#008ddf',
+            fontFamily:
+              'Mulish, Nunito Sans, Roboto, Source Sans 3, Plus Jakarta Sans, Noto Sans, sans-serif'
+            // fontSize: 15,
+            // lineHeight: 1.5,
+            // borderRadius: 2,
+            // borderRadiusLG: 5
+          }
+        }"
+      />
 
       <!-- <ClientOnly>
       <vue-progress-bar
