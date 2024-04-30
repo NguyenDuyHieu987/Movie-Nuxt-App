@@ -62,6 +62,10 @@
         & > div {
           padding: var(--padding-rank-detail-section);
         }
+
+        .tendency {
+          float: right;
+        }
       }
 
       .info {
@@ -78,7 +82,7 @@
 
       .tendency {
         width: 110px;
-        float: right;
+        // float: right;
         text-align: center;
       }
 
