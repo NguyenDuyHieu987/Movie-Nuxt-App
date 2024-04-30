@@ -253,9 +253,9 @@ export default defineNuxtConfig({
     download: true,
     display: 'swap',
     families: {
-      // Roboto: { wght: '100..700', ital: '100..700' },
-      // Inter: { wght: '100..700' },
-      // 'Noto Sans': { wght: '100..700', ital: '100..700' },
+      Roboto: { wght: '100..700', ital: '100..700' },
+      Inter: { wght: '100..700' },
+      'Noto Sans': { wght: '100..700', ital: '100..700' },
       'Nunito Sans': { wght: '200..700', ital: '200..700' },
       'Plus Jakarta Sans': { wght: '200..700', ital: '200..700' },
       'Source Sans 3': { wght: '200..700', ital: '200..700' },
