@@ -132,10 +132,10 @@ export default defineNuxtConfig({
     strict: true
   },
   css: [
+    '~/assets/style/fonts/GoogleFonts.css',
     antdVersion == 4
       ? 'ant-design-vue/dist/reset.css'
       : 'ant-design-vue/dist/antd.dark.min.css',
-    '~/assets/style/fonts/GoogleFonts.css',
     '~/assets/style/globalStyle/overwrite/antdv/antdv.scss',
     '~/assets/style/globalStyle/overwrite/element/element.scss',
     '~/assets/style/globalStyle.scss'
@@ -217,10 +217,18 @@ export default defineNuxtConfig({
     priority: ['local', 'google'],
     families: [
       { name: 'Roboto', provider: 'local' },
-      { name: 'RobotoFlex', provider: 'local' },
+      { name: 'Inter', provider: 'local' },
+      { name: 'Noto Sans', provider: 'local' },
+      { name: 'Nunito Sans', provider: 'local' },
+      { name: 'Plus Jakarta Sans', provider: 'local' },
+      { name: 'Mulish', provider: 'local' },
       { name: 'Lobster', provider: 'local' },
       { name: 'Roboto', provider: 'google' },
-      { name: 'RobotoFlex', provider: 'google' },
+      { name: 'Inter', provider: 'google' },
+      { name: 'Noto Sans', provider: 'google' },
+      { name: 'Nunito Sans', provider: 'google' },
+      { name: 'Plus Jakarta Sans', provider: 'google' },
+      { name: 'Mulish', provider: 'google' },
       { name: 'Lobster', provider: 'google' }
     ],
     defaults: {
@@ -244,8 +252,11 @@ export default defineNuxtConfig({
     display: 'swap',
     families: {
       // Roboto: { wght: '100..700', ital: '100..700' },
-      Inter: { wght: '100..700' },
-      'Noto Sans': { wght: '100..700' },
+      // Inter: { wght: '100..700' },
+      // 'Noto Sans': { wght: '100..700', ital: '100..700' },
+      'Nunito Sans': { wght: '200..700', ital: '100..700' },
+      'Plus Jakarta Sans': { wght: '200..700', ital: '100..700' },
+      Mulish: { wght: '200..700', ital: '100..700' },
       Lobster: true
     },
     subsets: [

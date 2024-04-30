@@ -14,6 +14,17 @@
 @font-face {
   font-family: 'Inter';
   font-style: normal;
+  font-weight: 200;
+  font-stretch: 100%;
+  font-display: swap;
+  src:
+    url('~/assets/fonts/Inter/Inter-200.woff2') format('woff2'),
+    url('~/assets/fonts/Inter/Inter-200.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
   font-weight: 300;
   font-stretch: 100%;
   font-display: swap;
