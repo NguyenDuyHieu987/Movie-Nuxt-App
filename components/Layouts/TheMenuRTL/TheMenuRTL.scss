@@ -153,6 +153,12 @@
       .el-menu-item {
         padding-left: 35px;
 
+        a {
+          direction: ltr;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
         &:first-child {
           margin-top: 0px;
         }
