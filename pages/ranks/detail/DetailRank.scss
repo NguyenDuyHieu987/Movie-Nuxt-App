@@ -99,6 +99,11 @@
             padding: var(--padding-rank-detail-section);
           }
 
+          .rank-number {
+            // color: var(--app-background-color);
+            color: var(--text-color-gray);
+          }
+
           .info {
             .info-wrapper {
               display: inline-flex;
