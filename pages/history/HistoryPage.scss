@@ -1,3 +1,7 @@
+body:has(.history-page) {
+  overflow-y: scroll;
+}
+
 .history-page {
   --history-sidebar-width: 340px;
   overflow-y: scroll;
