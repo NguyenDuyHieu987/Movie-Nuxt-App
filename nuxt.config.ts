@@ -44,12 +44,12 @@ export default defineNuxtConfig({
           // src: 'https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js?max_age=7776000',
           type: 'text/javascript',
           async: true
-        },
-        {
-          src: 'https://accounts.google.com/gsi/client',
-          type: 'text/javascript',
-          async: true
         }
+        // {
+        //   src: 'https://accounts.google.com/gsi/client',
+        //   type: 'text/javascript',
+        //   async: true
+        // }
       ]
     },
     rootId: '__nuxt',
