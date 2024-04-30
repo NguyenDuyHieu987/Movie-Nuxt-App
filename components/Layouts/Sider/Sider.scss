@@ -140,7 +140,8 @@
     padding-bottom: calc(var(--header-height));
     overflow-y: hidden;
 
-    .menu-sider-bar {
+    .menu-sider-bar,
+    .menu-sider-bar-rtl {
       max-height: 100%;
       overflow-y: scroll;
       overflow-x: hidden;
