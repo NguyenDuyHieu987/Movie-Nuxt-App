@@ -221,6 +221,7 @@ export default defineNuxtConfig({
       { name: 'Noto Sans', provider: 'local' },
       { name: 'Nunito Sans', provider: 'local' },
       { name: 'Plus Jakarta Sans', provider: 'local' },
+      { name: 'Source Sans 3', provider: 'local' },
       { name: 'Mulish', provider: 'local' },
       { name: 'Lobster', provider: 'local' },
       { name: 'Roboto', provider: 'google' },
@@ -228,6 +229,7 @@ export default defineNuxtConfig({
       { name: 'Noto Sans', provider: 'google' },
       { name: 'Nunito Sans', provider: 'google' },
       { name: 'Plus Jakarta Sans', provider: 'google' },
+      { name: 'Source Sans 3', provider: 'google' },
       { name: 'Mulish', provider: 'google' },
       { name: 'Lobster', provider: 'google' }
     ],
@@ -254,9 +256,10 @@ export default defineNuxtConfig({
       // Roboto: { wght: '100..700', ital: '100..700' },
       // Inter: { wght: '100..700' },
       // 'Noto Sans': { wght: '100..700', ital: '100..700' },
-      'Nunito Sans': { wght: '200..700', ital: '100..700' },
-      'Plus Jakarta Sans': { wght: '200..700', ital: '100..700' },
-      Mulish: { wght: '200..700', ital: '100..700' },
+      'Nunito Sans': { wght: '200..700', ital: '200..700' },
+      'Plus Jakarta Sans': { wght: '200..700', ital: '200..700' },
+      'Source Sans 3': { wght: '200..700', ital: '200..700' },
+      Mulish: { wght: '200..700', ital: '200..700' },
       Lobster: true
     },
     subsets: [

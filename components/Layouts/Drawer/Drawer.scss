@@ -1,6 +1,7 @@
 .ant-drawer:has(.menu-drawer),
 .ant-drawer.menu-drawer {
   /* margin-top: var(--header-height); */
+  font-family: inherit;
 
   .ant-drawer-content-wrapper {
     transition: all 0.15s ease;
