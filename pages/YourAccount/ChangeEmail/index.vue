@@ -147,6 +147,7 @@
                   placeholder="Nhập email mới bạn muốn thay đổi..."
                   allow-clear
                   @change="onChangeNewEmail"
+                  :disabled="isActionFormChangeEmail"
                 >
                 </a-input>
               </a-form-item>
