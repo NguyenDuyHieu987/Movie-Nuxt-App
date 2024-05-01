@@ -160,7 +160,7 @@ useSeoMeta({
   ogLocale: 'vi'
 });
 
-await VerifyResetPassword(rstPwdToken.value)
+VerifyResetPassword(rstPwdToken.value)
   .then((response) => {
     if (response?.success) {
       formResetPassword.username = response?.result.username;
