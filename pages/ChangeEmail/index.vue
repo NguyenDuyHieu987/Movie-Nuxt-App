@@ -125,27 +125,12 @@ const disabled = computed<boolean>((): boolean => {
 });
 const nuxtLoadingIndicator = useLoadingIndicator();
 
-onBeforeMount(async () => {
-  // await nextTick();
-
-  // showAnimation.value = true;
-
-  await VerifyChangeEmail(chgEmailToken.value)
-    .then((response) => {
-      if (response.success) {
-        formChangeEmail.oldEmail = response?.result.old_email;
-        formChangeEmail.newEmail = response?.result.new_email;
-      } else {
-        isDisabledForm.value = true;
-
-        ElNotification.error({
-          title: MESSAGE.STATUS.FAILED,
-          message: 'Some thing went wrong.',
-          duration: MESSAGE.DURATION.DEFAULT
-        });
-      }
-    })
-    .catch((e) => {
+VerifyChangeEmail(chgEmailToken.value)
+  .then((response) => {
+    if (response.success) {
+      formChangeEmail.oldEmail = response?.result.old_email;
+      formChangeEmail.newEmail = response?.result.new_email;
+    } else {
       isDisabledForm.value = true;
 
       ElNotification.error({
@@ -153,7 +138,22 @@ onBeforeMount(async () => {
         message: 'Some thing went wrong.',
         duration: MESSAGE.DURATION.DEFAULT
       });
+    }
+  })
+  .catch((e) => {
+    isDisabledForm.value = true;
+
+    ElNotification.error({
+      title: MESSAGE.STATUS.FAILED,
+      message: 'Some thing went wrong.',
+      duration: MESSAGE.DURATION.DEFAULT
     });
+  });
+
+onBeforeMount(async () => {
+  await nextTick();
+
+  showAnimation.value = true;
 });
 
 const handleSubmit = () => {
