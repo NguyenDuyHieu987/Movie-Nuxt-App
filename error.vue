@@ -90,6 +90,10 @@ type errorResponse = {
   data: any;
 };
 
+// definePageMeta({
+//   layout: false
+// });
+
 const props = defineProps<{ error: errorResponse }>();
 
 const utils = useUtils();
