@@ -9,7 +9,7 @@
           token: {
             // colorPrimary: '#008ddf',
             fontFamily:
-              'Nunito Sans, Mulish, Noto Sans, Roboto, Source Sans 3, Plus Jakarta Sans, sans-serif'
+              'Noto Sans, Mulish, Roboto, Source Sans 3, Plus Jakarta Sans, Nunito Sans, sans-serif'
             // fontSize: 15,
             // lineHeight: 1.5,
             // borderRadius: 2,
