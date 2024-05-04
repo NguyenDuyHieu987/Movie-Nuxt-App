@@ -82,16 +82,27 @@ loading.value = true;
 //       skip.value
 //     )
 // )
-getCommentParent(props.dataMovie?.id, props.dataMovie?.media_type, skip.value)
-  .then((response) => {
-    commentsList.value = response?.results;
-    total.value = response?.total;
-    skip.value = 2;
-  })
-  .catch((e) => {})
-  .finally(() => {
-    loading.value = false;
-  });
+
+watch(
+  () => props.dataMovie,
+  () => {
+    getCommentParent(
+      props.dataMovie?.id,
+      props.dataMovie?.media_type,
+      skip.value
+    )
+      .then((response) => {
+        commentsList.value = response?.results;
+        total.value = response?.total;
+        skip.value = 2;
+      })
+      .catch((e) => {})
+      .finally(() => {
+        loading.value = false;
+      });
+  },
+  { immediate: true, deep: true }
+);
 
 onMounted(() => {
   window.onscroll = async () => {
