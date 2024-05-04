@@ -2,6 +2,16 @@
   <header class="header-bar-center-page">
     <div class="header-bar-center-page-container">
       <div class="left-header">
+        <button
+          class="menu-btn"
+          :class="{
+            show: true
+          }"
+          @click="store.toogleDrawer()"
+        >
+          <MenuOutlined />
+        </button>
+
         <div class="logo">
           <NuxtLink :to="{ path: '/' }">
             <NuxtImg
@@ -106,12 +116,14 @@
 </template>
 
 <script setup lang="ts">
+import { MenuOutlined } from '@ant-design/icons-vue';
 // import { Notification, DropdownAccount } from '~/components/Layouts/Header';
-import Notification from '~/components/Layouts/Header/Notification/Notification.vue';
-import DropdownAccount from '~/components/Layouts/Header/DropdownAccount/DropdownAccount.vue';
+// import Notification from '~/components/Layouts/Header/Notification/Notification.vue';
+// import DropdownAccount from '~/components/Layouts/Header/DropdownAccount/DropdownAccount.vue';
 import { getImage } from '~/services/image';
 import { storeToRefs } from 'pinia';
 
+const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
 const { isLogin, loadingUser } = storeToRefs<any>(authStore);

@@ -26,6 +26,38 @@ header.header-bar-center-page {
     align-items: center;
     gap: 30px;
 
+    .menu-btn {
+      display: flex;
+      height: auto;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      transition: opacity 0.25s;
+
+      &.show {
+        display: flex;
+      }
+
+      .anticon-menu {
+        font-size: 2rem;
+      }
+
+      svg.menu {
+        font-size: 2.4rem;
+      }
+
+      svg.close {
+        margin-left: -2px;
+        margin-right: -2.5px;
+        font-size: 3rem;
+      }
+
+      &:active {
+        opacity: 0.8;
+      }
+    }
+
     .logo {
       display: inline-block;
 
@@ -243,10 +275,11 @@ header.header-bar-center-page {
       padding: 0px 15px;
     }
 
-    /* .left-header {
-      .logo {
+    .left-header {
+      .menu-btn {
+        display: flex;
       }
-    } */
+    }
   }
 
   .el-popover {
