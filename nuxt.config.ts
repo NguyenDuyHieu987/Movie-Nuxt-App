@@ -44,12 +44,12 @@ export default defineNuxtConfig({
           // src: 'https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js?max_age=7776000',
           type: 'text/javascript',
           async: true
+        },
+        {
+          src: 'https://accounts.google.com/gsi/client',
+          type: 'text/javascript',
+          async: true
         }
-        // {
-        //   src: 'https://accounts.google.com/gsi/client',
-        //   type: 'text/javascript',
-        //   async: true
-        // }
       ]
     },
     rootId: '__nuxt',
@@ -431,6 +431,25 @@ export default defineNuxtConfig({
         '/play-movie',
         '/play-tv'
       ]
+    },
+    // proxy the request from client
+    devProxy: {
+      '/api': {
+        target: 'https://api.phimhay247z.org/',
+        changeOrigin: true,
+        headers: {
+          referer: 'https://phimhay247z.org'
+        }
+      }
+    },
+    // redirect the request from server
+    routeRules: {
+      // '/api/**': {
+      //     proxy: 'https://api.phimhay247z.org/**',
+      //     headers: {
+      //         referer: 'https://phimhay247z.org'
+      //     }
+      // }
     },
     minify: true,
     compressPublicAssets: { gzip: true, brotli: true },

@@ -206,14 +206,14 @@ definePageMeta({
 
 useHead({
   title: 'Đăng nhập',
-  htmlAttrs: { lang: 'vi' },
-  script: [
-    {
-      src: 'https://accounts.google.com/gsi/client',
-      type: 'text/javascript',
-      async: true
-    }
-  ]
+  htmlAttrs: { lang: 'vi' }
+  // script: [
+  //   {
+  //     src: 'https://accounts.google.com/gsi/client',
+  //     type: 'text/javascript',
+  //     async: true
+  //   }
+  // ]
 });
 
 useSeoMeta({
