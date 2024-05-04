@@ -26,6 +26,14 @@ const props = defineProps<{
 const overview = ref<string>(props.content?.slice(0, 500));
 const viewMore = ref<boolean>(props.content?.length >= 500);
 
+watch(
+  () => props.content,
+  () => {
+    overview.value = props.content?.slice(0, 500);
+  },
+  { immediate: true, deep: true }
+);
+
 const onClickViewMore = () => {
   if (viewMore.value) {
     overview.value += props.content?.slice(500);
