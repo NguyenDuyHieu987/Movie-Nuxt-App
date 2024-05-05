@@ -21,15 +21,9 @@
         margin-bottom: 8px;
 
         .back-page {
-          z-index: 2;
-
-          /* .ant-btn {
-          // background: linear-gradient(
-          //   0deg,
-          //   var(--background-content-color) 0%,
-          //   rgba(7, 7, 7, 0) 100%
-          // );
-        } */
+          .ant-btn {
+            padding-left: 0px;
+          }
         }
 
         .progress-history {
@@ -332,57 +326,35 @@
   .play-tv {
     .play-container {
       .movie-content {
-        .main-content {
-          gap: 70px;
+        .actions {
+          .left {
+            .action-btn {
+              height: 40px;
+            }
 
-          .detail-content-left {
-            .actions {
-              .left {
-                .action-btn {
-                  height: 40px;
-                }
+            .ant-btn {
+              font-size: 1.5rem;
 
-                .ant-btn {
-                  font-size: 1.5rem;
-
-                  svg {
-                    margin-right: 7px;
-                  }
-
-                  &.add {
-                    svg {
-                      margin-left: -7px;
-                    }
-                  }
-                }
+              svg {
+                margin-right: 7px;
               }
 
-              .right {
-                .ant-btn {
-                  font-size: 1.5rem;
-
-                  svg {
-                    margin-right: 8px;
-                  }
+              &.add {
+                svg {
+                  margin-left: -7px;
                 }
               }
             }
           }
-        }
-      }
-    }
-  }
-}
 
-@media only screen and (max-width: 1400px) {
-  .play-tv {
-    .play-container {
-      .movie-content {
-        .related-content {
-          & > .right {
-            width: 450px;
-            max-width: 450px;
-            min-width: 450px;
+          .right {
+            .ant-btn {
+              font-size: 1.5rem;
+
+              svg {
+                margin-right: 8px;
+              }
+            }
           }
         }
       }
@@ -394,39 +366,17 @@
   .play-tv {
     .play-container {
       .movie-content {
-        .main-content {
-          .detail-content-left {
-            .action {
-              .left {
-                .ant-btn {
-                  padding: 7px 20px;
-                }
-              }
-
-              .right {
-                .ant-btn {
-                  padding: 7px 10px;
-                }
-              }
+        .actions {
+          .left {
+            .ant-btn {
+              padding: 7px 20px;
             }
           }
-        }
-      }
-    }
-  }
-}
 
-@media only screen and (max-width: 1100px) {
-  .play-tv {
-    .play-container {
-      .movie-content {
-        .related-content {
-          flex-direction: column;
-
-          & > .right {
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
+          .right {
+            .ant-btn {
+              padding: 7px 15px;
+            }
           }
         }
       }
@@ -438,26 +388,11 @@
   .play-tv {
     .play-container {
       .movie-content {
-        .main-content {
-          flex-direction: column;
-          justify-content: unset;
-          gap: 20px;
-
-          .detail-content-left {
-            width: 100%;
-
-            .actions {
-              .right {
-                .ant-btn {
-                  padding: 7px 10px;
-                }
-              }
+        .actions {
+          .right {
+            .ant-btn {
+              padding: 7px 10px;
             }
-          }
-
-          .detail-content-right {
-            align-items: flex-start;
-            width: 100%;
           }
         }
       }
