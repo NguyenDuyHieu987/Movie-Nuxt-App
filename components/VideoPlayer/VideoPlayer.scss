@@ -47,7 +47,7 @@ video::-webkit-media-controls {
   .require-vip {
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    // background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 
     .require-vip-wrapper {
@@ -66,9 +66,10 @@ video::-webkit-media-controls {
   .video-player {
     position: relative;
     display: flex;
-    overflow: hidden;
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
     font-size: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
 
     --icon-size: 3.2rem;
     --progress-height: 4px;
