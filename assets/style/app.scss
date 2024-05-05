@@ -17,6 +17,7 @@
   .body-wrapper {
     display: flex;
     position: relative;
+    // min-width: var(--min-width-app);
     max-width: var(--max-width-app);
     margin: 0px auto;
 

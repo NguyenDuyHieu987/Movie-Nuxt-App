@@ -32,6 +32,8 @@
 
     &.play {
       .body-wrapper {
+        min-width: var(--min-width-play);
+
         main.main-content {
           & > .container {
             padding-left: 25px;
