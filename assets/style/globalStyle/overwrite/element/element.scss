@@ -224,13 +224,22 @@ body > [id*='el-popper-container'],
 body > [id^='el-popper-container'],
 body > [id|='el-popper-container'],
 #el-popper-container-1935 {
+  .el-popper {
+    background: var(--menu-background-color);
+
+    a {
+      color: inherit;
+    }
+  }
+
   .el-menu--popup-container.sub-menu-popper {
     /* max-height: 100vh; */
     max-height: 99.4vh;
     overflow-y: auto;
 
     .el-menu.el-menu--popup {
-      --el-menu-hover-bg-color: var(--menu-item-background-color) !important;
+      --el-menu-bg-color: var(--menu-background-color) !important;
+      --el-menu-hover-bg-color: var(--menu-hover-background-color) !important;
       --el-menu-item-height: var(--menu-item-height) !important;
       --el-menu-sub-item-height: var(--menu-item-height) !important;
 
