@@ -27,7 +27,7 @@ useSeoMeta({
   ogLocale: 'vi'
 });
 
-const { data } = await useFetch('/api/plan/get-all', { server: false });
+// const { data } = await useFetch('/api/plan/get-all', { server: false });
 </script>
 
 <style lang="scss" src="./HelpPage.scss"></style>
