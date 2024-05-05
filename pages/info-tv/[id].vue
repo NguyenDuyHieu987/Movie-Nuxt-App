@@ -447,7 +447,7 @@
                     </template>
                   </Tags>
 
-                  <Tags tagsLabel="Thời lượng trêm tập:">
+                  <Tags tagsLabel="Thời lượng trên tập:">
                     <template #tagsInfo>
                       <span class="tags-item">
                         {{ dataMovie?.episode_run_time[0] || 0 + ' phút' }}
