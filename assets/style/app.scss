@@ -3,19 +3,21 @@
 .app-wrapper {
   overflow: visible;
 
-  & > .body-content,
-  & > [class*='body-content'],
-  & > [class^='body-content'],
-  & > [class|='body-content'] {
-    position: relative;
-    min-height: calc(100vh - var(--header-height));
+  & > [class*='-layout'],
+  & > [class$='-layout'] {
+    & > .body-content,
+    & > [class*='body-content'],
+    & > [class^='body-content'],
+    & > [class|='body-content'] {
+      position: relative;
+      min-height: calc(100vh - var(--header-height));
+    }
   }
 
   .body-wrapper {
     display: flex;
     position: relative;
     max-width: var(--max-width-app);
-    /* min-width: var(--min-width-app); */
     margin: 0px auto;
 
     main.main-content {

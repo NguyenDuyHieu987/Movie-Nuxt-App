@@ -117,9 +117,16 @@ import { useLocalStorage } from '@vueuse/core';
 
 const store = useStore();
 const authStore = useAuthStore();
+const route = useRoute();
+const router = useRouter();
 const { collapsed, openSiderBarFixed } = storeToRefs<any>(store);
 const { isLogin, userAccount } = storeToRefs<any>(authStore);
 const siderScrolled = ref<boolean>(false);
+// const isCollapsed = computed<boolean>(
+//   () =>
+//     collapsed.value ||
+//     APP.PAGES_COLLAPSED_SIDEBAR.includes(route.meta.key as string)
+// );
 
 const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
   [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false
@@ -151,6 +158,8 @@ onMounted(() => {
   const siderBar = document.querySelector('.sider-bar');
 
   siderBar?.addEventListener('mouseover', (e: any) => {
+    if (route.meta?.preventOpenFixedSidebar) return;
+
     if (store.collapsed == true && store.openSiderBarFixed == false) {
       store.openSiderBarFixed = true;
     }
@@ -162,6 +171,16 @@ onMounted(() => {
     });
   });
 });
+
+// router.beforeResolve((to: any, from: any, next: any) => {
+//   if (
+//     APP.PAGES_COLLAPSED_SIDEBAR.includes(to.meta.key as string) &&
+//     !store.collapsed
+//   ) {
+//     store.collapsed = true;
+//   }
+//   next();
+// });
 
 const handleCollapse = () => {
   // if (store.collapsed == true) {

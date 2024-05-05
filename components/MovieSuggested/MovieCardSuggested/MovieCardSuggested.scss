@@ -17,8 +17,10 @@
       overflow: hidden;
       border-radius: 5px;
       transition: all 0.3s;
-      width: 200px;
-      flex: 1 0 200px;
+      // flex: 0 0 200px;
+      // max-width: 200px;
+      flex: 0 0 160px;
+      max-width: 160px;
 
       .el-skeleton__item.skeleton-img {
         position: relative;
@@ -74,8 +76,10 @@
   .img-box {
     position: relative;
     display: flex;
-    flex: 1 0 200px;
-    max-width: 200px;
+    // flex: 0 0 200px;
+    // max-width: 200px;
+    flex: 0 0 160px;
+    max-width: 160px;
     overflow: hidden;
     border-radius: 5px;
 
@@ -105,29 +109,46 @@
     }
 
     .play-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
       opacity: 0;
       transition: all 0.15s;
 
       svg {
-        font-size: 4rem;
-        width: 4rem;
-        height: 4rem;
+        // font-size: 4rem;
+        // width: 4rem;
+        // height: 4rem;
+        font-size: 3rem;
+        width: 3rem;
+        height: 3rem;
+        transform: scale(1);
         transition: all 0.15s;
       }
     }
 
     &:hover {
       img {
-        opacity: 0.5;
+        opacity: 0.7;
       }
 
       .play-icon {
         z-index: 2;
         opacity: 1;
+
+        &:hover {
+          svg {
+            fill: var(--app-background-color);
+            transform: scale(1.5);
+          }
+        }
       }
     }
 
@@ -184,6 +205,7 @@
 
     .year-views {
       display: flex;
+      align-items: center;
       flex-direction: row;
       font-size: 0.9em;
       color: inherit;
@@ -194,7 +216,7 @@
           content: '\2022';
           color: inherit;
           display: inline-block;
-          margin: 0px 8px;
+          padding: 0 5px;
           font-size: 1.5rem;
         }
       }

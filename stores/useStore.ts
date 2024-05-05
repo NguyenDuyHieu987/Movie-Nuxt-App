@@ -14,6 +14,7 @@ const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
 });
 
 export default defineStore('store', () => {
+  const route = useRoute();
   const isDark = useDark({
     selector: 'html',
     attribute: 'class',
@@ -48,6 +49,19 @@ export default defineStore('store', () => {
       }
     }
   });
+
+  watch(
+    () => route,
+    () => {
+      if (
+        APP.PAGES_COLLAPSED_SIDEBAR.includes(route.meta.key as string) &&
+        !collapsed.value
+      ) {
+        collapsed.value = true;
+      }
+    },
+    { immediate: true, deep: true }
+  );
 
   const toogleSidebar = () => {
     collapsed.value = !collapsed.value;

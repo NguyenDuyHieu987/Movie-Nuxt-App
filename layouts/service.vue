@@ -1,20 +1,22 @@
 <template>
-  <div class="body-content-service">
-    <Header layout="service" />
+  <div class="service-layout">
+    <div class="body-content-service">
+      <Header layout="service" />
 
-    <div
-      id="body-wrapper"
-      class="body-wrapper"
-    >
-      <Drawer />
+      <div
+        id="body-wrapper"
+        class="body-wrapper"
+      >
+        <Drawer />
 
-      <main class="main-content">
-        <div class="container">
-          <slot />
-        </div>
+        <main class="main-content">
+          <div class="container">
+            <slot />
+          </div>
 
-        <Footer />
-      </main>
+          <Footer />
+        </main>
+      </div>
     </div>
   </div>
 </template>

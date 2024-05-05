@@ -84,147 +84,197 @@
 
           <div class="main-content">
             <div class="detail-content-left">
-              <div class="head-content">
-                <h1 class="movie-title">{{ dataMovie?.name }}</h1>
-                <div class="action">
-                  <div class="left">
-                    <NuxtLink
-                      class="action-btn"
-                      :to="{
-                        path: `/play-movie/${
-                          dataMovie?.id
-                        }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
-                      }"
-                    >
-                      <a-button
-                        size="large"
-                        type="text"
-                        class="play modern"
-                      >
-                        <template #icon>
-                          <!-- <Icon name="ci:play-arrow" class="play" /> -->
-
-                          <svg
-                            class="play"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="3rem"
-                            height="3rem"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
+              <el-skeleton
+                :loading="loading"
+                animated
+              >
+                <template #template>
+                  <el-skeleton-item
+                    class="title"
+                    variant="text"
+                    style="width: 50%"
+                  />
+                  <div class="actions">
+                    <div class="left">
+                      <el-skeleton-item
+                        v-for="(item, index) in 3"
+                        :key="index"
+                        variant="button"
+                      />
+                    </div>
+                    <div class="right">
+                      <el-skeleton-item
+                        v-for="(item, index) in 2"
+                        :key="index"
+                        variant="button"
+                      />
+                    </div>
+                  </div>
+                  <div class="content">
+                    <el-skeleton-item
+                      variant="text"
+                      style="width: 95%"
+                    />
+                    <el-skeleton-item
+                      variant="text"
+                      style="width: 60%"
+                    />
+                    <el-skeleton-item
+                      class="rate"
+                      variant="text"
+                      style="width: 70%"
+                    />
+                    <el-skeleton-item
+                      class="view"
+                      variant="text"
+                      style="width: 30%"
+                    />
+                  </div>
+                </template>
+                <template #default>
+                  <div class="head-content">
+                    <h1 class="movie-title">{{ dataMovie?.name }}</h1>
+                    <div class="action">
+                      <div class="left">
+                        <NuxtLink
+                          class="action-btn"
+                          :to="{
+                            path: `/play-movie/${
+                              dataMovie?.id
+                            }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
+                          }"
+                        >
+                          <a-button
+                            size="large"
+                            type="text"
+                            class="play modern"
                           >
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </template>
-                        Xem ngay
-                      </a-button>
-                    </NuxtLink>
+                            <template #icon>
+                              <!-- <Icon name="ci:play-arrow" class="play" /> -->
 
-                    <div
-                      class="action-btn"
-                      @click="handleAddToList"
-                    >
-                      <a-button
-                        size="large"
-                        class="add modern"
-                      >
-                        <template #icon>
-                          <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
+                              <svg
+                                class="play"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="3rem"
+                                height="3rem"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                              >
+                                <path d="M8 5v14l11-7z" />
+                              </svg>
+                            </template>
+                            Xem ngay
+                          </a-button>
+                        </NuxtLink>
+
+                        <div
+                          class="action-btn"
+                          @click="handleAddToList"
+                        >
+                          <a-button
+                            size="large"
+                            class="add modern"
+                          >
+                            <template #icon>
+                              <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
                           <Icon v-else name="ic:baseline-plus" /> -->
 
-                          <svg
-                            v-if="isAddToList"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1.8rem"
-                            height="1.8rem"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
+                              <svg
+                                v-if="isAddToList"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1.8rem"
+                                height="1.8rem"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                              >
+                                <path
+                                  d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
+                                />
+                              </svg>
+
+                              <svg
+                                v-else
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1.8rem"
+                                height="1.8rem"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                              >
+                                <path
+                                  d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
+                                />
+                              </svg>
+                            </template>
+                            <span> Danh sách</span>
+                          </a-button>
+                        </div>
+
+                        <NuxtLink
+                          href="#trailer"
+                          class="action-btn"
+                          @click.prevent="scrollToTrailer"
+                        >
+                          <a-button
+                            size="large"
+                            class="trailer modern"
                           >
-                            <path
-                              d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
-                            />
-                          </svg>
+                            <template #icon>
+                              <!-- <Icon name="fa6-brands:youtube" class="trailer" /> -->
 
-                          <svg
-                            v-else
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1.8rem"
-                            height="1.8rem"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
+                              <svg
+                                class="trailer"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1.8rem"
+                                height="1.8rem"
+                                viewBox="0 0 576 512"
+                                fill="currentColor"
+                              >
+                                <path
+                                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597c-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821c11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205l-142.739 81.201z"
+                                />
+                              </svg>
+                            </template>
+                            <span> Trailer</span>
+                          </a-button>
+                        </NuxtLink>
+                      </div>
+
+                      <div class="right">
+                        <Interaction
+                          buttonClass="action-btn"
+                          :dataMovie="dataMovie"
+                        />
+
+                        <NuxtLink
+                          href="#comment"
+                          class="action-btn"
+                          @click.prevent="scrollToComment"
+                        >
+                          <a-button
+                            size="large"
+                            type="text"
+                            class="comment modern"
                           >
-                            <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
-                          </svg>
-                        </template>
-                        <span> Danh sách</span>
-                      </a-button>
-                    </div>
+                            <template #icon>
+                              <!-- <Icon name="ic:outline-comment" class="comment" /> -->
+                              <svg
+                                class="comment"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="2.1rem"
+                                height="2.1rem"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                              >
+                                <path
+                                  d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4l-.01-18zM20 4v13.17L18.83 16H4V4h16zM6 12h12v2H6zm0-3h12v2H6zm0-3h12v2H6z"
+                                />
+                              </svg>
+                            </template>
+                            <span> Bình luận</span>
+                          </a-button>
+                        </NuxtLink>
 
-                    <NuxtLink
-                      href="#trailer"
-                      class="action-btn"
-                      @click.prevent="scrollToTrailer"
-                    >
-                      <a-button
-                        size="large"
-                        class="trailer modern"
-                      >
-                        <template #icon>
-                          <!-- <Icon name="fa6-brands:youtube" class="trailer" /> -->
-
-                          <svg
-                            class="trailer"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1.8rem"
-                            height="1.8rem"
-                            viewBox="0 0 576 512"
-                            fill="currentColor"
-                          >
-                            <path
-                              d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597c-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821c11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205l-142.739 81.201z"
-                            />
-                          </svg>
-                        </template>
-                        <span> Trailer</span>
-                      </a-button>
-                    </NuxtLink>
-                  </div>
-
-                  <div class="right">
-                    <Interaction
-                      buttonClass="action-btn"
-                      :dataMovie="dataMovie"
-                    />
-
-                    <NuxtLink
-                      href="#comment"
-                      class="action-btn"
-                      @click.prevent="scrollToComment"
-                    >
-                      <a-button
-                        size="large"
-                        type="text"
-                        class="comment modern"
-                      >
-                        <template #icon>
-                          <!-- <Icon name="ic:outline-comment" class="comment" /> -->
-                          <svg
-                            class="comment"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="2.1rem"
-                            height="2.1rem"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path
-                              d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4l-.01-18zM20 4v13.17L18.83 16H4V4h16zM6 12h12v2H6zm0-3h12v2H6zm0-3h12v2H6z"
-                            />
-                          </svg>
-                        </template>
-                        <span> Bình luận</span>
-                      </a-button>
-                    </NuxtLink>
-
-                    <!-- <div class="ellipsis">
+                        <!-- <div class="ellipsis">
                       <Icon name="fa6-solid:ellipsis" />
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -238,136 +288,178 @@
                         <circle cx="256" cy="96" r="48" />
                       </svg>
                     </div> -->
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
 
-              <Tags
-                tagsLabel="Nội dung:"
-                class="tags-overview"
-              >
-                <template #tagsInfo>
-                  <Overview :content="dataMovie?.overview" />
-                  <!-- <span class="text">
+                  <Tags
+                    tagsLabel="Nội dung:"
+                    class="tags-overview"
+                  >
+                    <template #tagsInfo>
+                      <Overview :content="dataMovie?.overview" />
+                      <!-- <span class="text">
                       {{
                         dataMovie?.overview ||
                         'Sorry! This movie has not been updated overview content.'
                       }}
                     </span> -->
-                </template>
-              </Tags>
+                    </template>
+                  </Tags>
 
-              <RatingMovie
-                :dataMovie="dataMovie"
-                :ratedValue="ratedValue"
-              />
+                  <RatingMovie
+                    :dataMovie="dataMovie"
+                    :ratedValue="ratedValue"
+                  />
 
-              <Tags tagsLabel="Lượt xem:">
-                <template #tagsInfo>
-                  <span class="text">
-                    {{
-                      dataMovie?.views
-                        ?.toString()
-                        ?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
-                    }}
-                  </span>
+                  <Tags tagsLabel="Lượt xem:">
+                    <template #tagsInfo>
+                      <span class="text">
+                        {{
+                          dataMovie?.views
+                            ?.toString()
+                            ?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') +
+                          ' lượt xem'
+                        }}
+                      </span>
+                    </template>
+                  </Tags>
                 </template>
-              </Tags>
+              </el-skeleton>
             </div>
 
             <div class="detail-content-right">
-              <Tags tagsLabel="Tên gốc:">
-                <template #tagsInfo>
-                  <span class="tags-item">
-                    {{ dataMovie?.original_name }}
-                  </span>
+              <el-skeleton
+                :loading="loading"
+                animated
+              >
+                <template #template>
+                  <el-skeleton-item
+                    variant="text"
+                    style="width: 40%; min-width: 200px"
+                  />
+                  <el-skeleton-item
+                    variant="text"
+                    style="width: 35%"
+                  />
+                  <el-skeleton-item
+                    variant="text"
+                    style="width: 55%"
+                  />
+                  <el-skeleton-item
+                    variant="text"
+                    style="width: 30%"
+                  />
+                  <el-skeleton-item
+                    variant="text"
+                    style="width: 60%"
+                  />
+                  <el-skeleton-item
+                    variant="text"
+                    style="width: 40%"
+                  />
+                  <el-skeleton-item
+                    variant="text"
+                    style="width: 40%"
+                  />
                 </template>
-              </Tags>
+                <template #default>
+                  <Tags tagsLabel="Tên gốc:">
+                    <template #tagsInfo>
+                      <span class="tags-item">
+                        {{ dataMovie?.original_name }}
+                      </span>
+                    </template>
+                  </Tags>
 
-              <Tags tagsLabel="Đang phát:">
-                <template #tagsInfo>
-                  <span class="tags-item">HD - Vietsub</span>
-                </template>
-              </Tags>
+                  <Tags tagsLabel="Đang phát:">
+                    <template #tagsInfo>
+                      <span class="tags-item">HD - Vietsub</span>
+                    </template>
+                  </Tags>
 
-              <Tags tagsLabel="Ngày phát hành:">
-                <template #tagsInfo>
-                  <span class="tags-item">
-                    <NuxtLink
-                      class="underline"
-                      :to="`/discover/year/${dataMovie?.release_date?.slice(
-                        0,
-                        4
-                      )}`"
-                    >
-                      {{ dataMovie?.release_date?.slice(0, 4) }}
-                    </NuxtLink>
-                    <span>
-                      {{ dataMovie?.release_date?.slice(4) }}
-                    </span>
-                  </span>
-                </template>
-              </Tags>
+                  <Tags tagsLabel="Ngày phát hành:">
+                    <template #tagsInfo>
+                      <span class="tags-item">
+                        <NuxtLink
+                          class="underline"
+                          :to="`/discover/year/${dataMovie?.release_date?.slice(
+                            0,
+                            4
+                          )}`"
+                        >
+                          {{ dataMovie?.release_date?.slice(0, 4) }}
+                        </NuxtLink>
+                        <span>
+                          {{ dataMovie?.release_date?.slice(4) }}
+                        </span>
+                      </span>
+                    </template>
+                  </Tags>
 
-              <Tags tagsLabel="Quốc gia:">
-                <template #tagsInfo>
-                  <span class="tags-item">
-                    <NuxtLink
-                      class="underline"
-                      :to="`/discover/country/${
-                        getCountryByOriginalLanguage(
-                          dataMovie?.original_language,
-                          store.allCountries
-                        )?.short_name || 'au-my'
-                      }`"
-                    >
-                      {{
-                        getCountryByOriginalLanguage(
-                          dataMovie?.original_language,
-                          store.allCountries
-                        )?.name || ''
-                      }}
-                    </NuxtLink>
-                  </span>
-                </template>
-              </Tags>
+                  <Tags tagsLabel="Quốc gia:">
+                    <template #tagsInfo>
+                      <span class="tags-item">
+                        <NuxtLink
+                          class="underline"
+                          :to="`/discover/country/${
+                            getCountryByOriginalLanguage(
+                              dataMovie?.original_language,
+                              store.allCountries
+                            )?.short_name || 'au-my'
+                          }`"
+                        >
+                          {{
+                            getCountryByOriginalLanguage(
+                              dataMovie?.original_language,
+                              store.allCountries
+                            )?.name || ''
+                          }}
+                        </NuxtLink>
+                      </span>
+                    </template>
+                  </Tags>
 
-              <Tags tagsLabel="Thể loại:">
-                <template #tagsInfo>
-                  <span
-                    v-for="(item, index) in dataMovie?.genres"
-                    :key="item?.id"
-                    :index="index"
-                    class="tags-item"
-                  >
-                    <NuxtLink
-                      class="underline"
-                      :to="`/discover/genre/${
-                        getGenreById(item?.id, store.allGenres)?.short_name
-                      }`"
-                    >
-                      {{ item?.name }}
-                    </NuxtLink>
-                    <span>
-                      {{ index + 1 != dataMovie?.genres?.length ? ', ' : '' }}
-                    </span>
-                  </span>
-                </template>
-              </Tags>
+                  <Tags tagsLabel="Thể loại:">
+                    <template #tagsInfo>
+                      <span
+                        v-for="(item, index) in dataMovie?.genres"
+                        :key="item?.id"
+                        :index="index"
+                        class="tags-item"
+                      >
+                        <NuxtLink
+                          class="underline"
+                          :to="`/discover/genre/${
+                            getGenreById(item?.id, store.allGenres)?.short_name
+                          }`"
+                        >
+                          {{ item?.name }}
+                        </NuxtLink>
+                        <span>
+                          {{
+                            index + 1 != dataMovie?.genres?.length ? ', ' : ''
+                          }}
+                        </span>
+                      </span>
+                    </template>
+                  </Tags>
 
-              <Tags tagsLabel="Thời lượng:">
-                <template #tagsInfo>
-                  <span class="tags-item">
-                    {{ dataMovie?.runtime + ' phút' }}</span
-                  >
-                </template>
-              </Tags>
+                  <Tags tagsLabel="Thời lượng:">
+                    <template #tagsInfo>
+                      <span class="tags-item">
+                        {{ dataMovie?.runtime + ' phút' }}</span
+                      >
+                    </template>
+                  </Tags>
 
-              <Tags tagsLabel="Trạng thái:">
-                <template #tagsInfo>
-                  <span class="tags-item"> {{ dataMovie?.status }}</span>
+                  <Tags tagsLabel="Trạng thái:">
+                    <template #tagsInfo>
+                      <span class="tags-item"> {{ dataMovie?.status }}</span>
+                    </template>
+                  </Tags>
                 </template>
-              </Tags>
+              </el-skeleton>
             </div>
           </div>
 
@@ -445,7 +537,8 @@ import { getItemList } from '~/services/list';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
-  key: 'info-movie'
+  key: 'info-movie',
+  preventOpenFixedSidebar: true
   // pageTransition: {
   //   name: 'fade'
   // }
@@ -592,6 +685,7 @@ if (authStore.isLogin) {
       .catch((e) => {});
   }
 }
+
 loading.value = false;
 
 useHead({

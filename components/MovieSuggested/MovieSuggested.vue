@@ -4,6 +4,9 @@
       <h2 class="suggested-title title-default">
         <span>Có thể bạn muốn xem</span>
       </h2>
+      <!-- <h2 class="suggested-title">
+        <span>Có thể bạn muốn xem</span>
+      </h2> -->
 
       <el-skeleton
         class="movie-group-suggested-skeleton"

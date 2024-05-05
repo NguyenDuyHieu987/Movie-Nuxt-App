@@ -1,22 +1,21 @@
-.center-page-layout {
-}
+.center-layout {
+  .body-content-center-page {
+    background-color: var(--background-content-white);
+    margin-top: var(--header-height);
 
-.body-content-center-page {
-  background-color: var(--background-content-white);
-  margin-top: var(--header-height);
+    .body-wrapper {
+      color: var(--text-color-black);
+    }
 
-  .body-wrapper {
-    color: var(--text-color-black);
-  }
+    main.main-content {
+      /*  & > .container {
+      } */
 
-  main.main-content {
-    /*  & > .container {
-    } */
-
-    footer.footer {
-      .footer-container {
-        max-width: var(--max-width-center-page);
-        margin: 0px auto;
+      footer.footer {
+        .footer-container {
+          max-width: var(--max-width-center-page);
+          margin: 0px auto;
+        }
       }
     }
   }

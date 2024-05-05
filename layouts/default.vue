@@ -1,32 +1,35 @@
 <template>
-  <div
-    class="body-content"
-    :class="{
-      expand: collapsed || openSiderBarFixed,
-      fixed: openSiderBarFixed
-      // home: $route.name?.includes('home')
-    }"
-  >
-    <Header />
-
+  <div class="default-layout">
     <div
-      id="body-wrapper"
-      class="body-wrapper"
+      class="body-content"
+      :class="{
+        expand: collapsed || openSiderBarFixed,
+        fixed: openSiderBarFixed,
+        // home: $route.name?.includes('home')
+        play: APP.PAGES_COLLAPSED_SIDEBAR.includes($route.meta.key as string)
+      }"
     >
-      <Sider />
-      <Drawer />
+      <Header />
 
-      <main class="main-content">
-        <!-- <BreadCrumb /> -->
+      <div
+        id="body-wrapper"
+        class="body-wrapper"
+      >
+        <Sider />
+        <Drawer />
 
-        <div class="container">
-          <slot />
-        </div>
+        <main class="main-content">
+          <!-- <BreadCrumb /> -->
 
-        <Footer
-          v-show="$route.path != '/follow' && $route.path != '/history'"
-        />
-      </main>
+          <div class="container">
+            <slot />
+          </div>
+
+          <Footer
+            v-show="$route.path != '/follow' && $route.path != '/history'"
+          />
+        </main>
+      </div>
     </div>
   </div>
 </template>
@@ -49,7 +52,7 @@ const store = useStore();
 const authStore = useAuthStore();
 const { collapsed, openSiderBarFixed } = storeToRefs(store);
 const { isLogin } = storeToRefs(authStore);
-const router = useRouter();
+// const router = useRouter();
 
 // let promise = Promise.resolve();
 

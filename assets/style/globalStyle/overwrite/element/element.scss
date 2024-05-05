@@ -220,7 +220,10 @@
   }
 }
 
-#el-popper-container-1024 {
+body > [id*='el-popper-container'],
+body > [id^='el-popper-container'],
+body > [id|='el-popper-container'],
+#el-popper-container-1935 {
   .el-menu--popup-container.sub-menu-popper {
     /* max-height: 100vh; */
     max-height: 99.4vh;

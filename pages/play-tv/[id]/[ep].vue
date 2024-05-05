@@ -6,25 +6,26 @@
     /> -->
 
     <div class="play-container">
-      <div class="top-page">
-        <BackPage
-          @onclick="
-            navigateTo({
-              path: `/info-tv/${
-                dataMovie?.id
-              }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}
+      <div class="main-play">
+        <div class="top-page">
+          <BackPage
+            @onclick="
+              navigateTo({
+                path: `/info-tv/${
+                  dataMovie?.id
+                }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}
             `
-            })
-          "
-        >
-          {{ dataMovie?.name }}
-        </BackPage>
-        <HistoryProgressBar :historyProgress="historyProgress.percent" />
-      </div>
+              })
+            "
+          >
+            {{ dataMovie?.name }}
+          </BackPage>
+          <HistoryProgressBar :historyProgress="historyProgress.percent" />
+        </div>
 
-      <div class="video">
-        <div class="video-wrapper">
-          <!-- <iframe
+        <div class="video">
+          <div class="video-wrapper">
+            <!-- <iframe
               id="vimeo-player"
               :src="`https://player.vimeo.com/video/${urlCodeMovie}`"
               width="100%"
@@ -34,7 +35,7 @@
               allowfullscreen
             ></iframe> -->
 
-          <!-- <iframe
+            <!-- <iframe
               id="okru-player"
               width="100%"
               height="100%"
@@ -44,252 +45,347 @@
               allowfullscreen
             ></iframe> -->
 
-          <VideoPlayer
-            v-model:isInHistory="isInHistory"
-            v-model:historyProgress="historyProgress"
+            <VideoPlayer
+              v-model:isInHistory="isInHistory"
+              v-model:historyProgress="historyProgress"
+              :dataMovie="dataMovie"
+              :episode="currentEpisode"
+              :loadingData="loading || currentEpisode == null"
+              :videoUrl="'/television/' + urlCodeMovie"
+              :backdrop="
+                getImage(
+                  dataMovie?.backdrop_path,
+                  'backdrop',
+                  'w-' + windowWidth.toString()
+                )
+              "
+              @onPlay="(e) => onPLayVideoPlayer(e)"
+              @onTimeUpdate="(e) => onTimeUpdateVideoPlayer(e)"
+            />
+          </div>
+        </div>
+
+        <div class="movie-content">
+          <el-skeleton
+            :loading="loading"
+            animated
+          >
+            <template #template>
+              <el-skeleton-item
+                class="title"
+                variant="text"
+                style="width: 50%"
+              />
+              <div class="actions">
+                <div class="left">
+                  <el-skeleton-item
+                    v-for="(item, index) in 3"
+                    :key="index"
+                    variant="button"
+                  />
+                </div>
+                <div class="right">
+                  <el-skeleton-item
+                    v-for="(item, index) in 2"
+                    :key="index"
+                    variant="button"
+                  />
+                </div>
+              </div>
+              <div class="content">
+                <el-skeleton-item
+                  variant="text"
+                  style="width: 90%"
+                />
+                <el-skeleton-item
+                  variant="text"
+                  style="width: 60%"
+                />
+                <el-skeleton-item
+                  class="rate"
+                  variant="text"
+                  style="width: 70%"
+                />
+                <el-skeleton-item
+                  class="view"
+                  variant="text"
+                  style="width: 30%"
+                />
+              </div>
+            </template>
+            <template #default>
+              <h2 class="movie-title">
+                {{ dataMovie?.name }}
+                <!-- <span>
+                    {{ ' - Phần ' + dataMovie?.season?.season_number }}
+                  </span> -->
+              </h2>
+
+              <div class="actions">
+                <div class="left">
+                  <div
+                    class="action-btn"
+                    @click="handleAddToList"
+                  >
+                    <a-button class="modern add">
+                      <template #icon>
+                        <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
+                      <Icon v-else name="ic:baseline-plus" /> -->
+
+                        <svg
+                          v-if="isAddToList"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="2.5rem"
+                          height="2.5rem"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
+                          />
+                        </svg>
+
+                        <svg
+                          v-else
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="2.5rem"
+                          height="2.5rem"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                        </svg>
+                      </template>
+                      <span> Danh sách</span>
+                    </a-button>
+                  </div>
+                </div>
+                <div class="right">
+                  <Interaction
+                    buttonClass="action-btn"
+                    :dataMovie="dataMovie"
+                  />
+
+                  <NuxtLink
+                    href="#comment"
+                    class="action-btn"
+                    @click.prevent="scrollToComment"
+                  >
+                    <a-button
+                      size="large"
+                      type="text"
+                      class="comment modern"
+                    >
+                      <template #icon>
+                        <!-- <Icon name="ic:outline-comment" class="comment" /> -->
+
+                        <svg
+                          class="comment"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="2.1rem"
+                          height="2.1rem"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4l-.01-18zM20 4v13.17L18.83 16H4V4h16zM6 12h12v2H6zm0-3h12v2H6zm0-3h12v2H6z"
+                          />
+                        </svg>
+                      </template>
+                      <span> Bình luận</span>
+                    </a-button>
+                  </NuxtLink>
+                </div>
+              </div>
+
+              <Tags tagsLabel="Lượt xem:">
+                <template #tagsInfo>
+                  <span class="text">{{
+                    dataMovie?.views
+                      ?.toString()
+                      ?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
+                  }}</span>
+                </template>
+              </Tags>
+
+              <Tags
+                tagsLabel="Nội dung:"
+                class="tags-overview"
+              >
+                <template #tagsInfo>
+                  <Overview :content="dataMovie?.overview" />
+                </template>
+              </Tags>
+
+              <RatingMovie
+                :dataMovie="dataMovie"
+                :ratedValue="ratedValue"
+              />
+            </template>
+          </el-skeleton>
+
+          <ListEpisodes
             :dataMovie="dataMovie"
-            :episode="currentEpisode"
-            :loadingData="loading || currentEpisode == null"
-            :videoUrl="'/television/' + urlCodeMovie"
-            :backdrop="
-              getImage(
-                dataMovie?.backdrop_path,
-                'backdrop',
-                'w-' + windowWidth.toString()
-              )
-            "
-            @onPlay="(e) => onPLayVideoPlayer(e)"
-            @onTimeUpdate="(e) => onTimeUpdateVideoPlayer(e)"
+            @changeUrlCode="(data: string) => getUrlCode(data)"
+            @changeEpisode="(data: any) => onChangeEpisode(data)"
           />
+
+          <Comment :dataMovie="dataMovie" />
         </div>
       </div>
 
-      <div class="movie-content">
-        <div class="main-content">
-          <div class="detail-content-left">
-            <h2 class="movie-title">
-              {{ dataMovie?.name }}
-              <!-- <span>
-                    {{ ' - Phần ' + dataMovie?.season?.season_number }}
-                  </span> -->
-            </h2>
-
-            <Tags tagsLabel="Lượt xem:">
-              <template #tagsInfo>
-                <span class="text">{{
-                  dataMovie?.views
-                    ?.toString()
-                    ?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
-                }}</span>
-              </template>
-            </Tags>
-
-            <Tags
-              tagsLabel="Nội dung:"
-              class="tags-overview"
-            >
-              <template #tagsInfo>
-                <Overview :content="dataMovie?.overview" />
-              </template>
-            </Tags>
-
-            <RatingMovie
-              :dataMovie="dataMovie"
-              :ratedValue="ratedValue"
-            />
-
-            <div class="action">
-              <div class="left">
-                <div
-                  class="action-btn"
-                  @click="handleAddToList"
-                >
-                  <a-button class="modern add">
-                    <template #icon>
-                      <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
-                      <Icon v-else name="ic:baseline-plus" /> -->
-
-                      <svg
-                        v-if="isAddToList"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="2.5rem"
-                        height="2.5rem"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path
-                          d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
-                        />
-                      </svg>
-
-                      <svg
-                        v-else
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="2.5rem"
-                        height="2.5rem"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
-                      </svg>
-                    </template>
-                    <span> Danh sách</span>
-                  </a-button>
+      <div class="side-view">
+        <div class="secondary-movie-content">
+          <el-skeleton
+            :loading="loading"
+            animated
+          >
+            <template #template>
+              <div class="poster-box">
+                <div class="img-box">
+                  <el-skeleton-item class="skeleton-img ratio-2-3" />
+                </div>
+                <div class="movie-info">
+                  <el-skeleton-item
+                    variant="text"
+                    style="width: 100px"
+                  />
+                  <el-skeleton-item
+                    variant="text"
+                    style="width: 150px"
+                  />
                 </div>
               </div>
-              <div class="right">
-                <Interaction
-                  buttonClass="action-btn"
-                  :dataMovie="dataMovie"
-                />
 
-                <NuxtLink
-                  href="#comment"
-                  class="action-btn"
-                  @click.prevent="scrollToComment"
+              <el-skeleton-item
+                variant="text"
+                style="width: 300px"
+              />
+              <el-skeleton-item
+                variant="text"
+                style="width: 150px"
+              />
+              <el-skeleton-item
+                variant="text"
+                style="width: 250px"
+              />
+              <el-skeleton-item
+                variant="text"
+                style="width: 200px"
+              />
+            </template>
+            <template #default>
+              <div class="poster-box">
+                <div
+                  class="poster"
+                  :style="`--dominant-poster-color: ${dataMovie?.dominant_poster_color[0]}, ${dataMovie?.dominant_poster_color[1]},${dataMovie?.dominant_poster_color[2]}`"
                 >
-                  <a-button
-                    size="large"
-                    type="text"
-                    class="comment modern"
-                  >
-                    <template #icon>
-                      <!-- <Icon name="ic:outline-comment" class="comment" /> -->
+                  <div class="img-box ratio-2-3">
+                    <a-badge-ribbon
+                      v-if="dataMovie?.vip > 0"
+                      :text="'VIP ' + dataMovie?.vip"
+                      placement="start"
+                      :class="`vip-${dataMovie?.vip}`"
+                    />
 
-                      <svg
-                        class="comment"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="2.1rem"
-                        height="2.1rem"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path
-                          d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4l-.01-18zM20 4v13.17L18.83 16H4V4h16zM6 12h12v2H6zm0-3h12v2H6zm0-3h12v2H6z"
-                        />
-                      </svg>
-                    </template>
-                    <span> Bình luận</span>
-                  </a-button>
-                </NuxtLink>
+                    <NuxtImg
+                      :src="getImage(dataMovie?.poster_path, 'poster', 'w-250')"
+                      format="avif"
+                      loading="lazy"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="movie-info">
+                  <h2 class="original-title">
+                    {{ dataMovie?.original_name }}
+                  </h2>
+
+                  <div class="movie-info-item">HD - Vietsub</div>
+
+                  <div class="movie-info-item">
+                    <NuxtLink
+                      class="underline"
+                      :to="`/discover/year/${release_date?.slice(0, 4)}`"
+                    >
+                      {{ release_date?.slice(0, 4) }}
+                    </NuxtLink>
+                    <span>
+                      {{ release_date?.slice(4) }}
+                    </span>
+                  </div>
+
+                  <div class="movie-info-item">
+                    <NuxtLink
+                      class="underline"
+                      :to="`/discover/country/${
+                        getCountryByOriginalLanguage(
+                          dataMovie?.original_language,
+                          store.allCountries
+                        )?.short_name || 'au-my'
+                      }`"
+                    >
+                      {{
+                        getCountryByOriginalLanguage(
+                          dataMovie?.original_language,
+                          store.allCountries
+                        )?.name || ''
+                      }}
+                    </NuxtLink>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="detail-content-right">
-            <Tags tagsLabel="Tên gốc:">
-              <template #tagsInfo>
-                <span class="tags-item">
-                  {{ dataMovie?.original_name }}
-                </span>
-              </template>
-            </Tags>
 
-            <Tags tagsLabel="Đang phát:">
-              <template #tagsInfo>
-                <span class="tags-item">HD - Vietsub</span>
-              </template>
-            </Tags>
+              <div>
+                <Tags tagsLabel="Thể loại:">
+                  <template #tagsInfo>
+                    <span
+                      v-for="(item, index) in dataMovie?.genres"
+                      :key="item?.id"
+                      :index="index"
+                      class="tags-item"
+                    >
+                      <NuxtLink
+                        class="underline"
+                        :to="`/discover/genre/${
+                          getGenreById(item?.id, store.allGenres)?.short_name
+                        }`"
+                        >{{ item?.name }}
+                      </NuxtLink>
+                      <span>
+                        {{ index + 1 != dataMovie?.genres?.length ? ', ' : '' }}
+                      </span>
+                    </span>
+                  </template>
+                </Tags>
 
-            <Tags tagsLabel="Ngày phát hành:">
-              <template #tagsInfo>
-                <span class="tags-item">
-                  <NuxtLink
-                    class="underline"
-                    :to="`/discover/year/${release_date?.slice(0, 4)}`"
-                  >
-                    {{ release_date?.slice(0, 4) }}
-                  </NuxtLink>
-                  <span>
-                    {{ release_date?.slice(4) }}
-                  </span>
-                </span>
-              </template>
-            </Tags>
+                <Tags tagsLabel="Số tập:">
+                  <template #tagsInfo>
+                    <span class="tags-item">
+                      {{ dataMovie?.number_of_episodes + ' tập' }}
+                    </span>
+                  </template>
+                </Tags>
 
-            <Tags tagsLabel="Quốc gia:">
-              <template #tagsInfo>
-                <span class="tags-item">
-                  <NuxtLink
-                    class="underline"
-                    :to="`/discover/country/${
-                      getCountryByOriginalLanguage(
-                        dataMovie?.original_language,
-                        store.allCountries
-                      )?.short_name || 'au-my'
-                    }`"
-                  >
-                    {{
-                      getCountryByOriginalLanguage(
-                        dataMovie?.original_language,
-                        store.allCountries
-                      )?.name || ''
-                    }}
-                  </NuxtLink>
-                </span>
-              </template>
-            </Tags>
+                <Tags tagsLabel="Thời lượng trêm tập:">
+                  <template #tagsInfo>
+                    <span class="tags-item">
+                      {{ dataMovie?.episode_run_time[0] + ' phút' }}
+                    </span>
+                  </template>
+                </Tags>
 
-            <Tags tagsLabel="Thể loại:">
-              <template #tagsInfo>
-                <span
-                  v-for="(item, index) in dataMovie?.genres"
-                  :key="item?.id"
-                  :index="index"
-                  class="tags-item"
-                >
-                  <NuxtLink
-                    class="underline"
-                    :to="`/discover/genre/${
-                      getGenreById(item?.id, store.allGenres)?.short_name
-                    }`"
-                    >{{ item?.name }}
-                  </NuxtLink>
-                  <span>
-                    {{ index + 1 != dataMovie?.genres?.length ? ', ' : '' }}
-                  </span>
-                </span>
-              </template>
-            </Tags>
-
-            <Tags tagsLabel="Số tập:">
-              <template #tagsInfo>
-                <span class="tags-item">
-                  {{ dataMovie?.number_of_episodes + ' tập' }}
-                </span>
-              </template>
-            </Tags>
-
-            <Tags tagsLabel="Thời lượng trêm tập:">
-              <template #tagsInfo>
-                <span class="tags-item">
-                  {{ dataMovie?.episode_run_time[0] + ' phút' }}
-                </span>
-              </template>
-            </Tags>
-
-            <Tags tagsLabel="Trạng thái:">
-              <template #tagsInfo>
-                <span class="tags-item"> {{ dataMovie?.status }}</span>
-              </template>
-            </Tags>
-          </div>
+                <Tags tagsLabel="Trạng thái:">
+                  <template #tagsInfo>
+                    <span class="tags-item"> {{ dataMovie?.status }}</span>
+                  </template>
+                </Tags>
+              </div>
+            </template>
+          </el-skeleton>
         </div>
 
-        <div class="related-content">
-          <div class="left">
-            <ListEpisodes
-              :dataMovie="dataMovie"
-              @changeUrlCode="(data: string) => getUrlCode(data)"
-              @changeEpisode="(data: any) => onChangeEpisode(data)"
-            />
-
-            <Comment :dataMovie="dataMovie" />
-          </div>
-
-          <div class="right">
-            <MovieSuggested :dataMovie="dataMovie" />
-          </div>
-        </div>
+        <MovieSuggested :dataMovie="dataMovie" />
       </div>
     </div>
   </div>
@@ -328,7 +424,8 @@ import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
-  key: 'play-tv'
+  key: 'play-tv',
+  preventOpenFixedSidebar: true
   // pageTransition: {
   //   name: 'fade'
   // }

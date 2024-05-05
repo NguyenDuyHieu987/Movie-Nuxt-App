@@ -188,9 +188,13 @@ import {
 import { storeToRefs } from 'pinia';
 import type { AppLayout } from '~/types';
 
-const props = withDefaults(defineProps<{ layout?: AppLayout }>(), {
-  layout: 'default'
-});
+const props = withDefaults(
+  defineProps<{ layout?: AppLayout; hideSearch?: boolean }>(),
+  {
+    layout: 'default',
+    hideSearch: false
+  }
+);
 
 const store = useStore();
 const authStore = useAuthStore();
