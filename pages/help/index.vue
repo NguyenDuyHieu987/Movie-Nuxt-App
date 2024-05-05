@@ -2,6 +2,7 @@
   <div class="help padding-content">
     <div class="center-page">
       <h1 class="help-page-title">Trung tâm trợ giúp</h1>
+      <!-- {{ data }} -->
     </div>
   </div>
 </template>
@@ -25,6 +26,8 @@ useSeoMeta({
   ogDescription: 'Trung tâm trợ giúp',
   ogLocale: 'vi'
 });
+
+const { data } = await useFetch('/api/plan/get-all', { server: false });
 </script>
 
 <style lang="scss" src="./HelpPage.scss"></style>
