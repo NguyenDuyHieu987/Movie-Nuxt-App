@@ -67,7 +67,7 @@
 
         <div class="movie-content">
           <el-skeleton
-            :loading="loading"
+            :loading="loadingMovie"
             animated
           >
             <template #template>
@@ -226,7 +226,7 @@
       <div class="side-view">
         <div class="secondary-movie-content">
           <el-skeleton
-            :loading="loading"
+            :loading="loadingMovie"
             animated
           >
             <template #template>
@@ -416,6 +416,7 @@ const route = useRoute();
 const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
+const loadingMovie = computed<boolean>(() => !dataMovie.value);
 const urlCodeMovie = ref<string>('809431505');
 const isAddToList = ref<boolean>(false);
 const seconds = ref<number>(0);
