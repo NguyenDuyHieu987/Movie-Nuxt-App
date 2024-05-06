@@ -68,6 +68,12 @@
         margin-right: 7px; */
         cursor: pointer;
 
+        &:hover {
+          a {
+            color: #fff;
+          }
+        }
+
         .vip {
           position: absolute;
           display: inline-block;
@@ -101,7 +107,7 @@
           padding: 8px 23px;
           background: linear-gradient(45deg, #080808, #2f2f2f);
           border-radius: 3px;
-          color: inherit;
+          color: var(--text-color-gray1);
           user-select: none;
           white-space: nowrap;
           transition: all 0.15s;

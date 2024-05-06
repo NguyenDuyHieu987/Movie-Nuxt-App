@@ -18,9 +18,8 @@
           v-show="dataEpisode?.length && !loading"
           class="list-lastest-episodes"
         >
-          <!-- .reverse() -->
           <li
-            v-for="(item, index) in dataEpisode?.slice(-7)"
+            v-for="(item, index) in dataEpisode"
             :key="index"
             :index="index"
           >
@@ -77,9 +76,10 @@ watch(
 
       getLatestEpisode(props.dataMovie?.id, props?.dataMovie?.season_id)
         .then((response) => {
-          dataEpisode.value = response?.results.filter(
-            (item: any) => item.air_date != null
-          );
+          dataEpisode.value = response?.results
+            .filter((item: any) => item.air_date != null)
+            ?.slice(-7);
+          // .reverse()
         })
         .catch((e) => {})
         .finally(() => {
