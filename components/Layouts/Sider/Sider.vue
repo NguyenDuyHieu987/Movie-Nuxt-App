@@ -172,15 +172,15 @@ onMounted(() => {
   });
 });
 
-// router.beforeResolve((to: any, from: any, next: any) => {
-//   if (
-//     APP.PAGES_COLLAPSED_SIDEBAR.includes(to.meta.key as string) &&
-//     !store.collapsed
-//   ) {
-//     store.collapsed = true;
-//   }
-//   next();
-// });
+router.afterEach((to: any, from: any, next: any) => {
+  if (
+    APP.PAGES_COLLAPSED_SIDEBAR.includes(to.meta.key as string) &&
+    !store.collapsed
+  ) {
+    store.collapsed = true;
+  }
+  next();
+});
 
 const handleCollapse = () => {
   // if (store.collapsed == true) {
