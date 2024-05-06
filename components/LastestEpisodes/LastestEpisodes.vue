@@ -18,8 +18,9 @@
           v-show="dataEpisode?.length && !loading"
           class="list-lastest-episodes"
         >
+          <!-- .reverse() -->
           <li
-            v-for="(item, index) in dataEpisode?.slice(-7).reverse()"
+            v-for="(item, index) in dataEpisode?.slice(-7)"
             :key="index"
             :index="index"
           >
@@ -51,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { getListEpisode } from '~/services/episode';
+import { getLatestEpisode } from '~/services/episode';
 // import { getSeason } from '~/services/season';
 
 const props = defineProps<{
@@ -74,7 +75,7 @@ watch(
     if (!oldVal && newVal && dataEpisode.value.length == 0) {
       loading.value = true;
 
-      getListEpisode(props.dataMovie?.id, props?.dataMovie?.season_id)
+      getLatestEpisode(props.dataMovie?.id, props?.dataMovie?.season_id)
         .then((response) => {
           dataEpisode.value = response?.results.filter(
             (item: any) => item.air_date != null

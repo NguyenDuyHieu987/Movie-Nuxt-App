@@ -6,6 +6,10 @@ export function getListEpisode(movieId: string, seasonId: string) {
   return makeRequest(`/${PREFIX_ROUTE}/list/${movieId}/${seasonId}`);
 }
 
+export function getLatestEpisode(movieId: string, seasonId: string) {
+  return makeRequest(`/${PREFIX_ROUTE}/latest/${movieId}/${seasonId}`);
+}
+
 export function getEpisode(
   movieId: string,
   seasonId: string,
