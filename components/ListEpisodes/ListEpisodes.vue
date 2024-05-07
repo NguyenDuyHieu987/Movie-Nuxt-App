@@ -262,12 +262,12 @@ watch(
 );
 
 watchEffect(() => {
-  if (dataEpisode.value[selectedTabEpisode.value - 1]?.length > 0) {
+  if (dataEpisode.value[0]?.length > 0) {
     emitUrlCode();
 
     emit(
       'changeEpisode',
-      dataEpisode.value[selectedTabEpisode.value - 1].find(
+      dataEpisode.value[0].find(
         (item) => item?.episode_number == currentEpisode.value
       )
     );
