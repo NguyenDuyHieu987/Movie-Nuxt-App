@@ -75,7 +75,7 @@
             v-model="selectedTabEpisode"
             class="episode-tabs"
             @tab-change="onChangeEpisodeTab"
-            stretch
+            :stretch="false"
           >
             <el-tab-pane
               v-for="(item, indexTab) in numberTabsEpisode"
