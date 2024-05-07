@@ -234,16 +234,21 @@ watch(
     if (!oldVal && newVal && dataEpisode.value[0].length == 0) {
       loading.value = true;
 
+      if (currentEpisode.value > limit.value) {
+        selectedTabEpisode.value = Math.ceil(
+          currentEpisode.value / limit.value
+        );
+      }
+
       getListEpisode(
         props.dataMovie?.id,
         props?.dataMovie?.season_id,
-        skip.value,
+        currentEpisode.value > limit.value ? currentEpisode.value : skip.value,
         limit.value
       )
         .then((response) => {
-          dataEpisode.value[0] = response?.results.filter(
-            (item: any) => item.air_date != null
-          );
+          dataEpisode.value[selectedTabEpisode.value - 1] =
+            response?.results.filter((item: any) => item.air_date != null);
           // .reverse();
 
           totalEpisode.value = response?.total_episode;
@@ -251,6 +256,26 @@ watch(
           for (let i = 1; i < numberTabsEpisode.value; i++) {
             dataEpisode.value.push([]);
           }
+
+          emitUrlCode();
+
+          emit(
+            'changeEpisode',
+            dataEpisode.value[selectedTabEpisode.value - 1].find(
+              (item) => item?.episode_number == currentEpisode.value
+            )
+          );
+
+          const episode = document.getElementById(
+            `episode-${currentEpisode.value}`
+          ) as HTMLElement;
+
+          // listEpisodes.value?.scrollTo({
+          //   top: episode?.offsetTop,
+          //   behavior: 'smooth'
+          // });
+
+          // episode.scrollIntoView();
         })
         .catch((e) => {})
         .finally(() => {
@@ -261,29 +286,10 @@ watch(
   { immediate: true }
 );
 
-watchEffect(() => {
-  if (dataEpisode.value[0]?.length > 0) {
-    emitUrlCode();
-
-    emit(
-      'changeEpisode',
-      dataEpisode.value[0].find(
-        (item) => item?.episode_number == currentEpisode.value
-      )
-    );
-
-    const episode = document.getElementById(
-      `episode-${currentEpisode.value}`
-    ) as HTMLElement;
-
-    // listEpisodes.value?.scrollTo({
-    //   top: episode?.offsetTop,
-    //   behavior: 'smooth'
-    // });
-
-    // episode.scrollIntoView();
-  }
-});
+// watchEffect(() => {
+//   if (dataEpisode.value[0]?.length > 0) {
+//   }
+// });
 
 onMounted(() => {});
 
@@ -354,7 +360,7 @@ const onChangeEpisodeTab = (tab: TabPaneName) => {
   )
     return;
 
-  loading.value = true;
+  // loading.value = true;
 
   getListEpisode(
     props.dataMovie?.id,
