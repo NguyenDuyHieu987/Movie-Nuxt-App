@@ -440,7 +440,9 @@ const route = useRoute();
 const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
-const loadingMovie = computed<boolean>(() => !dataMovie.value);
+const loadingMovie = computed<boolean>(
+  () => !dataMovie.value || loading.value || pending.value
+);
 const urlCodeMovie = ref<string>('The_Witcher_S1_Ep1');
 const isAddToList = ref<boolean>(false);
 const seconds = ref<number>(0);
@@ -525,7 +527,7 @@ onMounted(() => {
 
 loading.value = true;
 
-const { data: dataMovie } = await useAsyncData(
+const { data: dataMovie, pending } = await useAsyncData(
   `tv/detail/${movieId.value}`,
   () => getTvById(movieId.value),
   {

@@ -417,6 +417,7 @@
 
 .ant-tabs {
   overflow: visible;
+  font-size: inherit;
 
   .ant-tabs-nav {
     &::before {
@@ -425,7 +426,16 @@
 
     .ant-tabs-nav-list {
       .ant-tabs-tab {
+        font-size: inherit;
+
+        .ant-tabs-tab-btn {
+          color: inherit;
+          transition: all 0.1s;
+        }
+
         &:hover {
+          color: inherit;
+
           .ant-tabs-tab-btn {
             color: inherit;
             /* color: transparent;
@@ -438,13 +448,6 @@
               var(--app-background-color3)
             ); */
           }
-        }
-
-        .ant-tabs-tab-btn {
-          color: inherit;
-          font-weight: 600;
-          font-size: 1.7rem;
-          transition: all 0.1s;
         }
       }
 

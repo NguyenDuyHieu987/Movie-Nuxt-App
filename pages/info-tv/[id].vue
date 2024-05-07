@@ -85,7 +85,7 @@
           <div class="main-content">
             <div class="detail-content-left">
               <el-skeleton
-                :loading="loading"
+                :loading="loadingMovie"
                 animated
               >
                 <template #template>
@@ -330,7 +330,7 @@
 
             <div class="detail-content-right">
               <el-skeleton
-                :loading="loading"
+                :loading="loadingMovie"
                 animated
               >
                 <template #template>
@@ -564,6 +564,9 @@ const route = useRoute();
 const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
+const loadingMovie = computed<boolean>(
+  () => !dataMovie.value || loading.value || pending.value
+);
 const srcBackdropList = ref<string[]>([]);
 const isAddToList = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
@@ -648,7 +651,7 @@ onBeforeMount(() => {
 
 loading.value = true;
 
-const { data: dataMovie } = await useAsyncData(
+const { data: dataMovie, pending } = await useAsyncData(
   `tv/detail/${movieId.value}/videos`,
   () => getTvById(movieId.value, 'videos'),
   {

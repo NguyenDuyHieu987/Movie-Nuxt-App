@@ -50,19 +50,14 @@
       </a-select> -->
     </h2>
 
-    <div
-      v-loading="loading && dataEpisode?.length != 0"
-      class="list-episodes-wrapper"
-      element-loading-text="Đang tải tập..."
-      element-loading-background="rgba(0, 0, 0, 0.6)"
-    >
+    <div class="list-episodes-wrapper">
       <el-skeleton
-        :loading="loading"
+        :loading="loading && dataEpisode[0]?.length == 0"
         animated
       >
         <template #template>
           <el-skeleton-item
-            v-for="(item, index) in dataEpisode?.length || 20"
+            v-for="(item, index) in dataEpisode[0]?.length || 27"
             :key="index"
             :index="index"
             class="episode-item"
@@ -71,57 +66,93 @@
         </template>
 
         <template #default>
-          <ul
-            ref="listEpisodes"
-            class="list-episodes"
+          <!-- <div
+                v-loading="loading && dataEpisode[indexTab]?.length != 0"
+                element-loading-text="Đang tải tập..."
+                element-loading-background="rgba(0, 0, 0, 0.6)"
+              > -->
+          <el-tabs
+            v-model="selectedTabEpisode"
+            class="episode-tabs"
+            @tab-change="onChangeEpisodeTab"
+            stretch
           >
-            <li
-              v-for="(item, index) in dataEpisode"
-              :id="`episode-${item?.episode_number}`"
-              :key="item.id"
-              :index="index"
-              class="episode-item"
-              :class="{ active: currentEpisode == item?.episode_number }"
+            <el-tab-pane
+              v-for="(item, indexTab) in numberTabsEpisode"
+              :key="indexTab"
+              :label="getLabelTabEpisode(item)"
+              :name="item"
             >
-              <a
-                :href="`/play-tv/${
-                  dataMovie?.id
-                }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}/tap-${
-                  item?.episode_number
-                }`"
-                replace
-                force
-                @click.prevent="handleChangeEpisode(item)"
+              <ul
+                ref="listEpisodes"
+                class="list-episodes"
               >
-                {{
-                  // item?.episode_number == dataEpisode.length
-                  //   ? item?.episode_number < 10
-                  //     ? '0' + item?.episode_number + ' - End'
-                  //     : item?.episode_number + ' - End'
-                  //   :
-                  +item?.episode_number < 10
-                    ? '0' + item?.episode_number
-                    : item?.episode_number
-                }}
-              </a>
-              <span
-                v-if="item?.vip > 0"
-                :class="`vip vip-${item?.vip}`"
-                :title="`VIP ${item?.vip}`"
-              >
-                VIP {{ item?.vip }}
-              </span>
-            </li>
-          </ul>
+                <li
+                  v-for="(item, index) in dataEpisode[indexTab]"
+                  :id="`episode-${item?.episode_number}`"
+                  :key="item.id"
+                  :index="index"
+                  class="episode-item"
+                  :class="{ active: currentEpisode == item?.episode_number }"
+                >
+                  <a
+                    :href="`/play-tv/${
+                      dataMovie?.id
+                    }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}/tap-${
+                      item?.episode_number
+                    }`"
+                    replace
+                    force
+                    @click.prevent="handleChangeEpisode(item)"
+                  >
+                    {{
+                      // item?.episode_number == dataEpisode.length
+                      //   ? item?.episode_number < 10
+                      //     ? '0' + item?.episode_number + ' - End'
+                      //     : item?.episode_number + ' - End'
+                      //   :
+                      +item?.episode_number < 10
+                        ? '0' + item?.episode_number
+                        : item?.episode_number
+                    }}
+                  </a>
+                  <span
+                    v-if="item?.vip > 0"
+                    :class="`vip vip-${item?.vip}`"
+                    :title="`VIP ${item?.vip}`"
+                  >
+                    VIP {{ item?.vip }}
+                  </span>
+                </li>
+              </ul>
+            </el-tab-pane>
+          </el-tabs>
+          <!-- </div> -->
         </template>
       </el-skeleton>
     </div>
+
+    <!-- <a-tabs
+      v-show="dataEpisode?.length"
+      v-model:activeKey="selectedTabEpisode"
+      class="episode-tabs"
+    >
+      <a-tab-pane
+        v-for="(item, index) in numberTabsEpisode"
+        :key="index"
+        :tab="getLabelTabEpisode(item)"
+      >
+        {{ item }}
+        User
+      </a-tab-pane>
+    </a-tabs> -->
   </div>
 </template>
 
 <script setup lang="ts">
 // import { ElSkeleton, ElSkeletonItem } from 'element-plus';
 
+import type { TabPaneName } from 'element-plus';
 import { getListEpisode } from '~/services/episode';
 import { getListSeason, getSeason } from '~/services/season';
 
@@ -139,12 +170,22 @@ const utils = useUtils();
 const router = useRouter();
 const listEpisodes = ref<HTMLUListElement>();
 const dataSeason = ref<any>(props.dataMovie?.seasons);
-const dataEpisode = ref<any[]>(
+const totalEpisode = ref<number>(0);
+const dataEpisode = ref<any[][]>(
   props.dataMovie?.episodes
     ? props.dataMovie?.episodes
         .filter((item: any) => item.air_date != null)
         .reverse()
-    : []
+    : [[]]
+);
+const loading = ref<boolean>(false);
+const skip = ref<number>(1);
+const limit = ref<number>(40);
+const from = ref<number>(1);
+const to = ref<number>(40);
+const selectedTabEpisode = ref<number>(1);
+const numberTabsEpisode = computed<number>(() =>
+  Math.ceil(totalEpisode.value / limit.value)
 );
 const selectedSeasonId = ref<string>(props.dataMovie?.season_id);
 const currentEpisode = ref<number>(
@@ -152,7 +193,6 @@ const currentEpisode = ref<number>(
     ? +route.params?.ep?.replace('tap-', '')
     : 1
 );
-const loading = ref<boolean>(false);
 
 const emitUrlCode = () => {
   // const url_code_movie = dataSeason.episodes?.find(
@@ -191,14 +231,26 @@ const getData = async () => {
 watch(
   () => props.dataMovie,
   (newVal, oldVal) => {
-    if (!oldVal && newVal && dataEpisode.value.length == 0) {
+    if (!oldVal && newVal && dataEpisode.value[0].length == 0) {
       loading.value = true;
 
-      getListEpisode(props.dataMovie?.id, props?.dataMovie?.season_id)
+      getListEpisode(
+        props.dataMovie?.id,
+        props?.dataMovie?.season_id,
+        skip.value,
+        limit.value
+      )
         .then((response) => {
-          dataEpisode.value = response?.results
-            .filter((item: any) => item.air_date != null)
-            .reverse();
+          dataEpisode.value[0] = response?.results.filter(
+            (item: any) => item.air_date != null
+          );
+          // .reverse();
+
+          totalEpisode.value = response?.total_episode;
+
+          for (let i = 1; i < numberTabsEpisode.value; i++) {
+            dataEpisode.value.push([]);
+          }
         })
         .catch((e) => {})
         .finally(() => {
@@ -210,12 +262,12 @@ watch(
 );
 
 watchEffect(() => {
-  if (dataEpisode.value?.length > 0) {
+  if (dataEpisode.value[selectedTabEpisode.value - 1]?.length > 0) {
     emitUrlCode();
 
     emit(
       'changeEpisode',
-      dataEpisode.value.find(
+      dataEpisode.value[selectedTabEpisode.value - 1].find(
         (item) => item?.episode_number == currentEpisode.value
       )
     );
@@ -224,12 +276,13 @@ watchEffect(() => {
       `episode-${currentEpisode.value}`
     ) as HTMLElement;
 
-    listEpisodes.value?.scrollTo({
-      top: episode?.offsetTop,
-      behavior: 'smooth'
-    });
+    // listEpisodes.value?.scrollTo({
+    //   top: episode?.offsetTop,
+    //   behavior: 'smooth'
+    // });
+
+    // episode.scrollIntoView();
   }
-  // episode.scrollIntoView();
 });
 
 onMounted(() => {});
@@ -275,13 +328,50 @@ const handleChangeEpisode = (item: any) => {
 
   const videoPlayer = document.querySelector('.video-player');
 
-  videoPlayer!?.scrollIntoView({ block: 'end' });
+  videoPlayer?.scrollIntoView({ block: 'end' });
 
   // window.scrollTo({
   //   top: 0,
   //   left: 0,
   //   behavior: 'smooth',
   // });
+};
+
+const getLabelTabEpisode = (tab: number): string => {
+  if (tab == numberTabsEpisode.value) {
+    if (totalEpisode.value % limit.value > 0) {
+      return `${(tab - 1) * limit.value + 1} - ${totalEpisode.value}`;
+    }
+  }
+
+  return `${(tab - 1) * limit.value + 1} - ${tab * limit.value}`;
+};
+
+const onChangeEpisodeTab = (tab: TabPaneName) => {
+  if (
+    dataEpisode.value[Number(tab) - 1] &&
+    dataEpisode.value[Number(tab) - 1]?.length > 0
+  )
+    return;
+
+  loading.value = true;
+
+  getListEpisode(
+    props.dataMovie?.id,
+    props?.dataMovie?.season_id,
+    (Number(tab) - 1) * limit.value + 1,
+    limit.value
+  )
+    .then((response) => {
+      dataEpisode.value[Number(tab) - 1] = response?.results.filter(
+        (item: any) => item.air_date != null
+      );
+      // .reverse();
+    })
+    .catch((e) => {})
+    .finally(() => {
+      loading.value = false;
+    });
 };
 </script>
 

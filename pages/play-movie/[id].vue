@@ -416,7 +416,9 @@ const route = useRoute();
 const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
-const loadingMovie = computed<boolean>(() => !dataMovie.value);
+const loadingMovie = computed<boolean>(
+  () => !dataMovie.value || loading.value || pending.value
+);
 const urlCodeMovie = ref<string>('809431505');
 const isAddToList = ref<boolean>(false);
 const seconds = ref<number>(0);

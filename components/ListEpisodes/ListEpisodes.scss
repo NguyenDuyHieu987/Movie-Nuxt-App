@@ -33,17 +33,50 @@
     margin-bottom: 13px;
   }
 
+  .el-tabs.episode-tabs {
+    position: relative;
+    max-width: 100%;
+    // height: var(--el-tabs-header-height);
+    min-height: 230px;
+
+    .el-tabs__header {
+      top: 0;
+      position: absolute;
+      width: 100%;
+
+      .el-tabs__nav-wrap {
+        .el-tabs__nav {
+          .el-tabs__item {
+          }
+        }
+      }
+    }
+
+    .el-tabs__content {
+      position: absolute;
+      top: 55px;
+      width: 100%;
+
+      .el-tab-pane {
+      }
+    }
+  }
+
   .list-episodes-wrapper {
-    padding: 7px;
+    // padding: 7px;
 
     .el-skeleton.is-animated {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 7px;
       width: 100%;
 
       .el-skeleton__item.el-skeleton__button.episode-item {
         display: inline-block;
-        margin-right: 7px;
         min-width: 70px;
+        width: 100%;
         padding: 8px 23px;
+        // margin-right: 7px;
       }
     }
 
@@ -107,6 +140,7 @@
           padding: 8px 23px;
           background: linear-gradient(45deg, #080808, #2f2f2f);
           border-radius: 3px;
+          // color: inherit;
           color: var(--text-color-gray1);
           user-select: none;
           white-space: nowrap;
