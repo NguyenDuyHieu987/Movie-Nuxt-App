@@ -36,13 +36,13 @@
   .el-tabs.episode-tabs {
     position: relative;
     max-width: 100%;
-    // height: var(--el-tabs-header-height);
-    min-height: 230px;
+    // min-height: 230px;
 
     .el-tabs__header {
-      top: 0;
+      top: -55px;
       position: absolute;
       width: 100%;
+      // height: var(--el-tabs-header-height);
 
       .el-tabs__nav-wrap {
         .el-tabs__nav {
@@ -53,9 +53,10 @@
     }
 
     .el-tabs__content {
-      position: absolute;
-      top: 55px;
+      // position: absolute;
+      // top: 55px;
       width: 100%;
+      margin-top: 55px;
 
       .el-tab-pane {
       }
