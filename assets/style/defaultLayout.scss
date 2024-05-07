@@ -92,24 +92,6 @@
       }
 
       .ant-layout-sider.sider-bar {
-        background: transparent;
-
-        &::before {
-          content: '';
-          position: fixed;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          width: var(--sider-width);
-          background: linear-gradient(
-            to right,
-            var(--background-content-color) 0,
-            #08080850 70%,
-            #08080800 100%
-          );
-          z-index: 0;
-          transition: all 0s;
-        }
       }
 
       .home-page {

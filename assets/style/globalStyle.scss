@@ -17,7 +17,10 @@
 
 :root {
   color-scheme: normal !important;
-  --header-background: linear-gradient(to bottom, #080808cc 0%, #08080800 100%);
+
+  --sidebar-background: linear-gradient(to right, #080808b3 0, #08080800 100%);
+
+  --header-background: linear-gradient(to bottom, #080808b3 0%, #08080800 100%);
   --header-background-scrolled: #080808e6;
 
   --breadcrumb-background-color: var(--background-content-color);

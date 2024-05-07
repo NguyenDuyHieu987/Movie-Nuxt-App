@@ -1,16 +1,40 @@
+.default-layout .body-content:has(.home-page) {
+  .ant-layout-sider.sider-bar {
+    background: transparent;
+
+    &::before {
+      content: '';
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: var(--sider-width);
+      // background: linear-gradient(
+      //   to right,
+      //   var(--background-content-color) 0,
+      //   #08080850 70%,
+      //   #08080800 100%
+      // );
+      background: var(--sidebar-background);
+      z-index: 0;
+      transition: all 0s;
+    }
+  }
+}
+
 .ant-layout-sider.sider-bar {
   position: fixed;
   left: 0;
   top: var(--header-height);
   bottom: 0;
   /* border-right: 1px solid var(--border-regular-light); */
-  background: linear-gradient(
-    to right,
-    var(--background-content-color) 0,
-    #08080850 70%,
-    #08080800 100%
-  );
-  /* background: transparent; */
+  // background: linear-gradient(
+  //   to right,
+  //   var(--background-content-color) 0,
+  //   #08080850 70%,
+  //   #08080800 100%
+  // );
+  background: transparent;
   z-index: var(--sider-z-index);
   transition: all 0s;
 
