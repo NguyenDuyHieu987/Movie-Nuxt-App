@@ -2,7 +2,7 @@ import axios, { type AxiosRequestConfig } from 'axios';
 import { makeRequest } from './makeRequest';
 import { isProduction } from 'std-env';
 
-export const SERVER_IMAGE = 'https://ik.imagekit.io/z8fhvnk8u';
+export const SERVER_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
 export const DEV_SERVER_IMAGE = 'http://localhost:5002';
 
 const PREFIX_ROUTE = 'images';
