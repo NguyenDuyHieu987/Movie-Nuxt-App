@@ -191,6 +191,19 @@ const replyToFirstEl = computed<string>(() =>
 );
 const isChanged = ref<boolean>(false);
 
+onMounted(() => {
+  window.onclick = (e: any) => {
+    if (e.target?.closest('.emoticon')) return;
+
+    const v3EmojiPicker = document.body.querySelector(
+      '.v3-emoji-picker.emoji-picker'
+    );
+
+    if (!e.target?.closest('.v3-emoji-picker.emoji-picker') && v3EmojiPicker)
+      isShowEmoji.value = false;
+  };
+});
+
 watchEffect(async () => {
   if (props.isShowFormComment) {
     switch (props.action) {
@@ -415,7 +428,7 @@ const onSelectEmoji = (emoji: any) => {
 };
 </script>
 
-<style lang="scss" src="./FormComment.scss" scoped></style>
+<style lang="scss" src="./FormComment.scss"></style>
 <!-- <style lang="scss">
 @import url('./FormComment.scss');
 </style> -->
