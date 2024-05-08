@@ -179,7 +179,7 @@ router.afterEach((to: any, from: any, next: any) => {
   ) {
     store.collapsed = true;
   }
-  next();
+  // next();
 });
 
 const handleCollapse = () => {

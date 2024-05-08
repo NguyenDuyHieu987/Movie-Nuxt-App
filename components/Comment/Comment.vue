@@ -137,7 +137,7 @@ onMounted(() => {
 });
 </script>
 
-<!-- <style lang="scss" src="./Comment.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./Comment.scss"></style>
+<!-- <style lang="scss">
 @import url('./Comment.scss');
-</style>
+</style> -->
