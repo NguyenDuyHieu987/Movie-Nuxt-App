@@ -149,6 +149,12 @@
             transform: scale(1.5);
           }
         }
+
+        &:active {
+          svg {
+            transform: scale(1.2);
+          }
+        }
       }
     }
 
