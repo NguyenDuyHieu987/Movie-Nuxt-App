@@ -76,7 +76,7 @@ const slider = ref<HTMLDivElement>();
 const sliderState = reactive({
   isScrubbing: false,
   isDragging: false,
-  isStartScroll: false,
+  isStartScroll: true,
   isScrollable: true,
   isEndScroll: false
 });
