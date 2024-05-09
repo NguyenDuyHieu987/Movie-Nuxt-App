@@ -2,6 +2,7 @@
   <div class="slider-group-background">
     <div
       class="slider-group-background-wrapper"
+      :class="{ scrolled: !sliderState.isStartScroll }"
       :style="{
         backgroundImage: 'url(' + currentImage + ')',
         '--dominant-backdrop-color': dominantBackdropColor
