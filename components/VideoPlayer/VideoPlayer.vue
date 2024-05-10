@@ -31,11 +31,11 @@
         class="box-video"
         v-if="!loadingData"
       >
+        <!-- :src="videoSrc" -->
         <video
           v-if="isEligibleToWatch"
           id="video-player"
           ref="video"
-          :src="videoSrc"
           :poster="backdrop"
           @loadstart="onLoadStartVideo"
           @loadeddata="onLoadedDataVideo"
@@ -817,10 +817,10 @@
 // import { LoadingSpinner } from '~/components/Loading';
 // import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
 // import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
-import { getImage } from '~/services/image';
+// import { getImage } from '~/services/image';
 import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
-// import Hls from 'hls.js';
+import Hls from 'hls.js';
 
 const props = withDefaults(
   defineProps<{
@@ -851,13 +851,11 @@ const isEligibleToWatch = computed<boolean>(
     (!props.loadingData && movieVipNumber.value == 0) ||
     authStore.vipNumber! > movieVipNumber.value
 );
-const videoSrc = computed<string>(
-  () =>
-    nuxtConfig.app.production_mode
-      ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl + '.mp4'
-      : `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
-  // `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
-  // + '.m3u8'
+const videoSrc = computed<string>(() =>
+  nuxtConfig.app.production_mode
+    ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl + '.m3u8'
+    : // : `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
+      `${DEV_SERVER_VIDEO}/videos` + props.videoUrl + '.m3u8'
 );
 const videoPlayerStorageStates = useLocalStorage(
   STORAGE.VIDEO_PLAYER_STATES.KEY,
@@ -944,74 +942,6 @@ const duration = ref<string>('00:00');
 const timeOutShowControls = ref<any>();
 const timeOutVolumeChange = ref<any>();
 const mounted = ref<boolean>(false);
-let startByte: number = 0;
-// 1 MB
-const chunkSize: number = 1024 * 1024;
-
-const fetchVideoChunk = async (value: string) => {
-  const endByte: number = startByte + chunkSize - 1;
-
-  // return new Promise(async (resolve, reject) => {
-  // videoStates.isLoading = true;
-
-  await getVideo(value, startByte, endByte)
-    .then((response) => {
-      // console.log(response);
-      // const blobSrc = URL.createObjectURL(blob);
-
-      const blobSrc = (window.URL || window.webkitURL).createObjectURL(
-        new Blob([response.data], { type: 'video/mp4' })
-      );
-
-      // if (video.value) {
-      //   // const myVid = document.getElementById(
-      //   //   'video-player'
-      //   // ) as HTMLVideoElement;
-      //   // myVid!.setAttribute('src', blobSrc);
-      //   video.value.src = blobSrc;
-      //   video.value.muted = false;
-      //   video.value.autoplay = true;
-      //   // video.value.load();
-      //   // myVid!.play();
-      //   videoStates.isPlayVideo = true;
-      // }
-
-      if (!video.value!.src) {
-        video.value!.src = blobSrc;
-        video.value!.load();
-      }
-
-      startByte = endByte + 1;
-
-      // Fetch next chunk
-      fetchVideoChunk(value);
-
-      //   resolve({ success: true });
-      // })
-      // .catch((e) => {
-      //   reject(e);
-      // })
-      // .finally(() => {
-      //   videoStates.isLoading = false;
-      //   // video.value.load();
-      // });
-    })
-    .catch((e) => {});
-};
-
-const initVideo = async (newVideoUrl: string) => {
-  if (newVideoUrl && newVideoUrl?.length > 0) {
-    if (props.dataMovie?.media_type == 'movie') {
-      fetchVideoChunk(newVideoUrl);
-    } else if (props.dataMovie?.media_type == 'tv') {
-      if (videoStates.isPlayVideo) {
-        video.value!.pause();
-        videoStates.isPlayVideo = false;
-      }
-      fetchVideoChunk(newVideoUrl);
-    }
-  }
-};
 
 const loadM3u8Video = () => {
   // if (Hls.isSupported()) {
@@ -1028,19 +958,47 @@ const loadM3u8Video = () => {
   // } else {
   //   console.error('HLS is not supported on your browser, but native HLS is');
   // }
+
+  var video = document.getElementById('video-player') as HTMLVideoElement;
+
+  if (!video) return;
+
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(videoSrc.value);
+    hls.attachMedia(video!);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+      video?.play().catch(() => {
+        if (videoStates.isPlayVideo) {
+          videoStates.isPlayVideo = false;
+        }
+      });
+    });
+  } else if (video?.canPlayType('application/vnd.apple.mpegurl')) {
+    video!.src = videoSrc.value;
+    video?.addEventListener('loadedmetadata', function () {
+      video?.play().catch(() => {
+        if (videoStates.isPlayVideo) {
+          videoStates.isPlayVideo = false;
+        }
+      });
+    });
+  }
 };
 
 watch(
   () => props.episode,
-  (newVal, oldVal) => {
+  async (newVal, oldVal) => {
     if (!isEligibleToWatch.value) return;
 
-    // initVideo(newVal);
+    await nextTick();
 
     if (props.dataMovie?.media_type == 'tv' && newVal && video.value) {
-      video.value!.pause();
-      video.value!.src = videoSrc.value;
-      video.value!.load();
+      loadM3u8Video();
+
+      // video.value!.pause();
+      // video.value!.src = videoSrc.value;
+      // video.value!.load();
 
       if (videoStates.isPlayVideo == false) {
         videoStates.isPlayVideo = true;
@@ -1107,8 +1065,7 @@ onBeforeRouteLeave(() => {
 });
 
 onBeforeMount(() => {
-  // initVideo(props.videoUrl);
-  // loadM3u8Video();
+  loadM3u8Video();
 });
 
 onMounted(() => {

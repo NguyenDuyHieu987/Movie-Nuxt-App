@@ -51,7 +51,9 @@
               :dataMovie="dataMovie"
               :episode="currentEpisode"
               :loadingData="loading || currentEpisode == null"
-              :videoUrl="'/television/' + urlCodeMovie"
+              :videoUrl="
+                `/television/The_Witcher_S1/${urlCodeMovie}/` + urlCodeMovie
+              "
               :backdrop="
                 getImage(
                   dataMovie?.backdrop_path,

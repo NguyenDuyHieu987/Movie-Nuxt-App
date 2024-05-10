@@ -58,11 +58,11 @@
               />
 
               <div class="video-preview">
+                <!-- :src="videoSrc" -->
                 <video
                   v-show="showVideo"
                   id="video-player"
                   ref="video"
-                  :src="videoSrc"
                   autoplay
                   muted
                   @loadstart="onLoadStartVideo"
@@ -409,6 +409,7 @@ import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
 import { DEV_SERVER_VIDEO } from '~/services/video';
 import gsap from 'gsap';
+import Hls from 'hls.js';
 
 const props = defineProps<{
   item: any;
@@ -468,9 +469,11 @@ const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
   nuxtConfig.app.production_mode
     ? `${nuxtConfig.app.serverVideoUrl}/videos` +
-      '/feature/Transformer_5' +
-      '.mp4'
-    : `${DEV_SERVER_VIDEO}/videos` + '/feature/Transformer_5'
+      '/feature/Transformer_5/Transformer_5' +
+      '.m3u8'
+    : `${DEV_SERVER_VIDEO}/videos` +
+      '/feature/Transformer_5/Transformer_5' +
+      '.m3u8'
 );
 const videoStates = reactive({
   isLoading: false,
@@ -651,11 +654,34 @@ watch(
   { deep: true }
 );
 
-watch(showVideo, () => {
+const loadM3u8Video = () => {
+  var video = document.getElementById('video-player') as HTMLVideoElement;
+
+  if (!video) return;
+
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(videoSrc.value);
+    hls.attachMedia(video!);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+      video?.play().catch(() => {});
+    });
+  } else if (video?.canPlayType('application/vnd.apple.mpegurl')) {
+    video!.src = videoSrc.value;
+    video?.addEventListener('loadedmetadata', function () {
+      video?.play().catch(() => {});
+    });
+  }
+};
+
+watch(showVideo, async () => {
+  await nextTick();
+
   if (video.value) {
     if (showVideo.value) {
       showVideo.value = true;
-      video.value!.play().catch(() => {});
+      // video.value!.play().catch(() => {});
+      loadM3u8Video();
     } else {
       showVideo.value = false;
       video.value!.pause();

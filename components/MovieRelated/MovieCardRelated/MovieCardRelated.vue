@@ -48,11 +48,11 @@
       />
 
       <div class="video-preview">
+        <!-- :src="videoSrc" -->
         <video
           v-if="showVideo"
           id="video-player"
           ref="video"
-          :src="videoSrc"
           autoplay
           muted
           @loadstart="onLoadStartVideo"
@@ -197,6 +197,7 @@ import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 import { DEV_SERVER_VIDEO } from '~/services/video';
+import Hls from 'hls.js';
 
 const props = defineProps<{
   item: any;
@@ -217,9 +218,11 @@ const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
   nuxtConfig.app.production_mode
     ? `${nuxtConfig.app.serverVideoUrl}/videos` +
-      '/feature/Transformer_5' +
-      '.mp4'
-    : `${DEV_SERVER_VIDEO}/videos` + '/feature/Transformer_5'
+      '/feature/Transformer_5/Transformer_5' +
+      '.m3u8'
+    : `${DEV_SERVER_VIDEO}/videos` +
+      '/feature/Transformer_5/Transformer_5' +
+      '.m3u8'
 );
 const videoStates = reactive({
   isLoading: false,
@@ -300,12 +303,34 @@ const handleAddToList = (e: any) => {
   }
 };
 
-const onMouseEnter = () => {
+const loadM3u8Video = () => {
+  var video = document.getElementById('video-player') as HTMLVideoElement;
+
+  if (!video) return;
+
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(videoSrc.value);
+    hls.attachMedia(video!);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+      video?.play().catch(() => {});
+    });
+  } else if (video?.canPlayType('application/vnd.apple.mpegurl')) {
+    video!.src = videoSrc.value;
+    video?.addEventListener('loadedmetadata', function () {
+      video?.play().catch(() => {});
+    });
+  }
+};
+
+const onMouseEnter = async () => {
   if (!showVideo.value) {
     showVideo.value = true;
+    await nextTick();
+    loadM3u8Video();
 
     if (video.value! && video.value!.paused && !showVideo.value) {
-      video.value!.play().catch(() => {});
+      // video.value!.play().catch(() => {});
     }
   }
 };
