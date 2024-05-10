@@ -239,7 +239,7 @@ video::-webkit-media-controls {
 
     .timeline {
       position: absolute;
-      /* bottom: 70px; */
+      // bottom: 100px;
       bottom: 10%;
       /* left: calc(var(--timeline-position) * 100%); */
       left: var(--timeline-position);
@@ -947,7 +947,19 @@ video::-webkit-media-controls {
   .video-player-wrapper {
     .video-player {
       .timeline {
-        bottom: 13%;
+        bottom: 15%;
+      }
+    }
+  }
+
+  .body-content {
+    &.expand {
+      .video-player-wrapper {
+        .video-player {
+          .timeline {
+            bottom: 13%;
+          }
+        }
       }
     }
   }
