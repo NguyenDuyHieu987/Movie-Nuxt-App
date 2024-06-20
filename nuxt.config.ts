@@ -52,8 +52,11 @@ export default defineNuxtConfig({
         }
       ]
     },
-    rootId: '__nuxt',
+    rootAttrs: {
+      id: '__nuxt'
+    },
     // buildAssetsDir: '/_nuxt/',
+    // cdnURL: 'https://mycdn.org/',
     keepalive: true,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
