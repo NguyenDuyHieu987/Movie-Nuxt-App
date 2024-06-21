@@ -16,7 +16,7 @@ export async function makeImageRequest(
   const api = axios.create({
     baseURL: nuxtConfig.app.production_mode
       ? nuxtConfig.app.mediaApiGateway
-      : DEV_SERVER_IMAGE,
+      : nuxtConfig.app.mediaApiGatewayDev,
     withCredentials: true
   });
 
@@ -39,9 +39,7 @@ export function getImage(
 
   const URL_IMAGE = nuxtConfig.app.production_mode
     ? nuxtConfig.app.serverImageUrl
-    : `${DEV_SERVER_IMAGE}/static`;
-
-  // const URL_IMAGE = `${DEV_SERVER_IMAGE}/static`;
+    : nuxtConfig.app.serverImageUrlDev;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 

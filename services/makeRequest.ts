@@ -1,3 +1,4 @@
+import type { UseFetchOptions } from '#app';
 import type {
   AxiosRequestConfig,
   AxiosRequestHeaders,
@@ -25,8 +26,7 @@ export function makeRequest(
   const api = axios.create({
     baseURL: nuxtConfig.app.production_mode
       ? nuxtConfig.app.apiGateway
-      : // 'http://localhost:5000'
-        'http://localhost:5000',
+      : nuxtConfig.app.apiGatewayDev,
     // 'http://127.0.0.1:5000',
     withCredentials: true
   });
@@ -41,6 +41,11 @@ export function makeRequest(
   // }
 
   return api(url, {
+    // proxy: {
+    //   protocol: 'http',
+    //   host: 'localhost',
+    //   port: 5000
+    // },
     params: params,
     ...options,
     headers: { ...headers, ...options?.headers }
@@ -53,6 +58,39 @@ export function makeRequest(
       }
 
       return data;
+    })
+    .catch((error) =>
+      Promise.reject(error?.response?.data?.message ?? 'Error')
+    );
+}
+
+type MakeRequestProxyOptions =
+  | {
+      noAuthHeaders?: boolean;
+      getResponseHeaders?: boolean;
+    }
+  | any;
+
+export function makeRequestProxy(
+  url: string,
+  params?: any,
+  options: MakeRequestProxyOptions = {
+    noAuthHeaders: false,
+    getResponseHeaders: false
+  }
+) {
+  let optionsRequest = null;
+  return useFetch(url, {
+    baseURL: '/api',
+    query: params,
+    headers: { ...options?.headers },
+    ...options,
+    body: options?.data
+  })
+    .then((res) => {
+      const { data } = res;
+
+      return data.value;
     })
     .catch((error) =>
       Promise.reject(error?.response?.data?.message ?? 'Error')

@@ -1,4 +1,4 @@
-import { makeRequest } from './makeRequest';
+import { makeRequest, makeRequestProxy } from './makeRequest';
 
 import type { formfilter } from '@/types';
 
@@ -12,7 +12,7 @@ export function getMovies(page: number = 1, limit: number = 12) {
 }
 
 export function getNowPlaying(page: number = 1, limit: number = 12) {
-  return makeRequest(`/${PREFIX_ROUTE}/nowplaying`, {
+  return makeRequestProxy(`/${PREFIX_ROUTE}/nowplaying`, {
     page,
     limit
   });

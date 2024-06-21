@@ -74,8 +74,11 @@ export default defineNuxtConfig({
     app: {
       production_mode: isProduction,
       apiGateway: process.env.API_GATEWAY,
+      apiGatewayDev: process.env.API_GATEWAY_DEV,
       mediaApiGateway: process.env.MEDIA_API_GATEWAY,
+      mediaApiGatewayDev: process.env.MEDIA_API_GATEWAY_DEV,
       serverImageUrl: process.env.SERVER_IMAGE_URL,
+      serverImageUrlDev: process.env.SERVER_IMAGE_URL_DEV,
       serverVideoUrl: process.env.SERVER_VIDEO_URL,
       adminWebsiteUrl: process.env.ADMIN_WEBSITE_URL,
       googleAnalyticsID: process.env.GOOGLE_ANALYTICS_ID,
@@ -437,22 +440,30 @@ export default defineNuxtConfig({
     },
     // proxy the request from client
     devProxy: {
-      '/api': {
-        target: 'https://api.phimhay247z.org/',
-        changeOrigin: true,
-        headers: {
-          referer: 'https://phimhay247z.org'
-        }
-      }
+      // '/api': {
+      //   target: isProduction
+      //     ? `${process.env.API_GATEWAY}/`
+      //     : `${process.env.API_GATEWAY_DEV}/`,
+      //   changeOrigin: true,
+      //   headers: {
+      //     referer: isProduction
+      //       ? `${process.env.API_GATEWAY}/`
+      //       : `${process.env.API_GATEWAY_DEV}/`
+      //   }
+      // }
     },
     // redirect the request from server
     routeRules: {
-      // '/api/**': {
-      //     proxy: 'https://api.phimhay247z.org/**',
-      //     headers: {
-      //         referer: 'https://phimhay247z.org'
-      //     }
-      // }
+      '/api/**': {
+        proxy: isProduction
+          ? `${process.env.API_GATEWAY}/**`
+          : `${process.env.API_GATEWAY_DEV}/**`,
+        headers: {
+          referer: isProduction
+            ? `${process.env.API_GATEWAY}/`
+            : `${process.env.API_GATEWAY_DEV}/`
+        }
+      }
     },
     minify: true,
     compressPublicAssets: { gzip: true, brotli: true },
