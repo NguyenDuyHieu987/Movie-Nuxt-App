@@ -12,7 +12,7 @@ export function getMovies(page: number = 1, limit: number = 12) {
 }
 
 export function getNowPlaying(page: number = 1, limit: number = 12) {
-  return makeRequestProxy(`/${PREFIX_ROUTE}/nowplaying`, {
+  return makeRequest(`/${PREFIX_ROUTE}/nowplaying`, {
     page,
     limit
   });
