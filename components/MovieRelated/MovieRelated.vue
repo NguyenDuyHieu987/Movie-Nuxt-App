@@ -169,10 +169,10 @@ const loadingRecommend = ref<boolean>(false);
 watch(
   () => props.dataMovie,
   (newVal, oldVal) => {
-    if (!oldVal && newVal) {
-      loadingSimilar.value = true;
-      loadingRecommend.value = true;
+    loadingSimilar.value = true;
+    loadingRecommend.value = true;
 
+    if (!oldVal && newVal) {
       getSimilar(
         props?.dataMovie.media_type,
         props?.dataMovie.id,
