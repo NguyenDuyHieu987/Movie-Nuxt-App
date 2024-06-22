@@ -8,8 +8,6 @@ export const DEV_SERVER_IMAGE = 'http://localhost:5002';
 
 const PREFIX_ROUTE = 'images';
 
-
-
 export function getImage(
   path: string,
   type: string,
@@ -32,7 +30,7 @@ export function getImage(
     const cropStr = crop as string;
     const w = cropStr.replace('-', '=');
     const h = cropStr.replace('-', '=');
-  return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}}`;
+    return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}}`;
   }
 
   return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}}`;

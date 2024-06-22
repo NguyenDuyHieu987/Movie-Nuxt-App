@@ -210,14 +210,14 @@ export default defineNuxtConfig({
         }
       }
     },
-    provider: 'imagekit',
-    imagekit: {
-      // baseURL: 'https://ik.imagekit.io/8toa5f2rp/images',
-      baseURL: ''
-    },
-    format: ['avif', 'webp'],
-    domains: ['https://ik.imagekit.io'],
-    alias: {}
+    // provider: 'imagekit',
+    // imagekit: {
+    //   // baseURL: `${process.env.SERVER_IMAGE_URL}/images`,
+    //   baseURL: ''
+    // },
+    // format: ['avif', 'webp'],
+    // domains: ['https://ik.imagekit.io'],
+    // alias: {}
   },
   fontMetrics: {},
   fonts: {
