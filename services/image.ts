@@ -31,7 +31,7 @@ export function getImage(
     // const w = cropStr.replace('-', '=');
     // const h = cropStr.replace('-', '=');
     // return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}`;
-  return `${URL_IMAGE}/images/${type}/${path}/tr:${cropStr}`;
+    return `${URL_IMAGE}/images/${type}/${path}/tr:${cropStr}`;
   } else {
     crop = {
       crop_size: 'auto',
@@ -42,10 +42,11 @@ export function getImage(
   return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}`;
 }
 
-export function getServerImage(path: string, type: string, 
-  
-  crop?: { w?: number; h?: number; crop_size?: string } | string
+export function getServerImage(
+  path: string,
+  type: string,
 
+  crop?: { w?: number; h?: number; crop_size?: string } | string
 ): string {
   const utils = useUtils();
 
@@ -53,20 +54,20 @@ export function getServerImage(path: string, type: string,
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
-    if (isString(crop)) {
-      const cropStr = crop as string;
-      // const w = cropStr.replace('-', '=');
-      // const h = cropStr.replace('-', '=');
-      // return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}`;
+  if (isString(crop)) {
+    const cropStr = crop as string;
+    // const w = cropStr.replace('-', '=');
+    // const h = cropStr.replace('-', '=');
+    // return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}`;
     return `${URL_IMAGE}/images/${type}/${path}/tr:${cropStr}`;
-    } else {
-      crop = {
-        crop_size: 'auto',
-        ...(crop as object)
-      };
-    }
-  
-    return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}`;
+  } else {
+    crop = {
+      crop_size: 'auto',
+      ...(crop as object)
+    };
+  }
+
+  return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}`;
 }
 
 export function getPosterCast(path: string): string {

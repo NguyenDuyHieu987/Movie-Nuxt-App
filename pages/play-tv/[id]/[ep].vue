@@ -59,8 +59,7 @@
                   dataMovie?.backdrop_path,
                   'backdrop',
                   // 'w-' + windowWidth.toString()
-              {w: windowWidth}
-
+                  { w: windowWidth }
                 )
               "
               @onPlay="(e) => onPLayVideoPlayer(e)"
@@ -616,8 +615,7 @@ useSeoMeta({
       dataMovie.value?.backdrop_path,
       'backdrop',
       // 'w-' + windowWidth.toString()
-              {w: windowWidth}
-
+      { w: windowWidth }
     ),
   ogLocale: 'vi'
 });

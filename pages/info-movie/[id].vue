@@ -24,8 +24,7 @@
                   dataMovie?.backdrop_path,
                   'backdrop',
                   // 'w-' + windowWidth.toString()
-              {w: windowWidth}
-
+                  { w: windowWidth }
                 )
               "
               format="avif"
@@ -72,8 +71,7 @@
                   dataMovie?.backdrop_path,
                   'backdrop',
                   // 'w-' + windowWidth.toString()
-              {w: windowWidth}
-
+                  { w: windowWidth }
                 )
               "
               format="avif"
@@ -712,8 +710,7 @@ useSeoMeta({
       dataMovie.value?.backdrop_path,
       'backdrop',
       // 'w-' + windowWidth.toString()
-              {w: windowWidth}
-
+      { w: windowWidth }
     ),
   ogLocale: 'vi'
 });

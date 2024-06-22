@@ -9,7 +9,7 @@
               'Background_1.jpg',
               'background/1',
               // 'w-' + windowWidth?.toString()
-              {w: windowWidth} 
+              { w: windowWidth }
             )
           "
           loading="lazy"

@@ -167,8 +167,7 @@
               dataMovie?.backdrop_path,
               'backdrop',
               // 'w-' + windowWidth.toString()
-              {w: windowWidth}
-
+              { w: windowWidth }
             )
           "
         >
@@ -372,8 +371,7 @@
               dataMovie?.backdrop_path,
               'backdrop',
               // 'w-' + windowWidth.toString()
-              {w: windowWidth}
-
+              { w: windowWidth }
             )
           "
         >

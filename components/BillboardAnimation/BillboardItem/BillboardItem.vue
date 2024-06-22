@@ -8,8 +8,7 @@
             item?.backdrop_path,
             'backdrop',
             // 'w-' + windowWidth.toString()
-            {w: windowWidth}
-
+            { w: windowWidth }
           )
         "
         format="avif"
