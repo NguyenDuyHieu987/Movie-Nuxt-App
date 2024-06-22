@@ -11,7 +11,9 @@ const PREFIX_ROUTE = 'images';
 export function getImage(
   path: string,
   type: string,
-  crop?: { w?: number; h?: number; crop_size?: string } | string
+  crop?:
+    | { w?: number; h?: number; crop_size?: string; quality?: number }
+    | string
 ): string {
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
@@ -35,6 +37,7 @@ export function getImage(
   } else {
     crop = {
       crop_size: 'auto',
+      quality: 80,
       ...(crop as object)
     };
   }
@@ -46,7 +49,9 @@ export function getServerImage(
   path: string,
   type: string,
 
-  crop?: { w?: number; h?: number; crop_size?: string } | string
+  crop?:
+    | { w?: number; h?: number; crop_size?: string; quality: number }
+    | string
 ): string {
   const utils = useUtils();
 
@@ -63,6 +68,7 @@ export function getServerImage(
   } else {
     crop = {
       crop_size: 'auto',
+      quality: 80,
       ...(crop as object)
     };
   }
