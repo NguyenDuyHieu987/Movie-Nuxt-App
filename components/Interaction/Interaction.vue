@@ -166,7 +166,9 @@
             getImage(
               dataMovie?.backdrop_path,
               'backdrop',
-              'w-' + windowWidth.toString()
+              // 'w-' + windowWidth.toString()
+              {w: windowWidth}
+
             )
           "
         >
@@ -369,7 +371,9 @@
             getImage(
               dataMovie?.backdrop_path,
               'backdrop',
-              'w-' + windowWidth.toString()
+              // 'w-' + windowWidth.toString()
+              {w: windowWidth}
+
             )
           "
         >

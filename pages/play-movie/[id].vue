@@ -56,7 +56,9 @@
                 getImage(
                   dataMovie?.backdrop_path,
                   'backdrop',
-                  'w-' + windowWidth.toString()
+                  // 'w-' + windowWidth.toString()
+              {w: windowWidth}
+
                 )
               "
               @onPlay="(e) => onPLayVideoPlayer(e)"
@@ -569,7 +571,9 @@ useSeoMeta({
     getServerImage(
       dataMovie.value?.backdrop_path,
       'backdrop',
-      'w-' + windowWidth.toString()
+      // 'w-' + windowWidth.toString()
+              {w: windowWidth}
+
     ),
   ogLocale: 'vi'
 });

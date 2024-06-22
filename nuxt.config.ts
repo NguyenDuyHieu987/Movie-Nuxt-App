@@ -209,7 +209,7 @@ export default defineNuxtConfig({
           height: 50
         }
       }
-    },
+    }
     // provider: 'imagekit',
     // imagekit: {
     //   // baseURL: `${process.env.SERVER_IMAGE_URL}/images`,

@@ -11,7 +11,7 @@ const PREFIX_ROUTE = 'images';
 export function getImage(
   path: string,
   type: string,
-  crop?: { w?: number; h?: number } | string
+  crop?: { w?: number; h?: number; crop_size?: string } | string
 ): string {
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
@@ -28,28 +28,45 @@ export function getImage(
 
   if (isString(crop)) {
     const cropStr = crop as string;
-    const w = cropStr.replace('-', '=');
-    const h = cropStr.replace('-', '=');
-    return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}`;
+    // const w = cropStr.replace('-', '=');
+    // const h = cropStr.replace('-', '=');
+    // return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}`;
+  return `${URL_IMAGE}/images/${type}/${path}/tr:${cropStr}`;
+  } else {
+    crop = {
+      crop_size: 'auto',
+      ...(crop as object)
+    };
   }
 
   return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}`;
-  // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
 }
 
-export function getServerImage(path: string, type: string, crop = ''): string {
+export function getServerImage(path: string, type: string, 
+  
+  crop?: { w?: number; h?: number; crop_size?: string } | string
+
+): string {
   const utils = useUtils();
 
   const URL_IMAGE = isProduction ? SERVER_IMAGE : DEV_SERVER_IMAGE;
-  // const URL_IMAGE = DEV_SERVER_IMAGE;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
-  if (crop.length == 0 || !isProduction)
-    return `${URL_IMAGE}/images/${type}/${path}`;
-
-  return `${URL_IMAGE}/images/${type}/${path}`;
-  // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
+    if (isString(crop)) {
+      const cropStr = crop as string;
+      // const w = cropStr.replace('-', '=');
+      // const h = cropStr.replace('-', '=');
+      // return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}`;
+    return `${URL_IMAGE}/images/${type}/${path}/tr:${cropStr}`;
+    } else {
+      crop = {
+        crop_size: 'auto',
+        ...(crop as object)
+      };
+    }
+  
+    return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}`;
 }
 
 export function getPosterCast(path: string): string {
