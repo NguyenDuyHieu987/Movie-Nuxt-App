@@ -2,8 +2,10 @@ import axios, { type AxiosRequestConfig } from 'axios';
 import { makeRequest, makeMediaRequest } from './makeRequest';
 import { isProduction } from 'std-env';
 
-export const SERVER_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
-export const DEV_SERVER_IMAGE = 'http://localhost:5002';
+// export const SERVER_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
+// export const DEV_SERVER_IMAGE = 'http://localhost:5002/static';
+export const SERVER_IMAGE = 'https://proxy.phimhay247z.org/uploads';
+export const DEV_SERVER_IMAGE = 'http://localhost:5001/uploads';
 
 const PREFIX_ROUTE = 'images';
 
@@ -32,8 +34,8 @@ export function getImage(
 export function getServerImage(path: string, type: string, crop = ''): string {
   const utils = useUtils();
 
-  const URL_IMAGE = isProduction ? SERVER_IMAGE : `${DEV_SERVER_IMAGE}/static`;
-  // const URL_IMAGE = `${DEV_SERVER_IMAGE}/static`;
+  const URL_IMAGE = isProduction ? SERVER_IMAGE : DEV_SERVER_IMAGE;
+  // const URL_IMAGE = DEV_SERVER_IMAGE;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
