@@ -231,9 +231,11 @@ const getData = async () => {
 watch(
   () => props.dataMovie,
   (newVal, oldVal) => {
-    if (!oldVal && newVal && dataEpisode.value[0].length == 0) {
-      loading.value = true;
+    if (dataEpisode.value[0]?.length > 0) return;
 
+    loading.value = true;
+
+    if (!oldVal && newVal) {
       if (currentEpisode.value > limit.value) {
         selectedTabEpisode.value = Math.ceil(
           currentEpisode.value / limit.value
