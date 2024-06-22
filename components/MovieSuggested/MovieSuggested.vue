@@ -109,9 +109,9 @@ onMounted(() => {
 watch(
   () => props.dataMovie,
   (newVal, oldVal) => {
-    if (!oldVal && newVal) {
-      loading.value = true;
+    loading.value = true;
 
+    if (!oldVal && newVal) {
       getSimilar(
         props?.dataMovie?.media_type,
         props?.dataMovie?.id,
