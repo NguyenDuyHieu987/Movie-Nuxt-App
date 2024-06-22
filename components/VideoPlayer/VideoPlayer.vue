@@ -818,7 +818,7 @@
 // import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
 // import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 // import { getImage } from '~/services/image';
-import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';
+import { getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
 import Hls from 'hls.js';
 
@@ -851,11 +851,9 @@ const isEligibleToWatch = computed<boolean>(
     (!props.loadingData && movieVipNumber.value == 0) ||
     authStore.vipNumber! > movieVipNumber.value
 );
-const videoSrc = computed<string>(() =>
-  nuxtConfig.app.production_mode
-    ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl + '.m3u8'
-    : // : `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
-      `${DEV_SERVER_VIDEO}/videos` + props.videoUrl + '.m3u8'
+const videoSrc = computed<string>(
+  () => getVideo(props.videoUrl + '.m3u8')
+  // getVideo(props.videoUrl)
 );
 const videoPlayerStorageStates = useLocalStorage(
   STORAGE.VIDEO_PLAYER_STATES.KEY,

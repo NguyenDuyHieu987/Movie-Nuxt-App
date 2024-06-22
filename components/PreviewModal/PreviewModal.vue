@@ -407,7 +407,7 @@ import { getCountryByOriginalLanguage } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
-import { DEV_SERVER_VIDEO } from '~/services/video';
+import { getVideo } from '~/services/video';
 import gsap from 'gsap';
 import Hls from 'hls.js';
 
@@ -467,13 +467,7 @@ const isOnlyRight = ref<boolean>(false);
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
-  nuxtConfig.app.production_mode
-    ? `${nuxtConfig.app.serverVideoUrl}/videos` +
-      '/feature/Transformer_5/Transformer_5' +
-      '.m3u8'
-    : `${DEV_SERVER_VIDEO}/videos` +
-      '/feature/Transformer_5/Transformer_5' +
-      '.m3u8'
+  getVideo('/feature/Transformer_5/Transformer_5' + '.m3u8')
 );
 const videoStates = reactive({
   isLoading: false,

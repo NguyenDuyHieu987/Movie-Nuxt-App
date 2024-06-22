@@ -743,7 +743,7 @@ import Hls from 'hls.js';
 
 import { CloseBtn } from '~/components/Button';
 import { LoadingSpinner } from '~/components/Loading';
-import { DEV_SERVER_VIDEO, getVideo } from '~/services/video';
+import { getVideo } from '~/services/video';
 
 const props = withDefaults(
   defineProps<{
@@ -765,12 +765,8 @@ const emits = defineEmits<{
 
 const nuxtConfig = useRuntimeConfig();
 const videoSrc = computed<string>(
-  () =>
-    nuxtConfig.app.production_mode
-      ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl + '.mp4'
-      : `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
-  // `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
-  // + '.m3u8'
+  () => getVideo(props.videoUrl + '.m3u8')
+  // getVideo(props.videoUrl)
 );
 const blobVideoSrc = ref<string>('');
 const videoPlayer = ref<HTMLElement>();
@@ -846,74 +842,6 @@ const duration = ref<string>('00:00');
 // );
 const timeOut = ref<any>();
 const mounted = ref<boolean>(false);
-let startByte: number = 0;
-// 1 MB
-const chunkSize: number = 1024 * 1024;
-
-const fetchVideoChunk = async (value: string) => {
-  const endByte: number = startByte + chunkSize - 1;
-
-  // return new Promise(async (resolve, reject) => {
-  // videoStates.isLoading = true;
-
-  await getVideo(value, startByte, endByte)
-    .then((response) => {
-      // console.log(response);
-      // const blobSrc = URL.createObjectURL(blob);
-
-      const blobSrc = (window.URL || window.webkitURL).createObjectURL(
-        new Blob([response.data], { type: 'video/mp4' })
-      );
-
-      // if (video.value) {
-      //   // const myVid = document.getElementById(
-      //   //   'video-player'
-      //   // ) as HTMLVideoElement;
-      //   // myVid!.setAttribute('src', blobSrc);
-      //   video.value.src = blobSrc;
-      //   video.value.muted = false;
-      //   video.value.autoplay = true;
-      //   // video.value.load();
-      //   // myVid!.play();
-      //   videoStates.isPlayVideo = true;
-      // }
-
-      if (!video.value!.src) {
-        video.value!.src = blobSrc;
-        video.value!.load();
-      }
-
-      startByte = endByte + 1;
-
-      // Fetch next chunk
-      fetchVideoChunk(value);
-
-      //   resolve({ success: true });
-      // })
-      // .catch((e) => {
-      //   reject(e);
-      // })
-      // .finally(() => {
-      //   videoStates.isLoading = false;
-      //   // video.value.load();
-      // });
-    })
-    .catch((e) => {});
-};
-
-const initVideo = async (newVideoUrl: string) => {
-  if (newVideoUrl && newVideoUrl?.length > 0) {
-    if (props.dataMovie?.media_type == 'movie') {
-      fetchVideoChunk(newVideoUrl);
-    } else if (props.dataMovie?.media_type == 'tv') {
-      if (videoStates.isPlayVideo) {
-        video.value!.pause();
-        videoStates.isPlayVideo = false;
-      }
-      fetchVideoChunk(newVideoUrl);
-    }
-  }
-};
 
 watchEffect(() => {
   if (video.value?.paused && video.value?.autoplay) {
@@ -926,7 +854,6 @@ watchEffect(() => {
 watch(
   () => props.videoUrl,
   (newVal, oldVal) => {
-    // initVideo(newVal);
     video.value!.src = videoSrc.value;
     video.value!.load();
   }

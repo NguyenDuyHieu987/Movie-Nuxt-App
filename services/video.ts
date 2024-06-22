@@ -1,45 +1,16 @@
 import axios, { type AxiosRequestConfig } from 'axios';
 import { makeRequest } from './makeRequest';
 
-export const SERVER_VIDEO = 'https://media.phimhay247z.org';
-export const DEV_SERVER_VIDEO = 'http://localhost:5002';
-
 const PREFIX_ROUTE = 'videos';
 
-export async function makeVideoRequest(
-  url: string,
-  options: AxiosRequestConfig = {}
-) {
+export function getVideo(path: string) {
   const nuxtConfig = useRuntimeConfig();
 
-  const api = axios.create({
-    baseURL: nuxtConfig.app.production_mode
-      ? nuxtConfig.app.mediaApiGateway
-      : DEV_SERVER_VIDEO,
-    withCredentials: true
-  });
+  const URL_VIDEO = nuxtConfig.app.production_mode
+    ? nuxtConfig.app.serverVideoUrl
+    : nuxtConfig.app.serverVideoUrlDev;
 
-  return await api(url, options)
-    .then((res) => {
-      return res;
-    })
-    .catch((error) =>
-      Promise.reject(error?.response?.data?.message ?? 'Error')
-    );
-}
-
-export function getVideo(
-  path: string,
-  startByte: number = 0,
-  endByte: number = 1024 * 1024
-) {
-  return makeVideoRequest(`/videos/${path}`, {
-    headers: {
-      Accept: 'video/mp4;charset=UTF-8',
-      Range: `bytes=${startByte}-${endByte}`
-    },
-    responseType: 'arraybuffer'
-  });
+  return `${URL_VIDEO}/videos/${path}`;
 }
 
 export function getVideos(id: string) {

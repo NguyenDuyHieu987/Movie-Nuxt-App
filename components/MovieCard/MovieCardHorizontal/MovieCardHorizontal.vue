@@ -134,7 +134,7 @@
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
-import { DEV_SERVER_VIDEO } from '~/services/video';
+import { getVideo } from '~/services/video';
 
 const props = defineProps<{
   item: any;
@@ -175,13 +175,7 @@ const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
-  nuxtConfig.app.production_mode
-    ? `${nuxtConfig.app.serverVideoUrl}/videos` +
-      '/feature/Transformer_5/Transformer_5' +
-      '.m3u8'
-    : `${DEV_SERVER_VIDEO}/videos` +
-      '/feature/Transformer_5/Transformer_5' +
-      '.m3u8'
+  getVideo('/feature/Transformer_5/Transformer_5' + '.m3u8')
 );
 
 const getData = async () => {

@@ -7,7 +7,7 @@
 <script setup lang="ts">
 // import Artplayer from 'artplayer';
 
-import { DEV_SERVER_VIDEO } from '~/services/video';
+import { getVideo } from '~/services/video';
 
 const props = withDefaults(
   defineProps<{
@@ -28,12 +28,8 @@ const emits = defineEmits<{
 
 const nuxtConfig = useRuntimeConfig();
 const videoSrc = computed<string>(
-  () =>
-    nuxtConfig.app.production_mode
-      ? `${nuxtConfig.app.serverVideoUrl}/videos` + props.videoUrl + '.mp4'
-      : `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
-  // `${DEV_SERVER_VIDEO}/videos` + props.videoUrl
-  // + '.m3u8'
+  () => getVideo(props.videoUrl + '.m3u8')
+  // getVideo(props.videoUrl)
 );
 const video = ref();
 const isInHistory = defineModel<boolean>('isInHistory', { default: false });

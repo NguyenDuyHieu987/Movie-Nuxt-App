@@ -64,6 +64,43 @@ export function makeRequest(
     );
 }
 
+export async function makeMediaRequest(
+  url: string,
+  params?: any,
+  options: MakeRequestOptions = {
+    noAuthHeaders: false,
+    getResponseHeaders: false
+  }
+) {
+  const nuxtConfig = useRuntimeConfig();
+  const headers: AxiosRequestHeaders | any = {};
+
+  const api = axios.create({
+    baseURL: nuxtConfig.app.production_mode
+      ? nuxtConfig.app.mediaApiGateway
+      : nuxtConfig.app.mediaApiGatewayDev,
+    withCredentials: true
+  });
+
+  return await api(url, {
+    params: params,
+    ...options,
+    headers: { ...headers, ...options?.headers }
+  })
+    .then((res) => {
+      const { headers, data } = res;
+
+      if (options?.getResponseHeaders) {
+        return { headers, ...data };
+      }
+
+      return data;
+    })
+    .catch((error) =>
+      Promise.reject(error?.response?.data?.message ?? 'Error')
+    );
+}
+
 type MakeRequestProxyOptions =
   | {
       noAuthHeaders?: boolean;

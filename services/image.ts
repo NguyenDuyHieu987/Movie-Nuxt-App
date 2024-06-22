@@ -1,33 +1,11 @@
 import axios, { type AxiosRequestConfig } from 'axios';
-import { makeRequest } from './makeRequest';
+import { makeRequest, makeMediaRequest } from './makeRequest';
 import { isProduction } from 'std-env';
 
 export const SERVER_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
 export const DEV_SERVER_IMAGE = 'http://localhost:5002';
 
 const PREFIX_ROUTE = 'images';
-
-export async function makeImageRequest(
-  url: string,
-  options: AxiosRequestConfig = {}
-) {
-  const nuxtConfig = useRuntimeConfig();
-
-  const api = axios.create({
-    baseURL: nuxtConfig.app.production_mode
-      ? nuxtConfig.app.mediaApiGateway
-      : nuxtConfig.app.mediaApiGatewayDev,
-    withCredentials: true
-  });
-
-  return await api(url, options)
-    .then((res) => {
-      return res;
-    })
-    .catch((error) =>
-      Promise.reject(error?.response?.data?.message ?? 'Error')
-    );
-}
 
 export function getImage(
   path: string,
@@ -74,7 +52,7 @@ export function getPosterCast(path: string): string {
 }
 
 export function getColorImage(path: string) {
-  return makeImageRequest(`/image/color/backdrop/${path}`);
+  return makeMediaRequest(`/image/color/backdrop/${path}`);
 }
 
 export function getImages(id: string) {

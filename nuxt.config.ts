@@ -80,6 +80,7 @@ export default defineNuxtConfig({
       serverImageUrl: process.env.SERVER_IMAGE_URL,
       serverImageUrlDev: process.env.SERVER_IMAGE_URL_DEV,
       serverVideoUrl: process.env.SERVER_VIDEO_URL,
+      serverVideoUrlDev: process.env.SERVER_VIDEO_URL_DEV,
       adminWebsiteUrl: process.env.ADMIN_WEBSITE_URL,
       googleAnalyticsID: process.env.GOOGLE_ANALYTICS_ID,
       googleTagManagerID: process.env.GOOGLE_TAG_MANAGER_ID,
