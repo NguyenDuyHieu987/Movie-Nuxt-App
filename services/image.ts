@@ -33,7 +33,7 @@ export function getImage(
     return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}`;
   }
 
-  return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}}`;
+  return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}`;
   // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
 }
 
