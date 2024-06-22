@@ -1,4 +1,3 @@
-import axios, { type AxiosRequestConfig } from 'axios';
 import { makeRequest, makeMediaRequest } from './makeRequest';
 import { isProduction } from 'std-env';
 

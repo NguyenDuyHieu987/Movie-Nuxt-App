@@ -1,4 +1,3 @@
-import axios, { type AxiosRequestConfig } from 'axios';
 import { makeRequest } from './makeRequest';
 
 const PREFIX_ROUTE = 'videos';
