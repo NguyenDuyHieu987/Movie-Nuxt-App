@@ -40,8 +40,8 @@ export function getServerImage(path: string, type: string, crop = ''): string {
   if (crop.length == 0 || !isProduction)
     return `${URL_IMAGE}/images/${type}/${path}`;
 
-  return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
-  // return `${URL_IMAGE}/images/${type}/${path}`;
+  return `${URL_IMAGE}/images/${type}/${path}`;
+  // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
 }
 
 export function getPosterCast(path: string): string {
