@@ -41,7 +41,7 @@
             >
               <div class="left">
                 <NuxtImg
-                  :src="getImage('momo.jpg', 'payment', 'w-40')"
+                  :src="getImage('momo.jpg', 'payment', { w: 40 })"
                   loading="lazy"
                   :width="40"
                   alt=""
@@ -70,7 +70,7 @@
             >
               <div class="left">
                 <NuxtImg
-                  :src="getImage('zalopay.png', 'payment', 'w-40')"
+                  :src="getImage('zalopay.png', 'payment', { w: 40 })"
                   loading="lazy"
                   :width="40"
                   alt=""
@@ -100,7 +100,7 @@
             >
               <div class="left">
                 <NuxtImg
-                  :src="getImage('vnpay.png', 'payment', 'w-40')"
+                  :src="getImage('vnpay.png', 'payment', { w: 40 })"
                   loading="lazy"
                   :width="40"
                   alt=""
@@ -129,14 +129,14 @@
             >
               <div class="left">
                 <NuxtImg
-                  :src="getImage('mastercard_1.jpg', 'payment', 'w-100')"
+                  :src="getImage('mastercard_1.jpg', 'payment', { w: 100 })"
                   loading="lazy"
                   :width="100"
                   alt=""
                 />
 
                 <NuxtImg
-                  :src="getImage('visa.png', 'payment', 'w-40')"
+                  :src="getImage('visa.png', 'payment', { w: 40 })"
                   loading="lazy"
                   :width="40"
                   alt=""

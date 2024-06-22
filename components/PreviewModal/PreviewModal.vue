@@ -52,7 +52,7 @@
             <div class="backdrop-box">
               <NuxtImg
                 v-show="!showVideo"
-                :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+                :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
                 loading="lazy"
                 alt=""
               />

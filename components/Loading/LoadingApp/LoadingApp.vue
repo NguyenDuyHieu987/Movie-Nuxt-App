@@ -8,7 +8,7 @@
       class="app-loading-container"
     >
       <div class="logo">
-        <!-- <NuxtImg :src="getImage('logo.png', 'logo', 'w-70')" alt="" /> -->
+        <!-- <NuxtImg :src="getImage('logo.png', 'logo', { w: 70 })" alt="" /> -->
 
         <div class="icon-loading"><LoadingAppIcon /></div>
       </div>

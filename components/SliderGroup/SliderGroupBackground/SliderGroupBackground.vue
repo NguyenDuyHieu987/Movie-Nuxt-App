@@ -81,7 +81,7 @@ const sliderState = reactive({
   isEndScroll: false
 });
 const currentImage = ref<string>(
-  getImage(props.data[0]?.backdrop_path, 'backdrop', 'h-250')
+  getImage(props.data[0]?.backdrop_path, 'backdrop', { h: 250 })
 );
 const dominantBackdropColor = ref<string>(
   `rgb(${props.data[0]?.dominant_backdrop_color[0]}, ${props.data[0]?.dominant_backdrop_color[1]},${props.data[0]?.dominant_backdrop_color[2]}, 0.6)`

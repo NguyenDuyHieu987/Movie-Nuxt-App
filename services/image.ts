@@ -3,15 +3,17 @@ import { isProduction } from 'std-env';
 
 // export const SERVER_IMAGE = 'https://ik.imagekit.io/8toa5f2rp';
 // export const DEV_SERVER_IMAGE = 'http://localhost:5002/static';
-export const SERVER_IMAGE = 'https://proxy.phimhay247z.org/uploads';
-export const DEV_SERVER_IMAGE = 'http://localhost:5001/uploads';
+export const SERVER_IMAGE = 'https://media.phimhay247z.org';
+export const DEV_SERVER_IMAGE = 'http://localhost:5002';
 
 const PREFIX_ROUTE = 'images';
+
+
 
 export function getImage(
   path: string,
   type: string,
-  crop: string = ''
+  crop?: { w?: number; h?: number } | string
 ): string {
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
@@ -22,11 +24,18 @@ export function getImage(
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
-  if (crop.length == 0 || !nuxtConfig.app.production_mode) {
+  if (!crop) {
     return `${URL_IMAGE}/images/${type}/${path}`;
   }
 
-  return `${URL_IMAGE}/images/${type}/${path}`;
+  if (isString(crop)) {
+    const cropStr = crop as string;
+    const w = cropStr.replace('-', '=');
+    const h = cropStr.replace('-', '=');
+  return `${URL_IMAGE}/images/${type}/${path}?${w}&${h}}`;
+  }
+
+  return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}}`;
   // return `${URL_IMAGE}/images/${type}/${path}/tr:${crop}`;
 }
 

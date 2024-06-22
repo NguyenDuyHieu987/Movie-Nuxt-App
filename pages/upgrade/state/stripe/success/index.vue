@@ -20,7 +20,7 @@
       <span> Thanh toán bằng</span>
 
       <NuxtImg
-        :src="getImage('stripe.png', 'payment', 'w-100')"
+        :src="getImage('stripe.png', 'payment', { w: 100 })"
         loading="lazy"
         :width="100"
       />

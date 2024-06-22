@@ -8,7 +8,9 @@
         :style="`--dominant-backdrop-color: ${currenActiveItem?.dominant_backdrop_color[0]}, ${currenActiveItem?.dominant_backdrop_color[1]},${currenActiveItem?.dominant_backdrop_color[2]}`"
       >
         <NuxtImg
-          :src="getImage(currenActiveItem?.backdrop_path, 'backdrop', 'w-1200')"
+          :src="
+            getImage(currenActiveItem?.backdrop_path, 'backdrop', { w: 1200 })
+          "
           format="avif"
           loading="lazy"
           alt=""
@@ -165,7 +167,7 @@
       >
         <div class="img-box ratio-2-3">
           <NuxtImg
-            :src="getImage(item?.poster_path, 'poster', 'w-200')"
+            :src="getImage(item?.poster_path, 'poster', { w: 200 })"
             placeholder="/imgs/loading-img-2-3.webp"
             format="avif"
             loading="lazy"

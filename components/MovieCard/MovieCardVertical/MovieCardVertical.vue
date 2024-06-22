@@ -19,13 +19,13 @@
     <!-- <template #default> -->
     <div class="img-box ratio-2-3">
       <!-- <img
-        v-lazy="getImage(item?.poster_path, 'poster', 'w-250')"
+        v-lazy="getImage(item?.poster_path, 'poster', {w:250})"
         loading="lazy"
         alt=""
       /> -->
 
       <NuxtImg
-        :src="getImage(item?.poster_path, 'poster', 'w-250')"
+        :src="getImage(item?.poster_path, 'poster', { w: 250 })"
         placeholder="/imgs/loading-img-2-3.webp"
         format="avif"
         loading="lazy"

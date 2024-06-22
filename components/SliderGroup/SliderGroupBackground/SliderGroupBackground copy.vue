@@ -55,7 +55,7 @@ const sliderState = reactive({
   isEndScroll: false
 });
 const currentImage = ref<string>(
-  getImage(props.data[0]?.backdrop_path, 'backdrop', 'h-250')
+  getImage(props.data[0]?.backdrop_path, 'backdrop', { h: 250 })
 );
 
 watchEffect(() => {

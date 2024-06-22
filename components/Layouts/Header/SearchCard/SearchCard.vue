@@ -44,7 +44,7 @@
         <div class="img-box">
           <div class="img-wrapper ratio-2-3">
             <NuxtImg
-              :src="getImage(item?.poster_path, 'poster', 'w-120')"
+              :src="getImage(item?.poster_path, 'poster', { w: 120 })"
               format="avif"
               loading="lazy"
               alt=""

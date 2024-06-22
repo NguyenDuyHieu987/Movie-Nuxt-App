@@ -36,7 +36,7 @@
               ? {
                   backgroundImage:
                     'url(' +
-                    getImage(item?.backdrop_path, 'backdrop', 'w-1000') +
+                    getImage(item?.backdrop_path, 'backdrop', { w: 1000 }) +
                     ')'
                 }
               : {}

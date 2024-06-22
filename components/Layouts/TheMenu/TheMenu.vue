@@ -463,7 +463,7 @@
       index="/upgrade/plans"
     >
       <el-icon>
-        <!-- <NuxtImg :src="getImage('king.png', 'misc', 'h-16')" alt="" /> -->
+        <!-- <NuxtImg :src="getImage('king.png', 'misc', { h: 16 })" alt="" /> -->
 
         <svg
           viewBox="0 0 192 192"

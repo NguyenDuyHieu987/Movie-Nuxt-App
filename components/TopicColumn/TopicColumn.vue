@@ -15,7 +15,7 @@
           }"
         >
           <NuxtImg
-            :src="getImage(topicImage, 'backdrop', 'h-300')"
+            :src="getImage(topicImage, 'backdrop', { h: 300 })"
             format="avif"
             loading="lazy"
             alt=""
@@ -50,7 +50,7 @@
           }"
         >
           <NuxtImg
-            :src="getImage(topicImage, 'backdrop', 'h-300')"
+            :src="getImage(topicImage, 'backdrop', { h: 300 })"
             placeholder="/imgs/loading-img-16-9.webp"
             format="avif"
             loading="lazy"
@@ -79,7 +79,7 @@
           class="img-box"
         >
           <NuxtImg
-            :src="getImage('topic1.jpg', 'misc', 'h-300')"
+            :src="getImage('topic1.jpg', 'misc', { h: 300 })"
             placeholder="/imgs/loading-img-16-9.webp"
             format="avif"
             loading="lazy"

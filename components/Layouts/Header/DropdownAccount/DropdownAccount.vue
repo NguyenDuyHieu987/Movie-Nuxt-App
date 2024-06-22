@@ -42,11 +42,9 @@
           class="avatar"
           :src="
             !isNaN(+userAccount?.avatar)
-              ? getImage(
-                  `account${userAccount?.avatar}.jpg`,
-                  'user_avatar',
-                  'w-50'
-                )
+              ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar', {
+                  w: 50
+                })
               : userAccount?.avatar
           "
           loading="lazy"
@@ -56,7 +54,7 @@
         <NuxtImg
           v-else
           class="avatar"
-          :src="getImage(`common_user_avatar.png`, 'user_avatar', 'w-50')"
+          :src="getImage(`common_user_avatar.png`, 'user_avatar', { w: 50 })"
           loading="lazy"
           alt=""
           preload

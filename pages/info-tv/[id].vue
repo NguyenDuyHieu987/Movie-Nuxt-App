@@ -44,7 +44,7 @@
               />
 
               <NuxtImg
-                :src="getImage(dataMovie?.poster_path, 'poster', 'w-250')"
+                :src="getImage(dataMovie?.poster_path, 'poster', { w: 250 })"
                 format="avif"
                 loading="lazy"
                 alt=""

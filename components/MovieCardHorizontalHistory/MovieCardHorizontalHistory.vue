@@ -44,13 +44,13 @@
       <div class="img-box">
         <div class="img-wrapper ratio-16-9">
           <!-- <img
-            v-lazy="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+            v-lazy="getImage(item?.backdrop_path, 'backdrop', {h:250})"
             loading="lazy"
             alt=""
           /> -->
 
           <NuxtImg
-            :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+            :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
             placeholder="/imgs/loading-img-16-9.webp"
             format="avif"
             loading="lazy"

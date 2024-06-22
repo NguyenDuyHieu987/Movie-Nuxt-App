@@ -26,13 +26,13 @@
       @pointerleave="onMouseLeaveImg"
     >
       <!-- <img
-        v-lazy="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+        v-lazy="getImage(item?.backdrop_path, 'backdrop', {h:250})"
         loading="lazy"
         alt=""
       /> -->
 
       <NuxtImg
-        :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+        :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
         placeholder="/imgs/loading-img-16-9.webp"
         format="avif"
         loading="lazy"
@@ -40,7 +40,7 @@
       />
 
       <!-- <Image
-        :src="getImage(item?.backdrop_path, 'backdrop', 'h-250')"
+        :src="getImage(item?.backdrop_path, 'backdrop', {h:250})"
         placeholder="/imgs/loading-img-16-9.webp"
         format="avif"
         loading="lazy"

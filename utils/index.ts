@@ -14,6 +14,8 @@ export const useUtils = () => {
     isSpecialCharacters,
     isVietnameseTones,
     isScrollBottom,
+    minmax,
+    serialize,
     handleAddItemToList,
     viewFormatter,
     encryptPassword,
@@ -100,6 +102,18 @@ export function minmax(
   }
 
   return result;
+}
+
+export function serialize(obj: object | any): string | null {
+  if (!obj) return null;
+  // var str = [];
+  // for (var p in obj)
+  //   if (obj.hasOwnProperty(p)) {
+  //     str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+  //   }
+  // return str.join('&');
+
+  return new URLSearchParams(obj).toString();
 }
 
 export * from './convertPath';

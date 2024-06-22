@@ -19,7 +19,7 @@
     <div class="payment-method">
       <span> Thanh toán bằng</span>
       <NuxtImg
-        :src="getImage('vnpay.png', 'payment', 'w-100')"
+        :src="getImage('vnpay.png', 'payment', { w: 100 })"
         loading="lazy"
         :width="100"
       />
