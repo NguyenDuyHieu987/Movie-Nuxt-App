@@ -726,7 +726,7 @@ const handleAddToList = () => {
 
 const scrollToComment = () => {
   const comment = document.getElementById('comment') as HTMLElement;
-  comment.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  comment.scrollIntoView({ block: 'center', behavior: 'smooth' });
 };
 </script>
 
