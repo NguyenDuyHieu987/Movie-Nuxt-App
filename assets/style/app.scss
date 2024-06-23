@@ -177,6 +177,10 @@
 
   .padding-info-content {
     padding: 20px 15px;
+
+    &.horizontal {
+      padding: 0px 15px;
+    }
   }
 
   .padding-content {
