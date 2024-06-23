@@ -22,92 +22,98 @@ export const useAuthStore = defineStore('auth', () => {
   const utils = useUtils();
   const store = useStore();
 
+  const userToken = computed<string>(
+    () =>
+      utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) ||
+      utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN)
+  );
+  const localUserToken = computed<string>(() =>
+    utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
+  );
+  // const cookieUserToken = computed<string | null>(() =>
+  //   utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN)
+  // );
+
   const loadUser = async () => {
     loadingUser.value = true;
 
     // await nextTick();
 
-    const localUserToken = utils.localStorage.getWithExpiry(
-      TOKEN.NAME.USER_TOKEN
-    );
-    const cookieUserToken = utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN);
+    // if (!userToken.value) {
+    //   await wait(300);
+    //   loadingUser.value = false;
+    // }
 
-    if (localUserToken || cookieUserToken || true) {
-      await getUserByToken({
-        userToken: localUserToken || cookieUserToken
-      })
-        .then((response) => {
-          if (response?.isLogin == true) {
-            userAccount.value = response?.result;
+    await getUserByToken({
+      userToken: userToken.value
+    })
+      .then((response) => {
+        if (response?.isLogin == true) {
+          userAccount.value = response?.result;
 
-            if (response?.subscription) {
-              subscription.value = response.subscription;
-            }
-
-            if (
-              localUserToken != response.headers.get('Authorization') ||
-              localUserToken != utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
-              localUserToken == null
-            ) {
-              utils.localStorage.setWithExpiry(
-                TOKEN.NAME.USER_TOKEN,
-                utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
-                  response.headers.get('Authorization'),
-                TOKEN.OFFSET.USER_TOKEN
-              );
-            }
-          } else {
-            window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
+          if (response?.subscription) {
+            subscription.value = response.subscription;
           }
-        })
-        .catch((e) => {
-          window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
 
-          // if (e?.status != 401 || e?.status != 403) {
-          //   ElNotification.error({
-          //     title: MESSAGE.STATUS.BROKE,
-          //     message: MESSAGE.STATUS.BROKE_MESSAGE,
-          //     duration: MESSAGE.DURATION.DEFAULT
-          //   });
-          // }
-        })
-        .finally(async () => {
-          loadingUser.value = false;
-        });
-    } else {
-    }
+          if (
+            localUserToken.value != response.headers.get('Authorization') ||
+            localUserToken.value !=
+              utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
+            localUserToken.value == null
+          ) {
+            utils.localStorage.setWithExpiry(
+              TOKEN.NAME.USER_TOKEN,
+              utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
+                response.headers.get('Authorization'),
+              TOKEN.OFFSET.USER_TOKEN
+            );
+          }
+        } else {
+          window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
+        }
+      })
+      .catch((e) => {
+        window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
+
+        // if (e?.status != 401 || e?.status != 403) {
+        //   ElNotification.error({
+        //     title: MESSAGE.STATUS.BROKE,
+        //     message: MESSAGE.STATUS.BROKE_MESSAGE,
+        //     duration: MESSAGE.DURATION.DEFAULT
+        //   });
+        // }
+      })
+      .finally(async () => {
+        loadingUser.value = false;
+      });
   };
 
   const loadSubscription = async () => {
     loadingSubscription.value = true;
 
-    if (
-      utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) != null ||
-      utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) != null
-    ) {
-      await getMySubscription({
-        user_token: utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
-      })
-        .then((response) => {
-          if (response) {
-            subscription.value = response;
-          }
-        })
-        .catch((e) => {
-          ElNotification.error({
-            title: MESSAGE.STATUS.BROKE,
-            message: MESSAGE.STATUS.BROKE_MESSAGE,
-            duration: MESSAGE.DURATION.DEFAULT
-          });
-        })
-        .finally(async () => {
-          loadingSubscription.value = false;
-        });
-    } else {
+    if (!userToken.value) {
       await wait(300);
-
       loadingSubscription.value = false;
     }
+
+    await getMySubscription({
+      userToken: userToken.value
+    })
+      .then((response) => {
+        if (response) {
+          subscription.value = response;
+        }
+      })
+      .catch((e) => {
+        ElNotification.error({
+          title: MESSAGE.STATUS.BROKE,
+          message: MESSAGE.STATUS.BROKE_MESSAGE,
+          duration: MESSAGE.DURATION.DEFAULT
+        });
+      })
+      .finally(async () => {
+        loadingSubscription.value = false;
+      });
   };
 
   const logOut = async () => {

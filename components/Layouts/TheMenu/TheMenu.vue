@@ -587,46 +587,52 @@ const getData = async () => {
     .catch((e) => {});
 };
 
-// onBeforeMount(async () => {
-//   await nextTick();
+// getData();
 
-//   getData();
-// });
+if (store.allGenres?.length == 0) {
+  const { data: genres } = await useAsyncData(
+    'genre/all',
+    () => getAllGenre(),
+    {
+      // default: () => {
+      //   return { results: trendingsCache.value || [] };
+      // },
+      transform: (data: any) => {
+        store.allGenres = data.results;
 
-const { data: genres } = await useAsyncData('genre/all', () => getAllGenre(), {
-  // default: () => {
-  //   return { results: trendingsCache.value || [] };
-  // },
-  transform: (data: any) => {
-    store.allGenres = data.results;
-
-    return data.results;
-  }
-});
-
-const { data: years } = await useAsyncData('year/all', () => getAllYear(), {
-  transform: (data: any) => {
-    const dataResponse = data.results.sort((a: year, b: year) => {
-      return +b.name.slice(-4) - +a.name.slice(-4);
-    });
-
-    store.allYears = dataResponse;
-
-    return dataResponse;
-  }
-});
-
-const { data: countries } = await useAsyncData(
-  'country/all',
-  () => getAllCountry(),
-  {
-    transform: (data: any) => {
-      store.allCountries = data.results;
-
-      return data.results;
+        return data.results;
+      }
     }
-  }
-);
+  );
+}
+
+if (store.allYears?.length == 0) {
+  const { data: years } = await useAsyncData('year/all', () => getAllYear(), {
+    transform: (data: any) => {
+      const dataResponse = data.results.sort((a: year, b: year) => {
+        return +b.name.slice(-4) - +a.name.slice(-4);
+      });
+
+      store.allYears = dataResponse;
+
+      return dataResponse;
+    }
+  });
+}
+
+if (store.allCountries?.length == 0) {
+  const { data: countries } = await useAsyncData(
+    'country/all',
+    () => getAllCountry(),
+    {
+      transform: (data: any) => {
+        store.allCountries = data.results;
+
+        return data.results;
+      }
+    }
+  );
+}
 
 watchEffect(() => {
   if (route.path) {
