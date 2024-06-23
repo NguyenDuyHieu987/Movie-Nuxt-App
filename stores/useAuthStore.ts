@@ -25,14 +25,14 @@ export const useAuthStore = defineStore('auth', () => {
   const loadUser = async () => {
     loadingUser.value = true;
 
-    await nextTick();
+    // await nextTick();
 
     const localUserToken = utils.localStorage.getWithExpiry(
       TOKEN.NAME.USER_TOKEN
     );
     const cookieUserToken = utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN);
 
-    if (localUserToken || cookieUserToken) {
+    if (localUserToken || cookieUserToken || true) {
       await getUserByToken({
         userToken: localUserToken || cookieUserToken
       })
@@ -75,9 +75,6 @@ export const useAuthStore = defineStore('auth', () => {
           loadingUser.value = false;
         });
     } else {
-      await wait(300);
-
-      loadingUser.value = false;
     }
   };
 
