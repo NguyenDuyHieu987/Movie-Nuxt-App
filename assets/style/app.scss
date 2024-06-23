@@ -99,6 +99,26 @@
   }
 }
 
+.padding-info-content {
+  padding: 20px 30px;
+
+  &.horizontal {
+    padding: 0px 30px;
+  }
+}
+
+.body-content {
+  &.expand {
+    .padding-info-content {
+      padding: 20px 50px;
+
+      &.horizontal {
+        padding: 0px 50px;
+      }
+    }
+  }
+}
+
 .center-page {
   max-width: var(--max-width-center-page);
   margin: 0px auto;
@@ -130,6 +150,20 @@
   }
 }
 
+@media only screen and (max-width: 1300px) {
+  .body-content {
+    &.expand {
+      .padding-info-content {
+        padding: 20px 30px;
+
+        &.horizontal {
+          padding: 0px 30px;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .app-wrapper {
     .body-wrapper {
@@ -139,6 +173,10 @@
         }
       }
     }
+  }
+
+  .padding-info-content {
+    padding: 20px 15px;
   }
 
   .padding-content {

@@ -81,7 +81,7 @@
           </div>
         </div>
 
-        <div class="tv-content">
+        <div class="tv-content padding-info-content">
           <!-- <div class="variant-content"></div> -->
 
           <div class="main-content">
@@ -486,7 +486,7 @@
         </div>
       </div>
 
-      <div class="related-content padding-content">
+      <div class="related-content padding-info-content">
         <MovieRelated :dataMovie="dataMovie" />
 
         <CastCrew :dataMovie="dataMovie" />
