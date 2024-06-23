@@ -31,7 +31,9 @@
                         ? getImage(
                             `account${userAccount?.avatar}.jpg`,
                             'user_avatar',
-                            'w-100'
+                            {
+                              w: 100
+                            }
                           )
                         : userAccount?.avatar
                     "

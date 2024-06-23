@@ -91,7 +91,9 @@
                   '--background-image': `url(${getImage(
                     `Background_${index + 2}.jpg`,
                     'background/1',
-                    'w-1000'
+                    {
+                      w: 1000
+                    }
                   )})`
                 }"
                 @click="handleClickPlanOpiton(item)"

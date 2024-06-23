@@ -11,11 +11,9 @@
             class="avatar"
             :src="
               !isNaN(+item?.user_avatar!)
-                ? getImage(
-                    `account${item?.user_avatar}.jpg`,
-                    'user_avatar',
-                    'w-50'
-                  )
+                ? getImage(`account${item?.user_avatar}.jpg`, 'user_avatar', {
+                    w: 50
+                  })
                 : item?.user_avatar
             "
             loading="lazy"

@@ -89,11 +89,9 @@ const dominantBackdropColor = ref<string>(
 
 watchEffect(() => {
   if (props.data) {
-    currentImage.value = getImage(
-      props.data[0]?.backdrop_path,
-      'backdrop',
-      'h-250'
-    );
+    currentImage.value = getImage(props.data[0]?.backdrop_path, 'backdrop', {
+      h: 250
+    });
 
     dominantBackdropColor.value = `rgb(${props.data[0]?.dominant_backdrop_color[0]}, ${props.data[0]?.dominant_backdrop_color[1]},${props.data[0]?.dominant_backdrop_color[2]}, 0.6)`;
   }

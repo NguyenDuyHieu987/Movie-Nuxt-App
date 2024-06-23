@@ -96,7 +96,7 @@
             topicImage == 'topic1.jpg' || topicImage == undefined
               ? 'misc'
               : 'backdrop',
-            'h-300'
+            { h: 300 }
           )
         "
         format="avif"

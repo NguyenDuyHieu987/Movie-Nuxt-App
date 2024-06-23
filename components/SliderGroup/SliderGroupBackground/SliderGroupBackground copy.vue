@@ -60,11 +60,9 @@ const currentImage = ref<string>(
 
 watchEffect(() => {
   if (props.data) {
-    currentImage.value = getImage(
-      props.data[0]?.backdrop_path,
-      'backdrop',
-      'h-250'
-    );
+    currentImage.value = getImage(props.data[0]?.backdrop_path, 'backdrop', {
+      h: 250
+    });
   }
 });
 
