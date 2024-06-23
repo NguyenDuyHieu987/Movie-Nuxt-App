@@ -83,23 +83,25 @@ const loadMore = ref<boolean>(false);
 
 watch(
   () => props.dataMovie,
-  () => {
-    loading.value = true;
+  (newVal, oldVal) => {
+    if (newVal) {
+      loading.value = true;
 
-    getCommentParent(
-      props.dataMovie?.id,
-      props.dataMovie?.media_type,
-      skip.value
-    )
-      .then((response) => {
-        commentsList.value = response?.results;
-        total.value = response?.total;
-        skip.value = 2;
-      })
-      .catch((e) => {})
-      .finally(() => {
-        loading.value = false;
-      });
+      getCommentParent(
+        props.dataMovie?.id,
+        props.dataMovie?.media_type,
+        skip.value
+      )
+        .then((response) => {
+          commentsList.value = response?.results;
+          total.value = response?.total;
+          skip.value = 2;
+        })
+        .catch((e) => {})
+        .finally(() => {
+          loading.value = false;
+        });
+    }
   },
   { immediate: true, deep: true }
 );
