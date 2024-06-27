@@ -148,6 +148,7 @@
     transition: height 0s !important;
     border-color: var(--dropdown-border-color) !important;
     box-shadow: var(--box-shadow-small) !important;
+    font-size: inherit !important;
 
     .el-dropdown-menu {
       background-color: var(--dropdown-background-color);
