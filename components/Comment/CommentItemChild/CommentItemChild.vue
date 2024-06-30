@@ -46,7 +46,7 @@
           </template> -->
         </CommentContent>
 
-        <div class="actions">
+        <div class="actions-comment">
           <LikeDislike :comment="item" />
 
           <a-button
@@ -93,29 +93,11 @@
             aria-label="dropdown-comment"
           >
             <template #icon>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
+              <EllipsisVertical
                 width="2rem"
                 height="2rem"
-                viewBox="0 0 512 512"
                 fill="currentColor"
-              >
-                <circle
-                  cx="256"
-                  cy="256"
-                  r="48"
-                />
-                <circle
-                  cx="256"
-                  cy="416"
-                  r="48"
-                />
-                <circle
-                  cx="256"
-                  cy="96"
-                  r="48"
-                />
-              </svg>
+              />
             </template>
           </a-button>
 
@@ -127,17 +109,11 @@
                   class="edit-item"
                   @click="handleEditComment"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                  <Pencil
                     width="1.8rem"
                     height="1.8rem"
-                    viewBox="0 0 24 24"
                     fill="currentColor"
-                  >
-                    <path
-                      d="m14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"
-                    />
-                  </svg>
+                  />
                   <span>Chỉnh sửa</span>
                 </el-dropdown-item>
               </div>
@@ -150,17 +126,11 @@
                   class="remove-item"
                   @click="handleRemoveComment"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                  <TrashCan
                     width="1.5rem"
                     height="1.5rem"
-                    viewBox="0 0 448 512"
                     fill="currentColor"
-                  >
-                    <path
-                      d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0h120.4c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64s14.3-32 32-32h96l7.2-14.3zM32 128h384v320c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"
-                    />
-                  </svg>
+                  />
                   <span>Xóa bình luận</span>
                 </el-dropdown-item>
               </div>
@@ -173,6 +143,10 @@
 </template>
 
 <script setup lang="ts">
+import EllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
+import Pencil from '~/assets/svgs/icons/pencil.svg?component';
+import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
+
 // import { FormComment, CommentContent, LikeDislike } from '~/components/Comment';
 import FormComment from '~/components/Comment/FormComment/FormComment.vue';
 import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';

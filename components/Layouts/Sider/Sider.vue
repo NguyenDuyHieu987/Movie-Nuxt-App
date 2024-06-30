@@ -63,29 +63,19 @@
         class="sider-footer click-active"
       >
         <div :class="['trigger-collapse', { collapsed: collapsed }]">
-          <svg
+          <ChevronRightDouble
             v-if="collapsed"
-            xmlns="http://www.w3.org/2000/svg"
             width="2rem"
             height="2rem"
-            viewBox="0 0 24 24"
             fill="currentColor"
-          >
-            <path d="M6.41 6L5 7.41L9.58 12L5 16.59L6.41 18l6-6z" />
-            <path d="m13 6l-1.41 1.41L16.17 12l-4.58 4.59L13 18l6-6z" />
-          </svg>
+          />
 
-          <svg
+          <ChevronLeftDouble
             v-else
-            xmlns="http://www.w3.org/2000/svg"
             width="2rem"
             height="2rem"
-            viewBox="0 0 24 24"
             fill="currentColor"
-          >
-            <path d="M17.59 18L19 16.59L14.42 12L19 7.41L17.59 6l-6 6z" />
-            <path d="m11 18l1.41-1.41L7.83 12l4.58-4.59L11 6l-6 6z" />
-          </svg>
+          />
 
           <span
             v-if="collapsed && openSiderBarFixed"
@@ -106,6 +96,9 @@
 </template>
 
 <script setup lang="ts">
+import ChevronLeftDouble from '~/assets/svgs/icons/chevron-left-double.svg?component';
+import ChevronRightDouble from '~/assets/svgs/icons/chevron-right-double.svg?component';
+
 // import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
 // import { TheMenu } from '~/components/Layouts';
 // import TheMenu from '~/components/Layouts/TheMenu/TheMenu.vue';

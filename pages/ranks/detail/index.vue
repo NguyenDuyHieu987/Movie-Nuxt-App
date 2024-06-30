@@ -116,42 +116,26 @@
                 v-show="$route.query?.sort_by != 'all'"
                 class="tendency-icon"
               >
-                <svg
+                <TendencyUpIcon
                   v-if="item?.step > 0"
-                  xmlns="http://www.w3.org/2000/svg"
                   width="1.5rem"
                   height="1.5rem"
-                  viewBox="0 0 24 24"
                   fill="currentColor"
-                >
-                  <path
-                    d="m4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8l-8 8z"
-                  />
-                </svg>
+                />
 
-                <svg
+                <TendencyDownIcon
                   v-else-if="item?.step < 0"
-                  xmlns="http://www.w3.org/2000/svg"
                   width="1.5rem"
                   height="1.5rem"
-                  viewBox="0 0 24 24"
                   fill="currentColor"
-                >
-                  <path
-                    d="m20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8l8-8z"
-                  />
-                </svg>
+                />
 
-                <svg
+                <DashIcon
                   v-else-if="item?.step == 0 && !item?.new"
-                  xmlns="http://www.w3.org/2000/svg"
                   width="1.5rem"
                   height="1.5rem"
-                  viewBox="0 0 24 24"
                   fill="currentColor"
-                >
-                  <path d="M20 14H4v-4h16" />
-                </svg>
+                />
 
                 <span
                   v-else-if="item?.step == 0 && item?.new"
@@ -176,6 +160,10 @@
 </template>
 
 <script setup lang="ts">
+import TendencyUpIcon from '~/assets/svgs/icons/tendency-up.svg?component';
+import TendencyDownIcon from '~/assets/svgs/icons/tendency-down.svg?component';
+import DashIcon from '~/assets/svgs/icons/dash.svg?component';
+
 // import { BackPage } from '~/components/BackPage';
 // import BackPage from '~/components/BackPage/BackPage.vue';
 import { filterRanks } from '~/services/ranks';

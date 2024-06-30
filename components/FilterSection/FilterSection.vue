@@ -109,32 +109,18 @@
                 </NuxtLink>
               </SwiperSlide>
               <div class="swiper-button-prev">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronLeftLight
                   width="2.8rem"
                   height="2.8rem"
-                  viewBox="0 0 16 16"
                   fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-                  />
-                </svg>
+                />
               </div>
               <div class="swiper-button-next">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronRightLight
                   width="2.8rem"
                   height="2.8rem"
-                  viewBox="0 0 16 16"
                   fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"
-                  />
-                </svg>
+                />
               </div>
             </Swiper>
           </div>
@@ -184,32 +170,18 @@
                 </NuxtLink>
               </SwiperSlide>
               <div class="swiper-button-prev">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronLeftLight
                   width="2.8rem"
                   height="2.8rem"
-                  viewBox="0 0 16 16"
                   fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-                  />
-                </svg>
+                />
               </div>
               <div class="swiper-button-next">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronRightLight
                   width="2.8rem"
                   height="2.8rem"
-                  viewBox="0 0 16 16"
                   fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"
-                  />
-                </svg>
+                />
               </div>
             </Swiper>
           </div>
@@ -263,46 +235,28 @@
                 </NuxtLink>
               </SwiperSlide>
               <div class="swiper-button-prev">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronLeftLight
                   width="3.5rem"
                   height="3.5rem"
-                  viewBox="0 0 16 16"
                   fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-                  />
-                </svg>
+                />
               </div>
               <div class="swiper-button-next">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronRightLight
                   width="3.5rem"
                   height="3.5rem"
-                  viewBox="0 0 16 16"
                   fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"
-                  />
-                </svg>
+                />
               </div>
             </Swiper>
           </div>
         </div>
         <template #extra>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
+          <FilterAlt
             width="1.6rem"
             height="1.6rem"
-            viewBox="0 0 24 24"
             fill="currentColor"
-          >
-            <path d="M3 4c2.01 2.59 7 9 7 9v7h4v-7s4.98-6.41 7-9H3z" />
-          </svg>
+          />
         </template>
       </a-collapse-panel>
     </a-collapse>
@@ -311,6 +265,10 @@
 
 <script setup lang="ts">
 import { CaretRightFilled } from '@ant-design/icons-vue';
+import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+import FilterAlt from '~/assets/svgs/icons/filter-alt.svg?component';
+
 // import { FreeMode, Navigation } from 'swiper/modules';
 
 import type { country, formfilter, genre, sortby, year } from '@/types';

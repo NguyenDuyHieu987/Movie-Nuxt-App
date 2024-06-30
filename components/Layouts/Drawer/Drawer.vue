@@ -10,19 +10,13 @@
     :force-render="false"
   >
     <template #title>
-      <svg
+      <Menu
         class="close-drawer"
-        xmlns="http://www.w3.org/2000/svg"
         width="2.5rem"
         height="2.5rem"
-        viewBox="0 0 24 24"
         fill="currentColor"
         @click="store.toogleDrawer()"
-      >
-        <path
-          d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
-        />
-      </svg>
+      />
 
       <div class="logo">
         <NuxtLink to="/"><span>PhimHay247</span></NuxtLink>
@@ -81,19 +75,13 @@
     >
       <template #title>
         <div class="drawer-header">
-          <svg
+          <Menu
             class="close"
-            @click="store.toogleDrawer()"
-            xmlns="http://www.w3.org/2000/svg"
             width="2.5rem"
             height="2.5rem"
-            viewBox="0 0 24 24"
             fill="currentColor"
-          >
-            <path
-              d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
-            />
-          </svg>
+            @click="store.toogleDrawer()"
+          />
 
           <div class="logo">
             <NuxtLink :to="{ path: '/' }"> PhimHay247 </NuxtLink>
@@ -102,7 +90,10 @@
       </template>
 
       <header class="user-header">
-        <div class="avatar-box" v-if="!collapsed && isLogin">
+        <div
+          class="avatar-box"
+          v-if="!collapsed && isLogin"
+        >
           <NuxtImg
             class="avatar"
             :src="
@@ -125,6 +116,8 @@
 </template>
 
 <script setup lang="ts">
+import Menu from '~/assets/svgs/icons/menu.svg?component';
+
 // import { TheMenu } from '~/components/Layouts';
 // import TheMenu from '~/components/Layouts/TheMenu/TheMenu.vue';
 import { storeToRefs } from 'pinia';

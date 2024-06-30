@@ -87,17 +87,11 @@
         >
           <template #icon>
             <!-- <Icon name="fa6-solid:chevron-left"/> -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronLeft
               width="2.5rem"
               height="2.5rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256L246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
-              />
-            </svg>
+            />
           </template>
         </a-button>
       </el-tooltip>
@@ -120,17 +114,11 @@
         >
           <template #icon>
             <!-- <Icon name="fa6-solid:chevron-right"/> -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="2.5rem"
               height="2.5rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </template>
         </a-button>
       </el-tooltip>
@@ -184,40 +172,30 @@
 
       <template #prevArrow>
         <div class="slick-arrow prev">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
+          <ChevronLeftLight
             width="2.4rem"
             height="2.4rem"
-            viewBox="0 0 16 16"
             fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-            />
-          </svg>
+          />
         </div>
       </template>
       <template #nextArrow>
         <div class="slick-arrow next">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
+          <ChevronRightLight
             width="2.4rem"
             height="2.4rem"
-            viewBox="0 0 16 16"
             fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"
-            />
-          </svg>
+          />
         </div>
       </template>
     </a-carousel>
   </div>
 </template>
 <script setup lang="ts">
+import ChevronLeft from '~/assets/svgs/icons/chevron-left.svg?component';
+import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
+import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
 import BillboardItem from '~/components/BillboardAnimation/BillboardItem/BillboardItem.vue';
 import { getImage } from '~/services/image';
 

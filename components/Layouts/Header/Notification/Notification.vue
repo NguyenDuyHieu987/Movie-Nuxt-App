@@ -13,31 +13,19 @@
           :overflow-count="9"
         >
           <div class="show-notify-btn">
-            <svg
+            <BellRegular
               class="fa-bell fa-regular"
-              xmlns="http://www.w3.org/2000/svg"
               width="2.2rem"
               height="2.2rem"
-              viewBox="0 0 24 24"
               fill="currentColor"
-            >
-              <path
-                d="M12 1.996a7.49 7.49 0 0 1 7.496 7.25l.004.25v4.097l1.38 3.156a1.249 1.249 0 0 1-1.145 1.75L15 18.502a3 3 0 0 1-5.995.177L9 18.499H4.275a1.251 1.251 0 0 1-1.147-1.747L4.5 13.594V9.496c0-4.155 3.352-7.5 7.5-7.5ZM13.5 18.5l-3 .002a1.5 1.5 0 0 0 2.993.145l.007-.147ZM12 3.496c-3.32 0-6 2.674-6 6v4.41L4.656 17h14.697L18 13.907V9.509l-.003-.225A5.988 5.988 0 0 0 12 3.496Z"
-              />
-            </svg>
+            />
 
-            <svg
+            <BellSolid
               class="fa-bell fa-solid"
-              xmlns="http://www.w3.org/2000/svg"
               width="2.2rem"
               height="2.2rem"
-              viewBox="0 0 24 24"
               fill="currentColor"
-            >
-              <path
-                d="M9.042 19.003h5.916a3 3 0 0 1-5.916 0Zm2.958-17a7.5 7.5 0 0 1 7.5 7.5v4l1.418 3.16A.95.95 0 0 1 20.052 18h-16.1a.95.95 0 0 1-.867-1.338l1.415-3.16V9.49l.005-.25A7.5 7.5 0 0 1 12 2.004Z"
-              />
-            </svg>
+            />
           </div>
         </a-badge>
       </el-icon>
@@ -78,7 +66,10 @@
   </el-dropdown>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import BellRegular from '~/assets/svgs/icons/bell-regular.svg?component';
+import BellSolid from '~/assets/svgs/icons/bell-solid.svg?component';
+</script>
 
 <style lang="scss" src="./Notification.scss"></style>
 <!-- <style lang="scss">

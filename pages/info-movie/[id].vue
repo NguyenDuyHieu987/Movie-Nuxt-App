@@ -154,16 +154,12 @@
                             <template #icon>
                               <!-- <Icon name="ci:play-arrow" class="play" /> -->
 
-                              <svg
+                              <PlayIcon
                                 class="play"
-                                xmlns="http://www.w3.org/2000/svg"
                                 width="3rem"
                                 height="3rem"
-                                viewBox="0 0 24 24"
                                 fill="currentColor"
-                              >
-                                <path d="M8 5v14l11-7z" />
-                              </svg>
+                              />
                             </template>
                             Xem ngay
                           </a-button>
@@ -181,31 +177,19 @@
                               <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
                           <Icon v-else name="ic:baseline-plus" /> -->
 
-                              <svg
+                              <CheckIcon
                                 v-if="isAddToList"
-                                xmlns="http://www.w3.org/2000/svg"
                                 width="1.8rem"
                                 height="1.8rem"
-                                viewBox="0 0 24 24"
                                 fill="currentColor"
-                              >
-                                <path
-                                  d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
-                                />
-                              </svg>
+                              />
 
-                              <svg
+                              <PlusIcon
                                 v-else
-                                xmlns="http://www.w3.org/2000/svg"
                                 width="1.8rem"
                                 height="1.8rem"
-                                viewBox="0 0 24 24"
                                 fill="currentColor"
-                              >
-                                <path
-                                  d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
-                                />
-                              </svg>
+                              />
                             </template>
                             <span> Danh sách</span>
                           </a-button>
@@ -223,18 +207,12 @@
                             <template #icon>
                               <!-- <Icon name="fa6-brands:youtube" class="trailer" /> -->
 
-                              <svg
+                              <YoutubeIcon
                                 class="trailer"
-                                xmlns="http://www.w3.org/2000/svg"
                                 width="1.8rem"
                                 height="1.8rem"
-                                viewBox="0 0 576 512"
                                 fill="currentColor"
-                              >
-                                <path
-                                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597c-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821c11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205l-142.739 81.201z"
-                                />
-                              </svg>
+                              />
                             </template>
                             <span> Trailer</span>
                           </a-button>
@@ -259,18 +237,13 @@
                           >
                             <template #icon>
                               <!-- <Icon name="ic:outline-comment" class="comment" /> -->
-                              <svg
+
+                              <CommentIcon
                                 class="comment"
-                                xmlns="http://www.w3.org/2000/svg"
                                 width="2.1rem"
                                 height="2.1rem"
-                                viewBox="0 0 24 24"
                                 fill="currentColor"
-                              >
-                                <path
-                                  d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4l-.01-18zM20 4v13.17L18.83 16H4V4h16zM6 12h12v2H6zm0-3h12v2H6zm0-3h12v2H6z"
-                                />
-                              </svg>
+                              />
                             </template>
                             <span> Bình luận</span>
                           </a-button>
@@ -278,17 +251,11 @@
 
                         <!-- <div class="ellipsis">
                       <Icon name="fa6-solid:ellipsis" />
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1.9rem"
-                        height="1.9rem"
-                        viewBox="0 0 512 512"
-                        fill="currentColor" 
-                      >
-                        <circle cx="256" cy="256" r="48" />
-                        <circle cx="256" cy="416" r="48" />
-                        <circle cx="256" cy="96" r="48" />
-                      </svg>
+                        <EllipsisHorizontal
+                          width="1.9rem"
+                          height="1.9rem"
+                          fill="currentColor"
+                        />
                     </div> -->
                       </div>
                     </div>
@@ -510,6 +477,13 @@
 </template>
 
 <script setup lang="ts">
+import PlayIcon from '~/assets/svgs/icons/play.svg?component';
+import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
+import CheckIcon from '~/assets/svgs/icons/check.svg?component';
+import YoutubeIcon from '~/assets/svgs/icons/youtube.svg?component';
+import CommentIcon from '~/assets/svgs/icons/comment.svg?component';
+// import EllipsisHorizontal from '~/assets/svgs/icons/ellipsis-horizontal.svg?component';
+
 // import { LoadingSpinner } from '~/components/Loading';
 // import { BackPage } from '~/components/BackPage';
 // import { Tags } from '~/components/Tags';

@@ -22,17 +22,11 @@
             }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2>
 
@@ -100,18 +94,11 @@
               @click="handleLoadMoreRecommend"
             >
               <template #icon>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <Plus1Icon
                   width="2rem"
                   height="2rem"
-                  viewBox="0 0 24 24"
                   fill="currentColor"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                  />
-                </svg>
+                />
               </template>
               {{ loadMoreRecommend ? 'Đang tải...' : 'Tải thêm' }}
             </a-button>
@@ -127,17 +114,11 @@
             :to="{ path: `/discover/genre/hoat-hinh` }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2>
 
@@ -178,17 +159,11 @@
             }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2>
 
@@ -232,17 +207,11 @@
             }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2> -->
 
@@ -273,17 +242,11 @@
                 }"
               >
                 Xem tất cả
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronRight
                   width="1.2rem"
                   height="1.2rem"
-                  viewBox="0 0 320 512"
                   fill="currentColor"
-                >
-                  <path
-                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-                  />
-                </svg>
+                />
               </NuxtLink>
             </h2>
           </template>
@@ -321,17 +284,11 @@
             }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2>
 
@@ -374,17 +331,11 @@
             }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2>
 
@@ -416,6 +367,9 @@
 </template>
 
 <script setup lang="ts">
+import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
+import Plus1Icon from '~/assets/svgs/icons/plus-1.svg?component';
+
 // import { BillboardAnimation } from '~/components/BillboardAnimation';
 // import { BoxVip } from '~/components/BoxVip';
 // import {

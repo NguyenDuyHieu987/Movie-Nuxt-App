@@ -25,34 +25,20 @@
 
       <template #prevArrow>
         <div class="slick-arrow prev">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
+          <ChevronLeftLight
             width="3.5rem"
             height="3.5rem"
-            viewBox="0 0 16 16"
-            fill="currrentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-            />
-          </svg>
+            fill="currentColor"
+          />
         </div>
       </template>
       <template #nextArrow>
         <div class="slick-arrow next">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
+          <ChevronRightLight
             width="3.5rem"
             height="3.5rem"
-            viewBox="0 0 16 16"
             fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"
-            />
-          </svg>
+          />
         </div>
       </template>
     </a-carousel>
@@ -60,6 +46,9 @@
 </template>
 
 <script setup lang="ts">
+import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+
 const props = withDefaults(
   defineProps<{
     data: any[];

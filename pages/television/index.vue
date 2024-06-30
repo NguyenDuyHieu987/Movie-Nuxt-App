@@ -19,17 +19,11 @@
             }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2>
 
@@ -68,17 +62,11 @@
             }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2>
 
@@ -117,17 +105,11 @@
             }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2>
 
@@ -166,17 +148,11 @@
             }"
           >
             Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
+            <ChevronRight
               width="1.2rem"
               height="1.2rem"
-              viewBox="0 0 320 512"
               fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
+            />
           </NuxtLink>
         </h2>
 
@@ -208,6 +184,8 @@
 </template>
 
 <script setup lang="ts">
+import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
+
 // import { HeaderPageMovieType } from '~/components/Layouts';
 // import { BillboardAnimation } from '~/components/BillboardAnimation';
 // import { LoadingSectionHorizontal } from '~/components/Loading';

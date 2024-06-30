@@ -21,17 +21,11 @@
                 @click="isFocusSearchInput = false"
               >
                 Tất cả
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronRight
                   width="1.2rem"
                   height="1.2rem"
-                  viewBox="0 0 320 512"
                   fill="currentColor"
-                >
-                  <path
-                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-                  />
-                </svg>
+                />
               </NuxtLink>
             </div>
           </div>
@@ -95,20 +89,13 @@
               @click="(e) => handleClickSearchHistoryItem(e, item)"
             >
               <p class="search-query">{{ item?.query }}</p>
-
-              <svg
+              <XCircle
                 class="remove-icon"
-                xmlns="http://www.w3.org/2000/svg"
                 width="1.4rem"
                 height="1.4rem"
-                viewBox="0 0 16 16"
                 fill="currentColor"
                 @click="handleRemoveSearchHistory(item?.id)"
-              >
-                <path
-                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"
-                />
-              </svg>
+              />
             </div>
           </div>
         </div>
@@ -129,17 +116,11 @@
                   @click="isFocusSearchInput = false"
                 >
                   Tất cả
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                  <ChevronRight
                     width="1.2rem"
                     height="1.2rem"
-                    viewBox="0 0 320 512"
                     fill="currentColor"
-                  >
-                    <path
-                      d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-                    />
-                  </svg>
+                  />
                 </NuxtLink>
               </div>
             </div>
@@ -169,6 +150,9 @@
 </template>
 
 <script setup lang="ts">
+import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
+import XCircle from '~/assets/svgs/icons/x-circle.svg?component';
+
 import { addRankSearch } from '~/services/ranks';
 import {
   addSearch,

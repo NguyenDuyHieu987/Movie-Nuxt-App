@@ -108,15 +108,11 @@
                 "
               >
                 <template #icon>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                  <PlayIcon
                     width="2rem"
                     height="2rem"
-                    viewBox="0 0 24 24"
                     fill="currentColor"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                  />
                 </template>
               </a-button>
             </el-tooltip>
@@ -141,29 +137,18 @@
                 @click.prevent="handleAddToList"
               >
                 <template #icon>
-                  <svg
+                  <CheckIcon
                     v-if="isAddToList"
-                    xmlns="http://www.w3.org/2000/svg"
                     width="2em"
                     height="2em"
-                    viewBox="0 0 24 24"
                     fill="currentColor"
-                  >
-                    <path
-                      d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
-                    />
-                  </svg>
-
-                  <svg
+                  />
+                  <PlusIcon
                     v-else
-                    xmlns="http://www.w3.org/2000/svg"
                     width="2em"
                     height="2em"
-                    viewBox="0 0 24 24"
                     fill="currentColor"
-                  >
-                    <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
-                  </svg>
+                  />
                 </template>
               </a-button>
             </el-tooltip>
@@ -193,17 +178,11 @@
                     @click.prevent
                   >
                     <template #icon>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
+                      <ShareSolid
                         width="2rem"
                         height="2rem"
-                        viewBox="0 0 24 24"
                         fill="currentColor"
-                      >
-                        <path
-                          d="m21 12l-7-7v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7Z"
-                        />
-                      </svg>
+                      />
                     </template>
                   </a-button>
                 </ShareNetwork>
@@ -278,6 +257,11 @@
   </NuxtLink>
 </template>
 <script setup lang="ts">
+import PlayIcon from '~/assets/svgs/icons/play.svg?component';
+import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
+import CheckIcon from '~/assets/svgs/icons/check.svg?component';
+import ShareSolid from '~/assets/svgs/icons/share-solid.svg?component';
+
 import { getGenreById } from '~/services/genres';
 import { getImage } from '~/services/image';
 // import { getItemList } from '~/services/list';

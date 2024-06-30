@@ -27,32 +27,18 @@
         <slot />
 
         <div class="swiper-button-prev">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
+          <ChevronLeftLight
             width="2.8rem"
             height="2.8rem"
-            viewBox="0 0 16 16"
             fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-            />
-          </svg>
+          />
         </div>
         <div class="swiper-button-next">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
+          <ChevronRightLight
             width="2.8rem"
             height="2.8rem"
-            viewBox="0 0 16 16"
             fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"
-            />
-          </svg>
+          />
         </div>
       </Swiper>
     </div>
@@ -60,6 +46,9 @@
 </template>
 
 <script setup lang="ts">
+import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+
 // import { FreeMode, Navigation } from 'swiper/modules';
 
 const isFixed = ref<boolean>(false);

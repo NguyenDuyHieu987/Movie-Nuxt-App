@@ -81,35 +81,21 @@
 
                 <div class="video-tool">
                   <div class="volume">
-                    <svg
+                    <VolumeUp
                       v-show="!videoStates.isVolumeOff"
-                      name="ic:baseline-volume-up"
-                      xmlns="http://www.w3.org/2000/svg"
                       width="1.8rem"
                       height="1.8rem"
-                      viewBox="0 0 24 24"
                       fill="currentColor"
                       @click="onClickVolumeUp"
-                    >
-                      <path
-                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
-                      />
-                    </svg>
+                    />
 
-                    <svg
+                    <VolumeOff
                       v-show="videoStates.isVolumeOff"
-                      name="ic:baseline-volume-off"
-                      xmlns="http://www.w3.org/2000/svg"
                       width="1.8rem"
                       height="1.8rem"
-                      viewBox="0 0 24 24"
                       fill="currentColor"
                       @click="onClickVolumeOff"
-                    >
-                      <path
-                        d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27L7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21L21 19.73l-9-9L4.27 3zM12 4L9.91 6.09L12 8.18V4z"
-                      />
-                    </svg>
+                    />
                   </div>
                 </div>
               </div>
@@ -163,15 +149,11 @@
                         <template #icon>
                           <!-- <Icon name="ic:play-arrow" /> -->
 
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
+                          <PlayIcon
                             width="2rem"
                             height="2rem"
-                            viewBox="0 0 24 24"
                             fill="currentColor"
-                          >
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
+                          />
                         </template>
                       </a-button>
                     </NuxtLink>
@@ -200,29 +182,18 @@
                         <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
                         <Icon v-else name="ic:baseline-plus" /> -->
 
-                        <svg
+                        <CheckIcon
                           v-if="isAddToList"
-                          xmlns="http://www.w3.org/2000/svg"
                           width="2rem"
                           height="2rem"
-                          viewBox="0 0 24 24"
                           fill="currentColor"
-                        >
-                          <path
-                            d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
-                          />
-                        </svg>
-
-                        <svg
+                        />
+                        <PlusIcon
                           v-else
-                          xmlns="http://www.w3.org/2000/svg"
                           width="2rem"
                           height="2rem"
-                          viewBox="0 0 24 24"
                           fill="currentColor"
-                        >
-                          <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
-                        </svg>
+                        />
                       </template>
                     </a-button>
                   </el-tooltip>
@@ -254,17 +225,11 @@
                           <!-- <Icon name="fa6-solid:share" class="fa6-solid" /> -->
                           <!-- <Icon name="mdi:share" /> -->
 
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
+                          <ShareSolid
                             width="2rem"
                             height="2rem"
-                            viewBox="0 0 24 24"
                             fill="currentColor"
-                          >
-                            <path
-                              d="m21 12l-7-7v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7Z"
-                            />
-                          </svg>
+                          />
                         </template>
                       </a-button>
                     </ShareNetwork>
@@ -305,18 +270,12 @@
                             name="mdi:information-variant"
                           /> -->
 
-                          <svg
+                          <InformationVariant
                             class="info-icon"
-                            xmlns="http://www.w3.org/2000/svg"
                             width="2rem"
                             height="2rem"
-                            viewBox="0 0 24 24"
                             fill="currentColor"
-                          >
-                            <path
-                              d="M13.5 4A1.5 1.5 0 0 0 12 5.5A1.5 1.5 0 0 0 13.5 7A1.5 1.5 0 0 0 15 5.5A1.5 1.5 0 0 0 13.5 4m-.36 4.77c-1.19.1-4.44 2.69-4.44 2.69c-.2.15-.14.14.02.42c.16.27.14.29.33.16c.2-.13.53-.34 1.08-.68c2.12-1.36.34 1.78-.57 7.07c-.36 2.62 2 1.27 2.61.87c.6-.39 2.21-1.5 2.37-1.61c.22-.15.06-.27-.11-.52c-.12-.17-.24-.05-.24-.05c-.65.43-1.84 1.33-2 .76c-.19-.57 1.03-4.48 1.7-7.17c.11-.64.41-2.04-.75-1.94Z"
-                            />
-                          </svg>
+                          />
                         </template>
                       </a-button>
                     </NuxtLink>
@@ -401,6 +360,12 @@
 </template>
 
 <script setup lang="ts">
+import VolumeUp from '~/assets/svgs/icons/volume-up.svg?component';
+import VolumeOff from '~/assets/svgs/icons/volume-off.svg?component';
+import PlayIcon from '~/assets/svgs/icons/play.svg?component';
+import ShareSolid from '~/assets/svgs/icons/share-solid.svg?component';
+import InformationVariant from '~/assets/svgs/icons/information-variant.svg?component';
+
 // import { LoadingSpinner } from '~/components/Loading';
 // import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { getCountryByOriginalLanguage } from '~/services/country';

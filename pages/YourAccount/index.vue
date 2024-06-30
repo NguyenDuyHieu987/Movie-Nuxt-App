@@ -43,18 +43,12 @@
                   />
 
                   <div class="updload-avatar">
-                    <svg
+                    <UploadIcon
                       class="updload-avatar-icon"
-                      xmlns="http://www.w3.org/2000/svg"
                       width="2rem"
                       height="2rem"
-                      viewBox="0 0 24 24"
                       fill="currentColor"
-                    >
-                      <path
-                        d="M9 16h6v-6h4l-7-7l-7 7h4v6zm3-10.17L14.17 8H13v6h-2V8H9.83L12 5.83zM5 18h14v2H5z"
-                      />
-                    </svg>
+                    />
                   </div>
                 </div>
               </div>
@@ -71,34 +65,21 @@
                     <span class="label">Họ và tên: </span>
                     <span> {{ userAccount?.full_name }}</span>
 
-                    <svg
+                    <Pencil
                       v-if="!isFullNameditable"
                       class="edit-icon"
-                      xmlns="http://www.w3.org/2000/svg"
                       width="1.7rem"
                       height="1.7rem"
-                      viewBox="0 0 24 24"
                       fill="currentColor"
                       @click="handleClickEditRowItem"
-                    >
-                      <path
-                        d="m14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"
-                      />
-                    </svg>
-
-                    <svg
+                    />
+                    <CheckIcon
                       v-else
-                      xmlns="http://www.w3.org/2000/svg"
                       width="1.7rem"
                       height="1.7rem"
-                      viewBox="0 0 24 24"
                       fill="currentColor"
                       @click="handleClickSaveRowItem"
-                    >
-                      <path
-                        d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
-                      />
-                    </svg>
+                    />
                   </div>
                 </div>
 
@@ -285,6 +266,10 @@
 </template>
 
 <script setup lang="ts">
+import UploadIcon from '~/assets/svgs/icons/upload.svg?component';
+import Pencil from '~/assets/svgs/icons/pencil.svg?component';
+import CheckIcon from '~/assets/svgs/icons/check.svg?component';
+
 // import { RequireAuth } from '~/components/RequireAuth';
 // import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
 import { ChangeFullname } from '~/services/account';

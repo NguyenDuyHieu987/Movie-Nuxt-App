@@ -50,17 +50,11 @@
               </div>
 
               <div class="right">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronRight1
                   width="2.4rem"
                   height="2.4rem"
-                  viewBox="0 0 24 24"
                   fill="currentColor"
-                >
-                  <path
-                    d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
-                  />
-                </svg>
+                />
               </div>
             </div>
 
@@ -80,17 +74,11 @@
               </div>
 
               <div class="right">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronRight1
                   width="2.4rem"
                   height="2.4rem"
-                  viewBox="0 0 24 24"
                   fill="currentColor"
-                >
-                  <path
-                    d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
-                  />
-                </svg>
+                />
               </div>
             </div>
 
@@ -109,17 +97,11 @@
               </div>
 
               <div class="right">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronRight1
                   width="2.4rem"
                   height="2.4rem"
-                  viewBox="0 0 24 24"
                   fill="currentColor"
-                >
-                  <path
-                    d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
-                  />
-                </svg>
+                />
               </div>
             </div>
 
@@ -146,17 +128,11 @@
               </div>
 
               <div class="right">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                <ChevronRight1
                   width="2.4rem"
                   height="2.4rem"
-                  viewBox="0 0 24 24"
                   fill="currentColor"
-                >
-                  <path
-                    d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
-                  />
-                </svg>
+                />
               </div>
             </div>
           </section>
@@ -171,6 +147,8 @@
 </template>
 
 <script setup lang="ts">
+import ChevronRight1 from '~/assets/svgs/icons/chevron-right-1.svg?component';
+
 import { ElNotification } from 'element-plus';
 // import { BackPage } from '~/components/BackPage';
 // import { RequireAuth } from '~/components/RequireAuth';

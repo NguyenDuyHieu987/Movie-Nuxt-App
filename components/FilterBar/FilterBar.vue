@@ -222,15 +222,11 @@
         <template #extra>
           <!-- <Icon name="ic:sharp-filter-alt" /> -->
 
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
+          <FilterAlt
             width="1.6rem"
             height="1.6rem"
-            viewBox="0 0 24 24"
             fill="currentColor"
-          >
-            <path d="M3 4c2.01 2.59 7 9 7 9v7h4v-7s4.98-6.41 7-9H3z" />
-          </svg>
+          />
         </template>
       </a-collapse-panel>
     </a-collapse>
@@ -239,6 +235,7 @@
 
 <script setup lang="ts">
 import { CaretRightFilled } from '@ant-design/icons-vue';
+import FilterAlt from '~/assets/svgs/icons/filter-alt.svg?component';
 
 import type { country, formfilter, genre, sortby, year } from '@/types';
 import { getAllCountry } from '~/services/country';
