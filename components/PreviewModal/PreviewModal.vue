@@ -363,6 +363,8 @@
 import VolumeUp from '~/assets/svgs/icons/volume-up.svg?component';
 import VolumeOff from '~/assets/svgs/icons/volume-off.svg?component';
 import PlayIcon from '~/assets/svgs/icons/play.svg?component';
+import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
+import CheckIcon from '~/assets/svgs/icons/check.svg?component';
 import ShareSolid from '~/assets/svgs/icons/share-solid.svg?component';
 import InformationVariant from '~/assets/svgs/icons/information-variant.svg?component';
 
