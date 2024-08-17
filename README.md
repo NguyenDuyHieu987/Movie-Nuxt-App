@@ -1,6 +1,6 @@
 # Note#
 
-This repo was migrated from [here](https://github.com/NguyenDuyHieu987/The-Movie-Nuxt-Antdv)
+This repo was migrated from [here](https://github.com/NguyenDuyHieu987/The-Movie-Nuxt-Antdv).
 
 # Nuxt 3 Minimal Starter
 
