@@ -356,7 +356,7 @@ const getData = async () => {
   // }
 };
 
-getData();
+// getData();
 
 const onMouseEnter = ({ target }: { target: HTMLElement }) => {
   if (loading.value) return;

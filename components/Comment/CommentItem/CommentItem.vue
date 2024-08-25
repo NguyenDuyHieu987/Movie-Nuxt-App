@@ -256,7 +256,7 @@ const props = defineProps<{
 
 const utils = useUtils();
 const authStore = useAuthStore();
-const { userAccount } = storeToRefs<any>(authStore);
+const { userAccount } = storeToRefs(authStore);
 const commentsList = defineModel<commentForm[]>('commentsList');
 const isShowFormComment = ref<boolean>(false);
 const isShowReplies = ref<boolean>(false);

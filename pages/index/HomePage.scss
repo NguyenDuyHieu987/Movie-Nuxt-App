@@ -46,6 +46,7 @@
     z-index: 1;
     clip-path: inset(-100vh 0 -100vh 0);
     overflow: hidden;
+    padding-bottom: 50px;
   }
 
   .home-section {
@@ -53,6 +54,7 @@
     padding: 0px var(--padding-home);
 
     &:hover {
+      .title-default,
       .gradient-title-default {
         .view-all {
           right: 0;
@@ -69,6 +71,7 @@
       padding: 0px;
 
       &:hover {
+        .title-default,
         .gradient-title-default {
           .view-all {
             right: 16px;
@@ -83,12 +86,15 @@
       overflow: hidden;
     }
 
+    .title-default,
     .gradient-title-default {
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: relative;
       font-size: 1.5vw;
+      margin-top: 25px;
+      margin-bottom: 15px;
 
       &:hover {
         .view-all {
@@ -159,6 +165,11 @@
         }
       }
     }
+  }
+
+  .loading-spinner {
+    margin-top: 50px;
+    margin-bottom: -25px;
   }
 
   .owl-carousel {

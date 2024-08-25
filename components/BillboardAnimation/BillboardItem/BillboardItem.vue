@@ -259,7 +259,7 @@ const utils = useUtils();
 const isAddToList = ref<boolean>(false);
 const windowWidth = ref<number>(1200);
 
-onBeforeMount(async () => {
+onMounted(async () => {
   windowWidth.value = window.innerWidth;
 });
 

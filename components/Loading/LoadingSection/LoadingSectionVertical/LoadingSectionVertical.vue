@@ -19,7 +19,9 @@
         <el-skeleton-item style="width: 60%" />
       </div>
     </template>
-    <template #default> <slot name="content" /> </template>
+    <template #default>
+      <slot name="content" />
+    </template>
   </el-skeleton>
 </template>
 

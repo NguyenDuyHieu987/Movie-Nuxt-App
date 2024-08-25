@@ -10,7 +10,7 @@ export async function initFacebookSdk() {
   const nuxtConfig = useRuntimeConfig();
 
   return await new Promise((resolve: any) => {
-    if (process.client) {
+    if (import.meta.client) {
       // Add the Facebook SDK for Javascript
       (function (d, s, id) {
         let js: any;

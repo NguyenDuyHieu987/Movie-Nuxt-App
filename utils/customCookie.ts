@@ -3,7 +3,7 @@ function setCookie(cname: string, cvalue: any, exp: number) {
   d.setTime(d.getTime() + exp * ONE_HOUR);
   const expires = 'expires=' + d.toUTCString();
 
-  if (process.client) {
+  if (import.meta.client) {
     document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
   }
 }
@@ -12,7 +12,7 @@ function getCookie(cname: string) {
   const name = cname + '=';
   let decodedCookie = '';
 
-  if (process.client) {
+  if (import.meta.client) {
     decodedCookie = decodeURIComponent(document.cookie);
     const ca = decodedCookie.split(';');
     for (let i = 0; i < ca.length; i++) {

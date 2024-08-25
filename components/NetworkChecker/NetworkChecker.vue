@@ -116,7 +116,7 @@ const handleClose = async () => {
 };
 </script>
 
-<style lang="scss" src="./NetworkChecker.scss" scoped></style>
+<style lang="scss" src="./NetworkChecker.scss"></style>
 <!-- <style lang="scss" scoped>
 @import url('./NetworkChecker.scss');
 </style> -->

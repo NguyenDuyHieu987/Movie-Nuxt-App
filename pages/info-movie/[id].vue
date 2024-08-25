@@ -504,7 +504,7 @@ import CommentIcon from '~/assets/svgs/icons/comment.svg?component';
 // import MovieRelated from '~/components/MovieRelated/MovieRelated.vue';
 // import CastCrew from '~/components/CastCrew/CastCrew.vue';
 // import Comment from '~/components/Comment/Comment.vue';
-import { getMovieById } from '~/services/movie';
+import { getMovieById, getMovieByType_Id } from '~/services/movie';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { getItemHistory } from '~/services/history';
@@ -519,7 +519,7 @@ definePageMeta({
   //   name: 'fade'
   // }
 });
-defineOptions({ name: 'info-movie' });
+// defineOptions({ name: 'info-movie' });
 
 const nuxtApp = useNuxtApp();
 const store = useStore();
@@ -558,9 +558,9 @@ const getData = async () => {
   // await nextTick();
 
   // await useAsyncData(`movie/detail/${movieId.value}/videos`, () =>
-  //   getMovieById(movieId.value, 'videos')
+  //   getMovieByType_Id('movie',movieId.value, 'videos')
   // )
-  await getMovieById(movieId.value, 'videos')
+  await getMovieByType_Id('movie', movieId.value, 'videos')
     .then((response) => {
       dataMovie.value = response;
 
@@ -615,7 +615,7 @@ loading.value = true;
 
 const { data: dataMovie, pending } = await useAsyncData(
   `movie/detail/${movieId.value}/videos`,
-  () => getMovieById(movieId.value, 'videos'),
+  () => getMovieByType_Id('movie', movieId.value, 'videos'),
   {
     lazy: true
     // server: false,

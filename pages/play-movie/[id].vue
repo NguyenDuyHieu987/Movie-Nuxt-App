@@ -399,7 +399,7 @@ definePageMeta({
   //   name: 'fade'
   // }
 });
-defineOptions({ name: 'play-movie' });
+// defineOptions({ name: 'play-movie' });
 
 const store = useStore();
 const authStore = useAuthStore();

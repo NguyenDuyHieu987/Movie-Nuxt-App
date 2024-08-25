@@ -106,7 +106,7 @@ import Email from '~/assets/svgs/icons/email.svg?component';
 import { getImage } from '~/services/image';
 </script>
 
-<style lang="scss" src="./Footer.scss" scoped></style>
+<style lang="scss" src="./Footer.scss"></style>
 <!-- <style lang="scss" scoped>
 @import url('./Footer.scss');
 </style> -->

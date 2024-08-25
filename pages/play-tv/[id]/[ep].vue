@@ -425,7 +425,7 @@ definePageMeta({
   //   name: 'fade'
   // }
 });
-defineOptions({ name: 'play-tv' });
+// defineOptions({ name: 'play-tv' });
 
 const utils = useUtils();
 const store = useStore();

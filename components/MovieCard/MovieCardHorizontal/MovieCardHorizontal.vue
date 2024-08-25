@@ -237,7 +237,7 @@ const getData = async () => {
   // }
 };
 
-getData();
+// getData();
 
 onMounted(() => {
   const rect = cardItem.value!?.getBoundingClientRect();

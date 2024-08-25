@@ -6,14 +6,14 @@ function setWithExpiry(key: string, value: any, ttl: number) {
     expiry: Math.round(now.getTime() + ttl)
   };
 
-  if (process.client) {
+  if (import.meta.client) {
     window.localStorage.setItem(key, JSON.stringify(item));
   }
 }
 
 function getWithExpiry(key: string) {
   let itemJson = null;
-  if (process.client) {
+  if (import.meta.client) {
     itemJson = window.localStorage.getItem(key);
   }
 
@@ -26,7 +26,7 @@ function getWithExpiry(key: string) {
 
   if (item?.expiry) {
     if (date.getTime() >= item.expiry) {
-      if (process.client) {
+      if (import.meta.client) {
         window.localStorage.removeItem(key);
       }
       return null;
@@ -38,7 +38,7 @@ function getWithExpiry(key: string) {
 export function getWithExpiry_ExpRemain(key: any) {
   let itemJson = null;
 
-  if (process.client) {
+  if (import.meta.client) {
     itemJson = window.localStorage.getItem(key);
   }
 
@@ -53,14 +53,14 @@ export function getWithExpiry_ExpRemain(key: any) {
     const nowTime = date.getTime();
 
     if (nowTime >= item.expiry) {
-      if (process.client) {
+      if (import.meta.client) {
         window.localStorage.removeItem(key);
       }
       return null;
     } else {
       item.value.exp_after = Math.round((item.expiry - nowTime) / ONE_SECOND);
 
-      if (process.client) {
+      if (import.meta.client) {
         window.localStorage.setItem(key, JSON.stringify(item));
       }
     }

@@ -149,7 +149,7 @@ defineOptions({ name: 'History' });
 const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin } = storeToRefs<any>(authStore);
+const { isLogin } = storeToRefs(authStore);
 const route = useRoute();
 const valueInput = ref<string>('');
 const debounce = ref<any>();

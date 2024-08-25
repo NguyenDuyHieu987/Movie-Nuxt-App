@@ -17,8 +17,8 @@
       :slides-per-group="5"
       :rewind="true"
       :speed="500"
-      :allow-touch-move="true"
-      :virtual="true"
+      :allow-touch-move="false"
+      :virtual="false"
       effect="creative"
       :navigation="{
         prevEl: '.swiper-button-prev',
@@ -29,6 +29,9 @@
         pauseOnMouseEnter: true,
         reverseDirection: true
       }"
+      :no-swiping="true"
+      noSwipingClass="no-swiping"
+      @swiper="onSwiperLoaded"
     >
       <slot name="content" />
 
@@ -70,10 +73,17 @@ withDefaults(
     cardMode: 'horizontal'
   }
 );
+
+const emits = defineEmits<{
+  onLoaded: [];
+}>();
+
+const onSwiperLoaded = () => {
+  emits('onLoaded');
+};
 </script>
 
 <style lang="scss" src="./SwiperCarouselGroup.scss"></style>
-<style lang="scss">
-// @import url('./SwiperCarouselGroup.scss');
-//
-</style>
+<!-- <style lang="scss">
+@import url('./SwiperCarouselGroup.scss');
+</style> -->

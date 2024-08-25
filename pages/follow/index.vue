@@ -152,7 +152,7 @@ defineOptions({ name: 'Follow' });
 const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin } = storeToRefs<any>(authStore);
+const { isLogin } = storeToRefs(authStore);
 const route = useRoute();
 const dataList = ref<any[]>([]);
 const valueInput = ref<string>('');

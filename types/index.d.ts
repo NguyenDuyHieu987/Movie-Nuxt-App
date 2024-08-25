@@ -7,6 +7,12 @@ export declare type AppLayout =
   | 'oauth'
   | 'service';
 
+export declare interface mod {
+  id: string;
+  media_type: string;
+  name: string;
+}
+
 export declare interface genre {
   id: number;
   name_vietsub: string;
