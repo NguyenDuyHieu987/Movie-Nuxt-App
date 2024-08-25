@@ -538,7 +538,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    // '/': { swr: true, prerender: true },
+    '/': { swr: true, prerender: true },
     '/feature/**': { swr: true },
     '/television/**': { swr: true },
     '/discover/**': { swr: true },

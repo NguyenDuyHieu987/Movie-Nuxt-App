@@ -5,7 +5,6 @@ import { defineStore } from 'pinia';
 import type { subscription, user } from '@/types';
 import { getUserByToken, LogOut } from '~/services/authentication';
 import { getMySubscription } from '~/services/subscription';
-import { useUtils } from '~/utils';
 
 export const useAuthStore = defineStore('auth', () => {
   const userAccount = ref<user>(null);
