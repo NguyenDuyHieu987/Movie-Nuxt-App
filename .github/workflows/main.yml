@@ -54,6 +54,7 @@ jobs:
       # --legacy-peer-deps
       - name: Install Dependencies and Build
         run: |
+          rm -rf node_modules package-lock.json
           npm install --force
           npm run build
         env:
