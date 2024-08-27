@@ -55,7 +55,7 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           rm -rf node_modules package-lock.json
-          pnpm install
+          pnpm install --frozen-lockfile
           npm run build
         env:
           CI: true
