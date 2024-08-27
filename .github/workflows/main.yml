@@ -54,11 +54,10 @@ jobs:
       # --legacy-peer-deps
       - name: Install Dependencies and Build
         run: |
-          rm -rf node_modules package-lock.json
           pnpm install --frozen-lockfile
           npm run build
-        env:
-          CI: true
+        # env:
+        #   CI: true
 
       - name: Install SSH key
         run: |
