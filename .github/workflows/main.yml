@@ -55,7 +55,7 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           rm -rf node_modules package-lock.json
-          npm install --force
+          npm ci
           npm run build
         env:
           CI: true
