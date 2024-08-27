@@ -54,7 +54,7 @@ jobs:
       # --legacy-peer-deps
       - name: Install Dependencies and Build
         run: |
-          pnpm install --frozen-lockfile
+          npm install --legacy-peer-deps
           npm run build
         # env:
         #   CI: true
