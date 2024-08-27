@@ -376,7 +376,7 @@ export default defineNuxtConfig({
     options: {
       strict: false,
       scrollBehaviorType: 'auto'
-    },
+    }
   },
 
   optimization: {},
