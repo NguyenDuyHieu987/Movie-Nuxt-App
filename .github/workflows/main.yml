@@ -55,7 +55,7 @@ jobs:
           # npm install --legacy-peer-deps --no-save
       - name: Install Dependencies and Build
         run: |
-          npm ci --ignore-scripts
+          npm ci --legacy-peer-deps
           npm list --depth=0
           npm run build
         env:
