@@ -192,9 +192,9 @@ export default defineNuxtConfig({
     appendTo: ['#append-to']
   },
 
-  vueuse: {
-    ssrHandlers: true
-  },
+  // vueuse: {
+  //   ssrHandlers: true
+  // },
 
   pinia: {
     storesDirs: ['./stores/**']
