@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@ant-design-vue/nuxt": "^1.4.2",
-    "@element-plus/nuxt": "^1.0.10",
+    "@element-plus/nuxt": "^1.0.9",
     "@nuxt/fonts": "^0.7.2",
     "@nuxtjs/fontaine": "^0.4.3",
     "@nuxtjs/google-fonts": "^3.2.0",
@@ -83,7 +83,7 @@
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
-    "element-plus": "^2.8.1",
+    "element-plus": "^2.7.6",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
