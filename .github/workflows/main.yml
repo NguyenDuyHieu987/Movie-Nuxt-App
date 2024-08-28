@@ -54,8 +54,7 @@ jobs:
       # --legacy-peer-deps
       - name: Install Dependencies and Build
         run: |
-          npm install --legacy-peer-deps
-          npm install nuxt@3.12.2 -D --legacy-peer-deps
+          npm install --legacy-peer-deps --no-save
           npm list --depth=0
           npm run build
         env:
