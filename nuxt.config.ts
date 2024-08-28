@@ -305,11 +305,11 @@ export default defineNuxtConfig({
     ]
   },
 
-  // purgecss: {
-  //   mode: 'postcss',
-  //   whitelist: ['svg-defs'],
-  //   whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
-  // },
+  purgecss: {
+    mode: 'postcss',
+    whitelist: ['svg-defs'],
+    whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
+  },
 
   // SEO
   site: {
@@ -541,7 +541,7 @@ export default defineNuxtConfig({
     '/': { swr: true, prerender: true },
     '/feature/**': { swr: true },
     '/television/**': { swr: true },
-    '/discover/**': { swr: true },
+    '/discover/**': { swr: true, prerender: false },
     '/search/**': { swr: true },
     '/ranks/**': { swr: true },
     '/login': {
