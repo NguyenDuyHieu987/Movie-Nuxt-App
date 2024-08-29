@@ -170,7 +170,7 @@ export default defineNuxtConfig({
     'nuxt-lodash',
     // 'nuxt-purgecss',
     // SEO
-    '@nuxtjs/seo',
+    // '@nuxtjs/seo',
     '@nuxtjs/sitemap'
   ],
 
