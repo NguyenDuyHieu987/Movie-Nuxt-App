@@ -541,7 +541,7 @@ export default defineNuxtConfig({
     '/': { swr: true, prerender: true },
     '/feature/**': { swr: true },
     '/television/**': { swr: true },
-    '/discover/**': { swr: true, prerender: false },
+    '/discover/**': { swr: true },
     '/search/**': { swr: true },
     '/ranks/**': { swr: true },
     '/login': {
