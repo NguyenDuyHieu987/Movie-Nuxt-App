@@ -70,7 +70,6 @@ export default defineNuxtConfig({
     },
     description: 'Xem phim Online 24/7'
   },
-
   runtimeConfig: {
     app: {
       production_mode: isProduction,
@@ -99,7 +98,6 @@ export default defineNuxtConfig({
       trailingSlash: false
     }
   },
-
   alias: {
     '@': path.resolve(__dirname, './'),
     components: fileURLToPath(new URL('./components', import.meta.url)),
@@ -108,7 +106,6 @@ export default defineNuxtConfig({
     utils: fileURLToPath(new URL('./utils', import.meta.url)),
     stores: fileURLToPath(new URL('./stores', import.meta.url))
   },
-
   imports: {
     dirs: [
       'common'
@@ -116,7 +113,6 @@ export default defineNuxtConfig({
       //  'stores'
     ]
   },
-
   experimental: {
     asyncEntry: true,
     asyncContext: true,
@@ -135,17 +131,13 @@ export default defineNuxtConfig({
       }
     }
   },
-
   features: {
     inlineStyles: false
   },
-
   devtools: { enabled: false },
-
   typescript: {
     strict: true
   },
-
   css: [
     '~/assets/style/fonts/GoogleFonts.css',
     antdVersion == 4
@@ -155,11 +147,9 @@ export default defineNuxtConfig({
     '~/assets/style/globalStyle/overwrite/element/element.scss',
     '~/assets/style/globalStyle.scss'
   ],
-
   modules: [
     '@ant-design-vue/nuxt',
     '@element-plus/nuxt',
-    '@vueuse/nuxt',
     '@pinia/nuxt',
     'nuxt-swiper',
     '@nuxt/image',
@@ -170,19 +160,16 @@ export default defineNuxtConfig({
     'nuxt-lodash',
     // 'nuxt-purgecss',
     // SEO
-    // '@nuxtjs/seo',
+    '@nuxtjs/seo',
     '@nuxtjs/sitemap'
   ],
-
   // extends: ['nuxt-seo-kit'],
   antd: {
     extractStyle: true,
     icons: false
   },
-
   elementPlus: {
     icon: false,
-    importStyle: 'scss',
     themes: ['dark'],
     injectionID: {
       // prefix: 1024,
@@ -191,24 +178,16 @@ export default defineNuxtConfig({
     },
     appendTo: ['#append-to']
   },
-
-  // vueuse: {
-  //   ssrHandlers: true
-  // },
-
   pinia: {
     storesDirs: ['./stores/**']
   },
-
   swiper: {
     modules: ['navigation', 'virtual', 'free-mode', 'scrollbar', 'autoplay'],
     styleLang: 'css'
   },
-
   gtag: {
     id: process.env.GOOGLE_ANALYTICS_ID
   },
-
   lodash: {
     prefix: '_lodash_',
     prefixSkip: false,
@@ -220,7 +199,6 @@ export default defineNuxtConfig({
       ['isDate', 'isLodashDate'] // => _isLodashDate
     ]
   },
-
   image: {
     // provider: 'cloudinary',
     presets: {
@@ -241,9 +219,7 @@ export default defineNuxtConfig({
     // domains: ['https://ik.imagekit.io'],
     // alias: {}
   },
-
   fontMetrics: {},
-
   fonts: {
     priority: ['local', 'google'],
     families: [
@@ -278,7 +254,6 @@ export default defineNuxtConfig({
       ]
     }
   },
-
   googleFonts: {
     prefetch: true,
     preload: true,
@@ -304,22 +279,13 @@ export default defineNuxtConfig({
       'vietnamese'
     ]
   },
-
-  // purgecss: {
-  //   mode: 'postcss',
-  //   whitelist: ['svg-defs'],
-  //   whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
-  // },
-
   // SEO
   site: {
     name: 'Phimhay247',
     url: 'https://phimhay247z.org',
     trailingSlash: false
   },
-
   plugins: [],
-
   hooks: {
     // 'pages:extend': function (pages: any) {
     //   function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
@@ -338,11 +304,9 @@ export default defineNuxtConfig({
     //   removePagesMatching(/\/components\//, pages);
     // }
   },
-
   build: {
     // analyze: true,
   },
-
   components: {
     global: false,
     dirs: [
@@ -363,24 +327,19 @@ export default defineNuxtConfig({
       }
     ]
   },
-
   vue: { propsDestructure: true },
   ssr: true,
-
   sourcemap: {
     server: true,
     client: false
   },
-
   router: {
     options: {
       strict: false,
       scrollBehaviorType: 'auto'
     }
   },
-
   optimization: {},
-
   vite: {
     resolve: {
       alias: {
@@ -451,7 +410,6 @@ export default defineNuxtConfig({
     },
     test: {}
   },
-
   nitro: {
     // preset: 'static',
     prerender: {
@@ -525,18 +483,15 @@ export default defineNuxtConfig({
       }
     }
   },
-
   webpack: {
     optimization: {},
     optimizeCSS: true,
     postcss: {}
   },
-
   generate: {
     routes: [],
     exclude: []
   },
-
   routeRules: {
     '/': { swr: true, prerender: true },
     '/feature/**': { swr: true },
@@ -569,7 +524,5 @@ export default defineNuxtConfig({
     '/help/**': { prerender: true },
     '/contact/**': { prerender: true },
     '/contactus': { redirect: '/contact' }
-  },
-
-  compatibilityDate: '2024-08-11'
+  }
 });
