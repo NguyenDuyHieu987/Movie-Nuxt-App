@@ -168,7 +168,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     'nuxt-lodash',
-    'nuxt-purgecss',
+    // 'nuxt-purgecss',
     // SEO
     // '@nuxtjs/seo',
     '@nuxtjs/sitemap'
@@ -305,11 +305,11 @@ export default defineNuxtConfig({
     ]
   },
 
-  purgecss: {
-    mode: 'postcss',
-    whitelist: ['svg-defs'],
-    whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
-  },
+  // purgecss: {
+  //   mode: 'postcss',
+  //   whitelist: ['svg-defs'],
+  //   whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
+  // },
 
   // SEO
   site: {
