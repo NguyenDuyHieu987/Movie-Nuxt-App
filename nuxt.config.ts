@@ -305,11 +305,11 @@ export default defineNuxtConfig({
     ]
   },
 
-  purgecss: {
-    mode: 'postcss',
-    // whitelist: ['svg-defs'],
-    // whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
-  },
+  // purgecss: {
+  //   mode: 'postcss',
+  //   whitelist: ['svg-defs'],
+  //   whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
+  // },
 
   // SEO
   site: {
