@@ -56,7 +56,7 @@
     "vue": "3.4.30",
     "vue-lazyload": "3.0.0",
     "vue-router": "4.4.0",
-    "vue-social-sharing": "4.0.0-alpha4",
+    "vue-social-sharing": "3.0.9",
     "vue3-emoji-picker": "1.1.8",
     "vuex": "4.1.0"
   },
