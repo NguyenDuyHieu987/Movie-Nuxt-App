@@ -87,7 +87,8 @@ onMounted(() => {
       loadMore.value = true;
 
       await getSimilar(
-        props?.dataMovie?.media_type,
+        // props?.dataMovie?.media_type,
+        'all',
         props?.dataMovie?.id,
         page.value,
         15
@@ -113,7 +114,8 @@ watch(
       loading.value = true;
 
       getSimilar(
-        props?.dataMovie?.media_type,
+        // props?.dataMovie?.media_type,
+        'all',
         props?.dataMovie?.id,
         page.value,
         15
