@@ -50,7 +50,7 @@
               v-model:isInHistory="isInHistory"
               v-model:historyProgress="historyProgress"
               :dataMovie="dataMovie"
-              :loadingData="loadingMovie"
+              :loadingData="loading"
               videoUrl="/feature/Transformer_5/Transformer_5"
               :backdrop="
                 getImage(
