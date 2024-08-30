@@ -530,7 +530,7 @@ const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
 const loadingMovie = computed<boolean>(
-  () => !dataMovie.value || loading.value || pending.value
+  () => !dataMovie.value || loading.value || status.value != 'success'
 );
 const srcBackdropList = ref<string[]>([]);
 const isAddToList = ref<boolean>(false);
@@ -613,7 +613,7 @@ onBeforeMount(() => {
 
 loading.value = true;
 
-const { data: dataMovie, pending } = await useAsyncData(
+const { data: dataMovie, status } = await useAsyncData(
   `movie/detail/${movieId.value}/videos`,
   () => getMovieByType_Id('movie', movieId.value, 'videos'),
   {

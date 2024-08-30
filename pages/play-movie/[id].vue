@@ -50,7 +50,7 @@
               v-model:isInHistory="isInHistory"
               v-model:historyProgress="historyProgress"
               :dataMovie="dataMovie"
-              :loadingData="pending"
+              :loadingData="loadingMovie"
               videoUrl="/feature/Transformer_5/Transformer_5"
               :backdrop="
                 getImage(
@@ -409,7 +409,7 @@ const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
 const loadingMovie = computed<boolean>(
-  () => !dataMovie.value || loading.value || pending.value
+  () => !dataMovie.value || loading.value || status.value != 'success'
 );
 const urlCodeMovie = ref<string>('809431505');
 const isAddToList = ref<boolean>(false);
@@ -491,7 +491,7 @@ onMounted(() => {
 
 loading.value = true;
 
-const { data: dataMovie, pending } = await useAsyncData(
+const { data: dataMovie, status } = await useAsyncData(
   `movie/detail/${movieId.value}`,
   () => getMovieById(movieId.value),
   {

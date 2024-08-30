@@ -51,7 +51,6 @@ jobs:
         with:
           version: latest
 
-          # --legacy-peer-deps
           # npm install --legacy-peer-deps --no-save
       - name: Install Dependencies and Build
         run: |
