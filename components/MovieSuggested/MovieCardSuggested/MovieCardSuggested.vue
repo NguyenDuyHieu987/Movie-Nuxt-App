@@ -241,7 +241,7 @@ import ShareOutlined from '~/assets/svgs/icons/share-outlined.svg?component';
 import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
 
 import { getImage } from '~/services/image';
-import { getMovieById } from '~/services/movie';
+import { getMovieById, getMovieByType_Id } from '~/services/movie';
 import { getTvById } from '~/services/tv';
 
 const props = defineProps<{
@@ -250,9 +250,10 @@ const props = defineProps<{
 }>();
 
 const store = useStore();
+const authStore = useAuthStore();
 const utils = useUtils();
 const dataMovie = ref<any>({});
-const isEpisodes = ref<boolean>(false);
+const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
 const loading = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
 const percent = ref<number>(0);
@@ -276,51 +277,29 @@ const getData = async () => {
 
   switch (props?.type || props?.item?.media_type) {
     case 'movie':
-      isEpisodes.value = false;
-      // await useAsyncData(`movie/short/${props.item?.id}`, () =>
-      //   getMovieById(props.item?.id)
-      // )
-      await getMovieById(props.item?.id)
-        .then((response) => {
-          dataMovie.value = response;
-        })
-        .catch((e) => {})
-        .finally(() => {
-          loading.value = false;
-        });
       break;
     case 'tv':
-      isEpisodes.value = true;
-      // await useAsyncData(`tv/short/${props.item?.id}`, () =>
-      //   getTvById(props.item?.id)
-      // )
-      await getTvById(props.item?.id)
-        .then((response) => {
-          dataMovie.value = response;
-        })
-        .catch((e) => {})
-        .finally(() => {
-          loading.value = false;
-        });
       break;
     default:
       break;
   }
 
-  if (dataMovie.value?.history_progress) {
-    isInHistory.value = true;
-    percent.value = dataMovie.value?.history_progress?.percent;
+  if (authStore.isLogin) {
+    if (dataMovie.value?.history_progress) {
+      isInHistory.value = true;
+      percent.value = dataMovie.value?.history_progress?.percent;
+    } else {
+      // getItemHistory(props.item?.id, props.item?.media_type)
+      //   .then((response) => {
+      //     if (response.success == true) {
+      //       isInHistory.value = true;
+      //       percent.value = response.result?.percent;
+      //     }
+      //   })
+      //   .catch((e) => {
+      //   });
+    }
   }
-
-  // getItemHistory(props.item?.id, props.item?.media_type)
-  //   .then((response) => {
-  //     if (response.success == true) {
-  //       isInHistory.value = true;
-  //       percent.value = response.result?.percent;
-  //     }
-  //   })
-  //   .catch((e) => {
-  //   });
 };
 
 getData();

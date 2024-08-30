@@ -234,9 +234,6 @@ const getData = async () => {
     if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     } else {
-      // await useAsyncData(`itemlist/${store?.userAccount?.id}/${props.item?.id}`, () =>
-      //   getItemList(props.item?.id, props.item?.media_type)
-      // )
       await getItemList(props.item?.id, props.item?.media_type)
         .then((response) => {
           if (response.success == true) {
@@ -250,10 +247,6 @@ const getData = async () => {
       isInHistory.value = true;
       percent.value = dataMovie.value?.history_progress?.percent;
     } else {
-      // await useAsyncData(
-      //   `itemhistory/${store?.userAccount?.id}/${props.item?.id}`,
-      //   () => getItemHistory(props.item?.id, props.item?.media_type)
-      // )
       await getItemHistory(props.item?.id, props.item?.media_type)
         .then((response) => {
           if (response.success == true) {
