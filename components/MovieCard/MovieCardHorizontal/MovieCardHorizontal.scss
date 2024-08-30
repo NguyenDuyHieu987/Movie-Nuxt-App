@@ -21,7 +21,7 @@
     .el-skeleton.is-animated {
       position: relative;
       overflow: hidden;
-      border-radius: 7px;
+      border-radius: 5px;
 
       .el-skeleton__item.skeleton-img {
         width: 100%;
@@ -42,8 +42,8 @@
       display: flex;
       width: 100%;
       overflow: hidden;
-      border-top-right-radius: 7px;
-      border-top-left-radius: 7px;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
 
       img {
         &[lazy='error'] {
