@@ -386,7 +386,11 @@ import { getCountryByOriginalLanguage } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
-import { getMovieById, UpdateViewMovie } from '~/services/movie';
+import {
+  getMovieById,
+  getMovieByType_Id,
+  UpdateViewMovie
+} from '~/services/movie';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
@@ -440,9 +444,9 @@ const getData = async () => {
   // await nextTick();
 
   // await useAsyncData(`movie/detail/${movieId.value}`, () =>
-  //   getMovieById(movieId.value)
+  //   getMovieByType_Id('movie', movieId.value)
   // )
-  getMovieById(movieId.value)
+  getMovieByType_Id('movie', movieId.value)
     .then((response) => {
       dataMovie.value = response;
     })
@@ -493,7 +497,7 @@ loading.value = true;
 
 const { data: dataMovie, status } = await useAsyncData(
   `movie/detail/${movieId.value}`,
-  () => getMovieById(movieId.value),
+  () => getMovieByType_Id('movie', movieId.value),
   {
     lazy: true
   }

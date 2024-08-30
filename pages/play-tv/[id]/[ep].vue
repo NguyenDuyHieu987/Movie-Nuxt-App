@@ -409,6 +409,7 @@ import CommentIcon from '~/assets/svgs/icons/comment.svg?component';
 // import ListEpisodes from '~/components/ListEpisodes/ListEpisodes.vue';
 // import Comment from '~/components/Comment/Comment.vue';
 // import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
+import { getMovieByType_Id } from '~/services/movie';
 import { getTvById, UpdateViewTv } from '~/services/tv';
 import { getGenreById } from '~/services/genres';
 import { getCountryByOriginalLanguage } from '~/services/country';
@@ -470,9 +471,9 @@ const getData = async () => {
   // await nextTick();
 
   // await useAsyncData(`tv/detail/${movieId.value}/seasons,episodes`, () =>
-  //   getTvById(movieId.value, 'seasons,episodes')
+  //   getMovieByType_Id('tv', movieId.value, 'seasons,episodes')
   // )
-  getTvById(movieId.value, 'seasons,episodes')
+  getMovieByType_Id('tv', movieId.value, 'seasons,episodes')
     .then((response) => {
       dataMovie.value = response;
     })
@@ -523,7 +524,7 @@ loading.value = true;
 
 const { data: dataMovie, status } = await useAsyncData(
   `tv/detail/${movieId.value}`,
-  () => getTvById(movieId.value),
+  () => getMovieByType_Id('tv', movieId.value),
   {
     lazy: true
   }
