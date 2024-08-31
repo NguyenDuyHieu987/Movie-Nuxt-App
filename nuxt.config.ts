@@ -57,7 +57,7 @@ export default defineNuxtConfig({
     },
     // buildAssetsDir: '/_nuxt/',
     // cdnURL: 'https://mycdn.org/',
-    keepalive: true,
+    keepalive: false,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
     templateParams: {
