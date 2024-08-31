@@ -498,11 +498,9 @@ const getData = async () => {
   }
 };
 
-onBeforeMount(() => {
-  windowWidth.value = window.innerWidth;
-});
-
 onMounted(() => {
+  windowWidth.value = window.innerWidth;
+
   // const videoPlayer = document.querySelector(
   //   '.video-player #video-player'
   // ) as HTMLVideoElement;

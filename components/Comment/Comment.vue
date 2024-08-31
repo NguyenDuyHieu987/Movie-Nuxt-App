@@ -20,7 +20,7 @@
       <!-- <LoadingSpinner v-show="loading" class="loading-comment" :width="35" /> -->
 
       <div
-        v-show="!loading"
+        v-if="!loading"
         class="list-comment"
       >
         <CommentItem

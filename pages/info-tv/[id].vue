@@ -474,7 +474,7 @@
             "
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-          gyroscope; picture-in-picture"
+            gyroscope; picture-in-picture"
             allowFullScreen
             frameBorder="{0}"
           />
@@ -615,7 +615,7 @@ const getData = async () => {
   }
 };
 
-onBeforeMount(() => {
+onMounted(() => {
   windowWidth.value = window.innerWidth;
 
   // window.scrollTo({

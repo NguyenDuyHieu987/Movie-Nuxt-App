@@ -599,7 +599,7 @@ const getData = async () => {
   }
 };
 
-onBeforeMount(() => {
+onMounted(() => {
   windowWidth.value = window.innerWidth;
 
   // window.scrollTo({
