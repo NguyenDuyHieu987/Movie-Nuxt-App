@@ -13,8 +13,7 @@
               navigateTo({
                 path: `/info-tv/${
                   dataMovie?.id
-                }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}
-            `
+                }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
               })
             "
           >
@@ -62,8 +61,8 @@
                   { w: windowWidth }
                 )
               "
-              @onPlay="(e) => onPLayVideoPlayer(e)"
-              @onTimeUpdate="(e) => onTimeUpdateVideoPlayer(e)"
+              @onPlay="(e: any) => onPLayVideoPlayer(e)"
+              @onTimeUpdate="(e: any) => onTimeUpdateVideoPlayer(e)"
             />
           </div>
         </div>
@@ -462,7 +461,7 @@ const ratedValue = ref<number | undefined>();
 const currentEpisode = ref<any>();
 const windowWidth = ref<number>(1200);
 const movieId = computed<string>((): string =>
-  utils.convertPath.parsePathInfo_Play(route.params?.id)
+  utils.convertPath.parsePathInfo_Play(route.params?.id as string)
 );
 
 const getData = async () => {
@@ -605,7 +604,7 @@ useSeoMeta({
       dataMovie.value?.backdrop_path,
       'backdrop',
       // 'w-' + windowWidth.toString()
-      { w: windowWidth }
+      { w: windowWidth.value }
     ),
   ogLocale: 'vi'
 });

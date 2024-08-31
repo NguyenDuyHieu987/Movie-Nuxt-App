@@ -50,7 +50,7 @@ export function getServerImage(
   type: string,
 
   crop?:
-    | { w?: number; h?: number; crop_size?: string; quality: number }
+    | { w?: number; h?: number; crop_size?: string; quality?: number }
     | string
 ): string {
   const utils = useUtils();

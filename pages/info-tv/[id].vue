@@ -8,7 +8,7 @@
     <div class="info-conainer">
       <BackPage
         fixed
-        @onclick="$router.back()"
+        @onclick="router.back()"
       >
         Quay lại
       </BackPage>
@@ -555,7 +555,7 @@ const release_date = computed<string>(
 const ratedValue = ref<number | undefined>();
 const windowWidth = ref<number>(1200);
 const movieId = computed<string>((): string =>
-  utils.convertPath.parsePathInfo_Play(route.params?.id)
+  utils.convertPath.parsePathInfo_Play(route.params?.id as string)
 );
 
 const setBackgroundColor = (color: string[]) => {
@@ -697,7 +697,7 @@ useSeoMeta({
       dataMovie.value?.backdrop_path,
       'backdrop',
       // 'w-' + windowWidth.toString()
-      { w: windowWidth }
+      { w: windowWidth.value }
     ),
   ogLocale: 'vi'
 });
