@@ -44,8 +44,8 @@
 
       <div class="app-wrapper">
         <NuxtLayout>
-          <NuxtPage
-            :keepalive="{
+          <NuxtPage />
+          <!-- :keepalive="{
               exclude: [
                 'Follow',
                 'History',
@@ -54,8 +54,7 @@
                 'info-tv',
                 'play-tv'
               ]
-            }"
-          />
+            }" -->
 
           <el-backtop
             class="app-back-top click-active"

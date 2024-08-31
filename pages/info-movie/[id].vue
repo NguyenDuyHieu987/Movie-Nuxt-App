@@ -515,7 +515,6 @@ import { getRating } from '~/services/rating';
 definePageMeta({
   name: 'info-movie',
   key: 'info-movie',
-  keepalive: false,
   preventOpenFixedSidebar: true
   // pageTransition: {
   //   name: 'fade'
