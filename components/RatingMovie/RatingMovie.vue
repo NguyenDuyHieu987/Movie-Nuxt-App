@@ -13,16 +13,16 @@
         :disabled="disabledRate"
         @change="handleRating"
       >
-        <!-- <template #character>
+        <template #character>
           <StarIcon
             class="icon star"
             width="2.2rem"
             height="2.2rem"
             fill="currentColor"
-          /> -->
-        <!-- <Icon class="star" name="ant-design:star-filled" /> -->
-        <!-- <StarFilled /> -->
-        <!-- </template> -->
+          />
+          <!-- <Icon class="star" name="ant-design:star-filled" /> -->
+          <!-- <StarFilled /> -->
+        </template>
       </a-rate>
       <span class="ant-rate-text">
         {{ tooltipRating[Math.round(vote_Average) - 1] }}
