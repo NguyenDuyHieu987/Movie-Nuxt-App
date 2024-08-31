@@ -56,7 +56,10 @@
           class="require-vip"
         >
           <!-- <div class="ratio-16-9"></div> -->
-          <div class="require-vip-wrapper">
+          <div
+            v-if="ísWatchable"
+            class="require-vip-wrapper"
+          >
             <div
               v-if="authStore.vipNumber == 0"
               class="require-vip-message"
@@ -725,6 +728,16 @@ const isEligibleToWatch = computed<boolean>(
   () =>
     (!props.loadingData && movieVipNumber.value == 0) ||
     authStore.vipNumber! > movieVipNumber.value
+);
+const ísWatchable = computed<boolean>(
+  () =>
+    !(
+      (videoStates.isLoading &&
+        !videoStates.isEndedVideo &&
+        !videoStates.isRewind.enable) ||
+      !mounted.value ||
+      props.loadingData
+    )
 );
 const videoSrc = computed<string>(
   () => getVideo(props.videoUrl + '.m3u8')
