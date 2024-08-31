@@ -44,17 +44,11 @@
 
       <div class="app-wrapper">
         <NuxtLayout>
-          <NuxtPage />
-          <!-- :keepalive="{
-              exclude: [
-                'Follow',
-                'History',
-                'info-movie',
-                'play-movie',
-                'info-tv',
-                'play-tv'
-              ]
-            }" -->
+          <NuxtPage
+            :keepalive="{
+              exclude: notCacheList
+            }"
+          />
 
           <el-backtop
             class="app-back-top click-active"
@@ -96,6 +90,15 @@
 //       : runtimeConfig.public.siteName;
 //   }
 // });
+
+let notCacheList = ref<string[]>([
+  'Follow',
+  'History',
+  'info-movie',
+  'play-movie',
+  'info-tv',
+  'play-tv'
+]);
 
 const route = useRoute();
 

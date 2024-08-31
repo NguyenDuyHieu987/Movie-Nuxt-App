@@ -77,7 +77,7 @@ watch(
       getLatestEpisode(props.dataMovie?.id, props?.dataMovie?.season_id)
         .then((response) => {
           dataEpisode.value = response?.results
-            .filter((item: any) => item.air_date != null)
+            // .filter((item: any) => item.air_date != null)
             ?.slice(-7);
           // .reverse()
         })
