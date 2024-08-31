@@ -408,7 +408,7 @@ const props = defineProps<{
 const route = useRoute();
 const utils = useUtils();
 const store = useStore();
-const { collapsed, openSiderBarFixed } = storeToRefs<any>(store);
+const { collapsed, openSiderBarFixed } = storeToRefs(store);
 
 const state = reactive<{
   selectedKeys: string;

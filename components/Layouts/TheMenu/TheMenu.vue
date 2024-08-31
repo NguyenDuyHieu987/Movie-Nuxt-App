@@ -408,7 +408,7 @@ const props = defineProps<{
 const route = useRoute();
 const utils = useUtils();
 const store = useStore();
-const { collapsed, openSiderBarFixed } = storeToRefs<any>(store);
+const { collapsed, openSiderBarFixed } = storeToRefs(store);
 
 const state = reactive<{
   selectedKeys: string;
@@ -417,9 +417,9 @@ const state = reactive<{
   selectedKeys: route.path,
   openKeys: [route.path]
 });
-// const genres = ref<genre[]>([]);
-// const years = ref<year[]>([]);
-// const countries = ref<country[]>([]);
+const genres = ref<genre[]>([]);
+const years = ref<year[]>([]);
+const countries = ref<country[]>([]);
 
 const getData = async () => {
   Promise.all([
@@ -450,7 +450,7 @@ const getData = async () => {
 // getData();
 
 if (store.allGenres?.length == 0) {
-  const { data: genres } = await useAsyncData(
+  const { data: genresData } = await useAsyncData(
     'genre/all',
     () => getAllGenre(),
     {
@@ -458,40 +458,53 @@ if (store.allGenres?.length == 0) {
       //   return { results: trendingsCache.value || [] };
       // },
       transform: (data: any) => {
+        genres.value = data.results;
         store.allGenres = data.results;
 
         return data.results;
       }
     }
   );
+} else {
+  genres.value = store.allGenres;
 }
 
 if (store.allYears?.length == 0) {
-  const { data: years } = await useAsyncData('year/all', () => getAllYear(), {
-    transform: (data: any) => {
-      const dataResponse = data.results.sort((a: year, b: year) => {
-        return +b.name.slice(-4) - +a.name.slice(-4);
-      });
+  const { data: yearsData } = await useAsyncData(
+    'year/all',
+    () => getAllYear(),
+    {
+      transform: (data: any) => {
+        const dataResponse = data.results.sort((a: year, b: year) => {
+          return +b.name.slice(-4) - +a.name.slice(-4);
+        });
 
-      store.allYears = dataResponse;
+        years.value = data.results;
+        store.allYears = dataResponse;
 
-      return dataResponse;
+        return dataResponse;
+      }
     }
-  });
+  );
+} else {
+  years.value = store.allYears;
 }
 
 if (store.allCountries?.length == 0) {
-  const { data: countries } = await useAsyncData(
+  const { data: countriesData } = await useAsyncData(
     'country/all',
     () => getAllCountry(),
     {
       transform: (data: any) => {
+        countries.value = data.results;
         store.allCountries = data.results;
 
         return data.results;
       }
     }
   );
+} else {
+  countries.value = store.allCountries;
 }
 
 watchEffect(() => {
