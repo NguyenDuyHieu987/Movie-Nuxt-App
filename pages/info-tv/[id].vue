@@ -525,6 +525,8 @@ import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 import { getRating } from '~/services/rating';
 
+defineOptions({ name: 'info-tv' });
+
 definePageMeta({
   name: 'info-tv',
   key: 'info-tv',
@@ -533,7 +535,6 @@ definePageMeta({
   //   name: 'fade'
   // }
 });
-// defineOptions({ name: 'info-tv' });
 
 const nuxtApp = useNuxtApp();
 const store = useStore();

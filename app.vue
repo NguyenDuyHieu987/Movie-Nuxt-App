@@ -92,8 +92,8 @@
 // });
 
 let notCacheList = ref<string[]>([
-  'Follow',
-  'History',
+  'follow',
+  'history',
   'info-movie',
   'play-movie',
   'info-tv',

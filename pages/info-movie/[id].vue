@@ -512,6 +512,8 @@ import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 import { getRating } from '~/services/rating';
 
+defineOptions({ name: 'info-movie' });
+
 definePageMeta({
   name: 'info-movie',
   key: 'info-movie',
@@ -520,7 +522,6 @@ definePageMeta({
   //   name: 'fade'
   // }
 });
-// defineOptions({ name: 'info-movie' });
 
 const nuxtApp = useNuxtApp();
 const store = useStore();

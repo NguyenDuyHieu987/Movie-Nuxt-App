@@ -395,6 +395,8 @@ import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 
+defineOptions({ name: 'play-movie' });
+
 definePageMeta({
   name: 'play-movie',
   key: 'play-movie',
@@ -404,7 +406,6 @@ definePageMeta({
   //   name: 'fade'
   // }
 });
-// defineOptions({ name: 'play-movie' });
 
 const store = useStore();
 const authStore = useAuthStore();

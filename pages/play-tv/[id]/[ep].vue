@@ -418,6 +418,8 @@ import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 
+defineOptions({ name: 'play-tv' });
+
 definePageMeta({
   name: 'play-tv',
   key: 'play-tv',
@@ -426,7 +428,6 @@ definePageMeta({
   //   name: 'fade'
   // }
 });
-// defineOptions({ name: 'play-tv' });
 
 const utils = useUtils();
 const store = useStore();

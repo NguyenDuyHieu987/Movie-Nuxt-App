@@ -140,11 +140,12 @@ import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';
 import { storeToRefs } from 'pinia';
 
+defineOptions({ name: 'history' });
+
 definePageMeta({
-  key: 'History'
+  key: 'history'
   // middleware: ['require-auth'],
 });
-defineOptions({ name: 'History' });
 
 const store = useStore();
 const authStore = useAuthStore();

@@ -143,11 +143,12 @@ import gsap from 'gsap';
 import reject from 'lodash/reject';
 import { storeToRefs } from 'pinia';
 
+defineOptions({ name: 'follow' });
+
 definePageMeta({
-  key: 'Follow'
+  key: 'follow'
   // middleware: ['require-auth']
 });
-defineOptions({ name: 'Follow' });
 
 const store = useStore();
 const authStore = useAuthStore();
