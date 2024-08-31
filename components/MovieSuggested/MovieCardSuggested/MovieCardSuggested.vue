@@ -252,7 +252,7 @@ const props = defineProps<{
 const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
-const dataMovie = ref<any>({});
+const dataMovie = ref<any>(props.item || {});
 const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
 const loading = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
