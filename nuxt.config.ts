@@ -315,7 +315,14 @@ export default defineNuxtConfig({
   site: {
     name: 'Phimhay247',
     url: 'https://phimhay247z.org',
-    trailingSlash: false
+    trailingSlash: false,
+    defaultLocale: 'vi'
+  },
+
+  seo: {},
+
+  linkChecker: {
+    enabled: false
   },
 
   plugins: [],
