@@ -419,6 +419,7 @@ import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
+  name: 'play-tv',
   key: 'play-tv',
   preventOpenFixedSidebar: true
   // pageTransition: {

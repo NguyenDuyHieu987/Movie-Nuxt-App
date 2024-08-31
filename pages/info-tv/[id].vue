@@ -526,6 +526,7 @@ import { getItemList } from '~/services/list';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
+  name: 'info-tv',
   key: 'info-tv',
   preventOpenFixedSidebar: true
   // pageTransition: {

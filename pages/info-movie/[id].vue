@@ -513,13 +513,14 @@ import { getItemList } from '~/services/list';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
+  name: 'info-movie',
   key: 'info-movie',
   preventOpenFixedSidebar: true
   // pageTransition: {
   //   name: 'fade'
   // }
 });
-defineOptions({ name: 'info-movie' });
+// defineOptions({ name: 'info-movie' });
 
 const nuxtApp = useNuxtApp();
 const store = useStore();

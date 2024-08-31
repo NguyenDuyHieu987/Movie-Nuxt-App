@@ -396,6 +396,7 @@ import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 
 definePageMeta({
+  name: 'play-movie',
   key: 'play-movie',
   preventOpenFixedSidebar: true
   // layout: 'play'
