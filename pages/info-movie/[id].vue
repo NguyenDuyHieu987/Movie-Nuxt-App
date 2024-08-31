@@ -519,7 +519,7 @@ definePageMeta({
   //   name: 'fade'
   // }
 });
-// defineOptions({ name: 'info-movie' });
+defineOptions({ name: 'info-movie' });
 
 const nuxtApp = useNuxtApp();
 const store = useStore();
