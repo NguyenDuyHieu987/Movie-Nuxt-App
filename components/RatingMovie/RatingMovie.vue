@@ -82,10 +82,11 @@ watch(
   () => props.dataMovie,
   (newVal, oldVal) => {
     // if (!oldVal && newVal) {
-    myRate.value = props.dataMovie?.vote_average;
-    vote_Average.value = props.dataMovie?.vote_average;
-    vote_Count.value = props.dataMovie?.vote_count;
-    // }
+    if (newVal) {
+      myRate.value = props.dataMovie?.vote_average;
+      vote_Average.value = props.dataMovie?.vote_average;
+      vote_Count.value = props.dataMovie?.vote_count;
+    }
   },
   { immediate: true }
 );
