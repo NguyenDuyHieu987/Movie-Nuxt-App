@@ -256,14 +256,14 @@ const loadingUpComing = ref<boolean>(true);
 const formFilter = ref<formfilter>({
   type: 'all',
   sortBy: '',
-  genre: route.params.genre,
+  genre: +(route.params.genre as string),
   year: '',
   country: '',
   page: 1,
   limit: 20
 });
 const genreRoute = computed<genre>(
-  () => getGenreById(route.params.genre, store.allGenres)!
+  () => getGenreById(+route.params.genre, store.allGenres)!
 );
 
 const responsiveHorizoltal = computed<any>((): any => ({
@@ -335,7 +335,7 @@ const getData = async () => {
 
   // formFilter.value.genre = genreId.toString();
 
-  formFilter.value.genre = route.params.genre;
+  formFilter.value.genre = +(route.params.genre as string);
 
   // useAsyncData(
   //   `discover/movie/nowplaying/${{

@@ -184,9 +184,9 @@ import CheckIcon from '~/assets/svgs/icons/check.svg?component';
 
 // import { LoadingSpinner } from '~/components/Loading';
 import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+import { getItemList } from '~/services/list';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
-import { getItemList } from '~/services/list';
 import { getVideo } from '~/services/video';
 import Hls from 'hls.js';
 

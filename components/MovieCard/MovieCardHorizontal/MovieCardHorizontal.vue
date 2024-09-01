@@ -129,12 +129,12 @@
 // import { Image } from '~/components/Image';
 // import { PreviewModal } from '~/components/PreviewModal';
 // import PreviewModal from '~/components/PreviewModal/PreviewModal.vue';
-// import { getItemList } from '~/services/list';
-// import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
 import { getVideo } from '~/services/video';
+import { getItemList } from '~/services/list';
+import { getItemHistory } from '~/services/history';
 
 const props = defineProps<{
   item: any;
@@ -206,35 +206,33 @@ const getData = async () => {
       break;
   }
 
-  // if (authStore.isLogin) {
-  if (dataMovie.value?.in_list) {
-    isAddToList.value = true;
-  }
+  if (authStore.isLogin) {
+    if (dataMovie.value?.in_list) {
+      isAddToList.value = true;
+    } else {
+      await getItemList(props.item?.id, props.item?.media_type)
+        .then((response) => {
+          if (response.success == true) {
+            isAddToList.value = true;
+          }
+        })
+        .catch((e) => {});
+    }
 
-  // await getItemList(props.item?.id, props.item?.media_type);
-  //   .then((response) => {
-  //     if (response?.success == true) {
-  //       isAddToList.value = true;
-  //     }
-  //   })
-  //   .catch((e) => {
-  //   });
-
-  if (dataMovie.value?.history_progress) {
-    isInHistory.value = true;
-    percent.value = dataMovie.value?.history_progress?.percent;
-  } else {
-    // await getItemHistory(props.item?.id, props.item?.media_type)
-    //   .then((response) => {
-    //     if (response.success == true) {
-    //       isInHistory.value = true;
-    //       percent.value = response?.result?.percent;
-    //     }
-    //   })
-    //   .catch((e) => {
-    //   });
+    if (dataMovie.value?.history_progress) {
+      isInHistory.value = true;
+      percent.value = dataMovie.value?.history_progress?.percent;
+    } else {
+      await getItemHistory(props.item?.id, props.item?.media_type)
+        .then((response) => {
+          if (response.success == true) {
+            isInHistory.value = true;
+            percent.value = response?.result?.percent;
+          }
+        })
+        .catch((e) => {});
+    }
   }
-  // }
 };
 
 // getData();

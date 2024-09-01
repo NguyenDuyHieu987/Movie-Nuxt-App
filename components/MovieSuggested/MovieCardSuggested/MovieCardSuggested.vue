@@ -241,6 +241,8 @@ import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
 import { getImage } from '~/services/image';
 import { getMovieById, getMovieByType_Id } from '~/services/movie';
 import { getTvById } from '~/services/tv';
+import { getItemList } from '~/services/list';
+import { getItemHistory } from '~/services/history';
 
 const props = defineProps<{
   item: any;
@@ -283,19 +285,30 @@ const getData = async () => {
   }
 
   if (authStore.isLogin) {
+    if (dataMovie.value?.in_list) {
+      isAddToList.value = true;
+    } else {
+      await getItemList(props.item?.id, props.item?.media_type)
+        .then((response) => {
+          if (response.success == true) {
+            isAddToList.value = true;
+          }
+        })
+        .catch((e) => {});
+    }
+
     if (dataMovie.value?.history_progress) {
       isInHistory.value = true;
       percent.value = dataMovie.value?.history_progress?.percent;
     } else {
-      // getItemHistory(props.item?.id, props.item?.media_type)
-      //   .then((response) => {
-      //     if (response.success == true) {
-      //       isInHistory.value = true;
-      //       percent.value = response.result?.percent;
-      //     }
-      //   })
-      //   .catch((e) => {
-      //   });
+      await getItemHistory(props.item?.id, props.item?.media_type)
+        .then((response) => {
+          if (response.success == true) {
+            isInHistory.value = true;
+            percent.value = response.result?.percent;
+          }
+        })
+        .catch((e) => {});
     }
   }
 };
