@@ -80,7 +80,8 @@ const router = useRouter();
 const dataDiscover = ref<any[]>();
 const title = computed<string>(
   () =>
-    dataSlug.value.find((d: any) => d.type == route.query?.type).nane || 'all'
+    dataSlug.value.find((d: any) => d.type == route.query?.type).nane ||
+    'Tât cả'
 );
 const page = ref<number>(+route.query?.page || 1);
 const totalPage = ref<number>(100);
