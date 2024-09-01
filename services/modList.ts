@@ -7,6 +7,10 @@ const PREFIX_ROUTE = 'modlist';
 export function FilterModList(formFilter: formfilter) {
   const utils = useUtils();
 
+  if (utils.isStringEmpty(formFilter.slug) || formFilter.slug == 'all') {
+    return FilterMovie(formFilter);
+  }
+
   const isBefore = formFilter.year.toString().toLowerCase().startsWith('truoc');
   const isAfter = formFilter.year.toString().toLowerCase().startsWith('sau');
 
@@ -22,10 +26,6 @@ export function FilterModList(formFilter: formfilter) {
       ? formFilter.year + '-12-30'
       : formFilter.year.toString().slice(-4) + (isBefore ? '-01-01' : '-12-30')
     : '';
-
-  if (utils.isStringEmpty(formFilter.slug) || formFilter.slug == 'all') {
-    return FilterMovie(formFilter);
-  }
 
   return makeRequest(
     `/${PREFIX_ROUTE}/filter/${formFilter.type}/${formFilter.slug}`,
