@@ -82,7 +82,7 @@ const formFilter = computed<formfilter>(() => {
   return {
     // type: route.query?.type || 'movie',
     type: 'movie',
-    slug: route.query?.type || '',
+    slug: route.query?.type || 'all',
     sortBy: route.query?.sort_by || '',
     genre: route.query?.genre || '',
     year: route.query?.year || '',

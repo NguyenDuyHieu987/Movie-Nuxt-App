@@ -23,7 +23,7 @@ export function FilterModList(formFilter: formfilter) {
       : formFilter.year.toString().slice(-4) + (isBefore ? '-01-01' : '-12-30')
     : '';
 
-  if (utils.isStringEmpty(formFilter.slug)) {
+  if (utils.isStringEmpty(formFilter.slug) || formFilter.slug == 'all') {
     return FilterMovie(formFilter);
   }
 
