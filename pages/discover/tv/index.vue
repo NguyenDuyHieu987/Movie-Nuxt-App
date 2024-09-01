@@ -4,7 +4,9 @@
       v-model:loading="loading"
       :listFilter="[
         { name: 'Tất cả', value: 'all' },
-        ...dataSlug
+        ...dataSlug.map((item: any) => {
+          return { ...item, value: item.media_type };
+        })
         // { name: 'Airing Today', value: 'airingtoday' },
         // { name: 'Ontheair', value: 'ontheair' },
         // { name: 'Popular', value: 'popular' },
@@ -76,7 +78,10 @@ const store = useStore();
 const route = useRoute();
 const router = useRouter();
 const dataDiscover = ref<any[]>();
-const title = computed<string>(() => dataDiscover.value![0].modData.nane);
+const title = computed<string>(
+  () =>
+    dataSlug.value.find((d: any) => d.type == route.query?.type).nane || 'all'
+);
 const page = ref<number>(+route.query?.page || 1);
 const totalPage = ref<number>(100);
 const pageSize = ref<number>(20);
