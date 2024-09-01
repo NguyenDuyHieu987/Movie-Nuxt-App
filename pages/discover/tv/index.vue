@@ -137,15 +137,11 @@ const getData = async () => {
 
 loading.value = true;
 
-const { data: dataSlug } = await useAsyncData(
-  `tv/discover/${JSON.stringify(formFilter.value)}`,
-  () => getAllMod(),
-  {
-    transform: (data: any) => {
-      return data.results.filter((r: any) => r.media_type == 'tv');
-    }
+const { data: dataSlug } = await useAsyncData(`mod/tv`, () => getAllMod(), {
+  transform: (data: any) => {
+    return data.results.filter((r: any) => r.media_type == 'tv');
   }
-);
+});
 
 const {
   data: dataDiscoverCache,
