@@ -15,41 +15,54 @@
     <BillboardAnimation v-model:data="dataBilboard" />
 
     <div class="home-content">
-      <!-- v-if="airingTodays?.length" -->
-      <section class="home-section outstanding">
+      <section
+        v-if="loading"
+        class="home-section"
+      >
         <h2 class="gradient-title-default">
-          <span>Airing Today</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/tv`,
-              query: { type: 'airingtoday' }
-            }"
-          >
-            Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1.2rem"
-              height="1.2rem"
-              viewBox="0 0 320 512"
-              fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
-          </NuxtLink>
+          <span>{{ modLíst.results[0].name }}</span>
         </h2>
+      </section>
 
-        <LoadingSectionHorizontal v-model:loading="loadingTvAiringToday">
-          <template #content>
+      <LoadingSectionHorizontal
+        :class="loading == true ? 'home-section' : null"
+        v-model:loading="loading"
+      >
+        <template #content>
+          <section
+            v-for="(mod, index1) in modLíst.results"
+            :key="mod.id"
+            :index="index1"
+            class="home-section"
+          >
+            <h2 class="gradient-title-default">
+              <span>{{ mod.name }}</span>
+              <NuxtLink
+                class="view-all"
+                :to="mod.path"
+              >
+                <!-- :to="{
+                  path: `${mod.path}`,
+                  query: {
+                    type: mod.type
+                  }
+                }" -->
+                Xem tất cả
+                <ChevronRight
+                  width="1.2rem"
+                  height="1.2rem"
+                  fill="currentColor"
+                />
+              </NuxtLink>
+            </h2>
+
             <SwiperCarouselGroup
-              :data="airingTodays"
+              :data="mod.data"
               :responsive="responsiveHorizoltal"
             >
               <template #content>
                 <SwiperSlide
-                  v-for="(item, index) in airingTodays"
+                  v-for="(item, index) in mod.data"
                   :key="item.id"
                   :index="index"
                   :virtual-index="index"
@@ -61,156 +74,9 @@
                 </SwiperSlide>
               </template>
             </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
-
-      <section class="home-section popular">
-        <h2 class="gradient-title-default">
-          <span>On The Air</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/tv`,
-              query: { type: 'ontheair' }
-            }"
-          >
-            Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1.2rem"
-              height="1.2rem"
-              viewBox="0 0 320 512"
-              fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
-          </NuxtLink>
-        </h2>
-
-        <LoadingSectionHorizontal v-model:loading="loadingTvOnTheAir">
-          <template #content>
-            <SwiperCarouselGroup
-              :data="onTheAirs"
-              :responsive="responsiveHorizoltal"
-            >
-              <template #content>
-                <SwiperSlide
-                  v-for="(item, index) in onTheAirs"
-                  :key="item.id"
-                  :index="index"
-                  :virtual-index="index"
-                >
-                  <MovieCardHorizontal
-                    :item="item"
-                    :type="item.media_type"
-                  />
-                </SwiperSlide>
-              </template>
-            </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
-
-      <section class="home-section upcoming">
-        <h2 class="gradient-title-default">
-          <span>Popular</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/tv`,
-              query: { type: 'popular' }
-            }"
-          >
-            Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1.2rem"
-              height="1.2rem"
-              viewBox="0 0 320 512"
-              fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
-          </NuxtLink>
-        </h2>
-
-        <LoadingSectionHorizontal v-model:loading="loadingTvPopular">
-          <template #content>
-            <SwiperCarouselGroup
-              :data="populars"
-              :responsive="responsiveHorizoltal"
-            >
-              <template #content>
-                <SwiperSlide
-                  v-for="(item, index) in populars"
-                  :key="item.id"
-                  :index="index"
-                  :virtual-index="index"
-                >
-                  <MovieCardHorizontal
-                    :item="item"
-                    :type="item.media_type"
-                  />
-                </SwiperSlide>
-              </template>
-            </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
-
-      <section class="home-section toprated">
-        <h2 class="gradient-title-default">
-          <span>Top Rated</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/tv`,
-              query: { type: 'toprated' }
-            }"
-          >
-            Xem tất cả
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1.2rem"
-              height="1.2rem"
-              viewBox="0 0 320 512"
-              fill="currentColor"
-            >
-              <path
-                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256L73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-              />
-            </svg>
-          </NuxtLink>
-        </h2>
-
-        <LoadingSectionHorizontal v-model:loading="loadingTvTopRated">
-          <template #content>
-            <SwiperCarouselGroup
-              :data="topRateds"
-              :responsive="responsiveHorizoltal"
-            >
-              <template #content>
-                <SwiperSlide
-                  v-for="(item, index) in topRateds"
-                  :key="item.id"
-                  :index="index"
-                  :virtual-index="index"
-                >
-                  <MovieCardHorizontal
-                    :item="item"
-                    :type="item.media_type"
-                  />
-                </SwiperSlide>
-              </template>
-            </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
+          </section>
+        </template>
+      </LoadingSectionHorizontal>
     </div>
   </div>
 </template>
@@ -227,7 +93,8 @@
 // import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
 // import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
 import { getGenreById } from '~/services/genres';
-import { FilterTvSlug } from '~/services/tvSlug';
+import { FilterModWithData } from '~/services/mods';
+import { FilterMovie } from '~/services/discover';
 import type { formfilter, genre } from '~/types';
 
 definePageMeta({
@@ -237,25 +104,23 @@ definePageMeta({
 
 const store = useStore();
 const route = useRoute();
-const airingTodays = ref<any>([]);
-const onTheAirs = ref<any>([]);
-const populars = ref<any>([]);
-const topRateds = ref<any>([]);
-const loadingTvAiringToday = ref<boolean>(true);
-const loadingTvOnTheAir = ref<boolean>(true);
-const loadingTvPopular = ref<boolean>(true);
-const loadingTvTopRated = ref<boolean>(true);
+// const modLíst = ref<any>([]);
+const page = ref<number>(1);
+const pageSize = ref<number>(5);
+const total = ref<number>(0);
+const isLoading = computed<boolean>(() => status.value != 'success');
+const loading = ref<boolean>(false);
 const formFilter = ref<formfilter>({
-  type: 'all',
+  type: 'tv',
   sortBy: '',
-  genre: route.params.genre,
+  genre: +(route.params.genre as string),
   year: '',
   country: '',
   page: 1,
   limit: 20
 });
 const genreRoute = computed<genre>(
-  () => getGenreById(route.params.genre, store.allGenres)!
+  () => getGenreById(+route.params.genre, store.allGenres)!
 );
 
 const responsiveHorizoltal = computed<any>((): any => ({
@@ -311,92 +176,11 @@ useSeoMeta({
   ogLocale: 'vi'
 });
 
-const getData = async () => {
-  loadingTvAiringToday.value = true;
-  loadingTvOnTheAir.value = true;
-  loadingTvPopular.value = true;
-  loadingTvTopRated.value = true;
+loading.value = true;
 
-  // await nextTick();
-
-  // if (route.params?.slug == 'genre') {
-  // const genreId: number = getGenreByShortName(
-  //   route.query?.genre,
-  //   store.allGenres
-  // )!.id;
-
-  // formFilter.value.genre = genreId.toString();
-
-  formFilter.value.genre = route.params.genre;
-
-  // useAsyncData(
-  //   `discover/tv/airingtoday/${{
-  //     ...formFilter.value,
-  //     type: 'airingtoday',
-  //   }}`,
-  //   () => FilterTvSlug({ ...formFilter.value, type: 'airingtoday' })
-  // )
-  FilterTvSlug({ ...formFilter.value, type: 'airingtoday', limit: 12 })
-    .then((response) => {
-      airingTodays.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingTvAiringToday.value = false;
-    });
-
-  // useAsyncData(
-  //   `discover/tv/ontheair/${{
-  //     ...formFilter.value,
-  //     type: 'ontheair',
-  //   }}`,
-  //   () => FilterTvSlug({ ...formFilter.value, type: 'ontheair' })
-  // )
-  FilterTvSlug({ ...formFilter.value, type: 'ontheair', limit: 12 })
-    .then((response) => {
-      onTheAirs.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingTvOnTheAir.value = false;
-    });
-
-  // useAsyncData(
-  //   `discover/tv/popular/${{
-  //     ...formFilter.value,
-  //     type: 'popular',
-  //   }}`,
-  //   () => FilterTvSlug({ ...formFilter.value, type: 'popular' })
-  // )
-  FilterTvSlug({ ...formFilter.value, type: 'popular', limit: 12 })
-    .then((response) => {
-      populars.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingTvPopular.value = false;
-    });
-
-  // useAsyncData(
-  //   `discover/tv/toprated/${{
-  //     ...formFilter.value,
-  //     type: 'toprated',
-  //   }}`,
-  //   () => FilterTvSlug({ ...formFilter.value, type: 'toprated' })
-  // )
-  FilterTvSlug({ ...formFilter.value, type: 'toprated', limit: 12 })
-    .then((response) => {
-      topRateds.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingTvTopRated.value = false;
-    });
-};
-
-const { data: dataBilboard, pending } = await useAsyncData(
+const { data: dataBilboard, status: statusBillboard } = await useAsyncData(
   `discover/tv/all/${JSON.stringify(formFilter.value)}`,
-  () => FilterTvSlug(formFilter.value),
+  () => FilterMovie(formFilter.value),
   {
     // default: () => {
     //   return { results: trendingsCache.value || [] };
@@ -407,9 +191,30 @@ const { data: dataBilboard, pending } = await useAsyncData(
   }
 );
 
-getData();
+const { data: modLíst, status } = await useAsyncData(
+  `mod/tv/filter/${JSON.stringify(formFilter.value)}`,
+  () => FilterModWithData(formFilter.value)
+  // {
+  //   // default: () => {
+  //   //   return { results: trendingsCache.value || [] };
+  //   // },
+  //   transform: (data: any) => {
+  //     return data.results[0].data;
+  //   }
+  // }
+);
 
-// onBeforeMount(getData);
+total.value = modLíst.value?.total;
+pageSize.value = modLíst.value?.page_size;
+// page.value++;
+
+const onSwiperLoaded = () => {
+  // loading.value = false;
+};
+
+onMounted(() => {
+  loading.value = false;
+});
 
 watch(
   () => route.params,
