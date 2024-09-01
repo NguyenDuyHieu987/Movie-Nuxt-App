@@ -80,8 +80,9 @@ const pageSize = ref<number>(20);
 const loading = ref<boolean>(false);
 const formFilter = computed<formfilter>(() => {
   return {
-    type: route.query?.type || 'tv',
-    slug: route.query?.slug || '',
+    // type: route.query?.type || 'tv',
+    type: 'tv',
+    slug: route.query?.type || '',
     sortBy: route.query?.sort_by || '',
     genre: route.query?.genre || '',
     year: route.query?.year || '',
