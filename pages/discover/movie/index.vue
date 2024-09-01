@@ -4,10 +4,11 @@
       v-model:loading="loading"
       :listFilter="[
         { name: 'Tất cả', value: 'all' },
-        { name: 'Nowplaying', value: 'nowplaying' },
-        { name: 'Popular', value: 'popular' },
-        { name: 'Upcoming', value: 'upcoming' },
-        { name: 'Toprated', value: 'toprated' }
+        ...dataSlug
+        // { name: 'Nowplaying', value: 'nowplaying' },
+        // { name: 'Popular', value: 'popular' },
+        // { name: 'Upcoming', value: 'upcoming' },
+        // { name: 'Toprated', value: 'toprated' }
       ]"
       :cancelFilter="cancelFilter"
       @onFilter="handleFilter"
@@ -15,7 +16,9 @@
 
     <div class="discover-title">
       <h2 class="gradient-title-default underline">
-        <span>Phim lẻ: {{ formFilter.type }}</span>
+        <span
+          >Phim lẻ: {{ dataDiscover[0].modData.nane || formFilter.slug }}</span
+        >
       </h2>
     </div>
 
@@ -60,6 +63,7 @@ import FilterSection from '~/components/FilterSection/FilterSection.vue';
 import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
 import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
+import { getAllMod } from '~/services/mods';
 import { FilterModList } from '~/services/modList';
 import { FilterMovieSlug } from '~/services/movieSlug';
 import type { formfilter } from '@/types';
@@ -128,6 +132,16 @@ const getData = async () => {
 };
 
 loading.value = true;
+
+const { data: dataSlug } = await useAsyncData(
+  `tv/discover/${JSON.stringify(formFilter.value)}`,
+  () => getAllMod(),
+  {
+    transform: (data: any) => {
+      return data.results.filter((r: any) => r.media_type == 'movie');
+    }
+  }
+);
 
 const {
   data: dataDiscoverCache,
