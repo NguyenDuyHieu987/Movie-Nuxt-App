@@ -33,13 +33,14 @@
               <span>{{ mod.name }}</span>
               <NuxtLink
                 class="view-all"
-                :to="{
-                  path: `${mod.path}`
-                  // query: {
-                  //   type: 'nowplaying'
-                  // }
-                }"
+                :to="mod.path"
               >
+                <!-- :to="{
+                  path: `${mod.path}`,
+                  query: {
+                    type: mod.type
+                  }
+                }" -->
                 Xem tất cả
                 <ChevronRight
                   width="1.2rem"
