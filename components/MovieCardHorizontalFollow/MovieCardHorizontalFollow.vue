@@ -20,11 +20,11 @@
     <NuxtLink
       :to="{
         path: isEpisodes
-          ? `/info-tv/${item?.movie_id}${utils.convertPath.toPathInfo_Play(
-              item?.name
+          ? `/info-tv/${dataMovieDetail?.movie_id}${utils.convertPath.toPathInfo_Play(
+              dataMovieDetail?.name
             )}`
-          : `/info-movie/${item?.movie_id}${utils.convertPath.toPathInfo_Play(
-              item?.name
+          : `/info-movie/${dataMovieDetail?.movie_id}${utils.convertPath.toPathInfo_Play(
+              dataMovieDetail?.name
             )}`
       }"
       class="movie-follow-item"
@@ -32,13 +32,15 @@
       <div class="img-box">
         <div class="img-wrapper ratio-16-9">
           <!-- <img
-            v-lazy="getImage(item?.backdrop_path, 'backdrop', {h:250})"
+            v-lazy="getImage(dataMovieDetail?.backdrop_path, 'backdrop', {h:250})"
             loading="lazy"
             alt=""
           /> -->
 
           <NuxtImg
-            :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
+            :src="
+              getImage(dataMovieDetail?.backdrop_path, 'backdrop', { h: 250 })
+            "
             placeholder="/imgs/loading-img-16-9.webp"
             format="avif"
             loading="lazy"
@@ -60,9 +62,9 @@
       <div class="info">
         <h2
           class="title"
-          :title="item?.name"
+          :title="dataMovieDetail?.name"
         >
-          {{ item?.name }}
+          {{ dataMovieDetail?.name }}
         </h2>
 
         <!-- <p v-if="isEpisodes" class="duration-episode">
@@ -148,8 +150,8 @@
                       v-if="isEpisodes"
                       :to="{
                         path: `/play-tv/${
-                          item?.movie_id
-                        }${utils.convertPath.toPathInfo_Play(item?.name)}/tap-1`
+                          dataMovieDetail?.id
+                        }${utils.convertPath.toPathInfo_Play(dataMovieDetail?.name)}/tap-1`
                       }"
                       class="btn-play-now"
                     >
@@ -159,8 +161,8 @@
                       v-else
                       :to="{
                         path: `/play-movie/${
-                          item?.movie_id
-                        }${utils.convertPath.toPathInfo_Play(item?.name)}`
+                          dataMovieDetail?.id
+                        }${utils.convertPath.toPathInfo_Play(dataMovieDetail?.name)}`
                       }"
                       class="btn-play-now"
                     >
@@ -181,7 +183,7 @@
                       <ShareNetwork
                         network="facebook"
                         :url="urlShare"
-                        :title="item?.name"
+                        :title="dataMovieDetail?.name"
                         hashtags="phimhay247.site,vite"
                         style="white-space: nowrap; display: block"
                       >
@@ -240,7 +242,8 @@ const props = defineProps<{
 
 const store = useStore();
 const utils = useUtils();
-const dataMovie = ref<any>({});
+const dataMovie = ref<any>(props.item || {});
+const dataMovieDetail = ref<any>(props.item.movieData || {});
 const isEpisodes = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
@@ -249,11 +252,11 @@ const urlShare = computed<string>(
   (): string =>
     window.location.origin +
     (isEpisodes
-      ? `/info-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-          props.item?.name
+      ? `/info-tv/${dataMovieDetail.value?.id}${utils.convertPath.toPathInfo_Play(
+          dataMovieDetail.value?.name
         )}`
-      : `/info-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-          props.item?.name
+      : `/info-movie/${dataMovieDetail.value?.id}${utils.convertPath.toPathInfo_Play(
+          dataMovieDetail.value?.name
         )}`)
 );
 
