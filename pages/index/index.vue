@@ -162,11 +162,7 @@ import Plus1Icon from '~/assets/svgs/icons/plus-1.svg?component';
 // import MovieCardHorizontalTrailer from '~/components/MovieCardHorizontalTrailer/MovieCardHorizontalTrailer.vue';
 import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
 import { getAllModWithData } from '~/services/mods';
-import { getMoviesByGenres } from '~/services/discover';
-import { getNowPlaying, getTopRated, getUpComing } from '~/services/movieSlug';
 import { getMyRecommend } from '~/services/recommend';
-import { getTrending } from '~/services/trending';
-import { getTvAiringToday, getTvOntheAir } from '~/services/tvSlug';
 
 definePageMeta({
   // layout: 'home',
@@ -196,12 +192,6 @@ const trendings = ref<any[]>([]);
 const page = ref<number>(1);
 const pageSize = ref<number>(3);
 const total = ref<number>(0);
-const nowPlayings = ref<any>([]);
-const upComings = ref<any>([]);
-const tvAiringTodays = ref<any>([]);
-const tvOnTheAirs = ref<any>([]);
-const animations = ref<any>([]);
-const topRateds = ref<any>([]);
 const recommends = ref<any>([]);
 const isLoading = computed<boolean>(() => status.value != 'success');
 const loading = ref<boolean>(false);
@@ -395,7 +385,7 @@ loading.value = true;
 
 const { data: modLíst, status } = await useAsyncData(
   `mod/all/${page.value}/${pageSize.value}`,
-  () => getAllModWithData(page.value, pageSize.value)
+  () => getAllModWithData('all', page.value, pageSize.value)
   // {
   //   // default: () => {
   //   //   return { results: trendingsCache.value || [] };
@@ -412,9 +402,9 @@ pageSize.value = modLíst.value?.page_size;
 page.value++;
 
 // useAsyncData(`mod/all/${page.value}/${pageSize.value}`, () =>
-//   getAllModWithData(page.value, pageSize.value)
+//   getAllModWithData('all', page.value, pageSize.value)
 // )
-//   // getAllModWithData(page.value, pageSize.value)
+//   // getAllModWithData('all', page.value, pageSize.value)
 //   .then((response) => {
 //     modLíst.value = response.data.value?.results;
 //     total.value = response.data.value?.total;
@@ -425,9 +415,8 @@ page.value++;
 //     loading.value = false;
 //   });
 
-const onSwiperLoaded = async () => {
-  // console.log('loaded');
-  loading.value = false;
+const onSwiperLoaded = () => {
+  // loading.value = false;
 };
 
 onMounted(() => {
@@ -445,7 +434,7 @@ onMounted(() => {
     ) {
       loadMore.value = true;
 
-      await getAllModWithData(page.value, pageSize.value)
+      await getAllModWithData('all', page.value, pageSize.value)
         .then((response) => {
           if (response?.results?.length > 0) {
             modLíst.value.results = modLíst.value.results.concat(

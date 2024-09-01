@@ -8,36 +8,54 @@
     <BillboardAnimation v-model:data="dataBilboard" />
 
     <div class="home-content">
-      <section class="home-section outstanding">
+      <section
+        v-if="loading"
+        class="home-section"
+      >
         <h2 class="gradient-title-default">
-          <span>Now Playing</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/movie`,
-              query: {
-                type: 'nowplaying'
-              }
-            }"
-          >
-            Xem tất cả
-            <ChevronRight
-              width="1.2rem"
-              height="1.2rem"
-              fill="currentColor"
-            />
-          </NuxtLink>
+          <span>{{ modLíst.results.slice(1)[0].name }}</span>
         </h2>
+      </section>
 
-        <LoadingSectionHorizontal v-model:loading="loadingNowPlaying">
-          <template #content>
+      <LoadingSectionHorizontal
+        :class="loading == true ? 'home-section' : null"
+        v-model:loading="loading"
+      >
+        <template #content>
+          <section
+            v-for="(mod, index1) in modLíst.results.slice(1)"
+            :key="mod.id"
+            :index="index1"
+            class="home-section"
+          >
+            <h2 class="gradient-title-default">
+              <span>{{ mod.name }}</span>
+              <NuxtLink
+                class="view-all"
+                :to="mod.path"
+              >
+                <!-- :to="{
+                  path: `${mod.path}`,
+                  query: {
+                    type: mod.type
+                  }
+                }" -->
+                Xem tất cả
+                <ChevronRight
+                  width="1.2rem"
+                  height="1.2rem"
+                  fill="currentColor"
+                />
+              </NuxtLink>
+            </h2>
+
             <SwiperCarouselGroup
-              :data="nowPlayings"
+              :data="mod.data"
               :responsive="responsiveHorizoltal"
             >
               <template #content>
                 <SwiperSlide
-                  v-for="(item, index) in nowPlayings"
+                  v-for="(item, index) in mod.data"
                   :key="item.id"
                   :index="index"
                   :virtual-index="index"
@@ -49,144 +67,9 @@
                 </SwiperSlide>
               </template>
             </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
-
-      <section class="home-section popular">
-        <h2 class="gradient-title-default">
-          <span>Popular</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/movie`,
-              query: {
-                type: 'popular'
-              }
-            }"
-          >
-            Xem tất cả
-            <ChevronRight
-              width="1.2rem"
-              height="1.2rem"
-              fill="currentColor"
-            />
-          </NuxtLink>
-        </h2>
-
-        <LoadingSectionHorizontal v-model:loading="loadingPopular">
-          <template #content>
-            <SwiperCarouselGroup
-              :data="populars"
-              :responsive="responsiveHorizoltal"
-            >
-              <template #content>
-                <SwiperSlide
-                  v-for="(item, index) in populars"
-                  :key="item.id"
-                  :index="index"
-                  :virtual-index="index"
-                >
-                  <MovieCardHorizontal
-                    :item="item"
-                    :type="item.media_type"
-                  />
-                </SwiperSlide>
-              </template>
-            </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
-
-      <section class="home-section upcoming">
-        <h2 class="gradient-title-default">
-          <span>Upcomimg</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/movie`,
-              query: {
-                type: 'upcoming'
-              }
-            }"
-          >
-            Xem tất cả
-            <ChevronRight
-              width="1.2rem"
-              height="1.2rem"
-              fill="currentColor"
-            />
-          </NuxtLink>
-        </h2>
-
-        <LoadingSectionHorizontal v-model:loading="loadingUpComing">
-          <template #content>
-            <SwiperCarouselGroup
-              :data="upComings"
-              :responsive="responsiveHorizoltal"
-            >
-              <template #content>
-                <SwiperSlide
-                  v-for="(item, index) in upComings"
-                  :key="item.id"
-                  :index="index"
-                  :virtual-index="index"
-                >
-                  <MovieCardHorizontal
-                    :item="item"
-                    :type="item.media_type"
-                  />
-                </SwiperSlide>
-              </template>
-            </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
-
-      <section class="home-section toprated">
-        <h2 class="gradient-title-default">
-          <span>Top Rated</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/movie`,
-              query: {
-                type: 'toprated'
-              }
-            }"
-          >
-            Xem tất cả
-            <ChevronRight
-              width="1.2rem"
-              height="1.2rem"
-              fill="currentColor"
-            />
-          </NuxtLink>
-        </h2>
-
-        <LoadingSectionHorizontal v-model:loading="loadingTopRated">
-          <template #content>
-            <SwiperCarouselGroup
-              :data="topRateds"
-              :responsive="responsiveHorizoltal"
-            >
-              <template #content>
-                <SwiperSlide
-                  v-for="(item, index) in topRateds"
-                  :key="item.id"
-                  :index="index"
-                  :virtual-index="index"
-                >
-                  <MovieCardHorizontal
-                    :item="item"
-                    :type="item.media_type"
-                  />
-                </SwiperSlide>
-              </template>
-            </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
+          </section>
+        </template>
+      </LoadingSectionHorizontal>
     </div>
   </div>
 </template>
@@ -204,13 +87,8 @@ import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
 // import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
 // import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
 // import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
-import {
-  getMovies,
-  getNowPlaying,
-  getPopular,
-  getTopRated,
-  getUpComing
-} from '~/services/movieSlug';
+import { FilterMovie } from '~/services/discover';
+import { getAllModWithData } from '~/services/mods';
 
 definePageMeta({
   // layout: 'home',
@@ -233,14 +111,12 @@ useSeoMeta({
 });
 
 const store = useStore();
-const nowPlayings = ref<any>([]);
-const populars = ref<any>([]);
-const upComings = ref<any>([]);
-const topRateds = ref<any>([]);
-const loadingNowPlaying = ref<boolean>(true);
-const loadingPopular = ref<boolean>(true);
-const loadingTopRated = ref<boolean>(true);
-const loadingUpComing = ref<boolean>(true);
+// const modLíst = ref<any>([]);
+const page = ref<number>(1);
+const pageSize = ref<number>(5);
+const total = ref<number>(0);
+const isLoading = computed<boolean>(() => status.value != 'success');
+const loading = ref<boolean>(false);
 
 const responsiveHorizoltal = computed<any>((): any => ({
   0: {
@@ -278,61 +154,20 @@ const responsiveHorizoltal = computed<any>((): any => ({
   }
 }));
 
-const getData = async () => {
-  // await nextTick();
+loading.value = true;
 
-  // useAsyncData('movie/nowplaying/1', () => getNowPlaying(1, 12), {
-  //   lazy: true
-  // })
-  getNowPlaying(1, 12)
-    .then((response) => {
-      nowPlayings.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingNowPlaying.value = false;
-    });
-
-  // useAsyncData(`movie/popular/1`, () => getPopular(2, 12), {
-  //   lazy: true
-  // })
-  getPopular(2, 12)
-    .then((response) => {
-      populars.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingPopular.value = false;
-    });
-
-  // useAsyncData('movie/upcoming/1', () => getUpComing(3, 12), {
-  //   lazy: true
-  // })
-  getUpComing(3, 12)
-    .then((response) => {
-      upComings.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingUpComing.value = false;
-    });
-
-  // useAsyncData('movie/toprated/1', () => getTopRated(4, 12), {
-  //   lazy: true
-  // })
-  getTopRated(4, 12)
-    .then((response) => {
-      topRateds.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingTopRated.value = false;
-    });
-};
-
-const { data: dataBilboard, pending } = await useAsyncData(
+const { data: dataBilboard, status: statusBillboard } = await useAsyncData(
   'movie/all/1',
-  () => getMovies(1, 20),
+  () =>
+    FilterMovie({
+      type: 'movie',
+      sortBy: '',
+      genre: '',
+      year: '',
+      country: '',
+      page: 1,
+      limit: 20
+    }),
   {
     // default: () => {
     //   return { results: trendingsCache.value || [] };
@@ -343,7 +178,30 @@ const { data: dataBilboard, pending } = await useAsyncData(
   }
 );
 
-getData();
+const { data: modLíst, status } = await useAsyncData(
+  `mod/movie/${page.value}/${pageSize.value}`,
+  () => getAllModWithData('movie', page.value, pageSize.value)
+  // {
+  //   // default: () => {
+  //   //   return { results: trendingsCache.value || [] };
+  //   // },
+  //   transform: (data: any) => {
+  //     return data.results[0].data;
+  //   }
+  // }
+);
+
+total.value = modLíst.value?.total;
+pageSize.value = modLíst.value?.page_size;
+// page.value++;
+
+const onSwiperLoaded = () => {
+  // loading.value = false;
+};
+
+onMounted(() => {
+  loading.value = false;
+});
 </script>
 
 <style src="./FeaturePage.scss" lang="scss"></style>

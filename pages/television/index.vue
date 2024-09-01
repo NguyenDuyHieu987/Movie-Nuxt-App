@@ -8,34 +8,54 @@
     <BillboardAnimation v-model:data="dataBilboard" />
 
     <div class="home-content">
-      <section class="home-section outstanding">
+      <section
+        v-if="loading"
+        class="home-section"
+      >
         <h2 class="gradient-title-default">
-          <span>Airing Today</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/tv`,
-              query: { type: 'airingtoday' }
-            }"
-          >
-            Xem tất cả
-            <ChevronRight
-              width="1.2rem"
-              height="1.2rem"
-              fill="currentColor"
-            />
-          </NuxtLink>
+          <span>{{ modLíst.results.slice(1)[0].name }}</span>
         </h2>
+      </section>
 
-        <LoadingSectionHorizontal v-model:loading="loadingTvAiringToday">
-          <template #content>
+      <LoadingSectionHorizontal
+        :class="loading == true ? 'home-section' : null"
+        v-model:loading="loading"
+      >
+        <template #content>
+          <section
+            v-for="(mod, index1) in modLíst.results.slice(1)"
+            :key="mod.id"
+            :index="index1"
+            class="home-section"
+          >
+            <h2 class="gradient-title-default">
+              <span>{{ mod.name }}</span>
+              <NuxtLink
+                class="view-all"
+                :to="mod.path"
+              >
+                <!-- :to="{
+                  path: `${mod.path}`,
+                  query: {
+                    type: mod.type
+                  }
+                }" -->
+                Xem tất cả
+                <ChevronRight
+                  width="1.2rem"
+                  height="1.2rem"
+                  fill="currentColor"
+                />
+              </NuxtLink>
+            </h2>
+
             <SwiperCarouselGroup
-              :data="airingTodays"
+              :data="mod.data"
               :responsive="responsiveHorizoltal"
             >
               <template #content>
                 <SwiperSlide
-                  v-for="(item, index) in airingTodays"
+                  v-for="(item, index) in mod.data"
                   :key="item.id"
                   :index="index"
                   :virtual-index="index"
@@ -47,138 +67,9 @@
                 </SwiperSlide>
               </template>
             </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
-
-      <section class="home-section popular">
-        <h2 class="gradient-title-default">
-          <span>On The Air</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/tv`,
-              query: { type: 'ontheair' }
-            }"
-          >
-            Xem tất cả
-            <ChevronRight
-              width="1.2rem"
-              height="1.2rem"
-              fill="currentColor"
-            />
-          </NuxtLink>
-        </h2>
-
-        <LoadingSectionHorizontal v-model:loading="loadingTvOnTheAir">
-          <template #content>
-            <SwiperCarouselGroup
-              :data="onTheAirs"
-              :responsive="responsiveHorizoltal"
-            >
-              <template #content>
-                <SwiperSlide
-                  v-for="(item, index) in onTheAirs"
-                  :key="item.id"
-                  :index="index"
-                  :virtual-index="index"
-                >
-                  <MovieCardHorizontal
-                    :item="item"
-                    :type="item.media_type"
-                  />
-                </SwiperSlide>
-              </template>
-            </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
-
-      <section class="home-section upcoming">
-        <h2 class="gradient-title-default">
-          <span>Popular</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/tv`,
-              query: { type: 'popular' }
-            }"
-          >
-            Xem tất cả
-            <ChevronRight
-              width="1.2rem"
-              height="1.2rem"
-              fill="currentColor"
-            />
-          </NuxtLink>
-        </h2>
-
-        <LoadingSectionHorizontal v-model:loading="loadingTvPopular">
-          <template #content>
-            <SwiperCarouselGroup
-              :data="populars"
-              :responsive="responsiveHorizoltal"
-            >
-              <template #content>
-                <SwiperSlide
-                  v-for="(item, index) in populars"
-                  :key="item.id"
-                  :index="index"
-                  :virtual-index="index"
-                >
-                  <MovieCardHorizontal
-                    :item="item"
-                    :type="item.media_type"
-                  />
-                </SwiperSlide>
-              </template>
-            </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
-
-      <section class="home-section toprated">
-        <h2 class="gradient-title-default">
-          <span>Top Rated</span>
-          <NuxtLink
-            class="view-all"
-            :to="{
-              path: `/discover/tv`,
-              query: { type: 'toprated' }
-            }"
-          >
-            Xem tất cả
-            <ChevronRight
-              width="1.2rem"
-              height="1.2rem"
-              fill="currentColor"
-            />
-          </NuxtLink>
-        </h2>
-
-        <LoadingSectionHorizontal v-model:loading="loadingTvTopRated">
-          <template #content>
-            <SwiperCarouselGroup
-              :data="topRateds"
-              :responsive="responsiveHorizoltal"
-            >
-              <template #content>
-                <SwiperSlide
-                  v-for="(item, index) in topRateds"
-                  :key="item.id"
-                  :index="index"
-                  :virtual-index="index"
-                >
-                  <MovieCardHorizontal
-                    :item="item"
-                    :type="item.media_type"
-                  />
-                </SwiperSlide>
-              </template>
-            </SwiperCarouselGroup>
-          </template>
-        </LoadingSectionHorizontal>
-      </section>
+          </section>
+        </template>
+      </LoadingSectionHorizontal>
     </div>
   </div>
 </template>
@@ -196,13 +87,8 @@ import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
 // import LoadingSectionHorizontal from '~/components/Loading/LoadingSection/LoadingSectionHorizontal/LoadingSectionHorizontal.vue';
 // import SwiperCarouselGroup from '~/components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue';
 // import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
-import {
-  getTvAiringToday,
-  getTvOntheAir,
-  getTvPopular,
-  getTvs,
-  getTvTopRated
-} from '~/services/tvSlug';
+import { FilterMovie } from '~/services/discover';
+import { getAllModWithData } from '~/services/mods';
 
 definePageMeta({
   // layout: 'home',
@@ -225,14 +111,12 @@ useSeoMeta({
 });
 
 const store = useStore();
-const airingTodays = ref<any>([]);
-const onTheAirs = ref<any>([]);
-const populars = ref<any>([]);
-const topRateds = ref<any>([]);
-const loadingTvAiringToday = ref<boolean>(true);
-const loadingTvOnTheAir = ref<boolean>(true);
-const loadingTvPopular = ref<boolean>(true);
-const loadingTvTopRated = ref<boolean>(true);
+// const modLíst = ref<any>([]);
+const page = ref<number>(1);
+const pageSize = ref<number>(5);
+const total = ref<number>(0);
+const isLoading = computed<boolean>(() => status.value != 'success');
+const loading = ref<boolean>(false);
 
 const responsiveHorizoltal = computed<any>((): any => ({
   0: {
@@ -270,58 +154,20 @@ const responsiveHorizoltal = computed<any>((): any => ({
   }
 }));
 
-const getData = async () => {
-  loadingTvAiringToday.value = true;
-  loadingTvOnTheAir.value = true;
-  loadingTvPopular.value = true;
-  loadingTvTopRated.value = true;
+loading.value = true;
 
-  // await nextTick();
-
-  // useAsyncData('tv/airingtoday/1', () => getTvAiringToday(1))
-  getTvAiringToday(1, 12)
-    .then((response) => {
-      airingTodays.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingTvAiringToday.value = false;
-    });
-
-  // useAsyncData(`tv/ontheair/1`, () => getTvOntheAir(2))
-  getTvOntheAir(2, 12)
-    .then((response) => {
-      onTheAirs.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingTvOnTheAir.value = false;
-    });
-
-  // useAsyncData('tv/popular/1', () => getTvPopular(3))
-  getTvPopular(3, 12)
-    .then((response) => {
-      populars.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingTvPopular.value = false;
-    });
-
-  // useAsyncData('tv/toprated/1', () => getTvTopRated(4))
-  getTvTopRated(4, 12)
-    .then((response) => {
-      topRateds.value = response?.results;
-    })
-    .catch((e) => {})
-    .finally(() => {
-      loadingTvTopRated.value = false;
-    });
-};
-
-const { data: dataBilboard, pending } = await useAsyncData(
+const { data: dataBilboard, status: statusBillboard } = await useAsyncData(
   'tv/all/1',
-  () => getTvs(1),
+  () =>
+    FilterMovie({
+      type: 'tv',
+      sortBy: '',
+      genre: '',
+      year: '',
+      country: '',
+      page: 1,
+      limit: 20
+    }),
   {
     // default: () => {
     //   return { results: trendingsCache.value || [] };
@@ -332,7 +178,30 @@ const { data: dataBilboard, pending } = await useAsyncData(
   }
 );
 
-getData();
+const { data: modLíst, status } = await useAsyncData(
+  `mod/tv/${page.value}/${pageSize.value}`,
+  () => getAllModWithData('tv', page.value, pageSize.value)
+  // {
+  //   // default: () => {
+  //   //   return { results: trendingsCache.value || [] };
+  //   // },
+  //   transform: (data: any) => {
+  //     return data.results[0].data;
+  //   }
+  // }
+);
+
+total.value = modLíst.value?.total;
+pageSize.value = modLíst.value?.page_size;
+// page.value++;
+
+const onSwiperLoaded = () => {
+  // loading.value = false;
+};
+
+onMounted(() => {
+  loading.value = false;
+});
 </script>
 
 <style src="./TelevisionPage.scss" lang="scss"></style>
