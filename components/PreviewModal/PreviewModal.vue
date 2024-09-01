@@ -374,6 +374,8 @@ import { getCountryByOriginalLanguage } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
+import { getItemList } from '~/services/list';
+import { getItemHistory } from '~/services/history';
 import { getVideo } from '~/services/video';
 import gsap from 'gsap';
 import Hls from 'hls.js';
@@ -654,46 +656,69 @@ const getData = async () => {
   showVideo.value = true;
   dataMovieRef.value = props.dataMovie;
 
-  if (!dataMovieRef.value?.id) {
-    loading.value = true;
+  // if (!dataMovieRef.value) {
+  //   loading.value = true;
 
-    if (props.isEpisodes) {
-      // await useAsyncData(`tv/short/${props.item?.id}`, () =>
-      //   getTvById(props.item?.id)
-      // )
-      await getTvById(props.item?.id)
-        .then((response) => {
-          dataMovieRef.value = response;
-        })
-        .catch((e) => {})
-        .finally(() => {});
-    } else {
-      // await useAsyncData(`movie/short/${props.item?.id}`, () =>
-      //   getMovieById(props.item?.id)
-      // )
-      await getMovieById(props.item?.id)
-        .then((response) => {
-          dataMovieRef.value = response;
-        })
-        .catch((e) => {})
-        .finally(() => {});
-    }
+  //   if (props.isEpisodes) {
+  //     // await useAsyncData(`tv/short/${props.item?.id}`, () =>
+  //     //   getTvById(props.item?.id)
+  //     // )
+  //     await getTvById(props.item?.id)
+  //       .then((response) => {
+  //         dataMovieRef.value = response;
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {});
+  //   } else {
+  //     // await useAsyncData(`movie/short/${props.item?.id}`, () =>
+  //     //   getMovieById(props.item?.id)
+  //     // )
+  //     await getMovieById(props.item?.id)
+  //       .then((response) => {
+  //         dataMovieRef.value = response;
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {});
+  //   }
 
-    setTimeout(() => {
-      loading.value = false;
-    }, 500);
-  }
+  //   setTimeout(() => {
+  //     loading.value = false;
+  //   }, 500);
+  // }
+
+  loading.value = true;
 
   if (authStore.isLogin) {
     if (dataMovieRef.value?.in_list) {
       isAddToList.value = true;
+    } else {
+      await getItemList(props.item?.id, props.item?.media_type)
+        .then((response) => {
+          if (response.success == true) {
+            isAddToList.value = true;
+          }
+        })
+        .catch((e) => {})
+        .finally(() => {});
     }
 
     if (dataMovieRef.value?.history_progress) {
       isInHistory.value = true;
       percent.value = dataMovieRef.value?.history_progress?.percent;
+    } else {
+      await getItemHistory(props.item?.id, props.item?.media_type)
+        .then((response) => {
+          if (response.success == true) {
+            isInHistory.value = true;
+            percent.value = response?.result?.percent;
+          }
+        })
+        .catch((e) => {})
+        .finally(() => {});
     }
   }
+
+  loading.value = false;
 };
 
 watch(isTeleport, async () => {
