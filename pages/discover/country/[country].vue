@@ -85,12 +85,12 @@ const router = useRouter();
 const store = useStore();
 const dataDiscover = ref<any[]>();
 const countries = ref<country[]>(store.allCountries);
-const page = ref<number>(+route.query?.page || 1);
+const page = ref<number>(+(route.query?.page as string) || 1);
 const totalPage = ref<number>(100);
 const pageSize = ref<number>(20);
 const loading = ref<boolean>(false);
 const countryRoute = computed<country>(() =>
-  getCountryByShortName(route.params.country, store.allCountries)
+  getCountryByShortName(route.params.country as string, store.allCountries)
 );
 const metaHead = ref<string>('Quốc gia: ' + countryRoute.value.name);
 const nuxtLoadingIndicator = useLoadingIndicator();
@@ -116,7 +116,7 @@ const getData = async () => {
 
   await useAsyncData(
     `discover/country/all/${route.params.country}/${page.value}`,
-    () => getMovieByCountry(route.params.country, '', page.value)
+    () => getMovieByCountry(route.params.country as string, '', page.value)
   )
     .then((response) => {
       dataDiscover.value = response.data.value?.results;
@@ -136,7 +136,7 @@ loading.value = true;
 
 const { data: dataDiscoverCache, status } = await useAsyncData(
   `discover/country/all/${route.params.country}/${page.value}`,
-  () => getMovieByCountry(route.params.country, '', page.value),
+  () => getMovieByCountry(route.params.country as string, '', page.value),
   {
     // transform: (data: any) => {
     //   totalPage.value = data?.total;

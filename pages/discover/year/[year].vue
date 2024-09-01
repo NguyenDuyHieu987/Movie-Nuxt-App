@@ -99,14 +99,15 @@ const router = useRouter();
 const store = useStore();
 const dataDiscover = ref<any[]>();
 const years = ref<year[]>(store.allYears);
-const page = ref<number>(+route.query?.page || 1);
+const page = ref<number>(+(route.query?.page as string) || 1);
 const totalPage = ref<number>(100);
 const pageSize = ref<number>(20);
 const loading = ref<boolean>(false);
 const yearRoute = ref<string>(
-  !isNaN(route.params.year) || utils.isStringNumber(route.params.year)
-    ? route.params.year
-    : 'Trước năm ' + route.params.year?.slice(-4)
+  !isNaN(+(route.params.year as string)) ||
+    utils.isStringNumber(route.params.year as string)
+    ? (route.params.year as string)
+    : 'Trước năm ' + (route.params.year as string)?.slice(-4)
 );
 const metaHead = ref<string>('Năm: ' + yearRoute.value);
 const nuxtLoadingIndicator = useLoadingIndicator();
@@ -132,7 +133,7 @@ const getData = async () => {
 
   await useAsyncData(
     `discover/year/all/${route.params.year}/${page.value}`,
-    () => getMoviesByYear(route.params.year, '', page.value)
+    () => getMoviesByYear(route.params.year as string, '', page.value)
   )
     .then((response) => {
       dataDiscover.value = response.data.value?.results;
@@ -152,7 +153,7 @@ loading.value = true;
 
 const { data: dataDiscoverCache, status } = await useAsyncData(
   `discover/year/all/${route.params.year}/${page.value}`,
-  () => getMoviesByYear(route.params.year, '', page.value),
+  () => getMoviesByYear(route.params.year as string, '', page.value),
   {
     // transform: (data: any) => {
     //   totalPage.value = data?.total;

@@ -71,18 +71,18 @@ const route = useRoute();
 const router = useRouter();
 const store = useStore();
 const dataDiscover = ref<any[]>();
-const page = ref<number>(+route.query?.page || 1);
+const page = ref<number>(+(route.query?.page as string) || 1);
 const totalPage = ref<number>(100);
 const pageSize = ref<number>(20);
 const loading = ref<boolean>(false);
 const formFilter = computed<formfilter>(() => {
   return {
-    type: route.query?.type || 'all',
-    sortBy: route.query?.sort_by || '',
-    genre: route.query?.genre || '',
-    year: route.query?.year || '',
-    country: route.query?.country || '',
-    page: route.query?.page || 1,
+    type: (route.query?.type as string) || 'all',
+    sortBy: (route.query?.sort_by as string) || '',
+    genre: (route.query?.genre as string) || '',
+    year: (route.query?.year as string) || '',
+    country: (route.query?.country as string) || '',
+    page: +(route.query?.page as string) || 1,
     limit: 20
   };
 });

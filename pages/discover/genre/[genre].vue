@@ -85,12 +85,12 @@ const router = useRouter();
 const store = useStore();
 const dataDiscover = ref<any[]>();
 const genres = ref<genre[]>(store.allGenres);
-const page = ref<number>(+route.query?.page || 1);
+const page = ref<number>(+(route.query?.page as string) || 1);
 const totalPage = ref<number>(100);
 const pageSize = ref<number>(20);
 const loading = ref<boolean>(false);
 const genreRoute = computed<genre>(
-  () => getGenreByShortName(route.params.genre, store.allGenres)!
+  () => getGenreByShortName(route.params.genre as string, store.allGenres)!
 );
 const metaHead = ref<string>('Thể loại: ' + genreRoute.value.name_vietsub);
 const nuxtLoadingIndicator = useLoadingIndicator();
@@ -118,7 +118,7 @@ const getData = async () => {
 
   await useAsyncData(
     `discover/genre/all/${route.params.genre}/${page.value}`,
-    () => getMoviesByGenres(route.params.genre, '', page.value)
+    () => getMoviesByGenres(route.params.genre as string, '', page.value)
   )
     .then((response) => {
       dataDiscover.value = response.data.value?.results;
@@ -138,7 +138,7 @@ loading.value = true;
 
 const { data: dataDiscoverCache, status } = await useAsyncData(
   `discover/genre/all/${route.params.genre}/${page.value}`,
-  () => getMoviesByGenres(route.params.genre, '', page.value),
+  () => getMoviesByGenres(route.params.genre as string, '', page.value),
   {
     // transform: (data: any) => {
     //   totalPage.value = data?.total;
