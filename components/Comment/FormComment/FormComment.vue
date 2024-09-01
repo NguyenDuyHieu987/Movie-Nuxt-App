@@ -357,9 +357,10 @@ const onSubmit = () => {
               emits('onSuccessCommentChild', response?.result);
             }
 
-            contenteditableInputField.value!.innerHTML = '';
+            isChanged.value = false;
             disabledButton.value = true;
             isShowEmoji.value = false;
+            contenteditableInputField.value!.innerHTML = '';
           }
         })
         .catch((e) => {})
@@ -385,9 +386,10 @@ const onSubmit = () => {
               duration: MESSAGE.DURATION.FAST
             });
 
-            contenteditableInputField.value!.innerHTML = '';
+            isChanged.value = false;
             disabledButton.value = true;
             isShowEmoji.value = false;
+            contenteditableInputField.value!.innerHTML = '';
 
             emits('onSuccessEditComment', response?.content);
           }
