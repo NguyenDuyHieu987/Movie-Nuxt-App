@@ -4,8 +4,8 @@
       v-model:loading="loading"
       :listFilter="[
         { name: 'Tất cả', value: 'all' },
-        ...dataSlug.map((item: any) => {
-          return { ...item, value: item.type };
+        ...dataSlug?.map((item: any) => {
+          return { name: item.name, value: item.type };
         })
         // { name: 'Airing Today', value: 'airingtoday' },
         // { name: 'Ontheair', value: 'ontheair' },
@@ -80,7 +80,7 @@ const router = useRouter();
 const dataDiscover = ref<any[]>();
 const title = computed<string>(
   () =>
-    dataSlug.value.find((d: any) => d.type == route.query?.type).nane ||
+    dataSlug.value.find((d: any) => d.type == route.query?.type)?.nane ||
     'Tât cả'
 );
 const page = ref<number>(+route.query?.page || 1);
