@@ -107,6 +107,10 @@
           font-weight: 500;
         }
 
+        .movie-original-title {
+          color: var(--text-color-gray);
+        }
+
         .tags {
           margin-top: 10px;
         }
@@ -282,8 +286,12 @@
           }
 
           .movie-info {
-            .original-title {
+            .movie-title {
               font-size: 2rem;
+            }
+
+            .movie-original-title {
+              color: var(--text-color-gray);
             }
 
             .movie-info-item {

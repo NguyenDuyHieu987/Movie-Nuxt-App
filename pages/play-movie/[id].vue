@@ -116,6 +116,9 @@
             </template>
             <template #default>
               <h2 class="movie-title">{{ dataMovie?.name }}</h2>
+              <h3 class="movie-original-title">
+                {{ dataMovie?.original_name }}
+              </h3>
 
               <div class="actions">
                 <div class="left">
@@ -270,9 +273,10 @@
                   </div>
                 </div>
                 <div class="movie-info">
-                  <h2 class="original-title">
+                  <h2 class="movie-title">{{ dataMovie?.name }}</h2>
+                  <h3 class="movie-original-title">
                     {{ dataMovie?.original_name }}
-                  </h2>
+                  </h3>
 
                   <div class="movie-info-item">HD - Vietsub</div>
 

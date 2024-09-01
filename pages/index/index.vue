@@ -34,10 +34,10 @@
               <NuxtLink
                 class="view-all"
                 :to="{
-                  path: `/discover/movie`,
-                  query: {
-                    type: 'nowplaying'
-                  }
+                  path: `${mod.path}`
+                  // query: {
+                  //   type: 'nowplaying'
+                  // }
                 }"
               >
                 Xem tất cả
