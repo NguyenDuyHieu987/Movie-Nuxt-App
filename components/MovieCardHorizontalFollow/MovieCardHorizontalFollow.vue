@@ -244,7 +244,9 @@ const store = useStore();
 const utils = useUtils();
 const dataMovie = ref<any>(props.item || {});
 const dataMovieDetail = ref<any>(props.item.movieData || {});
-const isEpisodes = ref<boolean>(false);
+const isEpisodes = computed<boolean>(
+  () => props.item.movieData?.media_type == 'tv'
+);
 const loading = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
 const percent = ref<number>(0);
@@ -265,38 +267,32 @@ onMounted(() => {});
 const getData = async () => {
   loading.value = true;
 
-  switch (props?.type || props?.item?.media_type) {
-    case 'movie':
-      isEpisodes.value = false;
-      // await useAsyncData(`movie/short/${props.item?.movie_id}`, () =>
-      //   getMovieById(props.item?.movie_id)
-      // )
-      await getMovieById(props.item?.movie_id)
-        .then((response) => {
-          dataMovie.value = response;
-        })
-        .catch((e) => {})
-        .finally(() => {
-          loading.value = false;
-        });
-      break;
-    case 'tv':
-      isEpisodes.value = true;
-      // await useAsyncData(`tv/short/${props.item?.movie_id}`, () =>
-      //   getTvById(props.item?.movie_id)
-      // )
-      await getTvById(props.item?.movie_id)
-        .then((response) => {
-          dataMovie.value = response;
-        })
-        .catch((e) => {})
-        .finally(() => {
-          loading.value = false;
-        });
-      break;
-    default:
-      break;
-  }
+  // switch (props?.type || props?.item?.media_type) {
+  //   case 'movie':
+  //     isEpisodes.value = false;
+  //     await getMovieById(props.item?.movie_id)
+  //       .then((response) => {
+  //         dataMovie.value = response;
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {
+  //         loading.value = false;
+  //       });
+  //     break;
+  //   case 'tv':
+  //     isEpisodes.value = true;
+  //     await getTvById(props.item?.movie_id)
+  //       .then((response) => {
+  //         dataMovie.value = response;
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {
+  //         loading.value = false;
+  //       });
+  //     break;
+  //   default:
+  //     break;
+  // }
 
   if (dataMovie.value?.history_progress) {
     isInHistory.value = true;

@@ -181,30 +181,30 @@ const videoSrc = computed<string>(() =>
 const getData = async () => {
   // loading.value = true;
 
-  switch (props?.type || props?.item?.media_type) {
-    case 'movie':
-      await getMovieById(props.item.id)
-        .then((response) => {
-          dataMovie.value = response;
-        })
-        .catch((e) => {})
-        .finally(() => {
-          loading.value = false;
-        });
-      break;
-    case 'tv':
-      await getTvById(props.item.id)
-        .then((response) => {
-          dataMovie.value = response;
-        })
-        .catch((e) => {})
-        .finally(() => {
-          loading.value = false;
-        });
-      break;
-    default:
-      break;
-  }
+  // switch (props?.type || props?.item?.media_type) {
+  //   case 'movie':
+  //     await getMovieById(props.item.id)
+  //       .then((response) => {
+  //         dataMovie.value = response;
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {
+  //         loading.value = false;
+  //       });
+  //     break;
+  //   case 'tv':
+  //     await getTvById(props.item.id)
+  //       .then((response) => {
+  //         dataMovie.value = response;
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {
+  //         loading.value = false;
+  //       });
+  //     break;
+  //   default:
+  //     break;
+  // }
 
   if (authStore.isLogin) {
     if (dataMovie.value?.in_list) {
@@ -235,7 +235,7 @@ const getData = async () => {
   }
 };
 
-// getData();
+getData();
 
 onMounted(() => {
   const rect = cardItem.value!?.getBoundingClientRect();
