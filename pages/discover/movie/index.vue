@@ -60,6 +60,7 @@ import FilterSection from '~/components/FilterSection/FilterSection.vue';
 import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
 import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
+import { FilterModList } from '~/services/modList';
 import { FilterMovieSlug } from '~/services/movieSlug';
 import type { formfilter } from '@/types';
 
@@ -79,7 +80,8 @@ const pageSize = ref<number>(20);
 const loading = ref<boolean>(false);
 const formFilter = computed<formfilter>(() => {
   return {
-    type: route.query?.type || 'all',
+    type: route.query?.type || 'movie',
+    slug: route.query?.slug || '',
     sortBy: route.query?.sort_by || '',
     genre: route.query?.genre || '',
     year: route.query?.year || '',
@@ -110,7 +112,7 @@ const getData = async () => {
   // loading.value = true;
 
   await useAsyncData(`movie/discover/${JSON.stringify(formFilter.value)}`, () =>
-    FilterMovieSlug(formFilter.value)
+    FilterModList(formFilter.value)
   )
     .then((movieResponse) => {
       dataDiscover.value = movieResponse.data.value?.results;
@@ -128,11 +130,11 @@ loading.value = true;
 
 const {
   data: dataDiscoverCache,
-  pending,
+  status,
   refresh
 } = await useAsyncData(
   `movie/discover/${JSON.stringify(formFilter.value)}`,
-  () => FilterMovieSlug(formFilter.value),
+  () => FilterModList(formFilter.value),
   {
     // transform: (data: any) => {
     //   totalPage.value = data?.total;

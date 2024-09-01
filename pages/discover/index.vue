@@ -126,7 +126,7 @@ loading.value = true;
 
 const {
   data: dataDiscoverCache,
-  pending,
+  status,
   refresh
 } = await useAsyncData(
   `discover/${JSON.stringify(formFilter.value)}`,

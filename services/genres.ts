@@ -3,8 +3,10 @@ import { makeRequest } from './makeRequest';
 import ALLGENRES from '@/constants/data/Genres.json';
 import type { genre } from '@/types';
 
+const PREFIX_ROUTE = 'genre';
+
 export function getAllGenre() {
-  return makeRequest('/genre/get-all');
+  return makeRequest(`/${PREFIX_ROUTE}/get-all`);
 }
 
 export function getGenreByShortName(

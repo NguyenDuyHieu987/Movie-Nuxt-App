@@ -136,7 +136,7 @@ const getData = async () => {
 
 loading.value = true;
 
-const { data: dataDiscoverCache, pending } = await useAsyncData(
+const { data: dataDiscoverCache, status } = await useAsyncData(
   `discover/genre/all/${route.params.genre}/${page.value}`,
   () => getMoviesByGenres(route.params.genre, '', page.value),
   {

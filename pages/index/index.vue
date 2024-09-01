@@ -160,7 +160,7 @@ import Plus1Icon from '~/assets/svgs/icons/plus-1.svg?component';
 // import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
 // import MovieCardHorizontalTrailer from '~/components/MovieCardHorizontalTrailer/MovieCardHorizontalTrailer.vue';
 import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
-import { getAllMod } from '~/services/mods';
+import { getAllModWithData } from '~/services/mods';
 import { getMoviesByGenres } from '~/services/discover';
 import { getNowPlaying, getTopRated, getUpComing } from '~/services/movieSlug';
 import { getMyRecommend } from '~/services/recommend';
@@ -394,7 +394,7 @@ loading.value = true;
 
 const { data: modLíst, status } = await useAsyncData(
   `mod/all/${page.value}/${pageSize.value}`,
-  () => getAllMod(page.value, pageSize.value)
+  () => getAllModWithData(page.value, pageSize.value)
   // {
   //   // default: () => {
   //   //   return { results: trendingsCache.value || [] };
@@ -411,9 +411,9 @@ pageSize.value = modLíst.value?.page_size;
 page.value++;
 
 // useAsyncData(`mod/all/${page.value}/${pageSize.value}`, () =>
-//   getAllMod(page.value, pageSize.value)
+//   getAllModWithData(page.value, pageSize.value)
 // )
-//   // getAllMod(page.value, pageSize.value)
+//   // getAllModWithData(page.value, pageSize.value)
 //   .then((response) => {
 //     modLíst.value = response.data.value?.results;
 //     total.value = response.data.value?.total;
@@ -444,7 +444,7 @@ onMounted(() => {
     ) {
       loadMore.value = true;
 
-      await getAllMod(page.value, pageSize.value)
+      await getAllModWithData(page.value, pageSize.value)
         .then((response) => {
           if (response?.results?.length > 0) {
             modLíst.value.results = modLíst.value.results.concat(

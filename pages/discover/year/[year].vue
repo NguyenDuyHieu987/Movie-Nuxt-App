@@ -150,7 +150,7 @@ const getData = async () => {
 
 loading.value = true;
 
-const { data: dataDiscoverCache, pending } = await useAsyncData(
+const { data: dataDiscoverCache, status } = await useAsyncData(
   `discover/year/all/${route.params.year}/${page.value}`,
   () => getMoviesByYear(route.params.year, '', page.value),
   {

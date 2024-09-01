@@ -66,6 +66,7 @@ export declare interface formfilterRank {
 
 export declare interface formfilter {
   type: string;
+  slug?: string;
   sortBy?: string;
   genre: string | number;
   year: string | number;
