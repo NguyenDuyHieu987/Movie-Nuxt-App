@@ -13,7 +13,7 @@
         class="home-section"
       >
         <h2 class="gradient-title-default">
-          <span>{{ modLíst.results.slice(1)[0].name }}</span>
+          <span>{{ modLíst.results[0].name }}</span>
         </h2>
       </section>
 
@@ -23,7 +23,7 @@
       >
         <template #content>
           <section
-            v-for="(mod, index1) in modLíst.results.slice(1)"
+            v-for="(mod, index1) in modLíst.results"
             :key="mod.id"
             :index="index1"
             class="home-section"
