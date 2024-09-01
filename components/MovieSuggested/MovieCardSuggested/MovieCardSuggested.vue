@@ -203,15 +203,13 @@
                 </el-dropdown-item>
               </div>
 
-              <div class="separate"></div>
+              <!-- <div class="separate"></div> -->
 
-              <div class="danger-zone">
+              <!-- <div class="danger-zone">
                 <el-dropdown-item
                   key="remove-list"
                   class="remove-item"
                 >
-                  <!-- <Icon name="fa6-solid:trash-can" /> -->
-
                   <TrashCan
                     width="1.5rem"
                     height="1.5rem"
@@ -220,7 +218,7 @@
 
                   <span>Xóa khỏi Danh sách phát</span>
                 </el-dropdown-item>
-              </div>
+              </div> -->
             </el-dropdown-menu>
           </template>
         </el-dropdown>
