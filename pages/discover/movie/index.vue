@@ -5,7 +5,7 @@
       :listFilter="[
         { name: 'Tất cả', value: 'all' },
         ...dataSlug.map((item: any) => {
-          return { ...item, value: item.media_type };
+          return { ...item, value: item.type };
         })
         // { name: 'Nowplaying', value: 'nowplaying' },
         // { name: 'Popular', value: 'popular' },
