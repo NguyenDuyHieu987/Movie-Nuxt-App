@@ -426,7 +426,7 @@ export default defineNuxtConfig({
       postcss: {}
     },
     build: {
-      ssr: true,
+      // ssr: true,
       modulePreload: {
         // polyfill: false
       },
@@ -551,12 +551,13 @@ export default defineNuxtConfig({
       removeEmptyChunks: true,
       splitChunks: {}
     },
-    optimizeCSS: true,
     extractCSS: true,
+    optimizeCSS: true,
     postcss: {},
     plugins: [
       new CompressionPlugin({
-        compressionOptions: { }
+        compressionOptions: {
+         }
       })
     ]
   },
