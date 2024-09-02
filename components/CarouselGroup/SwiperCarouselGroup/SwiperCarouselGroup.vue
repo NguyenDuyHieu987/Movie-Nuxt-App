@@ -17,7 +17,7 @@
       :slides-per-group="5"
       :rewind="true"
       :speed="500"
-      :allow-touch-move="isMobile || isTabl"
+      :allow-touch-move="isMobile || isTablet"
       :virtual="true"
       effect="creative"
       :navigation="{
