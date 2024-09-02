@@ -122,7 +122,10 @@
                     {{ ' - Phần ' + dataMovie?.season?.season_number }}
                   </span> -->
               </h2>
-              <h3 class="movie-original-title">
+              <h3
+                v-if="dataMovie?.name != dataMovie?.original_name"
+                class="movie-original-title"
+              >
                 {{ dataMovie?.original_name }}
               </h3>
 
@@ -295,7 +298,10 @@
                     {{ ' - Phần ' + dataMovie?.season?.season_number }}
                   </span> -->
                   </h2>
-                  <h3 class="movie-original-title">
+                  <h3
+                    v-if="dataMovie?.name != dataMovie?.original_name"
+                    class="movie-original-title"
+                  >
                     {{ dataMovie?.original_name }}
                   </h3>
 

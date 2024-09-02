@@ -116,7 +116,10 @@
             </template>
             <template #default>
               <h2 class="movie-title">{{ dataMovie?.name }}</h2>
-              <h3 class="movie-original-title">
+              <h3
+                v-if="dataMovie?.name != dataMovie?.original_name"
+                class="movie-original-title"
+              >
                 {{ dataMovie?.original_name }}
               </h3>
 
@@ -274,7 +277,10 @@
                 </div>
                 <div class="movie-info">
                   <h2 class="movie-title">{{ dataMovie?.name }}</h2>
-                  <h3 class="movie-original-title">
+                  <h3
+                    v-if="dataMovie?.name != dataMovie?.original_name"
+                    class="movie-original-title"
+                  >
                     {{ dataMovie?.original_name }}
                   </h3>
 
