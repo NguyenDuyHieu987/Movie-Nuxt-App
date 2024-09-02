@@ -261,8 +261,8 @@ const responsiveVertical = computed<any>(() => ({
     spaceBetween: 15
   },
   1100: {
-    slidesPerView: 5,
-    slidesPerGroup: 5
+    slidesPerView: 6,
+    slidesPerGroup: 6
   },
   1300: {
     slidesPerView: 6,
