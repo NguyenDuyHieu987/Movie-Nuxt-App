@@ -168,6 +168,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     'nuxt-lodash',
+    'nuxt-delay-hydration',
     // 'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
@@ -310,6 +311,10 @@ export default defineNuxtConfig({
   //   whitelist: ['svg-defs'],
   //   whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
   // },
+
+  delayHydration: {
+    debug: process.env.NODE_ENV === 'development'
+  }
 
   // SEO
   site: {
