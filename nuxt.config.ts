@@ -399,12 +399,12 @@ export default defineNuxtConfig({
 
   vite: {
     resolve: {
-      alias: {
-        'ant-design-vue/dist': 'ant-design-vue/dist',
-        'ant-design-vue/es': 'ant-design-vue/es',
-        'ant-design-vue/lib': 'ant-design-vue/es',
-        'ant-design-vue': 'ant-design-vue/es'
-      }
+      // alias: {
+      //   'ant-design-vue/dist': 'ant-design-vue/dist',
+      //   'ant-design-vue/es': 'ant-design-vue/es',
+      //   'ant-design-vue/lib': 'ant-design-vue/es',
+      //   'ant-design-vue': 'ant-design-vue/es'
+      // }
     },
     plugins: [
       svgLoader({}),
@@ -419,7 +419,7 @@ export default defineNuxtConfig({
       noExternal: []
     },
     optimizeDeps: {
-      include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
+      // include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
     },
     css: {
       preprocessorOptions: {
@@ -430,10 +430,12 @@ export default defineNuxtConfig({
         }
       },
       transformer: 'postcss',
-      // lightningcss: {
-      //   errorRecovery: true
-      // },
-      postcss: {}
+      lightningcss: {
+        errorRecovery: true
+      },
+      postcss: {
+        plugins: [require('postcss-import')(), require('autoprefixer')()]
+      }
     },
     build: {
       // ssr: true,
