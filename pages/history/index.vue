@@ -210,7 +210,7 @@ onMounted(() => {
     }
 
     if (
-      utils.isScrollBottom() &&
+      utils.isWindowScrollBottom() &&
       total.value > limit.value &&
       dataHistory.value?.length < total.value
     ) {

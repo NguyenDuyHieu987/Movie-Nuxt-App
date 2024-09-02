@@ -13,7 +13,8 @@ export const useUtils = () => {
     isEmailValid,
     isSpecialCharacters,
     isVietnameseTones,
-    isScrollBottom,
+    isWindowScrollBottom,
+    isElementScrollBottom,
     minmax,
     serialize,
     handleAddItemToList,
@@ -75,11 +76,27 @@ export function isVietnameseTones(str: string): boolean {
   return VIETNAMESE_REGEX.test(str);
 }
 
-export function isScrollBottom(options?: { offset?: number }): boolean {
+export function isWindowScrollBottom(options?: { offset?: number }): boolean {
   if (import.meta.client) {
     const scrollHeight = Math.round(window.scrollY + window.innerHeight);
 
     return scrollHeight == document.documentElement.scrollHeight;
+  } else {
+    return false;
+  }
+}
+
+export function isElementScrollBottom(
+  element: HTMLElement,
+  options?: { offset?: number }
+): boolean {
+  if (import.meta.client) {
+    const scrollHeight = Math.ceil(element.scrollTop + element.clientHeight);
+
+    console.log('output: ', scrollHeight);
+    console.log('target: ', element.scrollHeight);
+
+    return scrollHeight >= element.scrollHeight;
   } else {
     return false;
   }

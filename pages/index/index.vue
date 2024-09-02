@@ -428,7 +428,7 @@ onMounted(() => {
     }
 
     if (
-      utils.isScrollBottom() &&
+      utils.isWindowScrollBottom() &&
       total.value > pageSize.value &&
       modLíst.value?.results?.length < total.value
     ) {

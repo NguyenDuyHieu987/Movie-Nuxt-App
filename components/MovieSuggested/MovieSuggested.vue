@@ -78,12 +78,15 @@ const loading = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
 
 onMounted(() => {
-  window.onscroll = async () => {
+  const sideView = $('.play-container .side-view');
+
+  // window.onscroll = async () => {
+  sideView.on('scroll', async function () {
     if (dataSuggested.value?.length == 0) {
       return;
     }
 
-    if (utils.isScrollBottom()) {
+    if (utils.isElementScrollBottom(sideView[0])) {
       loadMore.value = true;
 
       await getSimilar(
@@ -104,7 +107,7 @@ onMounted(() => {
           loadMore.value = false;
         });
     }
-  };
+  });
 });
 
 watch(

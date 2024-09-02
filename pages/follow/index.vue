@@ -213,7 +213,7 @@ onMounted(() => {
     }
 
     if (
-      utils.isScrollBottom() &&
+      utils.isWindowScrollBottom() &&
       total.value > limit.value &&
       dataList.value?.length < total.value
     ) {

@@ -113,7 +113,7 @@ onMounted(() => {
     }
 
     if (
-      utils.isScrollBottom() &&
+      utils.isWindowScrollBottom() &&
       total.value > 20 &&
       commentsList.value?.length < total.value
     ) {
