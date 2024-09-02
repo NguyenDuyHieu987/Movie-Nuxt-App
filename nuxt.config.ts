@@ -431,7 +431,6 @@ export default defineNuxtConfig({
       },
       transformer: 'lightningcss',
       lightningcss: {
-        minify: true,
         errorRecovery: true
       },
       postcss: {}
