@@ -433,7 +433,7 @@ export default defineNuxtConfig({
       ssrManifest: true,
       sourcemap: 'hidden',
       // assetsDir: '_nuxt/',
-      // cssMinify: 'lightningcss',
+      cssMinify: 'lightningcss',
       cssCodeSplit: true,
       reportCompressedSize: true,
       minify: 'terser',
