@@ -18,7 +18,7 @@
       :rewind="true"
       :speed="500"
       :allow-touch-move="false"
-      :virtual="false"
+      :virtual="true"
       effect="creative"
       :navigation="{
         prevEl: '.swiper-button-prev',

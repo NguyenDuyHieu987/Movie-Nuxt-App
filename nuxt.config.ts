@@ -223,6 +223,7 @@ export default defineNuxtConfig({
   },
 
   image: {
+    domains: ['media.phimhay247.online'],
     // provider: 'cloudinary',
     presets: {
       avatar: {

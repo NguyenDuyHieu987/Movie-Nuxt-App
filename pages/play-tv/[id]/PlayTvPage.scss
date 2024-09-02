@@ -1,3 +1,7 @@
+// .footer {
+//   margin-right: var(--side-view-play-width);
+// }
+
 .play-tv {
   position: relative;
   height: 100%;
@@ -188,12 +192,19 @@
     }
 
     .side-view {
-      position: relative;
+      // position: relative;
       flex: 0 0 var(--side-view-play-width);
       width: var(--side-view-play-width);
       max-width: var(--side-view-play-width);
       padding-top: 15px;
       // margin-left: 24px;
+      position: sticky;
+      padding-right: 17px;
+      // top: calc(var(--header-height) + 15px);
+      top: calc(var(--header-height));
+      right: 0;
+      max-height: calc(100vh - var(--header-height));
+      overflow-y: auto;
 
       .secondary-movie-content {
         display: flex;
