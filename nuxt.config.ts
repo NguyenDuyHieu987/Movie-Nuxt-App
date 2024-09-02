@@ -314,7 +314,7 @@ export default defineNuxtConfig({
 
   delayHydration: {
     debug: process.env.NODE_ENV === 'development'
-  }
+  },
 
   // SEO
   site: {
