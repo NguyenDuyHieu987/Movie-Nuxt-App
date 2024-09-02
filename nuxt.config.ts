@@ -410,7 +410,8 @@ export default defineNuxtConfig({
       svgLoader({}),
       compression({
         algorithm: 'brotliCompress',
-        ext: '.br'
+        ext: '.br',
+        compressionOptions: {}
       })
     ],
     ssr: {
@@ -428,8 +429,11 @@ export default defineNuxtConfig({
             '@use "~/assets/style/globalStyle/_variables.scss" as *;'
         }
       },
-      transformer: 'postcss',
-      lightningcss: {},
+      transformer: 'lightningcss',
+      lightningcss: {
+        minify: true,
+        errorRecovery: true
+      },
       postcss: {}
     },
     build: {
