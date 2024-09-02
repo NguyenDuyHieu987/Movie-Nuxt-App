@@ -93,9 +93,6 @@ export function isElementScrollBottom(
   if (import.meta.client) {
     const scrollHeight = Math.ceil(element.scrollTop + element.clientHeight);
 
-    console.log('output: ', scrollHeight);
-    console.log('target: ', element.scrollHeight);
-
     return scrollHeight >= element.scrollHeight;
   } else {
     return false;

@@ -5,6 +5,7 @@ import path, { resolve } from 'path';
 import { isProduction } from 'std-env';
 import svgLoader from 'vite-svg-loader';
 import { fileURLToPath } from 'url';
+import CompressionPlugin from 'compression-webpack-plugin';
 
 const antdVersion: number = +version.split('.')[0];
 
@@ -425,7 +426,7 @@ export default defineNuxtConfig({
       postcss: {}
     },
     build: {
-      // ssr: true,
+      ssr: true,
       modulePreload: {
         // polyfill: false
       },
@@ -435,22 +436,22 @@ export default defineNuxtConfig({
       // assetsDir: '_nuxt/',
       cssMinify: 'lightningcss',
       cssCodeSplit: true,
-      reportCompressedSize: true,
-      minify: 'terser',
-      terserOptions: {
-        ecma: 2020,
-        sourceMap: true,
-        parse: {
-          html5_comments: false
-        },
-        compress: true,
-        toplevel: true,
-        mangle: {},
-        format: {
-          ecma: 2020,
-          comments: false
-        }
-      }
+      reportCompressedSize: true
+      // minify: 'terser',
+      // terserOptions: {
+      //   ecma: 2020,
+      //   sourceMap: true,
+      //   parse: {
+      //     html5_comments: false
+      //   },
+      //   compress: true,
+      //   toplevel: true,
+      //   mangle: {},
+      //   format: {
+      //     ecma: 2020,
+      //     comments: false
+      //   }
+      // }
     },
     vue: {
       script: {
@@ -541,9 +542,23 @@ export default defineNuxtConfig({
   },
 
   webpack: {
-    optimization: {},
+    aggressiveCodeRemoval: true,
+    optimization: {
+      mangleExports: 'size',
+      mergeDuplicateChunks: true,
+      moduleIds: 'size',
+      removeAvailableModules: true,
+      removeEmptyChunks: true,
+      splitChunks: {}
+    },
     optimizeCSS: true,
-    postcss: {}
+    extractCSS: true,
+    postcss: {},
+    plugins: [
+      new CompressionPlugin({
+        compressionOptions: { }
+      })
+    ]
   },
 
   generate: {
