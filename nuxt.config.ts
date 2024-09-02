@@ -5,6 +5,7 @@ import path, { resolve } from 'path';
 import { isProduction } from 'std-env';
 import svgLoader from 'vite-svg-loader';
 import { fileURLToPath } from 'url';
+import compression from 'vite-plugin-compression';
 import CompressionPlugin from 'compression-webpack-plugin';
 
 const antdVersion: number = +version.split('.')[0];
@@ -405,7 +406,13 @@ export default defineNuxtConfig({
         'ant-design-vue': 'ant-design-vue/es'
       }
     },
-    plugins: [svgLoader({})],
+    plugins: [
+      svgLoader({}),
+      compression({
+        algorithm: 'brotliCompress',
+        ext: '.br'
+      })
+    ],
     ssr: {
       // external: ['ant-design-vue'],
       noExternal: []
@@ -436,22 +443,25 @@ export default defineNuxtConfig({
       // assetsDir: '_nuxt/',
       cssMinify: 'lightningcss',
       cssCodeSplit: true,
-      reportCompressedSize: true
-      // minify: 'terser',
-      // terserOptions: {
-      //   ecma: 2020,
-      //   sourceMap: true,
-      //   parse: {
-      //     html5_comments: false
-      //   },
-      //   compress: true,
-      //   toplevel: true,
-      //   mangle: {},
-      //   format: {
-      //     ecma: 2020,
-      //     comments: false
-      //   }
-      // }
+      reportCompressedSize: true,
+      minify: 'terser',
+      terserOptions: {
+        ecma: 2020,
+        sourceMap: true,
+        parse: {
+          html5_comments: false
+        },
+        compress: true,
+        toplevel: true,
+        mangle: {},
+        format: {
+          ecma: 2020,
+          comments: false
+        }
+      },
+      rollupOptions: {
+        // chunkSizeWarningLimit: 500
+      }
     },
     vue: {
       script: {
@@ -549,15 +559,30 @@ export default defineNuxtConfig({
       moduleIds: 'size',
       removeAvailableModules: true,
       removeEmptyChunks: true,
-      splitChunks: {}
+      splitChunks: {
+        minSize: 10000
+      }
     },
     extractCSS: true,
     optimizeCSS: true,
     postcss: {},
+    loaders: {
+      esbuild: {
+        options: {
+          minifyWhitespace: true,
+          minifyIdentifiers: true,
+          minifySyntax: true,
+          legalComments: 'none',
+          css: true
+        }
+      }
+    },
     plugins: [
       new CompressionPlugin({
+        algorithm: 'brotliCompress',
         compressionOptions: {
-         }
+          maxOutputLength: 10000
+        }
       })
     ]
   },

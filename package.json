@@ -121,6 +121,7 @@
     "typescript": "5.5.4",
     "unplugin-auto-import": "^0.18.2",
     "unplugin-vue-components": "^0.27.4",
+    "vite-plugin-compression": "^0.5.1",
     "vite-svg-loader": "^5.1.0",
     "vitest": "^2.0.5",
     "vue-gtag-next": "^1.14.0",
