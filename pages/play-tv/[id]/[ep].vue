@@ -579,6 +579,7 @@ if (authStore.isLogin) {
       .catch((e) => {});
   }
 }
+
 loading.value = false;
 
 useHead({
