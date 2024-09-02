@@ -158,8 +158,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@ant-design-vue/nuxt',
-    '@element-plus/nuxt',
-    // '@vueuse/nuxt',
+    '@element-plus/nuxt', // '@vueuse/nuxt',
     '@pinia/nuxt',
     'nuxt-swiper',
     '@nuxt/image',
@@ -168,11 +167,11 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     'nuxt-lodash',
-    'nuxt-delay-hydration',
-    // 'nuxt-purgecss',
+    'nuxt-delay-hydration', // 'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/device'
   ],
 
   // extends: ['nuxt-seo-kit'],

@@ -65,6 +65,7 @@
     "@ant-design-vue/nuxt": "^1.4.2",
     "@element-plus/nuxt": "^1.0.10",
     "@nuxt/fonts": "^0.7.2",
+    "@nuxtjs/device": "^3.2.2",
     "@nuxtjs/fontaine": "^0.4.3",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/seo": "2.0.0-rc.19",

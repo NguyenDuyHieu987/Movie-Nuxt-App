@@ -17,7 +17,7 @@
       :slides-per-group="5"
       :rewind="true"
       :speed="500"
-      :allow-touch-move="false"
+      :allow-touch-move="!isDesktop"
       :virtual="true"
       effect="creative"
       :navigation="{
@@ -58,6 +58,7 @@
 <script setup lang="ts">
 import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
 import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+import { useBreakpoints } from '@vueuse/core';
 
 // import { Navigation, Virtual } from 'swiper/modules';
 
@@ -77,6 +78,8 @@ withDefaults(
 const emits = defineEmits<{
   onLoaded: [];
 }>();
+
+const { isDesktop } = useDevice();
 
 const onSwiperLoaded = () => {
   emits('onLoaded');

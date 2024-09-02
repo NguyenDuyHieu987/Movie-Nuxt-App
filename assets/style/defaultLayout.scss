@@ -145,11 +145,11 @@
 
 body:has(.body-content.play) {
   &::-webkit-scrollbar {
-    // display: none;
+    display: none;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: transparent;
+    // background-color: transparent;
   }
 }
 

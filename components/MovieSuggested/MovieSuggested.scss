@@ -61,11 +61,16 @@
       gap: 10px;
     }
 
+    &:has(.loading-suggested) {
+      // padding-bottom: 60px;
+    }
+
     .loading-suggested {
+      position: relative;
       position: absolute;
       left: 50%;
-      right: 50%;
-      bottom: 0;
+      bottom: 15px;
+      margin: 0px auto;
       transform: translate(-50%, -50%);
     }
   }
