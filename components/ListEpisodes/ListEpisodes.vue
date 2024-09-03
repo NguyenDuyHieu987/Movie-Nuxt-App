@@ -174,7 +174,7 @@ const totalEpisode = ref<number>(0);
 const dataEpisode = ref<any[][]>(
   props.dataMovie?.episodes
     ? props.dataMovie?.episodes
-        .filter((item: any) => item.air_date != null)
+        // .filter((item: any) => item.air_date != null)
         .reverse()
     : [[]]
 );
@@ -189,8 +189,8 @@ const numberTabsEpisode = computed<number>(() =>
 );
 const selectedSeasonId = ref<string>(props.dataMovie?.season_id);
 const currentEpisode = ref<number>(
-  route.params?.ep?.replace('tap-', '')
-    ? +route.params?.ep?.replace('tap-', '')
+  (route.params?.ep as string)?.replace('tap-', '')
+    ? +(route.params?.ep as string)?.replace('tap-', '')
     : 1
 );
 
@@ -251,8 +251,8 @@ watch(
         limit.value
       )
         .then((response) => {
-          dataEpisode.value[selectedTabEpisode.value - 1] =
-            response?.results.filter((item: any) => item.air_date != null);
+          dataEpisode.value[selectedTabEpisode.value - 1] = response?.results;
+          // .filter((item: any) => item.air_date != null);
           // .reverse();
 
           totalEpisode.value = response?.total_episode;
@@ -310,7 +310,7 @@ const handleChangeSeason = async (value: string) => {
   await getSeason(props.dataMovie?.id, selectedSeasonId.value)
     .then((response) => {
       dataEpisode.value = response?.episodes
-        .filter((item: any) => item.air_date != null)
+        // .filter((item: any) => item.air_date != null)
         .reverse();
     })
     .catch((e) => {
@@ -373,9 +373,10 @@ const onChangeEpisodeTab = (tab: TabPaneName) => {
     limit.value
   )
     .then((response) => {
-      dataEpisode.value[Number(tab) - 1] = response?.results.filter(
-        (item: any) => item.air_date != null
-      );
+      dataEpisode.value[Number(tab) - 1] = response?.results;
+      // .filter(
+      //   (item: any) => item.air_date != null
+      // );
       // .reverse();
     })
     .catch((e) => {})

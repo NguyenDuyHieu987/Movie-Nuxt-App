@@ -63,8 +63,9 @@ const utils = useUtils();
 const dataSeason = ref<any>(props.dataMovie?.seasons);
 const dataEpisode = ref<any[]>(
   props.dataMovie?.episodes
-    ? props.dataMovie?.episodes.filter((item: any) => item.air_date != null)
-    : []
+    ? props.dataMovie?.episodes
+    : // .filter((item: any) => item.air_date != null)
+      []
 );
 const loading = ref<boolean>(props.loading);
 
