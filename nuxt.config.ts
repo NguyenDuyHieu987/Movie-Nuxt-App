@@ -397,6 +397,16 @@ export default defineNuxtConfig({
 
   optimization: {},
 
+  postcss: {
+    plugins: {
+      'postcss-import': {},
+      autoprefixer: {},
+      cssnano: {
+        preset: 'default'
+      }
+    }
+  },
+
   vite: {
     resolve: {
       // alias: {
@@ -434,7 +444,7 @@ export default defineNuxtConfig({
         errorRecovery: true
       },
       postcss: {
-        plugins: [require('postcss-import')(), require('autoprefixer')()]
+        plugins: [require('postcss-import')]
       }
     },
     build: {
