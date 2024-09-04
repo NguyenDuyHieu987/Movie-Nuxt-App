@@ -439,7 +439,7 @@ export default defineNuxtConfig({
             '@use "~/assets/style/globalStyle/_variables.scss" as *;'
         }
       },
-      transformer: 'postcss',
+      transformer: 'lightningcss',
       lightningcss: {
         errorRecovery: true
       },
