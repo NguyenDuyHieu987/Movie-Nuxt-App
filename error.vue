@@ -43,7 +43,7 @@
                 type="text"
                 size="large"
                 class="default"
-                @click="$router.back()"
+                @click="router.back()"
               >
                 Quay lại
               </a-button>
@@ -82,6 +82,7 @@
 <script setup lang="ts">
 import { useOnline } from '@vueuse/core';
 import type { ResultStatusType } from 'ant-design-vue/es/result';
+import type { NuxtError } from '#app';
 
 type errorResponse = {
   url: string;
@@ -99,6 +100,7 @@ type errorResponse = {
 const props = defineProps<{ error: errorResponse }>();
 
 const utils = useUtils();
+const router = useRouter();
 const nuxtLoadingIndicator = useLoadingIndicator();
 const isOnline = useOnline();
 

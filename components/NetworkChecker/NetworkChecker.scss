@@ -1,8 +1,8 @@
 .network-checker-notification {
   position: fixed;
-  bottom: 15px;
+  bottom: 0px;
   left: 20px;
-  transform: translate(0%, 120%);
+  transform: translate(0%, 100%);
   width: 330px;
   font-size: 1.55rem;
   z-index: calc(var(--sider-z-index) + 1);
@@ -66,6 +66,7 @@
   to {
     opacity: 1;
     transform: translate(0%, 0%);
+    bottom: 15px;
   }
 }
 

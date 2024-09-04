@@ -76,25 +76,26 @@ onErrorCaptured((err) => {
 watch(
   isOnline,
   async (newVal, oldVal) => {
-    if (isOnline.value == false) {
-      throw createError({
-        fatal: true,
-        statusCode: 500,
-        data: {
-          networkError: true
-        }
-      });
-    }
+    // if (isOnline.value == false) {
+    //   console.log(isOnline.value);
+    //   throw showError({
+    //     fatal: true,
+    //     statusCode: 500,
+    //     data: {
+    //       networkError: true
+    //     }
+    //   });
+    // }
 
     if (oldVal == true && newVal == false) {
       showOffline.value = true;
       showOnline.value = false;
 
-      await wait(5000);
-      showOffline.value = false;
+      // await wait(5000);
+      // showOffline.value = false;
     } else if (oldVal == false && newVal == true) {
-      showOffline.value = false;
       showOnline.value = true;
+      showOffline.value = false;
 
       await wait(5000);
       showOnline.value = false;
