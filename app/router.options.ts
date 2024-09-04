@@ -22,15 +22,15 @@ type ScrollPosition = Awaited<ReturnType<RouterScrollBehavior>>;
 //   }
 // };
 
-export default <RouterConfig>{
-  scrollBehavior(to, from, savedPosition) {
-    return {
-      left: 0,
-      top: 0,
-      behavior: 'instant'
-    };
-  }
-};
+// export default <RouterConfig>{
+//   scrollBehavior(to, from, savedPosition) {
+//     return {
+//       left: 0,
+//       top: 0,
+//       behavior: 'instant'
+//     };
+//   }
+// };
 
 // export default <RouterConfig>{
 //   scrollBehavior(to, from, savedPosition) {
