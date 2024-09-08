@@ -227,6 +227,7 @@ export default defineNuxtConfig({
 
   image: {
     domains: ['proxy.phimhay247.online'],
+    dir: '',
     // provider: 'cloudinary',
     presets: {
       avatar: {
