@@ -226,8 +226,7 @@ export default defineNuxtConfig({
   },
 
   image: {
-    domains: ['proxy.phimhay247.online'],
-    dir: '',
+    // domains: ['proxy.phimhay247.online'],
     // provider: 'cloudinary',
     presets: {
       avatar: {
@@ -440,7 +439,7 @@ export default defineNuxtConfig({
             '@use "~/assets/style/globalStyle/_variables.scss" as *;'
         }
       },
-      transformer: 'lightningcss',
+      transformer: 'postcss',
       lightningcss: {
         errorRecovery: true
       },
