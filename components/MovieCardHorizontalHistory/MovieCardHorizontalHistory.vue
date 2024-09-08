@@ -32,10 +32,10 @@
     <NuxtLink
       :to="{
         path: isEpisodes
-          ? `/info-tv/${dataMovieDetail?.movie_id}${utils.convertPath.toPathInfo_Play(
+          ? `/info-tv/${dataMovieDetail?.id}${utils.convertPath.toPathInfo_Play(
               dataMovieDetail?.name
             )}`
-          : `/info-movie/${dataMovieDetail?.movie_id}${utils.convertPath.toPathInfo_Play(
+          : `/info-movie/${dataMovieDetail?.id}${utils.convertPath.toPathInfo_Play(
               dataMovieDetail?.name
             )}`
       }"
