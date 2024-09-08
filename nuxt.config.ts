@@ -449,9 +449,10 @@ export default defineNuxtConfig({
     },
     build: {
       // ssr: true,
-      modulePreload: {
-        // polyfill: false
-      },
+      // modulePreload: {
+      //   // polyfill: false
+      // },
+      modulePreload: false,
       // manifest: true,
       // ssrManifest: true,
       sourcemap: 'hidden',
