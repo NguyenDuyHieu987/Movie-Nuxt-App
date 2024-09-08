@@ -440,7 +440,7 @@ export default defineNuxtConfig({
             '@use "~/assets/style/globalStyle/_variables.scss" as *;'
         }
       },
-      transformer: 'postcss',
+      transformer: 'lightningcss',
       lightningcss: {
         errorRecovery: true
       },
@@ -457,7 +457,7 @@ export default defineNuxtConfig({
       // ssrManifest: true,
       sourcemap: 'hidden',
       // assetsDir: '_nuxt/',
-      cssMinify: 'postcss',
+      cssMinify: 'lightningcss',
       cssCodeSplit: false,
       reportCompressedSize: true,
       minify: 'terser',
