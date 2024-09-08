@@ -361,19 +361,6 @@ export default defineNuxtConfig({
     //   }
     //   removePagesMatching(/\/components\//, pages);
     // }
-    // prevent some prefetch behaviour
-    'build:manifest': (manifest) => {
-      for (const key in manifest) {
-        manifest[key].dynamicImports = [];
-
-        const file = manifest[key];
-        if (file.assets) {
-          file.assets = file.assets.filter(
-            (assetName) => !/.+\.(gif|jpe?g|png|svg)$/.test(assetName)
-          );
-        }
-      }
-    }
   },
 
   build: {
