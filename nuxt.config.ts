@@ -175,7 +175,8 @@ export default defineNuxtConfig({
     // SEO
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
+    'nuxt-vitalizer'
   ],
 
   // extends: ['nuxt-seo-kit'],
@@ -318,6 +319,11 @@ export default defineNuxtConfig({
 
   delayHydration: {
     debug: process.env.NODE_ENV === 'development'
+  },
+
+  vitalizer: {
+    // Remove the render-blocking entry CSS
+    disableStylesheets: 'entry'
   },
 
   // SEO
