@@ -450,7 +450,8 @@ export default defineNuxtConfig({
     build: {
       // ssr: true,
       modulePreload: {
-        polyfill: false
+        polyfill: false,
+        resolveDependencies: () => []
       },
       polyfillModulePreload: false,
       // manifest: true,
