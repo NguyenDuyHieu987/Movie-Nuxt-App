@@ -22,6 +22,7 @@
               alt=""
               :height="30"
               :width="30"
+              preload
             />
             <span> PhimHay247</span>
           </NuxtLink>

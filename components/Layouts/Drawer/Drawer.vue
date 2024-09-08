@@ -37,7 +37,6 @@
                 })
               : userAccount?.avatar
           "
-          loading="lazy"
           alt=""
           preload
         />
