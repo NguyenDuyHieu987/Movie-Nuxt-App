@@ -36,7 +36,6 @@
                 })
               : userAccount?.avatar
           "
-          loading="lazy"
           alt=""
           preload
         />
@@ -44,7 +43,6 @@
           v-else
           class="avatar"
           :src="getImage(`common_user_avatar.png`, 'user_avatar', { w: 50 })"
-          loading="lazy"
           alt=""
           preload
         />

@@ -452,8 +452,8 @@ export default defineNuxtConfig({
       modulePreload: {
         // polyfill: false
       },
-      manifest: true,
-      ssrManifest: true,
+      // manifest: true,
+      // ssrManifest: true,
       sourcemap: 'hidden',
       // assetsDir: '_nuxt/',
       cssMinify: 'lightningcss',
