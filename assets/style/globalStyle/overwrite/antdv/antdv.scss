@@ -150,7 +150,10 @@
 }
 
 .ant-select {
+  color: inherit;
+
   .ant-select-selector {
+    color: inherit;
     background-color: var(--dropdown-select-background-color) !important;
   }
 
@@ -208,6 +211,7 @@
   border: 0.1px solid var(--dropdown-border-color);
   box-shadow: var(--box-shadow-small);
   background-color: var(--dropdown-select-background-color);
+  color: inherit;
 
   .rc-virtual-list-holder-inner {
     .ant-select-item {
