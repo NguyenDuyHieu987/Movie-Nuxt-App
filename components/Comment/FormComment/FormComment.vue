@@ -236,19 +236,23 @@ watchEffect(async () => {
   }
 });
 
-const handleChange = (e: any) => {
-  // e.preventDefault();
+const handleChange = async (e: any) => {
+  const actualValueInput =
+    contenteditableInputField.value!?.innerText == '\n'
+      ? contenteditableInputField.value!?.innerText.replace('\n', '')
+      : contenteditableInputField.value!?.innerText;
 
-  if (contenteditableInputField.value!?.innerText.length >= 3000) {
+  if (actualValueInput.length >= 3000) {
     contenteditableInputField.value!.innerHTML =
       contenteditableInputField.value!.innerHTML.slice(0, 3000);
     e.preventDefault();
     return;
   }
 
-  if (contenteditableInputField.value!?.innerText.length > 0) {
+  if (actualValueInput.length > 0) {
     isChanged.value = true;
   } else {
+    contenteditableInputField.value!.innerHTML = '';
     isChanged.value = false;
   }
 
@@ -304,12 +308,11 @@ const handleChange = (e: any) => {
 
   switch (props.action) {
     case 'post':
-      disabledButton.value =
-        contenteditableInputField.value?.innerText.length == 0;
+      disabledButton.value = actualValueInput.length == 0;
       break;
     case 'edit':
       disabledButton.value =
-        contenteditableInputField.value?.innerText.length == 0 ||
+        actualValueInput.length == 0 ||
         contenteditableInputField.value?.innerHTML == props.comment?.content;
       break;
   }
@@ -413,18 +416,28 @@ const handleClickCanel = () => {
   isChanged.value = false;
   isShowEmoji.value = false;
   isShowActions.value = false;
+  disabledButton.value = true;
   contenteditableInputField.value!.innerHTML = '';
   emits('onClickCancel');
 };
 
 const onSelectEmoji = (emoji: any) => {
-  // console.log(emoji);
-  if (utils.isStringEmpty(contenteditableInputField.value!.innerText)) {
-    contenteditableInputField.value!.innerHTML = '';
-  }
-
   contenteditableInputField.value!.innerHTML += emoji.i;
-  disabledButton.value = content.value.length == 0;
+
+  // console.log(emoji);
+  // if (utils.isStringEmpty(actualValueInput)) {
+  //   contenteditableInputField.value!.innerHTML = '';
+  // }
+
+  const actualValueInput =
+    contenteditableInputField.value!?.innerText == '\n'
+      ? contenteditableInputField.value!?.innerText.replace('\n', '')
+      : contenteditableInputField.value!?.innerText;
+
+  isChanged.value = true;
+
+  // disabledButton.value = content.value.length == 0;
+  disabledButton.value = actualValueInput.length == 0;
 };
 </script>
 
