@@ -419,11 +419,11 @@ const handleClickCanel = () => {
 
 const onSelectEmoji = (emoji: any) => {
   // console.log(emoji);
-  if(utils.isStringEmpty(contenteditableInputField.value!.innerText)){
-  contenteditableInputField.value!.innerHTML = '';
+  if (utils.isStringEmpty(contenteditableInputField.value!.innerText)) {
+    contenteditableInputField.value!.innerHTML = '';
   }
 
-    contenteditableInputField.value!.innerHTML += emoji.i;
+  contenteditableInputField.value!.innerHTML += emoji.i;
   disabledButton.value = content.value.length == 0;
 };
 </script>
