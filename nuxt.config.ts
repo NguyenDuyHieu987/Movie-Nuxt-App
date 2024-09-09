@@ -139,7 +139,7 @@ export default defineNuxtConfig({
   },
 
   features: {
-    inlineStyles: true
+    inlineStyles: false
   },
 
   devtools: { enabled: false },
@@ -181,7 +181,7 @@ export default defineNuxtConfig({
 
   // extends: ['nuxt-seo-kit'],
   antd: {
-    extractStyle: true,
+    extractStyle: false,
     icons: false
   },
 
