@@ -12,7 +12,7 @@
               { w: windowWidth }
             )
           "
-          loading="lazy"
+          preload
           format="avif"
           alt=""
         />

@@ -190,7 +190,7 @@ const props = withDefaults(
 
 const store = useStore();
 const authStore = useAuthStore();
-const { isLogin, loadingUser } = storeToRefs<any>(authStore);
+const { isLogin, loadingUser } = storeToRefs(authStore);
 const router = useRouter();
 const route = useRoute();
 const dataSearch = ref<any[]>([]);
@@ -205,7 +205,7 @@ const loadingTopSearch = ref<boolean>(false);
 const isShowSearchResults = ref<boolean>(false);
 const isShowSearch = ref<boolean>(false);
 const debounce = ref<any>();
-const valueInput = ref<string>(route.query?.q);
+const valueInput = ref<string>(route.query?.q as string);
 const isFocusSearchInput = ref<boolean>(false);
 
 const getData = async () => {
@@ -260,7 +260,7 @@ onMounted(() => {
 
     const st = window.scrollY || document.documentElement.scrollTop;
 
-    if (route.name?.includes('home')) {
+    if ((route.name as string)?.includes('home')) {
       if (st > lastScrollTop) {
         // downscroll code
         if (window.scrollY >= billboardItem!?.offsetHeight) {
@@ -298,7 +298,7 @@ onMounted(() => {
 });
 
 watchEffect(() => {
-  valueInput.value = route.query?.q;
+  valueInput.value = route.query?.q as string;
 });
 
 const handleChangeInput = (query: string) => {

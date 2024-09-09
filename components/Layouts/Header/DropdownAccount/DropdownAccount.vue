@@ -30,11 +30,11 @@
           v-if="isLogin"
           class="avatar"
           :src="
-            !isNaN(+userAccount?.avatar)
+            !isNaN(+(userAccount?.avatar as string))
               ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar', {
                   w: 50
                 })
-              : userAccount?.avatar
+              : (userAccount?.avatar as string)
           "
           alt=""
           preload
@@ -66,7 +66,7 @@
 
         <el-dropdown-item v-if="isLogin && role == 'admin'">
           <NuxtLink
-            :to="$config.app.adminWebsiteUrl"
+            :to="runtimeConfig.app.adminWebsiteUrl"
             target="_blank"
           >
             Bảng điều khiển
@@ -97,7 +97,8 @@ import { storeToRefs } from 'pinia';
 
 const utils = useUtils();
 const authStore = useAuthStore();
-const { isLogin, userAccount, role } = storeToRefs<any>(authStore);
+const runtimeConfig = useRuntimeConfig();
+const { isLogin, userAccount, role } = storeToRefs(authStore);
 
 const handleLogout = () => {
   authStore.logOut();
