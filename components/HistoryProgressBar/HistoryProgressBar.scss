@@ -2,12 +2,12 @@
   display: inline;
   margin: 0px;
   // overflow: hidden;
+  color: inherit;
 
   .ant-progress-inner {
     /* height: 80px !important;
     width: 80px !important; */
     background-color: #3535358a;
-    color: inherit;
 
     .ant-progress-bg {
       height: 5px !important;
@@ -17,12 +17,12 @@
         var(--loading-progress-bar2)
       ) !important;
       /* transition: width 0.3s; */
-      color: inherit;
     }
   }
 
   .ant-progress-text {
     font-size: 1.4rem;
+    color: inherit;
 
     &:has(.success) {
       white-space: normal;
