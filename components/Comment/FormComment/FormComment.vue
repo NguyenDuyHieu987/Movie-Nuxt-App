@@ -12,11 +12,11 @@
           v-if="isLogin && userAccount?.avatar && !authStore.loadingUser"
           class="avatar"
           :src="
-            !isNaN(+userAccount?.avatar)
+            !isNaN(+(userAccount?.avatar as string))
               ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar', {
                   w: 50
                 })
-              : userAccount?.avatar
+              : (userAccount?.avatar as string)
           "
           loading="lazy"
           alt=""

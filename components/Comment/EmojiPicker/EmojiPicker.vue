@@ -19,7 +19,7 @@ import 'vue3-emoji-picker/css';
 
 const props = withDefaults(
   defineProps<{
-    isShow: boolean;
+    isShow?: boolean;
   }>(),
   {
     isShow: false

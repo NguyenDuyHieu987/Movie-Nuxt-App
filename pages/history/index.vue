@@ -51,7 +51,10 @@
               }"
               :class="{ fixed: isFixedNavActiom }"
             >
-              <SortTab @onChangeTab="handleChangeTab" />
+              <SortTab
+                :activeTab="activeTab"
+                @onChangeTab="handleChangeTab"
+              />
             </div>
 
             <Transition name="slide-top">

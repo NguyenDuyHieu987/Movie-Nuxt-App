@@ -85,7 +85,7 @@
                 nextEl: '.swiper-button-next'
               }"
               :initial-slide="
-                genres.findIndex((item1) => item1.id == route.query?.genre)
+                genres.findIndex((item1: any) => item1.id == route.query?.genre)
               "
             >
               <SwiperSlide
@@ -94,14 +94,17 @@
                 class="filter-option"
                 :index="index"
                 :class="{
-                  active: item.id == route.query?.genre
+                  active: item.id == +(route.query?.genre as string)
                 }"
               >
                 <NuxtLink
                   :to="{
                     query: {
                       ...route.query,
-                      genre: item.id != route.query?.genre ? item.id : undefined
+                      genre:
+                        item.id != +(route.query?.genre as string)
+                          ? item.id
+                          : undefined
                     }
                   }"
                 >
