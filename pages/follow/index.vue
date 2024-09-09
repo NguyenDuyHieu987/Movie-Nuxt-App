@@ -155,6 +155,7 @@ const authStore = useAuthStore();
 const utils = useUtils();
 const { isLogin } = storeToRefs(authStore);
 const route = useRoute();
+const router = useRouter();
 const dataList = ref<any[]>([]);
 const valueInput = ref<string>('');
 const debounce = ref<any>();
@@ -168,7 +169,7 @@ const loadMore = ref<boolean>(false);
 const topicImage = ref<string>('topic1.jpg');
 const followContent = ref<HTMLElement>();
 const title = ref<string>('Phim đã thêm vào danh sách phát');
-const activeTab = ref<string>('all');
+const activeTab = ref<string>((route.query?.type as string) || 'all');
 const showData = ref<boolean>(true);
 
 const breakpoints = useBreakpoints({
@@ -333,6 +334,7 @@ const searchFollow = (e: any) => {
 };
 
 const handleChangeTab = async (value: string) => {
+  router.push({ query: { type: value } });
   activeTab.value = value;
   nuxtLoadingIndicator.start();
   valueInput.value = '';
@@ -347,71 +349,87 @@ const handleChangeTab = async (value: string) => {
 
   await wait(300);
 
-  switch (value) {
-    case 'all':
-      // await useAsyncData(
-      //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
-      //   () => getList(activeTab.value, 1)
-      // )
-      await getList(activeTab.value, 1)
-        .then((response) => {
-          dataList.value = response?.results;
-          // title.value = 'Phim đã thêm vào danh sách phát';
-          total.value = response?.total;
+  await getList(activeTab.value, 1)
+    .then((response) => {
+      dataList.value = response?.results;
+      // title.value = 'Phim đã thêm vào danh sách phát';
+      total.value = response?.total;
 
-          if (response?.results?.length > 0) {
-            topicImage.value = dataList.value[0]?.backdrop_path;
-            skip.value = 2;
-          }
-        })
-        .catch((e) => {})
-        .finally(() => {
-          nuxtLoadingIndicator.finish();
-        });
-      break;
-    case 'movie':
-      // await useAsyncData(
-      //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
-      //   () => getList(activeTab.value, 1)
-      // )
-      await getList(activeTab.value, 1)
-        .then((response) => {
-          dataList.value = response?.results;
-          // title.value = 'Phim lẻ';
-          total.value = response?.total;
+      if (response?.results?.length > 0) {
+        topicImage.value = dataList.value[0]?.backdrop_path;
+        skip.value = 2;
+      }
+    })
+    .catch((e) => {})
+    .finally(() => {
+      nuxtLoadingIndicator.finish();
+    });
 
-          if (response?.results?.length > 0) {
-            topicImage.value = dataList.value[0]?.backdrop_path;
-            skip.value = 2;
-          }
-        })
-        .catch((e) => {})
-        .finally(() => {
-          nuxtLoadingIndicator.finish();
-        });
-      break;
-    case 'tv':
-      // await useAsyncData(
-      //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
-      //   () => getList(activeTab.value, 1)
-      // )
-      await getList(activeTab.value, 1)
-        .then((response) => {
-          dataList.value = response?.results;
-          // title.value = 'Phim bộ';
-          total.value = response?.total;
+  // switch (value) {
+  //   case 'all':
+  //     // await useAsyncData(
+  //     //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
+  //     //   () => getList(activeTab.value, 1)
+  //     // )
+  //     await getList(activeTab.value, 1)
+  //       .then((response) => {
+  //         dataList.value = response?.results;
+  //         // title.value = 'Phim đã thêm vào danh sách phát';
+  //         total.value = response?.total;
 
-          if (response?.results?.length > 0) {
-            topicImage.value = dataList.value[0]?.backdrop_path;
-            skip.value = 2;
-          }
-        })
-        .catch((e) => {})
-        .finally(() => {
-          nuxtLoadingIndicator.finish();
-        });
-      break;
-  }
+  //         if (response?.results?.length > 0) {
+  //           topicImage.value = dataList.value[0]?.backdrop_path;
+  //           skip.value = 2;
+  //         }
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {
+  //         nuxtLoadingIndicator.finish();
+  //       });
+  //     break;
+  //   case 'movie':
+  //     // await useAsyncData(
+  //     //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
+  //     //   () => getList(activeTab.value, 1)
+  //     // )
+  //     await getList(activeTab.value, 1)
+  //       .then((response) => {
+  //         dataList.value = response?.results;
+  //         // title.value = 'Phim lẻ';
+  //         total.value = response?.total;
+
+  //         if (response?.results?.length > 0) {
+  //           topicImage.value = dataList.value[0]?.backdrop_path;
+  //           skip.value = 2;
+  //         }
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {
+  //         nuxtLoadingIndicator.finish();
+  //       });
+  //     break;
+  //   case 'tv':
+  //     // await useAsyncData(
+  //     //   `list/get/${store.userAccount?.id}/${activeTab.value}/1`,
+  //     //   () => getList(activeTab.value, 1)
+  //     // )
+  //     await getList(activeTab.value, 1)
+  //       .then((response) => {
+  //         dataList.value = response?.results;
+  //         // title.value = 'Phim bộ';
+  //         total.value = response?.total;
+
+  //         if (response?.results?.length > 0) {
+  //           topicImage.value = dataList.value[0]?.backdrop_path;
+  //           skip.value = 2;
+  //         }
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {
+  //         nuxtLoadingIndicator.finish();
+  //       });
+  //     break;
+  // }
 
   showData.value = true;
 };
