@@ -462,8 +462,8 @@ export default defineNuxtConfig({
         polyfill: false,
         resolveDependencies: () => []
       },
-      // manifest: true,
-      // ssrManifest: true,
+      manifest: true,
+      ssrManifest: true,
       sourcemap: 'hidden',
       // assetsDir: '_nuxt/',
       cssMinify: 'lightningcss',
