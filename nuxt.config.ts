@@ -120,7 +120,7 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    asyncEntry: true,
+    asyncEntry: false,
     asyncContext: true,
     crossOriginPrefetch: true,
     componentIslands: {
@@ -136,8 +136,7 @@ export default defineNuxtConfig({
         deep: true
       }
     },
-    buildCache: true,
-    crossOriginPrefetch: true
+    buildCache: true
   },
 
   features: {
