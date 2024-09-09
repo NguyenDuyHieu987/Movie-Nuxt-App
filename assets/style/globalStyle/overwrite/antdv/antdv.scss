@@ -282,7 +282,7 @@
 .ant-input-prefix,
 .ant-input-suffix {
   .anticon {
-    color: inherit;
+    color: inherit !important;
 
     &:hover {
       color: inherit;
