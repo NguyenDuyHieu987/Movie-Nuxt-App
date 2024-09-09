@@ -71,6 +71,7 @@
     display: flex;
     flex-direction: row;
     font-size: 1.6rem;
+    color: inherit;
 
     &.ant-pagination.ant-pagination-mini {
       .ant-pagination-prev,
@@ -85,6 +86,7 @@
     .ant-pagination-next {
       margin: 0px;
       font-size: 1.3rem;
+      color: inherit;
 
       button {
         display: flex;
