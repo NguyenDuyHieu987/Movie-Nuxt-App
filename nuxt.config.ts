@@ -135,7 +135,9 @@ export default defineNuxtConfig({
       useAsyncData: {
         deep: true
       }
-    }
+    },
+    buildCache: true,
+    crossOriginPrefetch: true
   },
 
   features: {
@@ -461,7 +463,6 @@ export default defineNuxtConfig({
         polyfill: false,
         resolveDependencies: () => []
       },
-      polyfillModulePreload: false,
       // manifest: true,
       // ssrManifest: true,
       sourcemap: 'hidden',
@@ -644,12 +645,12 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { swr: true, prerender: true },
-    '/feature/**': { swr: true },
-    '/television/**': { swr: true },
-    '/discover/**': { swr: true },
-    '/search/**': { swr: true },
-    '/ranks/**': { swr: true },
+    '/': { prerender: true },
+    '/feature/**': {},
+    '/television/**': {},
+    '/discover/**': {},
+    '/search/**': {},
+    '/ranks/**': {},
     '/login': {
       prerender: true
     },
@@ -662,13 +663,13 @@ export default defineNuxtConfig({
     '/ChangeEmail': { swr: false },
     '/follow/**': { swr: false },
     '/history/**': { swr: false },
-    '/info-movie/**': { swr: true },
-    '/info-tv/**': { swr: true },
-    '/play-movie/**': { swr: true },
-    '/play-tv/**': { swr: true },
+    '/info-movie/**': {},
+    '/info-tv/**': {},
+    '/play-movie/**': {},
+    '/play-tv/**': {},
     '/upgrade/plans': { prerender: true },
     '/upgrade/PaymentPicker': { swr: false },
-    '/upgrade/**': { swr: true },
+    '/upgrade/**': {},
     '/upgrade': { redirect: '/upgrade/plans' },
     '/plans': { redirect: '/upgrade/plans' },
     '/YourAccount/**': { swr: false },
