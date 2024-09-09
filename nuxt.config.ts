@@ -187,8 +187,7 @@ export default defineNuxtConfig({
 
   elementPlus: {
     icon: false,
-    // importStyle: 'scss',
-    importStyle: false,
+    importStyle: 'css',
     themes: ['dark'],
     injectionID: {
       // prefix: 1024,
