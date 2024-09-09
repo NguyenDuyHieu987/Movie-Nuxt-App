@@ -30,12 +30,12 @@ const allTab = ref<any[]>([
   { value: 'movie', label: 'Phim lẻ' },
   { value: 'tv', label: 'Phim bộ' }
 ]);
-const activeTab = ref<string>('all');
+// const activeTab = ref<string>('all');
 
 const handleChangeTab = (value: string) => {
-  if (activeTab.value == value) return;
+  if (props.activeTab == value) return;
 
-  activeTab.value = value;
+  // activeTab.value = value;
 
   emits('onChangeTab', value);
 };
