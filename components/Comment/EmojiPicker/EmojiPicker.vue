@@ -9,6 +9,7 @@
     :hide-group-names="true"
     :disable-sticky-group-names="true"
     :disable-skin-tones="true"
+    theme="auto"
     @select="onSelectEmoji"
   />
 </template>
