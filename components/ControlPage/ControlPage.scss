@@ -98,6 +98,7 @@
         background-color: transparent;
         border: none;
         outline: none;
+        color: inherit;
 
         &:hover {
           color: var(--text-link-color);
@@ -177,6 +178,7 @@
       height: 40px;
       width: 40px;
       line-height: 40px;
+      color: inherit;
 
       /* .anticon {
       } */
