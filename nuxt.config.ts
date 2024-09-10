@@ -33,6 +33,7 @@ export default defineNuxtConfig({
         // { name: 'color-scheme', content: 'only dark' }
       ],
       link: [
+        { rel: 'preconnect', href: process.env.NUXT_APP_CDN_URL }
         // antdVersion == 4
         //   ? {
         //       rel: 'stylesheet',
@@ -58,7 +59,7 @@ export default defineNuxtConfig({
       id: '__nuxt'
     },
     // buildAssetsDir: '/_nuxt/',
-    cdnURL: 'https://cdn-front.phimhay247.online/',
+    cdnURL: process.env.NUXT_APP_CDN_URL,
     keepalive: false,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
