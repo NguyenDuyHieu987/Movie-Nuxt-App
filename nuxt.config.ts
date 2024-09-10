@@ -99,7 +99,7 @@ export default defineNuxtConfig({
     },
     public: {
       // SEO
-      siteUrl: 'https://phimhay247z.org',
+      siteUrl: 'https://phimhay247.online',
       siteName: 'Phimhay247',
       titleSeparator: '|',
       language: 'vi',
@@ -337,7 +337,7 @@ export default defineNuxtConfig({
   // SEO
   site: {
     name: 'Phimhay247',
-    url: 'https://phimhay247z.org',
+    url: 'https://phimhay247.online',
     trailingSlash: false,
     defaultLocale: 'vi'
   },
