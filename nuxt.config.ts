@@ -58,7 +58,7 @@ export default defineNuxtConfig({
       id: '__nuxt'
     },
     // buildAssetsDir: '/_nuxt/',
-    // cdnURL: 'https://mycdn.org/',
+    cdnURL: 'https://cdn-front.phimhay247.online/',
     keepalive: false,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
