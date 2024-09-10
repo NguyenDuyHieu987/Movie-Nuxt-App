@@ -474,7 +474,7 @@ export default defineNuxtConfig({
       cssMinify: 'lightningcss',
       cssCodeSplit: true,
       reportCompressedSize: true,
-      minify: 'esbuild',
+      minify: 'terser',
       terserOptions: {
         ecma: 2020,
         sourceMap: true,
