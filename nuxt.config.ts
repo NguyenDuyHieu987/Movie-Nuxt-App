@@ -140,8 +140,8 @@ export default defineNuxtConfig({
       useAsyncData: {
         deep: true
       }
-    },
-    buildCache: true
+    }
+    // buildCache: true
   },
 
   features: {
@@ -474,7 +474,7 @@ export default defineNuxtConfig({
       cssMinify: 'lightningcss',
       cssCodeSplit: true,
       reportCompressedSize: true,
-      minify: 'terser',
+      minify: 'esbuild',
       terserOptions: {
         ecma: 2020,
         sourceMap: true,
