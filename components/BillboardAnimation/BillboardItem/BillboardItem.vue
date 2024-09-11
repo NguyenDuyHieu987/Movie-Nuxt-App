@@ -11,7 +11,7 @@
             { w: windowWidth }
           )
         "
-        format="avif"
+        preload
         loading="lazy"
         alt=""
       />
