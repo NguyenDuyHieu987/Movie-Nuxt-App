@@ -2,7 +2,7 @@
   <div class="billboard-item">
     <div class="left-mask" />
     <div class="img-wrapper ratio-16-9">
-      <NuxtImg
+      <!-- <NuxtImg
         :src="
           getImage(
             item?.backdrop_path,
@@ -14,7 +14,7 @@
         preload
         loading="lazy"
         alt=""
-      />
+      /> -->
     </div>
 
     <div class="billboard-item-body">
