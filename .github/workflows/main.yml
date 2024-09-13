@@ -77,29 +77,31 @@ jobs:
 
           rsync -r --update --delete-after ./.output/server ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
 
-          rsync -r --update --delete-after ./.output/public/_nuxt ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/css ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/fonts ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/gifs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/imgs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/js ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/svgs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/_payload.json ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/_payload.json.br ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/_payload.json.gz ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
-
-          rsync -r --update --delete-after ./.output/public/favicon.ico ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+          rsync -r --update --delete-after ./.output/public/ ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
 
           rsync -r --update --delete-after ./ecosystem.config.cjs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/_nuxt ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/css ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/fonts ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/gifs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/imgs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/js ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/svgs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/_payload.json ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/_payload.json.br ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/_payload.json.gz ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+
+        # rsync -r --update --delete-after ./.output/public/favicon.ico ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
 
       - name: Start app on Server
         uses: appleboy/ssh-action@master
