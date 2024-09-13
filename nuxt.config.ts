@@ -176,7 +176,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-gtag',
     'nuxt-lodash',
-    // 'nuxt-delay-hydration',
+    'nuxt-delay-hydration',
     // 'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
