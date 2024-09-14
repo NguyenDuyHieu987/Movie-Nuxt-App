@@ -64,7 +64,7 @@ export default defineNuxtConfig({
     },
     // buildAssetsDir: '/_nuxt/',
     cdnURL: process.env.NUXT_APP_CDN_URL,
-    keepalive: false,
+    keepalive: true,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
     templateParams: {
@@ -472,7 +472,7 @@ export default defineNuxtConfig({
       sourcemap: 'hidden',
       // assetsDir: '_nuxt/',
       cssMinify: 'lightningcss',
-      cssCodeSplit: true,
+      cssCodeSplit: false,
       reportCompressedSize: true,
       minify: 'esbuild',
       terserOptions: {
