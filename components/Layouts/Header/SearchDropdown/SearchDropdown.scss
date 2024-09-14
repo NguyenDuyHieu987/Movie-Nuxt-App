@@ -222,7 +222,7 @@
 
             &:first-child {
               &:hover {
-                background-color: #3e3e3e;
+                // background-color: #3e3e3e;
               }
 
               .rank-top-search {
@@ -260,7 +260,7 @@
               width: 40px;
               max-width: 40px;
               min-width: 40px;
-              background-color: rgba(0, 113, 193, calc(var(--rank-opacity, 1)));
+              // background-color: rgba(0, 113, 193, calc(var(--rank-opacity, 1)));
               padding: var(--padding-search-dropdown);
               font-size: 1.2em;
               font-weight: 500;
@@ -271,11 +271,14 @@
               max-height: inherit;
               padding: var(--padding-search-dropdown);
               padding-left: 15px;
+              padding-right: 0px;
             }
 
             &:hover {
+              background-color: #3e3e3e;
+
               .search-query {
-                background-color: #3e3e3e;
+                // background-color: #3e3e3e;
               }
 
               .remove-search-history {
