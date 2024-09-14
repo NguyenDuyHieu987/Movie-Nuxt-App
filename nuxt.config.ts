@@ -63,7 +63,7 @@ export default defineNuxtConfig({
       id: '__nuxt'
     },
     // buildAssetsDir: '/_nuxt/',
-    // cdnURL: process.env.NUXT_APP_CDN_URL,
+    cdnURL: process.env.NUXT_APP_CDN_URL,
     keepalive: false,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
@@ -649,7 +649,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { prerender: true },
+    '/': { swr: true },
     '/feature/**': {},
     '/television/**': {},
     '/discover/**': {},
