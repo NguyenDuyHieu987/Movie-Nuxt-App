@@ -474,7 +474,7 @@ export default defineNuxtConfig({
       cssMinify: 'lightningcss',
       cssCodeSplit: false,
       reportCompressedSize: true,
-      minify: 'esbuild',
+      minify: 'terser',
       terserOptions: {
         ecma: 2020,
         sourceMap: true,
@@ -633,14 +633,14 @@ export default defineNuxtConfig({
         }
       }
     },
-    plugins: [
-      new CompressionPlugin({
-        algorithm: 'brotliCompress',
-        compressionOptions: {
-          maxOutputLength: 10000
-        }
-      })
-    ]
+    // plugins: [
+    //   new CompressionPlugin({
+    //     algorithm: 'brotliCompress',
+    //     compressionOptions: {
+    //       maxOutputLength: 10000
+    //     }
+    //   })
+    // ]
   },
 
   generate: {
