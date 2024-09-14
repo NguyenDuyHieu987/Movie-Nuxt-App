@@ -476,7 +476,7 @@ export default defineNuxtConfig({
       reportCompressedSize: true,
       minify: 'esbuild',
       terserOptions: {
-        ecma: 2023,
+        ecma: 2020,
         sourceMap: true,
         parse: {
           html5_comments: false
@@ -485,7 +485,7 @@ export default defineNuxtConfig({
         toplevel: true,
         mangle: {},
         format: {
-          ecma: 2023,
+          ecma: 2020,
           comments: false
         }
       },
@@ -536,31 +536,31 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      crawlLinks: false,
-      routes: [
-        '/',
-        '/feature',
-        '/television',
-        '/login',
-        '/oauth/google',
-        '/signup',
-        '/ForgotPassword',
-        '/upgrade/plans',
-        '/help',
-        '/contact'
-      ],
-      ignore: [
-        '/discover',
-        '/search',
-        '/ranks',
-        '/follow',
-        '/history',
-        '/YourAccount',
-        '/info-movie',
-        '/info-tv',
-        '/play-movie',
-        '/play-tv'
-      ]
+      crawlLinks: false
+      // routes: [
+      //   '/',
+      //   '/feature',
+      //   '/television',
+      //   '/login',
+      //   '/oauth/google',
+      //   '/signup',
+      //   '/ForgotPassword',
+      //   '/upgrade/plans',
+      //   '/help',
+      //   '/contact'
+      // ],
+      // ignore: [
+      //   '/discover',
+      //   '/search',
+      //   '/ranks',
+      //   '/follow',
+      //   '/history',
+      //   '/YourAccount',
+      //   '/info-movie',
+      //   '/info-tv',
+      //   '/play-movie',
+      //   '/play-tv'
+      // ]
     },
     // proxy the request from client
     devProxy: {
@@ -649,7 +649,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { swr: true },
+    '/': { prerender: true },
     '/feature/**': {},
     '/television/**': {},
     '/discover/**': {},
