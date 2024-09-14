@@ -15,7 +15,7 @@ console.log('Antd version:', antdVersion);
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Phimhay247',
+      // title: 'Phimhay247',
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
