@@ -116,7 +116,7 @@ const handleRating = (value: number) => {
     return;
   }
 
-  if (props.ratedValue) {
+  if (props.ratedValue || !authStore.isLogin || !props.dataMovie) {
     return;
   }
 
