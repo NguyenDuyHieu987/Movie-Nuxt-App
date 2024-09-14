@@ -2,7 +2,8 @@
   gap: var(--card-movie-gap);
 
   .movie-card-item.horizontal {
-    width: calc((100% - (4 * var(--card-movie-gap))) / 5);
+    // width: calc((100% - (4 * var(--card-movie-gap))) / 5);
+    width: calc((100% - (5 * var(--card-movie-gap))) / 6);
   }
 }
 
@@ -228,8 +229,7 @@
     --card-movie-gap: 7px;
 
     .movie-card-item.horizontal {
-      // width: calc((100% - (3 * var(--card-movie-gap))) / 4);
-      width: calc((100% - (4 * var(--card-movie-gap))) / 5);
+      width: calc((100% - (3 * var(--card-movie-gap))) / 4);
     }
   }
 
