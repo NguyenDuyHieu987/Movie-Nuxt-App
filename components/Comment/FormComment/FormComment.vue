@@ -424,15 +424,22 @@ const handleClickCanel = () => {
 const onSelectEmoji = (emoji: any) => {
   contenteditableInputField.value!.innerHTML += emoji.i;
 
-  // console.log(emoji);
-  // if (utils.isStringEmpty(actualValueInput)) {
-  //   contenteditableInputField.value!.innerHTML = '';
-  // }
-
   const actualValueInput =
     contenteditableInputField.value!?.innerText == '\n'
       ? contenteditableInputField.value!?.innerText.replace('\n', '')
       : contenteditableInputField.value!?.innerText;
+
+  // console.log(emoji);
+  if (utils.isStringEmpty(actualValueInput)) {
+    contenteditableInputField.value!.innerHTML += emoji.i;
+  }
+
+  sanitizedHtmlComment.value = DOMPurify.sanitize(
+    contenteditableInputField.value!.innerHTML,
+    {
+      USE_PROFILES: { html: true }
+    }
+  );
 
   isChanged.value = true;
 

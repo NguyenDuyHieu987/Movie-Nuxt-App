@@ -26,8 +26,11 @@
   --el-skeleton-to-color: #e6e8eb !important;
  */
 
-  --el-skeleton-color: #35373a !important;
-  --el-skeleton-to-color: #2c2d30 !important;
+  /*   --el-skeleton-color: #35373a !important;
+  --el-skeleton-to-color: #2c2d30 !important; */
+
+  --el-skeleton-color: #232b37 !important;
+  --el-skeleton-to-color: #1e2530 !important;
 
   .el-skeleton__item {
     animation-duration: 2s !important;
