@@ -63,7 +63,7 @@ export default defineNuxtConfig({
       id: '__nuxt'
     },
     // buildAssetsDir: '/_nuxt/',
-    cdnURL: process.env.NUXT_APP_CDN_URL,
+    // cdnURL: process.env.NUXT_APP_CDN_URL,
     keepalive: false,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
@@ -474,9 +474,9 @@ export default defineNuxtConfig({
       cssMinify: 'lightningcss',
       cssCodeSplit: false,
       reportCompressedSize: true,
-      minify: 'terser',
+      minify: 'esbuild',
       terserOptions: {
-        ecma: 2020,
+        ecma: 2023,
         sourceMap: true,
         parse: {
           html5_comments: false
@@ -485,7 +485,7 @@ export default defineNuxtConfig({
         toplevel: true,
         mangle: {},
         format: {
-          ecma: 2020,
+          ecma: 2023,
           comments: false
         }
       },
@@ -633,14 +633,14 @@ export default defineNuxtConfig({
         }
       }
     },
-    // plugins: [
-    //   new CompressionPlugin({
-    //     algorithm: 'brotliCompress',
-    //     compressionOptions: {
-    //       maxOutputLength: 10000
-    //     }
-    //   })
-    // ]
+    plugins: [
+      new CompressionPlugin({
+        algorithm: 'brotliCompress',
+        compressionOptions: {
+          maxOutputLength: 10000
+        }
+      })
+    ]
   },
 
   generate: {
