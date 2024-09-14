@@ -472,7 +472,7 @@ export default defineNuxtConfig({
       sourcemap: 'hidden',
       // assetsDir: '_nuxt/',
       cssMinify: 'lightningcss',
-      cssCodeSplit: false,
+      cssCodeSplit: true,
       reportCompressedSize: true,
       minify: 'esbuild',
       terserOptions: {
@@ -536,31 +536,31 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      crawlLinks: false
-      // routes: [
-      //   '/',
-      //   '/feature',
-      //   '/television',
-      //   '/login',
-      //   '/oauth/google',
-      //   '/signup',
-      //   '/ForgotPassword',
-      //   '/upgrade/plans',
-      //   '/help',
-      //   '/contact'
-      // ],
-      // ignore: [
-      //   '/discover',
-      //   '/search',
-      //   '/ranks',
-      //   '/follow',
-      //   '/history',
-      //   '/YourAccount',
-      //   '/info-movie',
-      //   '/info-tv',
-      //   '/play-movie',
-      //   '/play-tv'
-      // ]
+      crawlLinks: false,
+      routes: [
+        '/',
+        '/feature',
+        '/television',
+        '/login',
+        '/oauth/google',
+        '/signup',
+        '/ForgotPassword',
+        '/upgrade/plans',
+        '/help',
+        '/contact'
+      ],
+      ignore: [
+        '/discover',
+        '/search',
+        '/ranks',
+        '/follow',
+        '/history',
+        '/YourAccount',
+        '/info-movie',
+        '/info-tv',
+        '/play-movie',
+        '/play-tv'
+      ]
     },
     // proxy the request from client
     devProxy: {
