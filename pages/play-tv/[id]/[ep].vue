@@ -553,38 +553,46 @@ if (dataMovie.value?.history_progress) {
 
 ratedValue.value = dataMovie.value?.rated_value;
 
-if (authStore.isLogin) {
-  if (!isAddToList.value) {
-    getItemList(movieId.value, 'tv')
-      .then((response) => {
-        if (response.success == true) {
-          isAddToList.value = true;
-        }
-      })
-      .catch((e) => {});
-  }
+watch(
+  () => authStore.isLogin,
+  () => {
+    if (authStore.isLogin) {
+      if (!isAddToList.value) {
+        getItemList(movieId.value, 'tv')
+          .then((response) => {
+            if (response.success == true) {
+              isAddToList.value = true;
+            }
+          })
+          .catch((e) => {});
+      }
 
-  if (!isInHistory.value) {
-    getItemHistory(movieId.value, 'tv')
-      .then((response) => {
-        if (response.success == true) {
-          isInHistory.value = true;
-          historyProgress.value = response.result;
-        }
-      })
-      .catch((e) => {});
-  }
+      if (!isInHistory.value) {
+        getItemHistory(movieId.value, 'tv')
+          .then((response) => {
+            if (response.success == true) {
+              isInHistory.value = true;
+              historyProgress.value = response.result;
+            }
+          })
+          .catch((e) => {});
+      }
 
-  if (!ratedValue.value) {
-    getRating(movieId.value, 'tv')
-      .then((response) => {
-        if (response.success == true) {
-          ratedValue.value = response.result?.rate_value;
-        }
-      })
-      .catch((e) => {});
+      if (!ratedValue.value) {
+        getRating(movieId.value, 'tv')
+          .then((response) => {
+            if (response.success == true) {
+              ratedValue.value = response.result?.rate_value;
+            }
+          })
+          .catch((e) => {});
+      }
+    }
+  },
+  {
+    immediate: true
   }
-}
+);
 
 loading.value = false;
 
