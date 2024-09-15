@@ -672,6 +672,7 @@
 </template>
 
 <script setup lang="ts">
+import './VideoPlayer.scss';
 import ReplayIcon from '~/assets/svgs/icons/replay.svg?component';
 import PlayIcon from '~/assets/svgs/icons/play.svg?component';
 import PauseIcon from '~/assets/svgs/icons/pause.svg?component';
@@ -1564,7 +1565,7 @@ const handleClickVideoPlayer = () => {
 };
 </script>
 
-<style lang="scss" src="./VideoPlayer.scss" scoped></style>
+<!-- <style lang="scss" src="./VideoPlayer.scss" scoped></style> -->
 <!-- <style lang="scss">
 @import url('./VideoPlayer.scss');
 </style> -->
