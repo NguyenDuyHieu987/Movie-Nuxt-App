@@ -284,7 +284,7 @@
                       :src="
                         getImage(dataMovie?.poster_path, 'poster', { w: 250 })
                       "
-                      placeholder="/imgs/loading-img-2-3.webp"
+                      placeholder="/images/loading-img-2-3.webp"
                       format="avif"
                       loading="lazy"
                       alt=""

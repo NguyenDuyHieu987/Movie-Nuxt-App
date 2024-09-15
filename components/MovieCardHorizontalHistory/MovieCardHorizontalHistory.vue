@@ -53,7 +53,7 @@
             :src="
               getImage(dataMovieDetail?.backdrop_path, 'backdrop', { h: 250 })
             "
-            placeholder="/imgs/loading-img-16-9.webp"
+            placeholder="/images/loading-img-16-9.webp"
             format="avif"
             loading="lazy"
             alt=""

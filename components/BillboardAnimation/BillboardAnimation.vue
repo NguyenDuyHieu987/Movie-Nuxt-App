@@ -156,7 +156,7 @@
         <div class="img-box ratio-2-3">
           <NuxtImg
             :src="getImage(item?.poster_path, 'poster', { w: 200 })"
-            placeholder="/imgs/loading-img-2-3.webp"
+            placeholder="/images/loading-img-2-3.webp"
             format="avif"
             loading="lazy"
             alt=""

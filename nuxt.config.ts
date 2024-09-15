@@ -185,7 +185,8 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     'nuxt-schema-org',
     // 'nuxt-vitalizer'
-    '@nuxtjs/device'
+    '@nuxtjs/device',
+    'nuxt-svgo'
   ],
 
   // extends: ['nuxt-seo-kit'],
@@ -339,6 +340,11 @@ export default defineNuxtConfig({
     // disablePreloadLinks: true
   },
 
+  svgs: {
+    autoImportPath: './assets/svgs/icons/',
+    global: false
+  },
+
   // SEO
   site: {
     name: 'Phimhay247',
@@ -440,7 +446,7 @@ export default defineNuxtConfig({
       // }
     },
     plugins: [
-      svgLoader({}),
+      // svgLoader({}),
       compression({
         algorithm: 'brotliCompress',
         ext: '.br',
