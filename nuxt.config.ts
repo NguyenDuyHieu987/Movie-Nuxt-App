@@ -15,7 +15,7 @@ console.log('Antd version:', antdVersion);
 export default defineNuxtConfig({
   app: {
     head: {
-      // title: 'Phimhay247',
+      title: 'Phimhay247',
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
@@ -67,6 +67,7 @@ export default defineNuxtConfig({
     keepalive: true,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
+
     templateParams: {
       separator: '|',
       separatorDash: '-'
@@ -181,8 +182,10 @@ export default defineNuxtConfig({
     // SEO
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
-    '@nuxtjs/device'
+    'nuxt-og-image',
+    'nuxt-schema-org',
     // 'nuxt-vitalizer'
+    '@nuxtjs/device'
   ],
 
   // extends: ['nuxt-seo-kit'],
@@ -326,7 +329,9 @@ export default defineNuxtConfig({
   delayHydration: {
     debug: process.env.NODE_ENV === 'development'
   },
-
+  device: {
+    refreshOnResize: true
+  },
   vitalizer: {
     // Remove the render-blocking entry CSS
     // disableStylesheets: 'entry',
@@ -338,12 +343,16 @@ export default defineNuxtConfig({
   site: {
     name: 'Phimhay247',
     url: 'https://phimhay247.online',
+    description: 'Xem phim thỏa thích cùng Phimhay247!',
     trailingSlash: false,
     defaultLocale: 'vi'
   },
 
   seo: {},
-
+  robots: {},
+  ogImage: {},
+  seoExperiments: {},
+  schemaOrg: {},
   linkChecker: {
     enabled: false
   },
@@ -538,6 +547,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: false,
       routes: [
+        '/sitemap.xml',
         '/',
         '/feature',
         '/television',
