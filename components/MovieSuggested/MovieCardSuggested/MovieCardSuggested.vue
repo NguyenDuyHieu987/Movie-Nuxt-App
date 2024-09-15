@@ -355,7 +355,7 @@ const onClickPlay = () => {
 };
 </script>
 
-<style lang="scss" src="./MovieCardSuggested.scss"></style>
+<!-- <style lang="scss" src="./MovieCardSuggested.scss"></style> -->
 <!-- <style lang="scss">
 @import url('./MovieCardSuggested.scss');
 </style> -->

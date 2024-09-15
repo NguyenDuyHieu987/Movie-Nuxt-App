@@ -126,7 +126,6 @@
 </template>
 
 <script setup lang="ts">
-import './MovieCardHorizontal.scss';
 // import { Image } from '~/components/Image';
 // import { PreviewModal } from '~/components/PreviewModal';
 // import PreviewModal from '~/components/PreviewModal/PreviewModal.vue';
@@ -306,7 +305,7 @@ const onMouseLeaveCard = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./MovieCardHorizontal.scss"></style> -->
+<style lang="scss" src="./MovieCardHorizontal.scss"></style>
 <!-- <style lang="scss">
 @import url('./MovieCardHorizontal.scss');
 </style> -->

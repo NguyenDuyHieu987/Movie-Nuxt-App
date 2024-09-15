@@ -44,7 +44,6 @@
 </template>
 
 <script setup lang="ts">
-import './LikeDislike.scss';
 import {
   LikeFilled,
   LikeOutlined,
@@ -197,7 +196,7 @@ const handleDisLikeComment = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./LikeDislike.scss"></style> -->
+<style lang="scss" src="./LikeDislike.scss"></style>
 <!-- <style lang="scss">
 @import url('./LikeDislike.scss');
 </style> -->

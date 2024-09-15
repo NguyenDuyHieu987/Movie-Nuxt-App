@@ -62,7 +62,6 @@
 </template>
 
 <script setup lang="ts">
-import './MovieSuggested.scss';
 // import { LoadingSpinner } from '~/components/Loading';
 // import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 // import { MovieCardSuggested } from '~/components/MovieSuggested';
@@ -159,7 +158,7 @@ watch(
 // loading.value = false;
 </script>
 
-<!-- <style lang="scss" src="./MovieSuggested.scss"></style> -->
+<style lang="scss" src="./MovieSuggested.scss"></style>
 <!-- <style lang="scss">
 @import url('./MovieSuggested.scss');
 </style> -->
