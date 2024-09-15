@@ -101,6 +101,7 @@
 </template>
 
 <script setup lang="ts">
+import './FormComment.scss';
 import Emoticon from '~/assets/svgs/icons/emoticon.svg?component';
 
 // import EmojiPicker from '~/components/Comment/EmojiPicker/EmojiPicker.vue';
@@ -448,7 +449,7 @@ const onSelectEmoji = (emoji: any) => {
 };
 </script>
 
-<style lang="scss" src="./FormComment.scss"></style>
+<!-- <style lang="scss" src="./FormComment.scss"></style> -->
 <!-- <style lang="scss">
 @import url('./FormComment.scss');
 </style> -->

@@ -134,6 +134,7 @@
 </template>
 
 <script setup lang="ts">
+import './HomePage.scss';
 import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
 import Plus1Icon from '~/assets/svgs/icons/plus-1.svg?component';
 
@@ -474,7 +475,7 @@ const handleLoadMoreRecommend = async () => {
 };
 </script>
 
-<style lang="scss" src="./HomePage.scss"></style>
+<!-- <style lang="scss" src="./HomePage.scss"></style> -->
 <!-- <style lang="scss">
 @import url('./HomePage.scss');
 </style> -->
