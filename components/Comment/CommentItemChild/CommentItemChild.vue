@@ -143,6 +143,7 @@
 </template>
 
 <script setup lang="ts">
+import './CommentItemChild.scss';
 import EllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
 import Pencil from '~/assets/svgs/icons/pencil.svg?component';
 import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
@@ -292,7 +293,7 @@ const onClickReplyTo = async () => {
 };
 </script>
 
-<style lang="scss" src="./CommentItemChild.scss"></style>
+<!-- <style lang="scss" src="./CommentItemChild.scss"></style> -->
 <!-- <style lang="scss">
 @import url('./CommentItemChild.scss');
 </style> -->

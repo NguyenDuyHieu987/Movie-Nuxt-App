@@ -220,6 +220,7 @@
 </template>
 
 <script setup lang="ts">
+import './CommentItem.scss';
 import EllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
 import Pencil from '~/assets/svgs/icons/pencil.svg?component';
 import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
@@ -379,7 +380,7 @@ const handleRemoveComment = () => {
 };
 </script>
 
-<style lang="scss" src="./CommentItem.scss"></style>
+<!-- <style lang="scss" src="./CommentItem.scss"></style> -->
 <!-- <style lang="scss">
 @import url('./CommentItem.scss');
 </style> -->

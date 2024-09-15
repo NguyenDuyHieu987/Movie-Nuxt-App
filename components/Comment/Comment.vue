@@ -49,6 +49,7 @@
 </template>
 
 <script setup lang="ts">
+import './Comment.scss';
 // import { FormComment, CommentItem } from '~/components/Comment';
 // import {
 //   // LoadingCircle,
@@ -139,7 +140,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" src="./Comment.scss"></style>
+<!-- <style lang="scss" src="./Comment.scss"></style> -->
 <!-- <style lang="scss">
 @import url('./Comment.scss');
 </style> -->

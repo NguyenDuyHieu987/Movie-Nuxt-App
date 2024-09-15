@@ -114,7 +114,7 @@
     "nuxt-simple-robots": "4.0.1",
     "nuxt-svgo": "^4.0.5",
     "nuxt-vitalizer": "^0.10.0",
-    "postcss": "^8.4.45",
+    "postcss": "^8.4.47",
     "postcss-import": "^16.1.0",
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.3.3",
