@@ -257,6 +257,7 @@
   </NuxtLink>
 </template>
 <script setup lang="ts">
+import './MovieCardVertical.scss';
 import PlayIcon from '~/assets/svgs/icons/play.svg?component';
 import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
 import CheckIcon from '~/assets/svgs/icons/check.svg?component';
@@ -421,7 +422,7 @@ const handleClickGenreItem = (genreItem: genre) => {
 };
 </script>
 
-<style lang="scss" src="./MovieCardVertical.scss"></style>
+<!-- <style lang="scss" src="./MovieCardVertical.scss"></style> -->
 <!-- <style lang="scss">
 @import url('./MovieCardVertical.scss');
 </style> -->
