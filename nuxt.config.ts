@@ -175,7 +175,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     // '@nuxt/fonts',
     '@nuxtjs/google-fonts',
-    // 'nuxt-gtag',
+    'nuxt-gtag',
     'nuxt-lodash',
     'nuxt-delay-hydration',
     // 'nuxt-purgecss',
