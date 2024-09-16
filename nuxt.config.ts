@@ -146,7 +146,7 @@ export default defineNuxtConfig({
   },
 
   features: {
-    inlineStyles: false
+    inlineStyles: true
   },
 
   devtools: { enabled: false },
@@ -184,7 +184,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-og-image',
     'nuxt-schema-org',
-    // 'nuxt-vitalizer'
+    'nuxt-vitalizer',
     '@nuxtjs/device',
     'nuxt-svgo'
   ],
