@@ -508,7 +508,7 @@ export default defineNuxtConfig({
         // chunkSizeWarningLimit: 500
         output: {
           // target ~250KB per chunk in an ideal world
-          experimentalMinChunkSize: 250 * 1024
+          experimentalMinChunkSize: 250 * 1024,
           // manualChunks: (id, _) => {
           //   // need to avoid touching non-entrypoint files, otherwise it breaks bundling
           //   // because imports aren't idempotent
@@ -531,6 +531,12 @@ export default defineNuxtConfig({
           //     }
           //   }
           // }
+
+          manualChunks(id) {
+            if (id.endsWith('.css')) {
+              return 'style';
+            }
+          }
         }
       }
     },
