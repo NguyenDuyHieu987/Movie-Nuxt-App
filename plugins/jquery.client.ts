@@ -10,7 +10,7 @@ declare global {
 export default defineNuxtPlugin({
   name: 'jquery',
   async setup(nuxtApp) {
-    nuxtAPp.hook('app:beforeMount', () => {
+    nuxtApp.hook('app:beforeMount', () => {
       window.jQuery = window.$ = $;
     });
   },
