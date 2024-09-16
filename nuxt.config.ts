@@ -191,7 +191,7 @@ export default defineNuxtConfig({
 
   // extends: ['nuxt-seo-kit'],
   antd: {
-    extractStyle: false,
+    extractStyle: true,
     icons: false
   },
 
