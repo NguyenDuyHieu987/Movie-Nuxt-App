@@ -10,7 +10,7 @@ declare global {
 export default defineNuxtPlugin({
   name: 'jquery',
   async setup(nuxtApp) {
-    window.jQuery = window.$ = $;
+    // window.jQuery = window.$ = $;
   },
   hooks: {},
   parallel: true,
