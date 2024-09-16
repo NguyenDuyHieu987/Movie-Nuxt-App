@@ -146,7 +146,7 @@ export default defineNuxtConfig({
   },
 
   features: {
-    inlineStyles: true
+    inlineStyles: false
   },
 
   devtools: { enabled: false },
