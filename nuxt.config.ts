@@ -334,10 +334,9 @@ export default defineNuxtConfig({
     refreshOnResize: true
   },
   vitalizer: {
-    // Remove the render-blocking entry CSS
-    // disableStylesheets: 'entry',
     // disablePrefetchLinks: true,
-    // disablePreloadLinks: true
+    // disablePreloadLinks: true,
+    disableStylesheets: 'entry'
   },
 
   svgs: {
