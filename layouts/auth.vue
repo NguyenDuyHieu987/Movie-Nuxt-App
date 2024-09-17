@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 // import { HeaderAuth } from '~/components/Layouts';
-// import HeaderAuth from '~/components/Layouts/HeaderAuth/HeaderAuth.vue';
+import HeaderAuth from '~/components/Layouts/HeaderAuth/HeaderAuth.vue';
 import { getImage } from '~/services/image';
 
 const image = ref<number>(Math.floor(Math.random() * 3) + 1);
