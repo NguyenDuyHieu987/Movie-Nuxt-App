@@ -126,22 +126,22 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    asyncEntry: false,
-    asyncContext: true,
-    crossOriginPrefetch: true,
-    componentIslands: {
-      selectiveClient: true
-    },
-    headNext: true,
-    payloadExtraction: true,
-    renderJsonPayloads: true,
-    restoreState: true,
-    viewTransition: true,
-    defaults: {
-      useAsyncData: {
-        deep: true
-      }
-    }
+    // asyncEntry: false,
+    // asyncContext: true,
+    crossOriginPrefetch: true
+    // componentIslands: {
+    //   selectiveClient: true
+    // },
+    // headNext: true,
+    // payloadExtraction: true,
+    // renderJsonPayloads: true,
+    // restoreState: true,
+    // viewTransition: true,
+    // defaults: {
+    //   useAsyncData: {
+    //     deep: true
+    //   }
+    // }
     // buildCache: true
   },
 
