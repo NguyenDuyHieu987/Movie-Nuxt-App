@@ -18,13 +18,13 @@
     <div class="right-header">
       <div class="signup-suggest">
         <span
-          v-show="route.path.toLowerCase() == '/login'"
+          v-if="route.path.toLowerCase() == '/login'"
           class="signup-note"
         >
           Chưa có tài khoản?
         </span>
         <NuxtLink
-          v-show="route.path == '/login'"
+          v-if="route.path == '/login'"
           class="signup-btn click-active"
           :to="{ path: '/signup' }"
         >
@@ -33,7 +33,7 @@
       </div>
 
       <NuxtLink
-        v-show="
+        v-if="
           route.path.toLowerCase() == '/signup' ||
           route.path.toLowerCase() == '/forgotpassword'
         "
