@@ -93,7 +93,7 @@ definePageMeta({
 const utils = useUtils();
 const store = useStore();
 const authStore = useAuthStore();
-const { isLogin } = storeToRefs<any>(authStore);
+const { isLogin } = storeToRefs(authStore);
 const invoices = ref<Invoice[]>([]);
 const loading = ref<boolean>(false);
 const invoiceListStatus = reactive<InvoiceStatus[]>([
@@ -156,17 +156,20 @@ const columns: TableColumnType[] = [
   {
     title: 'Trạng thái',
     dataIndex: 'status',
-    width: 150
+    width: 150,
+    sorter: true
   },
   {
     title: 'Trạng thái thanh toán',
     dataIndex: 'payment_status',
-    width: 200
+    width: 200,
+    sorter: true
   },
   {
     title: 'Tổng tiền thanh toán',
     dataIndex: 'amount_total',
-    width: 200
+    width: 200,
+    sorter: true
   },
   {
     title: 'Ngày tạo',
@@ -201,7 +204,7 @@ onBeforeMount(() => {
 
   getInvoices(1, 20)
     .then((response) => {
-      invoices.value = response?.results.map((item, index) => {
+      invoices.value = response?.results.map((item: Invoice, index: number) => {
         return {
           no: index + 1,
           ...item,
@@ -235,7 +238,7 @@ const onChangeTable = (
 ) => {};
 
 const onChangePage = (page, pageSize) => {
-  console.log(page);
+  // console.log(page);
 };
 </script>
 
