@@ -48,4 +48,4 @@ onBeforeMount(() => {
 });
 </script>
 
-<style lang="scss" src="~/assets/style/authLayout.scss" scoped></style>
+<style lang="scss" src="~/assets/style/authLayout.scss"></style>
