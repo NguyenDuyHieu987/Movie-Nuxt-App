@@ -486,7 +486,7 @@ export default defineNuxtConfig({
       sourcemap: 'hidden',
       // assetsDir: '_nuxt/',
       cssMinify: 'esbuild',
-      cssCodeSplit: false,
+      cssCodeSplit: true,
       reportCompressedSize: true,
       minify: 'terser',
       terserOptions: {
