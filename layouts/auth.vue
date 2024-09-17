@@ -44,7 +44,7 @@ const image_mobile = ref<number>(Math.floor(Math.random() * 3) + 1);
 const windowWidth = ref<number>(1200);
 
 onMounted(() => {
-  // windowWidth.value = window.innerWidth;
+  windowWidth.value = window.innerWidth;
 });
 </script>
 
