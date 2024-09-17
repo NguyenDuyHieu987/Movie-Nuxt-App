@@ -336,7 +336,7 @@ export default defineNuxtConfig({
   vitalizer: {
     // disablePrefetchLinks: true,
     // disablePreloadLinks: true,
-    disableStylesheets: 'entry'
+    // disableStylesheets: 'entry'
   },
 
   svgs: {
