@@ -12,9 +12,9 @@
           )
         "
         preload
-        loading="lazy"
         alt=""
       />
+      <!-- loading="lazy" -->
     </div>
 
     <div class="billboard-item-body">
