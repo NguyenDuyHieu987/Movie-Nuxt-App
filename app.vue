@@ -1,25 +1,24 @@
 <template>
   <div id="app">
     <!-- <a-app> -->
-    <a-extract-style>
-      <div id="append-to" />
-      <div id="preview-modal" />
+    <div id="append-to" />
+    <div id="preview-modal" />
 
-      <a-config-provider
-        :theme="{
-          token: {
-            // colorPrimary: '#008ddf',
-            fontFamily:
-              'Roboto, Noto Sans, Mulish, Source Sans 3, Plus Jakarta Sans, Nunito Sans, sans-serif'
-            // fontSize: 15,
-            // lineHeight: 1.5,
-            // borderRadius: 2,
-            // borderRadiusLG: 5
-          }
-        }"
-      />
+    <a-config-provider
+      :theme="{
+        token: {
+          // colorPrimary: '#008ddf',
+          fontFamily:
+            'Roboto, Noto Sans, Mulish, Source Sans 3, Plus Jakarta Sans, Nunito Sans, sans-serif'
+          // fontSize: 15,
+          // lineHeight: 1.5,
+          // borderRadius: 2,
+          // borderRadiusLG: 5
+        }
+      }"
+    />
 
-      <!-- <ClientOnly>
+    <!-- <ClientOnly>
       <vue-progress-bar
         style="
           background: linear-gradient(
@@ -32,19 +31,20 @@
       />
     </ClientOnly> -->
 
-      <NuxtLoadingIndicator
-        color="linear-gradient(90deg, var(--loading-progress-bar1), var(--loading-progress-bar2))"
-        :height="3"
-        :throttle="300"
-        :duration="2000"
-      />
+    <NuxtLoadingIndicator
+      color="linear-gradient(90deg, var(--loading-progress-bar1), var(--loading-progress-bar2))"
+      :height="3"
+      :throttle="300"
+      :duration="2000"
+    />
 
-      <LoadingApp />
-      <RequireAuthDialog />
-      <NetworkChecker />
+    <LoadingApp />
+    <RequireAuthDialog />
+    <NetworkChecker />
 
-      <div class="app-wrapper">
-        <NuxtLayout>
+    <div class="app-wrapper">
+      <NuxtLayout>
+        <a-extract-style>
           <NuxtPage
             :keepalive="{
               exclude: notCacheList
@@ -68,9 +68,9 @@
               />
             </svg>
           </el-backtop>
-        </NuxtLayout>
-      </div>
-    </a-extract-style>
+        </a-extract-style>
+      </NuxtLayout>
+    </div>
     <!-- </a-app> -->
   </div>
 </template>
