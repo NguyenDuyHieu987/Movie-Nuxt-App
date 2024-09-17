@@ -47,7 +47,6 @@
 </template>
 
 <script setup lang="ts">
-import './HeaderAuth.scss';
 import { getImage } from '~/services/image';
 import { storeToRefs } from 'pinia';
 
@@ -59,6 +58,6 @@ onMounted(() => {});
 </script>
 
 <!-- <style lang="scss" src="./HeaderAuth.scss"></style> -->
-<!-- <style lang="scss">
+<style lang="scss">
 @import url('./HeaderAuth.scss');
-</style> -->
+</style>
