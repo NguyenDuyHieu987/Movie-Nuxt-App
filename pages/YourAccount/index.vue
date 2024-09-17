@@ -294,7 +294,7 @@ const breakPoints = useBreakpoints({
 
 const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin, userAccount } = storeToRefs<any>(authStore);
+const { isLogin, userAccount } = storeToRefs(authStore);
 const bills = ref<Invoice[]>([]);
 const billLístStatus = reactive<InvoiceStatus[]>([
   {

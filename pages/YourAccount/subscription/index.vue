@@ -134,7 +134,7 @@ definePageMeta({
 const utils = useUtils();
 const store = useStore();
 const authStore = useAuthStore();
-const { isLogin } = storeToRefs<any>(authStore);
+const { isLogin } = storeToRefs(authStore);
 const interval = computed<string>(() => {
   switch (authStore.subscription?.interval) {
     case 'day':
