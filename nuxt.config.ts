@@ -483,7 +483,7 @@ export default defineNuxtConfig({
       },
       // manifest: true,
       // ssrManifest: true,
-      sourcemap: 'hidden',
+      sourcemap: 'inline',
       // assetsDir: '_nuxt/',
       cssMinify: 'lightningcss',
       cssCodeSplit: false,
