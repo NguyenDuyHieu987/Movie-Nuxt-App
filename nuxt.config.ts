@@ -634,7 +634,7 @@ export default defineNuxtConfig({
         minSize: 10000
       }
     },
-    extractCSS: false,
+    extractCSS: true,
     optimizeCSS: true,
     postcss: {},
     loaders: {
