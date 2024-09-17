@@ -33,11 +33,11 @@ export default defineNuxtConfig({
         // { name: 'color-scheme', content: 'only dark' }
       ],
       link: [
-        // {
-        //   rel: 'preconnect',
-        //   href: process.env.NUXT_APP_CDN_URL,
-        //   crossorigin: true
-        // }
+        {
+          rel: 'preconnect',
+          href: process.env.NUXT_APP_CDN_URL,
+          crossorigin: true
+        }
         // antdVersion == 4
         //   ? {
         //       rel: 'stylesheet',
@@ -126,22 +126,22 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    // asyncEntry: false,
-    // asyncContext: true,
+    asyncEntry: false,
+    asyncContext: true,
     crossOriginPrefetch: true
-    // componentIslands: {
-    //   selectiveClient: true
-    // },
-    // headNext: true,
-    // payloadExtraction: true,
-    // renderJsonPayloads: true,
-    // restoreState: true,
-    // viewTransition: true,
-    // defaults: {
-    //   useAsyncData: {
-    //     deep: true
-    //   }
-    // }
+    componentIslands: {
+      selectiveClient: true
+    },
+    headNext: true,
+    payloadExtraction: true,
+    renderJsonPayloads: true,
+    restoreState: true,
+    viewTransition: true,
+    defaults: {
+      useAsyncData: {
+        deep: true
+      }
+    }
     // buildCache: true
   },
 
