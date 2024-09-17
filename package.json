@@ -35,7 +35,7 @@
     "@vimeo/player": "2.24.0",
     "@vueuse/core": "11.1.0",
     "@vueuse/nuxt": "11.1.0",
-    "ant-design-vue": "4.2.4",
+    "ant-design-vue": "4.2.3",
     "artplayer": "5.1.7",
     "axios": "1.7.7",
     "crypto-js": "4.2.0",
@@ -57,7 +57,7 @@
     "vue": "3.5.5",
     "vue-lazyload": "3.0.0",
     "vue-router": "4.4.5",
-    "vue-social-sharing": "4.0.0-alpha4",
+    "vue-social-sharing": "3.0.9",
     "vue3-emoji-picker": "1.1.8",
     "vuex": "4.1.0"
   },

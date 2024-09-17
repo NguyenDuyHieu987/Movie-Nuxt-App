@@ -196,7 +196,7 @@ useSeoMeta({
 const nuxtConfig = useRuntimeConfig();
 const store = useStore();
 const authStore = useAuthStore();
-const router: any = useRouter();
+const router = useRouter();
 const route = useRoute();
 const utils = useUtils();
 const loadingLogin = ref<boolean>(false);
