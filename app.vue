@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <a-app>
+    <!-- <a-app> -->
       <a-extract-style>
         <div id="append-to" />
         <div id="preview-modal" />
@@ -71,7 +71,7 @@
           </NuxtLayout>
         </div>
       </a-extract-style>
-    </a-app>
+    <!-- </a-app> -->
   </div>
 </template>
 
