@@ -33,11 +33,11 @@ export default defineNuxtConfig({
         // { name: 'color-scheme', content: 'only dark' }
       ],
       link: [
-        {
-          rel: 'preconnect',
-          href: process.env.NUXT_APP_CDN_URL,
-          crossorigin: true
-        }
+        // {
+        //   rel: 'preconnect',
+        //   href: process.env.NUXT_APP_CDN_URL,
+        //   crossorigin: true
+        // }
         // antdVersion == 4
         //   ? {
         //       rel: 'stylesheet',
