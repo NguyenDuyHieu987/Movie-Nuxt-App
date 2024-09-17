@@ -1,6 +1,6 @@
 <template>
   <div class="auth-layout">
-    <!-- <HeaderAuth /> -->
+    <HeaderAuth />
     <div class="background-auth">
       <div class="image-auth desktop">
         <NuxtImg
