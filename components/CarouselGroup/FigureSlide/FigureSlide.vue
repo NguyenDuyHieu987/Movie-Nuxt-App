@@ -119,4 +119,7 @@ const nextSlide = () => {
 };
 </script>
 
-<style lang="scss" src="./FigureSlide.scss"></style>
+<!-- <style lang="scss" src="./FigureSlide.scss"></style> -->
+<style lang="scss">
+@import url('./FigureSlide.scss');
+</style>
