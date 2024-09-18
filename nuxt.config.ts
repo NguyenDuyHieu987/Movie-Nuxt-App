@@ -24,7 +24,7 @@ export default defineNuxtConfig({
         },
         {
           'http-equiv': 'X-UA-Compatible',
-          content: 'IE=Edge,chrome=1'
+          content: 'IE=Edge'
         },
         {
           'http-equiv': 'content-type',
