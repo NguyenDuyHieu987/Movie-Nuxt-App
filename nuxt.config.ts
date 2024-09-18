@@ -24,12 +24,12 @@ export default defineNuxtConfig({
         },
         {
           'http-equiv': 'X-UA-Compatible',
-          content: 'IE=Edge'
+          content: 'IE=edge'
         },
         {
-          'name': 'viewport',
-          'content': 'width=device-width, initial-scale=1'
-        },
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1'
+        }
         // { name: 'color-scheme', content: 'only dark' }
       ],
       link: [
