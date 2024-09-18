@@ -305,7 +305,7 @@ const onMouseLeaveCard = () => {
 };
 </script>
 
-<style lang="scss" src="./MovieCardHorizontal.scss"></style>
-<!-- <style lang="scss">
+<!-- <style lang="scss" src="./MovieCardHorizontal.scss"></style> -->
+<style lang="scss">
 @import url('./MovieCardHorizontal.scss');
-</style> -->
+</style>
