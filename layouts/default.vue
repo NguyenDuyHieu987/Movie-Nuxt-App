@@ -71,4 +71,7 @@ const route = useRoute();
 // });
 </script>
 
-<style lang="scss" src="~/assets/style/defaultLayout.scss"></style>
+<!-- <style lang="scss" src="~/assets/style/defaultLayout.scss"></style> -->
+<style lang="scss">
+@import url('~/assets/style/defaultLayout.scss');
+</style>
