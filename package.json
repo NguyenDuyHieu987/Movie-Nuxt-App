@@ -80,6 +80,7 @@
     "@types/vimeo__player": "2.18.3",
     "@typescript-eslint/eslint-plugin": "8.6.0",
     "@typescript-eslint/parser": "8.6.0",
+    "@vite-pwa/nuxt": "^0.10.5",
     "@vitest/ui": "2.1.1",
     "@vue/test-utils": "2.4.6",
     "ajv": "8.17.1",
