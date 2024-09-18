@@ -180,9 +180,9 @@ const dataEpisode = ref<any[][]>(
 );
 const loading = ref<boolean>(false);
 const skip = ref<number>(1);
-const limit = ref<number>(40);
+const limit = ref<number>(50);
 const from = ref<number>(1);
-const to = ref<number>(40);
+const to = ref<number>(50);
 const selectedTabEpisode = ref<number>(1);
 const numberTabsEpisode = computed<number>(() =>
   Math.ceil(totalEpisode.value / limit.value)
