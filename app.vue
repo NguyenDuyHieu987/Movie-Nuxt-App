@@ -165,4 +165,7 @@ const onBackTop = () => {
 };
 </script>
 
-<style lang="scss" src="~/assets/style/app.scss"></style>
+<!-- <style lang="scss" src="~/assets/style/app.scss"></style> -->
+<style lang="scss">
+@import url('~/assets/style/app.scss');
+</style>
