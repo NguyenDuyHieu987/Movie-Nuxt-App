@@ -488,6 +488,7 @@ export default defineNuxtConfig({
       cssMinify: 'lightningcss',
       cssCodeSplit: true,
       reportCompressedSize: true,
+      target: 'esnext',
       minify: 'terser',
       terserOptions: {
         ecma: 2020,
