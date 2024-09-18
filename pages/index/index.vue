@@ -9,47 +9,47 @@
     </div>
 
     <div class="home-content">
-      <section
+      <!-- <section
         v-if="loading"
         class="home-section"
       >
         <h2 class="gradient-title-default">
           <span>{{ modLíst.results.slice(1)[0].name }}</span>
         </h2>
-      </section>
+      </section> -->
 
-      <LoadingSectionVertical
+      <!-- <LoadingSectionVertical
         :class="loading == true ? 'home-section' : null"
         v-model:loading="loading"
       >
-        <template #content>
-          <section
-            v-for="(mod, index1) in modLíst.results.slice(1)"
-            :key="mod.id"
-            :index="index1"
-            class="home-section"
+        <template #content> -->
+      <section
+        v-for="(mod, index1) in modLíst.results.slice(1)"
+        :key="mod.id"
+        :index="index1"
+        class="home-section"
+      >
+        <h2 class="gradient-title-default">
+          <span>{{ mod.name }}</span>
+          <NuxtLink
+            class="view-all"
+            :to="mod.path"
           >
-            <h2 class="gradient-title-default">
-              <span>{{ mod.name }}</span>
-              <NuxtLink
-                class="view-all"
-                :to="mod.path"
-              >
-                <!-- :to="{
+            <!-- :to="{
                   path: `${mod.path}`,
                   query: {
                     type: mod.type
                   }
                 }" -->
-                Xem tất cả
-                <ChevronRight
-                  width="1.2rem"
-                  height="1.2rem"
-                  fill="currentColor"
-                />
-              </NuxtLink>
-            </h2>
-            <SwiperCarouselGroup
+            Xem tất cả
+            <ChevronRight
+              width="1.2rem"
+              height="1.2rem"
+              fill="currentColor"
+            />
+          </NuxtLink>
+        </h2>
+        <!-- <SwiperCarouselGroup
               :data="mod.data"
               :responsive="responsiveVertical"
               @on-loaded="onSwiperLoaded"
@@ -67,10 +67,28 @@
                   />
                 </SwiperSlide>
               </template>
-            </SwiperCarouselGroup>
-          </section>
-        </template>
-      </LoadingSectionVertical>
+            </SwiperCarouselGroup> -->
+
+        <FigureSlide
+          :data="mod.data"
+          :responsive="responsiveVertical"
+        >
+          <template #content>
+            <FigureSlideItem
+              v-for="(item, index) in mod.data"
+              :key="item.id"
+              :index="index"
+            >
+              <MovieCardVertical
+                :item="item"
+                :type="item.media_type"
+              />
+            </FigureSlideItem>
+          </template>
+        </FigureSlide>
+      </section>
+      <!-- </template>
+      </LoadingSectionVertical> -->
 
       <LoadingSpinner
         v-show="loadMore"
