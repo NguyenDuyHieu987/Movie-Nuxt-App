@@ -27,9 +27,9 @@ export default defineNuxtConfig({
           content: 'IE=Edge'
         },
         {
-          'http-equiv': 'content-type',
-          content: 'text/html;charset=utf-8'
-        }
+          'name': 'viewport',
+          'content': 'width=device-width, initial-scale=1'
+        },
         // { name: 'color-scheme', content: 'only dark' }
       ],
       link: [
