@@ -85,7 +85,10 @@ const onSwiperLoaded = () => {
 };
 </script>
 
-<style lang="scss" src="./SwiperCarouselGroup.scss"></style>
+<style lang="scss" src="./SwiperCarouselGroup.scss">
+@import 'swiper/css';
+@import 'swiper/css/bundle';
+</style>
 <!-- <style lang="scss">
 @import url('./SwiperCarouselGroup.scss');
 </style> -->
