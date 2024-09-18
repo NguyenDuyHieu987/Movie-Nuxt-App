@@ -165,18 +165,30 @@ export default defineNuxtConfig({
     '~/assets/style/globalStyle.scss'
   ],
 
-  modules: ['@ant-design-vue/nuxt', '@element-plus/nuxt', 
-  // '@vueuse/nuxt',
-  '@pinia/nuxt', 'nuxt-swiper', '@nuxt/image', '@nuxtjs/fontaine', 
-  // '@nuxt/fonts',
-  '@nuxtjs/google-fonts', 
-  // 'nuxt-gtag',
-  'nuxt-lodash', 'nuxt-delay-hydration', 
-  // 'nuxt-purgecss',
-  // SEO
-  '@nuxtjs/seo', '@nuxtjs/sitemap', 'nuxt-og-image', 'nuxt-schema-org', 
-  // 'nuxt-vitalizer',
-  '@nuxtjs/device', 'nuxt-svgo', '@vite-pwa/nuxt'],
+  modules: [
+    '@ant-design-vue/nuxt',
+    '@element-plus/nuxt',
+    // '@vueuse/nuxt',
+    '@pinia/nuxt',
+    'nuxt-swiper',
+    '@nuxt/image',
+    '@nuxtjs/fontaine',
+    // '@nuxt/fonts',
+    '@nuxtjs/google-fonts',
+    // 'nuxt-gtag',
+    'nuxt-lodash',
+    'nuxt-delay-hydration',
+    // 'nuxt-purgecss',
+    // SEO
+    '@nuxtjs/seo',
+    '@nuxtjs/sitemap',
+    'nuxt-og-image',
+    'nuxt-schema-org',
+    // 'nuxt-vitalizer',
+    '@nuxtjs/device',
+    'nuxt-svgo',
+    '@vite-pwa/nuxt'
+  ],
 
   // extends: ['nuxt-seo-kit'],
   antd: {
