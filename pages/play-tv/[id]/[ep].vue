@@ -747,7 +747,7 @@ const scrollToComment = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./PlayTvPage.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./PlayTvPage.scss"></style>
+<!-- <style lang="scss">
 @import url('./PlayTvPage.scss');
-</style>
+</style> -->
