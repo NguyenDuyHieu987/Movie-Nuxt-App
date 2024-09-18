@@ -693,7 +693,7 @@ const scrollToComment = () => {
 };
 </script>
 
-<style lang="scss" src="./PlayMoviePage.scss"></style>
-<!-- <style lang="scss">
+<!-- <style lang="scss" src="./PlayMoviePage.scss"></style> -->
+<style lang="scss">
 @import url('./PlayMoviePage.scss');
-</style> -->
+</style>
