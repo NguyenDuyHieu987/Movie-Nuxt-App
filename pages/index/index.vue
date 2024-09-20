@@ -71,7 +71,7 @@
 
             <!-- <FigureSlide
           :data="mod.data"
-          :responsive="responsiveVertical"
+          :breakpoints="responsiveVertical"
         >
           <template #content>
             <FigureSlideItem
