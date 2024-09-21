@@ -124,8 +124,8 @@ import { getImage } from '~/services/image';
 
 const store = useStore();
 const authStore = useAuthStore();
-const { collapsed, openDrawer } = storeToRefs<any>(store);
-const { isLogin, userAccount } = storeToRefs<any>(authStore);
+const { collapsed, openDrawer } = storeToRefs(store);
+const { isLogin, userAccount } = storeToRefs(authStore);
 const route = useRoute();
 const router = useRouter();
 
