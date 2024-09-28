@@ -177,14 +177,14 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     // 'nuxt-gtag',
     'nuxt-lodash',
-    'nuxt-delay-hydration',
+    // 'nuxt-delay-hydration',
     // 'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
     'nuxt-og-image',
     'nuxt-schema-org',
-    'nuxt-vitalizer',
+    // 'nuxt-vitalizer',
     '@nuxtjs/device',
     'nuxt-svgo',
     '@vite-pwa/nuxt'
@@ -360,7 +360,7 @@ export default defineNuxtConfig({
   seoExperiments: {},
   schemaOrg: {},
   linkChecker: {
-    enabled: false
+    // enabled: false
   },
 
   plugins: [],
