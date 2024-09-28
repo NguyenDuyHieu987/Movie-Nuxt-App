@@ -30,6 +30,7 @@
                   dataMovie?.name
                 )}/tap-${item?.episode_number}`
               }"
+              :title="`${props.dataMovie?.name} - Tập ${item?.episode_number}`"
             >
               {{ 'Tập ' }}
               {{

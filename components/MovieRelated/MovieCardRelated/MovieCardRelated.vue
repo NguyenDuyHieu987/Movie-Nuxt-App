@@ -6,6 +6,8 @@
     }"
     @pointerenter="onMouseEnter"
     @pointerleave="onMouseLeave"
+
+        :title="item?.name"
   >
     <!-- <el-skeleton :loading="loading" animated>
       <template #template>
@@ -44,7 +46,8 @@
         placeholder="/images/loading-img-16-9.webp"
         format="avif"
         loading="lazy"
-        alt=""
+        :alt="item?.name"
+        :title="item?.name"
       />
 
       <div class="video-preview">
@@ -102,6 +105,8 @@
             )}`
       }"
       target="_top"
+
+        :title="item?.name"
     >
       <p
         class="title"

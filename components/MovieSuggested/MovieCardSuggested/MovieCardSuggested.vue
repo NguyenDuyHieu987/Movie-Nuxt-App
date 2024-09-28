@@ -1,5 +1,7 @@
 <template>
-  <div class="movie-card-item-suggested">
+  <div class="movie-card-item-suggested"
+
+        :title="item?.name">
     <!-- <el-skeleton :loading="loading" animated>
       <template #template>
         <div class="img-box">
@@ -44,7 +46,8 @@
           placeholder="/images/loading-img-16-9.webp"
           format="avif"
           loading="lazy"
-          alt=""
+          :alt="item?.name"
+        :title="item?.name"
         />
       </div>
 
@@ -79,6 +82,8 @@
               item?.name
             )}`
       }"
+        
+        :title="item?.name"
     >
       <h2
         class="title"

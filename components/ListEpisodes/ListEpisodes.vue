@@ -104,6 +104,7 @@
                     replace
                     force
                     @click.prevent="handleChangeEpisode(item)"
+                    :title="`${props.dataMovie?.name} - Tập ${item?.episode_number}`"
                   >
                     {{
                       // item?.episode_number == dataEpisode.length

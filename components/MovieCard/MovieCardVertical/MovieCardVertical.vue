@@ -10,6 +10,7 @@
     }"
     class="movie-card-item vertical"
     :style="`--dominant-poster-color: ${item.dominant_poster_color[0]}, ${item.dominant_poster_color[1]},${item.dominant_poster_color[2]}`"
+    :title="item?.name"
   >
     <!-- <el-skeleton :loading="loading" animated class="ratio-2-3">
       <template #template>
@@ -29,7 +30,8 @@
         placeholder="/images/loading-img-2-3.webp"
         format="avif"
         loading="lazy"
-        alt=""
+        :alt="item?.name"
+        :title="item?.name"
       />
 
       <div class="info-over-image">

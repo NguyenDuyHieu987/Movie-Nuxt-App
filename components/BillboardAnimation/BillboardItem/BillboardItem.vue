@@ -1,5 +1,8 @@
 <template>
-  <div class="billboard-item">
+  <div
+    class="billboard-item"
+    :title="item?.name"
+  >
     <div class="left-mask" />
     <div class="img-wrapper ratio-16-9">
       <NuxtImg
@@ -12,7 +15,8 @@
           )
         "
         preload
-        alt=""
+        :alt="item?.name"
+        :title="item?.name"
       />
       <!-- loading="lazy" -->
     </div>
@@ -139,6 +143,7 @@
                     item?.name
                   )}/tap-1`
           }"
+          :title="item?.name"
         >
           <a-button
             class="play modern"
