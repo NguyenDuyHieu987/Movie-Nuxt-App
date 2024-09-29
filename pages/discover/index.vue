@@ -7,7 +7,6 @@
         { name: 'Phim lẻ', value: 'movie' },
         { name: 'Phim bộ', value: 'tv' }
       ]"
-      :cancelFilter="cancelFilter"
       @onFilter="handleFilter"
     />
 

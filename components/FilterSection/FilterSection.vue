@@ -279,7 +279,6 @@ import { getAllSortBy } from '~/services/sortby';
 
 const props = defineProps<{
   listFilter: any[];
-  cancelFilter: () => void;
 }>();
 
 const emits = defineEmits<{

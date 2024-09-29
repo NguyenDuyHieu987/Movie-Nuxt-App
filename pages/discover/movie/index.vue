@@ -12,7 +12,6 @@
         // { name: 'Upcoming', value: 'upcoming' },
         // { name: 'Toprated', value: 'toprated' }
       ]"
-      :cancelFilter="cancelFilter"
       @onFilter="handleFilter"
     />
 

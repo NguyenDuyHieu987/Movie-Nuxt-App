@@ -12,7 +12,6 @@
         // { name: 'Popular', value: 'popular' },
         // { name: 'Toprated', value: 'toprated' }
       ]"
-      :cancelFilter="cancelFilter"
       @onFilter="handleFilter"
     />
 
