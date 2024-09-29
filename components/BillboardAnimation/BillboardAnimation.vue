@@ -13,7 +13,8 @@
           "
           format="avif"
           loading="lazy"
-          alt=""
+          :alt="currenActiveItem?.name"
+          :title="currenActiveItem?.name"
         />
       </div>
 

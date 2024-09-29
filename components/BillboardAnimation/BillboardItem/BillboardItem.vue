@@ -15,10 +15,10 @@
           )
         "
         preload
+        loading="lazy"
         :alt="item?.name"
         :title="item?.name"
       />
-      <!-- loading="lazy" -->
     </div>
 
     <div class="billboard-item-body">
