@@ -407,22 +407,24 @@ const handleClickFacebookLogin = async () => {
     });
 };
 
-const handleClickGoogleLogin = async () => {
-  if (!tokenClient.value) {
-    return;
-  }
+// const handleClickGoogleLogin = async () => {
+//   if (!tokenClient.value) {
+//     return;
+//   }
 
-  if (tokenClient.value?.l == 'code') {
-    tokenClient.value.requestCode();
-    return;
-  }
+//   console.log(tokenClient.value);
 
-  if (tokenClient.value?.l == 'token') {
-    tokenClient.value.requestAccessToken();
-  }
-};
+//   if (tokenClient.value?.l == 'code') {
+//     tokenClient.value.requestCode();
+//     return;
+//   }
 
-/* const handleClickGoogleLogin = () => {
+//   if (tokenClient.value?.l == 'token') {
+//     tokenClient.value.requestAccessToken();
+//   }
+// };
+
+const handleClickGoogleLogin = () => {
   // Google's OAuth 2.0 endpoint for requesting an access token
   const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
 
@@ -463,7 +465,7 @@ const handleClickGoogleLogin = async () => {
   // Add form to page and submit it to open the OAuth 2.0 endpoint.
   document.body.appendChild(form);
   form.submit();
-}; */
+};
 
 const handleGooglePopupCallback = (googleOauthResponse: any) => {
   if (!googleOauthResponse) {
