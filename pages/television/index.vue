@@ -105,7 +105,7 @@ useSeoMeta({
   description: 'Phim bộ, Phim dài tập',
   ogTitle: 'Phim bộ',
   ogType: 'video.movie',
-  // ogUrl: window.location.href,
+  ogUrl: () => window?.location?.href,
   ogDescription: 'Phim bộ, Phim dài tập',
   ogLocale: 'vi'
 });

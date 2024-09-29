@@ -621,7 +621,7 @@ useSeoMeta({
     currentEpisode.value?.episode_number +
     '',
   ogType: 'video.movie',
-  // ogUrl: () => window.location.href,
+  ogUrl: () => window?.location?.href,
   ogDescription: () => dataMovie.value?.overview,
   ogImage: () =>
     getServerImage(

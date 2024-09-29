@@ -575,7 +575,7 @@ useSeoMeta({
   description: () => dataMovie.value?.overview,
   ogTitle: () => 'Xem phim: ' + dataMovie.value?.name + '',
   ogType: 'video.movie',
-  // ogUrl: () => window.location.href,
+  ogUrl: () => window?.location?.href,
   ogDescription: () => dataMovie.value?.overview,
   ogImage: () =>
     getServerImage(

@@ -105,7 +105,7 @@ useSeoMeta({
   description: 'Phim lẻ, Phim chiếu rạp',
   ogTitle: 'Phim lẻ',
   ogType: 'video.movie',
-  // ogUrl: window.location.href,
+  ogUrl: () => window?.location?.href,
   ogDescription: 'Phim lẻ, Phim chiếu rạp',
   ogLocale: 'vi'
 });
