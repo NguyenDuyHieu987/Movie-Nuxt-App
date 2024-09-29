@@ -407,65 +407,63 @@ const handleClickFacebookLogin = async () => {
     });
 };
 
-// const handleClickGoogleLogin = async () => {
-//   if (!tokenClient.value) {
-//     return;
-//   }
-
-//   console.log(tokenClient.value);
-
-//   if (tokenClient.value?.l == 'code') {
-//     tokenClient.value.requestCode();
-//     return;
-//   }
-
-//   if (tokenClient.value?.l == 'token') {
-//     tokenClient.value.requestAccessToken();
-//   }
-// };
-
-const handleClickGoogleLogin = () => {
-  // Google's OAuth 2.0 endpoint for requesting an access token
-  const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
-
-  // Create element to open OAuth 2.0 endpoint in new window.
-  const form = document.createElement('form');
-  form.setAttribute('method', 'GET');
-  form.setAttribute('action', oauth2Endpoint);
-
-  // Parameters to pass to OAuth 2.0 endpoint.
-  const params:
-    | {
-        client_id: number;
-        scope: string;
-        prompt: string;
-        redirect_uri: string;
-        response_type: string;
-        include_granted_scopes: string;
-      }
-    | any = {
-    client_id: nuxtConfig.app.googleOauth2ClientID,
-    scope:
-      'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
-    prompt: 'select_account',
-    redirect_uri: window.location.origin + '/oauth/google',
-    response_type: 'token',
-    include_granted_scopes: 'true'
-  };
-
-  // Add form parameters as hidden input values.
-  for (const p in params) {
-    const input = document.createElement('input');
-    input.setAttribute('type', 'hidden');
-    input.setAttribute('name', p);
-    input.setAttribute('value', params[p]);
-    form.appendChild(input);
+const handleClickGoogleLogin = async () => {
+  if (!tokenClient.value) {
+    return;
   }
 
-  // Add form to page and submit it to open the OAuth 2.0 endpoint.
-  document.body.appendChild(form);
-  form.submit();
+  if (tokenClient.value?.j == 'code') {
+    tokenClient.value.requestCode();
+    return;
+  }
+
+  if (tokenClient.value?.j == 'token') {
+    tokenClient.value.requestAccessToken();
+  }
 };
+
+// const handleClickGoogleLogin = () => {
+//   // Google's OAuth 2.0 endpoint for requesting an access token
+//   const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+
+//   // Create element to open OAuth 2.0 endpoint in new window.
+//   const form = document.createElement('form');
+//   form.setAttribute('method', 'GET');
+//   form.setAttribute('action', oauth2Endpoint);
+
+//   // Parameters to pass to OAuth 2.0 endpoint.
+//   const params:
+//     | {
+//         client_id: number;
+//         scope: string;
+//         prompt: string;
+//         redirect_uri: string;
+//         response_type: string;
+//         include_granted_scopes: string;
+//       }
+//     | any = {
+//     client_id: nuxtConfig.app.googleOauth2ClientID,
+//     scope:
+//       'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+//     prompt: 'select_account',
+//     redirect_uri: window.location.origin + '/oauth/google',
+//     response_type: 'token',
+//     include_granted_scopes: 'true'
+//   };
+
+//   // Add form parameters as hidden input values.
+//   for (const p in params) {
+//     const input = document.createElement('input');
+//     input.setAttribute('type', 'hidden');
+//     input.setAttribute('name', p);
+//     input.setAttribute('value', params[p]);
+//     form.appendChild(input);
+//   }
+
+//   // Add form to page and submit it to open the OAuth 2.0 endpoint.
+//   document.body.appendChild(form);
+//   form.submit();
+// };
 
 const handleGooglePopupCallback = (googleOauthResponse: any) => {
   if (!googleOauthResponse) {
