@@ -187,7 +187,8 @@ export default defineNuxtConfig({
     // 'nuxt-vitalizer',
     '@nuxtjs/device',
     'nuxt-svgo',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    '@nuxtjs/critters'
   ],
 
   // extends: ['nuxt-seo-kit'],
