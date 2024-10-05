@@ -440,7 +440,7 @@ const onSwiperLoaded = () => {
 onMounted(() => {
   loading.value = false;
 
-  window.addEventListener('scroll', async () => {
+  window.onscroll = async () => {
     if (modLíst.value?.results?.length == 0 || loading.value) {
       return;
     }
@@ -466,7 +466,7 @@ onMounted(() => {
           loadMore.value = false;
         });
     }
-  });
+  };
 });
 
 const handleLoadMoreRecommend = async () => {
