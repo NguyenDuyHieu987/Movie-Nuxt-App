@@ -63,7 +63,7 @@
     "vuex": "4.1.0"
   },
   "devDependencies": {
-    "@ant-design-vue/nuxt": "1.4.4",
+    "@ant-design-vue/nuxt": "1.4.2",
     "@element-plus/nuxt": "1.0.10",
     "@nuxt/fonts": "0.9.2",
     "@nuxtjs/device": "3.2.4",
