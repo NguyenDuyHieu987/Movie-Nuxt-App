@@ -69,7 +69,7 @@
     "@nuxtjs/device": "3.2.4",
     "@nuxtjs/fontaine": "0.4.3",
     "@nuxtjs/google-fonts": "3.2.0",
-    "@nuxtjs/seo": "2.0.0-rc.23",
+    "@nuxtjs/seo": "2.0.0-rc.21",
     "@nuxtjs/sitemap": "6.1.1",
     "@types/compression-webpack-plugin": "9.1.1",
     "@types/crypto-js": "4.2.2",
