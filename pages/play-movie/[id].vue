@@ -46,12 +46,14 @@
                 allowfullscreen
               ></iframe> -->
 
+            <!-- videoUrl="/feature/Transformer_5/Transformer_5" -->
+
             <VideoPlayer
               v-model:isInHistory="isInHistory"
               v-model:historyProgress="historyProgress"
               :dataMovie="dataMovie"
               :loadingData="loading"
-              videoUrl="/feature/Transformer_5/Transformer_5"
+              :videoUrl="`${dataMovie?.video_path}`"
               :backdrop="
                 getImage(
                   dataMovie?.backdrop_path,

@@ -739,9 +739,10 @@ const ísWatchable = computed<boolean>(
       props.loadingData
     )
 );
-const videoSrc = computed<string>(
-  () => getVideo(props.videoUrl + '.m3u8')
-  // getVideo(props.videoUrl)
+const videoSrc = computed<string>(() =>
+  getVideo(
+    props.videoUrl.endsWith('.m3u8') ? props.videoUrl : props.videoUrl + '.m3u8'
+  )
 );
 const videoPlayerStorageStates = useLocalStorage(
   STORAGE.VIDEO_PLAYER_STATES.KEY,

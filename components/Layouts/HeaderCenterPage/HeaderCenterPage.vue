@@ -26,7 +26,7 @@
         </div>
 
         <NuxtLink
-          v-if="$route.path == '/contact'"
+          v-if="route.path == '/contact'"
           class="helpcenter-logo"
           to="/help"
         >
@@ -119,7 +119,8 @@ import { storeToRefs } from 'pinia';
 const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin, loadingUser } = storeToRefs<any>(authStore);
+const route = useRoute();
+const { isLogin, loadingUser } = storeToRefs(authStore);
 
 onMounted(() => {});
 

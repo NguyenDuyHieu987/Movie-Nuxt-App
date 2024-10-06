@@ -89,7 +89,7 @@ import { storeToRefs } from 'pinia';
 const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin, loadingUser } = storeToRefs<any>(authStore);
+const { isLogin, loadingUser } = storeToRefs(authStore);
 
 onMounted(() => {});
 
