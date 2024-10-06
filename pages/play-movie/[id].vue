@@ -53,7 +53,7 @@
               v-model:historyProgress="historyProgress"
               :dataMovie="dataMovie"
               :loadingData="loading"
-              :videoUrl="`${dataMovie?.video_path}`"
+              :videoUrl="`${dataMovie?.video_path || '/feature/Transformer_5/Transformer_5'}`"
               :backdrop="
                 getImage(
                   dataMovie?.backdrop_path,
