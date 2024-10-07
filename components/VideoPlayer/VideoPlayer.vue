@@ -1042,17 +1042,32 @@ const formatDuration = (time: number): string => {
     return '00:00';
   }
 
-  const hours: number | string = Math.floor(time / 3600);
-  let mins: number | string = Math.floor(time / 60);
-  let seconds: number | string = Math.floor(time % 60);
+  // const hours: number | string = Math.floor(time / 3600);
+  // let mins: number | string = Math.floor(time / 60);
+  // let seconds: number | string = Math.floor(time % 60);
 
-  if (hours == 0) {
-    seconds = seconds < 10 ? (seconds = '0' + seconds) : seconds;
-    return `${mins}:${seconds}`;
+  // if (hours == 0) {
+  //   seconds = seconds < 10 ? (seconds = '0' + seconds) : seconds;
+  //   return `${mins}:${seconds}`;
+  // } else {
+  //   mins = mins < 10 ? (mins = '0' + mins) : mins;
+  //   seconds = seconds < 10 ? (seconds = '0' + seconds) : seconds;
+  //   return `${hours}:${mins}:${seconds}`;
+  // }
+
+  const hours: number | string = Math.floor(time / 3600); // Số giờ
+  const mins: number | string = Math.floor((time % 3600) / 60); // Số phút còn lại sau khi tính số giờ
+  let seconds: number | string = Math.floor(time % 60); // Số giây
+
+  // Thêm số '0' trước giây và phút nếu nhỏ hơn 10
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  const formattedMins = mins < 10 ? '0' + mins : mins;
+
+  // Nếu video có hơn 1 giờ
+  if (hours > 0) {
+    return `${hours}:${formattedMins}:${seconds}`;
   } else {
-    mins = mins < 10 ? (mins = '0' + mins) : mins;
-    seconds = seconds < 10 ? (seconds = '0' + seconds) : seconds;
-    return `${hours}:${mins}:${seconds}`;
+    return `${formattedMins}:${seconds}`; // Trường hợp chỉ có phút và giây
   }
 };
 
