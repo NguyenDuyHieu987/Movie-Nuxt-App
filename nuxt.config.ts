@@ -184,10 +184,10 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-og-image',
     'nuxt-schema-org',
-    // 'nuxt-vitalizer',
+    'nuxt-vitalizer',
     '@nuxtjs/device',
     'nuxt-svgo',
-    '@vite-pwa/nuxt',
+    // '@vite-pwa/nuxt',
     '@nuxtjs/critters'
   ],
 
