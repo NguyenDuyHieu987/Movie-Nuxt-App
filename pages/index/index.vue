@@ -10,6 +10,58 @@
 
     <div class="home-content">
       <section
+        v-if="authStore.isLogin"
+        class="home-section recommend"
+      >
+        <h2
+          v-if="loadingRecommend || recommends?.length"
+          class="gradient-title-default"
+        >
+          <span>Gợi ý cho bạn</span>
+        </h2>
+
+        <LoadingSectionVertical v-model:loading="loadingRecommend">
+          <template #content>
+            <section
+              class="movie-group vertical"
+              :class="{ expand: viewMoreRecommend }"
+            >
+              <MovieCardVertical
+                v-for="(item, index) in recommends"
+                :key="item.id"
+                :index="index"
+                :item="item"
+                :type="item.media_type"
+              />
+            </section>
+
+            <ViewMoreBar
+              v-show="recommends?.length"
+              :isOpen="viewMoreRecommend"
+              @onClick="viewMoreRecommend = !viewMoreRecommend"
+            />
+
+            <a-button
+              v-show="recommends?.length"
+              class="loadmore-btn"
+              type="text"
+              :loading="loadMoreRecommend"
+              @click="handleLoadMoreRecommend"
+            >
+              <template #icon>
+                <Plus1Icon
+                  width="2rem"
+                  height="2rem"
+                  fill="currentColor"
+                />
+              </template>
+              {{ loadMoreRecommend ? 'Đang tải...' : 'Tải thêm' }}
+            </a-button>
+          </template>
+        </LoadingSectionVertical>
+      </section>
+
+      <section
         v-if="loading"
         class="home-section"
       >
@@ -95,58 +147,6 @@
         class="center"
         :width="35"
       />
-
-      <!-- <section
-        v-if="authStore.isLogin"
-        class="home-section recommend"
-      >
-        <h2
-          v-if="loadingRecommend || recommends?.length"
-          class="gradient-title-default"
-        >
-          <span>Gợi ý cho bạn</span>
-        </h2>
-
-        <LoadingSectionVertical v-model:loading="loadingRecommend">
-          <template #content>
-            <section
-              class="movie-group vertical"
-              :class="{ expand: viewMoreRecommend }"
-            >
-              <MovieCardVertical
-                v-for="(item, index) in recommends"
-                :key="item.id"
-                :index="index"
-                :item="item"
-                :type="item.media_type"
-              />
-            </section>
-
-            <ViewMoreBar
-              v-show="recommends?.length"
-              :isOpen="viewMoreRecommend"
-              @onClick="viewMoreRecommend = !viewMoreRecommend"
-            />
-
-            <a-button
-              v-show="recommends?.length"
-              class="loadmore-btn"
-              type="text"
-              :loading="loadMoreRecommend"
-              @click="handleLoadMoreRecommend"
-            >
-              <template #icon>
-                <Plus1Icon
-                  width="2rem"
-                  height="2rem"
-                  fill="currentColor"
-                />
-              </template>
-              {{ loadMoreRecommend ? 'Đang tải...' : 'Tải thêm' }}
-            </a-button>
-          </template>
-        </LoadingSectionVertical>
-      </section> -->
     </div>
   </div>
 </template>
@@ -437,8 +437,29 @@ const onSwiperLoaded = () => {
   // loading.value = false;
 };
 
+watch(
+  () => authStore.isLogin,
+  async () => {
+    if (authStore.isLogin) {
+      loadingRecommend.value = true;
+
+      getMyRecommend(skipRecommend.value)
+        .then((response) => {
+          recommends.value = response?.results;
+          skipRecommend.value++;
+        })
+        .catch((e) => {})
+        .finally(() => {
+          loadingRecommend.value = false;
+        });
+    }
+  },
+  { immediate: true }
+);
+
 onMounted(() => {
   loading.value = false;
+  console.log(modLíst.value);
 
   window.onscroll = async () => {
     if (modLíst.value?.results?.length == 0 || loading.value) {

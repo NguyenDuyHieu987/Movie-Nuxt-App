@@ -78,9 +78,9 @@ export function isVietnameseTones(str: string): boolean {
 
 export function isWindowScrollBottom(options?: { offset?: number }): boolean {
   if (import.meta.client) {
-    const scrollHeight = Math.round(window.scrollY + window.innerHeight);
+    const scrollHeight = Math.ceil(window.scrollY + window.innerHeight);
 
-    return scrollHeight == document.documentElement.scrollHeight;
+    return scrollHeight == Math.ceil(document.documentElement.scrollHeight);
   } else {
     return false;
   }
