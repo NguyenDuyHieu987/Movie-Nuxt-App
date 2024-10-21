@@ -513,7 +513,7 @@ const handleLoadMoreRecommend = async () => {
 };
 </script>
 
-<style lang="scss" src="./HomePage.scss"></style>
-<!-- <style lang="scss">
+<!-- <style lang="scss" src="./HomePage.scss"></style> -->
+<style lang="scss">
 @import url('./HomePage.scss');
-</style> -->
+</style>
