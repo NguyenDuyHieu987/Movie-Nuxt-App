@@ -315,13 +315,11 @@ video {
 }
 
 .swiper {
-  .swiper-wrapper {
 
-    .swiper-button-prev,
-    .swiper-button-next {
-      &::after {
-        display: none;
-      }
+  .swiper-button-prev,
+  .swiper-button-next {
+    &::after {
+      display: none;
     }
   }
 }
