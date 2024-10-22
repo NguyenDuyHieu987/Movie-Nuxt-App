@@ -3,10 +3,10 @@ import { version } from 'ant-design-vue';
 import type { NuxtPage } from 'nuxt/schema';
 import path, { resolve } from 'path';
 import { isProduction } from 'std-env';
-import svgLoader from 'vite-svg-loader';
+// import svgLoader from 'vite-svg-loader';
 import { fileURLToPath } from 'url';
 import compression from 'vite-plugin-compression';
-import CompressionPlugin from 'compression-webpack-plugin';
+// import CompressionPlugin from 'compression-webpack-plugin';
 
 const antdVersion: number = +version.split('.')[0];
 
@@ -448,11 +448,11 @@ export default defineNuxtConfig({
     },
     plugins: [
       // svgLoader({}),
-      compression({
-        algorithm: 'brotliCompress',
-        ext: '.br',
-        compressionOptions: {}
-      })
+      // compression({
+      //   algorithm: 'brotliCompress',
+      //   ext: '.br',
+      //   compressionOptions: {}
+      // })
     ],
     ssr: {
       // external: ['ant-design-vue'],
@@ -652,12 +652,12 @@ export default defineNuxtConfig({
       }
     },
     plugins: [
-      new CompressionPlugin({
-        algorithm: 'brotliCompress',
-        compressionOptions: {
-          maxOutputLength: 10000
-        }
-      })
+      // new CompressionPlugin({
+      //   algorithm: 'brotliCompress',
+      //   compressionOptions: {
+      //     maxOutputLength: 10000
+      //   }
+      // })
     ]
   },
 
