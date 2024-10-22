@@ -459,7 +459,6 @@ watch(
 
 onMounted(() => {
   loading.value = false;
-  console.log(modLíst.value);
 
   window.onscroll = async () => {
     if (modLíst.value?.results?.length == 0 || loading.value) {
