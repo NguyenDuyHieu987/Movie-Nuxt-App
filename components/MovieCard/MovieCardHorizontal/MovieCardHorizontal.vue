@@ -212,7 +212,7 @@ const getData = async () => {
     if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     } else {
-      await getItemList(props.item?.id, props.item?.media_type)
+      getItemList(props.item?.id, props.item?.media_type)
         .then((response) => {
           if (response.success == true) {
             isAddToList.value = true;
@@ -225,7 +225,7 @@ const getData = async () => {
       isInHistory.value = true;
       percent.value = dataMovie.value?.history_progress?.percent;
     } else {
-      await getItemHistory(props.item?.id, props.item?.media_type)
+      getItemHistory(props.item?.id, props.item?.media_type)
         .then((response) => {
           if (response.success == true) {
             isInHistory.value = true;
@@ -237,7 +237,40 @@ const getData = async () => {
   }
 };
 
-getData();
+// getData();
+
+watch(
+  () => authStore.isLogin,
+  () => {
+    if (authStore.isLogin) {
+      if (dataMovie.value?.in_list) {
+        isAddToList.value = true;
+      } else {
+        getItemList(props.item?.id, props.item?.media_type)
+          .then((response) => {
+            if (response.success == true) {
+              isAddToList.value = true;
+            }
+          })
+          .catch((e) => {});
+      }
+
+      if (dataMovie.value?.history_progress) {
+        isInHistory.value = true;
+        percent.value = dataMovie.value?.history_progress?.percent;
+      } else {
+        getItemHistory(props.item?.id, props.item?.media_type)
+          .then((response) => {
+            if (response.success == true) {
+              isInHistory.value = true;
+              percent.value = response?.result?.percent;
+            }
+          })
+          .catch((e) => {});
+      }
+    }
+  }
+);
 
 onMounted(() => {
   const rect = cardItem.value!?.getBoundingClientRect();
