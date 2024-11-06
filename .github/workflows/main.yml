@@ -66,9 +66,9 @@ jobs:
 
       - name: Install Dependencies and Build
         run: |
-          pnpm install
-          pnpm install dayjs
-          pnpm run build
+          yarn install
+          yarn install dayjs
+          yarn build
         env:
           CI: true
 
