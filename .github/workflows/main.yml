@@ -46,18 +46,29 @@ jobs:
       - name: Create .env file
         run: echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
 
-      # - name: Install pnpm
-      #   uses: pnpm/action-setup@v2
-      #   with:
-      #     version: latest
+      - name: Remove node_modules and package-lock.json
+        run: rm -rf node_modules package-lock.json
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
 
       # npm install --legacy-peer-deps --no-save
+      # - name: Install Dependencies and Build
+      #   run: |
+      #     npm install --legacy-peer-deps
+      #     npm install dayjs --legacy-peer-deps
+      #     npm list --depth=0
+      #     npm run build
+      #   env:
+      #     CI: true
+
       - name: Install Dependencies and Build
         run: |
-          npm install --legacy-peer-deps
-          npm install dayjs --legacy-peer-deps
-          npm list --depth=0
-          npm run build
+          pnpm install
+          pnpm install dayjs
+          pnpm run build
         env:
           CI: true
 
