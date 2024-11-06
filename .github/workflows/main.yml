@@ -55,7 +55,7 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           npm install --legacy-peer-deps
-          npm install dayjs
+          npm install dayjs --legacy-peer-deps
           npm list --depth=0
           npm run build
         env:
