@@ -51,7 +51,7 @@ jobs:
       #   with:
       #     version: latest
 
-      - name: Remove node_modules and package-lock.json
+      - name: Remove node_modules
         run: rm -rf node_modules .nuxt package-lock.json
 
       # npm install --legacy-peer-deps --no-save
