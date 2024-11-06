@@ -387,7 +387,6 @@ export default defineNuxtConfig({
 
   build: {
     // analyze: true,
-    transpile: ['element-plus/es'],
   },
 
   components: {
@@ -461,6 +460,7 @@ export default defineNuxtConfig({
     },
     optimizeDeps: {
       // include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
+      include: ['dayjs', 'dayjs/plugin/*']
     },
     css: {
       preprocessorOptions: {
