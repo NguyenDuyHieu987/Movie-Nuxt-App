@@ -467,6 +467,7 @@ export default defineNuxtConfig({
           // additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
           additionalData:
             '@use "~/assets/style/globalStyle/_variables.scss" as *;',
+          api: 'modern-compiler',
           silenceDeprecations: ['import']
         }
       },
