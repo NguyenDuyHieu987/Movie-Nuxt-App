@@ -55,29 +55,25 @@ jobs:
         with:
           version: latest
 
-      # npm install --legacy-peer-deps --no-save
+      # - name: Install Dependencies and Build
+      #   run: |
+      #     npm install --legacy-peer-deps
+      #     npm list --depth=0
+      #     npm run build
+      #   env:
+      #     CI: true
+
       - name: Install Dependencies and Build
         run: |
-          npm install --legacy-peer-deps
-          npm install dayjs --legacy-peer-deps
-          npm list --depth=0
-          npm run build
+          pnpm install
+          pnpm build
         env:
           CI: true
 
       # - name: Install Dependencies and Build
       #   run: |
       #     yarn install --ignore-engines
-      #     yarn add dayjs --ignore-engines
       #     yarn build
-      #   env:
-      #     CI: true
-
-      # - name: Install Dependencies and Build
-      #   run: |
-      #     pnpm install
-      #     pnpm install dayjs
-      #     pnpm build
       #   env:
       #     CI: true
 
