@@ -341,7 +341,7 @@ export default defineNuxtConfig({
     // disableStylesheets: 'entry'
   },
 
-  svgs: {
+  svgo: {
     autoImportPath: './assets/svgs/icons/',
     global: false
   },
