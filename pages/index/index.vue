@@ -184,8 +184,8 @@ import { getMyRecommend } from '~/services/recommend';
 
 definePageMeta({
   // layout: 'home',
-  name: 'home'
-  // key: (route) => route.fullPath
+  name: 'home',
+  key: (route) => route.fullPath
 });
 
 useHead({
