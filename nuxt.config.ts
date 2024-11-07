@@ -469,7 +469,7 @@ export default defineNuxtConfig({
           silenceDeprecations: ['import']
         }
       },
-      transformer: 'postcss',
+      transformer: 'lightningcss',
       lightningcss: {
         errorRecovery: true
       },
@@ -487,7 +487,7 @@ export default defineNuxtConfig({
       ssrManifest: true,
       sourcemap: 'hidden',
       // assetsDir: '_nuxt/',
-      cssMinify: 'esbuild',
+      cssMinify: 'lightningcss',
       cssCodeSplit: true,
       reportCompressedSize: true,
       // target: 'esnext',
