@@ -466,7 +466,8 @@ export default defineNuxtConfig({
         scss: {
           // additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
           additionalData:
-            '@use "~/assets/style/globalStyle/_variables.scss" as *;'
+            '@use "~/assets/style/globalStyle/_variables.scss" as *;',
+          silenceDeprecations: ['import']
         }
       },
       transformer: 'postcss',
