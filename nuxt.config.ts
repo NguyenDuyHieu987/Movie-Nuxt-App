@@ -36,7 +36,7 @@ export default defineNuxtConfig({
         {
           rel: 'preconnect',
           href: process.env.NUXT_APP_CDN_URL,
-          crossorigin: true
+          crossorigin: 'anonymous'
         }
         // antdVersion == 4
         //   ? {
