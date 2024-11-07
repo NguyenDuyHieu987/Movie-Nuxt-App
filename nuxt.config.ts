@@ -474,7 +474,7 @@ export default defineNuxtConfig({
         errorRecovery: true
       },
       postcss: {
-        plugins: [require('postcss-import')]
+        // plugins: [require('postcss-import')]
       }
     },
     build: {
