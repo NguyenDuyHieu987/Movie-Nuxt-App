@@ -88,12 +88,12 @@
     "compression-webpack-plugin": "11.1.0",
     "cross-env": "7.0.3",
     "dotenv": "16.4.5",
-    "element-plus": "2.8.5",
+    "element-plus": "2.8.7",
     "eslint": "9.14.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-n": "17.13.0",
+    "eslint-plugin-n": "17.13.1",
     "eslint-plugin-prettier": "5.2.1",
     "eslint-plugin-promise": "7.1.0",
     "eslint-plugin-simple-import-sort": "12.1.1",
@@ -130,7 +130,7 @@
     "vite-svg-loader": "5.1.0",
     "vitest": "2.1.4",
     "vue-gtag-next": "1.14.0",
-    "vue-tsc": "2.1.10"
+    "vue-tsc": "2.1.6"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.24.4"
