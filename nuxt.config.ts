@@ -470,7 +470,7 @@ export default defineNuxtConfig({
           silenceDeprecations: ['import']
         }
       },
-      transformer: 'lightningcss',
+      transformer: 'postcss',
       lightningcss: {
         errorRecovery: true
       },
