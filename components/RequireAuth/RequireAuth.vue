@@ -10,7 +10,7 @@
           type="text"
           size="large"
           class="default"
-          @click="$router.back()"
+          @click="router.back()"
         >
           Quay lại
         </a-button>
@@ -29,7 +29,9 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const router = useRouter();
+</script>
 
 <style lang="scss" src="./RequireAuth.scss"></style>
 <!-- <style lang="scss">
