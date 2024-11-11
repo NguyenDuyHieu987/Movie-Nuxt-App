@@ -55,20 +55,20 @@ jobs:
         with:
           version: latest
 
-      # - name: Install Dependencies and Build
-      #   run: |
-      #     npm install --legacy-peer-deps
-      #     npm list --depth=0
-      #     npm run build
-      #   env:
-      #     CI: true
-
       - name: Install Dependencies and Build
         run: |
-          pnpm install
-          pnpm build
+          npm install --legacy-peer-deps
+          npm list --depth=0
+          npm run build
         env:
           CI: true
+
+      # - name: Install Dependencies and Build
+      #   run: |
+      #     pnpm install
+      #     pnpm build
+      #   env:
+      #     CI: true
 
       # - name: Install Dependencies and Build
       #   run: |
