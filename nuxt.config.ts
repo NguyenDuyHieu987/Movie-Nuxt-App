@@ -458,7 +458,7 @@ export default defineNuxtConfig({
     },
     optimizeDeps: {
       // include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
-      // include: ['dayjs', 'dayjs/plugin/*', 'element-plus']
+      include: ['dayjs', 'dayjs/plugin/*', 'element-plus']
     },
     css: {
       preprocessorOptions: {
