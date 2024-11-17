@@ -16,7 +16,7 @@
         )
       "
     >
-      <swiper-slide
+      <SwiperSlide
         v-for="(item, index) in years"
         :key="item?.name"
         :index="index"
@@ -36,7 +36,7 @@
         >
           {{ item?.name }}
         </NuxtLink>
-      </swiper-slide>
+      </SwiperSlide>
     </DiscoverHead>
 
     <div class="discover-title">

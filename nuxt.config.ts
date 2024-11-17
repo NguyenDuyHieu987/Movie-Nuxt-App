@@ -218,8 +218,8 @@ export default defineNuxtConfig({
   },
 
   swiper: {
-    // modules: ['navigation', 'virtual', 'free-mode', 'scrollbar', 'autoplay'],
-    // styleLang: 'css'
+    modules: ['navigation', 'virtual', 'free-mode', 'scrollbar', 'autoplay'],
+    styleLang: 'css'
   },
 
   gtag: {

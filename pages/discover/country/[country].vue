@@ -11,7 +11,7 @@
         countries.findIndex((item) => item?.short_name == route.params?.country)
       "
     >
-      <swiper-slide
+      <SwiperSlide
         v-for="(item, index) in countries"
         :key="item?.iso_639_1"
         :index="index"
@@ -22,7 +22,7 @@
         <NuxtLink :to="`/discover/country/${item.short_name}`">
           {{ item?.name }}
         </NuxtLink>
-      </swiper-slide>
+      </SwiperSlide>
     </DiscoverHead>
 
     <div class="discover-title">

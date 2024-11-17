@@ -11,7 +11,7 @@
         genres.findIndex((item) => item?.short_name == route.params?.genre)
       "
     >
-      <swiper-slide
+      <SwiperSlide
         v-for="(item, index) in genres"
         :key="item?.id"
         :index="index"
@@ -22,7 +22,7 @@
         <NuxtLink :to="`/discover/genre/${item.short_name}`">
           {{ item?.name_vietsub }}
         </NuxtLink>
-      </swiper-slide>
+      </SwiperSlide>
     </DiscoverHead>
 
     <div class="discover-title">
