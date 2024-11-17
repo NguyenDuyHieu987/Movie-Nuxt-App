@@ -251,11 +251,7 @@
                   fill="currentColor"
                 />
               </div>
-<<<<<<< HEAD
             </Swiper>
-=======
-            </Swiper>
->>>>>>> parent of fb0473e (chore: update)
           </div>
         </div>
         <template #extra>
