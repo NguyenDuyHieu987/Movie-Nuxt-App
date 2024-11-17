@@ -4,7 +4,7 @@
     :class="{ fixed: isFixed }"
   >
     <div class="discover-head-wrapper">
-      <swiper-container
+      <Swiper
         class="filter-swiper genres"
         :modules="[
           SwiperNavigation,
@@ -40,7 +40,7 @@
             fill="currentColor"
           />
         </div>
-      </swiper-container>
+      </Swiper>
     </div>
   </div>
 </template>
