@@ -125,11 +125,11 @@
                   fill="currentColor"
                 />
               </div>
-            </Swiper>
+            </SwiperContainer>
           </div>
           <div class="filter-row">
             <div class="filter-label">Năm</div>
-            <Swiper
+            <SwiperContainer
               class="filter-options"
               :modules="[
                 SwiperFreeMode,
@@ -186,11 +186,11 @@
                   fill="currentColor"
                 />
               </div>
-            </Swiper>
+            </SwiperContainer>
           </div>
           <div class="filter-row">
             <div class="filter-label">Quốc gia</div>
-            <Swiper
+            <SwiperContainer
               class="filter-options"
               :modules="[
                 SwiperFreeMode,
