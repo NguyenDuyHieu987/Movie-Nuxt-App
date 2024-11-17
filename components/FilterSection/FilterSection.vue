@@ -66,7 +66,7 @@
           </div>
           <div class="filter-row">
             <div class="filter-label">Thể loại</div>
-            <Swiper
+            <SwiperContainer
               class="filter-options"
               :modules="[
                 SwiperFreeMode,
@@ -251,7 +251,7 @@
                   fill="currentColor"
                 />
               </div>
-            </Swiper>
+            </SwiperContainer>
           </div>
         </div>
         <template #extra>
