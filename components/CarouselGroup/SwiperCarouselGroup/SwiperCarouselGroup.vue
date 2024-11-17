@@ -1,6 +1,6 @@
 <template>
   <div class="carousel-container">
-    <SwiperContainer
+    <swiper-container
       class="carousel-swiper"
       :class="cardMode"
       :modules="[
@@ -51,7 +51,7 @@
           fill="currentColor"
         />
       </div>
-    </SwiperContainer>
+    </swiper-container>
   </div>
 </template>
 

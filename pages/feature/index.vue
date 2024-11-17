@@ -54,7 +54,7 @@
               :responsive="responsiveHorizoltal"
             >
               <template #content>
-                <SwiperSlide
+                <swiper-slide
                   v-for="(item, index) in mod.data"
                   :key="item.id"
                   :index="index"
@@ -64,7 +64,7 @@
                     :item="item"
                     :type="item.media_type"
                   />
-                </SwiperSlide>
+                </swiper-slide>
               </template>
             </SwiperCarouselGroup>
           </section>

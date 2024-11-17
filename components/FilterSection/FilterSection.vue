@@ -66,7 +66,7 @@
           </div>
           <div class="filter-row">
             <div class="filter-label">Thể loại</div>
-            <SwiperContainer
+            <swiper-container
               class="filter-options"
               :modules="[
                 SwiperFreeMode,
@@ -88,7 +88,7 @@
                 genres.findIndex((item1: any) => item1.id == route.query?.genre)
               "
             >
-              <SwiperSlide
+              <swiper-slide
                 v-for="(item, index) in genres"
                 :key="item?.id"
                 class="filter-option"
@@ -110,7 +110,7 @@
                 >
                   {{ item?.name_vietsub }}
                 </NuxtLink>
-              </SwiperSlide>
+              </swiper-slide>
               <div class="swiper-button-prev">
                 <ChevronLeftLight
                   width="2.8rem"
@@ -125,11 +125,11 @@
                   fill="currentColor"
                 />
               </div>
-            </SwiperContainer>
+            </swiper-container>
           </div>
           <div class="filter-row">
             <div class="filter-label">Năm</div>
-            <SwiperContainer
+            <swiper-container
               class="filter-options"
               :modules="[
                 SwiperFreeMode,
@@ -151,7 +151,7 @@
                 years.findIndex((item1) => item1.name == route.query?.year)
               "
             >
-              <SwiperSlide
+              <swiper-slide
                 v-for="(item, index) in years"
                 :key="item?.name"
                 class="filter-option"
@@ -171,7 +171,7 @@
                 >
                   {{ item?.name }}
                 </NuxtLink>
-              </SwiperSlide>
+              </swiper-slide>
               <div class="swiper-button-prev">
                 <ChevronLeftLight
                   width="2.8rem"
@@ -186,11 +186,11 @@
                   fill="currentColor"
                 />
               </div>
-            </SwiperContainer>
+            </swiper-container>
           </div>
           <div class="filter-row">
             <div class="filter-label">Quốc gia</div>
-            <SwiperContainer
+            <swiper-container
               class="filter-options"
               :modules="[
                 SwiperFreeMode,
@@ -214,7 +214,7 @@
                 )
               "
             >
-              <SwiperSlide
+              <swiper-slide
                 v-for="(item, index) in countries"
                 :key="item?.iso_639_1"
                 class="filter-option"
@@ -236,7 +236,7 @@
                 >
                   {{ item?.name }}
                 </NuxtLink>
-              </SwiperSlide>
+              </swiper-slide>
               <div class="swiper-button-prev">
                 <ChevronLeftLight
                   width="3.5rem"
@@ -251,7 +251,7 @@
                   fill="currentColor"
                 />
               </div>
-            </SwiperContainer>
+            </swiper-container>
           </div>
         </div>
         <template #extra>
