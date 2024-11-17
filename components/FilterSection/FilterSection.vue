@@ -66,11 +66,7 @@
           </div>
           <div class="filter-row">
             <div class="filter-label">Thể loại</div>
-<<<<<<< HEAD
             <Swiper
-=======
-            <Swiper
->>>>>>> parent of fb0473e (chore: update)
               class="filter-options"
               :modules="[
                 SwiperFreeMode,
