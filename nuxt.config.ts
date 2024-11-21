@@ -64,7 +64,7 @@ export default defineNuxtConfig({
     },
     // buildAssetsDir: '/_nuxt/',
     cdnURL: process.env.NUXT_APP_CDN_URL,
-    // keepalive: true,
+    keepalive: true,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
 
@@ -126,22 +126,22 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    asyncEntry: false,
-    asyncContext: true,
-    crossOriginPrefetch: true,
-    componentIslands: {
-      selectiveClient: true
-    },
-    headNext: true,
-    payloadExtraction: true,
-    renderJsonPayloads: true,
-    restoreState: true,
-    viewTransition: true,
-    defaults: {
-      useAsyncData: {
-        deep: true
-      }
-    }
+    // asyncEntry: false,
+    // asyncContext: true,
+    // crossOriginPrefetch: true,
+    // componentIslands: {
+    //   selectiveClient: true
+    // },
+    // headNext: true,
+    // payloadExtraction: true,
+    // renderJsonPayloads: true,
+    // restoreState: true,
+    // viewTransition: true,
+    // defaults: {
+    //   useAsyncData: {
+    //     deep: true
+    //   }
+    // }
     // buildCache: true
   },
 
@@ -340,8 +340,10 @@ export default defineNuxtConfig({
   },
 
   svgo: {
+    // explicitImportsOnly: true,
     autoImportPath: './assets/svgs/icons/',
     global: false
+    // defaultImport: 'component'
   },
 
   // SEO

@@ -8,16 +8,7 @@
     <div class="play-container">
       <div class="main-play">
         <div class="top-page">
-          <BackPage
-            @onclick="
-              navigateTo({
-                path: `/info-movie/${
-                  dataMovie?.id
-                }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}
-              `
-              })
-            "
-          >
+          <BackPage @onclick="onClickBack">
             {{ dataMovie?.name }}
           </BackPage>
 
@@ -692,6 +683,14 @@ const handleAddToList = () => {
 const scrollToComment = () => {
   const comment = document.getElementById('comment') as HTMLElement;
   comment.scrollIntoView({ block: 'center', behavior: 'smooth' });
+};
+
+const onClickBack = () => {
+  return navigateTo({
+    path: `/info-movie/${
+      dataMovie.value?.id
+    }${utils.convertPath.toPathInfo_Play(dataMovie.value?.name)}`
+  });
 };
 </script>
 
