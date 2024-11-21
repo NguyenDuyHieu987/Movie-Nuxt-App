@@ -64,7 +64,7 @@ export default defineNuxtConfig({
     },
     // buildAssetsDir: '/_nuxt/',
     cdnURL: process.env.NUXT_APP_CDN_URL,
-    keepalive: true,
+    // keepalive: true,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
 

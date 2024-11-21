@@ -45,11 +45,10 @@
 
       <div class="app-wrapper">
         <NuxtLayout>
-          <NuxtPage
-            :keepalive="{
+          <NuxtPage />
+          <!-- :keepalive="{
               exclude: notCacheList
-            }"
-          />
+            }" -->
 
           <el-backtop
             class="app-back-top click-active"
