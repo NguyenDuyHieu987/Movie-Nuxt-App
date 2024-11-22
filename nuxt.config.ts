@@ -361,7 +361,7 @@ export default defineNuxtConfig({
   seoExperiments: {},
   schemaOrg: {},
   linkChecker: {
-    enabled: false
+    // enabled: false
   },
 
   plugins: [],
