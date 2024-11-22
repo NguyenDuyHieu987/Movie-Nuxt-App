@@ -63,7 +63,7 @@ export default defineNuxtConfig({
       id: '__nuxt'
     },
     // buildAssetsDir: '/_nuxt/',
-    cdnURL: process.env.NUXT_APP_CDN_URL,
+    // cdnURL: process.env.NUXT_APP_CDN_URL,
     keepalive: true,
     layoutTransition: false,
     pageTransition: { name: 'page', mode: 'out-in', appear: true },
@@ -177,7 +177,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     // 'nuxt-gtag',
     'nuxt-lodash',
-    // 'nuxt-delay-hydration',
+    'nuxt-delay-hydration',
     // 'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
