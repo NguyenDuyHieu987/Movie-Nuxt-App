@@ -556,32 +556,32 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      crawlLinks: false,
-      routes: [
-        '/sitemap.xml',
-        '/',
-        '/feature',
-        '/television',
-        '/login',
-        '/oauth/google',
-        '/signup',
-        '/ForgotPassword',
-        '/upgrade/plans',
-        '/help',
-        '/contact'
-      ],
-      ignore: [
-        '/discover',
-        '/search',
-        '/ranks',
-        '/follow',
-        '/history',
-        '/YourAccount',
-        '/info-movie',
-        '/info-tv',
-        '/play-movie',
-        '/play-tv'
-      ]
+      // crawlLinks: false,
+      // routes: [
+      //   '/sitemap.xml',
+      //   '/',
+      //   '/feature',
+      //   '/television',
+      //   '/login',
+      //   '/oauth/google',
+      //   '/signup',
+      //   '/ForgotPassword',
+      //   '/upgrade/plans',
+      //   '/help',
+      //   '/contact'
+      // ],
+      // ignore: [
+      //   '/discover',
+      //   '/search',
+      //   '/ranks',
+      //   '/follow',
+      //   '/history',
+      //   '/YourAccount',
+      //   '/info-movie',
+      //   '/info-tv',
+      //   '/play-movie',
+      //   '/play-tv'
+      // ]
     },
     // proxy the request from client
     devProxy: {
@@ -670,37 +670,37 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { prerender: true },
-    '/feature/**': {},
-    '/television/**': {},
-    '/discover/**': {},
-    '/search/**': {},
-    '/ranks/**': {},
-    '/login': {
-      prerender: true
-    },
-    '/oauth/**': { prerender: true },
-    '/signup': {
-      prerender: true
-    },
-    '/ForgotPassword': { prerender: true },
-    '/ResetPassword': { swr: false },
-    '/ChangeEmail': { swr: false },
-    '/follow/**': { swr: false },
-    '/history/**': { swr: false },
-    '/info-movie/**': {},
-    '/info-tv/**': {},
-    '/play-movie/**': {},
-    '/play-tv/**': {},
-    '/upgrade/plans': { prerender: true },
-    '/upgrade/PaymentPicker': { swr: false },
-    '/upgrade/**': {},
-    '/upgrade': { redirect: '/upgrade/plans' },
-    '/plans': { redirect: '/upgrade/plans' },
-    '/YourAccount/**': { swr: false },
-    '/help/**': { prerender: true },
-    '/contact/**': { prerender: true },
-    '/contactus': { redirect: '/contact' }
+    // '/': { prerender: true },
+    // '/feature/**': {},
+    // '/television/**': {},
+    // '/discover/**': {},
+    // '/search/**': {},
+    // '/ranks/**': {},
+    // '/login': {
+    //   prerender: true
+    // },
+    // '/oauth/**': { prerender: true },
+    // '/signup': {
+    //   prerender: true
+    // },
+    // '/ForgotPassword': { prerender: true },
+    // '/ResetPassword': { swr: false },
+    // '/ChangeEmail': { swr: false },
+    // '/follow/**': { swr: false },
+    // '/history/**': { swr: false },
+    // '/info-movie/**': {},
+    // '/info-tv/**': {},
+    // '/play-movie/**': {},
+    // '/play-tv/**': {},
+    // '/upgrade/plans': { prerender: true },
+    // '/upgrade/PaymentPicker': { swr: false },
+    // '/upgrade/**': {},
+    // '/upgrade': { redirect: '/upgrade/plans' },
+    // '/plans': { redirect: '/upgrade/plans' },
+    // '/YourAccount/**': { swr: false },
+    // '/help/**': { prerender: true },
+    // '/contact/**': { prerender: true },
+    // '/contactus': { redirect: '/contact' }
   },
 
   compatibilityDate: '2024-08-11'
