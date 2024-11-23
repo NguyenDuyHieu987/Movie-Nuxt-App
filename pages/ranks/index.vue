@@ -207,7 +207,7 @@ const ranksScienceFiction = ref<any[]>([]);
 const ranksEN = ref<any[]>([]);
 const ranksChina = ref<any[]>([]);
 const ranksJapan = ref<any[]>([]);
-const pageRank = ref<number>(+route?.query?.page || 1);
+const pageRank = ref<number>(+(route.query?.page as string) || 1);
 const pageSize = ref<number>(10);
 const loading = ref<boolean>(false);
 const typeRankList = ref<
@@ -289,210 +289,209 @@ const getData = async () => {
   loading.value = true;
   nuxtLoadingIndicator.start();
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify(formFilterRank.value)}`,
-  //   () => filterRanks(formFilterRank.value)
-  // )
-  await filterRanks(formFilterRank.value)
+  useAsyncData(`ranks/filter/${JSON.stringify(formFilterRank.value)}`, () =>
+    filterRanks(formFilterRank.value)
+  )
+    // filterRanks(formFilterRank.value)
     .then((response) => {
-      ranksData.value = compareRanks(response);
-      pageSize.value = response?.page_size;
+      ranksData.value = compareRanks(response.data.value);
+      pageSize.value = response.data.value?.page_size;
     })
     .catch((e) => {})
     .finally(() => {});
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     mediaType: 'movie'
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, mediaType: 'movie' })
-  // )
-  await filterRanks({ ...formFilterRank.value, mediaType: 'movie' })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      mediaType: 'movie'
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, mediaType: 'movie' })
+  )
+    // filterRanks({ ...formFilterRank.value, mediaType: 'movie' })
     .then((response) => {
-      ranksMovie.value = compareRanks(response);
+      ranksMovie.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     mediaType: 'tv'
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, mediaType: 'tv' })
-  // )
-  await filterRanks({ ...formFilterRank.value, mediaType: 'tv' })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      mediaType: 'tv'
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, mediaType: 'tv' })
+  )
+    // filterRanks({ ...formFilterRank.value, mediaType: 'tv' })
     .then((response) => {
-      ranksTV.value = compareRanks(response);
+      ranksTV.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Hoạt hình
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     genre: 16
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, genre: 16 }),
-  //   {
-  //     // transform: (data: any) => {
-  //     //   return compareRanks(data);
-  //     // },
-  //   }
-  // )
-  await filterRanks({ ...formFilterRank.value, genre: 16 })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      genre: 16
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, genre: 16 }),
+    {
+      // transform: (data: any) => {
+      //   return compareRanks(data);
+      // },
+    }
+  )
+    // filterRanks({ ...formFilterRank.value, genre: 16 })
     .then((response) => {
-      ranksAnimation.value = compareRanks(response);
+      ranksAnimation.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Hành động
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     genre: 28
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, genre: 28 }),
-  //   {
-  //     // transform: (data: any) => {
-  //     //   return compareRanks(data);
-  //     // },
-  //   }
-  // )
-  await filterRanks({ ...formFilterRank.value, genre: 28 })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      genre: 28
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, genre: 28 }),
+    {
+      // transform: (data: any) => {
+      //   return compareRanks(data);
+      // },
+    }
+  )
+    // filterRanks({ ...formFilterRank.value, genre: 28 })
     .then((response) => {
-      ranksAction.value = compareRanks(response);
+      ranksAction.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Kinh dị
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     genre: 27
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, genre: 27 }),
-  //   {
-  //     // transform: (data: any) => {
-  //     //   return compareRanks(data);
-  //     // },
-  //   }
-  // )
-  await filterRanks({ ...formFilterRank.value, genre: 27 })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      genre: 27
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, genre: 27 }),
+    {
+      // transform: (data: any) => {
+      //   return compareRanks(data);
+      // },
+    }
+  )
+    // filterRanks({ ...formFilterRank.value, genre: 27 })
     .then((response) => {
-      ranksHorror.value = compareRanks(response);
+      ranksHorror.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Drama
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     genre: 18
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, genre: 18 }),
-  //   {
-  //     // transform: (data: any) => {
-  //     //   return compareRanks(data);
-  //     // },
-  //   }
-  // )
-  await filterRanks({ ...formFilterRank.value, genre: 18 })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      genre: 18
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, genre: 18 }),
+    {
+      // transform: (data: any) => {
+      //   return compareRanks(data);
+      // },
+    }
+  )
+    // filterRanks({ ...formFilterRank.value, genre: 18 })
     .then((response) => {
-      ranksDrama.value = compareRanks(response);
+      ranksDrama.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Khoa học viễn tưởng
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     genre: 18
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, genre: 18 }),
-  //   {
-  //     // transform: (data: any) => {
-  //     //   return compareRanks(data);
-  //     // },
-  //   }
-  // )
-  await filterRanks({ ...formFilterRank.value, genre: 18 })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      genre: 18
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, genre: 18 }),
+    {
+      // transform: (data: any) => {
+      //   return compareRanks(data);
+      // },
+    }
+  )
+    // filterRanks({ ...formFilterRank.value, genre: 18 })
     .then((response) => {
-      ranksScienceFiction.value = compareRanks(response);
+      ranksScienceFiction.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Âu Mỹ
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     country: 'en'
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, country: 'en' }),
-  //   {
-  //     // transform: (data: any) => {
-  //     //   return compareRanks(data);
-  //     // },
-  //   }
-  // )
-  await filterRanks({ ...formFilterRank.value, country: 'en' })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      country: 'en'
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, country: 'en' }),
+    {
+      // transform: (data: any) => {
+      //   return compareRanks(data);
+      // },
+    }
+  )
+    // filterRanks({ ...formFilterRank.value, country: 'en' })
     .then((response) => {
-      ranksEN.value = compareRanks(response);
+      ranksEN.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Trung Quốc
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     country: 'cn'
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, country: 'cn' }),
-  //   {
-  //     // transform: (data: any) => {
-  //     //   return compareRanks(data);
-  //     // },
-  //   }
-  // )
-  await filterRanks({ ...formFilterRank.value, country: 'cn' })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      country: 'cn'
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, country: 'cn' }),
+    {
+      // transform: (data: any) => {
+      //   return compareRanks(data);
+      // },
+    }
+  )
+    // filterRanks({ ...formFilterRank.value, country: 'cn' })
     .then((response) => {
-      ranksChina.value = compareRanks(response);
+      ranksChina.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
 
   // Nhật Bản
 
-  // await useAsyncData(
-  //   `ranks/filter/${JSON.stringify({
-  //     ...formFilterRank.value,
-  //     country: 'ja'
-  //   })}`,
-  //   () => filterRanks({ ...formFilterRank.value, country: 'ja' }),
-  //   {
-  //     // transform: (data: any) => {
-  //     //   return compareRanks(data);
-  //     // },
-  //   }
-  // )
-  await filterRanks({ ...formFilterRank.value, country: 'ja' })
+  useAsyncData(
+    `ranks/filter/${JSON.stringify({
+      ...formFilterRank.value,
+      country: 'ja'
+    })}`,
+    () => filterRanks({ ...formFilterRank.value, country: 'ja' }),
+    {
+      // transform: (data: any) => {
+      //   return compareRanks(data);
+      // },
+    }
+  )
+    // filterRanks({ ...formFilterRank.value, country: 'ja' })
     .then((response) => {
-      ranksJapan.value = compareRanks(response);
+      ranksJapan.value = compareRanks(response.data.value);
     })
     .catch((e) => {})
     .finally(() => {});
