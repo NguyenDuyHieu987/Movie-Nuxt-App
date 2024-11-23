@@ -133,7 +133,7 @@ export default defineNuxtConfig({
       selectiveClient: true
     },
     headNext: true,
-    payloadExtraction: true,
+    payloadExtraction: false,
     renderJsonPayloads: true,
     restoreState: true,
     viewTransition: true,
@@ -141,7 +141,8 @@ export default defineNuxtConfig({
       useAsyncData: {
         deep: true
       }
-    }
+    },
+    typedPages: true
     // buildCache: true
   },
 
@@ -170,6 +171,7 @@ export default defineNuxtConfig({
     '@element-plus/nuxt',
     // '@vueuse/nuxt',
     '@pinia/nuxt',
+    '@unocss/nuxt',
     'nuxt-swiper',
     '@nuxt/image',
     '@nuxtjs/fontaine',
