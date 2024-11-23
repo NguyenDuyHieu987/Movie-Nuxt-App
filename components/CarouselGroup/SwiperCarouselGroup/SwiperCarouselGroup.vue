@@ -1,6 +1,7 @@
 <template>
   <div class="carousel-container">
-    <Swiper
+    <SwiperContainer
+      ref="swiperContainerRef"
       class="carousel-swiper"
       :class="cardMode"
       :modules="[
@@ -51,17 +52,18 @@
           fill="currentColor"
         />
       </div>
-    </Swiper>
+    </SwiperContainer>
   </div>
 </template>
 
 <script setup lang="ts">
+import { Navigation, Pagination } from 'swiper/modules';
 import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
 import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
 
 // import { Navigation, Virtual } from 'swiper/modules';
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     data: any[];
     responsive: any;
@@ -79,6 +81,42 @@ const emits = defineEmits<{
 }>();
 
 const { isMobile, isTablet, isDesktop } = useDevice();
+const swiperContainerRef = ref(null);
+const swiper = useSwiper(swiperContainerRef, {
+  effect: 'creative',
+  loop: true,
+  modules: [Navigation, Pagination],
+  breakpoints: props.responsive,
+  spaceBetween: props.gap || 7,
+  slidesPerView: 5,
+  slidesPerGroup: 5,
+  rewind: true,
+  speed: 500,
+  allowTouchMove: isMobile || isTablet,
+  virtual: true,
+  navigation: {
+    prevEl: '.swiper-button-prev',
+    nextEl: '.swiper-button-next'
+  },
+  autoplay: {
+    delay: 10000,
+    pauseOnMouseEnter: true,
+    reverseDirection: true
+  },
+  noSwiping: true,
+  noSwipingClass: 'no-swiping',
+  // swiper: onSwiperLoaded,
+  creativeEffect: {
+    prev: {
+      shadow: true,
+      translate: [0, 0, -400]
+    },
+    next: {
+      shadow: true,
+      translate: [0, 0, -400]
+    }
+  }
+});
 
 const onSwiperLoaded = () => {
   emits('onLoaded');
