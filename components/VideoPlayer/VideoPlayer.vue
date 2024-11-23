@@ -29,7 +29,7 @@
       <div class="ratio-16-9"></div>
       <div
         class="box-video"
-        v-if="!loadingData"
+        v-show="!loadingData"
       >
         <!-- :src="videoSrc" -->
         <video
@@ -829,6 +829,7 @@ const duration = ref<string>('00:00');
 const timeOutShowControls = ref<any>();
 const timeOutVolumeChange = ref<any>();
 const mounted = ref<boolean>(false);
+const hls = ref<Hls | null>();
 
 const loadM3u8Video = async () => {
   // if (Hls.isSupported()) {
@@ -851,10 +852,10 @@ const loadM3u8Video = async () => {
   if (!video) return;
 
   if (Hls.isSupported()) {
-    var hls = new Hls();
-    hls.loadSource(videoSrc.value);
-    hls.attachMedia(video!);
-    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+    hls.value = new Hls();
+    hls.value.loadSource(videoSrc.value);
+    hls.value.attachMedia(video!);
+    hls.value.on(Hls.Events.MANIFEST_PARSED, function () {
       video?.play().catch(() => {
         if (videoStates.isPlayVideo) {
           videoStates.isPlayVideo = false;
@@ -936,6 +937,11 @@ const clearVideoPlayer = () => {
 
   if (!video.value!.paused) {
     video.value!.pause();
+  }
+
+  if (hls.value) {
+    hls.value.destroy();
+    hls.value = null;
   }
 
   window.removeEventListener('pointerup', windowPointerUp);

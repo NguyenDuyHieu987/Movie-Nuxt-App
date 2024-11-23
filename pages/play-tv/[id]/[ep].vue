@@ -210,8 +210,8 @@
 
           <ListEpisodes
             :dataMovie="dataMovie"
-            @changeUrlCode="(data: string) => getUrlCode(data)"
-            @changeEpisode="(data: any) => onChangeEpisode(data)"
+            @changeUrlCode="getUrlCode"
+            @changeEpisode="onChangeEpisode"
           />
 
           <Comment :dataMovie="dataMovie" />
