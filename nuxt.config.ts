@@ -559,20 +559,20 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'static',
     prerender: {
-      crawlLinks: false,
-      routes: [
-        '/sitemap.xml',
-        '/',
-        '/feature',
-        '/television',
-        '/login',
-        '/oauth/google',
-        '/signup',
-        '/ForgotPassword',
-        '/upgrade/plans',
-        '/help',
-        '/contact'
-      ]
+      crawlLinks: false
+      // routes: [
+      //   '/sitemap.xml',
+      //   '/',
+      //   '/feature',
+      //   '/television',
+      //   '/login',
+      //   '/oauth/google',
+      //   '/signup',
+      //   '/ForgotPassword',
+      //   '/upgrade/plans',
+      //   '/help',
+      //   '/contact'
+      // ]
       // ignore: [
       //   '/discover',
       //   '/search',
@@ -674,11 +674,11 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
-    '/feature/**': { prerender: true },
-    '/television/**': { prerender: true },
-    '/discover/**': { prerender: true },
-    '/search/**': { prerender: true },
-    '/ranks/**': { prerender: true },
+    '/feature/**': {},
+    '/television/**': {},
+    '/discover/**': {},
+    '/search/**': {},
+    '/ranks/**': {},
     '/login': {
       prerender: true
     },
@@ -687,20 +687,20 @@ export default defineNuxtConfig({
       prerender: true
     },
     '/ForgotPassword': { prerender: true },
-    '/ResetPassword': { prerender: true, swr: false },
-    '/ChangeEmail': { prerender: true, swr: false },
-    '/follow/**': { prerender: true, swr: false },
-    '/history/**': { prerender: true, swr: false },
-    '/info-movie/**': { prerender: true },
-    '/info-tv/**': { prerender: true },
-    '/play-movie/**': { prerender: true },
-    '/play-tv/**': { prerender: true },
+    '/ResetPassword': { swr: false },
+    '/ChangeEmail': { swr: false },
+    '/follow/**': { swr: false },
+    '/history/**': { swr: false },
+    '/info-movie/**': {},
+    '/info-tv/**': {},
+    '/play-movie/**': {},
+    '/play-tv/**': {},
     '/upgrade/plans': { prerender: true },
-    '/upgrade/PaymentPicker': { prerender: true, swr: false },
-    '/upgrade/**': { prerender: true },
+    '/upgrade/PaymentPicker': { swr: false },
+    '/upgrade/**': {},
     '/upgrade': { redirect: '/upgrade/plans' },
     '/plans': { redirect: '/upgrade/plans' },
-    '/YourAccount/**': { prerender: true, swr: false },
+    '/YourAccount/**': { swr: false },
     '/help/**': { prerender: true },
     '/contact/**': { prerender: true },
     '/contactus': { redirect: '/contact' }
