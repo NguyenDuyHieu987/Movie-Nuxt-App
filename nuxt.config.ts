@@ -557,7 +557,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // preset: 'static',
+    preset: 'static',
     prerender: {
       crawlLinks: false,
       routes: [
