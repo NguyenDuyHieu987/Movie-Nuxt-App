@@ -90,7 +90,7 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          rsync -r --update --delete-after ./.output/public ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET_STATIC}}
+          rsync -r --update --delete-after ./.output/public/ ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET_STATIC}}
 
         #Node Server
         # rsync -r --update --delete-after ./.output/public ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
