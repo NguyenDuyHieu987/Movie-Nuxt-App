@@ -180,10 +180,10 @@ export default defineNuxtConfig({
     'nuxt-delay-hydration',
     // 'nuxt-purgecss',
     // SEO
-    '@nuxtjs/seo',
+    // '@nuxtjs/seo',
     '@nuxtjs/sitemap',
-    'nuxt-og-image',
-    'nuxt-schema-org',
+    // 'nuxt-og-image',
+    // 'nuxt-schema-org',
     'nuxt-vitalizer',
     '@nuxtjs/device',
     'nuxt-svgo',
@@ -330,6 +330,7 @@ export default defineNuxtConfig({
   // },
 
   delayHydration: {
+    mode: 'init',
     debug: process.env.NODE_ENV === 'development'
   },
   device: {},

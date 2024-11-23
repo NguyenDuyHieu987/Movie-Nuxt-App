@@ -64,18 +64,18 @@
               :index="b"
               class="tr-skeleton"
             >
-              <td class="plan-option">
+              <div class="plan-option">
                 <el-skeleton-item />
-              </td>
-              <td class="plan-option">
+              </div>
+              <div class="plan-option">
                 <el-skeleton-item />
-              </td>
-              <td class="plan-option">
+              </div>
+              <div class="plan-option">
                 <el-skeleton-item />
-              </td>
-              <td class="plan-option">
+              </div>
+              <div class="plan-option">
                 <el-skeleton-item />
-              </td>
+              </div>
             </div>
           </template>
 
