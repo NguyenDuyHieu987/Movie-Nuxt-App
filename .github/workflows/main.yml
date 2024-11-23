@@ -59,7 +59,7 @@ jobs:
         run: |
           npm install --legacy-peer-deps
           npm list --depth=0
-          npm run build
+          npm run generate
         env:
           CI: true
 
@@ -90,14 +90,18 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          rsync -r --update --delete-after ./.output/public ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
+          rsync -r --update --delete-after ./.output/public ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET_STATIC}}
 
-          rsync -r --update --delete-after ./.output/server ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
+        #Node Server
+        # rsync -r --update --delete-after ./.output/public ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
 
-          rsync -r --update --delete-after ./.output/public/ ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+        # rsync -r --update --delete-after ./.output/server ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
 
-          rsync -r --update --delete-after ./ecosystem.config.cjs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
+        # rsync -r --update --delete-after ./.output/public/ ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
 
+        # rsync -r --update --delete-after ./ecosystem.config.cjs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
+
+        #Sub folder
         # rsync -r --update --delete-after ./.output/public/_nuxt ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
 
         # rsync -r --update --delete-after ./.output/public/css ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
