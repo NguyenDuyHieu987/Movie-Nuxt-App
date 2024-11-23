@@ -830,7 +830,7 @@ const timeOutShowControls = ref<any>();
 const timeOutVolumeChange = ref<any>();
 const mounted = ref<boolean>(false);
 
-const loadM3u8Video = () => {
+const loadM3u8Video = async () => {
   // if (Hls.isSupported()) {
   //   const hls = new Hls();
   //   console.log(videoSrc.value);
@@ -951,11 +951,11 @@ onBeforeRouteLeave(() => {
   clearVideoPlayer();
 });
 
-onBeforeMount(() => {});
+onBeforeMount(() => {
+  loadM3u8Video();
+});
 
 onMounted(() => {
-  loadM3u8Video();
-
   mounted.value = true;
 
   if (!isEligibleToWatch.value) return;
