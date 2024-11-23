@@ -90,16 +90,16 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          rsync -r --update --delete-after ./.output/public/ ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET_STATIC}}
+          rsync -r --update --delete-after ./.output/public ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
 
-        #Node Server
-        # rsync -r --update --delete-after ./.output/public ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
+          rsync -r --update --delete-after ./.output/server ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
 
-        # rsync -r --update --delete-after ./.output/server ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
+          rsync -r --update --delete-after ./.output/public/ ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
 
-        # rsync -r --update --delete-after ./.output/public/ ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
+          rsync -r --update --delete-after ./ecosystem.config.cjs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
 
-        # rsync -r --update --delete-after ./ecosystem.config.cjs ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET}}
+        #Static
+        # rsync -r --update --delete-after ./.output/public/ ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.TARGET_STATIC}}
 
         #Sub folder
         # rsync -r --update --delete-after ./.output/public/_nuxt ${{ secrets.PHIMHAY247_USERNAME }}@${{ secrets.PHIMHAY247_IP }}:${{secrets.CDN_TARGET}}
