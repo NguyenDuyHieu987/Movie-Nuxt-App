@@ -321,7 +321,7 @@
 } */
 
 @media only screen and (max-width: 1500px) {
-  .movie-card-item {
+  .movie-card-item-suggested {
     .info {
       font-size: 1.4rem;
     }
@@ -329,7 +329,7 @@
 }
 
 @media only screen and (max-width: 680px) {
-  .movie-card-item {
+  .movie-card-item-suggested {
     .info {
       font-size: 1.4rem;
 
@@ -345,7 +345,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .movie-card-item {
+  .movie-card-item-suggested {
     flex-direction: column;
     gap: 5px;
 
