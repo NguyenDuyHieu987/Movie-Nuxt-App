@@ -160,6 +160,7 @@ export default defineNuxtConfig({
     antdVersion == 4
       ? 'ant-design-vue/dist/reset.css'
       : 'ant-design-vue/dist/antd.dark.min.css',
+    //  'element-plus/dist/index.css',
     '~/assets/style/globalStyle/overwrite/antdv/antdv.scss',
     '~/assets/style/globalStyle/overwrite/element/element.scss',
     '~/assets/style/globalStyle.scss'
@@ -208,6 +209,7 @@ export default defineNuxtConfig({
       current: 0
     },
     appendTo: ['#append-to'],
+    components: ['ElSkeleton'],
     noStylesComponents: ['ElSkeleton']
   },
 
