@@ -209,8 +209,8 @@ export default defineNuxtConfig({
       current: 0
     },
     appendTo: ['#append-to'],
-    components: ['ElSkeleton'],
-    noStylesComponents: ['ElSkeleton']
+    components: ['el-skeleton'],
+    noStylesComponents: ['el-skeleton']
   },
 
   // vueuse: {
