@@ -1,7 +1,8 @@
 <template>
-  <div class="movie-card-item-suggested"
-
-        :title="item?.name">
+  <div
+    class="movie-card-item-suggested"
+    :title="item?.name"
+  >
     <!-- <el-skeleton :loading="loading" animated>
       <template #template>
         <div class="img-box">
@@ -47,7 +48,7 @@
           format="avif"
           loading="lazy"
           :alt="item?.name"
-        :title="item?.name"
+          :title="item?.name"
         />
       </div>
 
@@ -82,8 +83,7 @@
               item?.name
             )}`
       }"
-        
-        :title="item?.name"
+      :title="item?.name"
     >
       <h2
         class="title"
@@ -360,7 +360,7 @@ const onClickPlay = () => {
 };
 </script>
 
-<style lang="scss" src="./MovieCardSuggested.scss"></style>
-<!-- <style lang="scss">
+<!-- <style lang="scss" src="./MovieCardSuggested.scss"></style> -->
+<style lang="scss">
 @import url('./MovieCardSuggested.scss');
-</style> -->
+</style>

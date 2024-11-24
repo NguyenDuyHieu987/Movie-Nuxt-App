@@ -6,8 +6,7 @@
     }"
     @pointerenter="onMouseEnter"
     @pointerleave="onMouseLeave"
-
-        :title="item?.name"
+    :title="item?.name"
   >
     <!-- <el-skeleton :loading="loading" animated>
       <template #template>
@@ -105,8 +104,7 @@
             )}`
       }"
       target="_top"
-
-        :title="item?.name"
+      :title="item?.name"
     >
       <p
         class="title"
@@ -357,7 +355,7 @@ const onCanPlayVideo = () => {
 };
 </script>
 
-<style lang="scss" src="./MovieCardRelated.scss"></style>
-<!-- <style lang="scss">
+<!-- <style lang="scss" src="./MovieCardRelated.scss"></style> -->
+<style lang="scss">
 @import url('./MovieCardRelated.scss');
-</style> -->
+</style>
