@@ -207,7 +207,8 @@ export default defineNuxtConfig({
       prefix: Math.floor(Math.random() * 10000),
       current: 0
     },
-    appendTo: ['#append-to']
+    appendTo: ['#append-to'],
+    noStylesComponents: ['ElSkeleton']
   },
 
   // vueuse: {
