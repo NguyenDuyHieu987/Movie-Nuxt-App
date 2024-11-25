@@ -158,7 +158,7 @@ watch(
 // loading.value = false;
 </script>
 
-<!-- <style lang="scss" src="./MovieSuggested.scss"></style> -->
-<style lang="scss">
+<style lang="scss" src="./MovieSuggested.scss"></style>
+<!-- <style lang="scss">
 @import url('./MovieSuggested.scss');
-</style>
+</style> -->
