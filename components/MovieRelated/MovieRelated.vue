@@ -147,6 +147,8 @@
 </template>
 
 <script setup lang="ts">
+import './MovieRelated.scss';
+
 // import { MovieCardRelated } from '~/components/MovieRelated';
 // import MovieCardRelated from '~/components/MovieRelated/MovieCardRelated/MovieCardRelated.vue';
 // import { ViewMoreBar } from '~/components/ViewMoreBar';
@@ -238,7 +240,7 @@ watch(
 // loadingRecommend.value = false;
 </script>
 
-<style lang="scss" src="./MovieRelated.scss"></style>
+<!-- <style lang="scss" src="./MovieRelated.scss"></style> -->
 <!-- <style lang="scss">
 @import url('./MovieRelated.scss');
 </style> -->
