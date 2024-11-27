@@ -20,13 +20,8 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        position: relative;
-        display: flex;
-        width: 100%;
-        gap: 10px;
-        cursor: pointer;
 
-        .ing-box {
+        .img-box {
           position: relative;
           display: flex;
           // flex: 1 0 200px;
