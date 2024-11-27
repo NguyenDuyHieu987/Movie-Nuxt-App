@@ -7,14 +7,14 @@
 } */
 
 .movie-card-item-related {
-  // display: flex;
-  // flex-direction: column;
-  // width: calc((100% - (5 * 20px)) / 6);
-  // /* height: 380px; */
-  // border-radius: 5px;
-  // overflow: hidden;
-  // box-shadow: var(--box-shadow-medium1);
-  // transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  width: calc((100% - (5 * 20px)) / 6);
+  /* height: 380px; */
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-medium1);
+  transition: all 0.15s;
 
   .el-skeleton {
     .img-box {

@@ -20,6 +20,11 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
+        position: relative;
+        display: flex;
+        width: 100%;
+        gap: 10px;
+        cursor: pointer;
 
         .img-box {
           position: relative;
