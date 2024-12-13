@@ -4,7 +4,10 @@
       <div class="comments-header">
         <h3>Bình luận trực tiếp</h3>
       </div>
-      <div class="comments-list">
+      <div
+        class="comments-list"
+        ref="commentsList"
+      >
         <div
           class="comment-item"
           v-for="comment in comments"
@@ -83,31 +86,27 @@
         </div>
 
         <div class="live-comment-actions">
-          <div
-            class="send-actions"
+          <Emoticon
+            class="emoticon"
+            width="2.2rem"
+            height="2.2rem"
+            fill="currentColor"
+            @click="isShowEmoji = !isShowEmoji"
+          />
+
+          <LazyEmojiPicker
+            v-if="isShowEmoji"
+            @select="onSelectEmoji"
+          />
+
+          <a-button
             v-if="isChanged"
+            class="btn-send-comment click-active"
+            type="text"
+            @click="sendComment"
           >
-            <Emoticon
-              class="emoticon"
-              width="2.2rem"
-              height="2.2rem"
-              fill="currentColor"
-              @click="isShowEmoji = !isShowEmoji"
-            />
-
-            <LazyEmojiPicker
-              v-if="isShowEmoji"
-              @select="onSelectEmoji"
-            />
-
-            <a-button
-              class="btn-send-comment click-active"
-              type="text"
-              @click="sendComment"
-            >
-              Gửi
-            </a-button>
-          </div>
+            Gửi
+          </a-button>
 
           <div
             class="heart-emoji"
@@ -143,6 +142,7 @@ const nuxtConfig = useRuntimeConfig();
 const utils = useUtils();
 const authStore = useAuthStore();
 const socket = ref<Socket>();
+const commentsList = ref<HTMLDivElement>();
 const comments = ref<any[]>([]);
 const contenteditableInputField = ref<HTMLDivElement>();
 const sanitizedHtmlComment = ref<string>('');
@@ -170,7 +170,7 @@ onBeforeMount(() => {
   });
 });
 
-const sendComment = () => {
+const sendComment = async () => {
   if (sanitizedHtmlComment.value.trim()) {
     const comment = {
       id: Date.now(),
@@ -192,15 +192,14 @@ const sendComment = () => {
 
     contenteditableInputField.value!.innerText = '';
     isChanged.value = false;
-    scrollToBottom();
+    await scrollToBottom();
   }
 };
 
-const scrollToBottom = () => {
-  nextTick(() => {
-    const list = document.querySelector('.comments-list');
-    if (list) list.scrollTop = list.scrollHeight;
-  });
+const scrollToBottom = async () => {
+  await wait(10);
+  if (commentsList.value)
+    commentsList.value.scrollTop = commentsList.value.scrollHeight;
 };
 
 onUnmounted(() => {

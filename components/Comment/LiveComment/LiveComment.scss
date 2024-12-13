@@ -37,8 +37,11 @@
         flex-direction: row;
         gap: 10px;
         align-items: center;
-        margin-bottom: 10px;
         font-size: 1.3rem;
+
+        & + .comment-item {
+          margin-top: 15px;
+        }
 
         .comment-author {
           .comment-author-wrapper {
@@ -112,36 +115,33 @@
       }
 
       .live-comment-actions {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
         padding-left: 15px;
 
-        .send-actions {
-          position: relative;
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          align-items: center;
+        .emoticon {
+          cursor: pointer;
+        }
 
-          .emoticon {
-            cursor: pointer;
-          }
+        .v3-emoji-picker {
+          position: absolute;
+          z-index: 1;
+          bottom: calc(100% + 15px);
+          right: 0;
 
-          .v3-emoji-picker {
-            position: absolute;
-            z-index: 1;
-            bottom: calc(100% + 15px);
-            right: 0;
+          --v3-picker-bg: var(--background-content-color1);
+        }
 
-            --v3-picker-bg: var(--background-content-color1);
-          }
+        .btn-send-comment {
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
 
-          .btn-send-comment {
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-
-            &:hover {
-              background: var(--app-background-color);
-            }
+          &:hover {
+            background: var(--app-background-color);
           }
         }
 
