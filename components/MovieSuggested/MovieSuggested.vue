@@ -67,9 +67,15 @@
 // import { MovieCardSuggested } from '~/components/MovieSuggested';
 import { getSimilar } from '~/services/similar';
 
-const props = defineProps<{
-  dataMovie: any;
-}>();
+const props = withDefaults(
+  defineProps<{
+    dataMovie: any;
+    windowScroll?: boolean;
+  }>(),
+  {
+    windowScroll: false
+  }
+);
 
 const utils = useUtils();
 const dataSuggested = ref<any[]>([]);
@@ -78,36 +84,70 @@ const loading = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
 
 onMounted(() => {
-  const sideView = $('.play-container .side-view');
+  if (props.windowScroll) {
+    window.onscroll = async () => {
+      if (dataSuggested.value?.length == 0) {
+        return;
+      }
 
-  // window.onscroll = async () => {
-  sideView.on('scroll', async function () {
-    if (dataSuggested.value?.length == 0) {
-      return;
-    }
+      if (utils.isWindowScrollBottom()) {
+        loadMore.value = true;
 
-    if (utils.isElementScrollBottom(sideView[0])) {
-      loadMore.value = true;
+        await getSimilar(
+          // props?.dataMovie?.media_type,
+          'all',
+          props?.dataMovie?.id,
+          page.value,
+          15
+        )
+          .then((response) => {
+            if (response?.results.length > 0) {
+              dataSuggested.value = dataSuggested.value.concat(
+                response?.results
+              );
+              page.value++;
+            }
+          })
+          .catch((e) => {})
+          .finally(() => {
+            loadMore.value = false;
+          });
+      }
+    };
+  } else {
+    const sideView = $('.play-container .side-view');
 
-      await getSimilar(
-        // props?.dataMovie?.media_type,
-        'all',
-        props?.dataMovie?.id,
-        page.value,
-        15
-      )
-        .then((response) => {
-          if (response?.results.length > 0) {
-            dataSuggested.value = dataSuggested.value.concat(response?.results);
-            page.value++;
-          }
-        })
-        .catch((e) => {})
-        .finally(() => {
-          loadMore.value = false;
-        });
-    }
-  });
+    // window.onscroll = async () => {
+    sideView.on('scroll', async function () {
+      if (dataSuggested.value?.length == 0) {
+        return;
+      }
+
+      if (utils.isElementScrollBottom(sideView[0])) {
+        loadMore.value = true;
+
+        await getSimilar(
+          // props?.dataMovie?.media_type,
+          'all',
+          props?.dataMovie?.id,
+          page.value,
+          15
+        )
+          .then((response) => {
+            if (response?.results.length > 0) {
+              dataSuggested.value = dataSuggested.value.concat(
+                response?.results
+              );
+              page.value++;
+            }
+          })
+          .catch((e) => {})
+          .finally(() => {
+            loadMore.value = false;
+          });
+      }
+    });
+  }
 });
 
 watch(

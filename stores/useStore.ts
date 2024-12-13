@@ -54,7 +54,8 @@ export default defineStore('store', () => {
     () => route,
     () => {
       if (
-        APP.PAGES_COLLAPSED_SIDEBAR.includes(route.meta.key as string) &&
+        (route.meta.closeSidebar ||
+          APP.PAGES_COLLAPSED_SIDEBAR.includes(route.meta.key as string)) &&
         !collapsed.value
       ) {
         collapsed.value = true;

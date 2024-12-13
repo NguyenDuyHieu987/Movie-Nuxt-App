@@ -1,18 +1,18 @@
 <template>
-  <div class="play-movie padding-content">
+  <div class="boardcast padding-content">
     <!-- <LoadingSpinner
       v-if="loading"
       class="loading-page"
     /> -->
 
-    <div class="play-container">
+    <div class="boardcast-container">
       <div class="main-play">
         <div class="top-page">
-          <BackPage @onclick="onClickBack">
+          <!-- <BackPage @onclick="onClickBack">
             {{ dataMovie?.name }}
           </BackPage>
 
-          <HistoryProgressBar :historyProgress="historyProgress.percent" />
+          <HistoryProgressBar :historyProgress="historyProgress.percent" /> -->
         </div>
 
         <div class="video">
@@ -244,116 +244,15 @@
               />
             </template>
             <template #default>
-              <div class="poster-box">
-                <div
-                  class="poster"
-                  :style="`--dominant-poster-color: ${dataMovie?.dominant_poster_color[0]}, ${dataMovie?.dominant_poster_color[1]},${dataMovie?.dominant_poster_color[2]}`"
-                >
-                  <div class="img-box ratio-2-3">
-                    <a-badge-ribbon
-                      v-if="dataMovie?.vip > 0"
-                      :text="'VIP ' + dataMovie?.vip"
-                      placement="start"
-                      :class="`vip-${dataMovie?.vip}`"
-                    />
-
-                    <NuxtImg
-                      :src="
-                        getImage(dataMovie?.poster_path, 'poster', { w: 250 })
-                      "
-                      placeholder="/images/loading-img-2-3.webp"
-                      format="avif"
-                      loading="lazy"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="movie-info">
-                  <h2 class="movie-title">{{ dataMovie?.name }}</h2>
-                  <h3
-                    v-if="dataMovie?.name != dataMovie?.original_name"
-                    class="movie-original-title"
-                  >
-                    {{ dataMovie?.original_name }}
-                  </h3>
-
-                  <div class="movie-info-item">HD - Vietsub</div>
-
-                  <div class="movie-info-item">
-                    <NuxtLink
-                      class="underline"
-                      :to="`/discover/year/${dataMovie?.release_date.slice(0, 4)}`"
-                    >
-                      {{ dataMovie?.release_date.slice(0, 4) }}
-                    </NuxtLink>
-                    <span>
-                      {{ dataMovie?.release_date.slice(4) }}
-                    </span>
-                  </div>
-
-                  <div class="movie-info-item">
-                    <NuxtLink
-                      class="underline"
-                      :to="`/discover/country/${
-                        getCountryByOriginalLanguage(
-                          dataMovie?.original_language,
-                          store.allCountries
-                        )?.short_name || 'au-my'
-                      }`"
-                    >
-                      {{
-                        getCountryByOriginalLanguage(
-                          dataMovie?.original_language,
-                          store.allCountries
-                        )?.name || ''
-                      }}
-                    </NuxtLink>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <Tags tagsLabel="Thể loại:">
-                  <template #tagsInfo>
-                    <span
-                      v-for="(item, index) in dataMovie?.genres"
-                      :key="item?.id"
-                      :index="index"
-                      class="tags-item"
-                    >
-                      <NuxtLink
-                        class="underline"
-                        :to="`/discover/genre/${
-                          getGenreById(item?.id, store.allGenres)?.short_name
-                        }`"
-                        >{{ item?.name }}
-                      </NuxtLink>
-                      <span>
-                        {{ index + 1 != dataMovie?.genres?.length ? ', ' : '' }}
-                      </span>
-                    </span>
-                  </template>
-                </Tags>
-
-                <Tags tagsLabel="Thời lượng:">
-                  <template #tagsInfo>
-                    <span class="tags-item">
-                      {{ dataMovie?.runtime + ' phút' }}</span
-                    >
-                  </template>
-                </Tags>
-
-                <Tags tagsLabel="Trạng thái:">
-                  <template #tagsInfo>
-                    <span class="tags-item"> {{ dataMovie?.status }}</span>
-                  </template>
-                </Tags>
-              </div>
+              <LiveComment :roomID="movieId" />
             </template>
           </el-skeleton>
-        </div>
 
-        <MovieSuggested :dataMovie="dataMovie" />
+          <MovieSuggested
+            :dataMovie="dataMovie"
+            :window-scroll="true"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -398,11 +297,11 @@ import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 
-defineOptions({ name: 'play-movie' });
+defineOptions({ name: 'broadcast' });
 
 definePageMeta({
-  name: 'play-movie',
-  key: 'play-movie',
+  name: 'broadcast',
+  key: 'broadcast',
   preventOpenFixedSidebar: true,
   closeSidebar: true
   // layout: 'play'
@@ -695,7 +594,7 @@ const onClickBack = () => {
 };
 </script>
 
-<!-- <style lang="scss" src="./PlayMoviePage.scss"></style> -->
+<!-- <style lang="scss" src="./BroadCastPage.scss"></style> -->
 <style lang="scss">
-@import url('./PlayMoviePage.scss');
+@import url('./BroadCastPage.scss');
 </style>

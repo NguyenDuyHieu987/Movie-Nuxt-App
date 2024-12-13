@@ -430,7 +430,8 @@ defineOptions({ name: 'play-tv' });
 definePageMeta({
   name: 'play-tv',
   key: 'play-tv',
-  preventOpenFixedSidebar: true
+  preventOpenFixedSidebar: true,
+  closeSidebar: true
   // pageTransition: {
   //   name: 'fade'
   // }

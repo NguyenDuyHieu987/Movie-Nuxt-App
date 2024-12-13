@@ -676,6 +676,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
+    '/broadcast/**': { prerender: true },
     '/feature/**': { prerender: true },
     '/television/**': { prerender: true },
     '/discover/**': { prerender: true },

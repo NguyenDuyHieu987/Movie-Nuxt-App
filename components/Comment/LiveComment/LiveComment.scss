@@ -1,0 +1,160 @@
+.live-comments {
+  min-height: 700px;
+  max-height: 700px;
+
+  .live-comments-container {
+    width: 100%;
+    height: 100%;
+    background: var(--background-content-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+
+    .comments-header {
+      background: var(--background-content-opacity);
+      color: var(--text-color);
+      padding: 15px;
+      border-radius: 8px 8px 0 0;
+      border: 1px solid var(--border-light);
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    .comments-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+      background: var(--background-content-color1);
+      border-left: 1px solid var(--border-light);
+      border-right: 1px solid var(--border-light);
+
+      .comment-item {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+
+        .comment-author {
+          .comment-author-wrapper {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .avatar {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+          }
+
+          .user-name {
+            font-weight: bold;
+            color: #0077ff;
+          }
+        }
+
+        .timestamp {
+          color: var(--text-color-gray);
+        }
+
+        .live-comment-content {
+        }
+      }
+    }
+
+    .comments-input {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 15px;
+      border-radius: 0 0 8px 8px;
+      border: 1px solid var(--border-light);
+
+      input {
+        flex: 1;
+        padding: 8px 15px;
+        border-radius: 4px;
+        margin-right: 10px;
+        background: var(--background-content-color1);
+        color: var(--text-color);
+        border: none;
+        outline: none;
+      }
+
+      .contenteditable-input-field {
+        flex: 1;
+
+        #contenteditable-root {
+          padding: 8px 15px;
+          border-radius: 4px;
+          background: var(--background-content-color1);
+          color: var(--text-color);
+          border: none;
+          outline: none;
+
+          &.changed {
+            &::before {
+              display: none;
+            }
+          }
+
+          &::before {
+            content: attr(aria-label);
+            color: var(--text-placeholder-color);
+            cursor: text;
+          }
+        }
+      }
+
+      .live-comment-actions {
+        padding-left: 15px;
+
+        .send-actions {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+          align-items: center;
+
+          .emoticon {
+            cursor: pointer;
+          }
+
+          .v3-emoji-picker {
+            position: absolute;
+            z-index: 1;
+            bottom: calc(100% + 15px);
+            right: 0;
+
+            --v3-picker-bg: var(--background-content-color1);
+          }
+
+          .btn-send-comment {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+              background: var(--app-background-color);
+            }
+          }
+        }
+
+        .heart-emoji {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .heart-icon {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
