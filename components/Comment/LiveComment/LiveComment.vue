@@ -128,7 +128,7 @@
 
 <script setup lang="ts">
 import Emoticon from '~/assets/svgs/icons/emoticon.svg?component';
-import HeartIcon from '~/assets/svgs/icons/Heart.svg?component';
+import HeartIcon from '~/assets/svgs/icons/heart.svg?component';
 
 import { getImage } from '~/services/image';
 
