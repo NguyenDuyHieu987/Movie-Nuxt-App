@@ -676,7 +676,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
-    '/broadcast/**': { prerender: false },
+    '/broadcast/**': { prerender: true },
     '/feature/**': { prerender: true },
     '/television/**': { prerender: true },
     '/discover/**': { prerender: true },
@@ -696,8 +696,8 @@ export default defineNuxtConfig({
     '/history/**': { prerender: true, swr: false },
     '/info-movie/**': { prerender: true },
     '/info-tv/**': { prerender: true },
-    '/play-movie/**': { prerender: false },
-    '/play-tv/**': { prerender: false },
+    '/play-movie/**': { prerender: true },
+    '/play-tv/**': { prerender: true },
     '/upgrade/plans': { prerender: true },
     '/upgrade/PaymentPicker': { prerender: true, swr: false },
     '/upgrade/**': { prerender: true },
