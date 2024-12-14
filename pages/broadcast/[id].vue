@@ -39,7 +39,7 @@
 
             <!-- videoUrl="/feature/Transformer_5/Transformer_5" -->
 
-            <VideoPlayer
+            <BroadcastVideoPlayer
               v-model:isInHistory="isInHistory"
               v-model:historyProgress="historyProgress"
               :dataMovie="dataMovie"

@@ -59,6 +59,10 @@
           <div class="live-comment-content">
             {{ comment.content }}
           </div>
+          <!-- <div
+            class="live-comment-content"
+            v-html="comment.content"
+          ></div> -->
         </div>
       </div>
       <div class="comments-input">
@@ -82,6 +86,7 @@
             @input="handleChange"
             @focus="handleFocus"
             @blur="handleBlur"
+            @keydown="handleKeyDown"
           ></div>
         </div>
 
@@ -112,12 +117,67 @@
             class="heart-emoji"
             v-else
           >
-            <HeartIcon
-              class="heart-icon"
-              width="2.2rem"
-              height="2.2rem"
-              fill="currentColor"
-            />
+            <el-dropdown
+              popper-class="heart-emoji-dropdown"
+              placement="top"
+            >
+              <HeartIcon
+                class="heart-icon"
+                width="2.2rem"
+                height="2.2rem"
+                fill="currentColor"
+              />
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item @click="sendEmoji('smile')">
+                    <NotoSmilingFace
+                      class="NotoSmilingFace-icon"
+                      :class="{ animate: isAnimateEmoji }"
+                      width="2.2rem"
+                      height="2.2rem"
+                    />
+                  </el-dropdown-item>
+                  <el-dropdown-item @click="sendEmoji('smile-sweat')">
+                    <NotoSmilingFaceSweat
+                      class="NotoSmilingFaceSweat-icon"
+                      width="2.2rem"
+                      height="2.2rem"
+                    />
+                  </el-dropdown-item>
+
+                  <el-dropdown-item @click="sendEmoji('heart')">
+                    <NotoRedHeart
+                      class="NotoRedHeart-icon"
+                      width="2.2rem"
+                      height="2.2rem"
+                    />
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+            <div
+              class="animate-emoji"
+              :class="{ animate: isAnimateEmoji }"
+            >
+              <NotoSmilingFace
+                v-if="animateEmojiType == 'smile'"
+                class="NotoSmilingFace-icon"
+                width="2.2rem"
+                height="2.2rem"
+              />
+              <NotoSmilingFaceSweat
+                v-else-if="animateEmojiType == 'smile-sweat'"
+                class="NotoSmilingFaceSweat-icon"
+                width="2.2rem"
+                height="2.2rem"
+              />
+              <NotoRedHeart
+                v-else-if="animateEmojiType == 'heart'"
+                class="NotoRedHeart-icon"
+                width="2.2rem"
+                height="2.2rem"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -128,6 +188,9 @@
 <script setup lang="ts">
 import Emoticon from '~/assets/svgs/icons/emoticon.svg?component';
 import HeartIcon from '~/assets/svgs/icons/heart.svg?component';
+import NotoRedHeart from '~/assets/svgs/icons/NotoRedHeart.svg?component';
+import NotoSmilingFace from '~/assets/svgs/icons/NotoSmilingFace.svg?component';
+import NotoSmilingFaceSweat from '~/assets/svgs/icons/NotoSmilingFaceSweat.svg?component';
 
 import { getImage } from '~/services/image';
 
@@ -150,6 +213,8 @@ const isChanged = ref<boolean>(false);
 const isFocus = ref<boolean>(false);
 const isShowActions = ref<boolean>(false);
 const isShowEmoji = ref<boolean>(false);
+const isAnimateEmoji = ref<boolean>(false);
+const animateEmojiType = ref<string>('heart');
 
 onBeforeMount(() => {
   socket.value = io(
@@ -167,6 +232,15 @@ onBeforeMount(() => {
   socket.value.on('newComment', (comment: any) => {
     // console.log(comment);
     comments.value.push(comment);
+  });
+
+  socket.value.on('interactEmoji', async (interact: any) => {
+    if (interact?.emoji_type) {
+      animateEmojiType.value = interact.emoji_type;
+      isAnimateEmoji.value = true;
+      await wait(2000);
+      isAnimateEmoji.value = false;
+    }
   });
 });
 
@@ -197,9 +271,18 @@ const sendComment = async () => {
 };
 
 const scrollToBottom = async () => {
-  await wait(10);
+  await wait(50);
   if (commentsList.value)
     commentsList.value.scrollTop = commentsList.value.scrollHeight;
+};
+
+const sendEmoji = (emoji_type: string) => {
+  if (isAnimateEmoji.value) return;
+
+  socket.value!.emit('interactEmoji', {
+    roomID: props.roomID,
+    emoji_type: emoji_type
+  });
 };
 
 onUnmounted(() => {
@@ -248,6 +331,13 @@ const handleFocus = (e: any) => {
 
 const handleBlur = (e: any) => {
   isFocus.value = false;
+};
+
+const handleKeyDown = (event: any) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    sendComment();
+  }
 };
 
 const onSelectEmoji = (emoji: any) => {

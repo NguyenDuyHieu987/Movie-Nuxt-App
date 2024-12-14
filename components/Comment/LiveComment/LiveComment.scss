@@ -153,8 +153,52 @@
           .heart-icon {
             cursor: pointer;
           }
+
+          .animate-emoji {
+            display: none;
+            position: absolute;
+
+            &.animate {
+              display: block;
+              animation: floatUp 1.5s ease-out forwards;
+            }
+          }
         }
       }
     }
+  }
+}
+
+.el-dropdown__popper.heart-emoji-dropdown.el-popper {
+  border-radius: 10px !important;
+  overflow: hidden;
+
+  .el-dropdown-menu {
+    .el-dropdown-menu__item {
+      padding: 7px 10px;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .el-popper__arrow {
+    display: none;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-150px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-300px);
+    opacity: 0;
   }
 }
