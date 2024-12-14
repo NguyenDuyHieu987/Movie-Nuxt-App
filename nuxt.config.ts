@@ -696,7 +696,7 @@ export default defineNuxtConfig({
     '/history/**': { prerender: true, swr: false },
     '/info-movie/**': { prerender: true },
     '/info-tv/**': { prerender: true },
-    '/play-movie/**': { prerender: false },
+    '/play-movie/**': { prerender: true },
     '/play-tv/**': { prerender: true },
     '/upgrade/plans': { prerender: true },
     '/upgrade/PaymentPicker': { prerender: true, swr: false },
