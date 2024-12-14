@@ -958,13 +958,13 @@ onBeforeRouteLeave(() => {
   clearVideoPlayer();
 });
 
-onBeforeMount(() => {
-  loadM3u8Video();
-});
+onBeforeMount(() => {});
 
-var startTime = new Date('2024-12-14T00:10:00').getTime();
+var startTime = new Date('2024-12-14T22:30:00').getTime();
 
 onMounted(() => {
+  loadM3u8Video();
+
   mounted.value = true;
 
   if (!isEligibleToWatch.value) return;
