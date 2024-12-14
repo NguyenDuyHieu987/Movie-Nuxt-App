@@ -957,11 +957,11 @@ onBeforeRouteLeave(() => {
   clearVideoPlayer();
 });
 
-onBeforeMount(() => {
-  loadM3u8Video();
-});
+onBeforeMount(() => {});
 
 onMounted(() => {
+  loadM3u8Video();
+
   mounted.value = true;
 
   if (!isEligibleToWatch.value) return;
