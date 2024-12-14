@@ -42,7 +42,7 @@
             <BroadcastVideoPlayer
               v-model:isInHistory="isInHistory"
               v-model:historyProgress="historyProgress"
-              :dataMovie="dataMovie"
+              :dataMovie="dataMovie || !dataMovie"
               :loadingData="loading"
               :videoUrl="`${dataMovie?.video_path || '/feature/Transformer_5/Transformer_5'}`"
               :backdrop="
