@@ -114,6 +114,29 @@ function fromNow(
   return fromNowStr;
 }
 
+function toNow(releaseTime: string) {
+  // const releaseTime = '2024-12-15T20:23:33';
+  const releaseDate = new Date(releaseTime).getTime();
+  const now = new Date().getTime();
+
+  if (releaseDate > now) {
+    const diffMs = releaseDate - now; // Chênh lệch thời gian tính bằng ms
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // Tổng số giờ còn lại
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)); // Phút còn lại nếu dưới 1 giờ
+
+    if (diffHours >= 24) {
+      const diffDays = Math.floor(diffHours / 24); // Số ngày còn lại
+      return `Công chiếu sau ${diffDays} ngày ${diffHours % 24} giờ nữa`;
+    } else if (diffHours >= 1) {
+      return `Công chiếu sau ${diffHours} giờ ${diffMinutes} phút nữa`;
+    } else {
+      return 'Sắp công chiếu!'; // Nếu còn dưới 1 giờ
+    }
+  } else {
+    return 'Đang công chiếu!';
+  }
+}
+
 export const dateTimeFormater = () => {
-  return { format, fromNow };
+  return { format, fromNow, toNow };
 };

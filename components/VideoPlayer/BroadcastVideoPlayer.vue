@@ -703,7 +703,7 @@ import Hls from 'hls.js';
 
 const props = withDefaults(
   defineProps<{
-    dataMovie: any;
+    dataBroadcast: any;
     episode?: any;
     loadingData: boolean;
     backdrop: string;
@@ -722,8 +722,9 @@ const emits = defineEmits<{
 const nuxtConfig = useRuntimeConfig();
 const authStore = useAuthStore();
 const route = useRoute();
+const dataMovie = computed<any>(() => props.dataBroadcast.movieData);
 const movieVipNumber = computed<number>(
-  () => props.dataMovie?.vip || props?.episode?.vip || 0
+  () => dataMovie.value?.vip || props?.episode?.vip || 0
 );
 const isEligibleToWatch = computed<boolean>(
   () =>
@@ -832,6 +833,10 @@ const timeOutShowControls = ref<any>();
 const timeOutVolumeChange = ref<any>();
 const mounted = ref<boolean>(false);
 const hls = ref<Hls | null>();
+// const startTime = computed<number>(()=>new Date('2024-12-15T15:25:00').getTime());
+const startTime = computed<number>(() =>
+  new Date(props.dataBroadcast.release_time).getTime()
+);
 
 const loadM3u8Video = async () => {
   // if (Hls.isSupported()) {
@@ -860,10 +865,10 @@ const loadM3u8Video = async () => {
     hls.value.loadSource(videoSrc.value);
     hls.value.attachMedia(video.value!);
     hls.value.on(Hls.Events.MANIFEST_PARSED, async function () {
-      console.log('play');
+      // console.log('play');
 
       await video.value!.play().catch((err) => {
-        console.log(err);
+        // console.log(err);
         if (videoStates.isPlayVideo) {
           videoStates.isPlayVideo = false;
         }
@@ -888,7 +893,7 @@ watch(
 
     await nextTick();
 
-    if (props.dataMovie?.media_type == 'tv' && newVal && video.value) {
+    if (dataMovie.value?.media_type == 'tv' && newVal && video.value) {
       loadM3u8Video();
 
       // video.value!.pause();
@@ -966,8 +971,6 @@ onBeforeRouteLeave(() => {
 
 onBeforeMount(() => {});
 
-var startTime = new Date('2024-12-15T15:25:00').getTime();
-
 onMounted(async () => {
   await loadM3u8Video();
 
@@ -1002,7 +1005,7 @@ onMounted(async () => {
   const now = Date.now();
   // startTime = now - 2 * 60 * 1000;
 
-  elapsedSeconds.value = Math.floor((now - startTime) / 1000);
+  elapsedSeconds.value = Math.floor((now - startTime.value) / 1000);
 
   duration.value = formatDuration(elapsedSeconds.value);
 
@@ -1140,7 +1143,7 @@ const onLoadedDataVideo = () => {
 
 const updateVideoPlayback = () => {
   const now = Date.now();
-  elapsedSeconds.value = Math.floor((now - startTime) / 1000);
+  elapsedSeconds.value = Math.floor((now - startTime.value) / 1000);
 
   duration.value = formatDuration(elapsedSeconds.value);
   timeUpdate.value = formatDuration(video.value!.currentTime)!;
@@ -1322,7 +1325,7 @@ const rewindVideo = async (value: number) => {
     video.value!.currentTime -= value;
     checkEndedVideo();
 
-    const percent = video.value!.currentTime / video.value!.duration;
+    const percent = video.value!.currentTime / elapsedSeconds.value;
     progressBar.value!.style.setProperty(
       '--progress-width',
       percent.toString()
@@ -1348,22 +1351,33 @@ const onClickRewind = () => {
 
 const forwardVideo = async (value: number) => {
   if (!videoStates.isEndedVideo) {
-    video.value!.currentTime += value;
+    const now = Date.now();
+    const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
+    if (video.value!.currentTime >= elapsedSeconds) {
+      video.value!.currentTime = elapsedSeconds;
+    } else {
+      const valueToSkip = Math.min(
+        elapsedSeconds - video.value!.currentTime,
+        10
+      );
+      video.value!.currentTime += valueToSkip;
+
+      const percent = video.value!.currentTime / elapsedSeconds;
+      progressBar.value!.style.setProperty(
+        '--progress-width',
+        percent.toString()
+      );
+
+      videoStates.isActiveControlsAnimation = false;
+      await wait(10);
+      videoStates.isActiveControlsAnimation = true;
+
+      videoStates.isRewind.enable = true;
+      videoStates.isRewind.replay = false;
+      videoStates.isRewind.forward = true;
+    }
+
     checkEndedVideo();
-
-    const percent = video.value!.currentTime / video.value!.duration;
-    progressBar.value!.style.setProperty(
-      '--progress-width',
-      percent.toString()
-    );
-
-    videoStates.isActiveControlsAnimation = false;
-    await wait(10);
-    videoStates.isActiveControlsAnimation = true;
-
-    videoStates.isRewind.enable = true;
-    videoStates.isRewind.replay = false;
-    videoStates.isRewind.forward = true;
   }
 };
 

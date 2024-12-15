@@ -190,15 +190,15 @@
 
 @keyframes floatUp {
   0% {
-    transform: translateY(0);
+    transform: translateY(-50px);
     opacity: 1;
   }
   50% {
-    transform: translateY(-150px);
+    transform: translateY(-200px);
     opacity: 1;
   }
   100% {
-    transform: translateY(-300px);
+    transform: translateY(-350px);
     opacity: 0;
   }
 }

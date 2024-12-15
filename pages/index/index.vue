@@ -75,11 +75,44 @@
         v-model:loading="loading"
       >
         <template #content>
+          <section class="home-section broadcast-list">
+            <h2 class="gradient-title-default">
+              <span>Sắp công chiếu</span>
+              <NuxtLink
+                class="view-all"
+                :to="'broadcast/all'"
+              >
+                Xem tất cả
+                <ChevronRight
+                  width="1.2rem"
+                  height="1.2rem"
+                  fill="currentColor"
+                />
+              </NuxtLink>
+            </h2>
+            <SwiperCarouselGroup
+              :data="broadcasts.results"
+              :responsive="responsiveHorizoltal"
+              @on-loaded="onSwiperLoaded"
+            >
+              <template #content>
+                <SwiperSlide
+                  v-for="(item, index) in broadcasts.results"
+                  :key="item.id"
+                  :index="index"
+                  :virtual-index="index"
+                >
+                  <MovieCardHorizontalBroadcast :item="item" />
+                </SwiperSlide>
+              </template>
+            </SwiperCarouselGroup>
+          </section>
+
           <section
             v-for="(mod, index1) in modLíst.results.slice(1)"
             :key="mod.id"
             :index="index1"
-            class="home-section"
+            class="home-section mod-list"
           >
             <h2 class="gradient-title-default">
               <span>{{ mod.name }}</span>
@@ -181,6 +214,7 @@ import Plus1Icon from '~/assets/svgs/icons/plus-1.svg?component';
 import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
 import { getAllModWithData } from '~/services/mods';
 import { getMyRecommend } from '~/services/recommend';
+import { getAllBroadcast } from '~/services/broadcast';
 
 definePageMeta({
   // layout: 'home',
@@ -211,6 +245,7 @@ const page = ref<number>(1);
 const pageSize = ref<number>(3);
 const total = ref<number>(0);
 const recommends = ref<any>([]);
+// const broadcasts = ref<any>([]);
 const isLoading = computed<boolean>(() => status.value != 'success');
 const loading = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
@@ -412,6 +447,11 @@ const { data: modLíst, status } = await useAsyncData(
   //     return data.results[0].data;
   //   }
   // }
+);
+
+const { data: broadcasts, status: statusBroadcast } = await useAsyncData(
+  `broadcast/all/1/20`,
+  () => getAllBroadcast(page.value, pageSize.value)
 );
 
 trendings.value = modLíst.value?.results[0].data;

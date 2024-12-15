@@ -42,8 +42,8 @@
             <BroadcastVideoPlayer
               v-model:isInHistory="isInHistory"
               v-model:historyProgress="historyProgress"
-              :dataMovie="dataMovie || !dataMovie"
-              :loadingData="loading"
+              :dataBroadcast="dataBroadcast"
+              :loadingData="loading || !dataMovie"
               :videoUrl="`${dataMovie?.video_path || '/feature/Transformer_5/Transformer_5'}`"
               :backdrop="
                 getImage(
@@ -244,7 +244,7 @@
               />
             </template>
             <template #default>
-              <LiveComment :roomID="movieId" />
+              <LiveComment :dataBroadcast="dataBroadcast" />
             </template>
           </el-skeleton>
 
@@ -293,6 +293,7 @@ import {
   getMovieByType_Id,
   UpdateViewMovie
 } from '~/services/movie';
+import { getBroadcastById } from '~/services/broadcast';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
@@ -339,43 +340,10 @@ const historyProgress = ref<{
 });
 const ratedValue = ref<number | undefined>();
 const windowWidth = ref<number>(1200);
-const movieId = computed<string>((): string =>
+const broadcastId = computed<string>((): string =>
   utils.convertPath.parsePathInfo_Play(route.params?.id as string)
 );
-
-const getData = async () => {
-  loading.value = true;
-
-  // await nextTick();
-
-  // await useAsyncData(`movie/detail/${movieId.value}`, () =>
-  //   getMovieByType_Id('movie', movieId.value)
-  // )
-  getMovieByType_Id('movie', movieId.value)
-    .then((response) => {
-      dataMovie.value = response;
-    })
-    .catch((e) => {
-      throw createError({
-        statusCode: 404
-      });
-    })
-    .finally(() => {
-      loading.value = false;
-    });
-
-  if (authStore.isLogin) {
-    isAddToList.value = dataMovie.value?.in_list == true;
-
-    if (dataMovie.value?.history_progress) {
-      isInHistory.value = true;
-      historyProgress.value = dataMovie.value?.history_progress;
-    }
-
-    // disabledRate.value = !!dataMovie.value?.rated_value;
-    ratedValue.value = dataMovie.value?.rated_value;
-  }
-};
+const movieId = ref<string>('');
 
 onMounted(() => {
   windowWidth.value = window.innerWidth;
@@ -394,9 +362,14 @@ onMounted(() => {
   }
 });
 
-// getData();
-
 loading.value = true;
+
+const { data: dataBroadcast, status: statusBroadcast } = await useAsyncData(
+  `broadcast/detail/${broadcastId.value}`,
+  () => getBroadcastById(broadcastId.value)
+);
+
+movieId.value = dataBroadcast.value.movieData.id;
 
 const { data: dataMovie, status } = await useAsyncData(
   `movie/detail/${movieId.value}`,

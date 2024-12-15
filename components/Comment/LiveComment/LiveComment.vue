@@ -120,6 +120,7 @@
             <el-dropdown
               popper-class="heart-emoji-dropdown"
               placement="top"
+              :hide-on-click="false"
             >
               <HeartIcon
                 class="heart-icon"
@@ -198,7 +199,7 @@ import { Socket, io } from 'socket.io-client';
 import DOMPurify from 'dompurify';
 
 const props = defineProps<{
-  roomID: any;
+  dataBroadcast: any;
 }>();
 
 const nuxtConfig = useRuntimeConfig();
@@ -215,6 +216,7 @@ const isShowActions = ref<boolean>(false);
 const isShowEmoji = ref<boolean>(false);
 const isAnimateEmoji = ref<boolean>(false);
 const animateEmojiType = ref<string>('heart');
+const roomID = computed<string>(() => props.dataBroadcast.id);
 
 onBeforeMount(() => {
   socket.value = io(
@@ -223,7 +225,7 @@ onBeforeMount(() => {
       : nuxtConfig.app.apiGatewayDev
   );
 
-  socket.value.emit('joinMovie', props.roomID);
+  socket.value.emit('joinMovie', roomID.value);
 
   socket.value.on('initialComments', (initialComments: any) => {
     comments.value = initialComments;
@@ -253,11 +255,11 @@ const sendComment = async () => {
       content: sanitizedHtmlComment.value.trim()
     };
 
-    // socket.value!.emit('newComment', { roomID: props.roomID, comment });
+    // socket.value!.emit('newComment', { roomID: roomID.value, comment });
     socket.value!.emit('newComment', {
       user_id: authStore.userAccount!.id,
-      broadcast_id: props.roomID,
-      movie_id: props.roomID,
+      broadcast_id: roomID.value,
+      movie_id: roomID.value,
       content: sanitizedHtmlComment.value.trim(),
       timestamp: new Date().toISOString()
     });
@@ -280,7 +282,7 @@ const sendEmoji = (emoji_type: string) => {
   if (isAnimateEmoji.value) return;
 
   socket.value!.emit('interactEmoji', {
-    roomID: props.roomID,
+    roomID: roomID.value,
     emoji_type: emoji_type
   });
 };
