@@ -47,6 +47,7 @@
           @play="onPlayVideo"
           @pause="onPauseVideo"
           @playing="onPLayingVideo"
+          :playsinline="true"
         >
           <!-- <source src="blobVideoSrc" ref="srcVideo" type="video/mp4" /> -->
         </video>
@@ -138,7 +139,7 @@
           <span @click="onClickReplayVideo"> Phát lại </span>
         </div>
 
-        <div
+        <!-- <div
           v-if="isEligibleToWatch"
           v-show="
             videoStates.isShowNotify && isInHistory && !videoStates.isLoading
@@ -174,7 +175,7 @@
               Xem tiếp
             </a-button>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div
@@ -848,25 +849,28 @@ const loadM3u8Video = async () => {
   //   console.error('HLS is not supported on your browser, but native HLS is');
   // }
 
-  var video = document.getElementById('video-player') as HTMLVideoElement;
+  var videoElment = document.getElementById('video-player') as HTMLVideoElement;
 
-  if (!video) return;
+  if (!videoElment) return;
+
+  // video.value!.autoplay = true;
+  video.value!.muted = true;
 
   if (Hls.isSupported()) {
     hls.value = new Hls();
     hls.value.loadSource(videoSrc.value);
-    hls.value.attachMedia(video!);
-    hls.value.on(Hls.Events.MANIFEST_PARSED, function () {
-      video?.play().catch(() => {
+    hls.value.attachMedia(videoElment!);
+    hls.value.on(Hls.Events.MANIFEST_PARSED, async function () {
+      await videoElment?.play().catch((err) => {
         if (videoStates.isPlayVideo) {
           videoStates.isPlayVideo = false;
         }
       });
     });
-  } else if (video?.canPlayType('application/vnd.apple.mpegurl')) {
-    video!.src = videoSrc.value;
-    video?.addEventListener('loadedmetadata', function () {
-      video?.play().catch(() => {
+  } else if (videoElment?.canPlayType('application/vnd.apple.mpegurl')) {
+    videoElment!.src = videoSrc.value;
+    videoElment?.addEventListener('loadedmetadata', async function () {
+      await videoElment?.play().catch(() => {
         if (videoStates.isPlayVideo) {
           videoStates.isPlayVideo = false;
         }
@@ -901,7 +905,7 @@ watch(
   isInHistory,
   () => {
     if (isInHistory.value) {
-      videoStates.isShowNotify = true;
+      // videoStates.isShowNotify = true;
     }
   },
   { immediate: true }
@@ -960,10 +964,10 @@ onBeforeRouteLeave(() => {
 
 onBeforeMount(() => {});
 
-var startTime = new Date('2024-12-14T22:30:00').getTime();
+var startTime = new Date('2024-12-15T14:00:00').getTime();
 
-onMounted(() => {
-  loadM3u8Video();
+onMounted(async () => {
+  await loadM3u8Video();
 
   mounted.value = true;
 
@@ -973,13 +977,13 @@ onMounted(() => {
     video.value!.autoplay = false;
   }
 
+  if (videoStates.isVolumeOff == true) {
+    video.value!.muted = true;
+  }
+
   if (video.value!.paused == true) {
     const event = new Event('canplay');
     video.value!.dispatchEvent(event);
-  }
-
-  if (videoStates.isVolumeOff == true) {
-    video.value!.muted = true;
   }
 
   if (videoStates.isPlayVideo == false) {
@@ -1112,7 +1116,7 @@ const onCanPlayVideo = () => {
 
   if (!video.value || video.value!.ended) return;
 
-  video.value!.play().catch(() => {
+  video.value!.play().catch((err) => {
     if (videoStates.isPlayVideo) {
       videoStates.isPlayVideo = false;
     }
