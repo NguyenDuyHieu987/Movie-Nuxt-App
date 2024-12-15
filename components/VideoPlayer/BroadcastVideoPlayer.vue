@@ -62,7 +62,13 @@
             class="prevent-notification-wrapper"
           >
             <div
-              v-if="timeRemaining <= 0"
+              class="end-live"
+              v-if="videoStates.isEndedVideo"
+            >
+              <p>Buổi công chiếu đã kết thúc</p>
+            </div>
+            <div
+              v-else-if="timeRemaining <= 0"
               class="require-vip"
             >
               <div
@@ -144,16 +150,11 @@
           <LoadingSpinner />
         </div>
 
-        <div
+        <!-- <div
           v-if="isEligibleToWatch"
           v-show="videoStates.isEndedVideo"
           class="replay"
         >
-          <!-- <Icon
-            name="ic:baseline-replay"
-            class="replay"
-            @click="onClickReplayVideo"
-          /> -->
           <ReplayIcon
             width="4rem"
             height="4rem"
@@ -162,7 +163,7 @@
           />
 
           <span @click="onClickReplayVideo"> Phát lại </span>
-        </div>
+        </div> -->
 
         <!-- <div
           v-if="isEligibleToWatch"
@@ -755,7 +756,8 @@ const isEligibleToWatch = computed<boolean>(
   () =>
     ((!props.loadingData && movieVipNumber.value == 0) ||
       authStore.vipNumber! >= movieVipNumber.value) &&
-    timeRemaining.value <= 0
+    timeRemaining.value <= 0 &&
+    !videoStates.isEndedVideo
 );
 const ísWatchable = computed<boolean>(
   () =>
@@ -864,7 +866,7 @@ const startTime = computed<number>(() =>
   new Date(props.dataBroadcast.release_time).getTime()
 );
 const timerCountdown = ref<NodeJS.Timeout | null>(null);
-const timeRemaining = ref<number>(0);
+const timeRemaining = ref<number>(1);
 const days = computed<number>(() =>
   Math.floor(timeRemaining.value / (1000 * 60 * 60 * 24))
 );
@@ -894,7 +896,11 @@ const loadM3u8Video = async () => {
   //   console.error('HLS is not supported on your browser, but native HLS is');
   // }
 
-  // var videoElment = document.getElementById('video-player') as HTMLVideoElement;
+  var videoElment = document.getElementById('video-player') as HTMLVideoElement;
+
+  if (!video.value && videoElment) {
+    video.value = videoElment;
+  }
 
   if (!video.value) return;
 
@@ -904,25 +910,51 @@ const loadM3u8Video = async () => {
     hls.value = new Hls();
     hls.value.loadSource(videoSrc.value);
     hls.value.attachMedia(video.value!);
-    hls.value.on(Hls.Events.MANIFEST_PARSED, async function () {
-      // console.log('play');
+    return new Promise((resolve, reject) => {
+      hls.value!.on(Hls.Events.MANIFEST_PARSED, function () {
+        // console.log('play');
+        const now = Date.now();
 
-      await video.value!.play().catch((err) => {
-        // console.log(err);
-        if (videoStates.isPlayVideo) {
-          videoStates.isPlayVideo = false;
+        const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
+
+        if (elapsedSeconds < video.value!.duration) {
+          video
+            .value!.play()
+            .then(() => {
+              resolve(true);
+            })
+            .catch((err) => {
+              // console.log(err);
+              if (videoStates.isPlayVideo) {
+                videoStates.isPlayVideo = false;
+              }
+              reject(err);
+            });
+        } else {
+          videoStates.isEndedVideo = true;
+          resolve(true);
         }
       });
     });
   } else if (video.value?.canPlayType('application/vnd.apple.mpegurl')) {
     video.value!.src = videoSrc.value;
-    video.value!.addEventListener('loadedmetadata', async function () {
-      await video.value!.play().catch(() => {
-        if (videoStates.isPlayVideo) {
-          videoStates.isPlayVideo = false;
-        }
+    return new Promise((resolve, reject) => {
+      video.value!.addEventListener('loadedmetadata', function () {
+        video
+          .value!.play()
+          .then(() => {
+            resolve(true);
+          })
+          .catch((err) => {
+            if (videoStates.isPlayVideo) {
+              videoStates.isPlayVideo = false;
+            }
+            reject(err);
+          });
       });
     });
+  } else {
+    console.error('HLS is not supported.');
   }
 };
 
@@ -1019,9 +1051,13 @@ onBeforeMount(() => {});
 
 onMounted(async () => {
   calculateTimeRemaining();
-  timerCountdown.value = setInterval(calculateTimeRemaining, 1000);
+  if (timeRemaining.value > 0) {
+    timerCountdown.value = setInterval(calculateTimeRemaining, 1000);
+  }
 
   await loadM3u8Video();
+
+  if (videoStates.isEndedVideo) return;
 
   mounted.value = true;
 
@@ -1097,9 +1133,17 @@ onMounted(async () => {
   });
 });
 
-const calculateTimeRemaining = () => {
+const calculateTimeRemaining = async () => {
+  if (isEligibleToWatch.value && timerCountdown.value) {
+    clearInterval(timerCountdown.value);
+    return;
+  }
   const now = new Date().getTime();
   timeRemaining.value = startTime.value - now;
+  if (timeRemaining.value <= 0) {
+    await nextTick();
+    await loadM3u8Video();
+  }
 };
 
 const handleTimeUpdate = (e: any) => {
@@ -1299,7 +1343,7 @@ const onPauseVideo = () => {
 };
 
 const checkEndedVideo = () => {
-  if (video.value!.ended) {
+  if (elapsedSeconds.value == video.value!.duration) {
     videoStates.isEndedVideo = true;
   } else {
     videoStates.isEndedVideo = false;

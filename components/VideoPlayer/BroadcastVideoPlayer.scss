@@ -64,12 +64,16 @@ video::-webkit-media-controls {
       }
 
       .coundown-remaining {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         text-align: center;
 
         .coundown-remaining-message {
           font-size: 4rem;
         }
+      }
+
+      .end-live {
+        font-size: 1.8rem;
       }
     }
   }
