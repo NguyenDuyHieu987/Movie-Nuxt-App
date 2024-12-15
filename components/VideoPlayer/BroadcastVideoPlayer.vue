@@ -911,7 +911,7 @@ const loadM3u8Video = async () => {
     hls.value.loadSource(videoSrc.value);
     hls.value.attachMedia(video.value!);
     return new Promise((resolve, reject) => {
-      hls.value!.on(Hls.Events.MANIFEST_PARSED, function () {
+      hls.value!.on(Hls.Events.MANIFEST_PARSED, async function () {
         // console.log('play');
         const now = Date.now();
 
@@ -932,7 +932,6 @@ const loadM3u8Video = async () => {
             });
         } else {
           videoStates.isEndedVideo = true;
-          resolve(true);
         }
       });
     });
@@ -1240,6 +1239,8 @@ const onLoadedDataVideo = () => {
 };
 
 const updateVideoPlayback = () => {
+  if (!video.value) return;
+
   const now = Date.now();
   elapsedSeconds.value = Math.floor((now - startTime.value) / 1000);
 
