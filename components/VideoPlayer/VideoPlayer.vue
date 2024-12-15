@@ -956,6 +956,10 @@ onBeforeUnmount(() => {
   clearVideoPlayer();
 });
 
+onUnmounted(() => {
+  clearVideoPlayer();
+});
+
 onBeforeRouteLeave(() => {
   clearVideoPlayer();
 });

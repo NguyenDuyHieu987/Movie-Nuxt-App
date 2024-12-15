@@ -54,52 +54,77 @@
 
         <div
           v-else
-          class="require-vip"
+          class="prevent-notification"
         >
           <!-- <div class="ratio-16-9"></div> -->
           <div
             v-if="ísWatchable"
-            class="require-vip-wrapper"
+            class="prevent-notification-wrapper"
           >
             <div
-              v-if="authStore.vipNumber == 0"
-              class="require-vip-message"
+              v-if="timeRemaining <= 0"
+              class="require-vip"
             >
-              <span>
-                Bạn cần nâng cấp tài khoản lên
-                <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim.
-              </span>
-              <NuxtLink
-                class="underline"
-                :to="{
-                  path: `/upgrade/plans`,
-                  query: {
-                    order: movieVipNumber
-                  }
-                }"
+              <div
+                v-if="authStore.vipNumber == 0"
+                class="require-vip-message"
               >
-                Nâng cấp ngay
-              </NuxtLink>
+                <span>
+                  Bạn cần nâng cấp tài khoản lên
+                  <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem
+                  phim.
+                </span>
+                <NuxtLink
+                  class="underline"
+                  :to="{
+                    path: `/upgrade/plans`,
+                    query: {
+                      order: movieVipNumber
+                    }
+                  }"
+                >
+                  Nâng cấp ngay
+                </NuxtLink>
+              </div>
+              <div
+                v-else
+                class="require-vip-message"
+              >
+                <span>
+                  Bạn cần nâng cấp tài khoản lên
+                  <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim
+                </span>
+                <NuxtLink
+                  class="underline"
+                  :to="{
+                    path: `/upgrade/plans`,
+                    query: {
+                      order: movieVipNumber
+                    }
+                  }"
+                >
+                  Nâng cấp ngay
+                </NuxtLink>
+              </div>
             </div>
             <div
+              class="coundown-remaining"
               v-else
-              class="require-vip-message"
             >
-              <span>
-                Bạn cần nâng cấp tài khoản lên
-                <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim
-              </span>
-              <NuxtLink
-                class="underline"
-                :to="{
-                  path: `/upgrade/plans`,
-                  query: {
-                    order: movieVipNumber
-                  }
-                }"
-              >
-                Nâng cấp ngay
-              </NuxtLink>
+              <p>Phim sẽ công chiếu sau:</p>
+              <strong class="coundown-remaining-message">
+                <!-- <span v-if="days != 0">{{ days.toString().padStart(2, '0') }} ngày, </span>
+                <span>{{ hours.toString().padStart(2, '0') }} giờ, </span>
+                <span>{{ minutes.toString().padStart(2, '0') }} phút, </span>
+                <span>{{ seconds.toString().padStart(2, '0') }} giây </span> -->
+                <span v-if="days != 0">
+                  {{ days.toString().padStart(2, '0') }} ngày :
+                </span>
+                <span>{{ hours.toString().padStart(2, '0') }} : </span>
+                <span>{{ minutes.toString().padStart(2, '0') }} : </span>
+                <span>{{ seconds.toString().padStart(2, '0') }} </span>
+                <!-- <span> nữa</span> -->
+              </strong>
             </div>
           </div>
         </div>
@@ -728,8 +753,9 @@ const movieVipNumber = computed<number>(
 );
 const isEligibleToWatch = computed<boolean>(
   () =>
-    (!props.loadingData && movieVipNumber.value == 0) ||
-    authStore.vipNumber! >= movieVipNumber.value
+    ((!props.loadingData && movieVipNumber.value == 0) ||
+      authStore.vipNumber! >= movieVipNumber.value) &&
+    timeRemaining.value <= 0
 );
 const ísWatchable = computed<boolean>(
   () =>
@@ -836,6 +862,20 @@ const hls = ref<Hls | null>();
 // const startTime = computed<number>(()=>new Date('2024-12-15T15:25:00').getTime());
 const startTime = computed<number>(() =>
   new Date(props.dataBroadcast.release_time).getTime()
+);
+const timerCountdown = ref<NodeJS.Timeout | null>(null);
+const timeRemaining = ref<number>(0);
+const days = computed<number>(() =>
+  Math.floor(timeRemaining.value / (1000 * 60 * 60 * 24))
+);
+const hours = computed<number>(() =>
+  Math.floor((timeRemaining.value % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+);
+const minutes = computed<number>(() =>
+  Math.floor((timeRemaining.value % (1000 * 60 * 60)) / (1000 * 60))
+);
+const seconds = computed<number>(() =>
+  Math.floor((timeRemaining.value % (1000 * 60)) / 1000)
 );
 
 const loadM3u8Video = async () => {
@@ -945,6 +985,8 @@ const windowTouchEnd = () => {
 };
 
 const clearVideoPlayer = () => {
+  clearInterval(timerCountdown.value!);
+
   if (!isEligibleToWatch.value && !video.value) return;
 
   if (!video.value!.paused) {
@@ -965,6 +1007,10 @@ onBeforeUnmount(() => {
   clearVideoPlayer();
 });
 
+onUnmounted(() => {
+  clearVideoPlayer();
+});
+
 onBeforeRouteLeave(() => {
   clearVideoPlayer();
 });
@@ -972,6 +1018,9 @@ onBeforeRouteLeave(() => {
 onBeforeMount(() => {});
 
 onMounted(async () => {
+  calculateTimeRemaining();
+  timerCountdown.value = setInterval(calculateTimeRemaining, 1000);
+
   await loadM3u8Video();
 
   mounted.value = true;
@@ -1047,6 +1096,11 @@ onMounted(async () => {
     }
   });
 });
+
+const calculateTimeRemaining = () => {
+  const now = new Date().getTime();
+  timeRemaining.value = startTime.value - now;
+};
 
 const handleTimeUpdate = (e: any) => {
   if (videoStates.isPlayVideo) {
@@ -1649,7 +1703,7 @@ const handleClickVideoPlayer = () => {
 };
 </script>
 
-<style lang="scss" src="./VideoPlayer.scss" scoped></style>
+<style lang="scss" src="./BroadcastVideoPlayer.scss" scoped></style>
 <!-- <style lang="scss">
-@import url('./VideoPlayer.scss');
+@import url('./BroadcastVideoPlayer.scss');
 </style> -->
