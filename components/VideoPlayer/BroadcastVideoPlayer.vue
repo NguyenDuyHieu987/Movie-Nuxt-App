@@ -849,28 +849,30 @@ const loadM3u8Video = async () => {
   //   console.error('HLS is not supported on your browser, but native HLS is');
   // }
 
-  var videoElment = document.getElementById('video-player') as HTMLVideoElement;
+  // var videoElment = document.getElementById('video-player') as HTMLVideoElement;
 
-  if (!videoElment) return;
+  if (!video.value) return;
 
-  // video.value!.autoplay = true;
   video.value!.muted = true;
 
   if (Hls.isSupported()) {
     hls.value = new Hls();
     hls.value.loadSource(videoSrc.value);
-    hls.value.attachMedia(videoElment!);
+    hls.value.attachMedia(video.value!);
     hls.value.on(Hls.Events.MANIFEST_PARSED, async function () {
-      await videoElment?.play().catch((err) => {
+      console.log('play');
+
+      await video.value!.play().catch((err) => {
+        console.log(err);
         if (videoStates.isPlayVideo) {
           videoStates.isPlayVideo = false;
         }
       });
     });
-  } else if (videoElment?.canPlayType('application/vnd.apple.mpegurl')) {
-    videoElment!.src = videoSrc.value;
-    videoElment?.addEventListener('loadedmetadata', async function () {
-      await videoElment?.play().catch(() => {
+  } else if (video.value?.canPlayType('application/vnd.apple.mpegurl')) {
+    video.value!.src = videoSrc.value;
+    video.value!.addEventListener('loadedmetadata', async function () {
+      await video.value!.play().catch(() => {
         if (videoStates.isPlayVideo) {
           videoStates.isPlayVideo = false;
         }
@@ -981,10 +983,10 @@ onMounted(async () => {
     video.value!.muted = true;
   }
 
-  if (video.value!.paused == true) {
-    const event = new Event('canplay');
-    video.value!.dispatchEvent(event);
-  }
+  // if (video.value!.paused == true) {
+  //   const event = new Event('canplay');
+  //   video.value!.dispatchEvent(event);
+  // }
 
   if (videoStates.isPlayVideo == false) {
     videoStates.isPlayVideo = true;
@@ -1116,11 +1118,11 @@ const onCanPlayVideo = () => {
 
   if (!video.value || video.value!.ended) return;
 
-  video.value!.play().catch((err) => {
-    if (videoStates.isPlayVideo) {
-      videoStates.isPlayVideo = false;
-    }
-  });
+  // video.value!.play().catch((err) => {
+  //   if (videoStates.isPlayVideo) {
+  //     videoStates.isPlayVideo = false;
+  //   }
+  // });
 };
 
 const onLoadedDataVideo = () => {
