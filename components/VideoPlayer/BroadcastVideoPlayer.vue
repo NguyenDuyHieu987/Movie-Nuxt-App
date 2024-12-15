@@ -966,7 +966,7 @@ onBeforeRouteLeave(() => {
 
 onBeforeMount(() => {});
 
-var startTime = new Date('2024-12-15T14:00:00').getTime();
+var startTime = new Date('2024-12-15T15:25:00').getTime();
 
 onMounted(async () => {
   await loadM3u8Video();
@@ -1118,11 +1118,11 @@ const onCanPlayVideo = () => {
 
   if (!video.value || video.value!.ended) return;
 
-  // video.value!.play().catch((err) => {
-  //   if (videoStates.isPlayVideo) {
-  //     videoStates.isPlayVideo = false;
-  //   }
-  // });
+  video.value!.play().catch((err) => {
+    if (videoStates.isPlayVideo) {
+      videoStates.isPlayVideo = false;
+    }
+  });
 };
 
 const onLoadedDataVideo = () => {

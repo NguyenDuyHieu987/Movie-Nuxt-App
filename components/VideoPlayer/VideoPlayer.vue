@@ -977,10 +977,10 @@ onMounted(async () => {
     video.value!.muted = true;
   }
 
-  if (video.value!.paused == true) {
-    const event = new Event('canplay');
-    video.value!.dispatchEvent(event);
-  }
+  // if (video.value!.paused == true) {
+  //   const event = new Event('canplay');
+  //   video.value!.dispatchEvent(event);
+  // }
 
   if (videoStates.isPlayVideo == false) {
     videoStates.isPlayVideo = true;
