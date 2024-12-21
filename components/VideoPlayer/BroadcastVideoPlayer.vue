@@ -1186,9 +1186,6 @@ const handleTimeUpdate = (e: any) => {
 
   videoStates.isEndedVideo = video.value!.currentTime == elapsedSeconds.value;
 
-  isEndedBroadcast.value =
-    elapsedSeconds.value >= Math.floor(dataMovie.value.runtime);
-
   drawTimeLine(e);
 };
 
@@ -1272,6 +1269,8 @@ const updateVideoPlayback = () => {
   timeUpdate.value = formatDuration(video.value!.currentTime)!;
   const percent = video.value!.currentTime / elapsedSeconds.value;
   progressBar.value!?.style.setProperty('--progress-width', percent.toString());
+  isEndedBroadcast.value =
+    elapsedSeconds.value >= Math.floor(dataMovie.value.runtime);
 
   // Nếu video tồn tại, tua đến thời điểm hiện tại
   if (video.value && video.value.readyState >= 2) {
