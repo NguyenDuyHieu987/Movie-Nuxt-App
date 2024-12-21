@@ -1186,7 +1186,7 @@ const handleTimeUpdate = (e: any) => {
 
   videoStates.isEndedVideo = video.value!.currentTime == elapsedSeconds.value;
 
-  isEndedBroadcast.value ==
+  isEndedBroadcast.value =
     elapsedSeconds.value >= Math.floor(dataMovie.value.runtime);
 
   drawTimeLine(e);
