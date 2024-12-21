@@ -75,7 +75,10 @@
         v-model:loading="loading"
       >
         <template #content>
-          <section class="home-section broadcast-list">
+          <section
+            v-if="broadcasts?.results?.length > 0"
+            class="home-section broadcast-list"
+          >
             <h2 class="gradient-title-default">
               <span>Sắp công chiếu</span>
               <NuxtLink
@@ -214,7 +217,7 @@ import Plus1Icon from '~/assets/svgs/icons/plus-1.svg?component';
 import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
 import { getAllModWithData } from '~/services/mods';
 import { getMyRecommend } from '~/services/recommend';
-import { getAllBroadcast } from '~/services/broadcast';
+import { getAllAiringBroadcast } from '~/services/broadcast';
 
 definePageMeta({
   // layout: 'home',
@@ -451,7 +454,7 @@ const { data: modLíst, status } = await useAsyncData(
 
 const { data: broadcasts, status: statusBroadcast } = await useAsyncData(
   `broadcast/all/1/20`,
-  () => getAllBroadcast(page.value, pageSize.value)
+  () => getAllAiringBroadcast(page.value, pageSize.value)
 );
 
 trendings.value = modLíst.value?.results[0].data;

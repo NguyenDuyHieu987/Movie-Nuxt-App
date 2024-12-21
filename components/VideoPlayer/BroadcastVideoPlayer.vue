@@ -124,7 +124,7 @@
                 <span>{{ minutes.toString().padStart(2, '0') }} phút, </span>
                 <span>{{ seconds.toString().padStart(2, '0') }} giây </span> -->
                 <span v-if="days != 0">
-                  {{ days.toString().padStart(2, '0') }} ngày :
+                  {{ days.toString().padStart(2, '0') }} ngày,
                 </span>
                 <span>{{ hours.toString().padStart(2, '0') }} : </span>
                 <span>{{ minutes.toString().padStart(2, '0') }} : </span>
