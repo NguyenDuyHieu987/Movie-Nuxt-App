@@ -63,7 +63,7 @@
           >
             <div
               class="end-live"
-              v-if="videoStates.isEndedVideo"
+              v-if="isEndedBroadcast"
             >
               <p>Buổi công chiếu đã kết thúc</p>
             </div>
@@ -743,6 +743,7 @@ const props = withDefaults(
 const emits = defineEmits<{
   onPlay: [e: any];
   onTimeUpdate: [e: any];
+  onEndedBroadcast: [data: boolean];
 }>();
 
 const nuxtConfig = useRuntimeConfig();
@@ -880,6 +881,7 @@ const minutes = computed<number>(() =>
 const seconds = computed<number>(() =>
   Math.floor((timeRemaining.value % (1000 * 60)) / 1000)
 );
+const isEndedBroadcast = ref<boolean>(false);
 
 const loadM3u8Video = async () => {
   // if (Hls.isSupported()) {
@@ -932,7 +934,7 @@ const loadM3u8Video = async () => {
               reject(err);
             });
         } else {
-          videoStates.isEndedVideo = true;
+          isEndedBroadcast.value = true;
           resolve(true);
         }
       });
@@ -989,6 +991,16 @@ watch(
     }
   },
   { immediate: true }
+);
+
+watch(
+  () => isEndedBroadcast,
+  () => {
+    emits('onEndedBroadcast', isEndedBroadcast.value);
+  },
+  {
+    immediate: true
+  }
 );
 
 const windowPointerUp = () => {
@@ -1059,13 +1071,13 @@ onMounted(async () => {
   await loadM3u8Video();
 
   watch(
-    () => videoStates.isEndedVideo,
+    () => isEndedBroadcast.value,
     (newVal) => {
-      if (videoStates.isEndedVideo) return;
+      if (isEndedBroadcast.value) return;
     }
   );
 
-  if (videoStates.isEndedVideo) return;
+  if (isEndedBroadcast.value) return;
 
   mounted.value = true;
 
@@ -1173,6 +1185,9 @@ const handleTimeUpdate = (e: any) => {
   video.value!.currentTime = percent * elapsedSeconds.value;
 
   videoStates.isEndedVideo = video.value!.currentTime == elapsedSeconds.value;
+
+  isEndedBroadcast.value ==
+    elapsedSeconds.value >= Math.floor(dataMovie.value.runtime);
 
   drawTimeLine(e);
 };

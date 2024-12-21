@@ -65,7 +65,10 @@
           ></div> -->
         </div>
       </div>
-      <div class="comments-input">
+      <div
+        v-if="isInteractable"
+        class="comments-input"
+      >
         <!-- <input
           v-model="newComment"
           type="text"
@@ -200,6 +203,7 @@ import DOMPurify from 'dompurify';
 
 const props = defineProps<{
   dataBroadcast: any;
+  isEndedBroadcast: boolean;
 }>();
 
 const nuxtConfig = useRuntimeConfig();
@@ -217,6 +221,9 @@ const isShowEmoji = ref<boolean>(false);
 const isAnimateEmoji = ref<boolean>(false);
 const animateEmojiType = ref<string>('heart');
 const roomID = computed<string>(() => props.dataBroadcast.id);
+const isInteractable = computed<boolean>(
+  () => authStore.isLogin && !props.isEndedBroadcast
+);
 
 onBeforeMount(() => {
   socket.value = io(

@@ -55,6 +55,11 @@
               "
               @onPlay="(e: any) => onPLayVideoPlayer(e)"
               @onTimeUpdate="(e: any) => onTimeUpdateVideoPlayer(e)"
+              @on-ended-broadcast="
+                (data: boolean) => {
+                  isEndedBroadcast = data;
+                }
+              "
             />
           </div>
         </div>
@@ -203,7 +208,7 @@
             </template>
           </el-skeleton>
 
-          <Comment :dataMovie="dataMovie" />
+          <!-- <Comment :dataMovie="dataMovie" /> -->
         </div>
       </div>
 
@@ -244,7 +249,10 @@
               />
             </template>
             <template #default>
-              <LiveComment :dataBroadcast="dataBroadcast" />
+              <LiveComment
+                :dataBroadcast="dataBroadcast"
+                :isEndedBroadcast="isEndedBroadcast"
+              />
             </template>
           </el-skeleton>
 
@@ -297,6 +305,7 @@ import { getBroadcastById } from '~/services/broadcast';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
+import { data } from 'jquery';
 
 defineOptions({ name: 'broadcast' });
 
@@ -344,6 +353,7 @@ const broadcastId = computed<string>((): string =>
   utils.convertPath.parsePathInfo_Play(route.params?.id as string)
 );
 const movieId = ref<string>('');
+const isEndedBroadcast = ref<boolean>(false);
 
 onMounted(() => {
   windowWidth.value = window.innerWidth;
