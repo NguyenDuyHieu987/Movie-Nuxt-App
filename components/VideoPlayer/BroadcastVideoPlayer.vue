@@ -932,6 +932,7 @@ const loadM3u8Video = async () => {
             });
         } else {
           videoStates.isEndedVideo = true;
+          resolve(true);
         }
       });
     });
@@ -1055,6 +1056,13 @@ onMounted(async () => {
   }
 
   await loadM3u8Video();
+
+  watch(
+    () => videoStates.isEndedVideo,
+    (newVal) => {
+      if (videoStates.isEndedVideo) return;
+    }
+  );
 
   if (videoStates.isEndedVideo) return;
 
