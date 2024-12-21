@@ -754,10 +754,11 @@ const movieVipNumber = computed<number>(
 );
 const isEligibleToWatch = computed<boolean>(
   () =>
-    ((!props.loadingData && movieVipNumber.value == 0) ||
-      authStore.vipNumber! >= movieVipNumber.value) &&
-    timeRemaining.value <= 0 &&
-    !videoStates.isEndedVideo
+    (!props.loadingData &&
+      movieVipNumber.value == 0 &&
+      timeRemaining.value <= 0 &&
+      !videoStates.isEndedVideo) ||
+    authStore.vipNumber! >= movieVipNumber.value
 );
 const ísWatchable = computed<boolean>(
   () =>
