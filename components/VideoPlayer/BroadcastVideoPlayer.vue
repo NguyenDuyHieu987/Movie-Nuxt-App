@@ -994,7 +994,7 @@ watch(
 );
 
 watch(
-  () => isEndedBroadcast,
+  () => isEndedBroadcast.value,
   () => {
     emits('onEndedBroadcast', isEndedBroadcast.value);
   },
