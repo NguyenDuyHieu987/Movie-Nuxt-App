@@ -1001,7 +1001,7 @@ watch(
 
       const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
 
-      if (elapsedSeconds < dataMovie.value.runtime) {
+      if (elapsedSeconds >= dataMovie.value.runtime) {
         isEndedBroadcast.value = true;
       }
     }
