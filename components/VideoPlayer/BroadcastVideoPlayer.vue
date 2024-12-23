@@ -994,7 +994,7 @@ watch(
 );
 
 watch(
-  () => dataMovie.value,
+  () => props.dataBroadcast,
   (newVal) => {
     if (dataMovie.value) {
       const now = Date.now();
@@ -1006,7 +1006,7 @@ watch(
       }
     }
   },
-  { immediate: true, deep: true }
+  { immediate: true }
 );
 
 watch(
