@@ -994,6 +994,22 @@ watch(
 );
 
 watch(
+  () => dataMovie.value,
+  (newVal) => {
+    if (dataMovie.value) {
+      const now = Date.now();
+
+      const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
+
+      if (elapsedSeconds < dataMovie.value.runtime) {
+        isEndedBroadcast.value = true;
+      }
+    }
+  },
+  { immediate: true }
+);
+
+watch(
   () => isEndedBroadcast.value,
   () => {
     emits('onEndedBroadcast', isEndedBroadcast.value);
@@ -1069,13 +1085,6 @@ onMounted(async () => {
   }
 
   await loadM3u8Video();
-
-  watch(
-    () => isEndedBroadcast.value,
-    (newVal) => {
-      if (isEndedBroadcast.value) return;
-    }
-  );
 
   if (isEndedBroadcast.value) return;
 
