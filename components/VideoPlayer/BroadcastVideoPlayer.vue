@@ -1003,7 +1003,6 @@ watch(
 
       if (elapsedSeconds >= dataMovie.value.runtime) {
         isEndedBroadcast.value = true;
-        emits('onEndedBroadcast', isEndedBroadcast.value);
       }
     }
   },
@@ -1086,6 +1085,16 @@ onMounted(async () => {
   }
 
   await loadM3u8Video();
+
+  watch(
+    () => isEndedBroadcast.value,
+    () => {
+      if (isEndedBroadcast.value) {
+        emits('onEndedBroadcast', isEndedBroadcast.value);
+        return;
+      }
+    }
+  );
 
   if (isEndedBroadcast.value) return;
 
