@@ -1003,6 +1003,7 @@ watch(
 
       if (elapsedSeconds >= dataMovie.value.runtime) {
         isEndedBroadcast.value = true;
+        emits('onEndedBroadcast', isEndedBroadcast.value);
       }
     }
   },
