@@ -759,7 +759,7 @@ const isEligibleToWatch = computed<boolean>(
     (movieVipNumber.value == 0 ||
       authStore.vipNumber! >= movieVipNumber.value) &&
     timeRemaining.value <= 0 &&
-    !videoStates.isEndedVideo
+    !isEndedBroadcast.value
 );
 const ísWatchable = computed<boolean>(
   () =>
@@ -1086,19 +1086,19 @@ onMounted(async () => {
 
   await loadM3u8Video();
 
-  watch(
-    () => isEndedBroadcast.value,
-    () => {
-      if (isEndedBroadcast.value) {
-        emits('onEndedBroadcast', isEndedBroadcast.value);
-        return;
-      }
-    }
-  );
-
-  if (isEndedBroadcast.value) return;
+  // watch(
+  //   () => isEndedBroadcast.value,
+  //   () => {
+  //     if (isEndedBroadcast.value) {
+  //       emits('onEndedBroadcast', isEndedBroadcast.value);
+  //       return;
+  //     }
+  //   }
+  // );
 
   mounted.value = true;
+
+  if (isEndedBroadcast.value) return;
 
   if (!isEligibleToWatch.value) return;
 
