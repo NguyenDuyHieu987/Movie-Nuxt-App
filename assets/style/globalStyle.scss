@@ -1,4 +1,5 @@
-@import './globalStyle/_variables.scss';
+// @import './globalStyle/_variables.scss';
+@use './globalStyle/_variables.scss' as *;
 @import './transitions.scss';
 @import './globalStyle/colors.scss';
 @import './globalStyle/backgroundColors.scss';
