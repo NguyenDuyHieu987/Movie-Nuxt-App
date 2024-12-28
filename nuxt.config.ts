@@ -114,10 +114,7 @@ export default defineNuxtConfig({
     common: fileURLToPath(new URL('./common', import.meta.url)),
     services: fileURLToPath(new URL('./services', import.meta.url)),
     utils: fileURLToPath(new URL('./utils', import.meta.url)),
-    stores: fileURLToPath(new URL('./stores', import.meta.url)),
-    'dayjs/esm/plugin/customParseFormat.js': 'dayjs/plugin/customParseFormat.js'
-    // 'dayjs/esm/plugin/customParseFormat.js':
-    //   'dayjs/esm/plugin/customParseFormat/index.js'
+    stores: fileURLToPath(new URL('./stores', import.meta.url))
   },
 
   imports: {
@@ -468,7 +465,6 @@ export default defineNuxtConfig({
     },
     optimizeDeps: {
       // include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
-      include: ['dayjs', 'dayjs/plugin/*', 'element-plus']
     },
     css: {
       preprocessorOptions: {
