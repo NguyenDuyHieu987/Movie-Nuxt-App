@@ -115,8 +115,9 @@ export default defineNuxtConfig({
     services: fileURLToPath(new URL('./services', import.meta.url)),
     utils: fileURLToPath(new URL('./utils', import.meta.url)),
     stores: fileURLToPath(new URL('./stores', import.meta.url)),
-    'dayjs/esm/plugin/customParseFormat':
-      'dayjs/esm/plugin/customParseFormat/index.js'
+    'dayjs/esm/plugin/customParseFormat.js': 'dayjs/plugin/customParseFormat.js'
+    // 'dayjs/esm/plugin/customParseFormat.js':
+    //   'dayjs/esm/plugin/customParseFormat/index.js'
   },
 
   imports: {
