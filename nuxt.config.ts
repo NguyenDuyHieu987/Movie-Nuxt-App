@@ -186,6 +186,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     // 'nuxt-og-image',
     // 'nuxt-schema-org',
+    // 'nuxt-link-checker',
     'nuxt-vitalizer',
     '@nuxtjs/device',
     'nuxt-svgo',
@@ -361,15 +362,9 @@ export default defineNuxtConfig({
   },
 
   seo: {},
-  robots: {
-    enabled: false
-  },
-  ogImage: {
-    enabled: false
-  },
-  schemaOrg: {
-    enabled: false
-  },
+  robots: {},
+  ogImage: {},
+  schemaOrg: {},
   linkChecker: {
     enabled: false
   },

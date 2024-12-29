@@ -186,6 +186,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     // 'nuxt-og-image',
     // 'nuxt-schema-org',
+    // 'nuxt-link-checker',
     'nuxt-vitalizer',
     '@nuxtjs/device',
     'nuxt-svgo',
