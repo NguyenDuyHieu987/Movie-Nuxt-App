@@ -26,9 +26,12 @@
             <NuxtLink
               class="underline"
               :to="{
+                // path: `/play-tv/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
+                //   dataMovie?.name
+                // )}/tap-${item?.episode_number}`
                 path: `/play-tv/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
                   dataMovie?.name
-                )}/tap-${item?.episode_number}`
+                )}?ep=${item?.id}`
               }"
               :title="`${props.dataMovie?.name} - Tập ${item?.episode_number}`"
             >
@@ -72,7 +75,7 @@ const loading = ref<boolean>(props.loading);
 
 watch(
   () => props.dataMovie,
-  (newVal, oldVal) => {
+  (newVal: any, oldVal:any) => {
     if (!oldVal && newVal && dataEpisode.value.length == 0) {
       loading.value = true;
 

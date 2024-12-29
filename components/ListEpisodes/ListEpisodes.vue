@@ -98,8 +98,8 @@
                   <a
                     :href="`/play-tv/${
                       dataMovie?.id
-                    }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}/tap-${
-                      item?.episode_number
+                    }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}?ep=${
+                      item?.id
                     }`"
                     replace
                     force
