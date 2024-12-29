@@ -533,7 +533,7 @@ const { data: dataMovie, status } = await useAsyncData(
   `tv/detail/${movieId.value}`,
   () => getMovieByType_Id('tv', movieId.value),
   {
-    lazy: true
+    // lazy: true
   }
 );
 
