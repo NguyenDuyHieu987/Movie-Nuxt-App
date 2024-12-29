@@ -154,7 +154,7 @@
 // import { ElSkeleton, ElSkeletonItem } from 'element-plus';
 
 import type { TabPaneName } from 'element-plus';
-import { getListEpisode } from '~/services/episode';
+import { getEpisodeById, getListEpisode } from '~/services/episode';
 import { getListSeason, getSeason } from '~/services/season';
 
 const props = defineProps<{
@@ -228,9 +228,26 @@ const getData = async () => {
 
 // getData();
 
+if (route.query?.ep) {
+  const { data: currentEpisode, status } = await useAsyncData(
+    `episode/detail/${props.dataMovie?.id}/${props.dataMovie?.season_id}/${episodeId.value}`,
+    () =>
+      getEpisodeById(
+        props.dataMovie?.id,
+        props.dataMovie?.season_id,
+        episodeId.value
+      ),
+    {
+      // lazy: true
+    }
+  );
+
+  episodeNumber.value = currentEpisode.value?.episode_number;
+}
+
 watch(
   () => props.dataMovie,
-  (newVal: any, oldVal: any) => {
+  async (newVal: any, oldVal: any) => {
     if (dataEpisode.value[0]?.length > 0) {
       return;
     }
@@ -244,7 +261,7 @@ watch(
 
       getListEpisode(
         props.dataMovie?.id,
-        props?.dataMovie?.season_id,
+        props.dataMovie?.season_id,
         episodeNumber.value > limit.value
           ? (selectedTabEpisode.value - 1) * limit.value + 1
           : skip.value,
@@ -254,9 +271,11 @@ watch(
           dataEpisode.value[selectedTabEpisode.value - 1] = response?.results;
           // .filter((item: any) => item.air_date != null);
           // .reverse();
-          episodeNumber.value = response?.results.find(
-            (item: any) => item.id == episodeId.value
-          )?.episode_number;
+          if (!route.query?.ep) {
+            episodeNumber.value = response?.results.find(
+              (item: any) => item.id == episodeId.value
+            )?.episode_number;
+          }
           totalEpisode.value = response?.total_episode;
 
           for (let i = 1; i < numberTabsEpisode.value; i++) {

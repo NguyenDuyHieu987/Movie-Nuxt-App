@@ -246,7 +246,7 @@ watch(
 
       getListEpisode(
         props.dataMovie?.id,
-        props?.dataMovie?.season_id,
+        props.dataMovie?.season_id,
         currentEpisode.value > limit.value
           ? (selectedTabEpisode.value - 1) * limit.value + 1
           : skip.value,

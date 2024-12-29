@@ -28,3 +28,13 @@ export function getEpisode(
     `/${PREFIX_ROUTE}/get/${movieId}/${seasonId}/${episodeNumber}`
   );
 }
+
+export function getEpisodeById(
+  movieId: string,
+  seasonId: string,
+  episodeId: string
+) {
+  return makeRequest(
+    `/${PREFIX_ROUTE}/getbyid/${movieId}/${seasonId}/${episodeId}`
+  );
+}
