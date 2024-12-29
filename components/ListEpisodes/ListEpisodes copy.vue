@@ -272,9 +272,9 @@ watch(
             )
           );
 
-          const episode = document.getElementById(
-            `episode-${currentEpisode.value}`
-          ) as HTMLElement;
+          // const episode = document.getElementById(
+          //   `episode-${currentEpisode.value}`
+          // ) as HTMLElement;
 
           // listEpisodes.value?.scrollTo({
           //   top: episode?.offsetTop,

@@ -93,7 +93,7 @@
                   :key="item.id"
                   :index="index"
                   class="episode-item"
-                  :class="{ active: episodeNumber == item?.episode_number }"
+                  :class="{ active: item?.episode_number == episodeNumber }"
                 >
                   <a
                     :href="`/play-tv/${
@@ -252,7 +252,7 @@ watch(
           // .reverse();
           episodeNumber.value = response?.results.find(
             (item: any) => item.id == episodeId.value
-          );
+          )?.episode_number;
           totalEpisode.value = response?.total_episode;
 
           for (let i = 1; i < numberTabsEpisode.value; i++) {
@@ -268,9 +268,9 @@ watch(
             )
           );
 
-          const episode = document.getElementById(
-            `episode-${episodeNumber.value}`
-          ) as HTMLElement;
+          // const episode = document.getElementById(
+          //   `episode-${episodeNumber.value}`
+          // ) as HTMLElement;
 
           // listEpisodes.value?.scrollTo({
           //   top: episode?.offsetTop,
