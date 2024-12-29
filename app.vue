@@ -93,6 +93,16 @@
 //   }
 // });
 
+useHead({
+  templateParams: {
+    separator: '|',
+    separatorDash: '-'
+  },
+  titleTemplate: (title: any) => {
+    return title ? `${title} %separator %siteName` : '%siteName';
+  }
+});
+
 let notCacheList = ref<string[]>([
   'follow',
   'history',

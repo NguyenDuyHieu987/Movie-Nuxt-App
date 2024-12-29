@@ -11,7 +11,7 @@
           :to="{
             path: `/play-tv/${
               dataColumn[0]?.movie_id
-            }${utils.convertPath.toPathInfo_Play(dataColumn[0]?.name)}/tap-1`
+            }${utils.convertPath.toPathInfo_Play(dataColumn[0]?.name)}`
           }"
         >
           <NuxtImg

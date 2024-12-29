@@ -149,7 +149,7 @@
                   path: isEpisodes
                     ? `/play-tv/${
                         item?.id
-                      }__${utils.convertPath.toPathInfo_Play(item?.name)}/tap-1`
+                      }__${utils.convertPath.toPathInfo_Play(item?.name)}`
                     : `/play-movie/${
                         item?.id
                       }__${utils.convertPath.toPathInfo_Play(item?.name)}`

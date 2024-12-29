@@ -150,7 +150,7 @@
                               dataMovie?.id
                             }${utils.convertPath.toPathInfo_Play(
                               dataMovie?.name
-                            )}/tap-1`
+                            )}`
                           }"
                         >
                           <a-button

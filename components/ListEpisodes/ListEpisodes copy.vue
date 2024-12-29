@@ -4,8 +4,8 @@
       <a-button
         type="text"
         plain
-        :disabled="episodeNumber == 1"
-        @click="handleChangeEpisode(--episodeNumber)"
+        :disabled="currentEpisode == 1"
+        @click="handleChangeEpisode(--currentEpisode)"
       >
         Tập trước
       </a-button>
@@ -14,10 +14,10 @@
         plain
         :disabled="
           dataMovie?.last_episode_to_air?.season_number == selectedSeason
-            ? episodeNumber == dataMovie?.last_episode_to_air?.episode_number
-            : episodeNumber == dataEpisode?.length
+            ? currentEpisode == dataMovie?.last_episode_to_air?.episode_number
+            : currentEpisode == dataEpisode?.length
         "
-        @click="handleChangeEpisode(++episodeNumber)"
+        @click="handleChangeEpisode(++currentEpisode)"
       >
         Tập tiếp
       </a-button>
@@ -28,7 +28,7 @@
       <!-- <span>
         {{ dataMovie?.name }}
         - Tập
-        {{ episodeNumber }}
+        {{ currentEpisode }}
       </span> -->
 
       <!-- <a-select
@@ -93,7 +93,7 @@
                   :key="item.id"
                   :index="index"
                   class="episode-item"
-                  :class="{ active: episodeNumber == item?.episode_number }"
+                  :class="{ active: currentEpisode == item?.episode_number }"
                 >
                   <a
                     :href="`/play-tv/${
@@ -189,19 +189,23 @@ const numberTabsEpisode = computed<number>(() =>
   Math.ceil(totalEpisode.value / limit.value)
 );
 const selectedSeasonId = ref<string>(props.dataMovie?.season_id);
-const episodeId = computed<string>(() => route.query?.ep as string);
-const episodeNumber = ref<number>(1);
+const episodeId = computed<string>(() => route.params?.ep as string);
+const currentEpisode = ref<number>(
+  (route.params?.ep as string)?.replace('tap-', '')
+    ? +(route.params?.ep as string)?.replace('tap-', '')
+    : 1
+);
 
 const emitUrlCode = () => {
   // const url_code_movie = dataSeason.episodes?.find(
-  //   (item: any) => item.episode_number == episodeNumber.value
+  //   (item: any) => item.episode_number == currentEpisode.value
   // )?.url_code;
 
   let urlCode = `The_Witcher_S1_Ep1`;
 
-  if (episodeNumber.value > 1 && episodeNumber.value <= 8) {
-    urlCode = `The_Witcher_S1_Ep${episodeNumber.value}`;
-  } else if (episodeNumber.value > 8) {
+  if (currentEpisode.value > 1 && currentEpisode.value <= 8) {
+    urlCode = `The_Witcher_S1_Ep${currentEpisode.value}`;
+  } else if (currentEpisode.value > 8) {
     urlCode = `The_Witcher_S1_Ep8`;
   }
 
@@ -234,14 +238,16 @@ watch(
     if (newVal) {
       loading.value = true;
 
-      if (episodeNumber.value > limit.value) {
-        selectedTabEpisode.value = Math.ceil(episodeNumber.value / limit.value);
+      if (currentEpisode.value > limit.value) {
+        selectedTabEpisode.value = Math.ceil(
+          currentEpisode.value / limit.value
+        );
       }
 
       getListEpisode(
         props.dataMovie?.id,
         props?.dataMovie?.season_id,
-        episodeNumber.value > limit.value
+        currentEpisode.value > limit.value
           ? (selectedTabEpisode.value - 1) * limit.value + 1
           : skip.value,
         limit.value
@@ -250,9 +256,7 @@ watch(
           dataEpisode.value[selectedTabEpisode.value - 1] = response?.results;
           // .filter((item: any) => item.air_date != null);
           // .reverse();
-          episodeNumber.value = response?.results.find(
-            (item: any) => item.id == episodeId.value
-          );
+
           totalEpisode.value = response?.total_episode;
 
           for (let i = 1; i < numberTabsEpisode.value; i++) {
@@ -264,12 +268,12 @@ watch(
           emit(
             'changeEpisode',
             dataEpisode.value[selectedTabEpisode.value - 1].find(
-              (item) => item?.id == episodeId.value
+              (item) => item?.episode_number == currentEpisode.value
             )
           );
 
           const episode = document.getElementById(
-            `episode-${episodeNumber.value}`
+            `episode-${currentEpisode.value}`
           ) as HTMLElement;
 
           // listEpisodes.value?.scrollTo({
@@ -320,12 +324,11 @@ const handleChangeSeason = async (value: string) => {
 };
 
 const handleChangeEpisode = (item: any) => {
-  if (episodeNumber.value == item?.episode_number) return;
+  if (currentEpisode.value == item?.episode_number) return;
 
-  // window.history.replaceState(null, '', 'tap-' + item?.episode_number);
-  router.push({ query: { ep: item.id } });
+  window.history.replaceState(null, '', 'tap-' + item?.episode_number);
 
-  episodeNumber.value = item?.episode_number;
+  currentEpisode.value = item?.episode_number;
 
   emitUrlCode();
 

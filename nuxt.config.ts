@@ -66,17 +66,17 @@ export default defineNuxtConfig({
     cdnURL: process.env.CDN_URL,
     keepalive: true,
     layoutTransition: false,
-    pageTransition: { name: 'page', mode: 'out-in', appear: true },
+    pageTransition: { name: 'page', mode: 'out-in', appear: true }
 
-    templateParams: {
-      separator: '|',
-      separatorDash: '-'
-    },
-    // titleTemplate: '%s %separator %siteName',
-    titleTemplate: (title: any) => {
-      return title ? `${title} %separator %siteName` : '%siteName';
-    },
-    description: 'Xem phim Online 24/7'
+    // templateParams: {
+    //   separator: '|',
+    //   separatorDash: '-'
+    // },
+    // // titleTemplate: '%s %separator %siteName',
+    // titleTemplate: (title: any) => {
+    //   return title ? `${title} %separator %siteName` : '%siteName';
+    // },
+    // description: 'Xem phim Online 24/7'
   },
 
   runtimeConfig: {
@@ -226,9 +226,9 @@ export default defineNuxtConfig({
     styleLang: 'css'
   },
 
-  gtag: {
-    id: process.env.GOOGLE_ANALYTICS_ID
-  },
+  // gtag: {
+  //   id: process.env.GOOGLE_ANALYTICS_ID
+  // },
 
   lodash: {
     prefix: '_lodash_',
@@ -266,40 +266,40 @@ export default defineNuxtConfig({
 
   fontMetrics: {},
 
-  fonts: {
-    priority: ['local', 'google'],
-    families: [
-      { name: 'Roboto', provider: 'local' },
-      { name: 'Inter', provider: 'local' },
-      { name: 'Noto Sans', provider: 'local' },
-      { name: 'Nunito Sans', provider: 'local' },
-      { name: 'Plus Jakarta Sans', provider: 'local' },
-      { name: 'Source Sans 3', provider: 'local' },
-      { name: 'Mulish', provider: 'local' },
-      { name: 'Lobster', provider: 'local' },
-      { name: 'Roboto', provider: 'google' },
-      { name: 'Inter', provider: 'google' },
-      { name: 'Noto Sans', provider: 'google' },
-      { name: 'Nunito Sans', provider: 'google' },
-      { name: 'Plus Jakarta Sans', provider: 'google' },
-      { name: 'Source Sans 3', provider: 'google' },
-      { name: 'Mulish', provider: 'google' },
-      { name: 'Lobster', provider: 'google' }
-    ],
-    defaults: {
-      weights: [400],
-      styles: ['normal', 'italic'],
-      subsets: [
-        'cyrillic',
-        'cyrillic-ext',
-        'greek',
-        'greek-ext',
-        'latin',
-        'latin-ext',
-        'vietnamese'
-      ]
-    }
-  },
+  // fonts: {
+  //   priority: ['local', 'google'],
+  //   families: [
+  //     { name: 'Roboto', provider: 'local' },
+  //     { name: 'Inter', provider: 'local' },
+  //     { name: 'Noto Sans', provider: 'local' },
+  //     { name: 'Nunito Sans', provider: 'local' },
+  //     { name: 'Plus Jakarta Sans', provider: 'local' },
+  //     { name: 'Source Sans 3', provider: 'local' },
+  //     { name: 'Mulish', provider: 'local' },
+  //     { name: 'Lobster', provider: 'local' },
+  //     { name: 'Roboto', provider: 'google' },
+  //     { name: 'Inter', provider: 'google' },
+  //     { name: 'Noto Sans', provider: 'google' },
+  //     { name: 'Nunito Sans', provider: 'google' },
+  //     { name: 'Plus Jakarta Sans', provider: 'google' },
+  //     { name: 'Source Sans 3', provider: 'google' },
+  //     { name: 'Mulish', provider: 'google' },
+  //     { name: 'Lobster', provider: 'google' }
+  //   ],
+  //   defaults: {
+  //     weights: [400],
+  //     styles: ['normal', 'italic'],
+  //     subsets: [
+  //       'cyrillic',
+  //       'cyrillic-ext',
+  //       'greek',
+  //       'greek-ext',
+  //       'latin',
+  //       'latin-ext',
+  //       'vietnamese'
+  //     ]
+  //   }
+  // },
 
   googleFonts: {
     prefetch: true,
@@ -361,10 +361,15 @@ export default defineNuxtConfig({
   },
 
   seo: {},
-  robots: {},
-  ogImage: {},
-  seoExperiments: {},
-  schemaOrg: {},
+  robots: {
+    enabled: false
+  },
+  ogImage: {
+    enabled: false
+  },
+  schemaOrg: {
+    enabled: false
+  },
   linkChecker: {
     enabled: false
   },

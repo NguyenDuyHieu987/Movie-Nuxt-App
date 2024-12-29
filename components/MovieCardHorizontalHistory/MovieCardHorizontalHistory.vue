@@ -184,7 +184,7 @@
                       :to="{
                         path: `/play-tv/${
                           dataMovieDetail?.id
-                        }${utils.convertPath.toPathInfo_Play(dataMovieDetail?.name)}/tap-1`
+                        }${utils.convertPath.toPathInfo_Play(dataMovieDetail?.name)}`
                       }"
                       class="btn-play-now"
                     >
