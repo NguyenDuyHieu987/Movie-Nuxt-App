@@ -141,7 +141,7 @@
                   )}`
                 : `/play-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
                     item?.name
-                  )}/tap-1`
+                  )}`
           }"
           :title="item?.name"
         >

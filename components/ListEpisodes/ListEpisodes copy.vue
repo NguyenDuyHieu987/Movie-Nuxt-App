@@ -303,7 +303,6 @@ const handleChangeSeason = async (value: string) => {
   selectedSeasonId.value = value;
 
   loading.value = true;
-  window.history.replaceState(null, '', 'tap-1');
 
   // await useAsyncData(
   //   `season/get/${props.dataMovie?.id}/${selectedSeasonId.value}`,
