@@ -232,7 +232,7 @@ const getData = async () => {
 
 watch(
   () => props.dataMovie,
-  (newVal, oldVal) => {
+  (newVal: any, oldVal: any) => {
     if (dataEpisode.value[0]?.length > 0) return;
 
     if (newVal) {
@@ -268,7 +268,7 @@ watch(
           emit(
             'changeEpisode',
             dataEpisode.value[selectedTabEpisode.value - 1].find(
-              (item) => item?.episode_number == currentEpisode.value
+              (item: any) => item?.episode_number == currentEpisode.value
             )
           );
 

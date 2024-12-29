@@ -189,7 +189,9 @@ const numberTabsEpisode = computed<number>(() =>
   Math.ceil(totalEpisode.value / limit.value)
 );
 const selectedSeasonId = ref<string>(props.dataMovie?.season_id);
-const episodeId = computed<string>(() => route.query?.ep as string);
+const episodeId = computed<string>(
+  () => route.query?.ep || dataEpisode.value[0][0].id
+);
 const episodeNumber = ref<number>(1);
 
 const emitUrlCode = () => {
@@ -228,8 +230,10 @@ const getData = async () => {
 
 watch(
   () => props.dataMovie,
-  (newVal, oldVal) => {
-    if (dataEpisode.value[0]?.length > 0) return;
+  (newVal: any, oldVal: any) => {
+    if (dataEpisode.value[0]?.length > 0) {
+      return;
+    }
 
     if (newVal) {
       loading.value = true;
@@ -264,7 +268,7 @@ watch(
           emit(
             'changeEpisode',
             dataEpisode.value[selectedTabEpisode.value - 1].find(
-              (item) => item?.id == episodeId.value
+              (item: any) => item?.id == episodeId.value
             )
           );
 
