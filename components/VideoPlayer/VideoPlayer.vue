@@ -889,13 +889,17 @@ const loadM3u8Video = async () => {
   // } else {
   //   console.error('HLS is not supported on your browser, but native HLS is');
   // }
+  videoStates.isLoadError.enable = false;
 
-  // var videoElment = document.getElementById('video-player') as HTMLVideoElement;
+  var videoElment = document.getElementById('video-player') as HTMLVideoElement;
+
+  if (!video.value && videoElment) {
+    video.value = videoElment;
+  }
 
   if (!video.value) return;
 
   video.value!.muted = true;
-  videoStates.isLoadError.enable = false;
 
   if (Hls.isSupported()) {
     if (!hls.value) hls.value = new Hls();
