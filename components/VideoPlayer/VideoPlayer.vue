@@ -895,9 +895,10 @@ const loadM3u8Video = async () => {
   if (!video.value) return;
 
   video.value!.muted = true;
+  videoStates.isLoadError.enable = false;
 
   if (Hls.isSupported()) {
-    hls.value = new Hls();
+    if (!hls.value) hls.value = new Hls();
 
     hls.value.on(Hls.Events.ERROR, function (event, data) {
       if (data.fatal) {
