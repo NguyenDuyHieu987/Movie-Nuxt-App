@@ -43,6 +43,7 @@
               :episode="currentEpisode"
               :loadingData="loading || currentEpisode == null"
               :videoUrl="
+                currentEpisode?.video_path ||
                 `/television/The_Witcher_S1/${urlCodeMovie}/` + urlCodeMovie
               "
               :backdrop="
@@ -415,8 +416,8 @@ import CommentIcon from '~/assets/svgs/icons/comment.svg?component';
 // import ListEpisodes from '~/components/ListEpisodes/ListEpisodes.vue';
 // import Comment from '~/components/Comment/Comment.vue';
 // import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
-import { getMovieByType_Id } from '~/services/movie';
-import { getTvById, UpdateViewTv } from '~/services/tv';
+import { getMovieByType_Id, UpdateViewMovie } from '~/services/movie';
+import { UpdateViewEpisode } from '~/services/episode';
 import { getGenreById } from '~/services/genres';
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { add_update_History, getItemHistory } from '~/services/history';
@@ -692,7 +693,14 @@ const onTimeUpdateVideoPlayer = (e: any) => {
 
     if (seconds.value > e.duration / 2) {
       if (isUpdateView.value == true) {
-        UpdateViewTv(movieId.value)
+        UpdateViewMovie(movieId.value)
+          .then((response) => {
+            if (response?.success) {
+              // Do something
+            }
+          })
+          .catch((e) => {});
+        UpdateViewEpisode(currentEpisode.value.id)
           .then((response) => {
             if (response?.success) {
               // Do something

@@ -76,7 +76,7 @@ export function getServerImage(
   return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}`;
 }
 
-export function getPosterCast(path: string): string {
+export function getTMDBImage(path: string): string {
   const nuxtConfig = useRuntimeConfig();
   const TMDB_IMAGE_BASE_URL = nuxtConfig.app.TMDBurl;
 

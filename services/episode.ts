@@ -38,3 +38,9 @@ export function getEpisodeById(
     `/${PREFIX_ROUTE}/getbyid/${movieId}/${seasonId}/${episodeId}`
   );
 }
+
+export function UpdateViewEpisode(episodeId: number | string) {
+  return makeRequest(`/${PREFIX_ROUTE}/update-view/${episodeId}`, null, {
+    method: 'POST'
+  });
+}

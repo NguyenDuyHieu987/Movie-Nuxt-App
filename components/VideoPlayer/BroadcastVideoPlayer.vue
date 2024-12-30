@@ -730,7 +730,6 @@ import Hls from 'hls.js';
 const props = withDefaults(
   defineProps<{
     dataBroadcast: any;
-    episode?: any;
     loadingData: boolean;
     backdrop: string;
     videoUrl: string;
@@ -750,8 +749,9 @@ const nuxtConfig = useRuntimeConfig();
 const authStore = useAuthStore();
 const route = useRoute();
 const dataMovie = computed<any>(() => props.dataBroadcast.movieData);
+const dataEpisode = computed<any>(() => props.dataBroadcast.episodeData);
 const movieVipNumber = computed<number>(
-  () => dataMovie.value?.vip || props?.episode?.vip || 0
+  () => dataEpisode.value?.vip || dataMovie.value?.vip || 0
 );
 const isEligibleToWatch = computed<boolean>(
   () =>

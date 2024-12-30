@@ -723,7 +723,7 @@ const nuxtConfig = useRuntimeConfig();
 const authStore = useAuthStore();
 const route = useRoute();
 const movieVipNumber = computed<number>(
-  () => props.dataMovie?.vip || props?.episode?.vip || 0
+  () => props?.episode?.vip || props.dataMovie?.vip || 0
 );
 const isEligibleToWatch = computed<boolean>(
   () =>

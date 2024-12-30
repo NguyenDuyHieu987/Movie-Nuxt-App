@@ -15,7 +15,7 @@
     <div class="img-box">
       <div class="ant-image">
         <img
-          :src="getPosterCast(item?.profile_path)"
+          :src="getTMDBImage(item?.profile_path)"
           loading="lazy"
           alt=""
         />
@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { getPosterCast } from '~/services/image';
+import { getTMDBImage } from '~/services/image';
 
 const props = defineProps<{
   item: any;
