@@ -390,7 +390,7 @@ import { HomeOutlined } from '@ant-design/icons-vue';
 // import SvgoCalendarDays from '~/assets/svgs/icons/calendar-days.svg?component';
 // import SvgoGlobe from '~/assets/svgs/icons/globe.svg?component';
 // import SvgoClockRotateLeft from '~/assets/svgs/icons/clock-rotate-left.svg?component';
-// import SvgoPlaylistPlay from '~/assets/svgs/icons/playlist-play.svg?component';
+import SvgoPlaylistPlay from '~/assets/svgs/icons/playlist-play.svg?component';
 // import SvgoRankingStar from '~/assets/svgs/icons/ranking-star.svg?component';
 // import SvgoVipPrivilege from '~/assets/svgs/icons/vip-privilege.svg?component';
 
