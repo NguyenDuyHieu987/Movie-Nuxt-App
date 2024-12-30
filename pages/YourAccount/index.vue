@@ -274,7 +274,6 @@
         v-if="formUploadAvatar.avatar_path"
         :src="formUploadAvatar.avatar_path"
         class="avatar-image"
-        :width="100"
         :height="100"
       />
       <template #footer>
