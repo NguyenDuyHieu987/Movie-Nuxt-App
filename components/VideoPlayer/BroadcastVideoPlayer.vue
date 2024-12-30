@@ -58,7 +58,30 @@
         >
           <!-- <div class="ratio-16-9"></div> -->
           <div
-            v-if="ísWatchable"
+            v-if="!ísWatchable"
+            class="prevent-notification-wrapper"
+          >
+            <div
+              v-if="videoStates.isLoadError.enable"
+              class="load-error"
+            >
+              <div
+                v-if="authStore.vipNumber == 0"
+                class="load-error-message"
+              >
+                <p>
+                  Gặp sự cố trong quá trình tải video. Chúng tôi sẽ khắc phục sự
+                  cố sớm nhất có thể.
+                </p>
+                <p>
+                  <strong>{{ videoStates.isLoadError.type }}: </strong>
+                  {{ videoStates.isLoadError.reason }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            v-else
             class="prevent-notification-wrapper"
           >
             <div
@@ -763,13 +786,12 @@ const isEligibleToWatch = computed<boolean>(
 );
 const ísWatchable = computed<boolean>(
   () =>
-    !(
-      (videoStates.isLoading &&
-        !videoStates.isEndedVideo &&
-        !videoStates.isRewind.enable) ||
-      !mounted.value ||
-      props.loadingData
-    )
+    !videoStates.isLoading &&
+    !videoStates.isEndedVideo &&
+    !videoStates.isRewind.enable &&
+    !mounted.value &&
+    !props.loadingData &&
+    !videoStates.isLoadError.enable
 );
 const videoSrc = computed<string>(() =>
   getVideo(
@@ -805,6 +827,12 @@ const historyProgress = defineModel<{
 const videoStates = reactive({
   isLoading: false,
   isLoaded: false,
+  isLoadError: {
+    enable: false,
+    message: '',
+    type: '',
+    reason: ''
+  },
   isPlayVideo: true,
   isScrubbingProgressBar: false,
   isFullScreen: false,
@@ -911,6 +939,19 @@ const loadM3u8Video = async () => {
 
   if (Hls.isSupported()) {
     hls.value = new Hls();
+
+    hls.value.on(Hls.Events.ERROR, function (event, data) {
+      if (data.fatal) {
+        // console.error('HLS error:', data);
+        videoStates.isLoadError.enable = true;
+        videoStates.isLoadError.type = `${data.type}`;
+        videoStates.isLoadError.reason = `${data.reason}`;
+        videoStates.isLoadError.message = `${data.type}: ${data.reason}`;
+        videoStates.isPlayVideo = false;
+        videoStates.isLoading = false;
+      }
+    });
+
     hls.value.loadSource(videoSrc.value);
     hls.value.attachMedia(video.value!);
     return new Promise((resolve, reject) => {
@@ -933,6 +974,10 @@ const loadM3u8Video = async () => {
               }
               reject(err);
             });
+
+          if (videoStates.isLoadError.enable) {
+            videoStates.isLoadError.enable = false;
+          }
         } else {
           isEndedBroadcast.value = true;
           resolve(true);
@@ -962,7 +1007,7 @@ const loadM3u8Video = async () => {
 };
 
 watch(
-  () => props.episode,
+  () => dataEpisode.value,
   async (newVal, oldVal) => {
     if (!isEligibleToWatch.value) return;
 

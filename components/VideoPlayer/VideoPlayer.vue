@@ -54,52 +54,78 @@
 
         <div
           v-else
-          class="require-vip"
+          class="prevent-notification"
         >
           <!-- <div class="ratio-16-9"></div> -->
           <div
-            v-if="ísWatchable"
-            class="require-vip-wrapper"
+            v-if="!ísWatchable"
+            class="prevent-notification-wrapper"
           >
             <div
-              v-if="authStore.vipNumber == 0"
-              class="require-vip-message"
+              v-if="videoStates.isLoadError.enable"
+              class="load-error"
             >
-              <span>
-                Bạn cần nâng cấp tài khoản lên
-                <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim.
-              </span>
-              <NuxtLink
-                class="underline"
-                :to="{
-                  path: `/upgrade/plans`,
-                  query: {
-                    order: movieVipNumber
-                  }
-                }"
+              <div
+                v-if="authStore.vipNumber == 0"
+                class="load-error-message"
               >
-                Nâng cấp ngay
-              </NuxtLink>
+                <p>
+                  Gặp sự cố trong quá trình tải video. Chúng tôi sẽ khắc phục sự
+                  cố sớm nhất có thể.
+                </p>
+                <p>
+                  <strong>{{ videoStates.isLoadError.type }}: </strong>
+                  {{ videoStates.isLoadError.reason }}
+                </p>
+              </div>
             </div>
-            <div
-              v-else
-              class="require-vip-message"
-            >
-              <span>
-                Bạn cần nâng cấp tài khoản lên
-                <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim
-              </span>
-              <NuxtLink
-                class="underline"
-                :to="{
-                  path: `/upgrade/plans`,
-                  query: {
-                    order: movieVipNumber
-                  }
-                }"
+          </div>
+          <div
+            v-else
+            class="prevent-notification-wrapper"
+          >
+            <div class="require-vip">
+              <div
+                v-if="authStore.vipNumber == 0"
+                class="require-vip-message"
               >
-                Nâng cấp ngay
-              </NuxtLink>
+                <span>
+                  Bạn cần nâng cấp tài khoản lên
+                  <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem
+                  phim.
+                </span>
+                <NuxtLink
+                  class="underline"
+                  :to="{
+                    path: `/upgrade/plans`,
+                    query: {
+                      order: movieVipNumber
+                    }
+                  }"
+                >
+                  Nâng cấp ngay
+                </NuxtLink>
+              </div>
+              <div
+                v-else
+                class="require-vip-message"
+              >
+                <span>
+                  Bạn cần nâng cấp tài khoản lên
+                  <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim
+                </span>
+                <NuxtLink
+                  class="underline"
+                  :to="{
+                    path: `/upgrade/plans`,
+                    query: {
+                      order: movieVipNumber
+                    }
+                  }"
+                >
+                  Nâng cấp ngay
+                </NuxtLink>
+              </div>
             </div>
           </div>
         </div>
@@ -728,17 +754,28 @@ const movieVipNumber = computed<number>(
 const isEligibleToWatch = computed<boolean>(
   () =>
     !props.loadingData &&
-    (movieVipNumber.value == 0 || authStore.vipNumber! >= movieVipNumber.value)
+    (movieVipNumber.value == 0 ||
+      authStore.vipNumber! >= movieVipNumber.value) &&
+    !videoStates.isLoadError.enable
 );
+// const ísWatchable = computed<boolean>(
+//   () =>
+//     !(
+//       (videoStates.isLoading &&
+//         !videoStates.isEndedVideo &&
+//         !videoStates.isRewind.enable) ||
+//       !mounted.value ||
+//       props.loadingData
+//     )
+// );
 const ísWatchable = computed<boolean>(
   () =>
-    !(
-      (videoStates.isLoading &&
-        !videoStates.isEndedVideo &&
-        !videoStates.isRewind.enable) ||
-      !mounted.value ||
-      props.loadingData
-    )
+    !videoStates.isLoading &&
+    !videoStates.isEndedVideo &&
+    !videoStates.isRewind.enable &&
+    !mounted.value &&
+    !props.loadingData &&
+    !videoStates.isLoadError.enable
 );
 const videoSrc = computed<string>(() =>
   getVideo(
@@ -774,6 +811,12 @@ const historyProgress = defineModel<{
 const videoStates = reactive({
   isLoading: false,
   isLoaded: false,
+  isLoadError: {
+    enable: false,
+    message: '',
+    type: '',
+    reason: ''
+  },
   isPlayVideo: true,
   isScrubbingProgressBar: false,
   isFullScreen: false,
@@ -856,7 +899,21 @@ const loadM3u8Video = async () => {
 
   if (Hls.isSupported()) {
     hls.value = new Hls();
-    hls.value.loadSource(videoSrc.value);
+
+    hls.value.on(Hls.Events.ERROR, function (event, data) {
+      if (data.fatal) {
+        // console.error('HLS error:', data);
+        videoStates.isLoadError.enable = true;
+        videoStates.isLoadError.type = `${data.type}`;
+        videoStates.isLoadError.reason = `${data.reason}`;
+        videoStates.isLoadError.message = `${data.type}: ${data.reason}`;
+        videoStates.isPlayVideo = false;
+        videoStates.isLoading = false;
+      }
+    });
+
+    // hls.value.loadSource(videoSrc.value);
+    hls.value.loadSource('test');
     hls.value.attachMedia(video.value!);
     hls.value.on(Hls.Events.MANIFEST_PARSED, async function () {
       await video.value!.play().catch(() => {
@@ -864,6 +921,9 @@ const loadM3u8Video = async () => {
           videoStates.isPlayVideo = false;
         }
       });
+      if (videoStates.isLoadError.enable) {
+        videoStates.isLoadError.enable = false;
+      }
     });
   } else if (video.value?.canPlayType('application/vnd.apple.mpegurl')) {
     video.value!.src = videoSrc.value;
