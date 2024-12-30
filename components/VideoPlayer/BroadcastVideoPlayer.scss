@@ -56,6 +56,13 @@ video::-webkit-media-controls {
       justify-content: center;
       height: 100%;
 
+      .load-error {
+        .load-error-message {
+          text-align: center;
+          padding: 0px 30px;
+        }
+      }
+
       .require-vip {
         .require-vip-message {
           text-align: center;
@@ -66,6 +73,7 @@ video::-webkit-media-controls {
       .coundown-remaining {
         font-size: 1.8rem;
         text-align: center;
+        padding: 0px 30px;
 
         .coundown-remaining-message {
           font-size: 4rem;

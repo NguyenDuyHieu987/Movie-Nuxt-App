@@ -65,10 +65,7 @@
               v-if="videoStates.isLoadError.enable"
               class="load-error"
             >
-              <div
-                v-if="authStore.vipNumber == 0"
-                class="load-error-message"
-              >
+              <div class="load-error-message">
                 <p>
                   Gặp sự cố trong quá trình tải video. Chúng tôi sẽ khắc phục sự
                   cố sớm nhất có thể.
@@ -79,21 +76,37 @@
                 </p>
               </div>
             </div>
+            <div
+              class="end-live"
+              v-else-if="isEndedBroadcast"
+            >
+              <p>Buổi công chiếu đã kết thúc</p>
+            </div>
+            <div
+              class="coundown-remaining"
+              v-else-if="timeRemaining > 0"
+            >
+              <p>Phim sẽ công chiếu sau:</p>
+              <strong class="coundown-remaining-message">
+                <!-- <span v-if="days != 0">{{ days.toString().padStart(2, '0') }} ngày, </span>
+                <span>{{ hours.toString().padStart(2, '0') }} giờ, </span>
+                <span>{{ minutes.toString().padStart(2, '0') }} phút, </span>
+                <span>{{ seconds.toString().padStart(2, '0') }} giây </span> -->
+                <span v-if="days != 0">
+                  {{ days.toString().padStart(2, '0') }} ngày,
+                </span>
+                <span>{{ hours.toString().padStart(2, '0') }} : </span>
+                <span>{{ minutes.toString().padStart(2, '0') }} : </span>
+                <span>{{ seconds.toString().padStart(2, '0') }} </span>
+                <!-- <span> nữa</span> -->
+              </strong>
+            </div>
           </div>
           <div
             v-else
             class="prevent-notification-wrapper"
           >
-            <div
-              class="end-live"
-              v-if="isEndedBroadcast"
-            >
-              <p>Buổi công chiếu đã kết thúc</p>
-            </div>
-            <div
-              v-else-if="timeRemaining <= 0"
-              class="require-vip"
-            >
+            <div class="require-vip">
               <div
                 v-if="authStore.vipNumber == 0"
                 class="require-vip-message"
@@ -136,25 +149,6 @@
                 </NuxtLink>
               </div>
             </div>
-            <div
-              class="coundown-remaining"
-              v-else
-            >
-              <p>Phim sẽ công chiếu sau:</p>
-              <strong class="coundown-remaining-message">
-                <!-- <span v-if="days != 0">{{ days.toString().padStart(2, '0') }} ngày, </span>
-                <span>{{ hours.toString().padStart(2, '0') }} giờ, </span>
-                <span>{{ minutes.toString().padStart(2, '0') }} phút, </span>
-                <span>{{ seconds.toString().padStart(2, '0') }} giây </span> -->
-                <span v-if="days != 0">
-                  {{ days.toString().padStart(2, '0') }} ngày,
-                </span>
-                <span>{{ hours.toString().padStart(2, '0') }} : </span>
-                <span>{{ minutes.toString().padStart(2, '0') }} : </span>
-                <span>{{ seconds.toString().padStart(2, '0') }} </span>
-                <!-- <span> nữa</span> -->
-              </strong>
-            </div>
           </div>
         </div>
       </div>
@@ -165,8 +159,7 @@
             (videoStates.isLoading &&
               !videoStates.isEndedVideo &&
               !videoStates.isRewind.enable) ||
-            !mounted ||
-            loadingData
+            ((!mounted || loadingData) && !isEndedBroadcast)
           "
           class="loading-video"
         >
@@ -786,11 +779,15 @@ const isEligibleToWatch = computed<boolean>(
 );
 const ísWatchable = computed<boolean>(
   () =>
-    !videoStates.isLoading &&
-    !videoStates.isEndedVideo &&
-    !videoStates.isRewind.enable &&
+    !(
+      videoStates.isLoading &&
+      !videoStates.isEndedVideo &&
+      !videoStates.isRewind.enable
+    ) &&
     !mounted.value &&
     !props.loadingData &&
+    !isEndedBroadcast.value &&
+    timeRemaining.value <= 0 &&
     !videoStates.isLoadError.enable
 );
 const videoSrc = computed<string>(() =>
@@ -980,6 +977,7 @@ const loadM3u8Video = async () => {
           }
         } else {
           isEndedBroadcast.value = true;
+          videoStates.isLoading = false;
           resolve(true);
         }
       });
@@ -1046,8 +1044,11 @@ watch(
 
       const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
 
+      timeRemaining.value = startTime.value - now;
+
       if (elapsedSeconds >= dataMovie.value.runtime) {
         isEndedBroadcast.value = true;
+        videoStates.isLoading = false;
       }
     }
   },
@@ -1124,7 +1125,7 @@ onBeforeRouteLeave(() => {
 onBeforeMount(() => {});
 
 onMounted(async () => {
-  calculateTimeRemaining();
+  // calculateTimeRemaining();
   if (timeRemaining.value > 0) {
     timerCountdown.value = setInterval(calculateTimeRemaining, 1000);
   }

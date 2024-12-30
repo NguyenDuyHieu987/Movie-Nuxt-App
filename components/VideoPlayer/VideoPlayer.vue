@@ -65,10 +65,7 @@
               v-if="videoStates.isLoadError.enable"
               class="load-error"
             >
-              <div
-                v-if="authStore.vipNumber == 0"
-                class="load-error-message"
-              >
+              <div class="load-error-message">
                 <p>
                   Gặp sự cố trong quá trình tải video. Chúng tôi sẽ khắc phục sự
                   cố sớm nhất có thể.
@@ -770,9 +767,11 @@ const isEligibleToWatch = computed<boolean>(
 // );
 const ísWatchable = computed<boolean>(
   () =>
-    !videoStates.isLoading &&
-    !videoStates.isEndedVideo &&
-    !videoStates.isRewind.enable &&
+    !(
+      videoStates.isLoading &&
+      !videoStates.isEndedVideo &&
+      !videoStates.isRewind.enable
+    ) &&
     !mounted.value &&
     !props.loadingData &&
     !videoStates.isLoadError.enable
