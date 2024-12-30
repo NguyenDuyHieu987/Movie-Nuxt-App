@@ -348,8 +348,8 @@ export default defineNuxtConfig({
   svgo: {
     explicitImportsOnly: true,
     autoImportPath: './assets/svgs/icons/',
-    global: false
-    // defaultImport: 'component'
+    global: false,
+    defaultImport: 'component'
   },
 
   // SEO
