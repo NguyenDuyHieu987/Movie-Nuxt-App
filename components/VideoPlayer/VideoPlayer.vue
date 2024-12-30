@@ -911,8 +911,7 @@ const loadM3u8Video = async () => {
       }
     });
 
-    // hls.value.loadSource(videoSrc.value);
-    hls.value.loadSource('test');
+    hls.value.loadSource(videoSrc.value);
     hls.value.attachMedia(video.value!);
     hls.value.on(Hls.Events.MANIFEST_PARSED, async function () {
       await video.value!.play().catch(() => {
