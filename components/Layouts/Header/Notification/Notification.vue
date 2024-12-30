@@ -13,14 +13,14 @@
           :overflow-count="9"
         >
           <div class="show-notify-btn">
-            <BellRegular
+            <SvgoBellRegular
               class="fa-bell fa-regular"
               width="2.2rem"
               height="2.2rem"
               fill="currentColor"
             />
 
-            <BellSolid
+            <SvgoBellSolid
               class="fa-bell fa-solid"
               width="2.2rem"
               height="2.2rem"
@@ -67,8 +67,8 @@
 </template>
 
 <script setup lang="ts">
-import BellRegular from '~/assets/svgs/icons/bell-regular.svg?component';
-import BellSolid from '~/assets/svgs/icons/bell-solid.svg?component';
+// import SvgoBellRegular from '~/assets/svgs/icons/bell-regular.svg?component';
+// import SvgoBellSolid from '~/assets/svgs/icons/bell-solid.svg?component';
 </script>
 
 <style lang="scss" src="./Notification.scss"></style>

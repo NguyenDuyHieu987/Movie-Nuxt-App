@@ -94,7 +94,7 @@
         </div>
 
         <div class="live-comment-actions">
-          <Emoticon
+          <SvgoEmoticon
             class="emoticon"
             width="2.2rem"
             height="2.2rem"
@@ -125,7 +125,7 @@
               placement="top"
               :hide-on-click="false"
             >
-              <HeartIcon
+              <SvgoHeart
                 class="heart-icon"
                 width="2.2rem"
                 height="2.2rem"
@@ -134,7 +134,7 @@
               <template #dropdown>
                 <el-dropdown-menu>
                   <el-dropdown-item @click="sendEmoji('smile')">
-                    <NotoSmilingFace
+                    <SvgoNotoSmilingFace
                       class="NotoSmilingFace-icon"
                       :class="{ animate: isAnimateEmoji }"
                       width="2.2rem"
@@ -142,7 +142,7 @@
                     />
                   </el-dropdown-item>
                   <el-dropdown-item @click="sendEmoji('smile-sweat')">
-                    <NotoSmilingFaceSweat
+                    <SvgoNotoSmilingFaceSweat
                       class="NotoSmilingFaceSweat-icon"
                       width="2.2rem"
                       height="2.2rem"
@@ -150,8 +150,8 @@
                   </el-dropdown-item>
 
                   <el-dropdown-item @click="sendEmoji('heart')">
-                    <NotoRedHeart
-                      class="NotoRedHeart-icon"
+                    <SvgoNotoRedHeart
+                      class="SvgoNotoRedHeart-icon"
                       width="2.2rem"
                       height="2.2rem"
                     />
@@ -175,9 +175,9 @@
                 width="2.2rem"
                 height="2.2rem"
               />
-              <NotoRedHeart
+              <SvgoNotoRedHeart
                 v-else-if="animateEmojiType == 'heart'"
-                class="NotoRedHeart-icon"
+                class="SvgoNotoRedHeart-icon"
                 width="2.2rem"
                 height="2.2rem"
               />
@@ -190,11 +190,11 @@
 </template>
 
 <script setup lang="ts">
-import Emoticon from '~/assets/svgs/icons/emoticon.svg?component';
-import HeartIcon from '~/assets/svgs/icons/heart.svg?component';
-import NotoRedHeart from '~/assets/svgs/icons/NotoRedHeart.svg?component';
-import NotoSmilingFace from '~/assets/svgs/icons/NotoSmilingFace.svg?component';
-import NotoSmilingFaceSweat from '~/assets/svgs/icons/NotoSmilingFaceSweat.svg?component';
+// import SvgoEmoticon from '~/assets/svgs/icons/emoticon.svg?component';
+// import SvgoHeart from '~/assets/svgs/icons/heart.svg?component';
+// import SvgoNotoRedHeart from '~/assets/svgs/icons/SvgoNotoRedHeart.svg?component';
+// import SvgoNotoSmilingFace from '~/assets/svgs/icons/NotoSmilingFace.svg?component';
+// import SvgoNotoSmilingFaceSweat from '~/assets/svgs/icons/NotoSmilingFaceSweat.svg?component';
 
 import { getImage } from '~/services/image';
 

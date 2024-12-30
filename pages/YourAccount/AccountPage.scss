@@ -342,6 +342,13 @@
   }
 }
 
+.upload-avatar-dialog {
+  .avatar-image {
+    display: block;
+    margin-top: 15px;
+  }
+}
+
 html.dark {
   .account-page {
     .account-page-container .bottom-zone .right .ant-btn.logout-btn {

@@ -53,7 +53,7 @@
       </div>
 
       <div class="play-icon">
-        <PlayIcon
+        <SvgoPlay
           class="play"
           width="4rem"
           height="4rem"
@@ -139,7 +139,7 @@
             <template #icon>
               <!-- <Icon name="fa6-solid:ellipsis-vertical" /> -->
 
-              <EllipsisVertical
+              <SvgoEllipsisVertical
                 width="1.8rem"
                 height="1.8rem"
                 fill="currentColor"
@@ -165,7 +165,7 @@
                             name="ic:twotone-playlist-add"
                           /> -->
 
-                  <PlaylistCheck
+                  <SvgoPlaylistCheck
                     v-if="isAddToList"
                     class="icon-material"
                     width="2.8rem"
@@ -173,7 +173,7 @@
                     fill="currentColor"
                   />
 
-                  <PlaylistAdd
+                  <SvgoPlaylistAdd
                     v-else
                     class="icon-material"
                     width="2.8rem"
@@ -187,7 +187,7 @@
                 <el-dropdown-item key="share">
                   <!-- <Icon name="ph:share-fat-bold"  /> -->
 
-                  <ShareOutlined
+                  <SvgoShareOutlined
                     class="share"
                     width="1.8rem"
                     height="1.8rem"
@@ -215,7 +215,7 @@
                   key="remove-list"
                   class="remove-item"
                 >
-                  <TrashCan
+                  <SvgoTrashCan
                     width="1.5rem"
                     height="1.5rem"
                     fill="currentColor"
@@ -236,12 +236,12 @@
 </template>
 
 <script setup lang="ts">
-import PlayIcon from '~/assets/svgs/icons/play.svg?component';
-import EllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
-import PlaylistAdd from '~/assets/svgs/icons/playlist-add.svg?component';
-import PlaylistCheck from '~/assets/svgs/icons/playlist-check.svg?component';
-import ShareOutlined from '~/assets/svgs/icons/share-outlined.svg?component';
-import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
+// import SvgoPlay from '~/assets/svgs/icons/play.svg?component';
+// import SvgoEllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
+// import SvgoPlaylistAdd from '~/assets/svgs/icons/playlist-add.svg?component';
+// import SvgoPlaylistCheck from '~/assets/svgs/icons/playlist-check.svg?component';
+// import SvgoShareOutlined from '~/assets/svgs/icons/share-outlined.svg?component';
+// import SvgoTrashCan from '~/assets/svgs/icons/trash-can.svg?component';
 
 import { getImage } from '~/services/image';
 import { getMovieById, getMovieByType_Id } from '~/services/movie';

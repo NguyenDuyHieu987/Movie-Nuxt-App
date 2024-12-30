@@ -9,7 +9,7 @@
   >
     <template #reference>
       <div class="search-btn">
-        <MagnifyingGlass
+        <SvgoMagnifyingGlass
           class="fa-magnifying-glass"
           width="1.8rem"
           height="1.8rem"
@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import MagnifyingGlass from '~/assets/svgs/icons/magnifying-glass.svg?component';
+// import SvgoMagnifyingGlass from '~/assets/svgs/icons/magnifying-glass.svg?component';
 
 const emits = defineEmits<{
   change: [value: string];

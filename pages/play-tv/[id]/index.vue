@@ -133,14 +133,14 @@
                         <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
                         <Icon v-else name="ic:baseline-plus" /> -->
 
-                        <CheckIcon
+                        <SvgoCheck
                           v-if="isAddToList"
                           width="2.5rem"
                           height="2.5rem"
                           fill="currentColor"
                         />
 
-                        <PlusIcon
+                        <SvgoPlus
                           v-else
                           width="2.5rem"
                           height="2.5rem"
@@ -170,7 +170,7 @@
                       <template #icon>
                         <!-- <Icon name="ic:outline-comment" class="comment" /> -->
 
-                        <CommentIcon
+                        <SvgoComment
                           class="comment"
                           width="2.1rem"
                           height="2.1rem"
@@ -389,9 +389,9 @@
 </template>
 
 <script setup lang="ts">
-import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
-import CheckIcon from '~/assets/svgs/icons/check.svg?component';
-import CommentIcon from '~/assets/svgs/icons/comment.svg?component';
+// import SvgoPlus from '~/assets/svgs/icons/plus.svg?component';
+// import SvgoCheck from '~/assets/svgs/icons/check.svg?component';
+// import SvgoComment from '~/assets/svgs/icons/comment.svg?component';
 // import EllipsisHorizontal from '~/assets/svgs/icons/ellipsis-horizontal.svg?component';.
 
 // import { LoadingSpinner } from '~/components/Loading';

@@ -88,7 +88,7 @@
         >
           <template #icon>
             <!-- <Icon name="fa6-solid:chevron-left"/> -->
-            <ChevronLeft
+            <SvgoChevronLeft
               width="2.5rem"
               height="2.5rem"
               fill="currentColor"
@@ -115,7 +115,7 @@
         >
           <template #icon>
             <!-- <Icon name="fa6-solid:chevron-right"/> -->
-            <ChevronRight
+            <SvgoChevronRight
               width="2.5rem"
               height="2.5rem"
               fill="currentColor"
@@ -173,7 +173,7 @@
 
       <template #prevArrow>
         <div class="slick-arrow prev">
-          <ChevronLeftLight
+          <SvgoChevronLeftLight
             width="2.4rem"
             height="2.4rem"
             fill="currentColor"
@@ -182,7 +182,7 @@
       </template>
       <template #nextArrow>
         <div class="slick-arrow next">
-          <ChevronRightLight
+          <SvgoChevronRightLight
             width="2.4rem"
             height="2.4rem"
             fill="currentColor"
@@ -193,10 +193,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import ChevronLeft from '~/assets/svgs/icons/chevron-left.svg?component';
-import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
-import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
-import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+// import SvgoChevronLeft from '~/assets/svgs/icons/chevron-left.svg?component';
+// import SvgoChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
+// import SvgoChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+// import SvgoChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
 import BillboardItem from '~/components/BillboardAnimation/BillboardItem/BillboardItem.vue';
 import { getImage } from '~/services/image';
 

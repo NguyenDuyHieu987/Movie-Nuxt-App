@@ -38,7 +38,7 @@
 
       <div class="swiper-button-prev">
         <!-- <Icon name="bi:chevron-left"/> -->
-        <ChevronLeftLight
+        <SvgoChevronLeftLight
           width="3.5rem"
           height="3.5rem"
           fill="currentColor"
@@ -46,7 +46,7 @@
       </div>
       <div class="swiper-button-next">
         <!-- <Icon name="bi:chevron-right"/> -->
-        <ChevronRightLight
+        <SvgoChevronRightLight
           width="3.5rem"
           height="3.5rem"
           fill="currentColor"
@@ -58,8 +58,8 @@
 
 <script setup lang="ts">
 // import { Navigation, Pagination } from 'swiper/modules';
-import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
-import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+// import SvgoChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+// import SvgoChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
 
 // import { Navigation, Virtual } from 'swiper/modules';
 

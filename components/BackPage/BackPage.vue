@@ -13,7 +13,7 @@
       <template #icon>
         <!-- <Icon name="ic:baseline-arrow-back" /> -->
 
-        <ArrowLeft
+        <SvgoArrowLeft
           width="2.3rem"
           height="2.3rem"
           fill="currentColor"
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import ArrowLeft from '~/assets/svgs/icons/arrow-left.svg?component';
+// import SvgoArrowLeft from '~/assets/svgs/icons/arrow-left.svg?component';
 
 // const emits = defineEmits<{ onclick: [] }>();
 const emits = defineEmits<{ (e: 'onclick'): void }>();

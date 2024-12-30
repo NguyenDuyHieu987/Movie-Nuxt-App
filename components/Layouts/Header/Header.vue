@@ -54,7 +54,7 @@
               popper-class="popper-tooltip"
               :offset="22"
             >
-              <MagnifyingGlass
+              <SvgoMagnifyingGlass
                 class="fa-magnifying-glass"
                 width="1.8rem"
                 height="1.8rem"
@@ -156,7 +156,7 @@
 
 <script setup lang="ts">
 import { MenuOutlined } from '@ant-design/icons-vue';
-import MagnifyingGlass from '~/assets/svgs/icons/magnifying-glass.svg?component';
+// import SvgoMagnifyingGlass from '~/assets/svgs/icons/magnifying-glass.svg?component';
 // import UserCircle from '~/assets/svgs/icons/user-circle.svg?component';
 
 // import {

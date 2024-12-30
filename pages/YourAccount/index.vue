@@ -23,27 +23,20 @@
               <div class="row-label">
                 <span>Thông tin tài khoản</span>
 
-                <div class="avatar-box">
+                <div
+                  class="avatar-box"
+                  @click="onClickUploadAvatar"
+                >
                   <NuxtImg
                     class="avatar"
-                    :src="
-                      !isNaN(+userAccount?.avatar)
-                        ? getImage(
-                            `account${userAccount?.avatar}.jpg`,
-                            'user_avatar',
-                            {
-                              w: 100
-                            }
-                          )
-                        : userAccount?.avatar
-                    "
+                    :src="getUserAvatar(userAccount?.avatar)"
                     loading="lazy"
                     alt=""
                     preload
                   />
 
                   <div class="updload-avatar">
-                    <UploadIcon
+                    <SvgoUpload
                       class="updload-avatar-icon"
                       width="2rem"
                       height="2rem"
@@ -65,7 +58,7 @@
                     <span class="label">Họ và tên: </span>
                     <span> {{ userAccount?.full_name }}</span>
 
-                    <Pencil
+                    <SvgoPencil
                       v-if="!isFullNameditable"
                       class="edit-icon"
                       width="1.7rem"
@@ -73,7 +66,7 @@
                       fill="currentColor"
                       @click="handleClickEditRowItem"
                     />
-                    <CheckIcon
+                    <SvgoCheck
                       v-else
                       width="1.7rem"
                       height="1.7rem"
@@ -262,19 +255,59 @@
         <RequireAuth v-else />
       </div>
     </div>
+
+    <el-dialog
+      class="upload-avatar-dialog"
+      v-model="modalUploadAvatarVisible"
+      title="Upload avatar"
+      align-center
+      style="max-width: 500px"
+      :before-close="onBeforeCloseModalUploadAvatar"
+    >
+      <input
+        ref="inputFileAvatar"
+        type="file"
+        accept="image/*"
+        @change="(e) => changeFileUploadAvatar(e, 'still')"
+      />
+      <NuxtImg
+        v-if="formUploadAvatar.avatar_path"
+        :src="formUploadAvatar.avatar_path"
+        class="avatar-image"
+        :width="100"
+        :height="100"
+      />
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button
+            @click="modalUploadAvatarVisible = false"
+            :disabled="loadingUploadAvatar"
+          >
+            Đóng
+          </el-button>
+          <el-button
+            type="primary"
+            @click="onUploadAvatar"
+            :loading="loadingUploadAvatar"
+          >
+            Upload
+          </el-button>
+        </div>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import UploadIcon from '~/assets/svgs/icons/upload.svg?component';
-import Pencil from '~/assets/svgs/icons/pencil.svg?component';
-import CheckIcon from '~/assets/svgs/icons/check.svg?component';
+// import SvgoUpload from '~/assets/svgs/icons/upload.svg?component';
+// import SvgoPencil from '~/assets/svgs/icons/pencil.svg?component';
+// import SvgoCheck from '~/assets/svgs/icons/check.svg?component';
 
 // import { RequireAuth } from '~/components/RequireAuth';
 // import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
-import { ChangeFullname } from '~/services/account';
+import { ChangeFullname, UpdateAvartar } from '~/services/account';
 import { getBills } from '~/services/bill';
-import { getImage } from '~/services/image';
+import { getImage, uploadImage, getUserAvatar } from '~/services/image';
 import { useBreakpoints } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import type { Invoice, InvoiceStatus } from '~/types';
@@ -327,7 +360,13 @@ const showAnimation = ref<boolean>(false);
 const loadingBills = ref<boolean>(false);
 const isFullNameditable = ref<boolean>(false);
 const loadingEditRowItem = ref<boolean>(false);
-
+const inputFileAvatar = ref<HTMLInputElement | null>();
+const modalUploadAvatarVisible = ref<boolean>(false);
+const loadingUploadAvatar = ref<boolean>(false);
+const formUploadAvatar = reactive({
+  avatar_path: '',
+  file_upload: null
+});
 const responesive = breakPoints.smallerOrEqual('responesive');
 
 const joinSince = computed<string>(() =>
@@ -489,6 +528,134 @@ const handleClickSaveRowItem = (e: any) => {
 
 const getBillStatus = (invoice: Invoice): InvoiceStatus | undefined => {
   return billLístStatus.find((item) => item.value == invoice?.status);
+};
+
+const changeFileUploadAvatar = async (e: any, type: string) => {
+  const rawFile = e.target.files[0]!;
+
+  const isJpgOrPng =
+    rawFile.type === 'image/jpeg' || rawFile.type === 'image/png';
+
+  if (!isJpgOrPng) {
+    ElNotification.error({
+      title: MESSAGE.STATUS.FAILED,
+      message: 'Bạn chỉ có thể upload JPG, PNG file!',
+      duration: MESSAGE.DURATION.DEFAULT
+    });
+    return false;
+  }
+
+  if (rawFile.size / 1024 / 1024 > 2) {
+    ElNotification.error({
+      title: MESSAGE.STATUS.FAILED,
+      message: 'Ảnh phải có dung lượng nhỏ hơn 5MB!',
+      duration: MESSAGE.DURATION.DEFAULT
+    });
+    return false;
+  }
+
+  formUploadAvatar.avatar_path = URL.createObjectURL(rawFile!);
+  formUploadAvatar.file_upload = rawFile;
+  return true;
+};
+
+const onBeforeCloseModalUploadAvatar = (done: () => void) => {
+  if (loadingUploadAvatar.value) {
+    ElMessageBox.confirm(
+      'Bạn đang trong quá trình upload avatar bạn có chắc muốn đóng không?',
+      {
+        title: 'Cảnh báo!',
+        confirmButtonText: 'Có',
+        cancelButtonText: 'Không'
+      }
+    )
+      .then(() => {
+        done();
+      })
+      .catch(() => {
+        // catch error
+      });
+  } else {
+    done();
+  }
+};
+
+const onClickUploadAvatar = () => {
+  if (inputFileAvatar.value) {
+    inputFileAvatar.value.value = '';
+  }
+  formUploadAvatar.file_upload = null;
+  formUploadAvatar.avatar_path = '';
+
+  modalUploadAvatarVisible.value = true;
+};
+
+const onUploadAvatar = async () => {
+  loadingUploadAvatar.value = true;
+
+  const fileUploadResponse = await uploadImage(
+    'user_avatar/upload',
+    formUploadAvatar.file_upload!
+  ).catch((e) => {
+    loadingUploadAvatar.value = false;
+  });
+  if (!fileUploadResponse?.success) {
+    ElNotification.error({
+      title: MESSAGE.STATUS.FAILED,
+      message: 'Upload ảnh tĩnh thất bại!',
+      duration: MESSAGE.DURATION.DEFAULT
+    });
+    return;
+  }
+
+  var avatar = fileUploadResponse.file.filename;
+
+  if (fileUploadResponse?.success) {
+    UpdateAvartar(avatar)
+      .then((response) => {
+        if (response?.success) {
+          authStore.userAccount!.avatar = avatar;
+
+          utils.localStorage.setWithExpiry(
+            TOKEN.NAME.USER_TOKEN,
+            response.headers.get('Authorization'),
+            TOKEN.OFFSET.USER_TOKEN
+          );
+
+          ElNotification.success({
+            title: MESSAGE.STATUS.SUCCESS,
+            message: 'Upload avatar thành công!',
+            duration: MESSAGE.DURATION.DEFAULT
+          });
+        } else {
+          ElNotification.error({
+            title: MESSAGE.STATUS.FAILED,
+            message: 'Upload avatar thất bại!',
+            duration: MESSAGE.DURATION.DEFAULT
+          });
+        }
+      })
+      .catch((e) => {
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Upload avatar thất bại!',
+          duration: MESSAGE.DURATION.DEFAULT
+        });
+      })
+      .finally(() => {
+        loadingUploadAvatar.value = false;
+        modalUploadAvatarVisible.value = false;
+      });
+  } else {
+    loadingUploadAvatar.value = false;
+
+    ElNotification.error({
+      title: MESSAGE.STATUS.FAILED,
+      message: 'Upload avatar thất bại!',
+      duration: MESSAGE.DURATION.DEFAULT
+    });
+    return;
+  }
 };
 </script>
 

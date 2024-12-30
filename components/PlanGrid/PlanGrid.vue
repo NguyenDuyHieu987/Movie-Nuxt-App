@@ -113,7 +113,7 @@
                 <!-- <td>{{ item.support_devices }}</td> -->
                 <td class="plan-option support-devices">
                   <div v-if="item?.support_devices.includes('phone')">
-                    <PhoneIcon
+                    <SvgoPhone
                       width="2.4rem"
                       height="2.4rem"
                       class="planGrid__supportedDevicesIcon default-ltr-cache-0 e1mhci4z1"
@@ -126,7 +126,7 @@
                   </div>
 
                   <div v-if="item?.support_devices.includes('tablet')">
-                    <TabletIcon
+                    <SvgoTablet
                       width="2.4rem"
                       height="2.4rem"
                       class="planGrid__supportedDevicesIcon default-ltr-cache-0 e1mhci4z1"
@@ -139,7 +139,7 @@
                   </div>
 
                   <div v-if="item?.support_devices.includes('desktop')">
-                    <LaptopIcon
+                    <SvgoLaptop
                       width="2.4rem"
                       height="2.4rem"
                       class="planGrid__supportedDevicesIcon default-ltr-cache-0 e1mhci4z1"
@@ -152,7 +152,7 @@
                   </div>
 
                   <!-- <div v-if="item?.support_devices.includes('tv')">
-                    <TvIcon
+                    <SvgoTv
                       width="2.4rem"
                       height="2.4rem"
                       class="planGrid__supportedDevicesIcon default-ltr-cache-0 e1mhci4z1"
@@ -175,10 +175,10 @@
 </template>
 
 <script setup lang="ts">
-import PhoneIcon from '~/assets/svgs/icons/phone.svg?component';
-import TabletIcon from '~/assets/svgs/icons/tablet.svg?component';
-import LaptopIcon from '~/assets/svgs/icons/laptop.svg?component';
-// import TvIcon from '~/assets/svgs/icons/tv.svg?component';
+// import SvgoPhone from '~/assets/svgs/icons/phone.svg?component';
+// import SvgoTablet from '~/assets/svgs/icons/tablet.svg?component';
+// import SvgoLaptop from '~/assets/svgs/icons/laptop.svg?component';
+// import SvgoTv from '~/assets/svgs/icons/tv.svg?component';
 
 import { getImage } from '~/services/image';
 import { getAllPlan } from '~/services/plans';

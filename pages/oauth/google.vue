@@ -1,13 +1,13 @@
 <template>
   <div class="oauth-google">
-    <GoogleIcon
+    <SvgoGoogle
       width="6rem"
       height="6rem"
       fill="currentColor"
     />
 
     <div class="icon-loading">
-      <LoadingAppIcon
+      <SvgoLoadingApp
         width="4rem"
         height="4rem"
       />
@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import GoogleIcon from '~/assets/svgs/icons/google.svg?component';
-import LoadingAppIcon from '~/assets/svgs/icons/loading-app.svg?component';
+// import SvgoGoogle from '~/assets/svgs/icons/google.svg?component';
+// import SvgoLoadingApp from '~/assets/svgs/icons/loading-app.svg?component';
 
 import { ElNotification } from 'element-plus';
 

@@ -346,7 +346,7 @@ export default defineNuxtConfig({
   },
 
   svgo: {
-    // explicitImportsOnly: true,
+    explicitImportsOnly: true,
     autoImportPath: './assets/svgs/icons/',
     global: false
     // defaultImport: 'component'
@@ -553,8 +553,7 @@ export default defineNuxtConfig({
       hmr: {
         overlay: true
       }
-    },
-    test: {}
+    }
   },
 
   nitro: {

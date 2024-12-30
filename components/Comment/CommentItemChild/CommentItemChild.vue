@@ -93,7 +93,7 @@
             aria-label="dropdown-comment"
           >
             <template #icon>
-              <EllipsisVertical
+              <SvgoEllipsisVertical
                 width="2rem"
                 height="2rem"
                 fill="currentColor"
@@ -109,7 +109,7 @@
                   class="edit-item"
                   @click="handleEditComment"
                 >
-                  <Pencil
+                  <SvgoPencil
                     width="1.8rem"
                     height="1.8rem"
                     fill="currentColor"
@@ -126,7 +126,7 @@
                   class="remove-item"
                   @click="handleRemoveComment"
                 >
-                  <TrashCan
+                  <SvgoTrashCan
                     width="1.5rem"
                     height="1.5rem"
                     fill="currentColor"
@@ -143,9 +143,9 @@
 </template>
 
 <script setup lang="ts">
-import EllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
-import Pencil from '~/assets/svgs/icons/pencil.svg?component';
-import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
+// import SvgoEllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
+// import SvgoPencil from '~/assets/svgs/icons/pencil.svg?component';
+// import SvgoTrashCan from '~/assets/svgs/icons/trash-can.svg?component';
 
 // import { FormComment, CommentContent, LikeDislike } from '~/components/Comment';
 import FormComment from '~/components/Comment/FormComment/FormComment.vue';

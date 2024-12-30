@@ -41,7 +41,7 @@
                   }
                 }" -->
                 Xem tất cả
-                <ChevronRight
+                <SvgoChevronRight
                   width="1.2rem"
                   height="1.2rem"
                   fill="currentColor"
@@ -75,7 +75,7 @@
 </template>
 
 <script setup lang="ts">
-import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
+// import SvgoChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
 
 // import { HeaderPageMovieType } from '~/components/Layouts';
 // import { BillboardAnimation } from '~/components/BillboardAnimation';

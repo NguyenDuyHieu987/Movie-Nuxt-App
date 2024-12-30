@@ -171,7 +171,7 @@
           v-show="videoStates.isEndedVideo"
           class="replay"
         >
-          <ReplayIcon
+          <SvgoReplay
             width="4rem"
             height="4rem"
             fill="currentColor"
@@ -233,7 +233,7 @@
             v-show="!videoStates.isRewind.enable"
             class="play-pause"
           >
-            <PlayIcon
+            <SvgoPlay
               v-show="!videoStates.isPlayVideo && !videoStates.isEndedVideo"
               class="play"
               width="3rem"
@@ -242,7 +242,7 @@
               @click="onClickVideo"
             />
 
-            <PauseIcon
+            <SvgoPause
               v-show="videoStates.isPlayVideo && !videoStates.isEndedVideo"
               class="play"
               width="3rem"
@@ -324,7 +324,7 @@
           <div class="main-controls">
             <div class="left">
               <div class="play-pause">
-                <ReplayIcon
+                <SvgoReplay
                   v-show="videoStates.isEndedVideo"
                   class="replay"
                   width="2.6rem"
@@ -333,7 +333,7 @@
                   @click="onClickReplayVideo"
                 />
 
-                <PlayIcon
+                <SvgoPlay
                   v-show="!videoStates.isPlayVideo && !videoStates.isEndedVideo"
                   class="play"
                   width="2.6rem"
@@ -342,7 +342,7 @@
                   @click="onClickPlay"
                 />
 
-                <PauseIcon
+                <SvgoPause
                   v-show="videoStates.isPlayVideo && !videoStates.isEndedVideo"
                   class="pause"
                   width="2.6rem"
@@ -353,7 +353,7 @@
               </div>
 
               <div class="rewind-forward">
-                <RewindIcon
+                <SvgoRewind
                   class="rewind"
                   width="2.6rem"
                   height="2.6rem"
@@ -364,7 +364,7 @@
 
               <div class="volume">
                 <div>
-                  <VolumeDown
+                  <SvgoVolumeDown
                     v-show="!videoStates.isVolumeOff && volume <= 30"
                     class="volume-down"
                     width="2.7rem"
@@ -373,7 +373,7 @@
                     @click="onClickVolumeUp"
                   />
 
-                  <VolumeUp
+                  <SvgoVolumeUp
                     v-show="!videoStates.isVolumeOff && volume > 30"
                     name="ic:baseline-volume-up"
                     width="2.7rem"
@@ -382,14 +382,10 @@
                     @click="onClickVolumeUp"
                   />
 
-                  <VolumeOff
-                    v-show="videoStates.isVolumeOff"
-                    name="ic:baseline-volume-off"
-                    width="2.7rem"
-                    height="2.7rem"
-                    fill="currentColor"
-                    @click="onClickVolumeOff"
-                  />
+                  <!-- <SvgoVolumeOff -->
+                  v-show="videoStates.isVolumeOff" name="ic:baseline-volume-off"
+                  width="2.7rem" height="2.7rem" fill="currentColor"
+                  @click="onClickVolumeOff" />
                 </div>
                 <!-- <a-slider
                   class="volume-slider"
@@ -421,14 +417,14 @@
 
             <div class="right">
               <div class="rewind-forward">
-                <FastRewind
+                <SvgoFastRewind
                   width="2.7rem"
                   height="2.7rem"
                   fill="currentColor"
                   @click="onClickRewind"
                 />
 
-                <FastForward
+                <SvgoFastForward
                   width="2.7rem"
                   height="2.7rem"
                   fill="currentColor"
@@ -440,7 +436,7 @@
                 class="setting"
                 :class="{ active: settingStates.enable }"
               >
-                <SettingIcon
+                <SvgoSetting
                   class="setting"
                   width="2.5rem"
                   height="2.5rem"
@@ -453,7 +449,7 @@
               </div>
 
               <div class="picture-in-picture">
-                <PictureInPicture
+                <SvgoPictureInPicture
                   width="2.7rem"
                   height="2.7rem"
                   fill="currentColor"
@@ -462,7 +458,7 @@
               </div>
 
               <div class="fullscreen-exit">
-                <FullscreenIcon
+                <SvgoFullscreen
                   v-show="!videoStates.isFullScreen"
                   class="fullscreen"
                   width="3.3rem"
@@ -471,7 +467,7 @@
                   @click="onClickFullScreen"
                 />
 
-                <FullscreenExitIcon
+                <SvgoFullscreenExit
                   v-show="videoStates.isFullScreen"
                   width="3.3rem"
                   height="3.3rem"
@@ -529,7 +525,7 @@
             <div class="left">
               <!-- <Icon name="ic:outline-light-mode" /> -->
 
-              <LightMode
+              <SvgoLightMode
                 width="2rem"
                 height="2rem"
                 fill="currentColor"
@@ -555,7 +551,7 @@
             <div class="left">
               <!-- <Icon name="ic:baseline-fast-forward" /> -->
 
-              <FastForward
+              <SvgoFastForward
                 width="2rem"
                 height="2rem"
                 fill="currentColor"
@@ -567,7 +563,7 @@
               <span>{{ settings.playback.current }}</span>
               <!-- <Icon name="ic:baseline-arrow-forward-ios" /> -->
 
-              <ArrowForwardIos
+              <SvgoArrowForwardIos
                 width="1.5rem"
                 height="1.5rem"
                 fill="currentColor"
@@ -585,7 +581,7 @@
             <div class="left">
               <!-- <Icon name="ic:baseline-high-quality" /> -->
 
-              <HighQuality
+              <SvgoHighQuality
                 width="2rem"
                 height="2rem"
                 fill="currentColor"
@@ -628,7 +624,7 @@
               <div class="left">
                 <!-- <Icon name="ic:baseline-arrow-back-ios" /> -->
 
-                <ArrowBackIos
+                <SvgoArrowBackIos
                   width="1.4rem"
                   height="1.4rem"
                   fill="currentColor"
@@ -652,7 +648,7 @@
                   name="ic:baseline-check"
                 /> -->
 
-                <CheckIcon
+                <SvgoCheck
                   v-if="settings.playback.current == item"
                   width="1.8rem"
                   height="1.8rem"
@@ -677,7 +673,7 @@
               <div class="left">
                 <!-- <Icon name="ic:baseline-arrow-back-ios" /> -->
 
-                <ArrowBackIos
+                <SvgoArrowBackIos
                   width="1.4rem"
                   height="1.4rem"
                   fill="currentColor"
@@ -698,7 +694,7 @@
                   name="ic:baseline-check"
                 /> -->
 
-                <CheckIcon
+                <SvgoCheck
                   v-if="settings.quality.current == item"
                   width="1.8rem"
                   height="1.8rem"
@@ -715,24 +711,24 @@
 </template>
 
 <script setup lang="ts">
-import ReplayIcon from '~/assets/svgs/icons/replay.svg?component';
-import PlayIcon from '~/assets/svgs/icons/play.svg?component';
-import PauseIcon from '~/assets/svgs/icons/pause.svg?component';
-import RewindIcon from '~/assets/svgs/icons/rewind.svg?component';
-import VolumeUp from '~/assets/svgs/icons/volume-up.svg?component';
-import VolumeDown from '~/assets/svgs/icons/volume-down.svg?component';
-import VolumeOff from '~/assets/svgs/icons/volume-off.svg?component';
-import FastRewind from '~/assets/svgs/icons/fast-rewind.svg?component';
-import FastForward from '~/assets/svgs/icons/fast-forward.svg?component';
-import SettingIcon from '~/assets/svgs/icons/setting.svg?component';
-import PictureInPicture from '~/assets/svgs/icons/picture-in-picture.svg?component';
-import FullscreenIcon from '~/assets/svgs/icons/fullscreen.svg?component';
-import FullscreenExitIcon from '~/assets/svgs/icons/fullscreen-exit.svg?component';
-import LightMode from '~/assets/svgs/icons/light-mode.svg?component';
-import ArrowForwardIos from '~/assets/svgs/icons/arrow-forward-ios.svg?component';
-import HighQuality from '~/assets/svgs/icons/high-quality.svg?component';
-import ArrowBackIos from '~/assets/svgs/icons/arrow-back-ios.svg?component';
-import CheckIcon from '~/assets/svgs/icons/check.svg?component';
+// import SvgoReplay from '~/assets/svgs/icons/replay.svg?component';
+// import SvgoPlay from '~/assets/svgs/icons/play.svg?component';
+// import SvgoPause from '~/assets/svgs/icons/pause.svg?component';
+// import SvgoRewind from '~/assets/svgs/icons/rewind.svg?component';
+// import SvgoVolumeUp from '~/assets/svgs/icons/volume-up.svg?component';
+// import SvgoVolumeDown from '~/assets/svgs/icons/volume-down.svg?component';
+// import SvgoVolumeOff from '~/assets/svgs/icons/volume-off.svg?component';
+// import SvgoFastRewind from '~/assets/svgs/icons/fast-rewind.svg?component';
+// import SvgoFastForward from '~/assets/svgs/icons/fast-forward.svg?component';
+// import SvgoSetting from '~/assets/svgs/icons/setting.svg?component';
+// import SvgoPictureInPicture from '~/assets/svgs/icons/picture-in-picture.svg?component';
+// import SvgoFullscreen from '~/assets/svgs/icons/fullscreen.svg?component';
+// import SvgoFullscreenExit from '~/assets/svgs/icons/fullscreen-exit.svg?component';
+// import SvgoLightMode from '~/assets/svgs/icons/light-mode.svg?component';
+// import SvgoArrowForwardIos from '~/assets/svgs/icons/arrow-forward-ios.svg?component';
+// import SvgoHighQuality from '~/assets/svgs/icons/high-quality.svg?component';
+// import SvgoArrowBackIos from '~/assets/svgs/icons/arrow-back-ios.svg?component';
+// import SvgoCheck from '~/assets/svgs/icons/check.svg?component';
 
 // import { CloseBtn } from '~/components/Button';
 // import { LoadingSpinner } from '~/components/Loading';

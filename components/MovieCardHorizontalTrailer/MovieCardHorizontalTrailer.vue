@@ -50,7 +50,7 @@
         >
           <!-- <font-awesome-icon icon="fa-brands fa-youtube" /> -->
 
-          <YoutubeIcon
+          <SvgoYoutube
             class="fa-youtube"
             width="5rem"
             height="5rem"
@@ -85,7 +85,7 @@
 </template>
 
 <script setup lang="ts">
-import YoutubeIcon from '~/assets/svgs/icons/youtube.svg?component';
+// import SvgoYoutube from '~/assets/svgs/icons/youtube.svg?component';
 
 // import { ModalTrailer } from '~/components/ModalTrailer';
 // import ModalTrailer from '~/components/ModalTrailer/ModalTrailer.vue';

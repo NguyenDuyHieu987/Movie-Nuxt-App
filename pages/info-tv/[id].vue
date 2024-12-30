@@ -161,7 +161,7 @@
                             <template #icon>
                               <!-- <Icon name="ic:play-arrow" class="play" /> -->
 
-                              <PlayIcon
+                              <SvgoPlay
                                 class="play"
                                 width="3rem"
                                 height="3rem"
@@ -183,14 +183,14 @@
                             <template #icon>
                               <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
                           <Icon v-else name="ic:baseline-plus" /> -->
-                              <CheckIcon
+                              <SvgoCheck
                                 v-if="isAddToList"
                                 width="1.8rem"
                                 height="1.8rem"
                                 fill="currentColor"
                               />
 
-                              <PlusIcon
+                              <SvgoPlus
                                 v-else
                                 width="1.8rem"
                                 height="1.8rem"
@@ -212,7 +212,7 @@
                           >
                             <template #icon>
                               <!-- <Icon name="fa6-brands:youtube" class="trailer" /> -->
-                              <YoutubeIcon
+                              <SvgoYoutube
                                 class="trailer"
                                 width="1.8rem"
                                 height="1.8rem"
@@ -243,7 +243,7 @@
                             <template #icon>
                               <!-- <Icon name="ic:outline-comment" class="comment" /> -->
 
-                              <CommentIcon
+                              <SvgoComment
                                 class="comment"
                                 width="2.1rem"
                                 height="2.1rem"
@@ -256,7 +256,7 @@
 
                         <!-- <div class="ellipsis">
                       <Icon name="fa6-solid:ellipsis" />
-                        <EllipsisHorizontal
+                        <SvgoEllipsisHorizontal
                           width="1.9rem"
                           height="1.9rem"
                           fill="currentColor"
@@ -487,12 +487,12 @@
 </template>
 
 <script setup lang="ts">
-import PlayIcon from '~/assets/svgs/icons/play.svg?component';
-import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
-import CheckIcon from '~/assets/svgs/icons/check.svg?component';
-import YoutubeIcon from '~/assets/svgs/icons/youtube.svg?component';
-import CommentIcon from '~/assets/svgs/icons/comment.svg?component';
-// import EllipsisHorizontal from '~/assets/svgs/icons/ellipsis-horizontal.svg?component';
+// import SvgoPlay from '~/assets/svgs/icons/play.svg?component';
+// import SvgoPlus from '~/assets/svgs/icons/plus.svg?component';
+// import SvgoCheck from '~/assets/svgs/icons/check.svg?component';
+// import SvgoYoutube from '~/assets/svgs/icons/youtube.svg?component';
+// import SvgoComment from '~/assets/svgs/icons/comment.svg?component';
+// import SvgoEllipsisHorizontal from '~/assets/svgs/icons/ellipsis-horizontal.svg?component';
 
 // import { LoadingSpinner } from '~/components/Loading';
 // import { BackPage } from '~/components/BackPage';

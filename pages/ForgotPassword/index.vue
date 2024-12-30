@@ -45,7 +45,7 @@
               @change="onChangeEmail"
             >
               <!-- <template #prefix>
-                <AlternateEmail
+                <SvgoAlternateEmail
                   width="1.4rem"
                   height="1.4rem"
                   fill="currentColor"
@@ -76,7 +76,7 @@
 </template>
 
 <script setup lang="ts">
-// import AlternateEmail from '~/assets/svgs/icons/alternate-email.svg?component';
+// import SvgoAlternateEmail from '~/assets/svgs/icons/alternate-email.svg?component';
 
 import { ElNotification } from 'element-plus';
 

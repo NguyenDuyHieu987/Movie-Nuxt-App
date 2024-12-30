@@ -27,14 +27,14 @@
         <slot />
 
         <div class="swiper-button-prev">
-          <ChevronLeftLight
+          <SvgoChevronLeftLight
             width="2.8rem"
             height="2.8rem"
             fill="currentColor"
           />
         </div>
         <div class="swiper-button-next">
-          <ChevronRightLight
+          <SvgoChevronRightLight
             width="2.8rem"
             height="2.8rem"
             fill="currentColor"
@@ -46,8 +46,8 @@
 </template>
 
 <script setup lang="ts">
-import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
-import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+// import SvgoChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+// import SvgoChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
 
 // import { FreeMode, Navigation } from 'swiper/modules';
 

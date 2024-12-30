@@ -50,7 +50,7 @@
               </div>
 
               <div class="right">
-                <ChevronRight1
+                <SvgoChevronRight1
                   width="2.4rem"
                   height="2.4rem"
                   fill="currentColor"
@@ -74,7 +74,7 @@
               </div>
 
               <div class="right">
-                <ChevronRight1
+                <SvgoChevronRight1
                   width="2.4rem"
                   height="2.4rem"
                   fill="currentColor"
@@ -97,7 +97,7 @@
               </div>
 
               <div class="right">
-                <ChevronRight1
+                <SvgoChevronRight1
                   width="2.4rem"
                   height="2.4rem"
                   fill="currentColor"
@@ -128,7 +128,7 @@
               </div>
 
               <div class="right">
-                <ChevronRight1
+                <SvgoChevronRight1
                   width="2.4rem"
                   height="2.4rem"
                   fill="currentColor"
@@ -147,7 +147,7 @@
 </template>
 
 <script setup lang="ts">
-import ChevronRight1 from '~/assets/svgs/icons/chevron-right-1.svg?component';
+// import SvgoChevronRight1 from '~/assets/svgs/icons/chevron-right-1.svg?component';
 
 import { ElNotification } from 'element-plus';
 // import { BackPage } from '~/components/BackPage';

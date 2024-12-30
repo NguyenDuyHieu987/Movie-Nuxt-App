@@ -11,13 +11,7 @@
         <NuxtImg
           v-if="isLogin && userAccount?.avatar && !authStore.loadingUser"
           class="avatar"
-          :src="
-            !isNaN(+(userAccount?.avatar as string))
-              ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar', {
-                  w: 50
-                })
-              : (userAccount?.avatar as string)
-          "
+          :src="getUserAvatar(userAccount?.avatar)"
           loading="lazy"
           alt=""
         />
@@ -105,7 +99,7 @@ import Emoticon from '~/assets/svgs/icons/emoticon.svg?component';
 
 // import EmojiPicker from '~/components/Comment/EmojiPicker/EmojiPicker.vue';
 import { CommentMovie, EditComment } from '~/services/comment';
-import { getImage } from '~/services/image';
+import { getImage, getUserAvatar } from '~/services/image';
 import { ElNotification } from 'element-plus';
 import DOMPurify from 'dompurify';
 import { storeToRefs } from 'pinia';

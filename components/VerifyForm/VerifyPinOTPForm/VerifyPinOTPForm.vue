@@ -13,7 +13,7 @@
         @click="handleClickBack"
       >
         <template #icon>
-          <ArrowLeft
+          <SvgoArrowLeft
             width="2rem"
             height="2rem"
             role="img"
@@ -129,7 +129,7 @@
 </template>
 
 <script setup lang="ts">
-import ArrowLeft from '~/assets/svgs/icons/arrow-left.svg?component';
+// import SvgoArrowLeft from '~/assets/svgs/icons/arrow-left.svg?component';
 
 // import { PinOTP } from '~/components/PinOTP';
 import PinOTP from '~/components/PinOTP/PinOTP.vue';

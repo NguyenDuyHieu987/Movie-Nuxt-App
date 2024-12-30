@@ -90,3 +90,30 @@ export function getColorImage(path: string) {
 export function getImages(id: string) {
   return makeRequest(`/${PREFIX_ROUTE}/${id}`);
 }
+
+export function getUserAvatar(avatar: string | number | null | undefined) {
+  return !isNaN(+(avatar as string))
+    ? getImage(`account${avatar}.jpg`, 'user_avatar', {
+        w: 100
+      })
+    : (avatar as string).startsWith('http')
+      ? (avatar as string)
+      : getImage(avatar as string, 'user_avatar/upload', { w: 100 });
+}
+
+export function uploadImage(type: string, file: File | Blob) {
+  const formData = new FormData();
+  formData.append('image', file);
+  formData.append('folder', type);
+
+  return makeMediaRequest(
+    `/image/upload`,
+    {
+      folder: type
+    },
+    {
+      method: 'POST',
+      data: formData
+    }
+  );
+}

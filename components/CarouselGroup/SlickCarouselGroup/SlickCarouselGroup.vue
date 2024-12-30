@@ -25,7 +25,7 @@
 
       <template #prevArrow>
         <div class="slick-arrow prev">
-          <ChevronLeftLight
+          <SvgoChevronLeftLight
             width="3.5rem"
             height="3.5rem"
             fill="currentColor"
@@ -34,7 +34,7 @@
       </template>
       <template #nextArrow>
         <div class="slick-arrow next">
-          <ChevronRightLight
+          <SvgoChevronRightLight
             width="3.5rem"
             height="3.5rem"
             fill="currentColor"
@@ -46,8 +46,8 @@
 </template>
 
 <script setup lang="ts">
-import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
-import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+// import SvgoChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+// import SvgoChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
 
 const props = withDefaults(
   defineProps<{

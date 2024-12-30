@@ -21,7 +21,7 @@
                 @click="isFocusSearchInput = false"
               >
                 Tất cả
-                <ChevronRight
+                <SvgoChevronRight
                   width="1.2rem"
                   height="1.2rem"
                   fill="currentColor"
@@ -89,7 +89,7 @@
               @click="(e) => handleClickSearchHistoryItem(e, item)"
             >
               <p class="search-query">{{ item?.query }}</p>
-              <XCircle
+              <SvgoXCircle
                 class="remove-icon"
                 width="1.4rem"
                 height="1.4rem"
@@ -150,8 +150,8 @@
 </template>
 
 <script setup lang="ts">
-import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
-import XCircle from '~/assets/svgs/icons/x-circle.svg?component';
+// import SvgoChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
+// import SvgoXCircle from '~/assets/svgs/icons/x-circle.svg?component';
 
 import { addRankSearch } from '~/services/ranks';
 import {

@@ -120,7 +120,7 @@
               @click="handleClickFacebookLogin"
             >
               <template #icon>
-                <FacebookIcon
+                <SvgoFacebook
                   class="fa-facebook-f"
                   width="1.6rem"
                   height="1.6rem"
@@ -138,7 +138,7 @@
               @click="handleClickGoogleLogin"
             >
               <template #icon>
-                <GoogleIcon
+                <SvgoGoogle
                   width="1.6rem"
                   height="1.6rem"
                   fill="currentColor"
@@ -154,8 +154,8 @@
 </template>
 
 <script setup lang="ts">
-import FacebookIcon from '~/assets/svgs/icons/facebook.svg?component';
-import GoogleIcon from '~/assets/svgs/icons/google.svg?component';
+// import SvgoFacebook from '~/assets/svgs/icons/facebook.svg?component';
+// import SvgoGoogle from '~/assets/svgs/icons/google.svg?component';
 
 import { LockOutlined, UserOutlined } from '@ant-design/icons-vue';
 import { useLocalStorage } from '@vueuse/core';

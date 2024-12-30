@@ -11,7 +11,7 @@
         <!-- <NuxtImg :src="getImage('logo.png', 'logo', { w: 70 })" alt="" /> -->
 
         <div class="icon-loading">
-          <LoadingAppIcon
+          <SvgoLoadingApp
             width="5rem"
             height="5rem"
           />
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import LoadingAppIcon from '~/assets/svgs/icons/loading-app.svg?component';
+// import SvgoLoadingApp from '~/assets/svgs/icons/loading-app.svg?component';
 // import { getImage } from '~/services/image';
 
 const store = useStore();

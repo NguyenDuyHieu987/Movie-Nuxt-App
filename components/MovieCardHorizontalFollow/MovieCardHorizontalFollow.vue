@@ -125,7 +125,7 @@
                 <!-- <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" /> -->
                 <!-- <Icon name="fa6-solid:ellipsis-vertical" /> -->
 
-                <EllipsisVertical
+                <SvgoEllipsisVertical
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
@@ -139,7 +139,7 @@
                   <el-dropdown-item key="play">
                     <!-- <Icon class="play" name="ci:play-arrow" /> -->
 
-                    <PlayIcon
+                    <SvgoPlay
                       class="play"
                       width="2.8rem"
                       height="2.8rem"
@@ -172,7 +172,7 @@
                   <el-dropdown-item key="share">
                     <!-- <Icon name="ph:share-fat-bold"  /> -->
 
-                    <ShareOutlined
+                    <SvgoShareOutlined
                       class="share"
                       width="1.8rem"
                       height="1.8rem"
@@ -203,7 +203,7 @@
                   >
                     <!-- <Icon name="fa6-solid:trash-can" /> -->
 
-                    <TrashCan
+                    <SvgoTrashCan
                       width="1.5rem"
                       height="1.5rem"
                       fill="currentColor"
@@ -224,10 +224,10 @@
 </template>
 
 <script setup lang="ts">
-import EllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
-import PlayIcon from '~/assets/svgs/icons/play.svg?component';
-import ShareOutlined from '~/assets/svgs/icons/share-outlined.svg?component';
-import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
+// import SvgoEllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
+// import SvgoPlay from '~/assets/svgs/icons/play.svg?component';
+// import SvgoShareOutlined from '~/assets/svgs/icons/share-outlined.svg?component';
+// import SvgoTrashCan from '~/assets/svgs/icons/trash-can.svg?component';
 
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';

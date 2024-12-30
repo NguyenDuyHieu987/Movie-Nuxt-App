@@ -110,7 +110,7 @@
                 "
               >
                 <template #icon>
-                  <PlayIcon
+                  <SvgoPlay
                     width="2rem"
                     height="2rem"
                     fill="currentColor"
@@ -139,13 +139,13 @@
                 @click.prevent="handleAddToList"
               >
                 <template #icon>
-                  <CheckIcon
+                  <SvgoCheck
                     v-if="isAddToList"
                     width="2em"
                     height="2em"
                     fill="currentColor"
                   />
-                  <PlusIcon
+                  <SvgoPlus
                     v-else
                     width="2em"
                     height="2em"
@@ -180,7 +180,7 @@
                     @click.prevent
                   >
                     <template #icon>
-                      <ShareSolid
+                      <SvgoShareSolid
                         width="2rem"
                         height="2rem"
                         fill="currentColor"
@@ -259,10 +259,10 @@
   </NuxtLink>
 </template>
 <script setup lang="ts">
-import PlayIcon from '~/assets/svgs/icons/play.svg?component';
-import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
-import CheckIcon from '~/assets/svgs/icons/check.svg?component';
-import ShareSolid from '~/assets/svgs/icons/share-solid.svg?component';
+// import SvgoPlay from '~/assets/svgs/icons/play.svg?component';
+// import SvgoPlus from '~/assets/svgs/icons/plus.svg?component';
+// import SvgoCheck from '~/assets/svgs/icons/check.svg?component';
+// import SvgoShareSolid from '~/assets/svgs/icons/share-solid.svg?component';
 
 import { getGenreById } from '~/services/genres';
 import { getImage } from '~/services/image';

@@ -81,7 +81,7 @@
 
                 <div class="video-tool">
                   <div class="volume">
-                    <VolumeUp
+                    <SvgoVolumeUp
                       v-show="!videoStates.isVolumeOff"
                       width="1.8rem"
                       height="1.8rem"
@@ -89,7 +89,7 @@
                       @click="onClickVolumeUp"
                     />
 
-                    <VolumeOff
+                    <SvgoVolumeOff
                       v-show="videoStates.isVolumeOff"
                       width="1.8rem"
                       height="1.8rem"
@@ -147,7 +147,7 @@
                         <template #icon>
                           <!-- <Icon name="ic:play-arrow" /> -->
 
-                          <PlayIcon
+                          <SvgoPlay
                             width="2rem"
                             height="2rem"
                             fill="currentColor"
@@ -180,13 +180,13 @@
                         <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
                         <Icon v-else name="ic:baseline-plus" /> -->
 
-                        <CheckIcon
+                        <SvgoCheck
                           v-if="isAddToList"
                           width="2rem"
                           height="2rem"
                           fill="currentColor"
                         />
-                        <PlusIcon
+                        <SvgoPlus
                           v-else
                           width="2rem"
                           height="2rem"
@@ -223,7 +223,7 @@
                           <!-- <Icon name="fa6-solid:share" class="fa6-solid" /> -->
                           <!-- <Icon name="mdi:share" /> -->
 
-                          <ShareSolid
+                          <SvgoShareSolid
                             width="2rem"
                             height="2rem"
                             fill="currentColor"
@@ -268,7 +268,7 @@
                             name="mdi:information-variant"
                           /> -->
 
-                          <InformationVariant
+                          <SvgoInformationVariant
                             class="info-icon"
                             width="2rem"
                             height="2rem"
@@ -358,13 +358,13 @@
 </template>
 
 <script setup lang="ts">
-import VolumeUp from '~/assets/svgs/icons/volume-up.svg?component';
-import VolumeOff from '~/assets/svgs/icons/volume-off.svg?component';
-import PlayIcon from '~/assets/svgs/icons/play.svg?component';
-import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
-import CheckIcon from '~/assets/svgs/icons/check.svg?component';
-import ShareSolid from '~/assets/svgs/icons/share-solid.svg?component';
-import InformationVariant from '~/assets/svgs/icons/information-variant.svg?component';
+// import SvgoVolumeUp from '~/assets/svgs/icons/volume-up.svg?component';
+// import SvgoVolumeOff from '~/assets/svgs/icons/volume-off.svg?component';
+// import SvgoPlay from '~/assets/svgs/icons/play.svg?component';
+// import SvgoPlus from '~/assets/svgs/icons/plus.svg?component';
+// import SvgoCheck from '~/assets/svgs/icons/check.svg?component';
+// import SvgoShareSolid from '~/assets/svgs/icons/share-solid.svg?component';
+// import SvgoInformationVariant from '~/assets/svgs/icons/information-variant.svg?component';
 
 // import { LoadingSpinner } from '~/components/Loading';
 // import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';

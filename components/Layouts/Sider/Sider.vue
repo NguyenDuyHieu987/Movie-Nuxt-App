@@ -20,13 +20,7 @@
         >
           <NuxtImg
             class="avatar"
-            :src="
-              !isNaN(+userAccount?.avatar)
-                ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar', {
-                    w: 50
-                  })
-                : userAccount?.avatar
-            "
+            :src="getUserAvatar(userAccount?.avatar)"
             loading="lazy"
             alt=""
             preload
@@ -63,14 +57,14 @@
         class="sider-footer click-active"
       >
         <div :class="['trigger-collapse', { collapsed: collapsed }]">
-          <ChevronRightDouble
+          <SvgoChevronRightDouble
             v-if="collapsed"
             width="2rem"
             height="2rem"
             fill="currentColor"
           />
 
-          <ChevronLeftDouble
+          <SvgoChevronLeftDouble
             v-else
             width="2rem"
             height="2rem"
@@ -96,13 +90,13 @@
 </template>
 
 <script setup lang="ts">
-import ChevronLeftDouble from '~/assets/svgs/icons/chevron-left-double.svg?component';
-import ChevronRightDouble from '~/assets/svgs/icons/chevron-right-double.svg?component';
+// import SvgoChevronRightDouble from '~/assets/svgs/icons/chevron-right-double.svg?component';
+// import SvgoChevronLeftDouble from '~/assets/svgs/icons/chevron-left-double.svg?component';
 
 // import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
 // import { TheMenu } from '~/components/Layouts';
 // import TheMenu from '~/components/Layouts/TheMenu/TheMenu.vue';
-import { getImage } from '~/services/image';
+import { getImage, getUserAvatar } from '~/services/image';
 import { storeToRefs } from 'pinia';
 import { useLocalStorage } from '@vueuse/core';
 

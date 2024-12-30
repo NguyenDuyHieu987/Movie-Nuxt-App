@@ -113,24 +113,24 @@
               }"
             >
               <div
-                v-show="$route.query?.sort_by != 'all'"
+                v-show="route.query?.sort_by != 'all'"
                 class="tendency-icon"
               >
-                <TendencyUpIcon
+                <SvgoTendencyUp
                   v-if="item?.step > 0"
                   width="1.5rem"
                   height="1.5rem"
                   fill="currentColor"
                 />
 
-                <TendencyDownIcon
+                <SvgoTendencyDown
                   v-else-if="item?.step < 0"
                   width="1.5rem"
                   height="1.5rem"
                   fill="currentColor"
                 />
 
-                <DashIcon
+                <SvgoDash
                   v-else-if="item?.step == 0 && !item?.new"
                   width="1.5rem"
                   height="1.5rem"
@@ -160,9 +160,9 @@
 </template>
 
 <script setup lang="ts">
-import TendencyUpIcon from '~/assets/svgs/icons/tendency-up.svg?component';
-import TendencyDownIcon from '~/assets/svgs/icons/tendency-down.svg?component';
-import DashIcon from '~/assets/svgs/icons/dash.svg?component';
+// import SvgoTendencyUp from '~/assets/svgs/icons/tendency-up.svg?component';
+// import SvgoTendencyDown from '~/assets/svgs/icons/tendency-down.svg?component';
+// import SvgoDash from '~/assets/svgs/icons/dash.svg?component';
 
 // import { BackPage } from '~/components/BackPage';
 // import BackPage from '~/components/BackPage/BackPage.vue';
@@ -177,7 +177,7 @@ const utils = useUtils();
 const route = useRoute();
 const router = useRouter();
 const rankDetailData = ref<any[]>([]);
-const pageRank = ref<number>(+route?.query?.page || 1);
+const pageRank = ref<number>(+(route?.query?.page as string) || 1);
 const pageSize = ref<number>(100);
 const loading = ref<boolean>(false);
 const formFilterRank = computed<formfilterRank>(() => {

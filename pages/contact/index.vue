@@ -34,7 +34,7 @@
 
         <ul class="quick-helps-list">
           <li class="quick-helps-item">
-            <LockIcon
+            <SvgoLock
               width="2rem"
               height="2rem"
               fill="currentColor"
@@ -48,7 +48,7 @@
           </li>
 
           <li class="quick-helps-item">
-            <EmailIcon
+            <SvgoEmail
               class="email-icon"
               width="2rem"
               height="2rem"
@@ -63,7 +63,7 @@
           </li>
 
           <li class="quick-helps-item">
-            <BillList
+            <SvgoBillList
               width="2rem"
               height="2rem"
               fill="currentColor"
@@ -82,9 +82,9 @@
 </template>
 
 <script setup lang="ts">
-import LockIcon from '~/assets/svgs/icons/lock.svg?component';
-import EmailIcon from '~/assets/svgs/icons/email.svg?component';
-import BillList from '~/assets/svgs/icons/bill-list.svg?component';
+// import SvgoLock from '~/assets/svgs/icons/lock.svg?component';
+// import SvgoEmail from '~/assets/svgs/icons/email.svg?component';
+// import SvgoBillList from '~/assets/svgs/icons/bill-list.svg?component';
 
 definePageMeta({
   layout: 'center-page'

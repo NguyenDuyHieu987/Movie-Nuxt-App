@@ -17,7 +17,7 @@
         </p>
 
         <div class="your-vip">
-          <VipPrivilege
+          <SvgoVipPrivilege
             height="1.5rem"
             width="1.5rem"
           />
@@ -49,7 +49,7 @@
           class="resolution"
           title="Chất lượng hình ảnh"
         >
-          <HDRect
+          <SvgoHdRect
             width="2rem"
             height="2rem"
             fill="currentColor"
@@ -68,7 +68,7 @@
           class="ads"
           title="Quảng cáo"
         >
-          <BanCircle
+          <SvgoBanCircle
             width="2rem"
             height="2rem"
             fill="currentColor"
@@ -81,7 +81,7 @@
           class="support-devices"
           title="Thiết bị"
         >
-          <LaptopPhone
+          <SvgoLaptopPhone
             width="2rem"
             height="2rem"
             fill="currentColor"
@@ -136,10 +136,10 @@
 </template>
 
 <script setup lang="ts">
-import VipPrivilege from '~/assets/svgs/icons/vip-privilege.svg?component';
-import HDRect from '~/assets/svgs/icons/hd-rect.svg?component';
-import BanCircle from '~/assets/svgs/icons/ban-circle.svg?component';
-import LaptopPhone from '~/assets/svgs/icons/laptop-phone.svg?component';
+// import SvgoVipPrivilege from '~/assets/svgs/icons/vip-privilege.svg?component';
+// import SvgoHdRect from '~/assets/svgs/icons/hd-rect.svg?component';
+// import SvgoBanCircle from '~/assets/svgs/icons/ban-circle.svg?component';
+// import SvgoLaptopPhone from '~/assets/svgs/icons/laptop-phone.svg?component';
 
 const authStore = useAuthStore();
 const isFade = ref<boolean>(false);

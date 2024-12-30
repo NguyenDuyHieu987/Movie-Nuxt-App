@@ -11,14 +11,14 @@
     >
       <!-- class="el-icon--right" -->
       <!-- <el-icon>
-        <UserOutlined
+        <SvgoUserOutlined
           class="user-outlined"
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
         />
 
-        <Caret
+        <SvgoCaret
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
@@ -29,13 +29,7 @@
         <NuxtImg
           v-if="isLogin"
           class="avatar"
-          :src="
-            !isNaN(+(userAccount?.avatar as string))
-              ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar', {
-                  w: 50
-                })
-              : (userAccount?.avatar as string)
-          "
+          :src="getUserAvatar(userAccount?.avatar)"
           alt=""
           preload
         />
@@ -89,10 +83,10 @@
 </template>
 
 <script setup lang="ts">
-// import Caret from '~/assets/svgs/icons/caret.svg?component';
-// import UserOutlined from '~/assets/svgs/icons/user-outlined.svg?component';
+// import SvgoUserOutlined from '~/assets/svgs/icons/user-outlined.svg?component';
+// import SvgoCaret from '~/assets/svgs/icons/caret.svg?component';
 
-import { getImage } from '~/services/image';
+import { getImage, getUserAvatar } from '~/services/image';
 import { storeToRefs } from 'pinia';
 
 const utils = useUtils();

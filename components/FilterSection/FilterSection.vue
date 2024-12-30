@@ -112,14 +112,14 @@
                 </NuxtLink>
               </SwiperSlide>
               <div class="swiper-button-prev">
-                <ChevronLeftLight
+                <SvgoChevronLeftLight
                   width="2.8rem"
                   height="2.8rem"
                   fill="currentColor"
                 />
               </div>
               <div class="swiper-button-next">
-                <ChevronRightLight
+                <SvgoChevronRightLight
                   width="2.8rem"
                   height="2.8rem"
                   fill="currentColor"
@@ -173,14 +173,14 @@
                 </NuxtLink>
               </SwiperSlide>
               <div class="swiper-button-prev">
-                <ChevronLeftLight
+                <SvgoChevronLeftLight
                   width="2.8rem"
                   height="2.8rem"
                   fill="currentColor"
                 />
               </div>
               <div class="swiper-button-next">
-                <ChevronRightLight
+                <SvgoChevronRightLight
                   width="2.8rem"
                   height="2.8rem"
                   fill="currentColor"
@@ -238,14 +238,14 @@
                 </NuxtLink>
               </SwiperSlide>
               <div class="swiper-button-prev">
-                <ChevronLeftLight
+                <SvgoChevronLeftLight
                   width="3.5rem"
                   height="3.5rem"
                   fill="currentColor"
                 />
               </div>
               <div class="swiper-button-next">
-                <ChevronRightLight
+                <SvgoChevronRightLight
                   width="3.5rem"
                   height="3.5rem"
                   fill="currentColor"
@@ -255,7 +255,7 @@
           </div>
         </div>
         <template #extra>
-          <FilterAlt
+          <SvgoFilterAlt
             width="1.6rem"
             height="1.6rem"
             fill="currentColor"
@@ -268,9 +268,9 @@
 
 <script setup lang="ts">
 import { CaretRightFilled } from '@ant-design/icons-vue';
-import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
-import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
-import FilterAlt from '~/assets/svgs/icons/filter-alt.svg?component';
+// import SvgoChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+// import SvgoChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+// import SvgoFilterAlt from '~/assets/svgs/icons/filter-alt.svg?component';
 
 // import { FreeMode, Navigation } from 'swiper/modules';
 

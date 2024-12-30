@@ -30,7 +30,7 @@
       @click="prevSlide"
     >
       <!-- <Icon name="bi:chevron-left"/> -->
-      <ChevronLeftLight
+      <SvgoChevronLeftLight
         width="3.5rem"
         height="3.5rem"
         fill="currentColor"
@@ -41,7 +41,7 @@
       @click="nextSlide"
     >
       <!-- <Icon name="bi:chevron-right"/> -->
-      <ChevronRightLight
+      <SvgoChevronRightLight
         width="3.5rem"
         height="3.5rem"
         fill="currentColor"
@@ -51,14 +51,14 @@
 </template>
 
 <script setup lang="ts">
-import ChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
-import ChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
+// import SvgoChevronLeftLight from '~/assets/svgs/icons/chevron-left-light.svg?component';
+// import SvgoChevronRightLight from '~/assets/svgs/icons/chevron-right-light.svg?component';
 import { useWindowSize } from '@vueuse/core';
 
 const props = withDefaults(
   defineProps<{
     data: any[];
-    breakpoints?: Record<
+    breakpoints: Record<
       number,
       { slidesPerView: number; slidesPerGroup: number; spaceBetween?: number }
     >;

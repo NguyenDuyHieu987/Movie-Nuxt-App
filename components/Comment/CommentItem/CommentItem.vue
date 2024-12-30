@@ -90,7 +90,7 @@
                 aria-label="dropdown-comment"
               >
                 <template #icon>
-                  <EllipsisVertical
+                  <SvgoEllipsisVertical
                     width="2rem"
                     height="2rem"
                     fill="currentColor"
@@ -106,7 +106,7 @@
                       class="edit-item"
                       @click="handleEditComment"
                     >
-                      <Pencil
+                      <SvgoPencil
                         width="1.5rem"
                         height="1.5rem"
                         fill="currentColor"
@@ -123,7 +123,7 @@
                       class="remove-item"
                       @click="handleRemoveComment"
                     >
-                      <TrashCan
+                      <SvgoTrashCan
                         width="1.5rem"
                         height="1.5rem"
                         fill="currentColor"
@@ -151,7 +151,7 @@
                 :class="{ active: isShowReplies }"
               /> -->
 
-              <ArrowDropDown
+              <SvgoArrowDropDown
                 class="caret"
                 :class="{ active: isShowReplies }"
                 width="2.5rem"
@@ -192,7 +192,7 @@
                 <template #icon>
                   <!-- <Icon name="material-symbols:subdirectory-arrow-right" /> -->
 
-                  <SubdirectoryArrowRight
+                  <SvgoSubdirectoryArrowRight
                     width="2.2rem"
                     height="2.2rem"
                     fill="currentColor"
@@ -220,11 +220,11 @@
 </template>
 
 <script setup lang="ts">
-import EllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
-import Pencil from '~/assets/svgs/icons/pencil.svg?component';
-import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
-import ArrowDropDown from '~/assets/svgs/icons/arrow-drop-down.svg?component';
-import SubdirectoryArrowRight from '~/assets/svgs/icons/subdirectory-arrow-right.svg?component';
+// import SvgoEllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
+// import SvgoPencil from '~/assets/svgs/icons/pencil.svg?component';
+// import SvgoTrashCan from '~/assets/svgs/icons/trash-can.svg?component';
+// import SvgoArrowDropDown from '~/assets/svgs/icons/arrow-drop-down.svg?component';
+// import SvgoSubdirectoryArrowRight from '~/assets/svgs/icons/subdirectory-arrow-right.svg?component';
 
 // import {
 //   FormComment,

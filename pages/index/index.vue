@@ -49,7 +49,7 @@
               @click="handleLoadMoreRecommend"
             >
               <template #icon>
-                <Plus1Icon
+                <SvgoPlus1
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
@@ -86,7 +86,7 @@
                 :to="'broadcast/all'"
               >
                 Xem tất cả
-                <ChevronRight
+                <SvgoChevronRight
                   width="1.2rem"
                   height="1.2rem"
                   fill="currentColor"
@@ -130,7 +130,7 @@
                   }
                 }" -->
                 Xem tất cả
-                <ChevronRight
+                <SvgoChevronRight
                   width="1.2rem"
                   height="1.2rem"
                   fill="currentColor"
@@ -188,8 +188,8 @@
 </template>
 
 <script setup lang="ts">
-import ChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
-import Plus1Icon from '~/assets/svgs/icons/plus-1.svg?component';
+// import SvgoChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
+// import SvgoPlus1 from '~/assets/svgs/icons/plus-1.svg?component';
 
 // import { BillboardAnimation } from '~/components/BillboardAnimation';
 // import { BoxVip } from '~/components/BoxVip';

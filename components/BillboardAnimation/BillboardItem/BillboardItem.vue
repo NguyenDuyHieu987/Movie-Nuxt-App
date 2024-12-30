@@ -30,7 +30,7 @@
             alt=""
           /> -->
           <div class="pngegg-icon">
-            <!-- <PngeggIcon width="6rem" /> -->
+            <!-- <SvgoPngegg width="6rem" /> -->
 
             <svg
               enable-background="new 0 0 512 512"
@@ -222,14 +222,14 @@
               <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
                 <Icon v-else name="ic:baseline-plus" /> -->
 
-              <CheckIcon
+              <SvgoCheck
                 v-if="isAddToList"
                 width="1.8rem"
                 height="1.8rem"
                 fill="currentColor"
               />
 
-              <PlusIcon
+              <SvgoPlus
                 v-else
                 width="1.8rem"
                 height="1.8rem"
@@ -245,9 +245,9 @@
 </template>
 
 <script setup lang="ts">
-import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
-import CheckIcon from '~/assets/svgs/icons/check.svg?component';
-import PngeggIcon from '~/assets/svgs/icons/pngegg-icon.svg?component';
+// import SvgoPlus from '~/assets/svgs/icons/plus.svg?component';
+// import SvgoCheck from '~/assets/svgs/icons/check.svg?component';
+// import SvgoPngegg from '~/assets/svgs/icons/pngegg-icon.svg?component';
 import { getImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 

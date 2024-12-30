@@ -10,7 +10,7 @@
     :force-render="false"
   >
     <template #title>
-      <Menu
+      <SvgoMenu
         class="close-drawer"
         width="2.5rem"
         height="2.5rem"
@@ -30,13 +30,7 @@
       >
         <NuxtImg
           class="avatar"
-          :src="
-            !isNaN(+userAccount?.avatar)
-              ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar', {
-                  w: 50
-                })
-              : userAccount?.avatar
-          "
+          :src="getUserAvatar(userAccount?.avatar)"
           alt=""
           preload
         />
@@ -95,11 +89,7 @@
         >
           <NuxtImg
             class="avatar"
-            :src="
-              !isNaN(+userAccount?.avatar)
-                ? getImage(`account${userAccount?.avatar}.jpg`, 'user_avatar')
-                : userAccount?.avatar
-            "
+            :src="getUserAvatar(userAccount?.avatar)"
             alt=""
           />
         </div>
@@ -115,12 +105,12 @@
 </template>
 
 <script setup lang="ts">
-import Menu from '~/assets/svgs/icons/menu.svg?component';
+// import SvgoMenu from '~/assets/svgs/icons/menu.svg?component';
 
 // import { TheMenu } from '~/components/Layouts';
 // import TheMenu from '~/components/Layouts/TheMenu/TheMenu.vue';
 import { storeToRefs } from 'pinia';
-import { getImage } from '~/services/image';
+import { getImage, getUserAvatar } from '~/services/image';
 
 const store = useStore();
 const authStore = useAuthStore();

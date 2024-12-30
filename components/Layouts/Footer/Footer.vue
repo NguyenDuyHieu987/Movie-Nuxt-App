@@ -3,7 +3,7 @@
     <div class="footer-container">
       <div class="footer-header">
         <div
-          v-if="$route.path != '/contact'"
+          v-if="route.path != '/contact'"
           class="contactus-section"
         >
           <h2 class="help-title">Bạn cần thêm trợ giúp?</h2>
@@ -22,7 +22,7 @@
           </NuxtLink>
         </div>
 
-        <div v-if="$route.path == '/contact'">
+        <div v-if="route.path == '/contact'">
           <NuxtLink
             class="helpcenter-logo"
             to="/help"
@@ -65,7 +65,7 @@
               to="https://www.facebook.com/nguyen.d.hieu.355"
             >
               <div class="support-icon">
-                <Facebook
+                <SvgoFacebook
                   class="fa-facebook-f"
                   width="1.6rem"
                   height="1.6rem"
@@ -80,7 +80,7 @@
               to="mailto:vaicut6941@gmail.com"
             >
               <div class="support-icon">
-                <Email
+                <SvgoEmail
                   class="email-icon"
                   width="2rem"
                   height="2rem"
@@ -101,10 +101,12 @@
 </template>
 
 <script setup lang="ts">
-import Facebook from '~/assets/svgs/icons/facebook.svg?component';
-import Email from '~/assets/svgs/icons/email.svg?component';
+// import SvgoFacebook from '~/assets/svgs/icons/facebook.svg?component';
+// import SvgoEmail from '~/assets/svgs/icons/email.svg?component';
 
 import { getImage } from '~/services/image';
+
+const route = useRoute();
 </script>
 
 <style lang="scss" src="./Footer.scss"></style>

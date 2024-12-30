@@ -14,7 +14,7 @@
         @change="handleRating"
       >
         <template #character>
-          <!-- <StarIcon
+          <!-- <SvgoStar
             class="icon star"
             width="2.2rem"
             height="2.2rem"
@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import StarIcon from '~/assets/svgs/icons/star.svg?component';
+// import SvgoStar from '~/assets/svgs/icons/star.svg?component';
 
 import { ElNotification } from 'element-plus';
 import { addRankRate } from '~/services/ranks';

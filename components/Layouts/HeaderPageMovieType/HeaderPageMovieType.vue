@@ -20,7 +20,7 @@
             aria-label="dropdown-genre"
           >
             {{ genreDropdownTitle }}
-            <Caret
+            <SvgoCaret
               width="1.2rem"
               height="1.2rem"
               fill="currentColor"
@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import Caret from '~/assets/svgs/icons/caret.svg?component';
+// import SvgoCaret from '~/assets/svgs/icons/caret.svg?component';
 
 import { getGenreById } from '~/services/genres';
 import type { genre } from '~/types';
@@ -79,7 +79,8 @@ const route = useRoute();
 const genres = ref<genre[]>(store.allGenres);
 const genreDropdownTitle = ref<string>(
   route.query?.genre
-    ? getGenreById(route.query?.genre, store.allGenres)!.name_vietsub
+    ? getGenreById(+(route.query?.genre as string), store.allGenres)!
+        .name_vietsub
     : 'Thể loại'
 );
 

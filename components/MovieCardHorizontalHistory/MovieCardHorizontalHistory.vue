@@ -134,7 +134,7 @@
             >
               <template #icon>
                 <!-- <Icon name="ic:baseline-close" /> -->
-                <BaselineClose
+                <SvgoBaselineClose
                   width="2.5rem"
                   height="2.5rem"
                   fill="currentColor"
@@ -158,7 +158,7 @@
               <template #icon>
                 <!-- <Icon name="fa6-solid:ellipsis-vertical" /> -->
 
-                <EllipsisVertical
+                <SvgoEllipsisVertical
                   width="1.9rem"
                   height="1.9rem"
                   fill="currentColor"
@@ -172,7 +172,7 @@
                   <el-dropdown-item key="play">
                     <!-- <Icon class="play" name="ci:play-arrow" /> -->
 
-                    <PlayIcon
+                    <SvgoPlay
                       class="play"
                       width="2.8rem"
                       height="2.8rem"
@@ -217,14 +217,14 @@
                             name="ic:twotone-playlist-add"
                           /> -->
 
-                    <PlaylistCheck
+                    <SvgoPlaylistCheck
                       v-if="isAddToList"
                       class="icon-material"
                       width="2.8rem"
                       height="2.8rem"
                       fill="currentColor"
                     />
-                    <PlaylistAdd
+                    <SvgoPlaylistAdd
                       v-else
                       class="icon-material"
                       xmlns="http://www.w3.org/2000/svg"
@@ -241,7 +241,7 @@
                   <el-dropdown-item key="share">
                     <!-- <Icon name="ph:share-fat-bold" class="share" /> -->
 
-                    <ShareOutlined
+                    <SvgoShareOutlined
                       class="share"
                       width="1.8rem"
                       height="1.8rem"
@@ -272,7 +272,7 @@
                   >
                     <!-- <Icon name="fa6-solid:trash-can" /> -->
 
-                    <TrashCan
+                    <SvgoTrashCan
                       width="1.5rem"
                       height="1.5rem"
                       fill="currentColor"
@@ -293,13 +293,13 @@
 </template>
 
 <script setup lang="ts">
-import BaselineClose from '~/assets/svgs/icons/baseline-close.svg?component';
-import EllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
-import PlayIcon from '~/assets/svgs/icons/play.svg?component';
-import PlaylistAdd from '~/assets/svgs/icons/playlist-add.svg?component';
-import PlaylistCheck from '~/assets/svgs/icons/playlist-check.svg?component';
-import ShareOutlined from '~/assets/svgs/icons/share-outlined.svg?component';
-import TrashCan from '~/assets/svgs/icons/trash-can.svg?component';
+// import SvgoBaselineClose from '~/assets/svgs/icons/baseline-close.svg?component';
+// import SvgoEllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
+// import SvgoPlay from '~/assets/svgs/icons/play.svg?component';
+// import SvgoPlaylistAdd from '~/assets/svgs/icons/playlist-add.svg?component';
+// import SvgoPlaylistCheck from '~/assets/svgs/icons/playlist-check.svg?component';
+// import SvgoShareOutlined from '~/assets/svgs/icons/share-outlined.svg?component';
+// import SvgoTrashCan from '~/assets/svgs/icons/trash-can.svg?component';
 
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';

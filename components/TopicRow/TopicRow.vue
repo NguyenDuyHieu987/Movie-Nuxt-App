@@ -25,7 +25,7 @@
             <div class="play-now">
               <!-- <Icon name="ci:play-arrow" class="play" /> -->
 
-              <PlayIcon
+              <SvgoPlay
                 class="play"
                 width="3rem"
                 height="3rem"
@@ -57,7 +57,7 @@
             <div class="play-now">
               <!-- <Icon name="ci:play-arrow" class="play" /> -->
 
-              <PlayIcon
+              <SvgoPlay
                 class="play"
                 width="3rem"
                 height="3rem"
@@ -127,7 +127,7 @@
                 <template #icon>
                   <!-- <Icon name="fa6-solid:ellipsis-vertical" /> -->
 
-                  <EllipsisVertical
+                  <SvgoEllipsisVertical
                     width="1.9rem"
                     height="1.9rem"
                     fill="currentColor"
@@ -142,7 +142,7 @@
                       <!-- <InfoCircleOutlined /> -->
                       <!-- <Icon name="bi:info-circle" class="info" /> -->
 
-                      <InfoCircle
+                      <SvgoInfoCircle
                         class="info"
                         width="1.5rem"
                         height="1.5rem"
@@ -169,7 +169,7 @@
               <!-- <span class="material-icons-outlined"> delete_sweep </span> -->
               <!-- <Icon name="ic:sharp-delete-sweep" /> -->
 
-              <MagnifyingGlass
+              <SvgoMagnifyingGlass
                 width="1.5rem"
                 height="1.5rem"
                 fill="currentColor"
@@ -191,7 +191,7 @@
             <template #prefix>
               <!-- <Icon name="fa6-solid:magnifying-glass" /> -->
 
-              <DeleteSweep
+              <SvgoDeleteSweep
                 width="1.5rem"
                 height="1.5rem"
                 fill="currentColor"
@@ -205,11 +205,11 @@
 </template>
 
 <script setup lang="ts">
-import PlayIcon from '~/assets/svgs/icons/play.svg?component';
-import EllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
-import InfoCircle from '~/assets/svgs/icons/info-circle.svg?component';
-import MagnifyingGlass from '~/assets/svgs/icons/magnifying-glass.svg?component';
-import DeleteSweep from '~/assets/svgs/icons/delete-sweep.svg?component';
+// import SvgoPlay from '~/assets/svgs/icons/play.svg?component';
+// import SvgoEllipsisVertical from '~/assets/svgs/icons/ellipsis-vertical.svg?component';
+// import SvgoInfoCircle from '~/assets/svgs/icons/info-circle.svg?component';
+// import SvgoMagnifyingGlass from '~/assets/svgs/icons/magnifying-glass.svg?component';
+// import SvgoDeleteSweep from '~/assets/svgs/icons/delete-sweep.svg?component';
 
 import { getImage } from '~/services/image';
 

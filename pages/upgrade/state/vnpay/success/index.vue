@@ -1,7 +1,7 @@
 <template>
   <div class="vnpay-success">
     <div class="icon-success">
-      <SuccessIcon
+      <SvgoSuccess
         width="6rem"
         height="6rem"
         fill="currentColor"
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import SuccessIcon from '~/assets/svgs/icons/success.svg?component';
+// import SvgoSuccess from '~/assets/svgs/icons/success.svg?component';
 
 import { getImage } from '~/services/image';
 

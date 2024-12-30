@@ -25,7 +25,7 @@
 
     <el-menu-item index="/feature">
       <el-icon>
-        <VideoCamera
+        <SvgoVideoCamera
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
@@ -39,7 +39,7 @@
 
     <el-menu-item index="/television">
       <el-icon>
-        <MovieReel
+        <SvgoMovieReel
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
@@ -53,7 +53,7 @@
 
     <el-menu-item index="/discover">
       <el-icon>
-        <Light
+        <SvgoLight
           width="1.6rem"
           height="1.6rem"
           fill="currentColor"
@@ -198,7 +198,7 @@
       <template #title>
         <el-icon>
           <!-- <Icon name="fa6-solid:list"></Icon> -->
-          <ListIcon
+          <SvgoList
             width="1.5rem"
             height="1.5rem"
             fill="currentColor"
@@ -244,7 +244,7 @@
       <template #title>
         <el-icon>
           <!-- <Icon name="fa6-regular:calendar-days" />  -->
-          <CalendarDays
+          <SvgoCalendarDays
             width="1.5rem"
             height="1.5rem"
             fill="currentColor"
@@ -283,7 +283,7 @@
       <template #title>
         <el-icon>
           <!-- <Icon name="fa6-solid:globe" /> -->
-          <Globe
+          <SvgoGlobe
             width="1.5rem"
             height="1.5rem"
             fill="currentColor"
@@ -316,7 +316,7 @@
             class="material-icons-outlined playlist"
             name="ic:baseline-playlist-play"
           /> -->
-        <PlaylistPlay
+        <SvgoPlaylistPlay
           class="material-icons-outlined playlist"
           height="2.6rem"
           width="2.6rem"
@@ -331,7 +331,7 @@
     <el-menu-item index="/history">
       <el-icon>
         <!-- <Icon name="fa6-solid:clock-rotate-left" /> -->
-        <ClockRotateLeft
+        <SvgoClockRotateLeft
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
@@ -345,7 +345,7 @@
     <el-menu-item index="/ranks">
       <el-icon>
         <!-- <Icon name="fa6-solid:ranking-star" /> -->
-        <RankingStar
+        <SvgoRankingStar
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
@@ -364,7 +364,7 @@
     >
       <el-icon>
         <!-- <NuxtImg :src="getImage('king.png', 'misc', { h: 16 })" alt="" /> -->
-        <VipPrivilege
+        <SvgoVipPrivilege
           height="1.6rem"
           width="1.6rem"
         />
@@ -383,16 +383,16 @@
 
 <script setup lang="ts">
 import { HomeOutlined } from '@ant-design/icons-vue';
-import VideoCamera from '~/assets/svgs/icons/video-camera.svg?component';
-import MovieReel from '~/assets/svgs/icons/movie-reel.svg?component';
-import Light from '~/assets/svgs/icons/light.svg?component';
-import ListIcon from '~/assets/svgs/icons/list.svg?component';
-import CalendarDays from '~/assets/svgs/icons/calendar-days.svg?component';
-import Globe from '~/assets/svgs/icons/globe.svg?component';
-import ClockRotateLeft from '~/assets/svgs/icons/clock-rotate-left.svg?component';
-import PlaylistPlay from '~/assets/svgs/icons/playlist-play.svg?component';
-import RankingStar from '~/assets/svgs/icons/ranking-star.svg?component';
-import VipPrivilege from '~/assets/svgs/icons/vip-privilege.svg?component';
+// import SvgoVideoCamera from '~/assets/svgs/icons/video-camera.svg?component';
+// import SvgoMovieReel from '~/assets/svgs/icons/movie-reel.svg?component';
+// import SvgoLight from '~/assets/svgs/icons/light.svg?component';
+// import SvgoList from '~/assets/svgs/icons/list.svg?component';
+// import SvgoCalendarDays from '~/assets/svgs/icons/calendar-days.svg?component';
+// import SvgoGlobe from '~/assets/svgs/icons/globe.svg?component';
+// import SvgoClockRotateLeft from '~/assets/svgs/icons/clock-rotate-left.svg?component';
+// import SvgoPlaylistPlay from '~/assets/svgs/icons/playlist-play.svg?component';
+// import SvgoRankingStar from '~/assets/svgs/icons/ranking-star.svg?component';
+// import SvgoVipPrivilege from '~/assets/svgs/icons/vip-privilege.svg?component';
 
 import { storeToRefs } from 'pinia';
 

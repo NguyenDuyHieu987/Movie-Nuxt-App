@@ -14,7 +14,7 @@
         @click="handleClickBack"
       >
         <template #icon>
-          <ArrowLeft
+          <SvgoArrowLeft
             width="2.5rem"
             height="2.5rem"
             role="img"
@@ -57,7 +57,7 @@
             disabled
           >
             <!-- <template #prefix> -->
-            <!-- <AlternateEmail
+            <!-- <SvgoAlternateEmail
               width="1.4rem"
               height="1.4rem"
               fill="currentColor"
@@ -162,8 +162,8 @@
 </template>
 
 <script setup lang="ts">
-import ArrowLeft from '~/assets/svgs/icons/arrow-left.svg?component';
-// import AlternateEmail from '~/assets/svgs/icons/alternate-email.svg?component';
+// import SvgoArrowLeft from '~/assets/svgs/icons/arrow-left.svg?component';
+// import SvgoAlternateEmail from '~/assets/svgs/icons/alternate-email.svg?component';
 
 // import { PinOTP } from '~/components/PinOTP';
 import PinOTP from '~/components/PinOTP/PinOTP.vue';

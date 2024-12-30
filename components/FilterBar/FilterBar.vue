@@ -222,7 +222,7 @@
         <template #extra>
           <!-- <Icon name="ic:sharp-filter-alt" /> -->
 
-          <FilterAlt
+          <SvgoFilterAlt
             width="1.6rem"
             height="1.6rem"
             fill="currentColor"
@@ -235,7 +235,7 @@
 
 <script setup lang="ts">
 import { CaretRightFilled } from '@ant-design/icons-vue';
-import FilterAlt from '~/assets/svgs/icons/filter-alt.svg?component';
+// import SvgoFilterAlt from '~/assets/svgs/icons/filter-alt.svg?component';
 
 import type { country, formfilter, genre, sortby, year } from '@/types';
 import { getAllCountry } from '~/services/country';
@@ -264,13 +264,13 @@ const loadingData = defineModel<boolean>('loading', {
 
 const movieType = computed(() => {
   if (route.params?.slug?.includes('movie')) {
-    if (route.params?.slug2?.replace('/', '') == 'all') {
+    if ((route.params?.slug2 as string)?.replace('/', '') == 'all') {
       return 'movie';
     } else {
       return 'movie';
     }
   } else if (route.params?.slug?.includes('tv')) {
-    if (route.params?.slug2?.replace('/', '') == 'all') {
+    if ((route.params?.slug2 as string)?.replace('/', '') == 'all') {
       return 'tv';
     } else {
       return 'tv';

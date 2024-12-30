@@ -20,7 +20,7 @@
                   "
                 ></i> -->
 
-          <OnlineIcon
+          <SvgoOnline
             v-if="isOnline"
             class="online-icon"
             width="2.4rem"
@@ -28,7 +28,7 @@
             fill="currentColor"
           />
 
-          <OfflineIcon
+          <SvgoOffline
             v-else
             class="offline-icon"
             alt=""
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="right">
-        <XMark
+        <SvgoXMark
           class="close click-active"
           width="2.3rem"
           height="2.3rem"
@@ -58,9 +58,9 @@
 </template>
 
 <script setup lang="ts">
-import OnlineIcon from '~/assets/svgs/icons/online.svg?component';
-import OfflineIcon from '~/assets/svgs/icons/offline.svg?component';
-import XMark from '~/assets/svgs/icons/x-mark.svg?component';
+// import SvgoOnline from '~/assets/svgs/icons/online.svg?component';
+// import SvgoOffline from '~/assets/svgs/icons/offline.svg?component';
+// import SvgoXMark from '~/assets/svgs/icons/x-mark.svg?component';
 
 import { useOnline } from '@vueuse/core';
 

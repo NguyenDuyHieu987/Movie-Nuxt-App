@@ -8,7 +8,7 @@
         @click="openModal = !openModal"
       >
         <template #icon>
-          <Share
+          <SvgoShare
             class="share"
             width="2.2rem"
             height="2.2rem"
@@ -53,14 +53,14 @@
               type="text"
             >
               <template #icon>
-                <Facebook
+                <SvgoFacebook
                   class="fa-facebook-f"
                   width="1.6rem"
                   height="1.6rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Facebook</span>
+              <span>Facebook</span>
             </a-button>
           </ShareNetwork>
 
@@ -74,13 +74,13 @@
               type="text"
             >
               <template #icon>
-                <LinkedIn
+                <SvgoLinkedIn
                   width="1.6rem"
                   height="1.6rem"
                   fill="currentColor"
                 />
               </template>
-              <span> LinkedIn</span>
+              <span>LinkedIn</span>
             </a-button>
           </ShareNetwork>
 
@@ -96,13 +96,13 @@
               type="text"
             >
               <template #icon>
-                <Email
+                <SvgoEmail
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Email</span>
+              <span>Email</span>
             </a-button>
           </ShareNetwork>
 
@@ -118,13 +118,13 @@
               type="text"
             >
               <template #icon>
-                <Messenger
+                <SvgoMessenger
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Messenger</span>
+              <span>Messenger</span>
             </a-button>
           </ShareNetwork>
 
@@ -147,13 +147,13 @@
               type="text"
             >
               <template #icon>
-                <Pinterest
+                <SvgoPinterest
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Pinterest</span>
+              <span>Pinterest</span>
             </a-button>
           </ShareNetwork>
 
@@ -168,13 +168,13 @@
               type="text"
             >
               <template #icon>
-                <Reddit
+                <SvgoReddit
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Reddit</span>
+              <span>Reddit</span>
             </a-button>
           </ShareNetwork>
 
@@ -190,13 +190,13 @@
               type="text"
             >
               <template #icon>
-                <Skype
+                <SvgoSkype
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Skype</span>
+              <span>Skype</span>
             </a-button>
           </ShareNetwork>
 
@@ -212,13 +212,13 @@
               type="text"
             >
               <template #icon>
-                <Telegram
+                <SvgoTelegram
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Telegram</span>
+              <span>Telegram</span>
             </a-button>
           </ShareNetwork>
 
@@ -234,13 +234,13 @@
               type="text"
             >
               <template #icon>
-                <Twitter
+                <SvgoTwitter
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Twitter</span>
+              <span>Twitter</span>
             </a-button>
           </ShareNetwork>
 
@@ -256,13 +256,13 @@
               type="text"
             >
               <template #icon>
-                <WhatsApp
+                <SvgoWhatsApp
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> WhatsApp</span>
+              <span>WhatsApp</span>
             </a-button>
           </ShareNetwork>
 
@@ -277,13 +277,13 @@
               type="text"
             >
               <template #icon>
-                <Baidu
+                <SvgoBaidu
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Baidu</span>
+              <span>Baidu</span>
             </a-button>
           </ShareNetwork>
 
@@ -306,13 +306,13 @@
               type="text"
             >
               <template #icon>
-                <Weibo
+                <SvgoWeibo
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
                 />
               </template>
-              <span> Weibo</span>
+              <span>Weibo</span>
             </a-button>
           </ShareNetwork>
         </div>
@@ -323,19 +323,19 @@
 </template>
 
 <script setup lang="ts">
-import Share from '~/assets/svgs/icons/share.svg?component';
-import Facebook from '~/assets/svgs/icons/facebook.svg?component';
-import LinkedIn from '~/assets/svgs/icons/linkedin.svg?component';
-import Email from '~/assets/svgs/icons/email.svg?component';
-import Messenger from '~/assets/svgs/icons/messenger.svg?component';
-import Pinterest from '~/assets/svgs/icons/pinterest.svg?component';
-import Reddit from '~/assets/svgs/icons/reddit.svg?component';
-import Skype from '~/assets/svgs/icons/skype.svg?component';
-import Telegram from '~/assets/svgs/icons/telegram.svg?component';
-import Twitter from '~/assets/svgs/icons/twitter.svg?component';
-import WhatsApp from '~/assets/svgs/icons/whatsapp.svg?component';
-import Baidu from '~/assets/svgs/icons/baidu.svg?component';
-import Weibo from '~/assets/svgs/icons/weibo.svg?component';
+// import SvgoShare from '~/assets/svgs/icons/share.svg?component';
+// import Facebook from '~/assets/svgs/icons/facebook.svg?component';
+// import SvgoLinkedIn from '~/assets/svgs/icons/linkedin.svg?component';
+// import SvgoEmail from '~/assets/svgs/icons/email.svg?component';
+// import SvgoMessenger from '~/assets/svgs/icons/messenger.svg?component';
+// import SvgoPinterest from '~/assets/svgs/icons/pinterest.svg?component';
+// import SvgoReddit from '~/assets/svgs/icons/reddit.svg?component';
+// import SvgoSkype from '~/assets/svgs/icons/skype.svg?component';
+// import SvgoTelegram from '~/assets/svgs/icons/telegram.svg?component';
+// import SvgoTwitter from '~/assets/svgs/icons/twitter.svg?component';
+// import SvgoWhatsApp from '~/assets/svgs/icons/whatsapp.svg?component';
+// import SvgoBaidu from '~/assets/svgs/icons/baidu.svg?component';
+// import SvgoWeibo from '~/assets/svgs/icons/weibo.svg?component';
 
 // import { CloseBtn } from '~/components/Button';
 import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';

@@ -87,6 +87,14 @@ export function ChangeFullname(newfullName: string) {
   });
 }
 
+export function UpdateAvartar(avatar: string) {
+  return makeRequest(`/${PREFIX_ROUTE}/change-avatar`, null, {
+    method: 'POST',
+    data: { avatar },
+    getResponseHeaders: true
+  });
+}
+
 export function VerifyResetPassword(rstPwdToken: string) {
   return makeRequest(`/${PREFIX_ROUTE}/reset-password`, {
     token: rstPwdToken

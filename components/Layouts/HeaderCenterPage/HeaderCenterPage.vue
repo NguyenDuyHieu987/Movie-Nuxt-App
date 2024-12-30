@@ -73,7 +73,7 @@
                   class="menu-item login-header"
                 >
                   <NuxtLink to="/login">
-                    <UserCircle
+                    <SvgoUserCircle
                       width="2.3rem"
                       height="2.3rem"
                       fill="currentColor"
@@ -107,7 +107,7 @@
 </template>
 
 <script setup lang="ts">
-import UserCircle from '~/assets/svgs/icons/user-circle.svg?component';
+// import SvgoUserCircle from '~/assets/svgs/icons/user-circle.svg?component';
 
 import { MenuOutlined } from '@ant-design/icons-vue';
 // import { Notification, DropdownAccount } from '~/components/Layouts/Header';
