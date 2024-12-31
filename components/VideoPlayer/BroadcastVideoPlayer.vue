@@ -1114,8 +1114,6 @@ onBeforeRouteLeave(() => {
 onBeforeMount(() => {});
 
 onMounted(async () => {
-  mounted.value = true;
-
   // calculateTimeRemaining();
   if (timeRemaining.value > 0) {
     timerCountdown.value = setInterval(calculateTimeRemaining, 1000);
@@ -1132,6 +1130,8 @@ onMounted(async () => {
   //     }
   //   }
   // );
+
+  mounted.value = true;
 
   if (isEndedBroadcast.value) return;
 
