@@ -884,7 +884,6 @@ const seconds = computed<number>(() =>
   Math.floor((timeRemaining.value % (1000 * 60)) / 1000)
 );
 const isEndedBroadcast = ref<boolean>(false);
-console.log(startTime.value);
 
 const loadM3u8Video = async () => {
   // if (Hls.isSupported()) {

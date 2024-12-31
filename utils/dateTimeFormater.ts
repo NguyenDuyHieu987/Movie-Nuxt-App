@@ -118,8 +118,10 @@ function toNow(releaseTime: string): string {
   // const releaseTime = '2024-12-15T20:23:33';
   const releaseDateTime =
     new Date(releaseTime).getTime() +
-    new Date(releaseTime).getTimezoneOffset() * 60 * 60 * 1000;
+    new Date(releaseTime).getTimezoneOffset() * 60 * 1000;
   const now = new Date().getTime();
+
+  console.log(releaseDateTime);
 
   if (releaseDateTime > now) {
     const diffMs = releaseDateTime - now;
