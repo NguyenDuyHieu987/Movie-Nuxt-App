@@ -766,7 +766,7 @@ const ísWatchable = computed<boolean>(
       // !videoStates.isEndedVideo &&
       !videoStates.isRewind.enable
     ) &&
-    // !mounted.value &&
+    !mounted.value &&
     !props.loadingData &&
     !isEndedBroadcast.value &&
     timeRemaining.value <= 0 &&
