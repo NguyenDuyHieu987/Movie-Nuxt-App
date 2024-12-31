@@ -82,7 +82,9 @@
             class="prevent-notification-wrapper"
           >
             <div
-              v-if="authStore.vipNumber == 0"
+              v-if="
+                !authStore.loadingUser && authStore.vipNumber < movieVipNumber
+              "
               class="require-vip"
             >
               <div class="require-vip-message">

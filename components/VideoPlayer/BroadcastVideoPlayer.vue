@@ -107,7 +107,9 @@
             class="prevent-notification-wrapper"
           >
             <div
-              v-if="authStore.vipNumber == 0"
+              v-if="
+                !authStore.loadingUser && authStore.vipNumber < movieVipNumber
+              "
               class="require-vip"
             >
               <div class="require-vip-message">
@@ -139,8 +141,7 @@
             (videoStates.isLoading &&
               !videoStates.isEndedVideo &&
               !videoStates.isRewind.enable) ||
-            (((!mounted && isEligibleToWatch) || loadingData) &&
-              !isEndedBroadcast)
+            ((!mounted || loadingData) && !isEndedBroadcast)
           "
           class="loading-video"
         >
@@ -762,7 +763,7 @@ const ísWatchable = computed<boolean>(
   () =>
     !(
       videoStates.isLoading &&
-      !videoStates.isEndedVideo &&
+      // !videoStates.isEndedVideo &&
       !videoStates.isRewind.enable
     ) &&
     // !mounted.value &&
