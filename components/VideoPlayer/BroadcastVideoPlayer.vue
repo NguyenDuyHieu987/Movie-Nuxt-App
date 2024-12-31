@@ -725,7 +725,7 @@
 import { getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
 import Hls from 'hls.js';
-import { isProduction } from 'std-env';
+import { nuxtConfig.app.production_mode } from 'std-env';
 
 const props = withDefaults(
   defineProps<{
@@ -874,7 +874,7 @@ const mounted = ref<boolean>(false);
 const hls = ref<Hls | null>();
 // const startTime = computed<number>(()=>new Date('2024-12-15T15:25:00').getTime());
 const startTime = computed<number>(() =>
-  !mounted.value && isProduction
+  !mounted.value && nuxtConfig.app.production_mode
     ? new Date(props.dataBroadcast.release_time).getTime() +
       new Date(props.dataBroadcast.release_time).getTimezoneOffset() * 60 * 1000
     : new Date(props.dataBroadcast.release_time).getTime()
