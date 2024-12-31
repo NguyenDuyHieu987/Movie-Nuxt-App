@@ -114,19 +114,23 @@ function fromNow(
   return fromNowStr;
 }
 
-function toNow(releaseTime: string) {
+function toNow(releaseTime: string): string {
   // const releaseTime = '2024-12-15T20:23:33';
-  const releaseDate = new Date(releaseTime).getTime();
+  const releaseDateTime =
+    new Date(releaseTime).getTime() +
+    new Date(releaseTime).getTimezoneOffset() * 60 * 60 * 1000;
   const now = new Date().getTime();
 
-  if (releaseDate > now) {
-    const diffMs = releaseDate - now; // Chênh lệch thời gian tính bằng ms
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // Tổng số giờ còn lại
-    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)); // Phút còn lại nếu dưới 1 giờ
+  if (releaseDateTime > now) {
+    const diffMs = releaseDateTime - now;
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const diffHours = Math.floor(
+      (diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
 
-    if (diffHours >= 24) {
-      const diffDays = Math.floor(diffHours / 24); // Số ngày còn lại
-      return `Công chiếu sau ${diffDays} ngày ${diffHours % 24} giờ nữa`;
+    if (diffDays >= 1) {
+      return `Công chiếu sau ${diffDays} ngày ${diffHours} giờ nữa`;
     } else if (diffHours >= 1) {
       return `Công chiếu sau ${diffHours} giờ ${diffMinutes} phút nữa`;
     } else {

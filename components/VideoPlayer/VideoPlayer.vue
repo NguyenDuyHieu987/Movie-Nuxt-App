@@ -81,35 +81,15 @@
             v-else
             class="prevent-notification-wrapper"
           >
-            <div class="require-vip">
-              <div
-                v-if="authStore.vipNumber == 0"
-                class="require-vip-message"
-              >
+            <div
+              v-if="authStore.vipNumber == 0"
+              class="require-vip"
+            >
+              <div class="require-vip-message">
                 <span>
                   Bạn cần nâng cấp tài khoản lên
                   <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem
                   phim.
-                </span>
-                <NuxtLink
-                  class="underline"
-                  :to="{
-                    path: `/upgrade/plans`,
-                    query: {
-                      order: movieVipNumber
-                    }
-                  }"
-                >
-                  Nâng cấp ngay
-                </NuxtLink>
-              </div>
-              <div
-                v-else
-                class="require-vip-message"
-              >
-                <span>
-                  Bạn cần nâng cấp tài khoản lên
-                  <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim
                 </span>
                 <NuxtLink
                   class="underline"
@@ -134,7 +114,7 @@
             (videoStates.isLoading &&
               !videoStates.isEndedVideo &&
               !videoStates.isRewind.enable) ||
-            !mounted ||
+            (!mounted && isEligibleToWatch) ||
             loadingData
           "
           class="loading-video"
@@ -772,7 +752,7 @@ const ísWatchable = computed<boolean>(
       !videoStates.isEndedVideo &&
       !videoStates.isRewind.enable
     ) &&
-    !mounted.value &&
+    // !mounted.value &&
     !props.loadingData &&
     !videoStates.isLoadError.enable
 );

@@ -106,35 +106,15 @@
             v-else
             class="prevent-notification-wrapper"
           >
-            <div class="require-vip">
-              <div
-                v-if="authStore.vipNumber == 0"
-                class="require-vip-message"
-              >
+            <div
+              v-if="authStore.vipNumber == 0"
+              class="require-vip"
+            >
+              <div class="require-vip-message">
                 <span>
                   Bạn cần nâng cấp tài khoản lên
                   <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem
                   phim.
-                </span>
-                <NuxtLink
-                  class="underline"
-                  :to="{
-                    path: `/upgrade/plans`,
-                    query: {
-                      order: movieVipNumber
-                    }
-                  }"
-                >
-                  Nâng cấp ngay
-                </NuxtLink>
-              </div>
-              <div
-                v-else
-                class="require-vip-message"
-              >
-                <span>
-                  Bạn cần nâng cấp tài khoản lên
-                  <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim
                 </span>
                 <NuxtLink
                   class="underline"
@@ -159,7 +139,8 @@
             (videoStates.isLoading &&
               !videoStates.isEndedVideo &&
               !videoStates.isRewind.enable) ||
-            ((!mounted || loadingData) && !isEndedBroadcast)
+            (((!mounted && isEligibleToWatch) || loadingData) &&
+              !isEndedBroadcast)
           "
           class="loading-video"
         >
@@ -780,7 +761,7 @@ const ísWatchable = computed<boolean>(
       !videoStates.isEndedVideo &&
       !videoStates.isRewind.enable
     ) &&
-    !mounted.value &&
+    // !mounted.value &&
     !props.loadingData &&
     !isEndedBroadcast.value &&
     timeRemaining.value <= 0 &&
@@ -903,6 +884,7 @@ const seconds = computed<number>(() =>
   Math.floor((timeRemaining.value % (1000 * 60)) / 1000)
 );
 const isEndedBroadcast = ref<boolean>(false);
+console.log(startTime.value);
 
 const loadM3u8Video = async () => {
   // if (Hls.isSupported()) {

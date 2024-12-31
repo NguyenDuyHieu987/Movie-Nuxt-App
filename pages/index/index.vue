@@ -70,7 +70,7 @@
         </h2>
       </section>
 
-      <LoadingSectionVertical
+      <LoadingSectionHorizontal
         :class="loading == true ? 'home-section' : null"
         v-model:loading="loading"
       >
@@ -176,7 +176,7 @@
         </FigureSlide> -->
           </section>
         </template>
-      </LoadingSectionVertical>
+      </LoadingSectionHorizontal>
 
       <LoadingSpinner
         v-show="loadMore"
