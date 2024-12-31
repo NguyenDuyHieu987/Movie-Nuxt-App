@@ -363,10 +363,14 @@
                     @click="onClickVolumeUp"
                   />
 
-                  <!-- <SvgoVolumeOff -->
-                  v-show="videoStates.isVolumeOff" name="ic:baseline-volume-off"
-                  width="2.7rem" height="2.7rem" fill="currentColor"
-                  @click="onClickVolumeOff" />
+                  <SvgoVolumeOff
+                    v-show="videoStates.isVolumeOff"
+                    name="ic:baseline-volume-off"
+                    width="2.7rem"
+                    height="2.7rem"
+                    fill="currentColor"
+                    @click="onClickVolumeOff"
+                  />
                 </div>
                 <!-- <a-slider
                   class="volume-slider"
@@ -935,7 +939,8 @@ const loadM3u8Video = async () => {
 
         const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
 
-        if (elapsedSeconds < video.value!.duration) {
+        // if (elapsedSeconds < video.value!.duration) {
+        if (elapsedSeconds < dataMovie.value.runtime) {
           video
             .value!.play()
             .then(() => {
