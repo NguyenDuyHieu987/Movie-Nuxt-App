@@ -121,8 +121,6 @@ function toNow(releaseTime: string): string {
     new Date(releaseTime).getTimezoneOffset() * 60 * 1000;
   const now = new Date().getTime();
 
-  console.log(releaseDateTime);
-
   if (releaseDateTime > now) {
     const diffMs = releaseDateTime - now;
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
