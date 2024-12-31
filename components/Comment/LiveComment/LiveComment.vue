@@ -25,17 +25,7 @@
             >
               <NuxtImg
                 class="avatar"
-                :src="
-                  !isNaN(+comment.author?.avatar!)
-                    ? getImage(
-                        `account${comment.author?.avatar}.jpg`,
-                        'user_avatar',
-                        {
-                          w: 50
-                        }
-                      )
-                    : comment.author?.avatar
-                "
+                :src="getUserAvatar(comment.author?.avatar)"
                 loading="lazy"
                 alt=""
               />
@@ -196,7 +186,7 @@
 // import SvgoNotoSmilingFace from '~/assets/svgs/icons/NotoSmilingFace.svg?component';
 // import SvgoNotoSmilingFaceSweat from '~/assets/svgs/icons/NotoSmilingFaceSweat.svg?component';
 
-import { getImage } from '~/services/image';
+import { getImage, getUserAvatar } from '~/services/image';
 
 import { Socket, io } from 'socket.io-client';
 import DOMPurify from 'dompurify';

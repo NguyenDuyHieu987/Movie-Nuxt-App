@@ -9,13 +9,7 @@
         <div class="author-image">
           <NuxtImg
             class="avatar"
-            :src="
-              !isNaN(+item?.user_avatar!)
-                ? getImage(`account${item?.user_avatar}.jpg`, 'user_avatar', {
-                    w: 50
-                  })
-                : item?.user_avatar
-            "
+            :src="getUserAvatar(item?.user_avatar)"
             loading="lazy"
             alt=""
           />
@@ -152,7 +146,7 @@ import FormComment from '~/components/Comment/FormComment/FormComment.vue';
 import CommentContent from '~/components/Comment/CommentContent/CommentContent.vue';
 import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
 import { DeleteComment } from '~/services/comment';
-import { getImage } from '~/services/image';
+import { getImage, getUserAvatar } from '~/services/image';
 import { ElNotification } from 'element-plus';
 import DOMPurify from 'dompurify';
 import reject from 'lodash/reject';

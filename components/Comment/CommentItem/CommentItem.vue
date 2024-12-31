@@ -5,13 +5,7 @@
         <div class="author-image">
           <NuxtImg
             class="avatar"
-            :src="
-              !isNaN(+item?.user_avatar!)
-                ? getImage(`account${item?.user_avatar}.jpg`, 'user_avatar', {
-                    w: 50
-                  })
-                : item?.user_avatar
-            "
+            :src="getUserAvatar(item?.user_avatar)"
             loading="lazy"
             alt=""
           />
@@ -243,7 +237,7 @@ import LikeDislike from '~/components/Comment/LikeDislike/LikeDislike.vue';
 import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
 import { DeleteComment, getCommentChild } from '~/services/comment';
 import { ElNotification } from 'element-plus';
-import { getImage } from '~/services/image';
+import { getImage, getUserAvatar } from '~/services/image';
 import DOMPurify from 'dompurify';
 import { storeToRefs } from 'pinia';
 import type { commentForm } from '@/types';

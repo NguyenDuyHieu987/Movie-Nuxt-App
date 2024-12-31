@@ -57,7 +57,7 @@
           <div class="left">
             <!-- <Icon name="ic:baseline-insert-emoticon" class="emoticon" /> -->
 
-            <Emoticon
+            <SvgoEmoticon
               class="emoticon"
               width="2.2rem"
               height="2.2rem"
@@ -95,7 +95,7 @@
 </template>
 
 <script setup lang="ts">
-import Emoticon from '~/assets/svgs/icons/emoticon.svg?component';
+// import SvgoEmoticon from '~/assets/svgs/icons/emoticon.svg?component';
 
 // import EmojiPicker from '~/components/Comment/EmojiPicker/EmojiPicker.vue';
 import { CommentMovie, EditComment } from '~/services/comment';
