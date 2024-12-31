@@ -306,7 +306,7 @@
             <div class="left">
               <div class="play-pause">
                 <SvgoReplay
-                  v-show="videoStates.isEndedVideo"
+                  v-show="isEndedBroadcast"
                   class="replay"
                   width="2.6rem"
                   height="2.6rem"
@@ -315,7 +315,7 @@
                 />
 
                 <SvgoPlay
-                  v-show="!videoStates.isPlayVideo && !videoStates.isEndedVideo"
+                  v-show="!videoStates.isPlayVideo && !isEndedBroadcast"
                   class="play"
                   width="2.6rem"
                   height="2.6rem"
@@ -324,7 +324,7 @@
                 />
 
                 <SvgoPause
-                  v-show="videoStates.isPlayVideo && !videoStates.isEndedVideo"
+                  v-show="videoStates.isPlayVideo && !isEndedBroadcast"
                   class="pause"
                   width="2.6rem"
                   height="2.6rem"
