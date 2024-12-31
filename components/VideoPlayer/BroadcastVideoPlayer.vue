@@ -141,7 +141,8 @@
             (videoStates.isLoading &&
               !videoStates.isEndedVideo &&
               !videoStates.isRewind.enable) ||
-            ((!mounted || loadingData) && !isEndedBroadcast)
+            (((!mounted && timeRemaining <= 0) || loadingData) &&
+              !isEndedBroadcast)
           "
           class="loading-video"
         >
@@ -724,6 +725,7 @@
 import { getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
 import Hls from 'hls.js';
+import { isProduction } from 'std-env';
 
 const props = withDefaults(
   defineProps<{
@@ -766,7 +768,7 @@ const ísWatchable = computed<boolean>(
       // !videoStates.isEndedVideo &&
       !videoStates.isRewind.enable
     ) &&
-    !mounted.value &&
+    // !mounted.value &&
     !props.loadingData &&
     !isEndedBroadcast.value &&
     timeRemaining.value <= 0 &&
@@ -872,7 +874,10 @@ const mounted = ref<boolean>(false);
 const hls = ref<Hls | null>();
 // const startTime = computed<number>(()=>new Date('2024-12-15T15:25:00').getTime());
 const startTime = computed<number>(() =>
-  new Date(props.dataBroadcast.release_time).getTime()
+  !mounted.value && isProduction
+    ? new Date(props.dataBroadcast.release_time).getTime() +
+      new Date(props.dataBroadcast.release_time).getTimezoneOffset() * 60 * 1000
+    : new Date(props.dataBroadcast.release_time).getTime()
 );
 const timerCountdown = ref<NodeJS.Timeout | null>(null);
 const timeRemaining = ref<number>(1);
@@ -889,6 +894,8 @@ const seconds = computed<number>(() =>
   Math.floor((timeRemaining.value % (1000 * 60)) / 1000)
 );
 const isEndedBroadcast = ref<boolean>(false);
+console.log(new Date(props.dataBroadcast.release_time).toString());
+console.log(new Date(props.dataBroadcast.release_time).getTimezoneOffset());
 
 const loadM3u8Video = async () => {
   // if (Hls.isSupported()) {
