@@ -725,7 +725,6 @@
 import { getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
 import Hls from 'hls.js';
-import { nuxtConfig.app.production_mode } from 'std-env';
 
 const props = withDefaults(
   defineProps<{
@@ -1115,6 +1114,8 @@ onBeforeRouteLeave(() => {
 onBeforeMount(() => {});
 
 onMounted(async () => {
+  mounted.value = true;
+
   // calculateTimeRemaining();
   if (timeRemaining.value > 0) {
     timerCountdown.value = setInterval(calculateTimeRemaining, 1000);
@@ -1131,8 +1132,6 @@ onMounted(async () => {
   //     }
   //   }
   // );
-
-  mounted.value = true;
 
   if (isEndedBroadcast.value) return;
 
