@@ -153,13 +153,13 @@
               class="animate-emoji"
               :class="{ animate: isAnimateEmoji }"
             >
-              <NotoSmilingFace
+              <SvgoNotoSmilingFace
                 v-if="animateEmojiType == 'smile'"
                 class="NotoSmilingFace-icon"
                 width="2.2rem"
                 height="2.2rem"
               />
-              <NotoSmilingFaceSweat
+              <SvgoNotoSmilingFaceSweat
                 v-else-if="animateEmojiType == 'smile-sweat'"
                 class="NotoSmilingFaceSweat-icon"
                 width="2.2rem"
