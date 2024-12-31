@@ -306,7 +306,7 @@
             <div class="left">
               <div class="play-pause">
                 <SvgoReplay
-                  v-show="isEndedBroadcast"
+                  v-show="videoStates.isEndedVideo"
                   class="replay"
                   width="2.6rem"
                   height="2.6rem"
@@ -315,7 +315,7 @@
                 />
 
                 <SvgoPlay
-                  v-show="!videoStates.isPlayVideo && !isEndedBroadcast"
+                  v-show="!videoStates.isPlayVideo && !videoStates.isEndedVideo"
                   class="play"
                   width="2.6rem"
                   height="2.6rem"
@@ -324,7 +324,7 @@
                 />
 
                 <SvgoPause
-                  v-show="videoStates.isPlayVideo && !isEndedBroadcast"
+                  v-show="videoStates.isPlayVideo && !videoStates.isEndedVideo"
                   class="pause"
                   width="2.6rem"
                   height="2.6rem"
@@ -1231,7 +1231,7 @@ const handleTimeUpdate = (e: any) => {
 
   video.value!.currentTime = percent * elapsedSeconds.value;
 
-  videoStates.isEndedVideo = video.value!.currentTime == elapsedSeconds.value;
+  // videoStates.isEndedVideo = video.value!.currentTime == elapsedSeconds.value;
 
   drawTimeLine(e);
 };
@@ -1415,14 +1415,14 @@ const onPauseVideo = () => {
 
 const checkEndedVideo = () => {
   if (elapsedSeconds.value == video.value!.duration) {
-    videoStates.isEndedVideo = true;
+    // videoStates.isEndedVideo = true;
   } else {
     videoStates.isEndedVideo = false;
   }
 };
 
 const onEndedVideo = () => {
-  videoStates.isEndedVideo = true;
+  // videoStates.isEndedVideo = true;
   videoStates.isShowControls = true;
 };
 
