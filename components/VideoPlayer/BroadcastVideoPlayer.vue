@@ -872,8 +872,10 @@ const timeOutVolumeChange = ref<any>();
 const mounted = ref<boolean>(false);
 const hls = ref<Hls | null>();
 // const startTime = computed<number>(()=>new Date('2024-12-15T15:25:00').getTime());
-const startTime = computed<number>(() =>
-  new Date(props.dataBroadcast.release_time).getTime()
+const startTime = computed<number>(
+  () =>
+    new Date(props.dataBroadcast.release_time).getTime() +
+    new Date(props.dataBroadcast.release_time).getTimezoneOffset() * 60 * 1000
 );
 const timerCountdown = ref<NodeJS.Timeout | null>(null);
 const timeRemaining = ref<number>(1);
@@ -890,8 +892,6 @@ const seconds = computed<number>(() =>
   Math.floor((timeRemaining.value % (1000 * 60)) / 1000)
 );
 const isEndedBroadcast = ref<boolean>(false);
-console.log(new Date(props.dataBroadcast.release_time).toString());
-console.log(new Date(props.dataBroadcast.release_time).getTimezoneOffset());
 
 const loadM3u8Video = async () => {
   // if (Hls.isSupported()) {
@@ -1028,6 +1028,10 @@ watch(
     if (dataMovie.value) {
       // const now = Date.now();
       const now = new Date().getTime();
+
+      console.log(new Date().toString());
+      console.log(new Date().getTime());
+      console.log(new Date().getTimezoneOffset());
 
       const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
 
