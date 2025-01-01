@@ -873,11 +873,7 @@ const mounted = ref<boolean>(false);
 const hls = ref<Hls | null>();
 // const startTime = computed<number>(()=>new Date('2024-12-15T15:25:00').getTime());
 const startTime = computed<number>(() =>
-  // && nuxtConfig.app.production_mode
-  !mounted.value
-    ? new Date(props.dataBroadcast.release_time).getTime() +
-      new Date(props.dataBroadcast.release_time).getTimezoneOffset() * 60 * 1000
-    : new Date(props.dataBroadcast.release_time).getTime()
+  new Date(props.dataBroadcast.release_time).getTime()
 );
 const timerCountdown = ref<NodeJS.Timeout | null>(null);
 const timeRemaining = ref<number>(1);
@@ -1030,7 +1026,8 @@ watch(
   () => props.dataBroadcast,
   (newVal) => {
     if (dataMovie.value) {
-      const now = Date.now();
+      // const now = Date.now();
+      const now = new Date().getTime();
 
       const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
 
