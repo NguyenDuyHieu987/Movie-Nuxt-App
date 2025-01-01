@@ -116,7 +116,7 @@
             (videoStates.isLoading &&
               !videoStates.isEndedVideo &&
               !videoStates.isRewind.enable) ||
-            (!mounted && isEligibleToWatch) ||
+            !mounted ||
             loadingData
           "
           class="loading-video"
