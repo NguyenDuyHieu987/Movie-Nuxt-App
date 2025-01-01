@@ -1038,11 +1038,7 @@ watch(
       // console.log('now:', dateNow.toString());
       // console.log('now:', dateNow.getTime());
 
-      const timezoneOffset = -420 * 60 * 1000;
-
-      const elapsedSeconds = Math.floor(
-        (now - (startTime.value + timezoneOffset)) / 1000
-      );
+      const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
 
       timeRemaining.value = startTime.value - now;
 
