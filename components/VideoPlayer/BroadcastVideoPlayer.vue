@@ -872,10 +872,8 @@ const timeOutVolumeChange = ref<any>();
 const mounted = ref<boolean>(false);
 const hls = ref<Hls | null>();
 // const startTime = computed<number>(()=>new Date('2024-12-15T15:25:00').getTime());
-const startTime = computed<number>(
-  () =>
-    new Date(props.dataBroadcast.release_time).getTime() +
-    new Date(props.dataBroadcast.release_time).getTimezoneOffset() * 60 * 1000
+const startTime = computed<number>(() =>
+  new Date(props.dataBroadcast.release_time).getTime()
 );
 const timerCountdown = ref<NodeJS.Timeout | null>(null);
 const timeRemaining = ref<number>(1);
@@ -1029,19 +1027,14 @@ watch(
       // const now = Date.now();
       const now = new Date().getTime();
 
-      console.log(
-        'release_time: ',
-        new Date(props.dataBroadcast.release_time).toString()
+      const elapsedSeconds = Math.floor(
+        (now -
+          (startTime.value +
+            new Date(props.dataBroadcast.release_time).getTimezoneOffset() *
+              60 *
+              1000)) /
+          1000
       );
-      console.log(
-        'release_time: ',
-        new Date(props.dataBroadcast.release_time).getTime()
-      );
-      const nowDate = new Date();
-      console.log('now: ', nowDate.toString());
-      console.log('now: ', nowDate.getTime());
-
-      const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
 
       timeRemaining.value = startTime.value - now;
 
