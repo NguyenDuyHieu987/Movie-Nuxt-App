@@ -190,6 +190,7 @@ import { getImage, getUserAvatar } from '~/services/image';
 
 import { Socket, io } from 'socket.io-client';
 import DOMPurify from 'dompurify';
+import { InteractBroadcast } from '~/services/broadcast';
 
 const props = defineProps<{
   dataBroadcast: any;
@@ -282,6 +283,14 @@ const sendEmoji = (emoji_type: string) => {
     roomID: roomID.value,
     emoji_type: emoji_type
   });
+
+  InteractBroadcast(roomID.value)
+    .then((response) => {
+      if (response?.success) {
+        // Do something
+      }
+    })
+    .catch((e) => {});
 };
 
 onUnmounted(() => {

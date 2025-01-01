@@ -16,6 +16,12 @@ export function getAllAiringBroadcast(page: number = 1, limit: number = 20) {
   });
 }
 
-export function getBroadcastById(movieId: number | string) {
-  return makeRequest(`/${PREFIX_ROUTE}/detail/${movieId}`);
+export function getBroadcastById(broadcastId: number | string) {
+  return makeRequest(`/${PREFIX_ROUTE}/detail/${broadcastId}`);
+}
+
+export function InteractBroadcast(broadcastId: number | string) {
+  return makeRequest(`/${PREFIX_ROUTE}/interact/${broadcastId}`, null, {
+    method: 'POST'
+  });
 }
