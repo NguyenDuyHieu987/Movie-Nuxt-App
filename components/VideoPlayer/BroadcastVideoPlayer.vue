@@ -1029,9 +1029,17 @@ watch(
       // const now = Date.now();
       const now = new Date().getTime();
 
-      console.log(new Date().toString());
-      console.log(new Date().getTime());
-      console.log(new Date().getTimezoneOffset());
+      console.log(
+        'release_time: ',
+        new Date(props.dataBroadcast.release_time).toString()
+      );
+      console.log(
+        'release_time: ',
+        new Date(props.dataBroadcast.release_time).toString()
+      );
+      const nowDate = new Date();
+      console.log('now: ', nowDate.toString());
+      console.log('now: ', nowDate.getTime());
 
       const elapsedSeconds = Math.floor((now - startTime.value) / 1000);
 
