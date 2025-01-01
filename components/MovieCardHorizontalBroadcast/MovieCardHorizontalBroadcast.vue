@@ -81,7 +81,9 @@
       <div class="right">
         <div class="release-time-wrapper">
           <p class="release-time">
-            {{ utils.dateTimeFormater.toNow(item?.release_time) }}
+            <ClientOnly>
+              {{ utils.dateTimeFormater.toNow(item?.release_time) }}
+            </ClientOnly>
           </p>
         </div>
 
