@@ -1024,16 +1024,24 @@ watch(
   () => props.dataBroadcast,
   (newVal) => {
     if (dataMovie.value) {
-      // const now = Date.now();
-      const now = new Date().getTime();
+      const now = Date.now();
+
+      // console.log(
+      //   'release_time:',
+      //   new Date(props.dataBroadcast.release_time).toString()
+      // );
+      // console.log(
+      //   'release_time:',
+      //   new Date(props.dataBroadcast.release_time).getTime()
+      // );
+      // const dateNow = new Date();
+      // console.log('now:', dateNow.toString());
+      // console.log('now:', dateNow.getTime());
+
+      const timezoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
 
       const elapsedSeconds = Math.floor(
-        (now -
-          (startTime.value +
-            new Date(props.dataBroadcast.release_time).getTimezoneOffset() *
-              60 *
-              1000)) /
-          1000
+        (now - (startTime.value + timezoneOffset)) / 1000
       );
 
       timeRemaining.value = startTime.value - now;
