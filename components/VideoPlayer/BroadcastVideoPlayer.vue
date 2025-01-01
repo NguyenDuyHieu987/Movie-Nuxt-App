@@ -1035,7 +1035,7 @@ watch(
       );
       console.log(
         'release_time: ',
-        new Date(props.dataBroadcast.release_time).toString()
+        new Date(props.dataBroadcast.release_time).getTime()
       );
       const nowDate = new Date();
       console.log('now: ', nowDate.toString());
