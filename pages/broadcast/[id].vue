@@ -382,8 +382,9 @@ const { data: dataBroadcast, status: statusBroadcast } = await useAsyncData(
 movieId.value = dataBroadcast.value.movieData.id;
 
 const { data: dataMovie, status } = await useAsyncData(
-  `movie/detail/${movieId.value}`,
-  () => getMovieByType_Id('movie', movieId.value),
+  `${dataBroadcast.value.movieData.media_type}/detail/${movieId.value}`,
+  () =>
+    getMovieByType_Id(dataBroadcast.value.movieData.media_type, movieId.value),
   {
     // lazy: true
   }
