@@ -248,7 +248,7 @@ const page = ref<number>(1);
 const pageSize = ref<number>(3);
 const total = ref<number>(0);
 const recommends = ref<any>([]);
-// const broadcasts = ref<any>([]);
+const broadcasts = ref<any>([]);
 const isLoading = computed<boolean>(() => status.value != 'success');
 const loading = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
@@ -452,10 +452,17 @@ const { data: modLíst, status } = await useAsyncData(
   // }
 );
 
-const { data: broadcasts, status: statusBroadcast } = await useAsyncData(
-  `broadcast/all/1/20`,
-  () => getAllAiringBroadcast(page.value, pageSize.value)
-);
+// const { data: broadcasts, status: statusBroadcast } = await useAsyncData(
+//   `broadcast/all/1/20`,
+//   () => getAllAiringBroadcast(page.value, pageSize.value)
+// );
+
+await getAllAiringBroadcast(page.value, pageSize.value)
+  .then((response) => {
+    broadcasts.value = response;
+  })
+  .catch((e) => {})
+  .finally(() => {});
 
 trendings.value = modLíst.value?.results[0].data;
 total.value = modLíst.value?.total;
