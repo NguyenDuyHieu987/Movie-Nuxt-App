@@ -219,33 +219,37 @@
             animated
           >
             <template #template>
-              <div class="poster-box">
-                <div class="img-box">
-                  <el-skeleton-item class="skeleton-img ratio-2-3" />
-                </div>
-                <div class="movie-info">
-                  <el-skeleton-item
-                    variant="text"
-                    style="width: 100px"
-                  />
-                  <el-skeleton-item
-                    variant="text"
-                    style="width: 150px"
-                  />
-                </div>
-              </div>
-
               <el-skeleton-item
                 variant="text"
-                style="width: 300px"
+                style="width: 90%"
               />
               <el-skeleton-item
                 variant="text"
-                style="width: 150px"
+                style="width: 100%"
               />
               <el-skeleton-item
                 variant="text"
-                style="width: 200px"
+                style="width: 80%"
+              />
+              <el-skeleton-item
+                variant="text"
+                style="width: 87%"
+              />
+              <el-skeleton-item
+                variant="text"
+                style="width: 77%"
+              />
+              <el-skeleton-item
+                variant="text"
+                style="width: 56%"
+              />
+              <el-skeleton-item
+                variant="text"
+                style="width: 60%"
+              />
+              <el-skeleton-item
+                variant="text"
+                style="width: 70%"
               />
             </template>
             <template #default>
