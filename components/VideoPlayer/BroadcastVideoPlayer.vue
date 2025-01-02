@@ -1092,8 +1092,11 @@ const clearVideoPlayer = () => {
 
   if (!isEligibleToWatch.value && !video.value) return;
 
-  if (!video.value!.paused) {
-    video.value!.pause();
+  if (video.value) {
+    video.value.pause();
+    video.value.removeEventListener('progress', onProgressVideo);
+    video.value.src = '';
+    video.value.load();
   }
 
   if (hls.value) {
@@ -1103,7 +1106,6 @@ const clearVideoPlayer = () => {
 
   window.removeEventListener('pointerup', windowPointerUp);
   window.removeEventListener('touchend', windowTouchEnd);
-  video.value!.removeEventListener('progress', onProgressVideo);
 };
 
 onBeforeUnmount(() => {
