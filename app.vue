@@ -106,6 +106,7 @@ useHead({
 let notCacheList = ref<string[]>([
   'follow',
   'history',
+  'broadcast',
   'info-movie',
   'play-movie',
   'info-tv',
