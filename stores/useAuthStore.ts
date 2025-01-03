@@ -7,7 +7,7 @@ import { getUserByToken, LogOut } from '~/services/authentication';
 import { getMySubscription } from '~/services/subscription';
 
 export const useAuthStore = defineStore('auth', () => {
-  const userAccount = ref<user>(null);
+  const userAccount = ref<user | null>(null);
   const subscription = ref<subscription>(null);
   const role = computed<string>(() => userAccount.value?.role || 'normal');
   const isLogin = computed<boolean>(() => !!userAccount.value);

@@ -96,11 +96,12 @@ export declare type user = {
   role: string;
   avatar: string | number;
   auth_type: string | 'email' | 'facebook' | 'google';
+  status: string | 'active' | 'banned' | 'deleted';
   created_at: string;
   updated_at: string;
   createdAt?: string;
   updatedAt?: string;
-} | null;
+};
 
 export declare type subscription = {
   id: string;
