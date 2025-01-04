@@ -259,7 +259,7 @@
     <el-dialog
       class="upload-avatar-dialog"
       v-model="modalUploadAvatarVisible"
-      title="Upload avatar"
+      title="Đổi avatar"
       align-center
       style="max-width: 500px"
       :before-close="onBeforeCloseModalUploadAvatar"
@@ -289,7 +289,7 @@
             @click="onUploadAvatar"
             :loading="loadingUploadAvatar"
           >
-            Upload
+            Đổi
           </el-button>
         </div>
       </template>

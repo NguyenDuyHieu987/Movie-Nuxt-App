@@ -121,7 +121,12 @@
               <span>{{ mod.name }}</span>
               <NuxtLink
                 class="view-all"
-                :to="mod.path"
+                :to="{
+                  path: `discover/${mod.media_type}`,
+                  query: {
+                    type: mod.type
+                  }
+                }"
               >
                 <!-- :to="{
                   path: `${mod.path}`,
