@@ -382,6 +382,10 @@ onBeforeMount(() => {
   }, 1000);
 });
 
+onBeforeUnmount(() => {
+  socket.value!.emit('leaveRoom', broadcastId.value);
+});
+
 onMounted(() => {
   windowWidth.value = window.innerWidth;
 

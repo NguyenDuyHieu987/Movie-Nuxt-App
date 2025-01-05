@@ -223,7 +223,7 @@ onBeforeMount(() => {
       : nuxtConfig.app.apiGatewayDev
   );
 
-  socket.value.emit('joinMovie', roomID.value);
+  socket.value.emit('joinRoom', roomID.value);
 
   socket.value.on('initialComments', (initialComments: any) => {
     comments.value = initialComments;
