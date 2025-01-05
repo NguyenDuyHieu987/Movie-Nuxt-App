@@ -171,7 +171,7 @@ export default defineNuxtConfig({
     '@element-plus/nuxt',
     // '@vueuse/nuxt',
     '@pinia/nuxt',
-    // '@unocss/nuxt',
+    '@unocss/nuxt',
     'nuxt-swiper',
     '@nuxt/image',
     '@nuxtjs/fontaine',

@@ -113,7 +113,10 @@
               </div>
             </template>
             <template #default>
-              <h2 class="movie-title">{{ dataMovie?.name }}</h2>
+              <div class="flex items-center justify-between gap-15px">
+                <h2 class="movie-title">{{ dataMovie?.name }}</h2>
+                <p class="mr-20px">{{ liveViews }} người đang xem</p>
+              </div>
               <h3
                 v-if="dataMovie?.name != dataMovie?.original_name"
                 class="movie-original-title"
@@ -309,7 +312,7 @@ import { getBroadcastById } from '~/services/broadcast';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
-import { data } from 'jquery';
+import { Socket, io } from 'socket.io-client';
 
 defineOptions({ name: 'broadcast' });
 
@@ -324,6 +327,7 @@ definePageMeta({
   // }
 });
 
+const nuxtConfig = useRuntimeConfig();
 const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
@@ -358,6 +362,25 @@ const broadcastId = computed<string>((): string =>
 );
 const movieId = ref<string>('');
 const isEndedBroadcast = ref<boolean>(false);
+const socket = ref<Socket>();
+const liveViews = ref<number>(0);
+
+onBeforeMount(() => {
+  socket.value = io(
+    import.meta.env.PROD
+      ? nuxtConfig.app.apiGateway
+      : nuxtConfig.app.apiGatewayDev
+  );
+
+  setInterval(() => {
+    socket.value!.emit('getStatus', broadcastId.value);
+
+    socket.value!.on('getStatus', (status: any) => {
+      // console.log(status);
+      liveViews.value = status.clientCount;
+    });
+  }, 1000);
+});
 
 onMounted(() => {
   windowWidth.value = window.innerWidth;

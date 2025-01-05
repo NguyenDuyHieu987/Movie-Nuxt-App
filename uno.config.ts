@@ -1,6 +1,7 @@
 import {
   defineConfig,
   presetUno,
+  presetWind,
   presetAttributify,
   presetIcons
 } from 'unocss';
@@ -8,6 +9,7 @@ import {
 export default defineConfig({
   presets: [
     presetUno(),
+    // presetWind(), // Giống Tailwind CSS
     presetAttributify(), // Cho phép sử dụng các thuộc tính như `bg="red-500"`
     presetIcons({
       scale: 1.2,

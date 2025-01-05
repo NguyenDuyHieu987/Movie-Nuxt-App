@@ -29,6 +29,7 @@
       & > .container {
         position: relative;
         min-height: calc(100vh - 50px - var(--header-height));
+        max-width: none;
         padding-bottom: 50px;
       }
     }
