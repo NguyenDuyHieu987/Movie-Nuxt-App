@@ -309,7 +309,7 @@ const props = defineProps<{
   item: any;
   prevItem: any;
   type: string | undefined;
-  getDataWhenRemoveHistory: (id: number) => void;
+  getDataWhenRemoveHistory: (id: string) => void;
 }>();
 
 const store = useStore();
@@ -449,7 +449,7 @@ const handleRemoveFromHistory = async () => {
       props.item?.media_type
     )
   ) {
-    props.getDataWhenRemoveHistory(props.item?.movie_id);
+    props.getDataWhenRemoveHistory(props.item?.id);
   }
 };
 </script>

@@ -237,7 +237,7 @@ const props = defineProps<{
   item: any;
   index: number;
   type: string | undefined;
-  getDataWhenRemoveList: (id: number) => void;
+  getDataWhenRemoveList: (id: string) => void;
 }>();
 
 const store = useStore();
@@ -319,7 +319,7 @@ const handleRemoveFromList = async () => {
       props.item?.media_type
     )
   ) {
-    props.getDataWhenRemoveList(props.item?.movie_id);
+    props.getDataWhenRemoveList(props.item?.id);
   }
 };
 </script>

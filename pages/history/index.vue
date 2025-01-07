@@ -279,10 +279,10 @@ showData.value = false;
 
 getData();
 
-const getDataWhenRemoveHistory = (data: number) => {
+const getDataWhenRemoveHistory = (data: string) => {
   // dataHistory.value = data;
   dataHistory.value = _lodash_Reject(dataHistory.value, (x) => {
-    return x.movie_id === data;
+    return x.id === data;
   });
   total.value = dataHistory.value?.length;
   topicImage.value = dataHistory.value[0]?.backdrop_path;

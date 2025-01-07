@@ -282,10 +282,10 @@ showData.value = false;
 
 getData();
 
-const getDataWhenRemoveList = (data: number) => {
+const getDataWhenRemoveList = (data: string) => {
   // dataList.value = data;
   dataList.value = reject(dataList.value, (x) => {
-    return x.movie_id === data;
+    return x.id === data;
   });
   total.value = dataList.value?.length;
   topicImage.value = dataList.value[0]?.backdrop_path;
