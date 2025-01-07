@@ -36,6 +36,8 @@
   }
 
   &.underline {
+    text-decoration-line: none;
+
     &::before {
       content: '';
       position: absolute;
