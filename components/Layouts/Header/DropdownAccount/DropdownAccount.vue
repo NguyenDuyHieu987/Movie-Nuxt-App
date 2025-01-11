@@ -1,7 +1,7 @@
 <template>
   <el-dropdown
     trigger="hover"
-    popper-class="header account"
+    popper-class="header account background-app-blur"
     placement="bottom-end"
     :show-timeout="0"
   >

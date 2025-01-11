@@ -17,7 +17,7 @@
     min-width: 255px;
     max-width: 320px;
     max-height: 100vh;
-    background-color: var(--preview-modal-background-color);
+    // background-color: var(--preview-modal-background-color);
     color: var(--text-color);
     border-radius: 5px;
     box-shadow: var(--box-shadow-medium);
@@ -108,6 +108,7 @@
     .backdrop-box {
       display: flex;
       position: relative;
+      background-color: var(--background-content-color);
       height: 0px;
       padding-bottom: 56.25%;
       overflow: hidden;
@@ -128,6 +129,7 @@
         video {
           height: 100%;
           width: 100%;
+          object-fit: cover;
         }
 
         .float-center {
@@ -229,7 +231,9 @@
         var(--preview-modal-background-color) 95%,
         var(--dominant-backdrop-color) 100%
       ); */
-      background-color: rgb(var(--dominant-backdrop-color), 0.2);
+      // background-color: rgb(var(--dominant-backdrop-color), 0.2);
+      background-color: rgb(var(--dominant-backdrop-color), 0.4);
+      backdrop-filter: blur(15px);
       /* cursor: pointer; */
 
       .widget {

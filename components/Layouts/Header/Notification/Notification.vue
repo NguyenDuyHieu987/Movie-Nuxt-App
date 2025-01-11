@@ -1,7 +1,7 @@
 <template>
   <el-dropdown
     trigger="click"
-    popper-class="header notification"
+    popper-class="header notification background-app-blur"
     placement="bottom-start"
     :show-timeout="0"
   >
@@ -37,10 +37,7 @@
           <span> Thông báo</span>
         </div>
 
-        <el-menu-item-group
-          key="public"
-          class="public"
-        >
+        <el-menu-item-group class="public">
           <template #title>
             <span>Thông báo chung</span>
             <span class="count-message">1</span>
@@ -50,10 +47,7 @@
 
         <div class="separate" />
 
-        <el-menu-item-group
-          key="private"
-          class="private"
-        >
+        <el-menu-item-group class="private">
           <template #title>
             <span>Thông báo cá nhân</span>
             <span class="count-message">2</span>

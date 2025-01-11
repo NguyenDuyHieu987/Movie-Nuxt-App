@@ -1,6 +1,6 @@
 <template>
   <div
-    class="search-dropdown"
+    class="search-dropdown background-app-blur"
     :class="{ show: isFocusSearchInput }"
     @pointerdown.prevent="handleMouseDownSearchDropdown"
   >

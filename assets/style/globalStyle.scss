@@ -323,3 +323,8 @@ video {
     }
   }
 }
+
+.background-app-blur {
+  background-color: #0505059c !important;
+  backdrop-filter: blur(15px);
+}

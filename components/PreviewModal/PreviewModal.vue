@@ -51,7 +51,7 @@
           <template #default>
             <div class="backdrop-box">
               <NuxtImg
-                v-show="!showVideo"
+                v-if="!showVideo"
                 :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
                 loading="lazy"
                 alt=""
@@ -60,11 +60,14 @@
               <div class="video-preview">
                 <!-- :src="videoSrc" -->
                 <video
-                  v-show="showVideo"
+                  v-if="showVideo"
                   id="video-player"
                   ref="video"
                   autoplay
                   muted
+                  :poster="
+                    getImage(item?.backdrop_path, 'backdrop', { h: 250 })
+                  "
                   @loadstart="onLoadStartVideo"
                   @waiting="onWaitingVideo"
                   @playing="onPLayingVideo"
@@ -86,7 +89,7 @@
                       width="1.8rem"
                       height="1.8rem"
                       fill="currentColor"
-                      @click="onClickVolumeUp"
+                      @click.prevent="onClickVolumeUp"
                     />
 
                     <SvgoVolumeOff
@@ -94,7 +97,7 @@
                       width="1.8rem"
                       height="1.8rem"
                       fill="currentColor"
-                      @click="onClickVolumeOff"
+                      @click.prevent="onClickVolumeOff"
                     />
                   </div>
                 </div>
@@ -434,7 +437,10 @@ const isOnlyRight = ref<boolean>(false);
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
-  getVideo('/feature/Transformer_5/Transformer_5' + '.m3u8')
+  getVideo(
+    props.dataMovie?.video_path ||
+      '/feature/Transformer_5/Transformer_5' + '.m3u8'
+  )
 );
 const videoStates = reactive({
   isLoading: false,
@@ -615,37 +621,45 @@ watch(
   { deep: true }
 );
 
-const loadM3u8Video = () => {
-  var video = document.getElementById('video-player') as HTMLVideoElement;
+const loadM3u8Video = async () => {
+  var videoEl = document.getElementById('video-player') as HTMLVideoElement;
 
-  if (!video) return;
+  if (!video.value && videoEl) {
+    video.value = videoEl;
+  }
+
+  if (!video.value) return;
 
   if (Hls.isSupported()) {
     var hls = new Hls();
     hls.loadSource(videoSrc.value);
-    hls.attachMedia(video!);
+    hls.attachMedia(video.value!);
     hls.on(Hls.Events.MANIFEST_PARSED, function () {
-      video?.play().catch(() => {});
+      video.value?.play().catch(() => {});
     });
-  } else if (video?.canPlayType('application/vnd.apple.mpegurl')) {
-    video!.src = videoSrc.value;
-    video?.addEventListener('loadedmetadata', function () {
-      video?.play().catch(() => {});
+  } else if (video.value?.canPlayType('application/vnd.apple.mpegurl')) {
+    video.value!.src = videoSrc.value;
+    video.value?.addEventListener('loadedmetadata', function () {
+      video.value?.play().catch(() => {});
     });
   }
 };
 
 watch(showVideo, async () => {
-  await nextTick();
+  var videoEl = document.getElementById('video-player') as HTMLVideoElement;
 
-  if (video.value) {
-    if (showVideo.value) {
-      showVideo.value = true;
-      // video.value!.play().catch(() => {});
-      loadM3u8Video();
-    } else {
-      showVideo.value = false;
-      video.value!.pause();
+  if (showVideo.value) {
+    videoStates.isLoading = true;
+    // await nextTick();
+    if (!videoEl) {
+      await wait(1000);
+    }
+
+    // video.value!.play().catch(() => {});
+    loadM3u8Video();
+  } else {
+    if (video.value) {
+      video.value.pause();
     }
   }
 });

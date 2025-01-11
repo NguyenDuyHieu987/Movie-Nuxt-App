@@ -40,7 +40,7 @@
       @click="onClickPlay"
     >
       <NuxtImg
-        v-show="!showVideo"
+        v-if="!showVideo"
         :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
         placeholder="/images/loading-img-16-9.webp"
         format="avif"
@@ -49,7 +49,10 @@
         :title="item?.name"
       />
 
-      <div class="video-preview">
+      <div
+        class="video-preview"
+        :class="{ show: showVideo }"
+      >
         <!-- :src="videoSrc" -->
         <video
           v-if="showVideo"
@@ -57,6 +60,7 @@
           ref="video"
           autoplay
           muted
+          :poster="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
           @loadstart="onLoadStartVideo"
           @waiting="onWaitingVideo"
           @playing="onPLayingVideo"
@@ -68,6 +72,26 @@
             class="loading-video"
           >
             <LoadingSpinner :width="25" />
+          </div>
+        </div>
+
+        <div class="video-tool">
+          <div class="volume">
+            <SvgoVolumeUp
+              v-show="!videoStates.isVolumeOff"
+              width="1.8rem"
+              height="1.8rem"
+              fill="currentColor"
+              @click.prevent="onClickVolumeUp"
+            />
+
+            <SvgoVolumeOff
+              v-show="videoStates.isVolumeOff"
+              width="1.8rem"
+              height="1.8rem"
+              fill="currentColor"
+              @click.prevent="onClickVolumeOff"
+            />
           </div>
         </div>
       </div>
@@ -210,11 +234,14 @@ const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
-  getVideo('/feature/Transformer_5/Transformer_5' + '.m3u8')
+  getVideo(
+    dataMovie.value?.video_path ||
+      '/feature/Transformer_5/Transformer_5' + '.m3u8'
+  )
 );
 const videoStates = reactive({
   isLoading: false,
-  isVolumeOff: false
+  isVolumeOff: true
 });
 
 const getData = async () => {
@@ -285,21 +312,25 @@ const handleAddToList = (e: any) => {
 };
 
 const loadM3u8Video = () => {
-  var video = document.getElementById('video-player') as HTMLVideoElement;
+  var videoEl = document.getElementById('video-player') as HTMLVideoElement;
 
-  if (!video) return;
+  if (!video.value && videoEl) {
+    video.value = videoEl;
+  }
+
+  if (!video.value) return;
 
   if (Hls.isSupported()) {
     var hls = new Hls();
     hls.loadSource(videoSrc.value);
-    hls.attachMedia(video!);
+    hls.attachMedia(video.value!);
     hls.on(Hls.Events.MANIFEST_PARSED, function () {
-      video?.play().catch(() => {});
+      video.value?.play().catch(() => {});
     });
-  } else if (video?.canPlayType('application/vnd.apple.mpegurl')) {
-    video!.src = videoSrc.value;
-    video?.addEventListener('loadedmetadata', function () {
-      video?.play().catch(() => {});
+  } else if (video.value?.canPlayType('application/vnd.apple.mpegurl')) {
+    video.value!.src = videoSrc.value;
+    video.value?.addEventListener('loadedmetadata', function () {
+      video.value?.play().catch(() => {});
     });
   }
 };
@@ -307,12 +338,13 @@ const loadM3u8Video = () => {
 const onMouseEnter = async () => {
   if (!showVideo.value) {
     showVideo.value = true;
+
+    // if (video.value! && video.value!.paused && !showVideo.value) {
+    //   video.value!.play().catch(() => {});
+    // }
+
     await nextTick();
     loadM3u8Video();
-
-    if (video.value! && video.value!.paused && !showVideo.value) {
-      // video.value!.play().catch(() => {});
-    }
   }
 };
 
@@ -326,7 +358,11 @@ const onMouseLeave = () => {
   }
 };
 
-const onClickPlay = () => {
+const onClickPlay = (e: Event) => {
+  if ((e.target as Element)?.closest('.video-tool')) {
+    return;
+  }
+
   navigateTo({
     path: isEpisodes.value
       ? `/play-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
@@ -352,6 +388,16 @@ const onPLayingVideo = (e: any) => {
 
 const onCanPlayVideo = () => {
   video.value!.play().catch(() => {});
+};
+
+const onClickVolumeUp = () => {
+  videoStates.isVolumeOff = true;
+  video.value!.muted = true;
+};
+
+const onClickVolumeOff = () => {
+  videoStates.isVolumeOff = false;
+  video.value!.muted = false;
 };
 </script>
 

@@ -141,6 +141,7 @@
   color: inherit !important;
   // font-size: inherit !important;
   line-height: inherit !important;
+  background: none !important;
 
   a {
     color: inherit;
@@ -152,6 +153,25 @@
     border-color: var(--dropdown-border-color) !important;
     box-shadow: var(--box-shadow-small) !important;
     font-size: inherit !important;
+
+    &.background-app-blur {
+      .el-dropdown-menu {
+        background-color: unset;
+
+        .el-dropdown-menu__item {
+          &:hover {
+            background-color: #50505077 !important;
+          }
+        }
+      }
+
+      .el-popper__arrow {
+        &::before {
+          background-color: inherit !important;
+          backdrop-filter: inherit;
+        }
+      }
+    }
 
     .el-dropdown-menu {
       background-color: var(--dropdown-background-color);
@@ -173,7 +193,8 @@
       }
 
       .el-dropdown-menu__item:not(.is-disabled):focus {
-        background-color: var(--dropdown-hover-background-color);
+        // background-color: var(--dropdown-hover-background-color);
+        background-color: unset;
       }
     }
 

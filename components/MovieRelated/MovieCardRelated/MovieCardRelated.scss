@@ -84,10 +84,23 @@
     }
 
     .video-preview {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      &.show {
+        .video-tool {
+          .volume {
+            display: flex;
+          }
+        }
+      }
+
       video {
         position: absolute;
         height: 100%;
         width: 100%;
+        object-fit: cover;
       }
 
       .float-center {
@@ -100,6 +113,29 @@
 
         /* .loading-video {
         } */
+      }
+
+      .video-tool {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        padding: 1px 5px;
+        gap: 5px;
+        background-color: #08080869;
+        border-radius: 2px;
+
+        svg {
+          cursor: pointer;
+          width: 1.8rem;
+          height: 1.8rem;
+        }
+
+        .volume {
+          display: none;
+          flex-direction: column;
+        }
       }
     }
 

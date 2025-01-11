@@ -21,7 +21,9 @@ header.header-bar {
   }
 
   &.scrolled {
-    background: var(--header-background-scrolled);
+    // background: var(--header-background-scrolled);
+    background: #080808a3;
+    backdrop-filter: blur(15px);
   }
 
   .left-header {

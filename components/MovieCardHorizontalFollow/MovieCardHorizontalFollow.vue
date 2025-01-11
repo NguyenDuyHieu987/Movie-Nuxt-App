@@ -113,7 +113,7 @@
             trigger="click"
             placement="bottom-end"
             class="dropdown-viewmore"
-            popper-class="dropdown-viewmore"
+            popper-class="dropdown-viewmore background-app-blur"
             :show-timeout="0"
           >
             <a-button
