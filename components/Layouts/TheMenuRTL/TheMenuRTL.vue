@@ -17,6 +17,7 @@
   >
     <el-menu-item index="/">
       <el-icon> <HomeOutlined /></el-icon>
+      <el-icon class="select"> <HomeFilled /></el-icon>
 
       <template #title>
         <NuxtLink to="/">Trang chủ</NuxtLink>
@@ -25,7 +26,20 @@
 
     <el-menu-item index="/feature">
       <el-icon>
-        <SvgoVideoCamera
+        <!-- <SvgoVideoCamera
+          width="1.5rem"
+          height="1.5rem"
+          fill="currentColor"
+        /> -->
+
+        <SvgoVideoClip32Regular
+          width="1.5rem"
+          height="1.5rem"
+          fill="currentColor"
+        />
+      </el-icon>
+      <el-icon class="select">
+        <SvgoVideoClip32Filled
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
@@ -39,7 +53,21 @@
 
     <el-menu-item index="/television">
       <el-icon>
-        <SvgoMovieReel
+        <!-- <SvgoMovieReel
+          width="1.5rem"
+          height="1.5rem"
+          fill="currentColor"
+        /> -->
+
+        <SvgoTelevisionPlay
+          width="1.5rem"
+          height="1.5rem"
+          fill="currentColor"
+        />
+      </el-icon>
+
+      <el-icon class="select">
+        <SvgoYoutubeTv
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
@@ -53,7 +81,21 @@
 
     <el-menu-item index="/discover">
       <el-icon>
-        <SvgoLight
+        <!-- <SvgoLight
+          width="1.6rem"
+          height="1.6rem"
+          fill="currentColor"
+        /> -->
+
+        <SvgoLightbulbOnOutline
+          width="1.6rem"
+          height="1.6rem"
+          fill="currentColor"
+        />
+      </el-icon>
+
+      <el-icon class="select">
+        <SvgoLightbulbOn
           width="1.6rem"
           height="1.6rem"
           fill="currentColor"
@@ -198,6 +240,14 @@
       <template #title>
         <el-icon>
           <!-- <Icon name="fa6-solid:list"></Icon> -->
+          <SvgoListSharpLight
+            width="1.5rem"
+            height="1.5rem"
+            fill="currentColor"
+          />
+        </el-icon>
+
+        <el-icon class="select">
           <SvgoList
             width="1.5rem"
             height="1.5rem"
@@ -244,7 +294,15 @@
       <template #title>
         <el-icon>
           <!-- <Icon name="fa6-regular:calendar-days" />  -->
-          <SvgoCalendarDays
+          <SvgoCalendarDot
+            width="1.5rem"
+            height="1.5rem"
+            fill="currentColor"
+          />
+        </el-icon>
+
+        <el-icon class="select">
+          <SvgoCalendarDotFilled
             width="1.5rem"
             height="1.5rem"
             fill="currentColor"
@@ -283,7 +341,21 @@
       <template #title>
         <el-icon>
           <!-- <Icon name="fa6-solid:globe" /> -->
-          <SvgoGlobe
+          <!-- <SvgoGlobe
+            width="1.5rem"
+            height="1.5rem"
+            fill="currentColor"
+          /> -->
+
+          <SvgoGlobeRegular
+            width="1.5rem"
+            height="1.5rem"
+            fill="currentColor"
+          />
+        </el-icon>
+
+        <el-icon class="select">
+          <SvgoGlobeSolid
             width="1.5rem"
             height="1.5rem"
             fill="currentColor"
@@ -323,6 +395,16 @@
           fill="currentColor"
         />
       </el-icon>
+
+      <el-icon class="select">
+        <SvgoPlaylistPlay
+          class="material-icons-outlined playlist"
+          height="2.6rem"
+          width="2.6rem"
+          fill="currentColor"
+        />
+      </el-icon>
+
       <template #title>
         <NuxtLink to="/follow">Theo dõi</NuxtLink>
       </template>
@@ -337,6 +419,14 @@
           fill="currentColor"
         />
       </el-icon>
+
+      <el-icon class="select">
+        <SvgoClockRotateLeft
+          width="1.5rem"
+          height="1.5rem"
+          fill="currentColor"
+        />
+      </el-icon>
       <template #title>
         <NuxtLink to="/history"> Lịch sử Xem </NuxtLink>
       </template>
@@ -345,7 +435,15 @@
     <el-menu-item index="/ranks">
       <el-icon>
         <!-- <Icon name="fa6-solid:ranking-star" /> -->
-        <SvgoRankingStar
+        <SvgoRankStarRegular
+          width="1.5rem"
+          height="1.5rem"
+          fill="currentColor"
+        />
+      </el-icon>
+
+      <el-icon class="select">
+        <SvgoRankStar
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
@@ -382,7 +480,7 @@
 </template>
 
 <script setup lang="ts">
-import { HomeOutlined } from '@ant-design/icons-vue';
+import { HomeFilled, HomeOutlined } from '@ant-design/icons-vue';
 // import SvgoVideoCamera from '~/assets/svgs/icons/video-camera.svg?component';
 // import SvgoMovieReel from '~/assets/svgs/icons/movie-reel.svg?component';
 // import SvgoLight from '~/assets/svgs/icons/light.svg?component';
