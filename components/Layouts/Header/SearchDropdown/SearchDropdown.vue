@@ -262,9 +262,9 @@ const handleClickSearchResultsItem = async (e: any, item: any) => {
     navigateTo(`/search?q=${item?.query?.replaceAll(' ', '+').toLowerCase()}`);
   } else {
     addSearch({
-      movie_id: item?.movie_id || item?.id,
-      media_type: item?.movieData?.media_type || item?.media_type,
-      query: item?.movieData?.name || item?.name
+      movie_id: item?.id,
+      media_type: item?.media_type,
+      query: item?.name
     })
       .then((response) => {
         if (response?.added) {
@@ -274,9 +274,9 @@ const handleClickSearchResultsItem = async (e: any, item: any) => {
       .catch((e) => {});
 
     addRankSearch({
-      movie_id: item?.movie_id || item?.id,
-      media_type: item?.movieData?.media_type || item?.media_type,
-      query: item?.movieData?.name || item?.name
+      movie_id: item?.id,
+      media_type: item?.media_type,
+      query: item?.name
     })
       .then((response) => {
         if (response?.success) {
