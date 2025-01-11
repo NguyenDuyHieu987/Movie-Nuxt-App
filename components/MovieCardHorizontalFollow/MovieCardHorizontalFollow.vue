@@ -20,11 +20,11 @@
     <NuxtLink
       :to="{
         path: isEpisodes
-          ? `/info-tv/${dataMovieDetail?.id}${utils.convertPath.toPathInfo_Play(
-              dataMovieDetail?.name
+          ? `/info-tv/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
+              dataMovie?.name
             )}`
-          : `/info-movie/${dataMovieDetail?.id}${utils.convertPath.toPathInfo_Play(
-              dataMovieDetail?.name
+          : `/info-movie/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
+              dataMovie?.name
             )}`
       }"
       class="movie-follow-item"
@@ -32,19 +32,17 @@
       <div class="img-box">
         <div class="img-wrapper ratio-16-9">
           <!-- <img
-            v-lazy="getImage(dataMovieDetail?.backdrop_path, 'backdrop', {h:250})"
+            v-lazy="getImage(dataMovie?.backdrop_path, 'backdrop', {h:250})"
             loading="lazy"
             alt=""
           /> -->
           <VipRibbon
-            v-if="dataMovieDetail?.vip > 0"
-            :vip="dataMovieDetail?.vip"
+            v-if="dataMovie?.vip > 0"
+            :vip="dataMovie?.vip"
           />
 
           <NuxtImg
-            :src="
-              getImage(dataMovieDetail?.backdrop_path, 'backdrop', { h: 250 })
-            "
+            :src="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
             placeholder="/images/loading-img-16-9.webp"
             format="avif"
             loading="lazy"
@@ -66,9 +64,9 @@
       <div class="info">
         <h2
           class="title"
-          :title="dataMovieDetail?.name"
+          :title="dataMovie?.name"
         >
-          {{ dataMovieDetail?.name }}
+          {{ dataMovie?.name }}
         </h2>
 
         <!-- <p v-if="isEpisodes" class="duration-episode">
@@ -154,8 +152,8 @@
                       v-if="isEpisodes"
                       :to="{
                         path: `/play-tv/${
-                          dataMovieDetail?.id
-                        }${utils.convertPath.toPathInfo_Play(dataMovieDetail?.name)}`
+                          dataMovie?.id
+                        }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
                       }"
                       class="btn-play-now"
                     >
@@ -165,8 +163,8 @@
                       v-else
                       :to="{
                         path: `/play-movie/${
-                          dataMovieDetail?.id
-                        }${utils.convertPath.toPathInfo_Play(dataMovieDetail?.name)}`
+                          dataMovie?.id
+                        }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
                       }"
                       class="btn-play-now"
                     >
@@ -187,7 +185,7 @@
                       <ShareNetwork
                         network="facebook"
                         :url="urlShare"
-                        :title="dataMovieDetail?.name"
+                        :title="dataMovie?.name"
                         hashtags="phimhay247.site,vite"
                         style="white-space: nowrap; display: block"
                       >
@@ -246,11 +244,9 @@ const props = defineProps<{
 
 const store = useStore();
 const utils = useUtils();
-const dataMovie = ref<any>(props.item || {});
-const dataMovieDetail = ref<any>(props.item.movieData || {});
-const isEpisodes = computed<boolean>(
-  () => props.item.movieData?.media_type == 'tv'
-);
+const dataList = ref<any>(props.item || {});
+const dataMovie = ref<any>(props.item.movieData || {});
+const isEpisodes = computed<boolean>(() => dataMovie.value?.media_type == 'tv');
 const loading = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
 const percent = ref<number>(0);
@@ -258,11 +254,11 @@ const urlShare = computed<string>(
   (): string =>
     window.location.origin +
     (isEpisodes
-      ? `/info-tv/${dataMovieDetail.value?.id}${utils.convertPath.toPathInfo_Play(
-          dataMovieDetail.value?.name
+      ? `/info-tv/${dataMovie.value?.id}${utils.convertPath.toPathInfo_Play(
+          dataMovie.value?.name
         )}`
-      : `/info-movie/${dataMovieDetail.value?.id}${utils.convertPath.toPathInfo_Play(
-          dataMovieDetail.value?.name
+      : `/info-movie/${dataMovie.value?.id}${utils.convertPath.toPathInfo_Play(
+          dataMovie.value?.name
         )}`)
 );
 
@@ -274,9 +270,9 @@ const getData = async () => {
   // switch (props?.type || props?.item?.media_type) {
   //   case 'movie':
   //     isEpisodes.value = false;
-  //     await getMovieById(props.item?.movie_id)
+  //     await getMovieById(dataList.value?.movie_id)
   //       .then((response) => {
-  //         dataMovie.value = response;
+  //         dataList.value = response;
   //       })
   //       .catch((e) => {})
   //       .finally(() => {
@@ -285,9 +281,9 @@ const getData = async () => {
   //     break;
   //   case 'tv':
   //     isEpisodes.value = true;
-  //     await getTvById(props.item?.movie_id)
+  //     await getTvById(dataList.value?.movie_id)
   //       .then((response) => {
-  //         dataMovie.value = response;
+  //         dataList.value = response;
   //       })
   //       .catch((e) => {})
   //       .finally(() => {
@@ -298,12 +294,12 @@ const getData = async () => {
   //     break;
   // }
 
-  if (dataMovie.value?.history_progress) {
+  if (dataList.value?.history_progress) {
     isInHistory.value = true;
-    percent.value = dataMovie.value?.history_progress?.percent;
+    percent.value = dataList.value?.history_progress?.percent;
   }
 
-  // getItemHistory(props.item?.id, props.item?.media_type)
+  // getItemHistory(dataList.value?.id, dataList.value?.media_type)
   //   .then((response) => {
   //     if (response.success == true) {
   //       isInHistory.value = true;
@@ -319,11 +315,11 @@ getData();
 const handleRemoveFromList = async () => {
   if (
     await utils.handleRemoveItemFromList(
-      props.item?.movie_id,
-      props.item?.media_type
+      dataMovie.value?.id,
+      dataMovie.value.media_type
     )
   ) {
-    props.getDataWhenRemoveList(props.item?.id);
+    props.getDataWhenRemoveList(dataList.value?.id);
   }
 };
 </script>

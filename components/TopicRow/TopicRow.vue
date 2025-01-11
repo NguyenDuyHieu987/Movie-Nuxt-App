@@ -7,12 +7,11 @@
       <div class="top">
         <div class="backdrop">
           <NuxtLink
-            v-if="dataRow[0]?.media_type == 'tv' && dataRow[0]?.movie_id"
             class="img-box ratio-16-9"
             :to="{
-              path: `/play-tv/${
-                dataRow[0]?.movie_id
-              }${utils.convertPath.toPathInfo_Play(dataRow[0]?.name)}`
+              path: `/play-${dataMovie?.media_type}/${
+                dataMovie?.id
+              }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
             }"
           >
             <VipRibbon
@@ -38,38 +37,6 @@
                 fill="currentColor"
               />
               <span> PHÁT NGAY </span>
-            </div>
-          </NuxtLink>
-
-          <NuxtLink
-            v-else-if="
-              dataRow[0]?.media_type == 'movie' && dataRow[0]?.movie_id
-            "
-            class="img-box"
-            :to="{
-              path: `/play-movie/${
-                dataRow[0]?.movie_id
-              }${utils.convertPath.toPathInfo_Play(dataRow[0]?.name)}`
-            }"
-          >
-            <NuxtImg
-              :src="getImage(topicImage, 'backdrop', { h: 300 })"
-              placeholder="/images/loading-img-16-9.webp"
-              format="avif"
-              loading="lazy"
-              alt=""
-            />
-
-            <div class="play-now">
-              <!-- <Icon name="ci:play-arrow" class="play" /> -->
-
-              <SvgoPlay
-                class="play"
-                width="3rem"
-                height="3rem"
-                fill="currentColor"
-              />
-              <span>PHÁT NGAY</span>
             </div>
           </NuxtLink>
 

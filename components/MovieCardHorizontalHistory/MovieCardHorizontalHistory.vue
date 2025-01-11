@@ -32,11 +32,11 @@
     <NuxtLink
       :to="{
         path: isEpisodes
-          ? `/info-tv/${dataMovieDetail?.id}${utils.convertPath.toPathInfo_Play(
-              dataMovieDetail?.name
+          ? `/info-tv/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
+              dataMovie?.name
             )}`
-          : `/info-movie/${dataMovieDetail?.id}${utils.convertPath.toPathInfo_Play(
-              dataMovieDetail?.name
+          : `/info-movie/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
+              dataMovie?.name
             )}`
       }"
       class="movie-history-item"
@@ -44,19 +44,17 @@
       <div class="img-box">
         <div class="img-wrapper ratio-16-9">
           <!-- <img
-            v-lazy="getImage(dataMovieDetail?.backdrop_path, 'backdrop', {h:250})"
+            v-lazy="getImage(dataMovie?.backdrop_path, 'backdrop', {h:250})"
             loading="lazy"
             alt=""
           /> -->
           <VipRibbon
-            v-if="dataMovieDetail?.vip > 0"
-            :vip="dataMovieDetail?.vip"
+            v-if="dataMovie?.vip > 0"
+            :vip="dataMovie?.vip"
           />
 
           <NuxtImg
-            :src="
-              getImage(dataMovieDetail?.backdrop_path, 'backdrop', { h: 250 })
-            "
+            :src="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
             placeholder="/images/loading-img-16-9.webp"
             format="avif"
             loading="lazy"
@@ -75,9 +73,9 @@
       <div class="info">
         <h2
           class="title"
-          :title="dataMovieDetail?.name"
+          :title="dataMovie?.name"
         >
-          {{ dataMovieDetail?.name }}
+          {{ dataMovie?.name }}
         </h2>
 
         <!-- <p v-if="isEpisodes" class="duration-episode">
@@ -187,8 +185,8 @@
                       v-if="isEpisodes"
                       :to="{
                         path: `/play-tv/${
-                          dataMovieDetail?.id
-                        }${utils.convertPath.toPathInfo_Play(dataMovieDetail?.name)}`
+                          dataMovie?.id
+                        }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
                       }"
                       class="btn-play-now"
                     >
@@ -198,8 +196,8 @@
                       v-else
                       :to="{
                         path: `/play-movie/${
-                          dataMovieDetail?.id
-                        }${utils.convertPath.toPathInfo_Play(dataMovieDetail?.name)}`
+                          dataMovie?.id
+                        }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
                       }"
                       class="btn-play-now"
                     >
@@ -256,7 +254,7 @@
                       <ShareNetwork
                         network="facebook"
                         :url="urlShare"
-                        :title="dataMovieDetail?.name"
+                        :title="dataMovie?.name"
                         hashtags="phimhay247.site,vite"
                         style="white-space: nowrap; display: block"
                       >
@@ -318,21 +316,19 @@ const props = defineProps<{
 
 const store = useStore();
 const utils = useUtils();
-const dataMovie = ref<any>(props.item || {});
-const dataMovieDetail = ref<any>(props.item.movieData || {});
-const isEpisodes = computed<boolean>(
-  () => props.item.movieData?.media_type == 'tv'
-);
+const dataHistory = ref<any>(props.item || {});
+const dataMovie = ref<any>(props.item.movieData || {});
+const isEpisodes = computed<boolean>(() => dataMovie.value?.media_type == 'tv');
 const loading = ref<boolean>(false);
 const urlShare = computed<string>(
   (): string =>
     window.location.origin +
     (isEpisodes
-      ? `/info-tv/${dataMovieDetail.value?.id}${utils.convertPath.toPathInfo_Play(
-          dataMovieDetail.value?.name
+      ? `/info-tv/${dataMovie.value?.id}${utils.convertPath.toPathInfo_Play(
+          dataMovie.value?.name
         )}`
-      : `/info-movie/${dataMovieDetail.value?.id}${utils.convertPath.toPathInfo_Play(
-          dataMovieDetail.value?.name
+      : `/info-movie/${dataMovie.value?.id}${utils.convertPath.toPathInfo_Play(
+          dataMovie.value?.name
         )}`)
 );
 const percent = ref<number>(0);
@@ -343,10 +339,10 @@ onMounted(() => {});
 
 const getData = async () => {
   loading.value = true;
-  percent.value = props.item?.percent;
+  percent.value = dataHistory.value?.percent;
 
   const prev_date_old = new Date(props.prevItem?.created_at);
-  const date_old = new Date(props.item?.created_at);
+  const date_old = new Date(dataHistory.value?.created_at);
   const now = new Date();
 
   // console.log('a: ', now.getTimezoneOffset());
@@ -365,29 +361,29 @@ const getData = async () => {
       diffDays > 1
     ) {
       timeLine.value =
-        utils.dateTimeFormater.fromNow(props.item?.created_at, {
+        utils.dateTimeFormater.fromNow(dataHistory.value?.created_at, {
           onlyDay: true
         }) +
         ' - ' +
-        utils.dateTimeFormater.format(props.item?.created_at, 'LL');
+        utils.dateTimeFormater.format(dataHistory.value?.created_at, 'LL');
     }
   }
   // Is first item
   else {
     timeLine.value =
-      utils.dateTimeFormater.fromNow(props.item?.created_at, {
+      utils.dateTimeFormater.fromNow(dataHistory.value?.created_at, {
         onlyDay: true
       }) +
       ' - ' +
-      utils.dateTimeFormater.format(props.item?.created_at, 'LL');
+      utils.dateTimeFormater.format(dataHistory.value?.created_at, 'LL');
   }
 
   // switch (props?.type || props?.item?.media_type) {
   //   case 'movie':
   //     isEpisodes.value = false;
-  //     await getMovieById(props.item?.movie_id)
+  //     await getMovieById(dataHistory.value?.movie_id)
   //       .then((response) => {
-  //         dataMovie.value = response;
+  //         dataHistory.value = response;
   //       })
   //       .catch((e) => {})
   //       .finally(() => {
@@ -396,9 +392,9 @@ const getData = async () => {
   //     break;
   //   case 'tv':
   //     isEpisodes.value = true;
-  //     await getTvById(props.item?.movie_id)
+  //     await getTvById(dataHistory.value?.movie_id)
   //       .then((response) => {
-  //         dataMovie.value = response;
+  //         dataHistory.value = response;
   //       })
   //       .catch((e) => {})
   //       .finally(() => {
@@ -409,11 +405,11 @@ const getData = async () => {
   //     break;
   // }
 
-  if (dataMovie.value?.in_list) {
+  if (dataHistory.value?.in_list) {
     isAddToList.value = true;
   }
 
-  // await getItemList(props.item?.id, props.item?.media_type);
+  // await getItemList(dataHistory.value?.id, dataHistory.value?.media_type);
   //   .then((response) => {
   //     if (response?.success == true) {
   //       isAddToList.value = true;
@@ -429,7 +425,10 @@ const handleAddToList = () => {
   if (!isAddToList.value) {
     isAddToList.value = true;
     if (
-      !utils.handleAddItemToList(dataMovie.value?.id, props.item.media_type)
+      !utils.handleAddItemToList(
+        dataMovie.value?.id,
+        dataMovie.value.media_type
+      )
     ) {
       isAddToList.value = false;
     }
@@ -437,8 +436,8 @@ const handleAddToList = () => {
     isAddToList.value = false;
     if (
       !utils.handleRemoveItemFromList(
-        props.item?.movie_id,
-        props.item?.media_type
+        dataMovie.value?.id,
+        dataMovie.value.media_type
       )
     ) {
       isAddToList.value = true;
@@ -449,11 +448,11 @@ const handleAddToList = () => {
 const handleRemoveFromHistory = async () => {
   if (
     await utils.handleRemoveItemFromHistory(
-      props.item?.movie_id,
-      props.item?.media_type
+      dataHistory.value?.movie_id,
+      dataHistory.value?.media_type
     )
   ) {
-    props.getDataWhenRemoveHistory(props.item?.id);
+    props.getDataWhenRemoveHistory(dataHistory.value?.id);
   }
 };
 </script>
