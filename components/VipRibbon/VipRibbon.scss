@@ -7,7 +7,8 @@
   --border-ribbon-vip: 5px;
 
   &.vip-ribbon-small {
-    padding: 0px 5px;
+    line-height: 1;
+    padding: 2px 5px;
     --border-ribbon-vip: 3px;
 
     .vip-ribbon-text {
