@@ -41,6 +41,11 @@
             loading="lazy"
             alt=""
           /> -->
+        <VipRibbon
+          v-if="dataMovie?.vip > 0"
+          size="small"
+          :vip="dataMovie?.vip"
+        />
 
         <NuxtImg
           :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"

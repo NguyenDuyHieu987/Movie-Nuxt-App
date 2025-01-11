@@ -26,6 +26,11 @@
         alt=""
       /> -->
 
+      <VipRibbon
+        v-if="dataMovie?.vip > 0"
+        :vip="dataMovie?.vip"
+      />
+
       <NuxtImg
         :src="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
         placeholder="/images/loading-img-16-9.webp"

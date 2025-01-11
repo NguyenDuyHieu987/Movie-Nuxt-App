@@ -39,6 +39,11 @@
       class="img-box ratio-16-9"
       @click="onClickPlay"
     >
+      <VipRibbon
+        v-if="dataMovie?.vip > 0"
+        :vip="dataMovie?.vip"
+      />
+
       <NuxtImg
         v-if="!showVideo"
         :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"

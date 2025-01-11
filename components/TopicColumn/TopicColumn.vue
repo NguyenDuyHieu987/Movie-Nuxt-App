@@ -14,6 +14,12 @@
             }${utils.convertPath.toPathInfo_Play(dataColumn[0]?.name)}`
           }"
         >
+          <VipRibbon
+            v-if="dataMovie?.vip > 0"
+            size="large"
+            :vip="dataMovie?.vip"
+          />
+
           <NuxtImg
             :src="getImage(topicImage, 'backdrop', { h: 300 })"
             format="avif"
@@ -223,6 +229,7 @@ const utils = useUtils();
 const topicColumn = ref<HTMLElement>();
 const valueSearch = defineModel<string>('valueInput');
 const dataColumn = defineModel<any>('dataColumn');
+const dataMovie = ref<any>(dataColumn.value[0].movieData || {});
 
 watch(dataColumn, (newVal, oldVal) => {
   if (newVal?.length > 0) {

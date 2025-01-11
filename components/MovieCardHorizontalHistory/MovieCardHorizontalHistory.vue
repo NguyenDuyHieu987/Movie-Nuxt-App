@@ -48,6 +48,10 @@
             loading="lazy"
             alt=""
           /> -->
+          <VipRibbon
+            v-if="dataMovieDetail?.vip > 0"
+            :vip="dataMovieDetail?.vip"
+          />
 
           <NuxtImg
             :src="
