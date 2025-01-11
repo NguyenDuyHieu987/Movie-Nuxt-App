@@ -113,7 +113,7 @@
           <el-dropdown
             trigger="click"
             placement="bottom-end"
-            popper-class="dropdown-viewmore"
+            popper-class="dropdown-viewmore background-app-blur"
             class="dropdown-viewmore"
             :show-timeout="0"
           >

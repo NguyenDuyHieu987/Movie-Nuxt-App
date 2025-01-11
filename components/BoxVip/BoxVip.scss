@@ -5,6 +5,7 @@
   &.faded {
     .box-vip-container {
       background-color: #06060686;
+      backdrop-filter: blur(15px);
     }
 
     .vip-active-btn {
@@ -17,6 +18,7 @@
     background-color: var(--box-vip-background-color);
     padding: var(--padding-box-vip);
     color: var(--text-color-gray);
+    border: 1px solid var(--border-light);
     border-radius: 2px;
     width: 290px;
     transition: background-color 0.15s;
@@ -177,6 +179,7 @@
   &:hover {
     .box-vip-container {
       background-color: var(--box-vip-background-color);
+      backdrop-filter: unset;
     }
 
     .vip-active-btn {
