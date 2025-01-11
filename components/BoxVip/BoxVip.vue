@@ -18,8 +18,8 @@
 
         <div class="your-vip">
           <SvgoVipPrivilege
-            height="1.5rem"
-            width="1.5rem"
+            height="2rem"
+            width="2rem"
           />
 
           <span class="description">

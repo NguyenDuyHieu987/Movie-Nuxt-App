@@ -4,7 +4,7 @@
 
   &.faded {
     .box-vip-container {
-      background-color: #06060686;
+      background-color: #060606aa;
       backdrop-filter: blur(15px);
     }
 
@@ -66,16 +66,21 @@
 
       .your-vip {
         display: flex;
+        align-items: center;
         justify-content: center;
-        gap: 7px;
+        gap: 10px;
         flex-wrap: nowrap;
         font-size: 1.45rem;
         margin-top: 5px;
 
-        /* .description {
-          .vip-number {
-          }
-        } */
+        svg {
+          margin-bottom: 4px;
+        }
+
+        // .description {
+        //   .vip-number {
+        //   }
+        // }
       }
     }
 
@@ -87,6 +92,10 @@
       fieldset {
         display: block;
         border-top: 1px solid var(--border-regular);
+
+        legend {
+          margin: 0px auto;
+        }
       }
     }
 
