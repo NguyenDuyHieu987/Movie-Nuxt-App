@@ -80,18 +80,18 @@
               <NuxtLink
                 :to="{
                   path:
-                    item?.media_type == 'tv'
+                    item.movieData?.media_type == 'tv'
                       ? `/info-tv/${
                           item?.movie_id
-                        }${utils.convertPath.toPathInfo_Play(item?.name)}`
+                        }${utils.convertPath.toPathInfo_Play(item.movieData?.name)}`
                       : `/info-movie/${
                           item?.movie_id
-                        }${utils.convertPath.toPathInfo_Play(item?.name)}`
+                        }${utils.convertPath.toPathInfo_Play(item.movieData?.name)}`
                 }"
                 class="info-wrapper"
               >
                 <span class="rank-number">{{ index + 1 }}</span>
-                <div class="movie-title">{{ item?.name }}</div>
+                <div class="movie-title">{{ item.movieData?.name }}</div>
               </NuxtLink>
             </div>
 

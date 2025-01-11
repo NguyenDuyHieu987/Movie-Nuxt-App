@@ -80,7 +80,13 @@
           class="all"
           :ranksData="ranksData"
           :rankSectionTitle="rankSectionTitle"
-          viewAllPath="/ranks/detail"
+          :viewAllPath="{
+            path: `/ranks/detail`,
+            query: {
+              type: formFilterRank.type,
+              sort_by: formFilterRank.sortBy
+            }
+          }"
           main
         />
 
@@ -89,70 +95,130 @@
             class="movie"
             :ranksData="ranksMovie"
             rankSectionTitle="Phim lẻ"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
 
           <RankSection
             class="tv"
             :ranksData="ranksTV"
             rankSectionTitle="Phim bộ"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
 
           <RankSection
             class="animation"
             :ranksData="ranksAnimation"
             rankSectionTitle="Hoạt hình"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
 
           <RankSection
             class="action"
             :ranksData="ranksAction"
             rankSectionTitle="Hành động"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
 
           <RankSection
             class="horror"
             :ranksData="ranksHorror"
             rankSectionTitle="Kinh dị"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
 
           <RankSection
             class="drama"
             :ranksData="ranksDrama"
             rankSectionTitle="Drama"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
 
           <RankSection
             class="science-fiction"
             :ranksData="ranksScienceFiction"
             rankSectionTitle="Khoa học viễn tưởng"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
 
           <RankSection
             class="us-uk"
             :ranksData="ranksEN"
             rankSectionTitle="Âu Mỹ"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
 
           <RankSection
             class="china"
             :ranksData="ranksChina"
             rankSectionTitle="Trung quốc"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
 
           <RankSection
             class="japan"
             :ranksData="ranksJapan"
             rankSectionTitle="Nhật bản"
-            viewAllPath="/ranks/detail"
+            :viewAllPath="{
+              path: `/ranks/detail`,
+              query: {
+                type: formFilterRank.type,
+                sort_by: formFilterRank.sortBy
+              }
+            }"
           />
         </div>
       </div>

@@ -22,13 +22,13 @@
           :index="index"
           :to="{
             path:
-              item?.media_type == 'tv'
+              item.movieData?.media_type == 'tv'
                 ? `/info-tv/${
                     item?.movie_id
-                  }${utils.convertPath.toPathInfo_Play(item?.name)}`
+                  }${utils.convertPath.toPathInfo_Play(item.movieData?.name)}`
                 : `/info-movie/${
                     item?.movie_id
-                  }${utils.convertPath.toPathInfo_Play(item?.name)}`
+                  }${utils.convertPath.toPathInfo_Play(item.movieData?.name)}`
           }"
           class="rank-body-item"
           :style="
@@ -36,7 +36,9 @@
               ? {
                   backgroundImage:
                     'url(' +
-                    getImage(item?.backdrop_path, 'backdrop', { w: 1000 }) +
+                    getImage(item.movieData?.backdrop_path, 'backdrop', {
+                      w: 1000
+                    }) +
                     ')'
                 }
               : {}
@@ -44,7 +46,7 @@
         >
           <div class="rank-number">{{ index + 1 }}</div>
 
-          <div class="info">{{ item?.name }}</div>
+          <div class="info">{{ item.movieData?.name }}</div>
 
           <div
             class="tendency"
@@ -106,18 +108,22 @@
 // import SvgoTendencyDown from '~/assets/svgs/icons/tendency-down.svg?component';
 // import SvgoDash from '~/assets/svgs/icons/dash.svg?component';
 
+import type {
+  RouteLocationAsPathGeneric,
+  RouteLocationAsRelativeGeneric
+} from 'vue-router';
 import { getImage } from '~/services/image';
 
 const props = withDefaults(
   defineProps<{
     rankSectionTitle: string;
     ranksData: any;
-    viewAllPath: string;
+    viewAllPath: RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric;
     main?: boolean;
   }>(),
   {
     ranksData: [],
-    viewAllPath: '/ranks',
+    // viewAllPath: { path: '/ranks/detail' },
     main: false
   }
 );
