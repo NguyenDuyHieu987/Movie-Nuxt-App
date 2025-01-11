@@ -139,7 +139,9 @@
                 >
                   {{ index + 1 }}
                 </span>
-                <p class="search-query">{{ item?.name || item?.query }}</p>
+                <p class="search-query">
+                  {{ item.movieData?.name || item?.query }}
+                </p>
               </div>
             </div>
           </div>
@@ -260,9 +262,9 @@ const handleClickSearchResultsItem = async (e: any, item: any) => {
     navigateTo(`/search?q=${item?.query?.replaceAll(' ', '+').toLowerCase()}`);
   } else {
     addSearch({
-      movie_id: item?.id,
-      media_type: item?.media_type,
-      query: item?.name
+      movie_id: item?.movie_id || item?.id,
+      media_type: item?.movieData?.media_type || item?.media_type,
+      query: item?.movieData?.name || item?.name
     })
       .then((response) => {
         if (response?.added) {
@@ -272,9 +274,9 @@ const handleClickSearchResultsItem = async (e: any, item: any) => {
       .catch((e) => {});
 
     addRankSearch({
-      movie_id: item?.id,
-      media_type: item?.media_type,
-      query: item?.name
+      movie_id: item?.movie_id || item?.id,
+      media_type: item?.movieData?.media_type || item?.media_type,
+      query: item?.movieData?.name || item?.name
     })
       .then((response) => {
         if (response?.success) {
@@ -294,8 +296,8 @@ const handleClickSearchResultsItem = async (e: any, item: any) => {
 const handleClickTopSearchItem = (e: any, item: any) => {
   addSearch({
     movie_id: item?.movie_id,
-    media_type: item?.media_type,
-    query: item?.name
+    media_type: item.movieData?.media_type,
+    query: item.movieData?.name
   })
     .then((response) => {
       if (response?.added) {
@@ -306,8 +308,8 @@ const handleClickTopSearchItem = (e: any, item: any) => {
 
   addRankSearch({
     movie_id: item?.movie_id,
-    media_type: item?.media_type,
-    query: item?.name
+    media_type: item.movieData?.media_type,
+    query: item.movieData?.name
   })
     .then((response) => {
       if (response?.success) {
