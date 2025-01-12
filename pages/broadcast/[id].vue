@@ -115,7 +115,12 @@
             <template #default>
               <div class="flex items-center justify-between gap-15px">
                 <h2 class="movie-title">{{ dataMovie?.name }}</h2>
-                <p class="mr-20px">{{ liveViews }} người đang xem</p>
+                <p
+                  v-if="!isEndedBroadcast"
+                  class="mr-20px"
+                >
+                  {{ liveViews }} người đang xem
+                </p>
               </div>
               <h3
                 v-if="dataMovie?.name != dataMovie?.original_name"
@@ -374,18 +379,18 @@ onBeforeMount(() => {
       : nuxtConfig.app.apiGatewayDev
   );
 
-  setInterval(() => {
-    socket.value!.emit('getStatus', broadcastId.value);
+  if (isEndedBroadcast.value) return;
 
-    socket.value!.on('getStatus', (status: any) => {
-      // console.log(status);
-      liveViews.value = status.clientCount;
-    });
-  }, 1000);
+  socket.value!.emit('getStatus', broadcastId.value);
+
+  socket.value!.on('getStatus', (status: any) => {
+    // console.log(status);
+    liveViews.value = status.clientCount;
+  });
 });
 
-onBeforeUnmount(() => {
-  socket.value!.emit('leaveRoom', broadcastId.value);
+onUnmounted(() => {
+  if (socket.value) socket.value.emit('leaveRoom', broadcastId.value);
 });
 
 onMounted(() => {
