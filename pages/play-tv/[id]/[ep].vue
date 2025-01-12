@@ -543,9 +543,9 @@ const {
   }
 );
 
-if (!dataMovie.value) {
-  throw createError({ statusCode: 500 });
-}
+// if (!dataMovie.value) {
+//   throw createError({ statusCode: 500 });
+// }
 
 isAddToList.value = dataMovie.value?.in_list == true;
 
