@@ -601,7 +601,7 @@ const onUploadAvatar = async () => {
   if (!fileUploadResponse?.success) {
     ElNotification.error({
       title: MESSAGE.STATUS.FAILED,
-      message: 'Upload ảnh tĩnh thất bại!',
+      message: 'Upload avatar thất bại!',
       duration: MESSAGE.DURATION.DEFAULT
     });
     return;
