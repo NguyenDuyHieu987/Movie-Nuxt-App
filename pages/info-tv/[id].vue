@@ -639,7 +639,7 @@ const {
   }
 );
 
-if (error.value || !dataMovie.value) {
+if (!dataMovie.value) {
   throw createError({ statusCode: 500 });
 }
 

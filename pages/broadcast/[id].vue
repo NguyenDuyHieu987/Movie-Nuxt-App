@@ -415,7 +415,7 @@ const {
   getBroadcastById(broadcastId.value)
 );
 
-if (errorBroadcast.value || !dataBroadcast.value) {
+if (!dataBroadcast.value) {
   throw createError({ statusCode: 500 });
 }
 
@@ -434,7 +434,7 @@ const {
   }
 );
 
-if (error.value || !dataMovie.value) {
+if (!dataMovie.value) {
   throw createError({ statusCode: 500 });
 }
 
