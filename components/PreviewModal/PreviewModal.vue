@@ -636,8 +636,8 @@ watch(showVideo, async () => {
   if (showVideo.value) {
     videoStates.isLoading = true;
     if (!videoEl) {
-      await nextTick();
-      // await wait(1000);
+      // await nextTick();
+      await wait(1000);
     }
 
     // video.value!.play().catch(() => {});
