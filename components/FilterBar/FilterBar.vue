@@ -70,7 +70,7 @@
                   :index="index"
                   :key="item?.id"
                   :value="item?.id"
-                  :label="item?.name_vietsub"
+                  :label="item?.name"
                 />
               </el-select>
   
@@ -168,7 +168,7 @@
                 :index="index"
                 :value="item?.id"
               >
-                {{ item?.name_vietsub }}
+                {{ item?.name }}
               </a-select-option>
             </a-select>
 

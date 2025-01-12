@@ -213,8 +213,8 @@
         :index="`/discover/genre/${item?.short_name}`"
       >
         <a-tooltip
-          v-if="item?.name_vietsub?.length > 30"
-          :title="item?.name_vietsub"
+          v-if="item?.name?.length > 30"
+          :title="item?.name"
           placement="right"
         >
           <NuxtLink
@@ -222,7 +222,7 @@
               path: `/discover/genre/${item?.short_name}`
             }"
           >
-            {{ item?.name_vietsub }}
+            {{ item?.name }}
           </NuxtLink>
         </a-tooltip>
 
@@ -232,7 +232,7 @@
             path: `/discover/genre/${item?.short_name}`
           }"
         >
-          {{ item?.name_vietsub }}
+          {{ item?.name }}
         </NuxtLink>
       </el-menu-item>
     </el-sub-menu>

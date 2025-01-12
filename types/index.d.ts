@@ -15,8 +15,8 @@ export declare interface mod {
 
 export declare interface genre {
   id: number;
-  name_vietsub: string;
   name: string;
+  english_name: string;
   short_name: string;
 }
 

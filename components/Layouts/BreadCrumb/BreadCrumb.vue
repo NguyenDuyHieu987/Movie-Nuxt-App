@@ -94,8 +94,7 @@ const getParamsRoute = () => {
       breadList.push({
         params: 'genre',
         // name: route.params?.slug2
-        name: getGenreByShortName(route.params?.slug2, store?.allGenres)
-          ?.name_vietsub
+        name: getGenreByShortName(route.params?.slug2, store?.allGenres)?.name
       });
       break;
     case 'year':

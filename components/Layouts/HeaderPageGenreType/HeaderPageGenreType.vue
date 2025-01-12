@@ -30,8 +30,7 @@ const genreRoute = ref<genre>(
 );
 const genreTitle = ref<string>(
   route.params?.genre
-    ? getGenreById(route.params.genre, store.allGenres)?.name_vietsub ||
-        'Thể loại'
+    ? getGenreById(route.params.genre, store.allGenres)?.name || 'Thể loại'
     : 'Thể loại'
 );
 </script>

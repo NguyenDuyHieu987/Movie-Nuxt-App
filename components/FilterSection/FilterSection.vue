@@ -108,7 +108,7 @@
                     }
                   }"
                 >
-                  {{ item?.name_vietsub }}
+                  {{ item?.name }}
                 </NuxtLink>
               </SwiperSlide>
               <div class="swiper-button-prev">

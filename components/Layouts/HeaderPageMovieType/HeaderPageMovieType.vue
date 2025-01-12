@@ -44,7 +44,7 @@
                     // },
                   }"
                 >
-                  <span>{{ item.name_vietsub }}</span>
+                  <span>{{ item.name }}</span>
                 </NuxtLink>
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -79,13 +79,12 @@ const route = useRoute();
 const genres = ref<genre[]>(store.allGenres);
 const genreDropdownTitle = ref<string>(
   route.query?.genre
-    ? getGenreById(+(route.query?.genre as string), store.allGenres)!
-        .name_vietsub
+    ? getGenreById(+(route.query?.genre as string), store.allGenres)!.name
     : 'Thể loại'
 );
 
 const handleSelectGenre = (item: genre) => {
-  genreDropdownTitle.value = item.name_vietsub;
+  genreDropdownTitle.value = item.name;
   emits('genSelected', item);
 };
 </script>

@@ -160,19 +160,19 @@ const responsiveHorizoltal = computed<any>((): any => ({
 }));
 
 useHead({
-  title: () => 'Phim bộ | Thể loại: ' + genreRoute.value.name_vietsub + '',
+  title: () => 'Phim bộ | Thể loại: ' + genreRoute.value.name + '',
   htmlAttrs: { lang: 'vi' }
 });
 
 useSeoMeta({
-  title: () => 'Phim bộ | Thể loại: ' + genreRoute.value.name_vietsub + '',
+  title: () => 'Phim bộ | Thể loại: ' + genreRoute.value.name + '',
   description: () =>
-    'Phim bộ, Phim dài tập | Thể loại: ' + genreRoute.value.name_vietsub,
-  ogTitle: () => 'Phim bộ | Thể loại: ' + genreRoute.value.name_vietsub + '',
+    'Phim bộ, Phim dài tập | Thể loại: ' + genreRoute.value.name,
+  ogTitle: () => 'Phim bộ | Thể loại: ' + genreRoute.value.name + '',
   ogType: 'video.movie',
   // ogUrl: window.location.href,
   ogDescription: () =>
-    'Phim bộ, Phim dài tập | Thể loại: ' + genreRoute.value.name_vietsub,
+    'Phim bộ, Phim dài tập | Thể loại: ' + genreRoute.value.name,
   ogLocale: 'vi'
 });
 

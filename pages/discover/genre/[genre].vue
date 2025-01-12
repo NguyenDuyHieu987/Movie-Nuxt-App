@@ -20,7 +20,7 @@
         }"
       >
         <NuxtLink :to="`/discover/genre/${item.short_name}`">
-          {{ item?.name_vietsub }}
+          {{ item?.name }}
         </NuxtLink>
       </SwiperSlide>
     </DiscoverHead>
@@ -92,18 +92,18 @@ const loading = ref<boolean>(false);
 const genreRoute = computed<genre>(
   () => getGenreByShortName(route.params.genre as string, store.allGenres)!
 );
-const metaHead = ref<string>('Thể loại: ' + genreRoute.value.name_vietsub);
+const metaHead = ref<string>('Thể loại: ' + genreRoute.value.name);
 const nuxtLoadingIndicator = useLoadingIndicator();
 
 useHead({
-  title: () => 'Khám phá | Thể loại: ' + genreRoute.value.name_vietsub + '',
+  title: () => 'Khám phá | Thể loại: ' + genreRoute.value.name + '',
   htmlAttrs: { lang: 'vi' }
 });
 
 useSeoMeta({
-  title: () => 'Khám phá | Thể loại: ' + genreRoute.value.name_vietsub + '',
+  title: () => 'Khám phá | Thể loại: ' + genreRoute.value.name + '',
   description: () => 'Khám phá phim mới cùng Phimhay247',
-  ogTitle: () => 'Khám phá | Thể loại: ' + genreRoute.value.name_vietsub + '',
+  ogTitle: () => 'Khám phá | Thể loại: ' + genreRoute.value.name + '',
   ogType: 'video.movie',
   // ogUrl: () => window.location.href,
   ogDescription: () => 'Khám phá phim mới cùng Phimhay247',

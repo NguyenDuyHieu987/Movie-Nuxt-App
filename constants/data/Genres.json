@@ -1,164 +1,164 @@
 [
   {
     "id": 28,
-    "name": "Action",
-    "name_vietsub": "Hành động",
+    "name": "Hành động",
+    "english_name": "Action",
     "short_name": "hanh-dong"
   },
   {
     "id": 12,
-    "name": "Adventure",
-    "name_vietsub": "Phiêu lưu",
+    "name": "Phiêu lưu",
+    "english_name": "Adventure",
     "short_name": "phieu-luu"
   },
   {
     "id": 16,
-    "name": "Animation",
-    "name_vietsub": "Hoạt hình",
+    "name": "Hoạt hình",
+    "english_name": "Animation",
     "short_name": "hoat-hinh"
   },
   {
     "id": 35,
-    "name": "Comedy",
-    "name_vietsub": "Hài hước",
+    "name": "Hài hước",
+    "english_name": "Comedy",
     "short_name": "hai-huoc"
   },
   {
     "id": 80,
-    "name": "Crime",
-    "name_vietsub": "Tội phạm",
+    "name": "Tội phạm",
+    "english_name": "Crime",
     "short_name": "toi-pham"
   },
   {
     "id": 99,
-    "name": "Documentary",
-    "name_vietsub": "Tài liệu",
+    "name": "Tài liệu",
+    "english_name": "Documentary",
     "short_name": "tai-lieu"
   },
   {
     "id": 18,
     "name": "Drama",
-    "name_vietsub": "Drama",
+    "english_name": "Drama",
     "short_name": "drama"
   },
   {
     "id": 10751,
-    "name": "Family",
-    "name_vietsub": "Gia đình",
+    "name": "Gia đình",
+    "english_name": "Family",
     "short_name": "gia-dinh"
   },
   {
     "id": 14,
-    "name": "Fantasy",
-    "name_vietsub": "Kỳ ảo",
+    "name": "Kỳ ảo",
+    "english_name": "Fantasy",
     "short_name": "ky-ao"
   },
   {
     "id": 36,
-    "name": "History",
-    "name_vietsub": "Lịch sử",
+    "name": "Lịch sử",
+    "english_name": "History",
     "short_name": "lich-su"
   },
   {
     "id": 27,
-    "name": "Horror",
-    "name_vietsub": "Kinh dị",
+    "name": "Kinh dị",
+    "english_name": "Horror",
     "short_name": "kinh-di"
   },
   {
     "id": 10402,
-    "name": "Music",
-    "name_vietsub": "Âm nhạc",
+    "name": "Âm nhạc",
+    "english_name": "Music",
     "short_name": "am-nhac"
   },
   {
     "id": 9648,
-    "name": "Mystery",
-    "name_vietsub": "Bí ẩn",
+    "name": "Bí ẩn",
+    "english_name": "Mystery",
     "short_name": "bi-an"
   },
   {
     "id": 10749,
-    "name": "Romance",
-    "name_vietsub": "Lãng mạn",
+    "name": "Lãng mạn",
+    "english_name": "Romance",
     "short_name": "lang-man"
   },
   {
     "id": 878,
-    "name": "Science Fiction",
-    "name_vietsub": "Khoa học viễn tưởng",
+    "name": "Khoa học viễn tưởng",
+    "english_name": "Science Fiction",
     "short_name": "khoa-hoc-vien-tuong"
   },
   {
     "id": 10770,
-    "name": "TV Movie",
-    "name_vietsub": "Phim dài tập",
+    "name": "Phim dài tập",
+    "english_name": "TV Movie",
     "short_name": "phim-dai-tap"
   },
   {
     "id": 53,
-    "name": "Thriller",
-    "name_vietsub": "Giật gân",
+    "name": "Giật gân",
+    "english_name": "Thriller",
     "short_name": "giat-gan"
   },
   {
     "id": 10752,
-    "name": "War",
-    "name_vietsub": "Chiến tranh",
+    "name": "Chiến tranh",
+    "english_name": "War",
     "short_name": "chien-tranh"
   },
   {
     "id": 37,
-    "name": "Western",
-    "name_vietsub": "Cao bồi",
+    "name": "Cao bồi",
+    "english_name": "Western",
     "short_name": "cao-boi"
   },
   {
     "id": 10765,
-    "name": "Sci-Fi & Fantasy",
-    "name_vietsub": "Khoa học viễn tưởng & Kỳ ảo",
+    "name": "Khoa học viễn tưởng & Kỳ ảo",
+    "english_name": "Sci-Fi & Fantasy",
     "short_name": "khoa-hoc-vien-tuong-&-ky-ao"
   },
   {
     "id": 10759,
-    "name": "Action & Adventure",
-    "name_vietsub": "Hành động & Phiêu lưu",
+    "name": "Hành động & Phiêu lưu",
+    "english_name": "Action & Adventure",
     "short_name": "hanh-dong-&-phieu-luu"
   },
   {
     "id": 10768,
-    "name": "War & Politics",
-    "name_vietsub": "Chiến tranh & Chính trị",
+    "name": "Chiến tranh & Chính trị",
+    "english_name": "War & Politics",
     "short_name": "chien-tranh-&-chinh-tri"
   },
   {
     "id": 10766,
-    "name": "Soap",
-    "name_vietsub": "Kịch",
+    "name": "Kịch",
+    "english_name": "Soap",
     "short_name": "kich"
   },
   {
     "id": 10767,
     "name": "Talk Show",
-    "name_vietsub": "Talk Show",
+    "english_name": "Talk Show",
     "short_name": "talk-show"
   },
   {
     "id": 10763,
-    "name": "News",
-    "name_vietsub": "Tin tức",
+    "name": "Tin tức",
+    "english_name": "News",
     "short_name": "tin-tuc"
   },
   {
     "id": 10764,
-    "name": "Reality",
-    "name_vietsub": "Đời thực",
+    "name": "Đời thực",
+    "english_name": "Reality",
     "short_name": "doi-thuc"
   },
   {
     "id": 10762,
-    "name": "Kids",
-    "name_vietsub": "Trẻ em",
+    "name": "Trẻ em",
+    "english_name": "Kids",
     "short_name": "tre-em"
   }
 ]

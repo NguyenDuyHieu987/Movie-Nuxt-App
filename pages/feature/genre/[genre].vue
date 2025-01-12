@@ -160,19 +160,19 @@ const responsiveHorizoltal = computed<any>((): any => ({
 }));
 
 useHead({
-  title: () => 'Phim lẻ | Thể loại: ' + genreRoute.value.name_vietsub + '',
+  title: () => 'Phim lẻ | Thể loại: ' + genreRoute.value.name + '',
   htmlAttrs: { lang: 'vi' }
 });
 
 useSeoMeta({
-  title: () => 'Phim lẻ | Thể loại: ' + genreRoute.value.name_vietsub + '',
+  title: () => 'Phim lẻ | Thể loại: ' + genreRoute.value.name + '',
   description: () =>
-    'Phim lẻ, Phim chiếu rạp | Thể loại: ' + genreRoute.value.name_vietsub,
-  ogTitle: () => 'Phim lẻ | Thể loại: ' + genreRoute.value.name_vietsub + '',
+    'Phim lẻ, Phim chiếu rạp | Thể loại: ' + genreRoute.value.name,
+  ogTitle: () => 'Phim lẻ | Thể loại: ' + genreRoute.value.name + '',
   ogType: 'video.movie',
   // ogUrl: window.location.href,
   ogDescription: () =>
-    'Phim lẻ, Phim chiếu rạp | Thể loại: ' + genreRoute.value.name_vietsub,
+    'Phim lẻ, Phim chiếu rạp | Thể loại: ' + genreRoute.value.name,
   ogLocale: 'vi'
 });
 
