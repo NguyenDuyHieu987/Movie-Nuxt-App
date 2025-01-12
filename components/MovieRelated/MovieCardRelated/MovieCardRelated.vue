@@ -244,6 +244,7 @@ const videoStates = reactive({
   isLoading: false,
   isVolumeOff: true
 });
+const hls = ref<Hls | null>();
 
 const getData = async () => {
   loading.value = true;
@@ -321,10 +322,11 @@ const loadM3u8Video = () => {
   if (!video.value) return;
 
   if (Hls.isSupported()) {
-    var hls = new Hls();
-    hls.loadSource(videoSrc.value);
-    hls.attachMedia(video.value!);
-    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+    if (!hls.value) hls.value = new Hls();
+
+    hls.value.loadSource(videoSrc.value);
+    hls.value.attachMedia(video.value!);
+    hls.value.on(Hls.Events.MANIFEST_PARSED, function () {
       video.value?.play().catch(() => {});
     });
   } else if (video.value?.canPlayType('application/vnd.apple.mpegurl')) {
@@ -352,8 +354,13 @@ const onMouseLeave = () => {
   if (showVideo.value) {
     showVideo.value = false;
 
-    if (video.value! && !video.value!.paused && showVideo.value) {
+    if (video.value && !video.value!.paused) {
       video.value!.pause();
+    }
+
+    if (hls.value) {
+      hls.value.destroy();
+      hls.value = null;
     }
   }
 };
