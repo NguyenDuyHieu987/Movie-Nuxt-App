@@ -415,9 +415,9 @@ const {
   getBroadcastById(broadcastId.value)
 );
 
-// if (!dataBroadcast.value) {
-//   throw createError({ statusCode: 500 });
-// }
+if (errorBroadcast.value) {
+  throw createError({ statusCode: 500 });
+}
 
 movieId.value = dataBroadcast.value.movieData.id;
 
