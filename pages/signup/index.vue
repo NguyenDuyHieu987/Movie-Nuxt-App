@@ -392,6 +392,12 @@ const handleSignUp = async (e: any) => {
           message: 'Email đã được đăng ký.',
           duration: MESSAGE.DURATION.DEFAULT
         });
+      } else if (response?.isUsernameExist == true) {
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Username đã tồn tại.',
+          duration: MESSAGE.DURATION.DEFAULT
+        });
       } else if (response?.isSended == false) {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,
@@ -456,6 +462,12 @@ const handleResendVerifyEmail = () => {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,
           message: 'Email đã được đăng ký.',
+          duration: MESSAGE.DURATION.DEFAULT
+        });
+      } else if (response?.isUsernameExist == true) {
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Username đã tồn tại.',
           duration: MESSAGE.DURATION.DEFAULT
         });
       } else if (response?.isSended == false) {

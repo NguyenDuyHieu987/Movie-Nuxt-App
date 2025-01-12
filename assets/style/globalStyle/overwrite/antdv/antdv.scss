@@ -333,6 +333,13 @@
 }
 
 .ant-input {
+  color: inherit;
+
+  &.ant-input-disabled,
+  .ant-input[disabled] {
+    color: inherit;
+  }
+
   &::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: var(--text-placeholder-color);
