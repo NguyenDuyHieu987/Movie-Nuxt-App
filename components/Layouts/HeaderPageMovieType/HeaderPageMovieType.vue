@@ -10,13 +10,13 @@
         <el-dropdown
           trigger="hover"
           class="dropdown-genre"
-          popper-class="header-page-type-movie-genre"
+          popper-class="header-page-type-movie-genre background-app-blur"
           placement="bottom-start"
           :show-timeout="0"
           :tabindex="-1"
         >
           <span
-            class="el-dropdown-link genre"
+            class="el-dropdown-link genre background-app-blur"
             aria-label="dropdown-genre"
           >
             {{ genreDropdownTitle }}
