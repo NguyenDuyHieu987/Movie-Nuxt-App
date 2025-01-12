@@ -1,14 +1,7 @@
 <template>
   <NuxtLink
     :to="{
-      path:
-        item?.type || item?.media_type == 'tv'
-          ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
-              item?.name
-            )}`
-          : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
-              item?.name
-            )}`
+      path: `/info-${dataMovie.media_type}/${dataMovie?.id}`
     }"
     class="movie-rank-item"
   >
@@ -29,14 +22,14 @@
     <div class="img-box">
       <div class="img-wrapper ratio-2-3">
         <!-- <img
-          v-lazy="getImage(item?.poster_path, 'poster', { w: 120 })"
+          v-lazy="getImage(dataMovie?.poster_path, 'poster', { w: 120 })"
           :lazy="true"
           loading="lazy"
           alt=""
         /> -->
 
         <NuxtImg
-          :src="getImage(item?.poster_path, 'poster', { w: 120 })"
+          :src="getImage(dataMovie?.poster_path, 'poster', { w: 120 })"
           placeholder="/images/loading-img-2-3.webp"
           format="avif"
           loading="lazy"
@@ -48,36 +41,40 @@
     <div class="info">
       <div class="top">
         <p class="title">
-          {{ item?.name }}
-          <span v-if="type == 'tv'">
-            {{ ' - Phần ' + item?.last_episode_to_air?.season_number }}
+          {{ dataMovie?.name }}
+          <span v-if="dataMovie?.media_type == 'tv'">
+            {{ ' - Phần ' + dataMovie?.last_episode_to_air?.season_number }}
           </span>
         </p>
         <p class="genres">
-          {{ Array?.from(item?.genres, (x: any) => x.name).join(' • ') }}
+          {{ Array?.from(dataMovie?.genres, (x: any) => x.name).join(' • ') }}
         </p>
 
         <p class="release-date">
           Năm:
-          {{ item?.release_date ? item?.release_date : item?.first_air_date }}
+          {{
+            dataMovie?.release_date
+              ? dataMovie?.release_date
+              : dataMovie?.first_air_date
+          }}
         </p>
 
         <p
-          v-if="type == 'movie'"
+          v-if="dataMovie?.media_type == 'movie'"
           class="duration-episode"
         >
           Thời lượng:
-          {{ item?.runtime + ' phút' || '' }}
+          {{ dataMovie?.runtime + ' phút' || '' }}
         </p>
 
-        <!-- <p v-if="type == 'tv'" class="duration-episode">
+        <!-- <p v-if="dataMovie?.media_type == 'tv'" class="duration-episode">
           Tập mới nhất:
-          {{ 'Tập ' + item?.last_episode_to_air?.episode_number || '' }}
+          {{ 'Tập ' + dataMovie?.last_episode_to_air?.episode_number || '' }}
         </p> -->
       </div>
       <div class="bottom">
         <span class="views"
-          >{{ utils.viewFormatter(item?.views) }} lượt xem</span
+          >{{ utils.viewFormatter(dataMovie?.views) }} lượt xem</span
         >
       </div>
     </div>
@@ -92,9 +89,9 @@ import { getImage } from '~/services/image';
 const utils = useUtils();
 const props = defineProps<{
   item: any;
-  type: string;
 }>();
 
+const dataMovie = ref<any>(props.item || {});
 const loading = ref<boolean>(false);
 
 // loading.value = true;

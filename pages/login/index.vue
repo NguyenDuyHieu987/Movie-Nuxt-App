@@ -287,7 +287,7 @@ const handleLogin = () => {
     // password: utils.encryptPassword(formLogin.password),
     password: formLogin.password
   })
-    .then((response) => {
+    .then(async (response) => {
       if (response?.isLogin == true) {
         authStore.userAccount = response?.result;
 
@@ -301,9 +301,9 @@ const handleLogin = () => {
           TOKEN.OFFSET.USER_TOKEN
         );
 
-        // navigateTo({ path: '/' });
+        // await navigateTo({ path: '/' });
 
-        navigateTo({ path: store.urlLoginBack });
+        await navigateTo({ path: store.urlLoginBack });
 
         reset();
       } else if (response?.isNotExist == true) {
@@ -359,7 +359,7 @@ const handleClickFacebookLogin = async () => {
   loginFacebook({
     accessToken: authResponse.accessToken
   })
-    .then((response) => {
+    .then(async (response) => {
       // console.log(response?.result);
 
       if (response?.isLogin == false) {
@@ -392,8 +392,8 @@ const handleClickFacebookLogin = async () => {
         TOKEN.OFFSET.USER_TOKEN
       );
 
-      // navigateTo({ path: '/' });
-      navigateTo({ path: store.urlLoginBack });
+      // await navigateTo({ path: '/' });
+      await navigateTo({ path: store.urlLoginBack });
     })
     .catch((e) => {
       ElNotification.error({
@@ -478,7 +478,7 @@ const handleGooglePopupCallback = (googleOauthResponse: any) => {
       authorizationCode: googleOauthResponse?.code,
       redirectUri: 'postmessage'
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response?.isLogin == false) {
           ElNotification.error({
             title: MESSAGE.STATUS.FAILED,
@@ -509,8 +509,8 @@ const handleGooglePopupCallback = (googleOauthResponse: any) => {
           TOKEN.OFFSET.USER_TOKEN
         );
 
-        // navigateTo({ path: '/' });
-        navigateTo({ path: store.urlLoginBack });
+        // await navigateTo({ path: '/' });
+        await navigateTo({ path: store.urlLoginBack });
       })
       .catch((e) => {
         ElNotification.error({

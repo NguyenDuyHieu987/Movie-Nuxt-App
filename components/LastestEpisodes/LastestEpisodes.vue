@@ -26,12 +26,8 @@
             <NuxtLink
               class="underline"
               :to="{
-                // path: `/play-tv/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
-                //   dataMovie?.name
-                // )}/tap-${item?.episode_number}`
-                path: `/play-tv/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
-                  dataMovie?.name
-                )}`,
+                // path: `/play-tv/${dataMovie?.id}/tap-${item?.episode_number}`
+                path: `/play-tv/${dataMovie?.id}`,
                 query: {
                   ep: item?.id
                 }

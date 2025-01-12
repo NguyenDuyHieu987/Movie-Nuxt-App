@@ -166,7 +166,7 @@ const handleSubmit = () => {
     chgEmailToken: chgEmailToken.value,
     newEmail: formChangeEmail.newEmail
   })
-    .then((response) => {
+    .then(async (response) => {
       // console.log(response);
       if (response?.success == true) {
         ElNotification.success({
@@ -187,7 +187,7 @@ const handleSubmit = () => {
 
         window.localStorage.removeItem(TOKEN.NAME.LOCS_CHANGE_EMAIL);
 
-        navigateTo('/YourAccount');
+        await navigateTo('/YourAccount');
       } else {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,

@@ -361,7 +361,7 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
     otp: formVerify.otp,
     chgPwdToken: chgPwdToken.value
   })
-    .then((response) => {
+    .then(async (response) => {
       // console.log(response);
       if (response?.success == true) {
         ElNotification.success({
@@ -378,8 +378,8 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
           );
         }
 
-        navigateTo({ path: '/YourAccount' });
         reset();
+        await navigateTo({ path: '/YourAccount' });
       } else if (response?.isInvalidOTP == true) {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,

@@ -471,8 +471,10 @@ const release_date = computed<string>(
 const ratedValue = ref<number | undefined>();
 const currentEpisode = ref<any>();
 const windowWidth = ref<number>(1200);
-const movieId = computed<string>((): string =>
-  utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+const movieId = computed<string>(
+  (): string =>
+    // utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+    route.params?.id as string
 );
 
 const getData = async () => {
@@ -747,11 +749,9 @@ const scrollToComment = () => {
   comment.scrollIntoView({ block: 'center', behavior: 'smooth' });
 };
 
-const onClickBack = () => {
-  navigateTo({
-    path: `/info-tv/${
-      dataMovie.value?.id
-    }${utils.convertPath.toPathInfo_Play(dataMovie.value?.name)}`
+const onClickBack = async () => {
+  await navigateTo({
+    path: `/info-tv/${dataMovie.value?.id}`
   });
 };
 </script>

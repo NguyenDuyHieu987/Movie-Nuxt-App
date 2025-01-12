@@ -12,7 +12,7 @@
           'only-right': isOnlyRight,
           'show-video': showVideo
         }"
-        :style="`--dominant-backdrop-color: ${item.dominant_backdrop_color[0]}, ${item.dominant_backdrop_color[1]},${item.dominant_backdrop_color[2]}`"
+        :style="`--dominant-backdrop-color: ${dataMovie.dominant_backdrop_color[0]}, ${dataMovie.dominant_backdrop_color[1]},${dataMovie.dominant_backdrop_color[2]}`"
       >
         <el-skeleton
           :loading="loading"
@@ -52,7 +52,9 @@
             <div class="backdrop-box">
               <NuxtImg
                 v-if="!showVideo"
-                :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
+                :src="
+                  getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })
+                "
                 loading="lazy"
                 alt=""
               />
@@ -66,7 +68,7 @@
                   autoplay
                   muted
                   :poster="
-                    getImage(item?.backdrop_path, 'backdrop', { h: 250 })
+                    getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })
                   "
                   @loadstart="onLoadStartVideo"
                   @waiting="onWaitingVideo"
@@ -132,13 +134,7 @@
                     <NuxtLink
                       class="btn-play-now"
                       :to="{
-                        path: isEpisodes
-                          ? `/play-tv/${
-                              item?.id
-                            }${utils.convertPath.toPathInfo_Play(item?.name)}`
-                          : `/play-movie/${
-                              item?.id
-                            }${utils.convertPath.toPathInfo_Play(item?.name)}`
+                        path: `/play-${dataMovie?.media_type}/${dataMovie?.id}`
                       }"
                     >
                       <a-button
@@ -210,7 +206,7 @@
                     <ShareNetwork
                       network="facebook"
                       :url="urlShare"
-                      :title="item?.name"
+                      :title="dataMovie?.name"
                       hashtags="phimhay247.site,vite"
                       style="white-space: nowrap; display: block"
                       @click.prevent
@@ -248,13 +244,7 @@
                   >
                     <NuxtLink
                       :to="{
-                        path: isEpisodes
-                          ? `/info-tv/${
-                              item?.id
-                            }${utils.convertPath.toPathInfo_Play(item?.name)}`
-                          : `/info-movie/${
-                              item?.id
-                            }${utils.convertPath.toPathInfo_Play(item?.name)}`
+                        path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
                       }"
                     >
                       <a-button
@@ -285,10 +275,10 @@
               </div>
               <div class="info">
                 <!-- <h3 class="title">
-                  {{ item?.name }}
+                  {{ dataMovie?.name }}
                   <span v-if="isEpisodes">
                     {{
-                      ' - Phần ' + dataMovieRef?.last_episode_to_air?.season_number
+                      ' - Phần ' + dataMovie?.last_episode_to_air?.season_number
                     }}
                   </span>
                 </h3> -->
@@ -296,7 +286,7 @@
                 <div class="genres">
                   <span
                     v-for="(genre, index) in Array.from(
-                      item?.genres,
+                      dataMovie?.genres,
                       (x: any) => x.name
                     )"
                     :key="index"
@@ -312,7 +302,7 @@
                     <span class="evidence-item country">
                       {{
                         getCountryByOriginalLanguage(
-                          item?.original_language,
+                          dataMovie?.original_language,
                           store.allCountries
                         )?.name || ''
                       }}
@@ -321,33 +311,33 @@
 
                   <div class="views-rate">
                     <p class="views">
-                      {{ utils.viewFormatter(dataMovieRef?.views) }} lượt xem
+                      {{ utils.viewFormatter(dataMovie?.views) }} lượt xem
                     </p>
 
                     <p>
                       <span
-                        v-if="dataMovieRef?.vote_average >= 8"
+                        v-if="dataMovie?.vote_average >= 8"
                         style="color: green; font-weight: bold"
                       >
-                        {{ dataMovieRef?.vote_average.toFixed(2) }}
+                        {{ dataMovie?.vote_average.toFixed(2) }}
                       </span>
                       <span
                         v-if="
-                          dataMovieRef?.vote_average >= 5 &&
-                          dataMovieRef?.vote_average < 8
+                          dataMovie?.vote_average >= 5 &&
+                          dataMovie?.vote_average < 8
                         "
                         style="color: yellow; font-weight: bold"
                       >
-                        {{ dataMovieRef?.vote_average.toFixed(2) }}
+                        {{ dataMovie?.vote_average.toFixed(2) }}
                       </span>
                       <span
-                        v-if="dataMovieRef?.vote_average < 5"
+                        v-if="dataMovie?.vote_average < 5"
                         style="color: red; font-weight: bold"
                       >
-                        {{ dataMovieRef?.vote_average.toFixed(2) }}
+                        {{ dataMovie?.vote_average.toFixed(2) }}
                       </span>
                       diểm /
-                      {{ dataMovieRef?.vote_count + ' lượt' }}
+                      {{ dataMovie?.vote_count + ' lượt' }}
                     </p>
                   </div>
                 </div>
@@ -383,7 +373,6 @@ import Hls from 'hls.js';
 
 const props = defineProps<{
   item: any;
-  dataMovie?: any;
   styleProps: {
     left: number;
     top: number;
@@ -403,7 +392,7 @@ const nuxtConfig = useRuntimeConfig();
 const store = useStore();
 const authStore = useAuthStore();
 const utils = useUtils();
-const dataMovieRef = ref<any>(props.dataMovie || {});
+const dataMovie = ref<any>(props.item || {});
 // const isEpisodes = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const isAddToList = ref<boolean>(false);
@@ -413,13 +402,7 @@ const previewModal = ref<HTMLElement>();
 const urlShare = computed<string>(
   (): string =>
     window.location.origin +
-    (props.isEpisodes
-      ? `/info-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-          props.item?.name
-        )}`
-      : `/info-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-          props.item?.name
-        )}props.`)
+    `/info-${dataMovie.value?.media_type}/${dataMovie.value?.id}`
 );
 const isTeleport = defineModel<boolean>('isTeleport');
 const style = defineModel<{
@@ -438,7 +421,7 @@ const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
   getVideo(
-    props.dataMovie?.video_path ||
+    dataMovie.value?.video_path ||
       '/feature/Transformer_5/Transformer_5' + '.m3u8'
   )
 );
@@ -666,28 +649,28 @@ watch(showVideo, async () => {
 
 const getData = async () => {
   showVideo.value = true;
-  dataMovieRef.value = props.dataMovie;
+  dataMovie.value = dataMovie.value;
 
-  // if (!dataMovieRef.value) {
+  // if (!dataMovie.value) {
   //   loading.value = true;
 
   //   if (props.isEpisodes) {
-  //     // await useAsyncData(`tv/short/${props.item?.id}`, () =>
-  //     //   getTvById(props.item?.id)
+  //     // await useAsyncData(`tv/short/${dataMovie.value?.id}`, () =>
+  //     //   getTvById(dataMovie.value?.id)
   //     // )
-  //     await getTvById(props.item?.id)
+  //     await getTvById(dataMovie.value?.id)
   //       .then((response) => {
-  //         dataMovieRef.value = response;
+  //         dataMovie.value = response;
   //       })
   //       .catch((e) => {})
   //       .finally(() => {});
   //   } else {
-  //     // await useAsyncData(`movie/short/${props.item?.id}`, () =>
-  //     //   getMovieById(props.item?.id)
+  //     // await useAsyncData(`movie/short/${dataMovie.value?.id}`, () =>
+  //     //   getMovieById(dataMovie.value?.id)
   //     // )
-  //     await getMovieById(props.item?.id)
+  //     await getMovieById(dataMovie.value?.id)
   //       .then((response) => {
-  //         dataMovieRef.value = response;
+  //         dataMovie.value = response;
   //       })
   //       .catch((e) => {})
   //       .finally(() => {});
@@ -701,10 +684,10 @@ const getData = async () => {
   loading.value = true;
 
   if (authStore.isLogin) {
-    if (dataMovieRef.value?.in_list) {
+    if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     } else {
-      await getItemList(props.item?.id, props.item?.media_type)
+      await getItemList(dataMovie.value?.id, dataMovie.value?.media_type)
         .then((response) => {
           if (response.success == true) {
             isAddToList.value = true;
@@ -714,11 +697,11 @@ const getData = async () => {
         .finally(() => {});
     }
 
-    if (dataMovieRef.value?.history_progress) {
+    if (dataMovie.value?.history_progress) {
       isInHistory.value = true;
-      percent.value = dataMovieRef.value?.history_progress?.percent;
+      percent.value = dataMovie.value?.history_progress?.percent;
     } else {
-      await getItemHistory(props.item?.id, props.item?.media_type)
+      await getItemHistory(dataMovie.value?.id, dataMovie.value?.media_type)
         .then((response) => {
           if (response.success == true) {
             isInHistory.value = true;
@@ -741,17 +724,11 @@ watch(isTeleport, async () => {
 
 getData();
 
-const onClickPreviewModal = (e: any) => {
+const onClickPreviewModal = async (e: any) => {
   // console.log(e.target?.closest('.ant-btn'));
   // if (!e.target?.closest('.ant-btn')) {
-  //   navigateTo({
-  //     path: props.isEpisodes
-  //       ? `/info-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-  //           props.item?.name
-  //         )}`
-  //       : `/info-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-  //           props.item?.name
-  //         )}`
+  //  await navigateTo({
+  //     path: `/info-${dataMovie.value?.media_type}/${dataMovie.value?.id}`
   //   });
   // }
 };
@@ -765,7 +742,10 @@ const handleAddToList = (e: any) => {
   if (!isAddToList.value) {
     isAddToList.value = true;
     if (
-      !utils.handleAddItemToList(dataMovieRef.value?.id, props.item?.media_type)
+      !utils.handleAddItemToList(
+        dataMovie.value?.id,
+        dataMovie.value?.media_type
+      )
     ) {
       isAddToList.value = false;
     }
@@ -773,8 +753,8 @@ const handleAddToList = (e: any) => {
     isAddToList.value = false;
     if (
       !utils.handleRemoveItemFromList(
-        dataMovieRef.value?.id,
-        props.item?.media_type
+        dataMovie.value?.id,
+        dataMovie.value?.media_type
       )
     ) {
       isAddToList.value = true;

@@ -301,7 +301,7 @@ watchEffect(() => {
   valueInput.value = route.query?.q as string;
 });
 
-const handleChangeInput = (query: string) => {
+const handleChangeInput = async (query: string) => {
   if (query?.length > 0) {
     loadingSearch.value = true;
 
@@ -341,7 +341,7 @@ const handleChangeInput = (query: string) => {
           isShowSearchResults.value = true;
         });
 
-      // navigateTo(
+      // await navigateTo(
       //   `/search?q=${query?.replaceAll(' ', '+')}`
       //   // query: { q: query?.replaceAll(' ', '+') },
       // );
@@ -350,16 +350,16 @@ const handleChangeInput = (query: string) => {
   } else {
     clearTimeout(debounce.value);
 
-    // navigateTo({ path: '/' });
+    // await navigateTo({ path: '/' });
 
     dataSearch.value = [];
     isShowSearchResults.value = false;
   }
 };
 
-const handleSearch = (value: string) => {
+const handleSearch = async (value: string) => {
   if (value.length > 0) {
-    navigateTo(
+    await navigateTo(
       `/search?q=${value?.replaceAll(' ', '+')}`
       // query: { q: value?.replaceAll(' ', '+') },
     );

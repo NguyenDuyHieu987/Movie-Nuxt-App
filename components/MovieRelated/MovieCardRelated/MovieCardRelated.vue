@@ -6,7 +6,7 @@
     }"
     @pointerenter="onMouseEnter"
     @pointerleave="onMouseLeave"
-    :title="item?.name"
+    :title="dataMovie?.name"
   >
     <!-- <el-skeleton :loading="loading" animated>
       <template #template>
@@ -46,12 +46,12 @@
 
       <NuxtImg
         v-if="!showVideo"
-        :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
+        :src="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
         placeholder="/images/loading-img-16-9.webp"
         format="avif"
         loading="lazy"
-        :alt="item?.name"
-        :title="item?.name"
+        :alt="dataMovie?.name"
+        :title="dataMovie?.name"
       />
 
       <div
@@ -65,7 +65,7 @@
           ref="video"
           autoplay
           muted
-          :poster="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
+          :poster="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
           @loadstart="onLoadStartVideo"
           @waiting="onWaitingVideo"
           @playing="onPLayingVideo"
@@ -124,28 +124,24 @@
     <NuxtLink
       class="info"
       :to="{
-        path: isEpisodes
-          ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
-              item?.name
-            )}`
-          : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
-              item?.name
-            )}`
+        path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
       }"
       target="_top"
-      :title="item?.name"
+      :title="dataMovie?.name"
     >
       <p
         class="title"
-        :title="item?.name"
+        :title="dataMovie?.name"
       >
-        {{ item?.name }}
+        {{ dataMovie?.name }}
       </p>
       <div class="middle">
         <div class="left">
           <div
             v-if="
-              item?.release_date || item?.last_air_date || item?.first_air_date
+              dataMovie?.release_date ||
+              dataMovie?.last_air_date ||
+              dataMovie?.first_air_date
             "
             class="release-date-box"
           >
@@ -153,21 +149,21 @@
               v-if="!isEpisodes"
               class="release-date"
             >
-              {{ item?.release_date?.slice(0, 4) }}
+              {{ dataMovie?.release_date?.slice(0, 4) }}
             </span>
             <span
               v-else
               class="release-date"
             >
               {{
-                item?.last_air_date?.slice(0, 4)
-                  ? item?.last_air_date?.slice(0, 4)
-                  : item?.first_air_date?.slice(0, 4)
+                dataMovie?.last_air_date?.slice(0, 4)
+                  ? dataMovie?.last_air_date?.slice(0, 4)
+                  : dataMovie?.first_air_date?.slice(0, 4)
               }}
             </span>
           </div>
           <span class="views">
-            {{ utils.viewFormatter(item?.views) }} lượt xem
+            {{ utils.viewFormatter(dataMovie?.views) }} lượt xem
           </span>
         </div>
         <div class="right">
@@ -200,7 +196,7 @@
       <div class="bottom">
         <p class="overview">
           {{
-            item?.overview ||
+            dataMovie?.overview ||
             'Sorry! This movie has not been updated overview content.'
           }}
         </p>
@@ -235,7 +231,7 @@ const loading = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
 const percent = ref<number>(0);
 const isAddToList = ref<boolean>(false);
-const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
+const isEpisodes = computed<boolean>(() => dataMovie.value?.media_type == 'tv');
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
@@ -256,20 +252,11 @@ const getData = async () => {
     loading.value = false;
   }, 500);
 
-  switch (props?.type || props?.item?.media_type) {
-    case 'movie':
-      break;
-    case 'tv':
-      break;
-    default:
-      break;
-  }
-
   if (authStore.isLogin) {
     if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     } else {
-      await getItemList(props.item?.id, props.item?.media_type)
+      await getItemList(dataMovie.value?.id, dataMovie.value?.media_type)
         .then((response) => {
           if (response.success == true) {
             isAddToList.value = true;
@@ -282,7 +269,7 @@ const getData = async () => {
       isInHistory.value = true;
       percent.value = dataMovie.value?.history_progress?.percent;
     } else {
-      await getItemHistory(props.item?.id, props.item?.media_type)
+      await getItemHistory(dataMovie.value?.id, dataMovie.value?.media_type)
         .then((response) => {
           if (response.success == true) {
             isInHistory.value = true;
@@ -303,13 +290,21 @@ const handleAddToList = (e: any) => {
   }
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (!utils.handleAddItemToList(props.item?.id, props.item.media_type)) {
+    if (
+      !utils.handleAddItemToList(
+        dataMovie.value?.id,
+        dataMovie.value.media_type
+      )
+    ) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
     if (
-      !utils.handleRemoveItemFromList(props.item?.id, props.item?.media_type)
+      !utils.handleRemoveItemFromList(
+        dataMovie.value?.id,
+        dataMovie.value?.media_type
+      )
     ) {
       isAddToList.value = true;
     }
@@ -363,19 +358,13 @@ const onMouseLeave = () => {
   }
 };
 
-const onClickPlay = (e: Event) => {
+const onClickPlay = async (e: Event) => {
   if ((e.target as Element)?.closest('.video-tool')) {
     return;
   }
 
-  navigateTo({
-    path: isEpisodes.value
-      ? `/play-tv/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-          props.item?.name
-        )}`
-      : `/play-movie/${props.item?.id}${utils.convertPath.toPathInfo_Play(
-          props.item?.name
-        )}`
+  await navigateTo({
+    path: `/play-${dataMovie.value?.media_type}/${dataMovie.value?.id}`
   });
 };
 

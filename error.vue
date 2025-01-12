@@ -6,35 +6,41 @@
           <a-result
             class="error-page"
             :status="isNetworkError ? 500 : error.statusCode"
-            :title="
-              isNetworkError
-                ? 'Kết nối mạng'
-                : ` ${
-                    utils.isStringEmpty(error.statusMessage)
-                      ? error.statusCode
-                      : error.statusMessage
-                  }`
-            "
+            :title="isNetworkError ? 'Kết nối mạng' : ` ${error.statusCode}`"
           >
             <template
               v-if="error.statusCode == 404 && !isNetworkError"
               #subTitle
             >
-              <h3>Ops!, Không thể tìm thấy trang này.</h3>
+              <h3>
+                {{
+                  error?.statusMessage || 'Ops!, Không thể tìm thấy trang này.'
+                }}
+              </h3>
             </template>
 
             <template
               v-else-if="error.statusCode != 404 && !isNetworkError"
               #subTitle
             >
-              <h3>Ops!, It looks like something broke.</h3>
+              <h3>
+                {{
+                  error?.statusMessage ||
+                  'Ops!, Có vẻ như có thứ gì đó bị hỏng. Chúng tôi sẽ khắc phục sớm nhất có thể.'
+                }}
+              </h3>
             </template>
 
             <template
               v-else-if="isNetworkError"
               #subTitle
             >
-              <h3>Không có kết nối Internet. Vui lòng kiểm tra lại mạng.</h3>
+              <h3>
+                {{
+                  error?.statusMessage ||
+                  'Không có kết nối Internet. Vui lòng kiểm tra lại mạng.'
+                }}
+              </h3>
             </template>
 
             <template #extra>
@@ -88,8 +94,6 @@ type errorResponse = {
   url: string;
   statusCode: number & ResultStatusType;
   statusMessage: string;
-  message: string;
-  description: string;
   data: any;
 };
 

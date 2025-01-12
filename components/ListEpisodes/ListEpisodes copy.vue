@@ -96,11 +96,7 @@
                   :class="{ active: currentEpisode == item?.episode_number }"
                 >
                   <a
-                    :href="`/play-tv/${
-                      dataMovie?.id
-                    }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}/tap-${
-                      item?.episode_number
-                    }`"
+                    :href="`/play-tv/${dataMovie?.id}`"
                     replace
                     force
                     @click.prevent="handleChangeEpisode(item)"

@@ -234,7 +234,7 @@ const handleSubmit = () => {
     newPassword: formResetPassword.confirmNewPassword,
     logOutAllDevice: formResetPassword.logOutAllDevice
   })
-    .then((response) => {
+    .then(async (response) => {
       // console.log(response);
       if (response?.success == true) {
         ElNotification.success({
@@ -247,7 +247,7 @@ const handleSubmit = () => {
 
         window.localStorage.removeItem(TOKEN.NAME.LOCS_FORGOT_PASSWORD);
 
-        navigateTo('/login');
+        await navigateTo('/login');
       } else {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,

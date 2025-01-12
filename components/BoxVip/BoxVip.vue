@@ -150,8 +150,8 @@ onBeforeMount(async () => {
   isFade.value = true;
 });
 
-const handleClickAtiveVipBtn = () => {
-  navigateTo('/upgrade/plans');
+const handleClickAtiveVipBtn = async () => {
+  await navigateTo('/upgrade/plans');
 };
 </script>
 

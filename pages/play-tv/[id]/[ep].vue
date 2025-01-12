@@ -132,14 +132,14 @@
                         <!-- <Icon v-if="isAddToList" name="ic:baseline-check" />
                       <Icon v-else name="ic:baseline-plus" /> -->
 
-                        <CheckIcon
+                        <SvgoCheck
                           v-if="isAddToList"
                           width="2.5rem"
                           height="2.5rem"
                           fill="currentColor"
                         />
 
-                        <PlusIcon
+                        <SvgoPlus
                           v-else
                           width="2.5rem"
                           height="2.5rem"
@@ -169,7 +169,7 @@
                       <template #icon>
                         <!-- <Icon name="ic:outline-comment" class="comment" /> -->
 
-                        <CommentIcon
+                        <SvgoComment
                           class="comment"
                           width="2.1rem"
                           height="2.1rem"
@@ -388,9 +388,9 @@
 </template>
 
 <script setup lang="ts">
-import PlusIcon from '~/assets/svgs/icons/plus.svg?component';
-import CheckIcon from '~/assets/svgs/icons/check.svg?component';
-import CommentIcon from '~/assets/svgs/icons/comment.svg?component';
+// import SvgoPlus from '~/assets/svgs/icons/plus.svg?component';
+// import SvgoCheck from '~/assets/svgs/icons/check.svg?component';
+// import SvgoComment from '~/assets/svgs/icons/comment.svg?component';
 // import EllipsisHorizontal from '~/assets/svgs/icons/ellipsis-horizontal.svg?component';.
 
 // import { LoadingSpinner } from '~/components/Loading';
@@ -470,8 +470,10 @@ const release_date = computed<string>(
 const ratedValue = ref<number | undefined>();
 const currentEpisode = ref<any>();
 const windowWidth = ref<number>(1200);
-const movieId = computed<string>((): string =>
-  utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+const movieId = computed<string>(
+  (): string =>
+    // utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+    route.params?.id as string
 );
 
 const getData = async () => {
@@ -529,13 +531,21 @@ onMounted(() => {
 
 loading.value = true;
 
-const { data: dataMovie, status } = await useAsyncData(
+const {
+  data: dataMovie,
+  status,
+  error
+} = await useAsyncData(
   `tv/detail/${movieId.value}`,
   () => getMovieByType_Id('tv', movieId.value),
   {
     // lazy: true
   }
 );
+
+if (error.value || !dataMovie.value) {
+  throw createError({ statusCode: 500 });
+}
 
 isAddToList.value = dataMovie.value?.in_list == true;
 
@@ -739,11 +749,9 @@ const scrollToComment = () => {
   comment.scrollIntoView({ block: 'center', behavior: 'smooth' });
 };
 
-const onClickBack = () => {
-  navigateTo({
-    path: `/info-tv/${
-      dataMovie.value?.id
-    }${utils.convertPath.toPathInfo_Play(dataMovie.value?.name)}`
+const onClickBack = async () => {
+  await navigateTo({
+    path: `/info-tv/${dataMovie.value?.id}`
   });
 };
 </script>

@@ -440,8 +440,10 @@ const historyProgress = ref<{
 });
 const ratedValue = ref<number | undefined>();
 const windowWidth = ref<number>(1200);
-const movieId = computed<string>((): string =>
-  utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+const movieId = computed<string>(
+  (): string =>
+    // utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+    route.params?.id as string
 );
 
 const getData = async () => {
@@ -499,7 +501,11 @@ onMounted(() => {
 
 loading.value = true;
 
-const { data: dataMovie, status } = await useAsyncData(
+const {
+  data: dataMovie,
+  status,
+  error
+} = await useAsyncData(
   `movie/detail/${movieId.value}`,
   () => getMovieByType_Id('movie', movieId.value),
   {
@@ -507,12 +513,11 @@ const { data: dataMovie, status } = await useAsyncData(
   }
 );
 
-isAddToList.value = dataMovie.value?.in_list == true;
-
-if (dataMovie.value?.history_progress) {
-  isInHistory.value = true;
-  historyProgress.value = dataMovie.value?.history_progress;
+if (error.value || !dataMovie.value) {
+  throw createError({ statusCode: 500 });
 }
+
+isAddToList.value = dataMovie.value?.in_list == true;
 
 ratedValue.value = dataMovie.value?.rated_value;
 
@@ -686,11 +691,9 @@ const scrollToComment = () => {
   comment.scrollIntoView({ block: 'center', behavior: 'smooth' });
 };
 
-const onClickBack = () => {
-  return navigateTo({
-    path: `/info-movie/${
-      dataMovie.value?.id
-    }${utils.convertPath.toPathInfo_Play(dataMovie.value?.name)}`
+const onClickBack = async () => {
+  await navigateTo({
+    path: `/info-movie/${dataMovie.value?.id}`
   });
 };
 </script>

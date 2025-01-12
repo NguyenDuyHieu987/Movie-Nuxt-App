@@ -79,14 +79,7 @@
             <div class="info">
               <NuxtLink
                 :to="{
-                  path:
-                    item.movieData?.media_type == 'tv'
-                      ? `/info-tv/${
-                          item?.movie_id
-                        }${utils.convertPath.toPathInfo_Play(item.movieData?.name)}`
-                      : `/info-movie/${
-                          item?.movie_id
-                        }${utils.convertPath.toPathInfo_Play(item.movieData?.name)}`
+                  path: `/info-${item.movieData?.media_type}/${item?.movie_id}`
                 }"
                 class="info-wrapper"
               >

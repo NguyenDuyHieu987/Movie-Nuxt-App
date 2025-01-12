@@ -13,7 +13,7 @@
       <template #title>
         <h3 class="title">
           <strong>
-            {{ item?.name }}
+            {{ dataMovie.name }}
           </strong>
         </h3>
         <CloseBtn @click="isTeleport = false" />
@@ -38,7 +38,7 @@
           <div class="info">
             <p class="overview">
               <span>Nội dung: </span>
-              {{ item?.overview }}
+              {{ dataMovie.overview }}
             </p>
           </div>
           <div class="action">
@@ -53,7 +53,7 @@
             <NuxtLink
               v-if="isEpisodes"
               :to="{
-                path: `/play-tv/${item?.id}/${item?.name
+                path: `/play-tv/${dataMovie.id}/${dataMovie.name
                   ?.replace(/\s/g, '+')
                   .toLowerCase()}/tap-1`,
               }"
@@ -64,7 +64,7 @@
             <NuxtLink
               v-else-if="!isEpisodes"
               :to="{
-                path: `/play-movie/${item?.id}/${item?.name
+                path: `/play-movie/${dataMovie.id}/${dataMovie.name
                   ?.replace(/\s/g, '+')
                   .toLowerCase()}`,
               }"
@@ -89,11 +89,11 @@
         <template #header>
           <h3 class="title">
             <strong v-if="isEpisodes">
-              {{ item?.name }}
+              {{ dataMovie.name }}
               <!-- {{ ' - Phần ' + dataMovie?.last_episode_to_air?.season_number }} -->
             </strong>
             <strong v-else>
-              {{ item?.name }}
+              {{ dataMovie.name }}
             </strong>
           </h3>
 
@@ -120,17 +120,17 @@
             <div class="info">
               <!-- <h3 class="title">
               <strong v-if="isEpisodes">
-                {{ item?.name }}
+                {{ dataMovie.name }}
               </strong>
               <strong v-else>
-                {{ item?.name }}
+                {{ dataMovie.name }}
               </strong>
             </h3> -->
 
               <p class="overview">
                 <span>Nội dung: </span>
                 {{
-                  item?.overview ||
+                  dataMovie.overview ||
                   'Sorry! This movie has not been updated overview content.'
                 }}
               </p>
@@ -146,13 +146,7 @@
               </a-button>
               <NuxtLink
                 :to="{
-                  path: isEpisodes
-                    ? `/play-tv/${
-                        item?.id
-                      }__${utils.convertPath.toPathInfo_Play(item?.name)}`
-                    : `/play-movie/${
-                        item?.id
-                      }__${utils.convertPath.toPathInfo_Play(item?.name)}`
+                  path: `/play-${dataMovie.media_type}/${dataMovie.id}`
                 }"
                 class="btn-play-now"
                 @click="isTeleport = false"
@@ -187,7 +181,7 @@ const props = defineProps<{
 }>();
 
 const utils = useUtils();
-const dataMovie = ref<any>({});
+const dataMovie = ref<any>(props.item || {});
 const dataVideos = ref<any[]>([]);
 const loading = ref<boolean>(false);
 const isTeleport = defineModel<boolean>('isTeleport', { default: false });
@@ -197,8 +191,8 @@ watch(isTeleport, async () => {
     loading.value = true;
 
     if (dataVideos.value.length == 0) {
-      await useAsyncData(`videos/${props.item?.id}`, () =>
-        getVideos(props.item?.id)
+      await useAsyncData(`videos/${dataMovie.value.id}`, () =>
+        getVideos(dataMovie.value.id)
       )
         .then((response) => {
           dataVideos.value = response.data.value;
@@ -210,8 +204,8 @@ watch(isTeleport, async () => {
     }
 
     // if (props.isEpisodes) {
-    //   await useAsyncData(`tv/short/${props.item?.id}`, () =>
-    //     getTvById(props.item?.id, 'videos')
+    //   await useAsyncData(`tv/short/${dataMovie.value.id}`, () =>
+    //     getTvById(dataMovie.value.id, 'videos')
     //   )
     //     .then((response) => {
     //       dataMovie.value = response.data.value;
@@ -222,8 +216,8 @@ watch(isTeleport, async () => {
     //       loading.value = false;
     //     });
     // } else {
-    //   await useAsyncData(`movie/short/${props.item?.id}`, () =>
-    //     getMovieById(props.item?.id, 'videos')
+    //   await useAsyncData(`movie/short/${dataMovie.value.id}`, () =>
+    //     getMovieById(dataMovie.value.id, 'videos')
     //   )
     //     .then((response) => {
     //       dataMovie.value = response.data.value;

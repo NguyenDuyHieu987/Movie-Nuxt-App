@@ -165,21 +165,21 @@ definePageMeta({
   middleware: [
     async (to, from) => {
       if (!to.query?.planorder) {
-        navigateTo('/upgrade/plans');
+        await navigateTo('/upgrade/plans');
         return;
       }
 
       // getAllPlan()
-      //   .then((response) => {
+      //   .then(async (response) => {
       //     if (
       //       !response?.results.some(
       //         (item: plan) => item.order == Number(to.query?.planorder)
       //       )
       //     )
-      //       return navigateTo('/upgrade/plans');
+      //       return await navigateTo('/upgrade/plans');
       //   })
-      //   .catch((e) => {
-      //     navigateTo('/upgrade/plans');
+      //   .catch(async (e) => {
+      //     await navigateTo('/upgrade/plans');
       //   });
 
       const { data: plans } = await useAsyncData(
@@ -224,20 +224,20 @@ watch(
     }
 
     // getAllPlan()
-    //   .then((response) => {
+    //   .then(async (response) => {
     //     if (
     //       !response?.results.some(
     //         (item: plan) => item.order == Number(route.query?.planorder)
     //       )
     //     )
-    //       return navigateTo('/upgrade/plans');
+    //       return await navigateTo('/upgrade/plans');
 
     //     planSelected.value = response?.results.find(
     //       (item: plan) => item.order == Number(route.query?.planorder)
     //     );
     //   })
-    //   .catch((e) => {
-    //     navigateTo('/upgrade/plans');
+    //   .catch(async (e) => {
+    //    await navigateTo('/upgrade/plans');
     //   });
 
     const { data: plans } = await useAsyncData(`plan/all`, () => getAllPlan(), {
@@ -251,7 +251,7 @@ watch(
         (item: plan) => item.order == Number(route.query?.planorder)
       )
     ) {
-      navigateTo('/upgrade/plans');
+      await navigateTo('/upgrade/plans');
       return;
     }
 
@@ -364,10 +364,10 @@ const handleClickStripeMethod = async () => {
 
 const getStatusInvoice = async (id: string) => {
   await getBill(id)
-    .then((response) => {
+    .then(async (response) => {
       if (response?.success) {
         if (response?.result?.status == 'complete') {
-          navigateTo('/upgrade/state/Stripe/success');
+          await navigateTo('/upgrade/state/Stripe/success');
           return;
         }
         setTimeout(async () => await getStatusInvoice(id), 500);

@@ -19,13 +19,7 @@
       <template #default> -->
     <NuxtLink
       :to="{
-        path: isEpisodes
-          ? `/info-tv/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
-              dataMovie?.name
-            )}`
-          : `/info-movie/${dataMovie?.id}${utils.convertPath.toPathInfo_Play(
-              dataMovie?.name
-            )}`
+        path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
       }"
       class="movie-follow-item"
     >
@@ -149,22 +143,8 @@
                     />
 
                     <NuxtLink
-                      v-if="isEpisodes"
                       :to="{
-                        path: `/play-tv/${
-                          dataMovie?.id
-                        }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
-                      }"
-                      class="btn-play-now"
-                    >
-                      Đến trang xem phim
-                    </NuxtLink>
-                    <NuxtLink
-                      v-else
-                      :to="{
-                        path: `/play-movie/${
-                          dataMovie?.id
-                        }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
+                        path: `/play-${dataMovie?.media_type}/${dataMovie?.id}`
                       }"
                       class="btn-play-now"
                     >
@@ -253,13 +233,7 @@ const percent = ref<number>(0);
 const urlShare = computed<string>(
   (): string =>
     window.location.origin +
-    (isEpisodes
-      ? `/info-tv/${dataMovie.value?.id}${utils.convertPath.toPathInfo_Play(
-          dataMovie.value?.name
-        )}`
-      : `/info-movie/${dataMovie.value?.id}${utils.convertPath.toPathInfo_Play(
-          dataMovie.value?.name
-        )}`)
+    `/info-${dataMovie.value?.media_type}/${dataMovie.value?.id}`
 );
 
 onMounted(() => {});

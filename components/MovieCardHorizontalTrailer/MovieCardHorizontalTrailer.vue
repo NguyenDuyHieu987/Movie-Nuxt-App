@@ -9,24 +9,18 @@
     <NuxtLink
       class="img-wrapper"
       :to="{
-        path: isEpisodes
-          ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
-              item?.name
-            )}`
-          : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
-              item?.name
-            )}`
+        path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
       }"
     >
       <div class="img-box ratio-16-9">
         <!-- <img
-          v-lazy="getImage(item?.backdrop_path, 'backdrop', {h:250})"
+          v-lazy="getImage(dataMovie?.backdrop_path, 'backdrop', {h:250})"
           loading="lazy"
           alt=""
         /> -->
 
         <NuxtImg
-          :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
+          :src="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
           placeholder="/images/loading-img-16-9.webp"
           format="avif"
           loading="lazy"
@@ -63,12 +57,12 @@
     <div class="info">
       <p
         class="title"
-        :title="item?.name"
+        :title="dataMovie?.name"
       >
-        {{ item?.name }}
+        {{ dataMovie?.name }}
       </p>
       <p class="original-title">
-        {{ item?.original_name }}
+        {{ dataMovie?.original_name }}
       </p>
     </div>
     <!-- </template>
@@ -99,12 +93,12 @@ const props = defineProps<{
 
 const authStore = useAuthStore();
 const utils = useUtils();
-const dataMovie = ref<any>({});
+const dataMovie = ref<any>(props.item || {});
 const loading = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
 const percent = ref<number>(0);
 const isOpenModalTrailer = ref<boolean>(false);
-const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
+const isEpisodes = computed<boolean>(() => dataMovie.value?.media_type == 'tv');
 
 const getData = async () => {
   // loading.value = true;
@@ -113,7 +107,7 @@ const getData = async () => {
   //   loading.value = false;
   // }, 500);
 
-  switch (props?.type || props?.item?.media_type) {
+  switch (props?.type || dataMovie.value?.media_type) {
     case 'movie':
       break;
     case 'tv':
@@ -128,10 +122,10 @@ const getData = async () => {
     percent.value = dataMovie.value?.history_progress?.percent;
   } else {
     // await useAsyncData(
-    //   `itemhistory/${store?.userAccount?.id}/${props.item?.id}`,
-    //   () => getItemHistory(props.item?.id, props.item?.media_type)
+    //   `itemhistory/${store?.userAccount?.id}/${dataMovie.value?.id}`,
+    //   () => getItemHistory(dataMovie.value?.id, dataMovie.value?.media_type)
     // )
-    await getItemHistory(props.item?.id, props.item?.media_type)
+    await getItemHistory(dataMovie.value?.id, dataMovie.value?.media_type)
       .then((response) => {
         if (response.success == true) {
           isInHistory.value = true;

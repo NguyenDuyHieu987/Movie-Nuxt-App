@@ -35,14 +35,14 @@ const route = useRoute();
 const router = useRouter();
 const loading = ref<boolean>(false);
 
-onBeforeMount(() => {
+onBeforeMount(async () => {
   const url = window.location.href;
 
   const accessToken = url.match(/#(?:access_token)=([\S\s]*?)&/)?.at(1);
   const authorizationCode = url.match(/(?:code)=([\S\s]*?)&/)?.at(1);
 
   if (!accessToken && !authorizationCode) {
-    navigateTo('/login');
+    await navigateTo('/login');
     return;
   }
 
@@ -53,7 +53,7 @@ onBeforeMount(() => {
     accessToken,
     authorizationCode
   })
-    .then((response) => {
+    .then(async (response) => {
       if (response?.isLogin == false) {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,
@@ -61,7 +61,7 @@ onBeforeMount(() => {
           duration: MESSAGE.DURATION.DEFAULT
         });
 
-        navigateTo({ path: '/login' });
+        await navigateTo({ path: '/login' });
 
         return;
       }
@@ -86,11 +86,11 @@ onBeforeMount(() => {
         TOKEN.OFFSET.USER_TOKEN
       );
 
-      // navigateTo({ path: '/' });
-      navigateTo({ path: store.urlLoginBack });
+      // await navigateTo({ path: '/' });
+      await navigateTo({ path: store.urlLoginBack });
     })
-    .catch((e) => {
-      navigateTo({ path: '/login' });
+    .catch(async (e) => {
+      await navigateTo({ path: '/login' });
 
       ElNotification.error({
         title: MESSAGE.STATUS.BROKE,

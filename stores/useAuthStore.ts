@@ -127,12 +127,12 @@ export const useAuthStore = defineStore('auth', () => {
       await LogOut()
         .then(async (response) => {
           if (response?.isLogout == true) {
-            navigateTo('/login');
-
             await wait(200);
 
             window.localStorage.removeItem(TOKEN.NAME.USER_TOKEN);
             userAccount.value = null;
+
+            await navigateTo('/login');
           } else {
             ElNotification.error({
               title: MESSAGE.STATUS.FAILED,

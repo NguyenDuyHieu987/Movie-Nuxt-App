@@ -487,7 +487,7 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
     otp: formVerify.otp,
     vrfSignupToken: vrfSignupToken.value
   })
-    .then((response) => {
+    .then(async (response) => {
       // console.log(response);
       if (response?.isSignUp == true) {
         ElNotification.success({
@@ -496,8 +496,8 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
           duration: MESSAGE.DURATION.DEFAULT
         });
 
-        navigateTo({ path: '/login' });
         reset();
+        await navigateTo({ path: '/login' });
       } else if (response?.isInvalidOTP == true) {
         ElNotification.error({
           title: MESSAGE.STATUS.FAILED,

@@ -1,14 +1,14 @@
 <template>
   <div
     class="billboard-item"
-    :title="item?.name"
+    :title="dataMovie?.name"
   >
     <div class="left-mask" />
     <div class="img-wrapper ratio-16-9">
       <NuxtImg
         :src="
           getImage(
-            item?.backdrop_path,
+            dataMovie?.backdrop_path,
             'backdrop',
             // 'w-' + windowWidth.toString()
             { w: windowWidth }
@@ -16,8 +16,8 @@
         "
         preload
         loading="lazy"
-        :alt="item?.name"
-        :title="item?.name"
+        :alt="dataMovie?.name"
+        :title="dataMovie?.name"
       />
     </div>
 
@@ -89,26 +89,26 @@
 
           <div class="head-info">
             <p
-              v-if="item?.media_type == 'movie'"
+              v-if="dataMovie?.media_type == 'movie'"
               class="release-date"
             >
-              {{ item?.release_date }}
+              {{ dataMovie?.release_date }}
             </p>
             <p
               v-else
               class="release-date"
             >
-              {{ item?.first_air_date }}
+              {{ dataMovie?.first_air_date }}
             </p>
 
             <!-- <p class="genres">
-              {{ Array.from(item?.genres, (x: any) => x.name).join(' • ') }}
+              {{ Array.from(dataMovie?.genres, (x: any) => x.name).join(' • ') }}
             </p> -->
 
             <div class="genres">
               <span
                 v-for="(genre, index) in Array.from(
-                  item?.genres,
+                  dataMovie?.genres,
                   (x: any) => x.name
                 )"
                 :key="index"
@@ -122,11 +122,11 @@
         </div>
 
         <h1 class="title">
-          {{ item?.name }}
+          {{ dataMovie?.name }}
         </h1>
 
         <p class="overview">
-          {{ item?.overview }}
+          {{ dataMovie?.overview }}
         </p>
       </div>
 
@@ -134,16 +134,9 @@
         <NuxtLink
           class="action-btn"
           :to="{
-            path:
-              item?.media_type == 'movie'
-                ? `/play-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
-                    item?.name
-                  )}`
-                : `/play-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
-                    item?.name
-                  )}`
+            path: `/play-${dataMovie?.media_type}/${dataMovie?.id}`
           }"
-          :title="item?.name"
+          :title="dataMovie?.name"
         >
           <a-button
             class="play modern"
@@ -171,14 +164,7 @@
         <NuxtLink
           class="action-btn"
           :to="{
-            path:
-              item?.media_type == 'movie'
-                ? `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
-                    item?.name
-                  )}`
-                : `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
-                    item?.name
-                  )}`
+            path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
           }"
         >
           <a-button
@@ -254,9 +240,11 @@ import { getItemList } from '~/services/list';
 const props = defineProps<{
   item: any;
 }>();
+
 const authStore = useAuthStore();
 const utils = useUtils();
 const isAddToList = ref<boolean>(false);
+const dataMovie = ref<any>(props.item || {});
 const windowWidth = ref<number>(1200);
 
 onMounted(async () => {
@@ -265,10 +253,10 @@ onMounted(async () => {
 
 // if (authStore.isLogin) {
 //  useAsyncData(
-//   `itemlist/${authStore.userAccount?.id}/${props.item?.id}`,
-//   () => getItemList(props.item?.id, props.item?.media_type)
+//   `itemlist/${authStore.userAccount?.id}/${dataMovie.value.id}`,
+//   () => getItemList(dataMovie.value.id, dataMovie.value.media_type)
 // )
-getItemList(props.item?.id, props.item?.media_type)
+getItemList(dataMovie.value.id, dataMovie.value.media_type)
   .then((response) => {
     if (response.success == true) {
       isAddToList.value = true;
@@ -285,13 +273,18 @@ const handleAddToList = () => {
 
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (!utils.handleAddItemToList(props.item?.id, props.item?.media_type)) {
+    if (
+      !utils.handleAddItemToList(dataMovie.value.id, dataMovie.value.media_type)
+    ) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
     if (
-      !utils.handleRemoveItemFromList(props.item?.id, props.item?.media_type)
+      !utils.handleRemoveItemFromList(
+        dataMovie.value.id,
+        dataMovie.value.media_type
+      )
     ) {
       isAddToList.value = true;
     }

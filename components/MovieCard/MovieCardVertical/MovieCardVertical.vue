@@ -2,15 +2,11 @@
   <NuxtLink
     ref="cardItem"
     :to="{
-      path: isEpisodes
-        ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(item?.name)}`
-        : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
-            item?.name
-          )}`
+      path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
     }"
     class="movie-card-item vertical"
-    :style="`--dominant-poster-color: ${item.dominant_poster_color[0]}, ${item.dominant_poster_color[1]},${item.dominant_poster_color[2]}`"
-    :title="item?.name"
+    :style="`--dominant-poster-color: ${dataMovie.dominant_poster_color[0]}, ${dataMovie.dominant_poster_color[1]},${dataMovie.dominant_poster_color[2]}`"
+    :title="dataMovie?.name"
   >
     <!-- <el-skeleton :loading="loading" animated class="ratio-2-3">
       <template #template>
@@ -20,7 +16,7 @@
     <!-- <template #default> -->
     <div class="img-box ratio-2-3">
       <!-- <img
-        v-lazy="getImage(item?.poster_path, 'poster', {w:250})"
+        v-lazy="getImage(dataMovie?.poster_path, 'poster', {w:250})"
         loading="lazy"
         alt=""
       /> -->
@@ -31,12 +27,12 @@
       />
 
       <NuxtImg
-        :src="getImage(item?.poster_path, 'poster', { w: 250 })"
+        :src="getImage(dataMovie?.poster_path, 'poster', { w: 250 })"
         placeholder="/images/loading-img-2-3.webp"
         format="avif"
         loading="lazy"
-        :alt="item?.name"
-        :title="item?.name"
+        :alt="dataMovie?.name"
+        :title="dataMovie?.name"
       />
 
       <div class="info-over-image">
@@ -52,21 +48,21 @@
 
         <div class="left-bottom">
           <div
-            v-if="item?.release_date || item?.first_air_date"
+            v-if="dataMovie?.release_date || dataMovie?.first_air_date"
             class="release-date-wrapper"
           >
             <span
               v-if="!isEpisodes"
               class="release-date"
             >
-              {{ item?.release_date?.slice(0, 4) }}
+              {{ dataMovie?.release_date?.slice(0, 4) }}
             </span>
 
             <span
               v-else
               class="release-date"
             >
-              {{ item?.first_air_date?.slice(0, 4) }}
+              {{ dataMovie?.first_air_date?.slice(0, 4) }}
             </span>
           </div>
 
@@ -103,15 +99,7 @@
                 size="large"
                 type="text"
                 @click.prevent="
-                  navigateTo(
-                    isEpisodes
-                      ? `/play-tv/${
-                          item?.id
-                        }${utils.convertPath.toPathInfo_Play(item?.name)}`
-                      : `/play-movie/${
-                          item?.id
-                        }${utils.convertPath.toPathInfo_Play(item?.name)}`
-                  )
+                  navigateTo(`/play-${dataMovie?.media_type}/${dataMovie?.id}`)
                 "
               >
                 <template #icon>
@@ -172,7 +160,7 @@
                 <ShareNetwork
                   network="facebook"
                   :url="urlShare"
-                  :title="item?.name"
+                  :title="dataMovie?.name"
                   hashtags="phimhay247.site,vite"
                   style="white-space: nowrap; display: block"
                   @click.prevent
@@ -205,21 +193,21 @@
     <div class="info">
       <div
         class="info-box"
-        :class="{ 'no-genres': item?.genres.length == 0 }"
+        :class="{ 'no-genres': dataMovie?.genres.length == 0 }"
       >
         <div class="title-wrapper">
           <p
             class="title"
-            :title="item?.name"
+            :title="dataMovie?.name"
           >
-            {{ item?.name }}
+            {{ dataMovie?.name }}
           </p>
 
           <p
             class="original-title"
-            :title="item?.original_name"
+            :title="dataMovie?.original_name"
           >
-            {{ item?.original_name }}
+            {{ dataMovie?.original_name }}
           </p>
         </div>
 
@@ -228,7 +216,7 @@
             <!-- <ClientOnly>
               <NuxtLink
                 v-for="(genreItem, index) in Array.from(
-                  item?.genres,
+                  dataMovie?.genres,
                   (x: genre) => x
                 )"
                 :key="index"
@@ -245,7 +233,7 @@
 
             <div
               v-for="(genreItem, index) in Array.from(
-                item?.genres,
+                dataMovie?.genres,
                 (x: genre) => x
               )"
               :key="index"
@@ -302,12 +290,12 @@ const imgHeight = ref<number>(0);
 const imgWidth = ref<number>(0);
 const rectBound = ref<any>(0);
 const timeOut = ref<any>();
-const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
+const isEpisodes = computed<boolean>(() => dataMovie.value?.media_type == 'tv');
 
 const getData = async () => {
   // loading.value = true;
 
-  // switch (props?.type || props?.item?.media_type) {
+  // switch (props?.type || dataMovie.value?.media_type) {
   //   case 'movie':
   //     await getMovieById(props.item.id)
   //       .then((response) => {
@@ -336,7 +324,7 @@ const getData = async () => {
     if (dataMovie.value?.in_list) {
       isAddToList.value = true;
     } else {
-      getItemList(props.item?.id, props.item?.media_type)
+      getItemList(props.item?.id, dataMovie.value?.media_type)
         .then((response) => {
           if (response.success == true) {
             isAddToList.value = true;
@@ -349,7 +337,7 @@ const getData = async () => {
       isInHistory.value = true;
       percent.value = dataMovie.value?.history_progress.percent;
     } else {
-      getItemHistory(props.item?.id, props.item?.media_type)
+      getItemHistory(props.item?.id, dataMovie.value?.media_type)
         .then((response) => {
           if (response.success == true) {
             isInHistory.value = true;
@@ -370,7 +358,7 @@ watch(
       if (dataMovie.value?.in_list) {
         isAddToList.value = true;
       } else {
-        getItemList(props.item?.id, props.item?.media_type)
+        getItemList(props.item?.id, dataMovie.value?.media_type)
           .then((response) => {
             if (response.success == true) {
               isAddToList.value = true;
@@ -383,7 +371,7 @@ watch(
         isInHistory.value = true;
         percent.value = dataMovie.value?.history_progress.percent;
       } else {
-        getItemHistory(props.item?.id, props.item?.media_type)
+        getItemHistory(props.item?.id, dataMovie.value?.media_type)
           .then((response) => {
             if (response.success == true) {
               isInHistory.value = true;
@@ -439,21 +427,26 @@ const handleAddToList = (e: any) => {
 
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (!utils.handleAddItemToList(props.item?.id, props.item?.media_type)) {
+    if (
+      !utils.handleAddItemToList(props.item?.id, dataMovie.value?.media_type)
+    ) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
     if (
-      !utils.handleRemoveItemFromList(props.item?.id, props.item?.media_type)
+      !utils.handleRemoveItemFromList(
+        props.item?.id,
+        dataMovie.value?.media_type
+      )
     ) {
       isAddToList.value = true;
     }
   }
 };
 
-const handleClickGenreItem = (genreItem: genre) => {
-  navigateTo(
+const handleClickGenreItem = async (genreItem: genre) => {
+  await navigateTo(
     `/discover/genre/${
       getGenreById(genreItem.id, store?.allGenres)?.short_name
     }`

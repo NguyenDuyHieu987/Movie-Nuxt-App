@@ -114,13 +114,13 @@ const handleOnSelectPlan = (plan: plan | undefined) => {
   selectedPlan.value = plan;
 };
 
-const onRouteToPaymentPage = () => {
+const onRouteToPaymentPage = async () => {
   if (!authStore?.isLogin) {
     authStore.isOpenRequireAuthDialog = true;
     return;
   }
 
-  navigateTo(
+  await navigateTo(
     `/upgrade/PaymentPicker?planorder=${selectedPlan.value!?.order || 3}`
   );
 };

@@ -270,13 +270,13 @@ const handleClickPlanOpiton = (plan: plan) => {
   selected.value = plan.id;
 };
 
-const handleDBClickPlanOpiton = (plan: plan) => {
+const handleDBClickPlanOpiton = async (plan: plan) => {
   if (!authStore.isLogin) {
     authStore.isOpenRequireAuthDialog = true;
     return;
   }
 
-  navigateTo(`/upgrade/PaymentPicker?planorder=${plan.order}`);
+  await navigateTo(`/upgrade/PaymentPicker?planorder=${plan.order}`);
 };
 </script>
 

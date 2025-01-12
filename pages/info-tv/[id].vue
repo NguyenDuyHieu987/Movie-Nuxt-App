@@ -55,9 +55,7 @@
             <NuxtLink
               class="play-now click-active"
               :to="{
-                path: `/play-movie/${
-                  dataMovie?.id
-                }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
+                path: `/play-movie/${dataMovie?.id}`
               }"
             >
               Xem phim ngay
@@ -146,11 +144,7 @@
                         <NuxtLink
                           class="action-btn"
                           :to="{
-                            path: `/play-tv/${
-                              dataMovie?.id
-                            }${utils.convertPath.toPathInfo_Play(
-                              dataMovie?.name
-                            )}`
+                            path: `/play-tv/${dataMovie?.id}`
                           }"
                         >
                           <a-button
@@ -556,8 +550,10 @@ const release_date = computed<string>(
 );
 const ratedValue = ref<number | undefined>();
 const windowWidth = ref<number>(1200);
-const movieId = computed<string>((): string =>
-  utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+const movieId = computed<string>(
+  (): string =>
+    // utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+    route.params?.id as string
 );
 
 const setBackgroundColor = (color: string[]) => {
@@ -631,13 +627,21 @@ onMounted(() => {
 
 loading.value = true;
 
-const { data: dataMovie, status } = await useAsyncData(
+const {
+  data: dataMovie,
+  status,
+  error
+} = await useAsyncData(
   `tv/detail/${movieId.value}/videos`,
   () => getMovieByType_Id('tv', movieId.value, 'videos'),
   {
     lazy: true
   }
 );
+
+if (error.value || !dataMovie.value) {
+  throw createError({ statusCode: 500 });
+}
 
 isAddToList.value = dataMovie.value?.in_list == true;
 

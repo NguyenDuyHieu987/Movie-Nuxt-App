@@ -1,14 +1,7 @@
 <template>
   <NuxtLink
     :to="{
-      path:
-        item?.type || item?.media_type == 'tv'
-          ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(
-              item?.name
-            )}`
-          : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
-              item?.name
-            )}`
+      path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
     }"
     class="movie-search-item"
   >
@@ -44,7 +37,7 @@
         <div class="img-box">
           <div class="img-wrapper ratio-2-3">
             <NuxtImg
-              :src="getImage(item?.poster_path, 'poster', { w: 120 })"
+              :src="getImage(dataMovie?.poster_path, 'poster', { w: 120 })"
               format="avif"
               loading="lazy"
               alt=""
@@ -54,26 +47,30 @@
 
         <div class="info">
           <h3 class="title">
-            {{ item?.name ? item?.name : item?.title }}
+            {{ dataMovie?.name ? dataMovie?.name : dataMovie?.title }}
             <span v-if="type == 'tv'">
-              {{ ' - Phần ' + item?.last_episode_to_air?.season_number }}
+              {{ ' - Phần ' + dataMovie?.last_episode_to_air?.season_number }}
             </span>
           </h3>
 
           <p class="genres">
-            {{ Array?.from(item?.genres, (x: any) => x.name).join(' • ') }}
+            {{ Array?.from(dataMovie?.genres, (x: any) => x.name).join(' • ') }}
           </p>
 
           <p class="release-date">
             Năm:
-            {{ item?.release_date ? item?.release_date : item?.first_air_date }}
+            {{
+              dataMovie?.release_date
+                ? dataMovie?.release_date
+                : dataMovie?.first_air_date
+            }}
           </p>
           <p
             v-if="type == 'movie'"
             class="duration-episode"
           >
             Thời lượng:
-            {{ item?.runtime + ' phút' || '' }}
+            {{ dataMovie?.runtime + ' phút' || '' }}
           </p>
 
           <p
@@ -81,13 +78,15 @@
             class="duration-episode"
           >
             Tập mới nhất:
-            {{ 'Tập ' + item?.last_episode_to_air?.episode_number || '' }}
+            {{ 'Tập ' + dataMovie?.last_episode_to_air?.episode_number || '' }}
           </p>
 
           <p class="views">
             <!-- Lượt xem: -->
             {{
-              item?.views ? utils.viewFormatter(item?.views) + ' lượt xem' : ''
+              dataMovie?.views
+                ? utils.viewFormatter(dataMovie?.views) + ' lượt xem'
+                : ''
             }}
           </p>
         </div>
@@ -104,6 +103,7 @@ const props = defineProps<{
 }>();
 
 const utils = useUtils();
+const dataMovie = ref<any>(props.item || {});
 const loading = ref<boolean>(false);
 
 onBeforeMount(() => {});

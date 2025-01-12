@@ -1,18 +1,14 @@
 <template>
   <NuxtLink
     :to="{
-      path: isEpisodes
-        ? `/info-tv/${item?.id}${utils.convertPath.toPathInfo_Play(item?.name)}`
-        : `/info-movie/${item?.id}${utils.convertPath.toPathInfo_Play(
-            item?.name
-          )}`
+      path: `/info-${dataMovie.media_type}/${dataMovie?.id}`
     }"
     class="movie-card-item horizontal"
     :class="{
       'show-video': showVideo
     }"
     :style="`--dominant-backdrop-color: ${item.dominant_backdrop_color[0]}, ${item.dominant_backdrop_color[1]},${item.dominant_backdrop_color[2]}`"
-    :title="item?.name"
+    :title="dataMovie?.name"
   >
     <!-- <el-skeleton :loading="loading" animated class="ratio-16-9">
       <template #template>
@@ -27,7 +23,7 @@
       @pointerleave="onMouseLeaveImg"
     >
       <!-- <img
-        v-lazy="getImage(item?.backdrop_path, 'backdrop', {h:250})"
+        v-lazy="getImage(dataMovie?.backdrop_path, 'backdrop', {h:250})"
         loading="lazy"
         alt=""
       /> -->
@@ -38,16 +34,16 @@
       />
 
       <NuxtImg
-        :src="getImage(item?.backdrop_path, 'backdrop', { h: 250 })"
+        :src="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
         placeholder="/images/loading-img-16-9.webp"
         format="avif"
         loading="lazy"
-        :alt="item?.name"
-        :title="item?.name"
+        :alt="dataMovie?.name"
+        :title="dataMovie?.name"
       />
 
       <!-- <Image
-        :src="getImage(item?.backdrop_path, 'backdrop', {h:250})"
+        :src="getImage(dataMovie?.backdrop_path, 'backdrop', {h:250})"
         placeholder="/images/loading-img-16-9.webp"
         format="avif"
         loading="lazy"
@@ -76,35 +72,35 @@
       <div class="title-wrapper">
         <p
           class="title"
-          :title="item?.name"
+          :title="dataMovie?.name"
         >
-          {{ item?.name }}
+          {{ dataMovie?.name }}
         </p>
 
         <p
           class="original-title"
-          :title="item?.original_name"
+          :title="dataMovie?.original_name"
         >
-          {{ item?.original_name }}
+          {{ dataMovie?.original_name }}
         </p>
       </div>
 
       <div class="right">
         <div
-          v-if="item?.release_date || item?.first_air_date"
+          v-if="dataMovie?.release_date || dataMovie?.first_air_date"
           class="release-date-wrapper"
         >
           <p
             v-if="!isEpisodes"
             class="release-date"
           >
-            {{ item?.release_date?.slice(0, 4) }}
+            {{ dataMovie?.release_date?.slice(0, 4) }}
           </p>
           <p
             v-else
             class="release-date"
           >
-            {{ item?.first_air_date?.slice(0, 4) }}
+            {{ dataMovie?.first_air_date?.slice(0, 4) }}
           </p>
         </div>
 
@@ -121,7 +117,6 @@
       v-model:isTeleport="isTeleportPreviewModal"
       v-model:style="stylePreviewModal"
       :item="item"
-      :data-movie="dataMovie"
       :styleProps="stylePreviewModal"
       :time-out="timeOut"
       :is-episodes="isEpisodes"

@@ -53,7 +53,6 @@
           :key="item.id"
           :index="index"
           :item="item"
-          :type="item?.media_type"
         />
       </div>
     </div>

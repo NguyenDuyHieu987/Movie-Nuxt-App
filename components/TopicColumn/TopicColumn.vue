@@ -8,9 +8,7 @@
         <NuxtLink
           class="img-box ratio-16-9"
           :to="{
-            path: `/play-${dataMovie?.media_type}/${
-              dataMovie?.id
-            }${utils.convertPath.toPathInfo_Play(dataMovie?.name)}`
+            path: `/play-${dataMovie?.media_type}/${dataMovie?.id}`
           }"
         >
           <VipRibbon

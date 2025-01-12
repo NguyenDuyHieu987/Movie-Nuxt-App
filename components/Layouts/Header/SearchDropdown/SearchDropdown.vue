@@ -259,7 +259,9 @@ const handleClickSearchResultsItem = async (e: any, item: any) => {
   if (item?.type == 'history' && item?.query) {
     valueInput.value = item?.query;
 
-    navigateTo(`/search?q=${item?.query?.replaceAll(' ', '+').toLowerCase()}`);
+    await navigateTo(
+      `/search?q=${item?.query?.replaceAll(' ', '+').toLowerCase()}`
+    );
   } else {
     addSearch({
       movie_id: item?.id,
@@ -287,13 +289,15 @@ const handleClickSearchResultsItem = async (e: any, item: any) => {
 
     valueInput.value = item?.name;
 
-    navigateTo(`/search?q=${item?.name?.replaceAll(' ', '+').toLowerCase()}`);
+    await navigateTo(
+      `/search?q=${item?.name?.replaceAll(' ', '+').toLowerCase()}`
+    );
   }
 
   isFocusSearchInput.value = false;
 };
 
-const handleClickTopSearchItem = (e: any, item: any) => {
+const handleClickTopSearchItem = async (e: any, item: any) => {
   addSearch({
     movie_id: item?.movie_id,
     media_type: item.movieData?.media_type,
@@ -320,12 +324,14 @@ const handleClickTopSearchItem = (e: any, item: any) => {
 
   valueInput.value = item?.name;
 
-  navigateTo(`/search?q=${item?.name?.replaceAll(' ', '+').toLowerCase()}`);
+  await navigateTo(
+    `/search?q=${item?.name?.replaceAll(' ', '+').toLowerCase()}`
+  );
 
   isFocusSearchInput.value = false;
 };
 
-const handleClickSearchHistoryItem = (e: any, item: any) => {
+const handleClickSearchHistoryItem = async (e: any, item: any) => {
   if (e.target?.closest('.search-history-item .remove-icon')) {
     e.preventDefault();
     return;
@@ -333,7 +339,9 @@ const handleClickSearchHistoryItem = (e: any, item: any) => {
 
   valueInput.value = item?.query;
 
-  navigateTo(`/search?q=${item?.query?.replaceAll(' ', '+').toLowerCase()}`);
+  await navigateTo(
+    `/search?q=${item?.query?.replaceAll(' ', '+').toLowerCase()}`
+  );
 
   isFocusSearchInput.value = false;
 };

@@ -357,8 +357,10 @@ const historyProgress = ref<{
 });
 const ratedValue = ref<number | undefined>();
 const windowWidth = ref<number>(1200);
-const broadcastId = computed<string>((): string =>
-  utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+const broadcastId = computed<string>(
+  (): string =>
+    // utils.convertPath.parsePathInfo_Play(route.params?.id as string)
+    route.params?.id as string
 );
 const movieId = ref<string>('');
 const isEndedBroadcast = ref<boolean>(false);
@@ -405,14 +407,25 @@ onMounted(() => {
 
 loading.value = true;
 
-const { data: dataBroadcast, status: statusBroadcast } = await useAsyncData(
-  `broadcast/detail/${broadcastId.value}`,
-  () => getBroadcastById(broadcastId.value)
+const {
+  data: dataBroadcast,
+  status: statusBroadcast,
+  error: errorBroadcast
+} = await useAsyncData(`broadcast/detail/${broadcastId.value}`, () =>
+  getBroadcastById(broadcastId.value)
 );
+
+if (errorBroadcast.value || !dataBroadcast.value) {
+  throw createError({ statusCode: 500 });
+}
 
 movieId.value = dataBroadcast.value.movieData.id;
 
-const { data: dataMovie, status } = await useAsyncData(
+const {
+  data: dataMovie,
+  status,
+  error
+} = await useAsyncData(
   `${dataBroadcast.value.movieData.media_type}/detail/${movieId.value}`,
   () =>
     getMovieByType_Id(dataBroadcast.value.movieData.media_type, movieId.value),
@@ -420,6 +433,10 @@ const { data: dataMovie, status } = await useAsyncData(
     // lazy: true
   }
 );
+
+if (error.value || !dataMovie.value) {
+  throw createError({ statusCode: 500 });
+}
 
 isAddToList.value = dataMovie.value?.in_list == true;
 
@@ -602,9 +619,7 @@ const scrollToComment = () => {
 
 const onClickBack = () => {
   return navigateTo({
-    path: `/info-movie/${
-      dataMovie.value?.id
-    }${utils.convertPath.toPathInfo_Play(dataMovie.value?.name)}`
+    path: `/info-movie/${dataMovie.value?.id}`
   });
 };
 </script>

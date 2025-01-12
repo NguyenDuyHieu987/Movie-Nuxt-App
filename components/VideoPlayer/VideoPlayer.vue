@@ -999,17 +999,17 @@ const clearVideoPlayer = () => {
   window.removeEventListener('touchend', windowTouchEnd);
 };
 
-onBeforeUnmount(() => {
-  clearVideoPlayer();
-});
+// onBeforeUnmount(() => {
+//   clearVideoPlayer();
+// });
 
 onUnmounted(() => {
   clearVideoPlayer();
 });
 
-onBeforeRouteLeave(() => {
-  clearVideoPlayer();
-});
+// onBeforeRouteLeave(() => {
+//   clearVideoPlayer();
+// });
 
 onBeforeMount(() => {});
 
