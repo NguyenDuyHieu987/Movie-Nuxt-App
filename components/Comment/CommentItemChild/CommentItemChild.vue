@@ -46,7 +46,10 @@
           <a-button
             class="reply click-active"
             type="text"
-            @click="isShowFormComment = !isShowFormComment"
+            @click="
+              commentAction = 'post';
+              isShowFormComment = !isShowFormComment;
+            "
           >
             <!-- :disabled="userAccount?.id == item?.user_id" -->
             Phản hồi
@@ -218,10 +221,19 @@ const handleEditComment = () => {
   }
 };
 
-const handleSuccessEditComment = (data: string) => {
+const handleSuccessEditComment = async (data: string) => {
   isUpdated.value = true;
   isShowFormComment.value = false;
   commentContent.value = data;
+
+  await nextTick();
+  const replyToEl = commentItemChild.value!.querySelector(
+    '.formatted-comment .reply-to'
+  ) as HTMLElement;
+
+  if (replyToEl) {
+    replyToEl.addEventListener('click', onClickReplyTo);
+  }
 };
 
 const handleRemoveComment = () => {

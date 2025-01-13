@@ -205,7 +205,11 @@ watchEffect(async () => {
         break;
     }
 
-    if (props.commentType == 'children' && props?.replyTo) {
+    if (
+      props.action == 'post' &&
+      props.commentType == 'children' &&
+      props?.replyTo
+    ) {
       contenteditableInputField.value!.insertAdjacentHTML(
         'afterbegin',
         replyToFirstEl.value
@@ -307,7 +311,7 @@ const handleChange = async (e: any) => {
     case 'edit':
       disabledButton.value =
         actualValueInput.length == 0 ||
-        contenteditableInputField.value?.innerHTML == props.comment?.content;
+        contenteditableInputField.value?.innerHTML == commentContent.value;
       break;
   }
 };
