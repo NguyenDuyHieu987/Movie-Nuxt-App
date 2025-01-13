@@ -96,7 +96,7 @@
                   :class="{ active: item?.episode_number == episodeNumber }"
                 >
                   <a
-                    :href="`/play-tv/${dataMovie?.id}`"
+                    :href="`/play-tv/${dataMovie?.id}?ep=${item?.id}`"
                     replace
                     force
                     @click.prevent="handleChangeEpisode(item)"
