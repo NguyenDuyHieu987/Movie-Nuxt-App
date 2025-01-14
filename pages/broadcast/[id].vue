@@ -568,7 +568,7 @@ const onTimeUpdateVideoPlayer = (e: any) => {
       duration.value = e.duration;
     }
 
-    // throttleUpdateHistory();
+    throttleUpdateHistory();
 
     // updateHistory();
 
