@@ -457,7 +457,7 @@ watch(
   () => {
     if (authStore.isLogin) {
       if (!isAddToList.value) {
-        getItemList(movieId.value, 'movie')
+        getItemList(movieId.value, dataMovie.value.media_type)
           .then((response) => {
             if (response.success == true) {
               isAddToList.value = true;
@@ -467,7 +467,7 @@ watch(
       }
 
       if (!isInHistory.value) {
-        getItemHistory(movieId.value, 'movie')
+        getItemHistory(movieId.value, dataMovie.value.media_type)
           .then((response) => {
             if (response.success == true) {
               isInHistory.value = true;
@@ -478,7 +478,7 @@ watch(
       }
 
       if (!ratedValue.value) {
-        getRating(movieId.value, 'movie')
+        getRating(movieId.value, dataMovie.value.media_type)
           .then((response) => {
             if (response.success == true) {
               ratedValue.value = response.result?.rate_value;
@@ -526,7 +526,7 @@ const updateHistory = () => {
       duration.value > 0
     ) {
       add_update_History({
-        media_type: 'movie',
+        media_type: dataMovie.value.media_type,
         movie_id: dataMovie.value?.id,
         duration: duration.value,
         percent: percent.value,
@@ -568,7 +568,7 @@ const onTimeUpdateVideoPlayer = (e: any) => {
       duration.value = e.duration;
     }
 
-    throttleUpdateHistory();
+    // throttleUpdateHistory();
 
     // updateHistory();
 
@@ -606,12 +606,22 @@ const handleAddToList = () => {
   }
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (!utils.handleAddItemToList(dataMovie.value?.id, 'movie')) {
+    if (
+      !utils.handleAddItemToList(
+        dataMovie.value?.id,
+        dataMovie.value.media_type
+      )
+    ) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
-    if (!utils.handleRemoveItemFromList(dataMovie.value?.id, 'movie')) {
+    if (
+      !utils.handleRemoveItemFromList(
+        dataMovie.value?.id,
+        dataMovie.value.media_type
+      )
+    ) {
       isAddToList.value = true;
     }
   }
