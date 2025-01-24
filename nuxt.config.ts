@@ -370,7 +370,7 @@ export default defineNuxtConfig({
   ogImage: {},
   schemaOrg: {},
   linkChecker: {
-    // enabled: false
+    enabled: false
   },
 
   plugins: [],
