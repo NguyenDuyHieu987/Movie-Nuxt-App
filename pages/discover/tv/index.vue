@@ -64,7 +64,6 @@ import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.v
 import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { getAllMod } from '~/services/mods';
 import { FilterModList } from '~/services/modList';
-import { FilterTvSlug } from '~/services/tvSlug';
 import type { formfilter } from '@/types';
 
 definePageMeta({
