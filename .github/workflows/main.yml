@@ -59,8 +59,10 @@ jobs:
         run: |
           npm install --legacy-peer-deps
           npm list --depth=0
+          rm -rf .nuxt dist node_modules/.vite
           npm run build
         env:
+          NODE_OPTIONS: --max-old-space-size=8192
           CI: true
 
       # - name: Install Dependencies and Build
