@@ -23,8 +23,6 @@ export async function makeRequest(
   const nuxtConfig = useRuntimeConfig();
   const headers: AxiosRequestHeaders | any = {};
 
-  console.log('isProduction', nuxtConfig.public.production_mode);
-
   const api = axios.create({
     baseURL: import.meta.env.PROD
       ? nuxtConfig.public.apiGateway
@@ -110,7 +108,7 @@ type MakeRequestProxyOptions =
     }
   | any;
 
-export function makeRequestProxy(
+export async function makeRequestProxy(
   url: string,
   params?: any,
   options: MakeRequestProxyOptions = {
@@ -119,7 +117,7 @@ export function makeRequestProxy(
   }
 ) {
   let optionsRequest = null;
-  return useFetch(url, {
+  return await useFetch(url, {
     baseURL: '/api',
     query: params,
     headers: { ...options?.headers },

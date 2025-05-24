@@ -38,7 +38,7 @@ export async function initFacebookSdk() {
 
         // FB.login(function () {});
 
-        if (nuxtConfig.public.app?.production_mode) {
+        if (import.meta.env.PROD) {
           window.FB.getLoginStatus((response: any) => {
             // if (response.status === 'connected') {
             //   console.log('getLoginStatus:', response);
