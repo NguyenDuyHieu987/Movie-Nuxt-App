@@ -14,7 +14,7 @@
         class="home-section"
       >
         <h2 class="gradient-title-default">
-          <span>{{ modLíst?.results[1].name }}</span>
+          <span>{{ modLíst?.results?.[1].name }}</span>
         </h2>
       </section>
 
@@ -190,7 +190,7 @@ const {
 );
 
 if (error.value) {
-  console.error('Failed to fetch modList:', error.value);
+  console.error('Lỗi khi lấy dữ liệu modList:', error.value);
   dataBilboard.value = [];
   total.value = 0;
   pageSize.value = 10;
@@ -203,7 +203,7 @@ if (error.value) {
 }
 
 const onSwiperLoaded = () => {
-  // loading.value = false;
+  loading.value = false;
 };
 
 onMounted(() => {

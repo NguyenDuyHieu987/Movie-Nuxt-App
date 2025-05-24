@@ -14,7 +14,7 @@
         class="home-section"
       >
         <h2 class="gradient-title-default">
-          <span>{{ modLíst?.results[1].name }}</span>
+          <span>{{ modLíst?.results?.[1].name }}</span>
         </h2>
       </section>
 
