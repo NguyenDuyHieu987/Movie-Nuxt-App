@@ -78,7 +78,7 @@ const router = useRouter();
 const dataDiscover = ref<any[]>();
 const title = computed<string>(
   () =>
-    dataSlug.value.find((d: any) => d.type == route.query?.type)?.name ||
+    dataSlug.value?.find((d: any) => d.type == route.query?.type)?.name ||
     'Tât cả'
 );
 const page = ref<number>(+(route.query?.page as string) || 1);
@@ -141,7 +141,7 @@ const { data: dataSlug, error: errorSlug } = await useAsyncData(
   () => getAllMod(),
   {
     transform: (data: any) => {
-      if (!data || !data.results) return [];
+      if (!data || !data?.results) return [];
       return data.results.filter((r: any) => r.media_type == 'tv');
     }
   }

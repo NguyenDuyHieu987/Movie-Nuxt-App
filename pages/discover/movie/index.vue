@@ -141,7 +141,7 @@ const { data: dataSlug, error: errorSlug } = await useAsyncData(
   () => getAllMod(),
   {
     transform: (data: any) => {
-      if (!data || !data.results) return [];
+      if (!data || !data?.results) return [];
       return data.results.filter((r: any) => r.media_type == 'movie');
     }
   }
