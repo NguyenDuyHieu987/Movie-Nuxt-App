@@ -518,8 +518,8 @@ export default defineNuxtConfig({
       sourcemap: 'hidden',
       // target: 'esnext',
       cssCodeSplit: true,
-      cssMinify: 'esbuild',
-      minify: 'terser',
+      // cssMinify: 'esbuild',
+      // minify: 'terser',
       terserOptions: {
         ecma: 2020,
         sourceMap: true,
