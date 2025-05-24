@@ -507,19 +507,19 @@ export default defineNuxtConfig({
     },
     build: {
       // ssr: true,
+      // assetsDir: '_nuxt/',
       modulePreload: {
         polyfill: false,
         resolveDependencies: () => []
       },
       manifest: true,
       ssrManifest: true,
-      sourcemap: 'hidden',
-      // assetsDir: '_nuxt/',
-      cssMinify: 'esbuild',
-      cssCodeSplit: true,
       reportCompressedSize: true,
+      sourcemap: 'hidden',
       // target: 'esnext',
-      minify: 'terser',
+      cssCodeSplit: true,
+      // cssMinify: 'esbuild',
+      // minify: 'terser',
       terserOptions: {
         ecma: 2020,
         sourceMap: true,
