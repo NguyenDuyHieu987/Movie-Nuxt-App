@@ -2,7 +2,6 @@ import { h } from 'vue';
 import { extractStyle } from 'ant-design-vue/es/_util/static-style-extract';
 import { ConfigProvider, theme } from 'ant-design-vue/lib';
 import fsExtra from 'fs-extra';
-import { isProduction } from 'std-env';
 
 export const genAntdStyle = async () => {
   const css = extractStyle();
