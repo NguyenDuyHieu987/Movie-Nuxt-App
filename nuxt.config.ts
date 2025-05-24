@@ -483,8 +483,8 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: [
         // './components/**/*.vue', 'ant-design-vue', 'element-plus'
-        './components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue',
-        'swiper/vue'
+        // './components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue',
+        // 'swiper/vue'
       ]
     },
     css: {
