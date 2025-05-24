@@ -190,7 +190,7 @@ const {
 );
 
 if (error.value) {
-  console.error('Lỗi khi lấy dữ liệu modList:', error.value);
+  console.error('Failed to fetch modList:', error.value);
   dataBilboard.value = [];
   total.value = 0;
   pageSize.value = 10;
