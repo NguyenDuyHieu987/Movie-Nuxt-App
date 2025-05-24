@@ -100,8 +100,8 @@ const { data: plans, error } = await useAsyncData(`plan/all`, async () => {
   try {
     const res = await getAllPlan();
     return res.results;
-  } catch (e) {
-    console.error('Failed to fetch plans:', e);
+  } catch (err) {
+    console.error('Failed to fetch plans:', err);
     return []; // hoặc giá trị fallback
   }
 });

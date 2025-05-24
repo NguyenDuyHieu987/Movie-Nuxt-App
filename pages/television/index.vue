@@ -114,7 +114,7 @@ useSeoMeta({
 
 const store = useStore();
 const dataBilboard = ref<any>([]);
-// const modLíst = ref<any>([]);
+const modLíst = ref<any>([]);
 const page = ref<number>(1);
 const pageSize = ref<number>(5);
 const total = ref<number>(0);
@@ -181,23 +181,25 @@ loading.value = true;
 //   }
 // );
 
-const { data: modLíst, status } = await useAsyncData(
-  `mod/tv/${page.value}/${pageSize.value}`,
-  () => getAllModWithData('all', 'tv', page.value, pageSize.value)
-  // {
-  //   // default: () => {
-  //   //   return { results: trendingsCache.value || [] };
-  //   // },
-  //   transform: (data: any) => {
-  //     return data.results[0].data;
-  //   }
-  // }
+const {
+  data: modList,
+  status,
+  error
+} = await useAsyncData(`mod/tv/${page.value}/${pageSize.value}`, () =>
+  getAllModWithData('all', 'tv', page.value, pageSize.value)
 );
 
-dataBilboard.value = modLíst.value?.results[0].data;
-total.value = modLíst.value?.total;
-pageSize.value = modLíst.value?.page_size;
-// page.value++;
+if (error.value) {
+  console.error('Failed to fetch modList:', error.value);
+  dataBilboard.value = [];
+  total.value = 0;
+  pageSize.value = 10;
+} else {
+  const firstResult = modList.value?.results?.[0];
+  dataBilboard.value = firstResult?.data ?? [];
+  total.value = modList.value?.total ?? 0;
+  pageSize.value = modList.value?.page_size ?? 10;
+}
 
 const onSwiperLoaded = () => {
   loading.value = false;

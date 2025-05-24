@@ -247,12 +247,12 @@ useSeoMeta({
 const utils = useUtils();
 const authStore = useAuthStore();
 const trendings = ref<any[]>([]);
-// const modLíst = ref<any>([]);
+const modLíst = ref<any>([]);
 const page = ref<number>(1);
 const pageSize = ref<number>(3);
 const total = ref<number>(0);
-// const recommends = ref<any>([]);
-// const broadcasts = ref<any>([]);
+const recommends = ref<any>([]);
+const broadcasts = ref<any>([]);
 // const isLoading = computed<boolean>(() => status.value != 'success');
 const loading = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
@@ -443,24 +443,34 @@ const responsiveVerticalSlick = computed<any[]>(() => [
 
 loading.value = true;
 
-const pMods = getAllModWithData('all', 'all', page.value, pageSize.value);
-const pBroadcast = getAllAiringBroadcast(page.value, pageSize.value);
-const pRecommend = authStore.isLogin
-  ? getMyRecommend(skipRecommend.value)
-  : Promise.resolve({ results: [] });
+try {
+  const pMods = getAllModWithData('all', 'all', page.value, pageSize.value);
+  const pBroadcast = getAllAiringBroadcast(page.value, pageSize.value);
+  const pRecommend = authStore.isLogin
+    ? getMyRecommend(skipRecommend.value)
+    : Promise.resolve({ results: [] });
 
-const [modLíst, broadcasts, recommends] = await Promise.all([
-  pMods,
-  pBroadcast,
-  pRecommend
-]);
-trendings.value = modLíst?.results[0].data;
-broadcasts.value = broadcasts;
-recommends.value = recommends?.results;
+  const [modList, broadcastList, recommendList] = await Promise.all([
+    pMods,
+    pBroadcast,
+    pRecommend
+  ]);
 
-total.value = modLíst.total;
-pageSize.value = modLíst.page_size;
-page.value++;
+  if (modList?.results?.length > 0) {
+    trendings.value = modList.results[0]?.data ?? [];
+  } else {
+    trendings.value = [];
+  }
+
+  broadcasts.value = broadcastList ?? [];
+  recommends.value = recommendList?.results ?? [];
+
+  total.value = modList?.total ?? 0;
+  pageSize.value = modList?.page_size ?? 10;
+  page.value++;
+} catch (err) {
+  console.error('Failed to fetch data:', err);
+}
 
 // const { data: modLíst, status } = await useAsyncData(
 //   `mod/all/${page.value}/${pageSize.value}`,
