@@ -1,6 +1,6 @@
 <template>
   <div class="discover padding-content">
-    <!-- <FilterSection
+    <FilterSection
       v-model:loading="loading"
       :listFilter="[
         { name: 'Tất cả', value: 'all' },
@@ -13,7 +13,7 @@
         // { name: 'Toprated', value: 'toprated' }
       ]"
       @onFilter="handleFilter"
-    /> -->
+    />
 
     <div class="discover-title">
       <h2 class="gradient-title-default underline">

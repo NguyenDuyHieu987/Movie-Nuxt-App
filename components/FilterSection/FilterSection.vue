@@ -296,15 +296,20 @@ const loadingData = defineModel<boolean>('loading', {
   default: false
 });
 
-const { data: listSortBy } = await useAsyncData(
+const { data: listSortBy, error } = await useAsyncData(
   'sortby/all',
   () => getAllSortBy(),
   {
     transform: (data: any) => {
+      if (!data || !data.results) return [];
       return data.results;
     }
   }
 );
+
+if (error.value) {
+  console.error('Failed to fetch listSortBy:', error.value);
+}
 
 const onFilter = () => {
   emits('onFilter');
