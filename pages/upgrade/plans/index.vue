@@ -35,7 +35,7 @@
         <div v-show="!loading && showAnimation">
           <PlanGrid
             :plans="plans"
-            :order="route.query?.order"
+            :order="+(route.query?.order as string)"
             @onSelectPlan="handleOnSelectPlan"
           />
         </div>
@@ -96,11 +96,19 @@ const loading = ref<boolean>(false);
 
 loading.value = true;
 
-const { data: plans } = await useAsyncData(`plan/all`, () => getAllPlan(), {
-  transform: (data) => {
-    return data.results;
+const { data: plans, error } = await useAsyncData(`plan/all`, async () => {
+  try {
+    const res = await getAllPlan();
+    return res.results;
+  } catch (e) {
+    console.error('Failed to fetch plans:', e);
+    return []; // hoặc giá trị fallback
   }
 });
+if (error.value) {
+  // Có thể xử lý lỗi hiển thị UI, hoặc redirect
+  console.error('useAsyncData error:', error.value);
+}
 
 loading.value = false;
 
