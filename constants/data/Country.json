@@ -1,128 +1,1508 @@
 [
   {
-    "iso_639_1": "ja",
-    "english_name": "Japanese",
-    "name": "Nhật Bản",
-    "short_name": "nhat-ban"
+    "iso_3166_1": "AD",
+    "english_name": "Andorra",
+    "name": "Andorra",
+    "short_name": "andorra"
   },
   {
-    "iso_639_1": "ko",
-    "english_name": "Korean",
-    "name": "Hàn Quốc",
-    "short_name": "han-quoc"
+    "iso_3166_1": "AE",
+    "english_name": "United Arab Emirates",
+    "name": "Các Tiểu V.quốc Ả Rập T.nhất",
+    "short_name": "united-arab-emirates"
   },
   {
-    "iso_639_1": "cn",
-    "english_name": "Chinese",
-    "name": "Trung quốc",
-    "short_name": "trung-quoc"
+    "iso_3166_1": "AF",
+    "english_name": "Afghanistan",
+    "name": "Afghanistan",
+    "short_name": "afghanistan"
   },
   {
-    "iso_639_1": "th",
-    "english_name": "Thai",
-    "name": "Thái Lan",
-    "short_name": "thai-lan"
+    "iso_3166_1": "AG",
+    "english_name": "Antigua and Barbuda",
+    "name": "Antigua và Barbuda",
+    "short_name": "antigua-and-barbuda"
   },
   {
-    "iso_639_1": "vi",
-    "english_name": "Vietnamese",
-    "name": "Việt Nam",
-    "short_name": "viet-nam"
+    "iso_3166_1": "AI",
+    "english_name": "Anguilla",
+    "name": "Anguilla",
+    "short_name": "anguilla"
   },
   {
-    "iso_639_1": "hi",
-    "english_name": "Hindi",
-    "name": "Ấn Độ",
-    "short_name": "an-do"
+    "iso_3166_1": "AL",
+    "english_name": "Albania",
+    "name": "Albani",
+    "short_name": "albania"
   },
   {
-    "iso_639_1": "en",
-    "english_name": "English",
-    "name": "Âu Mỹ",
-    "short_name": "au-my"
+    "iso_3166_1": "AM",
+    "english_name": "Armenia",
+    "name": "Armenia",
+    "short_name": "armenia"
   },
   {
-    "iso_639_1": "ru",
-    "english_name": "Russian",
-    "name": "Nga",
-    "short_name": "nga"
+    "iso_3166_1": "AN",
+    "english_name": "Netherlands Antilles",
+    "name": "Tây Ấn Hà Lan",
+    "short_name": "netherlands-antilles"
   },
   {
-    "iso_639_1": "fr",
-    "english_name": "French",
-    "name": "Pháp",
-    "short_name": "phap"
+    "iso_3166_1": "AO",
+    "english_name": "Angola",
+    "name": "Angola",
+    "short_name": "angola"
   },
   {
-    "iso_639_1": "es",
-    "english_name": "Spain",
-    "name": "Tây Ban Nha",
-    "short_name": "tay-ban-nha"
+    "iso_3166_1": "AQ",
+    "english_name": "Antarctica",
+    "name": "Nam Cực",
+    "short_name": "antarctica"
   },
   {
-    "iso_639_1": "no",
-    "english_name": "Norway",
-    "name": "Na Uy",
-    "short_name": "na-uy"
+    "iso_3166_1": "AR",
+    "english_name": "Argentina",
+    "name": "Argentina",
+    "short_name": "argentina"
   },
   {
-    "iso_639_1": "de",
+    "iso_3166_1": "AS",
+    "english_name": "American Samoa",
+    "name": "Đảo Somoa thuộc Mỹ",
+    "short_name": "american-samoa"
+  },
+  {
+    "iso_3166_1": "AT",
+    "english_name": "Austria",
+    "name": "Áo",
+    "short_name": "austria"
+  },
+  {
+    "iso_3166_1": "AU",
+    "english_name": "Australia",
+    "name": "Úc",
+    "short_name": "australia"
+  },
+  {
+    "iso_3166_1": "AW",
+    "english_name": "Aruba",
+    "name": "Aruba",
+    "short_name": "aruba"
+  },
+  {
+    "iso_3166_1": "AZ",
+    "english_name": "Azerbaijan",
+    "name": "Azerbaijan",
+    "short_name": "azerbaijan"
+  },
+  {
+    "iso_3166_1": "BA",
+    "english_name": "Bosnia and Herzegovina",
+    "name": "Bosnia và Herzegovina",
+    "short_name": "bosnia-and-herzegovina"
+  },
+  {
+    "iso_3166_1": "BB",
+    "english_name": "Barbados",
+    "name": "Barbados",
+    "short_name": "barbados"
+  },
+  {
+    "iso_3166_1": "BD",
+    "english_name": "Bangladesh",
+    "name": "Bangladesh",
+    "short_name": "bangladesh"
+  },
+  {
+    "iso_3166_1": "BE",
+    "english_name": "Belgium",
+    "name": "Bỉ",
+    "short_name": "belgium"
+  },
+  {
+    "iso_3166_1": "BF",
+    "english_name": "Burkina Faso",
+    "name": "Burkina Faso",
+    "short_name": "burkina-faso"
+  },
+  {
+    "iso_3166_1": "BG",
+    "english_name": "Bulgaria",
+    "name": "Bungari",
+    "short_name": "bulgaria"
+  },
+  {
+    "iso_3166_1": "BH",
+    "english_name": "Bahrain",
+    "name": "Bahrain",
+    "short_name": "bahrain"
+  },
+  {
+    "iso_3166_1": "BI",
+    "english_name": "Burundi",
+    "name": "Burundi",
+    "short_name": "burundi"
+  },
+  {
+    "iso_3166_1": "BJ",
+    "english_name": "Benin",
+    "name": "Benin",
+    "short_name": "benin"
+  },
+  {
+    "iso_3166_1": "BM",
+    "english_name": "Bermuda",
+    "name": "Bermuda",
+    "short_name": "bermuda"
+  },
+  {
+    "iso_3166_1": "BN",
+    "english_name": "Brunei Darussalam",
+    "name": "Brunei",
+    "short_name": "brunei-darussalam"
+  },
+  {
+    "iso_3166_1": "BO",
+    "english_name": "Bolivia",
+    "name": "Bolivia",
+    "short_name": "bolivia"
+  },
+  {
+    "iso_3166_1": "BR",
+    "english_name": "Brazil",
+    "name": "Brazil",
+    "short_name": "brazil"
+  },
+  {
+    "iso_3166_1": "BS",
+    "english_name": "Bahamas",
+    "name": "Bahamas",
+    "short_name": "bahamas"
+  },
+  {
+    "iso_3166_1": "BT",
+    "english_name": "Bhutan",
+    "name": "Bhutan",
+    "short_name": "bhutan"
+  },
+  {
+    "iso_3166_1": "BU",
+    "english_name": "Burma",
+    "name": "Burma",
+    "short_name": "burma"
+  },
+  {
+    "iso_3166_1": "BV",
+    "english_name": "Bouvet Island",
+    "name": "Đảo Bouvet",
+    "short_name": "bouvet-island"
+  },
+  {
+    "iso_3166_1": "BW",
+    "english_name": "Botswana",
+    "name": "Botswana",
+    "short_name": "botswana"
+  },
+  {
+    "iso_3166_1": "BY",
+    "english_name": "Belarus",
+    "name": "Belarus",
+    "short_name": "belarus"
+  },
+  {
+    "iso_3166_1": "BZ",
+    "english_name": "Belize",
+    "name": "Belize",
+    "short_name": "belize"
+  },
+  {
+    "iso_3166_1": "CA",
+    "english_name": "Canada",
+    "name": "Canada",
+    "short_name": "canada"
+  },
+  {
+    "iso_3166_1": "CC",
+    "english_name": "Cocos  Islands",
+    "name": "Quần đảo Cocos (Keeling)",
+    "short_name": "cocos-islands"
+  },
+  {
+    "iso_3166_1": "CD",
+    "english_name": "Congo",
+    "name": "Congo - Kinshasa",
+    "short_name": "congo"
+  },
+  {
+    "iso_3166_1": "CF",
+    "english_name": "Central African Republic",
+    "name": "Cộng hòa Trung Phi",
+    "short_name": "central-african-republic"
+  },
+  {
+    "iso_3166_1": "CG",
+    "english_name": "Congo",
+    "name": "Congo - Brazzaville",
+    "short_name": "congo"
+  },
+  {
+    "iso_3166_1": "CH",
+    "english_name": "Switzerland",
+    "name": "Thụy Sĩ",
+    "short_name": "switzerland"
+  },
+  {
+    "iso_3166_1": "CI",
+    "english_name": "Cote D'Ivoire",
+    "name": "Bờ Biển Ngà",
+    "short_name": "cote-divoire"
+  },
+  {
+    "iso_3166_1": "CK",
+    "english_name": "Cook Islands",
+    "name": "Quần đảo Cook",
+    "short_name": "cook-islands"
+  },
+  {
+    "iso_3166_1": "CL",
+    "english_name": "Chile",
+    "name": "Chile",
+    "short_name": "chile"
+  },
+  {
+    "iso_3166_1": "CM",
+    "english_name": "Cameroon",
+    "name": "Cameroon",
+    "short_name": "cameroon"
+  },
+  {
+    "iso_3166_1": "CN",
+    "english_name": "China",
+    "name": "Trung Quốc",
+    "short_name": "china"
+  },
+  {
+    "iso_3166_1": "CO",
+    "english_name": "Colombia",
+    "name": "Colombia",
+    "short_name": "colombia"
+  },
+  {
+    "iso_3166_1": "CR",
+    "english_name": "Costa Rica",
+    "name": "Costa Rica",
+    "short_name": "costa-rica"
+  },
+  {
+    "iso_3166_1": "CS",
+    "english_name": "Serbia and Montenegro",
+    "name": "Serbia and Montenegro",
+    "short_name": "serbia-and-montenegro"
+  },
+  {
+    "iso_3166_1": "CU",
+    "english_name": "Cuba",
+    "name": "Cuba",
+    "short_name": "cuba"
+  },
+  {
+    "iso_3166_1": "CV",
+    "english_name": "Cape Verde",
+    "name": "Cape Verde",
+    "short_name": "cape-verde"
+  },
+  {
+    "iso_3166_1": "CX",
+    "english_name": "Christmas Island",
+    "name": "Đảo Giáng Sinh",
+    "short_name": "christmas-island"
+  },
+  {
+    "iso_3166_1": "CY",
+    "english_name": "Cyprus",
+    "name": "Síp",
+    "short_name": "cyprus"
+  },
+  {
+    "iso_3166_1": "CZ",
+    "english_name": "Czech Republic",
+    "name": "Cộng hòa Séc",
+    "short_name": "czech-republic"
+  },
+  {
+    "iso_3166_1": "DE",
     "english_name": "Germany",
     "name": "Đức",
-    "short_name": "duc"
+    "short_name": "germany"
   },
   {
-    "iso_639_1": "fi",
+    "iso_3166_1": "DJ",
+    "english_name": "Djibouti",
+    "name": "Djibouti",
+    "short_name": "djibouti"
+  },
+  {
+    "iso_3166_1": "DK",
+    "english_name": "Denmark",
+    "name": "Đan Mạch",
+    "short_name": "denmark"
+  },
+  {
+    "iso_3166_1": "DM",
+    "english_name": "Dominica",
+    "name": "Dominica",
+    "short_name": "dominica"
+  },
+  {
+    "iso_3166_1": "DO",
+    "english_name": "Dominican Republic",
+    "name": "Cộng hòa Dominica",
+    "short_name": "dominican-republic"
+  },
+  {
+    "iso_3166_1": "DZ",
+    "english_name": "Algeria",
+    "name": "Algeria",
+    "short_name": "algeria"
+  },
+  {
+    "iso_3166_1": "EC",
+    "english_name": "Ecuador",
+    "name": "Ecuador",
+    "short_name": "ecuador"
+  },
+  {
+    "iso_3166_1": "EE",
+    "english_name": "Estonia",
+    "name": "Estonia",
+    "short_name": "estonia"
+  },
+  {
+    "iso_3166_1": "EG",
+    "english_name": "Egypt",
+    "name": "Ai Cập",
+    "short_name": "egypt"
+  },
+  {
+    "iso_3166_1": "EH",
+    "english_name": "Western Sahara",
+    "name": "Tây Sahara",
+    "short_name": "western-sahara"
+  },
+  {
+    "iso_3166_1": "ER",
+    "english_name": "Eritrea",
+    "name": "Eritrea",
+    "short_name": "eritrea"
+  },
+  {
+    "iso_3166_1": "ES",
+    "english_name": "Spain",
+    "name": "Tây Ban Nha",
+    "short_name": "spain"
+  },
+  {
+    "iso_3166_1": "ET",
+    "english_name": "Ethiopia",
+    "name": "Ethiopia",
+    "short_name": "ethiopia"
+  },
+  {
+    "iso_3166_1": "FI",
     "english_name": "Finland",
     "name": "Phần Lan",
-    "short_name": "phan-lan"
+    "short_name": "finland"
   },
   {
-    "iso_639_1": "id",
+    "iso_3166_1": "FJ",
+    "english_name": "Fiji",
+    "name": "Fiji",
+    "short_name": "fiji"
+  },
+  {
+    "iso_3166_1": "FK",
+    "english_name": "Falkland Islands",
+    "name": "Quần đảo Falkland",
+    "short_name": "falkland-islands"
+  },
+  {
+    "iso_3166_1": "FM",
+    "english_name": "Micronesia",
+    "name": "Micronesia",
+    "short_name": "micronesia"
+  },
+  {
+    "iso_3166_1": "FO",
+    "english_name": "Faeroe Islands",
+    "name": "Quần đảo Faroe",
+    "short_name": "faeroe-islands"
+  },
+  {
+    "iso_3166_1": "FR",
+    "english_name": "France",
+    "name": "Pháp",
+    "short_name": "france"
+  },
+  {
+    "iso_3166_1": "GA",
+    "english_name": "Gabon",
+    "name": "Gabon",
+    "short_name": "gabon"
+  },
+  {
+    "iso_3166_1": "GB",
+    "english_name": "United Kingdom",
+    "name": "Vương quốc Anh",
+    "short_name": "united-kingdom"
+  },
+  {
+    "iso_3166_1": "GD",
+    "english_name": "Grenada",
+    "name": "Grenada",
+    "short_name": "grenada"
+  },
+  {
+    "iso_3166_1": "GE",
+    "english_name": "Georgia",
+    "name": "Georgia",
+    "short_name": "georgia"
+  },
+  {
+    "iso_3166_1": "GF",
+    "english_name": "French Guiana",
+    "name": "Guiana thuộc Pháp",
+    "short_name": "french-guiana"
+  },
+  {
+    "iso_3166_1": "GH",
+    "english_name": "Ghana",
+    "name": "Ghana",
+    "short_name": "ghana"
+  },
+  {
+    "iso_3166_1": "GI",
+    "english_name": "Gibraltar",
+    "name": "Gibraltar",
+    "short_name": "gibraltar"
+  },
+  {
+    "iso_3166_1": "GL",
+    "english_name": "Greenland",
+    "name": "Greenland",
+    "short_name": "greenland"
+  },
+  {
+    "iso_3166_1": "GM",
+    "english_name": "Gambia",
+    "name": "Gambia",
+    "short_name": "gambia"
+  },
+  {
+    "iso_3166_1": "GN",
+    "english_name": "Guinea",
+    "name": "Guinea",
+    "short_name": "guinea"
+  },
+  {
+    "iso_3166_1": "GP",
+    "english_name": "Guadaloupe",
+    "name": "Guadeloupe",
+    "short_name": "guadaloupe"
+  },
+  {
+    "iso_3166_1": "GQ",
+    "english_name": "Equatorial Guinea",
+    "name": "Guinea Xích Đạo",
+    "short_name": "equatorial-guinea"
+  },
+  {
+    "iso_3166_1": "GR",
+    "english_name": "Greece",
+    "name": "Hy Lạp",
+    "short_name": "greece"
+  },
+  {
+    "iso_3166_1": "GS",
+    "english_name": "South Georgia and the South Sandwich Islands",
+    "name": "Quần đảo Nam Georgia và Nam Sandwich",
+    "short_name": "south-georgia-and-the-south-sandwich-islands"
+  },
+  {
+    "iso_3166_1": "GT",
+    "english_name": "Guatemala",
+    "name": "Guatemala",
+    "short_name": "guatemala"
+  },
+  {
+    "iso_3166_1": "GU",
+    "english_name": "Guam",
+    "name": "Guam",
+    "short_name": "guam"
+  },
+  {
+    "iso_3166_1": "GW",
+    "english_name": "Guinea-Bissau",
+    "name": "Guinea-Bissau",
+    "short_name": "guinea-bissau"
+  },
+  {
+    "iso_3166_1": "GY",
+    "english_name": "Guyana",
+    "name": "Guyana",
+    "short_name": "guyana"
+  },
+  {
+    "iso_3166_1": "HK",
+    "english_name": "Hong Kong",
+    "name": "Đặc khu hành chính Hồng Kông - Trung Quốc",
+    "short_name": "hong-kong"
+  },
+  {
+    "iso_3166_1": "HM",
+    "english_name": "Heard and McDonald Islands",
+    "name": "Đảo Heard và Quần đảo McDonald",
+    "short_name": "heard-and-mcdonald-islands"
+  },
+  {
+    "iso_3166_1": "HN",
+    "english_name": "Honduras",
+    "name": "Honduras",
+    "short_name": "honduras"
+  },
+  {
+    "iso_3166_1": "HR",
+    "english_name": "Croatia",
+    "name": "Croatia",
+    "short_name": "croatia"
+  },
+  {
+    "iso_3166_1": "HT",
+    "english_name": "Haiti",
+    "name": "Haiti",
+    "short_name": "haiti"
+  },
+  {
+    "iso_3166_1": "HU",
+    "english_name": "Hungary",
+    "name": "Hungari",
+    "short_name": "hungary"
+  },
+  {
+    "iso_3166_1": "ID",
     "english_name": "Indonesia",
     "name": "Indonesia",
     "short_name": "indonesia"
   },
   {
-    "iso_639_1": "hu",
-    "english_name": "Hungary",
-    "name": "Hungary",
-    "short_name": "hungary"
+    "iso_3166_1": "IE",
+    "english_name": "Ireland",
+    "name": "Ai-len",
+    "short_name": "ireland"
   },
   {
-    "iso_639_1": "ms",
+    "iso_3166_1": "IL",
+    "english_name": "Israel",
+    "name": "Israel",
+    "short_name": "israel"
+  },
+  {
+    "iso_3166_1": "IN",
+    "english_name": "India",
+    "name": "Ấn Độ",
+    "short_name": "india"
+  },
+  {
+    "iso_3166_1": "IO",
+    "english_name": "British Indian Ocean Territory",
+    "name": "Thuộc địa Anh tại Ấn Độ Dương",
+    "short_name": "british-indian-ocean-territory"
+  },
+  {
+    "iso_3166_1": "IQ",
+    "english_name": "Iraq",
+    "name": "I-rắc",
+    "short_name": "iraq"
+  },
+  {
+    "iso_3166_1": "IR",
+    "english_name": "Iran",
+    "name": "Iran",
+    "short_name": "iran"
+  },
+  {
+    "iso_3166_1": "IS",
+    "english_name": "Iceland",
+    "name": "Iceland",
+    "short_name": "iceland"
+  },
+  {
+    "iso_3166_1": "IT",
+    "english_name": "Italy",
+    "name": "Ý",
+    "short_name": "italy"
+  },
+  {
+    "iso_3166_1": "JM",
+    "english_name": "Jamaica",
+    "name": "Jamaica",
+    "short_name": "jamaica"
+  },
+  {
+    "iso_3166_1": "JO",
+    "english_name": "Jordan",
+    "name": "Jordan",
+    "short_name": "jordan"
+  },
+  {
+    "iso_3166_1": "JP",
+    "english_name": "Japan",
+    "name": "Nhật Bản",
+    "short_name": "japan"
+  },
+  {
+    "iso_3166_1": "KE",
+    "english_name": "Kenya",
+    "name": "Kenya",
+    "short_name": "kenya"
+  },
+  {
+    "iso_3166_1": "KG",
+    "english_name": "Kyrgyz Republic",
+    "name": "Kyrgyzstan",
+    "short_name": "kyrgyz-republic"
+  },
+  {
+    "iso_3166_1": "KH",
+    "english_name": "Cambodia",
+    "name": "Campuchia",
+    "short_name": "cambodia"
+  },
+  {
+    "iso_3166_1": "KI",
+    "english_name": "Kiribati",
+    "name": "Kiribati",
+    "short_name": "kiribati"
+  },
+  {
+    "iso_3166_1": "KM",
+    "english_name": "Comoros",
+    "name": "Comoros",
+    "short_name": "comoros"
+  },
+  {
+    "iso_3166_1": "KN",
+    "english_name": "St. Kitts and Nevis",
+    "name": "Saint Kitts và Nevis",
+    "short_name": "st-kitts-and-nevis"
+  },
+  {
+    "iso_3166_1": "KP",
+    "english_name": "North Korea",
+    "name": "Triều Tiên",
+    "short_name": "north-korea"
+  },
+  {
+    "iso_3166_1": "KR",
+    "english_name": "South Korea",
+    "name": "Hàn Quốc",
+    "short_name": "south-korea"
+  },
+  {
+    "iso_3166_1": "KW",
+    "english_name": "Kuwait",
+    "name": "Cô-oét",
+    "short_name": "kuwait"
+  },
+  {
+    "iso_3166_1": "KY",
+    "english_name": "Cayman Islands",
+    "name": "Quần đảo Cayman",
+    "short_name": "cayman-islands"
+  },
+  {
+    "iso_3166_1": "KZ",
+    "english_name": "Kazakhstan",
+    "name": "Kazakhstan",
+    "short_name": "kazakhstan"
+  },
+  {
+    "iso_3166_1": "LA",
+    "english_name": "Lao People's Democratic Republic",
+    "name": "Lào",
+    "short_name": "lao-peoples-democratic-republic"
+  },
+  {
+    "iso_3166_1": "LB",
+    "english_name": "Lebanon",
+    "name": "Li-băng",
+    "short_name": "lebanon"
+  },
+  {
+    "iso_3166_1": "LC",
+    "english_name": "St. Lucia",
+    "name": "Saint Lucia",
+    "short_name": "st-lucia"
+  },
+  {
+    "iso_3166_1": "LI",
+    "english_name": "Liechtenstein",
+    "name": "Liechtenstein",
+    "short_name": "liechtenstein"
+  },
+  {
+    "iso_3166_1": "LK",
+    "english_name": "Sri Lanka",
+    "name": "Sri Lanka",
+    "short_name": "sri-lanka"
+  },
+  {
+    "iso_3166_1": "LR",
+    "english_name": "Liberia",
+    "name": "Liberia",
+    "short_name": "liberia"
+  },
+  {
+    "iso_3166_1": "LS",
+    "english_name": "Lesotho",
+    "name": "Lesotho",
+    "short_name": "lesotho"
+  },
+  {
+    "iso_3166_1": "LT",
+    "english_name": "Lithuania",
+    "name": "Lít-va",
+    "short_name": "lithuania"
+  },
+  {
+    "iso_3166_1": "LU",
+    "english_name": "Luxembourg",
+    "name": "Luxembourg",
+    "short_name": "luxembourg"
+  },
+  {
+    "iso_3166_1": "LV",
+    "english_name": "Latvia",
+    "name": "Latvia",
+    "short_name": "latvia"
+  },
+  {
+    "iso_3166_1": "LY",
+    "english_name": "Libyan Arab Jamahiriya",
+    "name": "Li-bi",
+    "short_name": "libyan-arab-jamahiriya"
+  },
+  {
+    "iso_3166_1": "MA",
+    "english_name": "Morocco",
+    "name": "Ma-rốc",
+    "short_name": "morocco"
+  },
+  {
+    "iso_3166_1": "MC",
+    "english_name": "Monaco",
+    "name": "Monaco",
+    "short_name": "monaco"
+  },
+  {
+    "iso_3166_1": "MD",
+    "english_name": "Moldova",
+    "name": "Moldova",
+    "short_name": "moldova"
+  },
+  {
+    "iso_3166_1": "ME",
+    "english_name": "Montenegro",
+    "name": "Montenegro",
+    "short_name": "montenegro"
+  },
+  {
+    "iso_3166_1": "MG",
+    "english_name": "Madagascar",
+    "name": "Madagascar",
+    "short_name": "madagascar"
+  },
+  {
+    "iso_3166_1": "MH",
+    "english_name": "Marshall Islands",
+    "name": "Quần đảo Marshall",
+    "short_name": "marshall-islands"
+  },
+  {
+    "iso_3166_1": "MK",
+    "english_name": "Macedonia",
+    "name": "Macedonia",
+    "short_name": "macedonia"
+  },
+  {
+    "iso_3166_1": "ML",
+    "english_name": "Mali",
+    "name": "Mali",
+    "short_name": "mali"
+  },
+  {
+    "iso_3166_1": "MM",
+    "english_name": "Myanmar",
+    "name": "Myanmar (Miến Điện)",
+    "short_name": "myanmar"
+  },
+  {
+    "iso_3166_1": "MN",
+    "english_name": "Mongolia",
+    "name": "Mông Cổ",
+    "short_name": "mongolia"
+  },
+  {
+    "iso_3166_1": "MO",
+    "english_name": "Macao",
+    "name": "Đặc khu hành chính Macao - Trung Quốc",
+    "short_name": "macao"
+  },
+  {
+    "iso_3166_1": "MP",
+    "english_name": "Northern Mariana Islands",
+    "name": "Quần đảo Bắc Mariana",
+    "short_name": "northern-mariana-islands"
+  },
+  {
+    "iso_3166_1": "MQ",
+    "english_name": "Martinique",
+    "name": "Martinique",
+    "short_name": "martinique"
+  },
+  {
+    "iso_3166_1": "MR",
+    "english_name": "Mauritania",
+    "name": "Mauritania",
+    "short_name": "mauritania"
+  },
+  {
+    "iso_3166_1": "MS",
     "english_name": "Montserrat",
     "name": "Montserrat",
     "short_name": "montserrat"
   },
   {
-    "iso_639_1": "nl",
+    "iso_3166_1": "MT",
+    "english_name": "Malta",
+    "name": "Malta",
+    "short_name": "malta"
+  },
+  {
+    "iso_3166_1": "MU",
+    "english_name": "Mauritius",
+    "name": "Mauritius",
+    "short_name": "mauritius"
+  },
+  {
+    "iso_3166_1": "MV",
+    "english_name": "Maldives",
+    "name": "Maldives",
+    "short_name": "maldives"
+  },
+  {
+    "iso_3166_1": "MW",
+    "english_name": "Malawi",
+    "name": "Malawi",
+    "short_name": "malawi"
+  },
+  {
+    "iso_3166_1": "MX",
+    "english_name": "Mexico",
+    "name": "Mexico",
+    "short_name": "mexico"
+  },
+  {
+    "iso_3166_1": "MY",
+    "english_name": "Malaysia",
+    "name": "Malaysia",
+    "short_name": "malaysia"
+  },
+  {
+    "iso_3166_1": "MZ",
+    "english_name": "Mozambique",
+    "name": "Mozambique",
+    "short_name": "mozambique"
+  },
+  {
+    "iso_3166_1": "NA",
+    "english_name": "Namibia",
+    "name": "Namibia",
+    "short_name": "namibia"
+  },
+  {
+    "iso_3166_1": "NC",
+    "english_name": "New Caledonia",
+    "name": "New Caledonia",
+    "short_name": "new-caledonia"
+  },
+  {
+    "iso_3166_1": "NE",
+    "english_name": "Niger",
+    "name": "Niger",
+    "short_name": "niger"
+  },
+  {
+    "iso_3166_1": "NF",
+    "english_name": "Norfolk Island",
+    "name": "Đảo Norfolk",
+    "short_name": "norfolk-island"
+  },
+  {
+    "iso_3166_1": "NG",
+    "english_name": "Nigeria",
+    "name": "Nigeria",
+    "short_name": "nigeria"
+  },
+  {
+    "iso_3166_1": "NI",
+    "english_name": "Nicaragua",
+    "name": "Nicaragua",
+    "short_name": "nicaragua"
+  },
+  {
+    "iso_3166_1": "NL",
     "english_name": "Netherlands",
     "name": "Hà Lan",
-    "short_name": "ha-lan"
+    "short_name": "netherlands"
   },
   {
-    "iso_639_1": "pl",
+    "iso_3166_1": "NO",
+    "english_name": "Norway",
+    "name": "Na Uy",
+    "short_name": "norway"
+  },
+  {
+    "iso_3166_1": "NP",
+    "english_name": "Nepal",
+    "name": "Nepal",
+    "short_name": "nepal"
+  },
+  {
+    "iso_3166_1": "NR",
+    "english_name": "Nauru",
+    "name": "Nauru",
+    "short_name": "nauru"
+  },
+  {
+    "iso_3166_1": "NU",
+    "english_name": "Niue",
+    "name": "Niue",
+    "short_name": "niue"
+  },
+  {
+    "iso_3166_1": "NZ",
+    "english_name": "New Zealand",
+    "name": "New Zealand",
+    "short_name": "new-zealand"
+  },
+  {
+    "iso_3166_1": "OM",
+    "english_name": "Oman",
+    "name": "Oman",
+    "short_name": "oman"
+  },
+  {
+    "iso_3166_1": "PA",
+    "english_name": "Panama",
+    "name": "Panama",
+    "short_name": "panama"
+  },
+  {
+    "iso_3166_1": "PE",
+    "english_name": "Peru",
+    "name": "Peru",
+    "short_name": "peru"
+  },
+  {
+    "iso_3166_1": "PF",
+    "english_name": "French Polynesia",
+    "name": "Polynesia thuộc Pháp",
+    "short_name": "french-polynesia"
+  },
+  {
+    "iso_3166_1": "PG",
+    "english_name": "Papua New Guinea",
+    "name": "Papua New Guinea",
+    "short_name": "papua-new-guinea"
+  },
+  {
+    "iso_3166_1": "PH",
+    "english_name": "Philippines",
+    "name": "Philippin",
+    "short_name": "philippines"
+  },
+  {
+    "iso_3166_1": "PK",
+    "english_name": "Pakistan",
+    "name": "Pakistan",
+    "short_name": "pakistan"
+  },
+  {
+    "iso_3166_1": "PL",
     "english_name": "Poland",
     "name": "Ba Lan",
-    "short_name": "ba-lan"
+    "short_name": "poland"
   },
   {
-    "iso_639_1": "pt",
+    "iso_3166_1": "PM",
+    "english_name": "St. Pierre and Miquelon",
+    "name": "Saint Pierre và Miquelon",
+    "short_name": "st-pierre-and-miquelon"
+  },
+  {
+    "iso_3166_1": "PN",
+    "english_name": "Pitcairn Island",
+    "name": "Quần đảo Pitcairn",
+    "short_name": "pitcairn-island"
+  },
+  {
+    "iso_3166_1": "PR",
+    "english_name": "Puerto Rico",
+    "name": "Puerto Rico",
+    "short_name": "puerto-rico"
+  },
+  {
+    "iso_3166_1": "PS",
+    "english_name": "Palestinian Territory",
+    "name": "Lãnh thổ Palestine",
+    "short_name": "palestinian-territory"
+  },
+  {
+    "iso_3166_1": "PT",
     "english_name": "Portugal",
     "name": "Bồ Đào Nha",
-    "short_name": "bo-dao-nha"
+    "short_name": "portugal"
   },
   {
-    "iso_639_1": "tr",
+    "iso_3166_1": "PW",
+    "english_name": "Palau",
+    "name": "Palau",
+    "short_name": "palau"
+  },
+  {
+    "iso_3166_1": "PY",
+    "english_name": "Paraguay",
+    "name": "Paraguay",
+    "short_name": "paraguay"
+  },
+  {
+    "iso_3166_1": "QA",
+    "english_name": "Qatar",
+    "name": "Qatar",
+    "short_name": "qatar"
+  },
+  {
+    "iso_3166_1": "RE",
+    "english_name": "Reunion",
+    "name": "Réunion",
+    "short_name": "reunion"
+  },
+  {
+    "iso_3166_1": "RO",
+    "english_name": "Romania",
+    "name": "Romania",
+    "short_name": "romania"
+  },
+  {
+    "iso_3166_1": "RS",
+    "english_name": "Serbia",
+    "name": "Serbia",
+    "short_name": "serbia"
+  },
+  {
+    "iso_3166_1": "RU",
+    "english_name": "Russia",
+    "name": "Nga",
+    "short_name": "russia"
+  },
+  {
+    "iso_3166_1": "RW",
+    "english_name": "Rwanda",
+    "name": "Rwanda",
+    "short_name": "rwanda"
+  },
+  {
+    "iso_3166_1": "SA",
+    "english_name": "Saudi Arabia",
+    "name": "Ả Rập Xê-út",
+    "short_name": "saudi-arabia"
+  },
+  {
+    "iso_3166_1": "SB",
+    "english_name": "Solomon Islands",
+    "name": "Quần đảo Solomon",
+    "short_name": "solomon-islands"
+  },
+  {
+    "iso_3166_1": "SC",
+    "english_name": "Seychelles",
+    "name": "Seychelles",
+    "short_name": "seychelles"
+  },
+  {
+    "iso_3166_1": "SD",
+    "english_name": "Sudan",
+    "name": "Sudan",
+    "short_name": "sudan"
+  },
+  {
+    "iso_3166_1": "SE",
+    "english_name": "Sweden",
+    "name": "Thụy Điển",
+    "short_name": "sweden"
+  },
+  {
+    "iso_3166_1": "SG",
+    "english_name": "Singapore",
+    "name": "Singapore",
+    "short_name": "singapore"
+  },
+  {
+    "iso_3166_1": "SH",
+    "english_name": "St. Helena",
+    "name": "Saint Helena",
+    "short_name": "st-helena"
+  },
+  {
+    "iso_3166_1": "SI",
+    "english_name": "Slovenia",
+    "name": "Slovenia",
+    "short_name": "slovenia"
+  },
+  {
+    "iso_3166_1": "SJ",
+    "english_name": "Svalbard & Jan Mayen Islands",
+    "name": "Svalbard và Jan Mayen",
+    "short_name": "svalbard-and-jan-mayen-islands"
+  },
+  {
+    "iso_3166_1": "SK",
+    "english_name": "Slovakia",
+    "name": "Slovakia",
+    "short_name": "slovakia"
+  },
+  {
+    "iso_3166_1": "SL",
+    "english_name": "Sierra Leone",
+    "name": "Sierra Leone",
+    "short_name": "sierra-leone"
+  },
+  {
+    "iso_3166_1": "SM",
+    "english_name": "San Marino",
+    "name": "San Marino",
+    "short_name": "san-marino"
+  },
+  {
+    "iso_3166_1": "SN",
+    "english_name": "Senegal",
+    "name": "Senegal",
+    "short_name": "senegal"
+  },
+  {
+    "iso_3166_1": "SO",
+    "english_name": "Somalia",
+    "name": "Somali",
+    "short_name": "somalia"
+  },
+  {
+    "iso_3166_1": "SR",
+    "english_name": "Suriname",
+    "name": "Suriname",
+    "short_name": "suriname"
+  },
+  {
+    "iso_3166_1": "SS",
+    "english_name": "South Sudan",
+    "name": "Nam Sudan",
+    "short_name": "south-sudan"
+  },
+  {
+    "iso_3166_1": "ST",
+    "english_name": "Sao Tome and Principe",
+    "name": "São Tomé và Príncipe",
+    "short_name": "sao-tome-and-principe"
+  },
+  {
+    "iso_3166_1": "SU",
+    "english_name": "Soviet Union",
+    "name": "Soviet Union",
+    "short_name": "soviet-union"
+  },
+  {
+    "iso_3166_1": "SV",
+    "english_name": "El Salvador",
+    "name": "El Salvador",
+    "short_name": "el-salvador"
+  },
+  {
+    "iso_3166_1": "SY",
+    "english_name": "Syrian Arab Republic",
+    "name": "Syria",
+    "short_name": "syrian-arab-republic"
+  },
+  {
+    "iso_3166_1": "SZ",
+    "english_name": "Swaziland",
+    "name": "Swaziland",
+    "short_name": "swaziland"
+  },
+  {
+    "iso_3166_1": "TC",
+    "english_name": "Turks and Caicos Islands",
+    "name": "Quần đảo Turk và Caicos",
+    "short_name": "turks-and-caicos-islands"
+  },
+  {
+    "iso_3166_1": "TD",
+    "english_name": "Chad",
+    "name": "Chad",
+    "short_name": "chad"
+  },
+  {
+    "iso_3166_1": "TF",
+    "english_name": "French Southern Territories",
+    "name": "Lãnh thổ miền nam nước Pháp",
+    "short_name": "french-southern-territories"
+  },
+  {
+    "iso_3166_1": "TG",
+    "english_name": "Togo",
+    "name": "Togo",
+    "short_name": "togo"
+  },
+  {
+    "iso_3166_1": "TH",
+    "english_name": "Thailand",
+    "name": "Thái Lan",
+    "short_name": "thailand"
+  },
+  {
+    "iso_3166_1": "TJ",
+    "english_name": "Tajikistan",
+    "name": "Tajikistan",
+    "short_name": "tajikistan"
+  },
+  {
+    "iso_3166_1": "TK",
+    "english_name": "Tokelau",
+    "name": "Tokelau",
+    "short_name": "tokelau"
+  },
+  {
+    "iso_3166_1": "TL",
+    "english_name": "Timor-Leste",
+    "name": "Đông Timor",
+    "short_name": "timor-leste"
+  },
+  {
+    "iso_3166_1": "TM",
+    "english_name": "Turkmenistan",
+    "name": "Turkmenistan",
+    "short_name": "turkmenistan"
+  },
+  {
+    "iso_3166_1": "TN",
+    "english_name": "Tunisia",
+    "name": "Tunisia",
+    "short_name": "tunisia"
+  },
+  {
+    "iso_3166_1": "TO",
+    "english_name": "Tonga",
+    "name": "Tonga",
+    "short_name": "tonga"
+  },
+  {
+    "iso_3166_1": "TP",
+    "english_name": "East Timor",
+    "name": "East Timor",
+    "short_name": "east-timor"
+  },
+  {
+    "iso_3166_1": "TR",
     "english_name": "Turkey",
     "name": "Thổ Nhĩ Kỳ",
-    "short_name": "tho-nhi-ky"
+    "short_name": "turkey"
   },
   {
-    "iso_639_1": "it",
-    "english_name": "Italia",
-    "name": "Italia",
-    "short_name": "italia"
+    "iso_3166_1": "TT",
+    "english_name": "Trinidad and Tobago",
+    "name": "Trinidad và Tobago",
+    "short_name": "trinidad-and-tobago"
+  },
+  {
+    "iso_3166_1": "TV",
+    "english_name": "Tuvalu",
+    "name": "Tuvalu",
+    "short_name": "tuvalu"
+  },
+  {
+    "iso_3166_1": "TW",
+    "english_name": "Taiwan",
+    "name": "Đài Loan",
+    "short_name": "taiwan"
+  },
+  {
+    "iso_3166_1": "TZ",
+    "english_name": "Tanzania",
+    "name": "Tanzania",
+    "short_name": "tanzania"
+  },
+  {
+    "iso_3166_1": "UA",
+    "english_name": "Ukraine",
+    "name": "Ukraina",
+    "short_name": "ukraine"
+  },
+  {
+    "iso_3166_1": "UG",
+    "english_name": "Uganda",
+    "name": "Uganda",
+    "short_name": "uganda"
+  },
+  {
+    "iso_3166_1": "UM",
+    "english_name": "United States Minor Outlying Islands",
+    "name": "Các đảo nhỏ xa t.tâm thuộc Mỹ",
+    "short_name": "united-states-minor-outlying-islands"
+  },
+  {
+    "iso_3166_1": "US",
+    "english_name": "United States of America",
+    "name": "Hoa Kỳ",
+    "short_name": "united-states-of-america"
+  },
+  {
+    "iso_3166_1": "UY",
+    "english_name": "Uruguay",
+    "name": "Uruguay",
+    "short_name": "uruguay"
+  },
+  {
+    "iso_3166_1": "UZ",
+    "english_name": "Uzbekistan",
+    "name": "Uzbekistan",
+    "short_name": "uzbekistan"
+  },
+  {
+    "iso_3166_1": "VA",
+    "english_name": "Holy See",
+    "name": "Thành Vatican",
+    "short_name": "holy-see"
+  },
+  {
+    "iso_3166_1": "VC",
+    "english_name": "St. Vincent and the Grenadines",
+    "name": "Saint Vincent và Grenadines",
+    "short_name": "st-vincent-and-the-grenadines"
+  },
+  {
+    "iso_3166_1": "VE",
+    "english_name": "Venezuela",
+    "name": "Venezuela",
+    "short_name": "venezuela"
+  },
+  {
+    "iso_3166_1": "VG",
+    "english_name": "British Virgin Islands",
+    "name": "Quần đảo Virgin thuộc Anh",
+    "short_name": "british-virgin-islands"
+  },
+  {
+    "iso_3166_1": "VI",
+    "english_name": "US Virgin Islands",
+    "name": "Quần đảo Virgin thuộc Mỹ",
+    "short_name": "us-virgin-islands"
+  },
+  {
+    "iso_3166_1": "VN",
+    "english_name": "Vietnam",
+    "name": "Việt Nam",
+    "short_name": "vietnam"
+  },
+  {
+    "iso_3166_1": "VU",
+    "english_name": "Vanuatu",
+    "name": "Vanuatu",
+    "short_name": "vanuatu"
+  },
+  {
+    "iso_3166_1": "WF",
+    "english_name": "Wallis and Futuna Islands",
+    "name": "Wallis và Futuna",
+    "short_name": "wallis-and-futuna-islands"
+  },
+  {
+    "iso_3166_1": "WS",
+    "english_name": "Samoa",
+    "name": "Samoa",
+    "short_name": "samoa"
+  },
+  {
+    "iso_3166_1": "XC",
+    "english_name": "Czechoslovakia",
+    "name": "Czechoslovakia",
+    "short_name": "czechoslovakia"
+  },
+  {
+    "iso_3166_1": "XG",
+    "english_name": "East Germany",
+    "name": "East Germany",
+    "short_name": "east-germany"
+  },
+  {
+    "iso_3166_1": "XI",
+    "english_name": "Northern Ireland",
+    "name": "Northern Ireland",
+    "short_name": "northern-ireland"
+  },
+  {
+    "iso_3166_1": "XK",
+    "english_name": "Kosovo",
+    "name": "Kosovo",
+    "short_name": "kosovo"
+  },
+  {
+    "iso_3166_1": "YE",
+    "english_name": "Yemen",
+    "name": "Yemen",
+    "short_name": "yemen"
+  },
+  {
+    "iso_3166_1": "YT",
+    "english_name": "Mayotte",
+    "name": "Mayotte",
+    "short_name": "mayotte"
+  },
+  {
+    "iso_3166_1": "YU",
+    "english_name": "Yugoslavia",
+    "name": "Yugoslavia",
+    "short_name": "yugoslavia"
+  },
+  {
+    "iso_3166_1": "ZA",
+    "english_name": "South Africa",
+    "name": "Nam Phi",
+    "short_name": "south-africa"
+  },
+  {
+    "iso_3166_1": "ZM",
+    "english_name": "Zambia",
+    "name": "Zambia",
+    "short_name": "zambia"
+  },
+  {
+    "iso_3166_1": "ZR",
+    "english_name": "Zaire",
+    "name": "Zaire",
+    "short_name": "zaire"
+  },
+  {
+    "iso_3166_1": "ZW",
+    "english_name": "Zimbabwe",
+    "name": "Zimbabwe",
+    "short_name": "zimbabwe"
   }
 ]

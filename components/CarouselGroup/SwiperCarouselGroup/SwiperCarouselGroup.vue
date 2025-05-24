@@ -6,8 +6,8 @@
       :class="cardMode"
       :modules="[
         // SwiperAutoplay,
-        SwiperNavigation,
-        SwiperVirtual
+        SwiperNavigation
+        // SwiperVirtual
 
         // Navigation,
         // Virtual
@@ -19,7 +19,7 @@
       :rewind="true"
       :speed="500"
       :allow-touch-move="isMobile || isTablet"
-      :virtual="true"
+      :virtual="false"
       effect="creative"
       :navigation="{
         prevEl: '.swiper-button-prev',
@@ -119,6 +119,7 @@ const swiperContainerRef = ref(null);
 // });
 
 const onSwiperLoaded = () => {
+  console.log('swiper loaded');
   emits('onLoaded');
 };
 </script>

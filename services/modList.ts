@@ -35,7 +35,7 @@ export function FilterModList(formFilter: formfilter) {
       primary_release_date_gte: isBefore ? '' : yearGte,
       primary_release_date_lte: isAfter ? '' : yearLte,
       with_genres: formFilter.genre,
-      with_original_language: formFilter.country,
+      with_origin_country: formFilter.country,
       page: formFilter.page,
       limit: formFilter.limit
     }

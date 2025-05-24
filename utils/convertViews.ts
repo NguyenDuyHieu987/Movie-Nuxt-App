@@ -5,6 +5,8 @@ type lookup = {
 };
 
 export function viewFormatter(num: string | number) {
+  if (+num === 0) return '0';
+
   const lookup: lookup[] = [
     { value: 1, symbol: '', fixed: 0 },
     { value: 1e3, symbol: ' N', fixed: 0 },

@@ -66,7 +66,7 @@
         class="home-section"
       >
         <h2 class="gradient-title-default">
-          <span>{{ modLíst.results.slice(1)[0].name }}</span>
+          <span>{{ modLíst?.results?.slice(1)[0].name }}</span>
         </h2>
       </section>
 
@@ -103,8 +103,8 @@
                   v-for="(item, index) in broadcasts.results"
                   :key="item.id"
                   :index="index"
-                  :virtual-index="index"
                 >
+                  <!-- :virtual-index="index" -->
                   <MovieCardHorizontalBroadcast :item="item" />
                 </SwiperSlide>
               </template>
@@ -112,13 +112,17 @@
           </section>
 
           <section
-            v-for="(mod, index1) in modLíst.results.slice(1)"
+            v-for="(mod, index1) in modLíst?.results?.slice(1)"
             :key="mod.id"
             :index="index1"
             class="home-section mod-list"
           >
             <h2 class="gradient-title-default">
-              <span>{{ mod.name }}</span>
+              <span>{{
+                mod?.type == 'trending'
+                  ? mod?.name + ' ' + _lodash_Capitalize(mod?.media_type)
+                  : mod?.name
+              }}</span>
               <NuxtLink
                 class="view-all"
                 :to="{
@@ -128,12 +132,6 @@
                   }
                 }"
               >
-                <!-- :to="{
-                  path: `${mod.path}`,
-                  query: {
-                    type: mod.type
-                  }
-                }" -->
                 Xem tất cả
                 <SvgoChevronRight
                   width="1.2rem"
@@ -152,8 +150,8 @@
                   v-for="(item, index) in mod.data"
                   :key="item.id"
                   :index="index"
-                  :virtual-index="index"
                 >
+                  <!-- :virtual-index="index" -->
                   <MovieCardVertical
                     :item="item"
                     :type="item.media_type"
@@ -219,7 +217,8 @@
 // import MovieCardHorizontal from '~/components/MovieCard/MovieCardHorizontal/MovieCardHorizontal.vue';
 // import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
 // import MovieCardHorizontalTrailer from '~/components/MovieCardHorizontalTrailer/MovieCardHorizontalTrailer.vue';
-import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
+// import ViewMoreBar from '~/components/ViewMoreBar/ViewMoreBar.vue';
+
 import { getAllModWithData } from '~/services/mods';
 import { getMyRecommend } from '~/services/recommend';
 import { getAllAiringBroadcast } from '~/services/broadcast';
@@ -252,9 +251,9 @@ const trendings = ref<any[]>([]);
 const page = ref<number>(1);
 const pageSize = ref<number>(3);
 const total = ref<number>(0);
-const recommends = ref<any>([]);
-const broadcasts = ref<any>([]);
-const isLoading = computed<boolean>(() => status.value != 'success');
+// const recommends = ref<any>([]);
+// const broadcasts = ref<any>([]);
+// const isLoading = computed<boolean>(() => status.value != 'success');
 const loading = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
 const loadingRecommend = ref<boolean>(true);
@@ -444,73 +443,74 @@ const responsiveVerticalSlick = computed<any[]>(() => [
 
 loading.value = true;
 
-const { data: modLíst, status } = await useAsyncData(
-  `mod/all/${page.value}/${pageSize.value}`,
-  () => getAllModWithData('all', page.value, pageSize.value)
-  // {
-  //   // default: () => {
-  //   //   return { results: trendingsCache.value || [] };
-  //   // },
-  //   transform: (data: any) => {
-  //     return data.results[0].data;
-  //   }
-  // }
-);
+const pMods = getAllModWithData('all', 'all', page.value, pageSize.value);
+const pBroadcast = getAllAiringBroadcast(page.value, pageSize.value);
+const pRecommend = authStore.isLogin
+  ? getMyRecommend(skipRecommend.value)
+  : Promise.resolve({ results: [] });
+
+const [modLíst, broadcasts, recommends] = await Promise.all([
+  pMods,
+  pBroadcast,
+  pRecommend
+]);
+trendings.value = modLíst?.results[0].data;
+broadcasts.value = broadcasts;
+recommends.value = recommends?.results;
+
+total.value = modLíst.total;
+pageSize.value = modLíst.page_size;
+page.value++;
+
+// const { data: modLíst, status } = await useAsyncData(
+//   `mod/all/${page.value}/${pageSize.value}`,
+//   () => getAllModWithData('all', 'all', page.value, pageSize.value)
+//   // {
+//   //   // default: () => {
+//   //   //   return { results: trendingsCache.value || [] };
+//   //   // },
+//   //   transform: (data: any) => {
+//   //     return data.results[0].data;
+//   //   }
+//   // }
+// );
 
 // const { data: broadcasts, status: statusBroadcast } = await useAsyncData(
 //   `broadcast/all/1/20`,
 //   () => getAllAiringBroadcast(page.value, pageSize.value)
 // );
 
-await getAllAiringBroadcast(page.value, pageSize.value)
-  .then((response) => {
-    broadcasts.value = response;
-  })
-  .catch((e) => {})
-  .finally(() => {});
-
-trendings.value = modLíst.value?.results[0].data;
-total.value = modLíst.value?.total;
-pageSize.value = modLíst.value?.page_size;
-page.value++;
-
-// useAsyncData(`mod/all/${page.value}/${pageSize.value}`, () =>
-//   getAllModWithData('all', page.value, pageSize.value)
-// )
-//   // getAllModWithData('all', page.value, pageSize.value)
+// await getAllAiringBroadcast(page.value, pageSize.value)
 //   .then((response) => {
-//     modLíst.value = response.data.value?.results;
-//     total.value = response.data.value?.total;
-//     pageSize.value = response.data.value?.page_size;
+//     broadcasts.value = response;
 //   })
 //   .catch((e) => {})
-//   .finally(() => {
-//     loading.value = false;
-//   });
+//   .finally(() => {});
 
-const onSwiperLoaded = () => {
-  // loading.value = false;
-};
+// trendings.value = modLíst.value?.results[0].data;
+// total.value = modLíst.value?.total;
+// pageSize.value = modLíst.value?.page_size;
+// page.value++;
 
-watch(
-  () => authStore.isLogin,
-  async () => {
-    if (authStore.isLogin) {
-      loadingRecommend.value = true;
+// watch(
+//   () => authStore.isLogin,
+//   async () => {
+//     if (authStore.isLogin) {
+//       loadingRecommend.value = true;
 
-      getMyRecommend(skipRecommend.value)
-        .then((response) => {
-          recommends.value = response?.results;
-          skipRecommend.value++;
-        })
-        .catch((e) => {})
-        .finally(() => {
-          loadingRecommend.value = false;
-        });
-    }
-  },
-  { immediate: true }
-);
+//       getMyRecommend(skipRecommend.value)
+//         .then((response) => {
+//           recommends.value = response?.results;
+//           skipRecommend.value++;
+//         })
+//         .catch((e) => {})
+//         .finally(() => {
+//           loadingRecommend.value = false;
+//         });
+//     }
+//   },
+//   { immediate: true }
+// );
 
 onMounted(() => {
   loading.value = false;
@@ -527,7 +527,7 @@ onMounted(() => {
     ) {
       loadMore.value = true;
 
-      await getAllModWithData('all', page.value, pageSize.value)
+      await getAllModWithData('all', 'all', page.value, pageSize.value)
         .then((response) => {
           if (response?.results?.length > 0) {
             modLíst.value.results = modLíst.value.results.concat(
@@ -546,9 +546,7 @@ onMounted(() => {
 
 const handleLoadMoreRecommend = async () => {
   loadMoreRecommend.value = true;
-  // await useAsyncData(`recommend/get/${skipRecommend.value}`, () =>
-  //   getMyRecommend(skipRecommend.value)
-  // )
+
   await getMyRecommend(skipRecommend.value)
     .then((response) => {
       if (response?.results.length > 0) {
@@ -564,6 +562,10 @@ const handleLoadMoreRecommend = async () => {
     .finally(() => {
       loadMoreRecommend.value = false;
     });
+};
+
+const onSwiperLoaded = () => {
+  loading.value = false;
 };
 </script>
 

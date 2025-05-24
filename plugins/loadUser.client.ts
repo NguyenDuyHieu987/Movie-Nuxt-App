@@ -13,7 +13,7 @@ export default defineNuxtPlugin({
   async setup(nuxtApp) {
     const authStore = useAuthStore();
 
-    authStore.loadUser();
+    await authStore.loadUser();
   },
   hooks: {
     // 'app:created': async () => {
@@ -24,6 +24,6 @@ export default defineNuxtPlugin({
     //   // authStore.loadSubscription();
     // }
   },
-  parallel: true,
+  // parallel: true,
   env: { islands: false }
 });

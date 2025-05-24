@@ -332,8 +332,8 @@ const handleClickStripeMethod = async () => {
 
         getStatusInvoice(response.invoice_id);
         // return new WebSocket(
-        //   nuxtConfig.app?.production_mode
-        //     ? nuxtConfig.app?.apiGateway
+        //   nuxtConfig.public.app?.production_mode
+        //     ? nuxtConfig.public.app?.apiGateway
         //     : 'ws://localhost:5000'
         // );
       }

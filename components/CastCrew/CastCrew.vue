@@ -152,17 +152,31 @@ watch(
     if (!oldVal && newVal) {
       loading.value = true;
 
-      getCredits(props.dataMovie?.id)
-        .then((response) => {
-          dataCredit.value = response;
-        })
-        .finally(() => {
-          loading.value = false;
-        });
+      dataCredit.value = props.dataMovie.credits;
+
+      loading.value = false;
     }
   },
   { immediate: true }
 );
+
+// watch(
+//   () => props.dataMovie,
+//   (newVal, oldVal) => {
+//     if (!oldVal && newVal) {
+//       loading.value = true;
+
+//       getCredits(props.dataMovie?.id)
+//         .then((response) => {
+//           dataCredit.value = response;
+//         })
+//         .finally(() => {
+//           loading.value = false;
+//         });
+//     }
+//   },
+//   { immediate: true }
+// );
 
 // const { data: dataCredit, pending } = await useAsyncData(
 //   `credits/${props.dataMovie?.id}`,

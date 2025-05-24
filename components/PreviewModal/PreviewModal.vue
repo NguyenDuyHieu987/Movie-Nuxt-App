@@ -302,7 +302,7 @@
                     <span class="evidence-item country">
                       {{
                         getCountryByOriginalLanguage(
-                          dataMovie?.original_language,
+                          dataMovie?.origin_country,
                           store.allCountries
                         )?.name || ''
                       }}

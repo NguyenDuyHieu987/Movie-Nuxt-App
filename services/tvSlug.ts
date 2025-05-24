@@ -60,17 +60,17 @@ export function FilterTvSlug(formFilter: formfilter) {
 
   // return utils.isStringNumber(formFilter.year) || formFilter.year == ''
   // ? makeRequest(
-  //     `/${PREFIX_ROUTE}/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_gte=${yearGte}&primary_release_date_lte=${yearLte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
+  //     `/${PREFIX_ROUTE}/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_gte=${yearGte}&primary_release_date_lte=${yearLte}&with_genres=${formFilter.genre}&with_origin_country=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
   //   )
   // : makeRequest(
-  //     `/${PREFIX_ROUTE}/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_lte=${yearGte}&with_genres=${formFilter.genre}&with_original_language=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
+  //     `/${PREFIX_ROUTE}/discover/${formFilter.type}?sort_by=${formFilter.sortBy}&primary_release_date_lte=${yearGte}&with_genres=${formFilter.genre}&with_origin_country=${formFilter.country}&page=${formFilter.page}&limit=${formFilter.limit}`
   //   );
   return makeRequest(`/${PREFIX_ROUTE}/discover/${formFilter.type}`, {
     sort_by: formFilter.sortBy,
     primary_release_date_gte: isBefore ? '' : yearGte,
     primary_release_date_lte: isAfter ? '' : yearLte,
     with_genres: formFilter.genre,
-    with_original_language: formFilter.country,
+    with_origin_country: formFilter.country,
     page: formFilter.page,
     limit: formFilter.limit
   });

@@ -375,8 +375,8 @@ const liveViews = ref<number>(0);
 onBeforeMount(() => {
   socket.value = io(
     import.meta.env.PROD
-      ? nuxtConfig.app.apiGateway
-      : nuxtConfig.app.apiGatewayDev
+      ? nuxtConfig.public.apiGateway
+      : nuxtConfig.public.apiGatewayDev
   );
 
   if (isEndedBroadcast.value) return;

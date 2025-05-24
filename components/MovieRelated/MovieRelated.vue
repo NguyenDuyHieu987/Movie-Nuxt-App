@@ -151,7 +151,7 @@
 // import MovieCardRelated from '~/components/MovieRelated/MovieCardRelated/MovieCardRelated.vue';
 // import { ViewMoreBar } from '~/components/ViewMoreBar';
 import { getSimilar } from '~/services/similar';
-import { getTrending } from '~/services/trending';
+import { getAllModWithData } from '~/services/mods';
 
 const props = defineProps<{
   dataMovie: any;
@@ -188,9 +188,9 @@ watch(
           loadingSimilar.value = false;
         });
 
-      getTrending(pageRecommend.value, 20)
+      getAllModWithData('trending', 'all', 1)
         .then((response) => {
-          dataRecommend.value = response?.results;
+          dataRecommend.value = response?.results[0].data;
         })
         .catch((e) => {})
         .finally(() => {

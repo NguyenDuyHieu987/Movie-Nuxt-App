@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { version } from 'ant-design-vue';
-import type { NuxtPage } from 'nuxt/schema';
 import path, { resolve } from 'path';
 import { isProduction } from 'std-env';
 // import svgLoader from 'vite-svg-loader';
@@ -80,7 +79,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    app: {
+    googleOauth2ClientSecret: process.env.GOOGLE_OAUTH2_CLIENT_SECRET,
+
+    public: {
       production_mode: isProduction,
       apiGateway: process.env.API_GATEWAY,
       apiGatewayDev: process.env.API_GATEWAY_DEV,
@@ -91,20 +92,19 @@ export default defineNuxtConfig({
       serverVideoUrl: process.env.SERVER_VIDEO_URL,
       serverVideoUrlDev: process.env.SERVER_VIDEO_URL_DEV,
       adminWebsiteUrl: process.env.ADMIN_WEBSITE_URL,
-      googleAnalyticsID: process.env.GOOGLE_ANALYTICS_ID,
-      googleTagManagerID: process.env.GOOGLE_TAG_MANAGER_ID,
-      facebookAppID: process.env.FACEBOOK_APP_ID,
-      googleOauth2ClientID: process.env.GOOGLE_OAUTH2_CLIENT_ID,
-      googleOauth2ClientSecret: process.env.GOOGLE_OAUTH2_CLIENT_SECRET,
-      TMDBurl: process.env.TMDB_IMAGE_BASE_URL
-    },
-    public: {
+
+      TMDBurl: process.env.TMDB_IMAGE_BASE_URL,
       // SEO
       siteUrl: 'https://phimhay247.online',
       siteName: 'Phimhay247',
       titleSeparator: '|',
       language: 'vi',
-      trailingSlash: false
+      trailingSlash: false,
+      // Analytics
+      googleAnalyticsID: process.env.GOOGLE_ANALYTICS_ID,
+      googleTagManagerID: process.env.GOOGLE_TAG_MANAGER_ID,
+      facebookAppID: process.env.FACEBOOK_APP_ID,
+      googleOauth2ClientID: process.env.GOOGLE_OAUTH2_CLIENT_ID
     }
   },
 
@@ -227,7 +227,13 @@ export default defineNuxtConfig({
   },
 
   swiper: {
-    modules: ['navigation', 'virtual', 'free-mode', 'scrollbar', 'autoplay'],
+    modules: [
+      'navigation',
+      'free-mode',
+      'scrollbar',
+      'autoplay'
+      // 'virtual',
+    ],
     styleLang: 'css'
   },
 
@@ -250,6 +256,7 @@ export default defineNuxtConfig({
   image: {
     // domains: ['proxy.phimhay247.online'],
     // provider: 'cloudinary',
+    provider: 'none',
     presets: {
       avatar: {
         modifiers: {
@@ -370,7 +377,7 @@ export default defineNuxtConfig({
   ogImage: {},
   schemaOrg: {},
   linkChecker: {
-    // enabled: false
+    enabled: false
   },
 
   plugins: [],
@@ -419,7 +426,6 @@ export default defineNuxtConfig({
     ]
   },
 
-  vue: { propsDestructure: true },
   ssr: true,
 
   sourcemap: {
@@ -446,6 +452,13 @@ export default defineNuxtConfig({
     }
   },
 
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.includes('swiper')
+    },
+    propsDestructure: true
+  },
+
   vite: {
     resolve: {
       alias: {
@@ -468,7 +481,11 @@ export default defineNuxtConfig({
       noExternal: []
     },
     optimizeDeps: {
-      // include: ['./components/**/*.vue', 'ant-design-vue', 'element-plus']
+      include: [
+        // './components/**/*.vue', 'ant-design-vue', 'element-plus'
+        './components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue',
+        'swiper/vue'
+      ]
     },
     css: {
       preprocessorOptions: {
@@ -563,7 +580,7 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      // crawlLinks: false
+      crawlLinks: false
       // routes: [
       //   '/sitemap.xml',
       //   '/',

@@ -1,164 +1,191 @@
 [
   {
     "id": 28,
+    "short_name": "action",
     "name": "Hành động",
     "english_name": "Action",
-    "short_name": "hanh-dong"
-  },
-  {
-    "id": 12,
-    "name": "Phiêu lưu",
-    "english_name": "Adventure",
-    "short_name": "phieu-luu"
-  },
-  {
-    "id": 16,
-    "name": "Hoạt hình",
-    "english_name": "Animation",
-    "short_name": "hoat-hinh"
-  },
-  {
-    "id": 35,
-    "name": "Hài hước",
-    "english_name": "Comedy",
-    "short_name": "hai-huoc"
-  },
-  {
-    "id": 80,
-    "name": "Tội phạm",
-    "english_name": "Crime",
-    "short_name": "toi-pham"
-  },
-  {
-    "id": 99,
-    "name": "Tài liệu",
-    "english_name": "Documentary",
-    "short_name": "tai-lieu"
+    "media_type": "movie"
   },
   {
     "id": 18,
+    "short_name": "drama",
     "name": "Drama",
     "english_name": "Drama",
-    "short_name": "drama"
-  },
-  {
-    "id": 10751,
-    "name": "Gia đình",
-    "english_name": "Family",
-    "short_name": "gia-dinh"
-  },
-  {
-    "id": 14,
-    "name": "Kỳ ảo",
-    "english_name": "Fantasy",
-    "short_name": "ky-ao"
+    "media_type": "all"
   },
   {
     "id": 36,
+    "short_name": "history",
     "name": "Lịch sử",
     "english_name": "History",
-    "short_name": "lich-su"
-  },
-  {
-    "id": 27,
-    "name": "Kinh dị",
-    "english_name": "Horror",
-    "short_name": "kinh-di"
+    "media_type": "movie"
   },
   {
     "id": 10402,
+    "short_name": "music",
     "name": "Âm nhạc",
     "english_name": "Music",
-    "short_name": "am-nhac"
-  },
-  {
-    "id": 9648,
-    "name": "Bí ẩn",
-    "english_name": "Mystery",
-    "short_name": "bi-an"
-  },
-  {
-    "id": 10749,
-    "name": "Lãng mạn",
-    "english_name": "Romance",
-    "short_name": "lang-man"
+    "media_type": "movie"
   },
   {
     "id": 878,
+    "short_name": "science-fiction",
     "name": "Khoa học viễn tưởng",
     "english_name": "Science Fiction",
-    "short_name": "khoa-hoc-vien-tuong"
-  },
-  {
-    "id": 10770,
-    "name": "Phim dài tập",
-    "english_name": "TV Movie",
-    "short_name": "phim-dai-tap"
+    "media_type": "movie"
   },
   {
     "id": 53,
+    "short_name": "thriller",
     "name": "Giật gân",
     "english_name": "Thriller",
-    "short_name": "giat-gan"
+    "media_type": "movie"
   },
   {
     "id": 10752,
+    "short_name": "war",
     "name": "Chiến tranh",
     "english_name": "War",
-    "short_name": "chien-tranh"
-  },
-  {
-    "id": 37,
-    "name": "Cao bồi",
-    "english_name": "Western",
-    "short_name": "cao-boi"
-  },
-  {
-    "id": 10765,
-    "name": "Khoa học viễn tưởng & Kỳ ảo",
-    "english_name": "Sci-Fi & Fantasy",
-    "short_name": "khoa-hoc-vien-tuong-&-ky-ao"
+    "media_type": "movie"
   },
   {
     "id": 10759,
+    "short_name": "action-and-adventure",
     "name": "Hành động & Phiêu lưu",
     "english_name": "Action & Adventure",
-    "short_name": "hanh-dong-&-phieu-luu"
-  },
-  {
-    "id": 10768,
-    "name": "Chiến tranh & Chính trị",
-    "english_name": "War & Politics",
-    "short_name": "chien-tranh-&-chinh-tri"
-  },
-  {
-    "id": 10766,
-    "name": "Kịch",
-    "english_name": "Soap",
-    "short_name": "kich"
-  },
-  {
-    "id": 10767,
-    "name": "Talk Show",
-    "english_name": "Talk Show",
-    "short_name": "talk-show"
-  },
-  {
-    "id": 10763,
-    "name": "Tin tức",
-    "english_name": "News",
-    "short_name": "tin-tuc"
+    "media_type": "tv"
   },
   {
     "id": 10764,
+    "short_name": "reality",
     "name": "Đời thực",
     "english_name": "Reality",
-    "short_name": "doi-thuc"
+    "media_type": "tv"
+  },
+  {
+    "id": 12,
+    "short_name": "adventure",
+    "name": "Phiêu lưu",
+    "english_name": "Adventure",
+    "media_type": "movie"
+  },
+  {
+    "id": 16,
+    "short_name": "animation",
+    "name": "Hoạt hình",
+    "english_name": "Animation",
+    "media_type": "all"
+  },
+  {
+    "id": 80,
+    "short_name": "crime",
+    "name": "Tội phạm",
+    "english_name": "Crime",
+    "media_type": "all"
+  },
+  {
+    "id": 10751,
+    "short_name": "family",
+    "name": "Gia đình",
+    "english_name": "Family",
+    "media_type": "all"
+  },
+  {
+    "id": 27,
+    "short_name": "horror",
+    "name": "Kinh dị",
+    "english_name": "Horror",
+    "media_type": "movie"
+  },
+  {
+    "id": 9648,
+    "short_name": "mystery",
+    "name": "Bí ẩn",
+    "english_name": "Mystery",
+    "media_type": "all"
+  },
+  {
+    "id": 10749,
+    "short_name": "romance",
+    "name": "Lãng mạn",
+    "english_name": "Romance",
+    "media_type": "movie"
+  },
+  {
+    "id": 10767,
+    "short_name": "talk",
+    "name": "Talk Show",
+    "english_name": "Talk Show",
+    "media_type": "tv"
+  },
+  {
+    "id": 99,
+    "short_name": "documentary",
+    "name": "Tài liệu",
+    "english_name": "Documentary",
+    "media_type": "all"
+  },
+  {
+    "id": 35,
+    "short_name": "comedy",
+    "name": "Hài hước",
+    "english_name": "Comedy",
+    "media_type": "all"
+  },
+  {
+    "id": 37,
+    "short_name": "western",
+    "name": "Cao bồi",
+    "english_name": "Western",
+    "media_type": "all"
+  },
+  {
+    "id": 10765,
+    "short_name": "sci-fi-and-fantasy",
+    "name": "Khoa học viễn tưởng & Kỳ ảo",
+    "english_name": "Sci-Fi & Fantasy",
+    "media_type": "tv"
+  },
+  {
+    "id": 10768,
+    "short_name": "war-and-politics",
+    "name": "Chiến tranh & Chính trị",
+    "english_name": "War & Politics",
+    "media_type": "tv"
+  },
+  {
+    "id": 10766,
+    "short_name": "soap",
+    "name": "Kịch",
+    "english_name": "Soap",
+    "media_type": "tv"
+  },
+  {
+    "id": 14,
+    "short_name": "fantasy",
+    "name": "Kỳ ảo",
+    "english_name": "Fantasy",
+    "media_type": "movie"
+  },
+  {
+    "id": 10770,
+    "short_name": "tv-movie",
+    "name": "Phim dài tập",
+    "english_name": "TV Movie",
+    "media_type": "movie"
+  },
+  {
+    "id": 10763,
+    "short_name": "news",
+    "name": "Tin tức",
+    "english_name": "News",
+    "media_type": "tv"
   },
   {
     "id": 10762,
+    "short_name": "kids",
     "name": "Trẻ em",
     "english_name": "Kids",
-    "short_name": "tre-em"
+    "media_type": "tv"
   }
 ]

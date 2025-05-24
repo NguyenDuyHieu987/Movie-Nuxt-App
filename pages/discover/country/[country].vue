@@ -13,7 +13,7 @@
     >
       <SwiperSlide
         v-for="(item, index) in countries"
-        :key="item?.iso_639_1"
+        :key="item?.iso_3166_1"
         :index="index"
         :class="{
           active: item?.short_name == route.params?.country

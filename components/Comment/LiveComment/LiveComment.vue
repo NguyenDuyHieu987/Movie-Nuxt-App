@@ -219,8 +219,8 @@ const isInteractable = computed<boolean>(
 onBeforeMount(() => {
   socket.value = io(
     import.meta.env.PROD
-      ? nuxtConfig.app.apiGateway
-      : nuxtConfig.app.apiGatewayDev
+      ? nuxtConfig.public.apiGateway
+      : nuxtConfig.public.apiGatewayDev
   );
 
   socket.value.emit('joinRoom', roomID.value);

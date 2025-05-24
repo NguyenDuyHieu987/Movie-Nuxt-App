@@ -29,7 +29,7 @@ export async function initFacebookSdk() {
         const FB = window.FB;
 
         FB.init({
-          appId: nuxtConfig.app.facebookAppID,
+          appId: nuxtConfig.public.facebookAppID,
           cookie: true,
           xfbml: true,
           autoLogAppEvents: true,
@@ -38,7 +38,7 @@ export async function initFacebookSdk() {
 
         // FB.login(function () {});
 
-        if (nuxtConfig.app?.production_mode) {
+        if (nuxtConfig.public.app?.production_mode) {
           window.FB.getLoginStatus((response: any) => {
             // if (response.status === 'connected') {
             //   console.log('getLoginStatus:', response);

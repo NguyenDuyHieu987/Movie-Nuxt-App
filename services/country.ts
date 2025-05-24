@@ -10,13 +10,13 @@ export function getAllCountry() {
 }
 
 export function getCountryVietSub(
-  original_language: string,
+  name: string,
   allCountries: country[]
 ): country {
   if (allCountries?.length != 0) {
-    return allCountries.find((country) => country.name === original_language)!;
+    return allCountries.find((country) => country.name === name)!;
   } else {
-    return ALLCOUNTRIES.find((country) => country.name === original_language)!;
+    return ALLCOUNTRIES.find((country) => country.name === name)!;
   }
 }
 
@@ -36,16 +36,15 @@ export function getCountryByShortName(
 }
 
 export function getCountryByOriginalLanguage(
-  original_language: string,
+  origin_country: string | string[],
   allCountries: country[]
 ): country {
+  var name = _lodash_IsArray(origin_country)
+    ? origin_country[0]
+    : origin_country;
   if (allCountries?.length != 0) {
-    return allCountries.find(
-      (language) => language.iso_639_1 === original_language
-    )!;
+    return allCountries.find((language) => language.iso_3166_1 === name)!;
   } else {
-    return ALLCOUNTRIES.find(
-      (language) => language.iso_639_1 === original_language
-    )!;
+    return ALLCOUNTRIES.find((language) => language.iso_3166_1 === name)!;
   }
 }

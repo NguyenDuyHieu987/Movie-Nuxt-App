@@ -147,8 +147,6 @@
 </template>
 
 <script setup lang="ts">
-// import { ElSkeleton, ElSkeletonItem } from 'element-plus';
-
 import type { TabPaneName } from 'element-plus';
 import { getListEpisode } from '~/services/episode';
 import { getListSeason, getSeason } from '~/services/season';

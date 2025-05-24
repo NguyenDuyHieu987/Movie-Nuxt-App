@@ -65,8 +65,9 @@
 import { getGenreById } from '~/services/genres';
 import type { genre } from '~/types';
 
-defineProps<{
+const props = defineProps<{
   title: string;
+  mediaType: string;
   viewAllLink?: string;
 }>();
 
@@ -76,7 +77,11 @@ const emits = defineEmits<{
 
 const store = useStore();
 const route = useRoute();
-const genres = ref<genre[]>(store.allGenres);
+const genres = computed<genre[]>(() =>
+  store.allGenres.filter(
+    (g) => g.media_type == props.mediaType || g.media_type == 'all'
+  )
+);
 const genreDropdownTitle = ref<string>(
   route.query?.genre
     ? getGenreById(+(route.query?.genre as string), store.allGenres)!.name

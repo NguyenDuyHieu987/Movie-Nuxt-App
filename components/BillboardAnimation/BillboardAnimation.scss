@@ -176,8 +176,8 @@
 
   .carousel-arrow {
     position: absolute;
-    /* bottom: 20%; */
-    bottom: 160px;
+    // bottom: 25%;
+    bottom: 170px;
     right: var(--padding-home);
     z-index: 2;
     display: flex;
@@ -209,7 +209,7 @@
 
   .billboard-preview-list {
     position: absolute;
-    bottom: -3%;
+    bottom: -4%;
     right: var(--padding-home);
     z-index: 1;
     width: 30%;

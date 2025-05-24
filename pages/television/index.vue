@@ -2,6 +2,7 @@
   <div class="home-page televison">
     <HeaderPageMovieType
       title="Phim bộ"
+      :mediaType="'tv'"
       viewAllLink="/discover/tv?type=all"
     />
 
@@ -13,7 +14,7 @@
         class="home-section"
       >
         <h2 class="gradient-title-default">
-          <span>{{ modLíst.results[0].name }}</span>
+          <span>{{ modLíst?.results[1].name }}</span>
         </h2>
       </section>
 
@@ -23,7 +24,7 @@
       >
         <template #content>
           <section
-            v-for="(mod, index1) in modLíst.results"
+            v-for="(mod, index1) in modLíst?.results?.slice(1)"
             :key="mod.id"
             :index="index1"
             class="home-section"
@@ -52,6 +53,7 @@
             <SwiperCarouselGroup
               :data="mod.data"
               :responsive="responsiveHorizoltal"
+              @on-loaded="onSwiperLoaded"
             >
               <template #content>
                 <SwiperSlide
@@ -111,6 +113,7 @@ useSeoMeta({
 });
 
 const store = useStore();
+const dataBilboard = ref<any>([]);
 // const modLíst = ref<any>([]);
 const page = ref<number>(1);
 const pageSize = ref<number>(5);
@@ -156,31 +159,31 @@ const responsiveHorizoltal = computed<any>((): any => ({
 
 loading.value = true;
 
-const { data: dataBilboard, status: statusBillboard } = await useAsyncData(
-  'tv/all/1',
-  () =>
-    FilterMovie({
-      type: 'tv',
-      sortBy: '',
-      genre: '',
-      year: '',
-      country: '',
-      page: 1,
-      limit: 20
-    }),
-  {
-    // default: () => {
-    //   return { results: trendingsCache.value || [] };
-    // },
-    transform: (data: any) => {
-      return data.results;
-    }
-  }
-);
+// const { data: dataBilboard, status: statusBillboard } = await useAsyncData(
+//   'tv/all/1',
+//   () =>
+//     FilterMovie({
+//       type: 'tv',
+//       sortBy: '',
+//       genre: '',
+//       year: '',
+//       country: '',
+//       page: 1,
+//       limit: 20
+//     }),
+//   {
+//     // default: () => {
+//     //   return { results: trendingsCache.value || [] };
+//     // },
+//     transform: (data: any) => {
+//       return data.results;
+//     }
+//   }
+// );
 
 const { data: modLíst, status } = await useAsyncData(
   `mod/tv/${page.value}/${pageSize.value}`,
-  () => getAllModWithData('tv', page.value, pageSize.value)
+  () => getAllModWithData('all', 'tv', page.value, pageSize.value)
   // {
   //   // default: () => {
   //   //   return { results: trendingsCache.value || [] };
@@ -191,12 +194,13 @@ const { data: modLíst, status } = await useAsyncData(
   // }
 );
 
+dataBilboard.value = modLíst.value?.results[0].data;
 total.value = modLíst.value?.total;
 pageSize.value = modLíst.value?.page_size;
 // page.value++;
 
 const onSwiperLoaded = () => {
-  // loading.value = false;
+  loading.value = false;
 };
 
 onMounted(() => {

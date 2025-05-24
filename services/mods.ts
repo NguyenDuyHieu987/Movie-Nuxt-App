@@ -9,12 +9,14 @@ export function getAllMod() {
 
 export function getAllModWithData(
   type: string,
+  media_type: string,
   page: number = 1,
   limit: number = 3,
   listCount: number = 20
 ) {
   return makeRequest(`/${PREFIX_ROUTE}/get-all-with-data`, {
     type,
+    media_type,
     page,
     limit,
     list_count: listCount
@@ -45,7 +47,7 @@ export function FilterModWithData(formFilter: formfilter) {
     primary_release_date_gte: isBefore ? '' : yearGte,
     primary_release_date_lte: isAfter ? '' : yearLte,
     with_genres: formFilter.genre,
-    with_original_language: formFilter.country,
+    with_origin_country: formFilter.country,
     page: formFilter.page,
     limit: formFilter.limit
   });

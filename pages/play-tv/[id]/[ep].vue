@@ -316,14 +316,14 @@
                       class="underline"
                       :to="`/discover/country/${
                         getCountryByOriginalLanguage(
-                          dataMovie?.original_language,
+                          dataMovie?.origin_country,
                           store.allCountries
                         )?.short_name || 'au-my'
                       }`"
                     >
                       {{
                         getCountryByOriginalLanguage(
-                          dataMovie?.original_language,
+                          dataMovie?.origin_country,
                           store.allCountries
                         )?.name || ''
                       }}

@@ -369,14 +369,14 @@
                           class="underline"
                           :to="`/discover/country/${
                             getCountryByOriginalLanguage(
-                              dataMovie?.original_language,
+                              dataMovie?.origin_country,
                               store.allCountries
                             )?.short_name || 'au-my'
                           }`"
                         >
                           {{
                             getCountryByOriginalLanguage(
-                              dataMovie?.original_language,
+                              dataMovie?.origin_country,
                               store.allCountries
                             )?.name || ''
                           }}
@@ -574,7 +574,7 @@ const getData = async () => {
   // await useAsyncData(`tv/detail/${movieId.value}/videos,episodes`, () =>
   //   getMovieByType_Id('tv', movieId.value, 'videos,episodes')
   // )
-  await getMovieByType_Id('tv', movieId.value, 'videos,episodes')
+  await getMovieByType_Id('tv', movieId.value, 'credits,images,videos,episodes')
     .then((response) => {
       dataMovie.value = response;
 
@@ -632,8 +632,8 @@ const {
   status,
   error
 } = await useAsyncData(
-  `tv/detail/${movieId.value}/videos`,
-  () => getMovieByType_Id('tv', movieId.value, 'videos'),
+  `tv/detail/${movieId.value}/credits,images,videos`,
+  () => getMovieByType_Id('tv', movieId.value, 'credits,images,videos'),
   {
     lazy: true
   }

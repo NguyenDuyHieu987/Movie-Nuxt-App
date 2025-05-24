@@ -210,17 +210,17 @@
               }"
               :initial-slide="
                 countries.findIndex(
-                  (item1) => item1.iso_639_1 == route.query?.country
+                  (item1) => item1.iso_3166_1 == route.query?.country
                 )
               "
             >
               <SwiperSlide
                 v-for="(item, index) in countries"
-                :key="item?.iso_639_1"
+                :key="item?.iso_3166_1"
                 class="filter-option"
                 :index="index"
                 :class="{
-                  active: item.iso_639_1 == route.query?.country
+                  active: item.iso_3166_1 == route.query?.country
                 }"
               >
                 <NuxtLink
@@ -228,8 +228,8 @@
                     query: {
                       ...route.query,
                       country:
-                        item.iso_639_1 != route.query?.country
-                          ? item.iso_639_1
+                        item.iso_3166_1 != route.query?.country
+                          ? item.iso_3166_1
                           : undefined
                     }
                   }"

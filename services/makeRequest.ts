@@ -24,9 +24,9 @@ export function makeRequest(
   const headers: AxiosRequestHeaders | any = {};
 
   const api = axios.create({
-    baseURL: nuxtConfig.app.production_mode
-      ? nuxtConfig.app.apiGateway
-      : nuxtConfig.app.apiGatewayDev,
+    baseURL: nuxtConfig.public.production_mode
+      ? nuxtConfig.public.apiGateway
+      : nuxtConfig.public.apiGatewayDev,
     // 'http://127.0.0.1:5000',
     withCredentials: true
   });
@@ -76,9 +76,9 @@ export async function makeMediaRequest(
   const headers: AxiosRequestHeaders | any = {};
 
   const api = axios.create({
-    baseURL: nuxtConfig.app.production_mode
-      ? nuxtConfig.app.mediaApiGateway
-      : nuxtConfig.app.mediaApiGatewayDev,
+    baseURL: nuxtConfig.public.production_mode
+      ? nuxtConfig.public.mediaApiGateway
+      : nuxtConfig.public.mediaApiGatewayDev,
     withCredentials: true
   });
 

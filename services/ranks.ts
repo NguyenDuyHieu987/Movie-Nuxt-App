@@ -14,7 +14,7 @@ export function filterRanks(formfilterRank: formfilterRank) {
     {
       media_type: formfilterRank.mediaType,
       with_genres: formfilterRank.genre,
-      with_original_language: formfilterRank.country,
+      with_origin_country: formfilterRank.country,
       page: formfilterRank.page,
       limit: formfilterRank.limit
     }

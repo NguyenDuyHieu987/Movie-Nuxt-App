@@ -18,9 +18,9 @@ export function getImage(
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
 
-  const URL_IMAGE = nuxtConfig.app.production_mode
-    ? nuxtConfig.app.serverImageUrl
-    : nuxtConfig.app.serverImageUrlDev;
+  const URL_IMAGE = nuxtConfig.public.production_mode
+    ? nuxtConfig.public.serverImageUrl
+    : nuxtConfig.public.serverImageUrlDev;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
@@ -78,7 +78,7 @@ export function getServerImage(
 
 export function getTMDBImage(path: string): string {
   const nuxtConfig = useRuntimeConfig();
-  const TMDB_IMAGE_BASE_URL = nuxtConfig.app.TMDBurl;
+  const TMDB_IMAGE_BASE_URL = nuxtConfig.public.TMDBurl;
 
   return `${TMDB_IMAGE_BASE_URL}/original${path}`;
 }

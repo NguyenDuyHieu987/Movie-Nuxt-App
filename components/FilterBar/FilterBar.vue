@@ -36,8 +36,8 @@
                 <el-option
                   v-for="(item, index) in countries"
                   :index="index"
-                  :key="item?.iso_639_1"
-                  :value="item?.iso_639_1"
+                  :key="item?.iso_3166_1"
+                  :value="item?.iso_3166_1"
                   :label="item?.name"
                 />
               </el-select>
@@ -118,9 +118,9 @@
 
               <a-select-option
                 v-for="(item, index) in countries"
-                :key="item?.iso_639_1"
+                :key="item?.iso_3166_1"
                 :index="index"
-                :value="item?.iso_639_1"
+                :value="item?.iso_3166_1"
               >
                 {{ item?.name }}
               </a-select-option>

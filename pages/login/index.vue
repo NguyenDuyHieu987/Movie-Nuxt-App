@@ -231,7 +231,9 @@ onBeforeMount(() => {
         '/resetpassword',
         '/changeemail'
       ].some((item) =>
-        router.options.history.state?.back.toLowerCase().startsWith(item)
+        (router.options.history.state?.back as string)
+          ?.toLowerCase()
+          .startsWith(item)
       )
       ? '/'
       : router.options.history.state.back
@@ -251,7 +253,7 @@ const initGoogleOauth2Client = (
 ) => {
   if (params.model == 'code') {
     tokenClient.value = window.google?.accounts.oauth2.initCodeClient({
-      client_id: nuxtConfig.app.googleOauth2ClientID,
+      client_id: nuxtConfig.public.googleOauth2ClientID,
       scope:
         'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
       ux_mode: params.ux_mode,
@@ -263,7 +265,7 @@ const initGoogleOauth2Client = (
     });
   } else if (params.model == 'token') {
     tokenClient.value = window.google?.accounts.oauth2.initTokenClient({
-      client_id: nuxtConfig.app.googleOauth2ClientID,
+      client_id: nuxtConfig.public.googleOauth2ClientID,
       scope:
         'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
       prompt: 'select_account',
@@ -442,7 +444,7 @@ const handleClickGoogleLogin = async () => {
 //         include_granted_scopes: string;
 //       }
 //     | any = {
-//     client_id: nuxtConfig.app.googleOauth2ClientID,
+//     client_id: nuxtConfig.public.googleOauth2ClientID,
 //     scope:
 //       'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
 //     prompt: 'select_account',
