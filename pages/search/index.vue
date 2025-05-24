@@ -247,7 +247,7 @@ const handleChangeType = async (activeKey: any) => {
 const dataChangeType = (): any[] => {
   switch (activeTabSearch.value) {
     case 'all':
-      return searchDataMovie.value.concat(searchDataTv.value);
+      return searchData.value;
     case 'movie':
       return searchDataMovie.value;
     case 'tv':
