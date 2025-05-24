@@ -583,20 +583,7 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      // crawlLinks: false
-      // routes: [
-      //   '/sitemap.xml',
-      //   '/',
-      //   '/feature',
-      //   '/television',
-      //   '/login',
-      //   '/oauth/google',
-      //   '/signup',
-      //   '/ForgotPassword',
-      //   '/upgrade/plans',
-      //   '/help',
-      //   '/contact'
-      // ]
+      // crawlLinks: false,
       ignore: [
         '/ranks',
         '/follow',

@@ -70,7 +70,7 @@
             />
             <NuxtLink
               class="title-suggestion"
-              to="/YourAccount/bills"
+              to="/YourAccount/invoices"
             >
               Xem lại lịch sử thanh toán
             </NuxtLink>
