@@ -12,7 +12,7 @@ type MakeRequestOptions = {
   getResponseHeaders?: boolean;
 } & AxiosRequestConfig;
 
-export function makeRequest(
+export async function makeRequest(
   url: string,
   params?: any,
   options: MakeRequestOptions = {
@@ -23,8 +23,10 @@ export function makeRequest(
   const nuxtConfig = useRuntimeConfig();
   const headers: AxiosRequestHeaders | any = {};
 
+  console.log('isProduction', nuxtConfig.public.production_mode);
+
   const api = axios.create({
-    baseURL: nuxtConfig.public.production_mode
+    baseURL: import.meta.env.PROD
       ? nuxtConfig.public.apiGateway
       : nuxtConfig.public.apiGatewayDev,
     // 'http://127.0.0.1:5000',
@@ -40,7 +42,7 @@ export function makeRequest(
   //   }
   // }
 
-  return api(url, {
+  return await api(url, {
     // proxy: {
     //   protocol: 'http',
     //   host: 'localhost',
@@ -76,7 +78,7 @@ export async function makeMediaRequest(
   const headers: AxiosRequestHeaders | any = {};
 
   const api = axios.create({
-    baseURL: nuxtConfig.public.production_mode
+    baseURL: import.meta.env.PROD
       ? nuxtConfig.public.mediaApiGateway
       : nuxtConfig.public.mediaApiGatewayDev,
     withCredentials: true

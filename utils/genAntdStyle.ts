@@ -7,7 +7,7 @@ import { isProduction } from 'std-env';
 export const genAntdStyle = async () => {
   const css = extractStyle();
 
-  if (isProduction) {
+  if (import.meta.env.PROD) {
     await fsExtra.outputFile('public/css/antdv4.css', css, 'utf8');
   } else {
     await fsExtra.outputFile('public/css/antdv4.dev.css', css, 'utf8');
@@ -37,7 +37,7 @@ export const genAntdStyleDarkMode = async () => {
     );
   });
 
-  if (isProduction) {
+  if (import.meta.env.PROD) {
     await fsExtra.outputFile('public/css/antdv4.css', css, 'utf8');
   } else {
     await fsExtra.outputFile('public/css/antdv4.dev.css', css, 'utf8');

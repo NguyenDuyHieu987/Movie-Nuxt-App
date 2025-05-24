@@ -5,7 +5,7 @@ const PREFIX_ROUTE = 'videos';
 export function getVideo(path: string) {
   const nuxtConfig = useRuntimeConfig();
 
-  const URL_VIDEO = nuxtConfig.public.production_mode
+  const URL_VIDEO = import.meta.env.PROD
     ? nuxtConfig.public.serverVideoUrl
     : nuxtConfig.public.serverVideoUrlDev;
 

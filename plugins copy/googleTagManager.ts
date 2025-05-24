@@ -4,14 +4,14 @@ import VueGtag, { trackRouter } from 'vue-gtag-next';
 //   nuxtApp.hook('app:created', () => {
 //     const nuxtConfig = useRuntimeConfig();
 
-//     // if (nuxtConfig.public.production_mode) {
+//     // if (import.meta.env.PROD) {
 //     nuxtApp.vueApp.use(VueGtag, {
 //       property: {
 //         id: nuxtConfig.public.googleAnalyticsID,
 //         params: {},
 //       },
 //       appName: 'Phimhay247',
-//       isEnabled: nuxtConfig.public.production_mode,
+//       isEnabled: import.meta.env.PROD,
 //     });
 //     // }
 //   });
@@ -22,14 +22,14 @@ export default defineNuxtPlugin({
   async setup(nuxtApp) {
     const nuxtConfig = useRuntimeConfig();
 
-    if (nuxtConfig.public.production_mode) {
+    if (import.meta.env.PROD) {
       nuxtApp.vueApp.use(VueGtag, {
         property: {
           id: nuxtConfig.public.googleAnalyticsID,
           params: {}
         },
         appName: 'Phimhay247',
-        isEnabled: nuxtConfig.public.production_mode
+        isEnabled: import.meta.env.PROD
       });
       trackRouter(useRouter());
     }

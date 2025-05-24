@@ -18,7 +18,7 @@ export function getImage(
   const nuxtConfig = useRuntimeConfig();
   const utils = useUtils();
 
-  const URL_IMAGE = nuxtConfig.public.production_mode
+  const URL_IMAGE = import.meta.env.PROD
     ? nuxtConfig.public.serverImageUrl
     : nuxtConfig.public.serverImageUrlDev;
 
@@ -55,7 +55,7 @@ export function getServerImage(
 ): string {
   const utils = useUtils();
 
-  const URL_IMAGE = isProduction ? SERVER_IMAGE : DEV_SERVER_IMAGE;
+  const URL_IMAGE = import.meta.env.PROD ? SERVER_IMAGE : DEV_SERVER_IMAGE;
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
