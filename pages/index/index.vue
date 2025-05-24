@@ -456,12 +456,7 @@ try {
     pRecommend
   ]);
 
-  if (modList?.results?.length > 0) {
-    trendings.value = modList.results[0]?.data ?? [];
-  } else {
-    trendings.value = [];
-  }
-
+  trendings.value = modList.results?.[0]?.data ?? [];
   broadcasts.value = broadcastList ?? [];
   recommends.value = recommendList?.results ?? [];
 

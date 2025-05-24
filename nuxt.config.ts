@@ -699,7 +699,7 @@ export default defineNuxtConfig({
     '/broadcast/**': {},
     '/feature/**': {},
     '/television/**': {},
-    '/discover/**': {},
+    '/discover/**': { prerender: false },
     '/search/**': {},
     '/ranks/**': {},
     '/login': {},
