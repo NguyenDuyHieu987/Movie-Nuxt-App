@@ -585,14 +585,14 @@ export default defineNuxtConfig({
     prerender: {
       // crawlLinks: false,
       ignore: [
-        '/ranks',
-        '/follow',
-        '/history',
-        '/YourAccount',
-        '/info-movie',
-        '/info-tv',
-        '/play-movie',
-        '/play-tv'
+        // '/ranks',
+        // '/follow',
+        // '/history',
+        // '/YourAccount',
+        // '/info-movie',
+        // '/info-tv',
+        // '/play-movie',
+        // '/play-tv'
       ]
     },
     // proxy the request from client

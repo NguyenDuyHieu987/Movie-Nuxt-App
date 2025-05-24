@@ -96,14 +96,14 @@ const store = useStore();
 const authStore = useAuthStore();
 const route = useRoute();
 const router = useRouter();
-const searchData = ref<any>([]);
-const searchDataMovie = ref<any[]>([]);
-const searchDataTv = ref<any[]>([]);
 const activeTabSearch = ref<string>('all');
-const loading = ref<boolean>(false);
+// const searchData = ref<any>([]);
+// const searchDataMovie = ref<any[]>([]);
+// const searchDataTv = ref<any[]>([]);
 const page = ref<number>(+route.query?.page || 1);
-const total = ref<number>(100);
-const pageSize = ref<number>(20);
+// const total = ref<number>(100);
+// const pageSize = ref<number>(20);
+const loading = ref<boolean>(false);
 const searchQuery = computed<string>(
   () => route.query?.q?.replaceAll('+', ' ') || ''
 );
@@ -161,11 +161,11 @@ const getData = async () => {
       getDaTaSearch(searchQuery.value, page.value)
     )
       .then((response) => {
-        searchData.value = response.data.value?.results;
-        total.value = response.data.value?.total;
-        pageSize.value = response.data.value?.page_size;
-        searchDataMovie.value = response.data.value?.movie;
-        searchDataTv.value = response.data.value?.tv;
+        // searchData.value = response.data.value?.results;
+        // total.value = response.data.value?.total;
+        // pageSize.value = response.data.value?.page_size;
+        // searchDataMovie.value = response.data.value?.movie;
+        // searchDataTv.value = response.data.value?.tv;
       })
       .catch((e) => {})
       .finally(() => {
@@ -177,7 +177,11 @@ const getData = async () => {
 
 loading.value = true;
 
-const { data: searchDataCache, pending } = await useAsyncData(
+const {
+  data: searchDataCache,
+  pending,
+  refresh
+} = await useAsyncData(
   `search/all/${searchQuery.value}/${page.value}/20`,
   () => getDaTaSearch(searchQuery.value, page.value),
   {
@@ -193,19 +197,30 @@ const { data: searchDataCache, pending } = await useAsyncData(
   }
 );
 
-searchData.value = searchDataCache.value?.results;
+// searchData.value = searchDataCache.value?.results;
+// total.value = searchDataCache.value?.total;
+// pageSize.value = searchDataCache.value?.page_size;
+// searchDataMovie.value = searchDataCache.value?.movie;
+// searchDataTv.value = searchDataCache.value?.tv;
 
-total.value = searchDataCache.value?.total;
-pageSize.value = searchDataCache.value?.page_size;
-searchDataMovie.value = searchDataCache.value?.movie;
-searchDataTv.value = searchDataCache.value?.tv;
+const searchData = computed<any[]>(
+  () => dataChangeType() || searchDataCache.value?.results || []
+);
+const total = computed<number>(() => searchDataCache.value?.total ?? 0);
+const pageSize = computed<number>(() => searchDataCache.value?.page_size ?? 20);
+const searchDataMovie = computed<any[]>(
+  () => searchDataCache.value?.movie ?? []
+);
+const searchDataTv = computed<any[]>(() => searchDataCache.value?.tv ?? []);
 
 loading.value = false;
 
 watch(
   () => route.query?.q,
-  () => {
-    getData();
+  async () => {
+    nuxtLoadingIndicator.start();
+    await refresh();
+    nuxtLoadingIndicator.finish();
 
     addSearchHistoryD();
   }
@@ -215,24 +230,39 @@ onMounted(() => {
   addSearchHistoryD();
 });
 
-const handleChangeType = (activeKey: any) => {
-  switch (activeKey?.target?.value ? activeKey?.target?.value : activeKey) {
+const handleChangeType = async (activeKey: any) => {
+  // switch (activeKey?.target?.value ? activeKey?.target?.value : activeKey) {
+  //   case 'all':
+  //     searchData.value = searchDataMovie.value.concat(searchDataTv.value);
+  //     break;
+  //   case 'movie':
+  //     searchData.value = searchDataMovie.value;
+  //     break;
+  //   case 'tv':
+  //     searchData.value = searchDataTv.value;
+  //     break;
+  // }
+};
+
+const dataChangeType = (): any[] => {
+  switch (activeTabSearch.value) {
     case 'all':
-      searchData.value = searchDataMovie.value.concat(searchDataTv.value);
-      break;
+      return searchDataMovie.value.concat(searchDataTv.value);
     case 'movie':
-      searchData.value = searchDataMovie.value;
-      break;
+      return searchDataMovie.value;
     case 'tv':
-      searchData.value = searchDataTv.value;
-      break;
+      return searchDataTv.value;
   }
+
+  return [];
 };
 
 const onChangePage = async (pageSelected: number) => {
   page.value = pageSelected;
   router.push({ query: { ...route.query, page: pageSelected } });
-  getData();
+  nuxtLoadingIndicator.start();
+  await refresh();
+  nuxtLoadingIndicator.finish();
 };
 </script>
 
