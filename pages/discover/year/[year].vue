@@ -97,11 +97,11 @@ const utils = useUtils();
 const route = useRoute();
 const router = useRouter();
 const store = useStore();
-const dataDiscover = ref<any[]>();
 const years = ref<year[]>(store.allYears);
+// const dataDiscover = ref<any[]>();
 const page = ref<number>(+(route.query?.page as string) || 1);
-const totalPage = ref<number>(100);
-const pageSize = ref<number>(20);
+// const totalPage = ref<number>(100);
+// const pageSize = ref<number>(20);
 const loading = ref<boolean>(false);
 const yearRoute = ref<string>(
   !isNaN(+(route.params.year as string)) ||
@@ -136,9 +136,9 @@ const getData = async () => {
     () => getMoviesByYear(route.params.year as string, '', page.value)
   )
     .then((response) => {
-      dataDiscover.value = response.data.value?.results;
-      totalPage.value = response.data.value?.total;
-      pageSize.value = response.data.value?.page_size;
+      // dataDiscover.value = response.data.value?.results;
+      // totalPage.value = response.data.value?.total;
+      // pageSize.value = response.data.value?.page_size;
     })
     .catch((e) => {})
     .finally(() => {
@@ -168,20 +168,29 @@ const {
   }
 );
 
-dataDiscover.value = dataDiscoverCache.value?.results;
+// dataDiscover.value = dataDiscoverCache.value?.results;
+// totalPage.value = dataDiscoverCache.value?.total;
+// pageSize.value = dataDiscoverCache.value?.page_size;
 
-totalPage.value = dataDiscoverCache.value?.total;
-pageSize.value = dataDiscoverCache.value?.page_size;
+const dataDiscover = computed<any[]>(
+  () => dataDiscoverCache.value?.results ?? []
+);
+const totalPage = computed<number>(() => dataDiscoverCache.value?.total ?? 0);
+const pageSize = computed<number>(
+  () => dataDiscoverCache.value?.page_size ?? 20
+);
 
 loading.value = false;
 
-const onChangePage = (
+const onChangePage = async (
   pageSelected: number
   // pageSize
 ) => {
   page.value = pageSelected;
   router.push({ query: { page: pageSelected } });
-  refresh();
+  nuxtLoadingIndicator.start();
+  await refresh();
+  nuxtLoadingIndicator.finish();
 };
 </script>
 
