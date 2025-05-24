@@ -136,41 +136,34 @@ const getData = async () => {
 
 loading.value = true;
 
-const { data: dataSlug, error: errorSlug } = await useAsyncData(
-  `mod/all`,
-  () => getAllMod(),
-  {
-    transform: (data: any) => {
-      if (!data || !data?.results) return [];
-      return data.results.filter((r: any) => r.media_type == 'movie');
-    }
+const { data: dataSlug } = await useAsyncData(`mod/all`, () => getAllMod(), {
+  transform: (data: any) => {
+    return data.results.filter((r: any) => r.media_type == 'movie');
   }
-);
-
-if (errorSlug.value) {
-  console.error('Failed to fetch getAllMod:', errorSlug.value);
-}
+});
 
 const {
   data: dataDiscoverCache,
   status,
-  error: errorDiscover,
   refresh
 } = await useAsyncData(
   `movie/discover/${JSON.stringify(formFilter.value)}`,
-  () => FilterModList(formFilter.value)
+  () => FilterModList(formFilter.value),
+  {
+    // transform: (data: any) => {
+    //   totalPage.value = data?.total;
+    //   pageSize.value = data?.page_size;
+    //   loading.value = false;
+    //   return data.results;
+    // },
+    // server: false,
+  }
 );
 
-if (errorDiscover.value) {
-  console.error('Failed to fetch FilterModList:', errorDiscover.value);
-  dataDiscover.value = [];
-  totalPage.value = 0;
-  pageSize.value = 10;
-} else {
-  dataDiscover.value = dataDiscoverCache.value?.results ?? [];
-  totalPage.value = dataDiscoverCache.value?.total ?? 0;
-  pageSize.value = dataDiscoverCache.value?.page_size ?? 10;
-}
+dataDiscover.value = dataDiscoverCache.value.results;
+
+totalPage.value = dataDiscoverCache.value?.total;
+pageSize.value = dataDiscoverCache.value?.page_size;
 
 loading.value = false;
 
