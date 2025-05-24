@@ -151,7 +151,11 @@ const getData = async () => {
 
 loading.value = true;
 
-const { data: dataDiscoverCache, status } = await useAsyncData(
+const {
+  data: dataDiscoverCache,
+  status,
+  refresh
+} = await useAsyncData(
   `discover/year/all/${route.params.year}/${page.value}`,
   () => getMoviesByYear(route.params.year as string, '', page.value),
   {
@@ -164,11 +168,12 @@ const { data: dataDiscoverCache, status } = await useAsyncData(
   }
 );
 
-loading.value = false;
-dataDiscover.value = dataDiscoverCache.value.results;
+dataDiscover.value = dataDiscoverCache.value?.results;
 
 totalPage.value = dataDiscoverCache.value?.total;
 pageSize.value = dataDiscoverCache.value?.page_size;
+
+loading.value = false;
 
 const onChangePage = (
   pageSelected: number
@@ -176,7 +181,7 @@ const onChangePage = (
 ) => {
   page.value = pageSelected;
   router.push({ query: { page: pageSelected } });
-  getData();
+  refresh();
 };
 </script>
 

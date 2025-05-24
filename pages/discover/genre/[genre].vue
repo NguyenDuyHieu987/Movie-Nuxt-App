@@ -136,7 +136,11 @@ const getData = async () => {
 
 loading.value = true;
 
-const { data: dataDiscoverCache, status } = await useAsyncData(
+const {
+  data: dataDiscoverCache,
+  status,
+  refresh
+} = await useAsyncData(
   `discover/genre/all/${route.params.genre}/${page.value}`,
   () => getMoviesByGenres(route.params.genre as string, '', page.value),
   {
@@ -154,6 +158,7 @@ dataDiscover.value = dataDiscoverCache.value?.results;
 
 totalPage.value = dataDiscoverCache.value?.total;
 pageSize.value = dataDiscoverCache.value?.page_size;
+
 loading.value = false;
 
 const onChangePage = (
@@ -162,7 +167,7 @@ const onChangePage = (
 ) => {
   page.value = pageSelected;
   router.push({ query: { page: pageSelected } });
-  getData();
+  refresh();
 };
 </script>
 

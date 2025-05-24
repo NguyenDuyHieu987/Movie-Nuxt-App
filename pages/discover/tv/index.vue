@@ -138,7 +138,7 @@ loading.value = true;
 
 const { data: dataSlug } = await useAsyncData(`mod/all`, () => getAllMod(), {
   transform: (data: any) => {
-    return data.results.filter((r: any) => r.media_type == 'tv');
+    return data?.results.filter((r: any) => r.media_type == 'tv');
   }
 });
 
@@ -170,13 +170,13 @@ loading.value = false;
 watch(
   formFilter,
   () => {
-    getData();
+    refresh();
   },
   { deep: true }
 );
 
 const handleFilter = () => {
-  getData();
+  refresh();
 };
 
 const onChangePage = (
@@ -186,7 +186,6 @@ const onChangePage = (
   page.value = pageSelected;
   formFilter.value.page = pageSelected;
   router.push({ query: { ...route.query, page: pageSelected } });
-  // getData();
 };
 
 const cancelFilter = () => {

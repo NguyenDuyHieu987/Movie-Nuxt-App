@@ -597,18 +597,16 @@ export default defineNuxtConfig({
       //   '/help',
       //   '/contact'
       // ]
-      // ignore: [
-      //   '/discover',
-      //   '/search',
-      //   '/ranks',
-      //   '/follow',
-      //   '/history',
-      //   '/YourAccount',
-      //   '/info-movie',
-      //   '/info-tv',
-      //   '/play-movie',
-      //   '/play-tv'
-      // ]
+      ignore: [
+        '/ranks',
+        '/follow',
+        '/history',
+        '/YourAccount',
+        '/info-movie',
+        '/info-tv',
+        '/play-movie',
+        '/play-tv'
+      ]
     },
     // proxy the request from client
     devProxy: {

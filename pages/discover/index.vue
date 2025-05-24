@@ -145,18 +145,19 @@ dataDiscover.value = dataDiscoverCache.value?.results;
 
 totalPage.value = dataDiscoverCache.value?.total;
 pageSize.value = dataDiscoverCache.value?.page_size;
+
 loading.value = false;
 
 watch(
   formFilter,
   () => {
-    getData();
+    refresh();
   },
   { deep: true }
 );
 
 const handleFilter = () => {
-  getData();
+  refresh();
 };
 
 const onChangePage = (
@@ -166,7 +167,6 @@ const onChangePage = (
   page.value = pageSelected;
   formFilter.value.page = pageSelected;
   router.push({ query: { ...route.query, page: pageSelected } });
-  // getData();
 };
 
 const cancelFilter = () => {
