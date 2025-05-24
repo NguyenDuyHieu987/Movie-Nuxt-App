@@ -537,6 +537,9 @@ export default defineNuxtConfig({
       rollupOptions: {
         // chunkSizeWarningLimit: 500
         output: {
+          entryFileNames: 'assets/[name].js',
+          chunkFileNames: 'assets/[name].js',
+          assetFileNames: 'assets/[name].[ext]',
           // target ~250KB per chunk in an ideal world
           experimentalMinChunkSize: 250 * 1024
           // manualChunks: (id, _) => {
