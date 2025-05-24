@@ -148,7 +148,7 @@ const { data: dataDiscoverCache, status } = await useAsyncData(
   }
 );
 
-dataDiscover.value = dataDiscoverCache.value.results;
+dataDiscover.value = dataDiscoverCache.value?.results;
 
 totalPage.value = dataDiscoverCache.value?.total;
 pageSize.value = dataDiscoverCache.value?.page_size;

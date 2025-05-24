@@ -109,10 +109,10 @@ const getData = async () => {
   await useAsyncData(`discover/${JSON.stringify(formFilter.value)}`, () =>
     FilterMovie(formFilter.value)
   )
-    .then((movieResponse) => {
-      dataDiscover.value = movieResponse.data.value?.results;
-      totalPage.value = movieResponse.data.value?.total;
-      pageSize.value = movieResponse.data.value?.page_size;
+    .then((response) => {
+      dataDiscover.value = response.data.value?.results;
+      totalPage.value = response.data.value?.total;
+      pageSize.value = response.data.value?.page_size;
     })
     .catch((e) => {})
     .finally(() => {
