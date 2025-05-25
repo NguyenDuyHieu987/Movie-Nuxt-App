@@ -208,7 +208,7 @@
 @media only screen and (max-width: 1800px) {
   .movie-group.horizontal {
     .movie-card-item.horizontal {
-      width: calc((100% - (5 * var(--card-movie-gap))) / 6);
+      width: calc((100% - (4 * var(--card-movie-gap))) / 5);
     }
   }
 }

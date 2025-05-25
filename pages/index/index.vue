@@ -100,7 +100,7 @@
             >
               <template #content>
                 <SwiperSlide
-                  v-for="(item, index) in broadcasts.results"
+                  v-for="(item, index) in broadcasts?.results"
                   :key="item.id"
                   :index="index"
                 >
@@ -516,23 +516,22 @@ onMounted(() => {
   loading.value = false;
 
   window.onscroll = async () => {
-    if (modLíst.value?.results?.length == 0 || loading.value) {
+    if (modLíst?.results?.length == 0 || loading.value) {
       return;
     }
+    console.log(modLíst?.results?.length);
 
     if (
       utils.isWindowScrollBottom() &&
       total.value > pageSize.value &&
-      modLíst.value?.results?.length < total.value
+      modLíst?.results?.length < total.value
     ) {
       loadMore.value = true;
 
       await getAllModWithData('all', 'all', page.value, pageSize.value)
         .then((response) => {
           if (response?.results?.length > 0) {
-            modLíst.value.results = modLíst.value.results.concat(
-              response?.results
-            );
+            modLíst.results = modLíst.results.concat(response?.results);
             page.value++;
           }
         })
