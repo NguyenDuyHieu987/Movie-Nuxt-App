@@ -584,6 +584,7 @@ const handleLoadMoreMods = async () => {
 };
 
 const handleLoadMoreRecommend = async () => {
+  loadMoreRecommend.value = true;
   await getMyRecommend(skipRecommend.value)
     .then((response) => {
       if (response?.results.length > 0) {
