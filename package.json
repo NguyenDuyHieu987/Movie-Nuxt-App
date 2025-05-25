@@ -54,6 +54,7 @@
     "pbkdf2": "3.1.2",
     "pinia": "3.0.2",
     "plyr": "3.7.8",
+    "slugify": "^1.6.6",
     "socket.io-client": "^4.8.1",
     "swiper": "11.2.8",
     "vue": "3.5.14",

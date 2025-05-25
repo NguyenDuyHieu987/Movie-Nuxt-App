@@ -157,7 +157,7 @@
                 class="filter-option"
                 :index="index"
                 :class="{
-                  active: item.name == route.query?.year
+                  active: utils.slugifyString(item.name) == route.query?.year
                 }"
               >
                 <NuxtLink
@@ -165,7 +165,13 @@
                     query: {
                       ...route.query,
                       year:
-                        item.name != route.query?.year ? item.name : undefined
+                        // item.name != route.query?.year ? item.name : undefined
+                        item.name != route.query?.year
+                          ? utils.isNumber(item?.name) ||
+                            utils.isStringNumber(item?.name)
+                            ? item?.name
+                            : utils.slugifyString(item?.name)
+                          : undefined
                     }
                   }"
                 >
@@ -287,6 +293,7 @@ const emits = defineEmits<{
 
 const store = useStore();
 const route = useRoute();
+const utils = useUtils();
 const listFilter = ref<any[]>(props.listFilter);
 const genres = ref<genre[]>(store.allGenres);
 const years = ref<year[]>(store.allYears);

@@ -1,3 +1,5 @@
+import slugify from 'slugify';
+
 export const useUtils = () => {
   return {
     SPACES_REGEX,
@@ -17,6 +19,7 @@ export const useUtils = () => {
     isElementScrollBottom,
     minmax,
     serialize,
+    slugifyString,
     handleAddItemToList,
     viewFormatter,
     encryptPassword,
@@ -135,6 +138,14 @@ export function serialize(obj: object | any): string | null {
 
   return new URLSearchParams(obj).toString();
 }
+
+const slugifyString = (str: string): string => {
+  return slugify(str, {
+    lower: true,
+    strict: true,
+    locale: 'en'
+  });
+};
 
 export * from './convertPath';
 export * from './convertViews';

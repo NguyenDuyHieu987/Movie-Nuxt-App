@@ -317,7 +317,7 @@
         :index="`/discover/year/${
           utils.isNumber(item?.name) || utils.isStringNumber(item?.name)
             ? item?.name
-            : utils.convertPath.toPath(item?.name)
+            : utils.slugifyString(item?.name)
         }`"
       >
         <NuxtLink
@@ -325,7 +325,7 @@
             path: `/discover/year/${
               utils.isNumber(item?.name) || utils.isStringNumber(item?.name)
                 ? item?.name
-                : utils.convertPath.toPath(item?.name)
+                : utils.slugifyString(item?.name)
             }`
           }"
         >
