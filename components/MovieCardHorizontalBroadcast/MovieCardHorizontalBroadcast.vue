@@ -37,7 +37,6 @@
         format="avif"
         loading="lazy"
         :alt="dataMovie?.name"
-        :title="dataMovie?.name"
       />
 
       <!-- <Image
