@@ -413,6 +413,16 @@
   }
 }
 
+@media only screen and (max-width: 1300px) {
+  .body-content.expand {
+    .movie-group.vertical {
+      .movie-card-item.vertical {
+        width: calc((100% - (5 * var(--card-movie-vertical-gap))) / 6);
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .movie-group.vertical {
     .movie-card-item.vertical {
