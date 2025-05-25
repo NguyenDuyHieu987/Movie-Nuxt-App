@@ -205,6 +205,16 @@
   }
 }
 
+@media only screen and (max-width: 1800px) {
+  .body-content.expand {
+    .movie-group.horizontal {
+      .movie-card-item.horizontal {
+        width: calc((100% - (5 * var(--card-movie-gap))) / 6);
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1500px) {
   .movie-card-item.horizontal {
     .info {
