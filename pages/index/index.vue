@@ -66,7 +66,7 @@
         class="home-section"
       >
         <h2 class="gradient-title-default">
-          <span>{{ modLíst?.results?.slice(1)[0].name }}</span>
+          <span>{{ modList?.results?.slice(1)[0].name }}</span>
         </h2>
       </section>
 
@@ -112,7 +112,7 @@
           </section>
 
           <section
-            v-for="(mod, index1) in modLíst?.results?.slice(1)"
+            v-for="(mod, index1) in modList"
             :key="mod.id"
             :index="index1"
             class="home-section mod-list"
@@ -247,11 +247,11 @@ useSeoMeta({
 const utils = useUtils();
 const authStore = useAuthStore();
 const trendings = ref<any[]>([]);
-// const modLíst = ref<any>([]);
+const modList = ref<any>([]);
 const page = ref<number>(1);
 const pageSize = ref<number>(3);
 const total = ref<number>(0);
-// const recommends = ref<any>([]);
+const recommends = ref<any>([]);
 // const broadcasts = ref<any>([]);
 // const isLoading = computed<boolean>(() => status.value != 'success');
 const loading = ref<boolean>(false);
@@ -443,26 +443,42 @@ const responsiveVerticalSlick = computed<any[]>(() => [
 
 loading.value = true;
 
-const pMods = getAllModWithData('all', 'all', page.value, pageSize.value);
-const pBroadcast = getAllAiringBroadcast(page.value, pageSize.value);
-const pRecommend = authStore.isLogin
-  ? getMyRecommend(skipRecommend.value)
-  : Promise.resolve({ results: [] });
+// const pMods = getAllModWithData('all', 'all', page.value, pageSize.value);
+// const pBroadcast = getAllAiringBroadcast(page.value, pageSize.value);
 
-const [modLíst, broadcasts, recommends] = await Promise.all([
-  pMods,
-  pBroadcast,
-  pRecommend
-]);
-trendings.value = modLíst?.results[0].data;
-broadcasts.value = broadcasts;
-recommends.value = recommends?.results;
+// const [modListData, broadcasts] = await Promise.all([
+//   pMods,
+//   pBroadcast,
+// ]);
+// trendings.value = modListData?.results?.[0].data;
+// modList.value = modListData.value?.results?.slice(1);
+// broadcasts.value = broadcasts;
 
-total.value = modLíst.total;
-pageSize.value = modLíst.page_size;
+// total.value = modListData.total;
+// pageSize.value = modListData.page_size;
+// page.value++;
+
+const {
+  data: modListData,
+  pending: loadingMods,
+  refresh: refreshMods
+} = await useAsyncData(
+  () => `mods/all/all/${page.value}/${pageSize.value}`,
+  () => getAllModWithData('all', 'all', page.value, pageSize.value)
+);
+
+trendings.value = modListData.value?.results?.[0].data;
+modList.value = modListData.value?.results?.slice(1);
+total.value = modListData.value.total;
+pageSize.value = modListData.value.page_size;
 page.value++;
 
-// const { data: modLíst, status } = await useAsyncData(
+const { data: broadcasts, pending: loadingBroadcasts } = await useAsyncData(
+  `broadcasts/all/1/20`,
+  () => getAllAiringBroadcast(page.value, pageSize.value)
+);
+
+// const { data: modListData, status } = await useAsyncData(
 //   `mod/all/${page.value}/${pageSize.value}`,
 //   () => getAllModWithData('all', 'all', page.value, pageSize.value)
 //   // {
@@ -487,65 +503,81 @@ page.value++;
 //   .catch((e) => {})
 //   .finally(() => {});
 
-// trendings.value = modLíst.value?.results[0].data;
-// total.value = modLíst.value?.total;
-// pageSize.value = modLíst.value?.page_size;
+// trendings.value = modListData.value?.results[0].data;
+// modList.value = modListData.value?.results?.slice(1);
+// total.value = modListData.value?.total;
+// pageSize.value = modListData.value?.page_size;
 // page.value++;
 
-// watch(
-//   () => authStore.isLogin,
-//   async () => {
-//     if (authStore.isLogin) {
-//       loadingRecommend.value = true;
+watch(
+  () => authStore.isLogin,
+  async () => {
+    if (authStore.isLogin) {
+      loadingRecommend.value = true;
 
-//       getMyRecommend(skipRecommend.value)
-//         .then((response) => {
-//           recommends.value = response?.results;
-//           skipRecommend.value++;
-//         })
-//         .catch((e) => {})
-//         .finally(() => {
-//           loadingRecommend.value = false;
-//         });
-//     }
-//   },
-//   { immediate: true }
-// );
-
-onMounted(() => {
-  loading.value = false;
-
-  window.onscroll = async () => {
-    if (modLíst?.results?.length == 0 || loading.value) {
-      return;
-    }
-    console.log(modLíst?.results?.length);
-
-    if (
-      utils.isWindowScrollBottom() &&
-      total.value > pageSize.value &&
-      modLíst?.results?.length < total.value
-    ) {
-      loadMore.value = true;
-
-      await getAllModWithData('all', 'all', page.value, pageSize.value)
+      getMyRecommend(skipRecommend.value)
         .then((response) => {
-          if (response?.results?.length > 0) {
-            modLíst.results = modLíst.results.concat(response?.results);
-            page.value++;
-          }
+          recommends.value = response?.results;
+          skipRecommend.value++;
         })
         .catch((e) => {})
         .finally(() => {
-          loadMore.value = false;
+          loadingRecommend.value = false;
         });
     }
-  };
+  },
+  { immediate: true }
+);
+
+onMounted(() => {
+  loading.value = false;
+  window.addEventListener('scroll', handleLoadMoreMods);
 });
 
-const handleLoadMoreRecommend = async () => {
-  loadMoreRecommend.value = true;
+onUnmounted(() => window.removeEventListener('scroll', handleLoadMoreMods));
 
+const handleLoadMoreMods = async () => {
+  if (loadingMods.value || modList.value?.length == 0 || loading.value) return;
+
+  if (
+    utils.isWindowScrollBottom() &&
+    total.value > pageSize.value &&
+    modList.value?.length < total.value
+  ) {
+    loadMore.value = true;
+    await refreshMods();
+    await utils.wait(300);
+    modList.value = modList.value.concat(modListData.value?.results);
+    page.value++;
+    loadMore.value = false;
+  }
+
+  //   if (modList.value?.length == 0 || loading.value) {
+  //     return;
+  //   }
+
+  //   if (
+  //     utils.isWindowScrollBottom() &&
+  //     total.value > pageSize.value &&
+  //     modList.value?.length < total.value
+  //   ) {
+  //     loadMore.value = true;
+
+  //     await getAllModWithData('all', 'all', page.value, pageSize.value)
+  //       .then((response) => {
+  //         if (response?.results?.length > 0) {
+  //           modList.value = modList.value.concat(response?.results);
+  //           page.value++;
+  //         }
+  //       })
+  //       .catch((e) => {})
+  //       .finally(() => {
+  //         loadMore.value = false;
+  //       });
+  //   }
+};
+
+const handleLoadMoreRecommend = async () => {
   await getMyRecommend(skipRecommend.value)
     .then((response) => {
       if (response?.results.length > 0) {
