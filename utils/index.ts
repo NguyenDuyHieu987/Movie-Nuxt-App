@@ -81,15 +81,13 @@ export function isVietnameseTones(str: string): boolean {
 
 export function isWindowScrollBottom(options?: { offset?: number }): boolean {
   if (import.meta.client) {
-    // const scrollHeight = Math.ceil(window.scrollY + window.innerHeight);
-    // return scrollHeight == Math.ceil(document.documentElement.scrollHeight);
-
     const offset = options?.offset ?? 0;
-    const scrollBottom = Math.ceil(
+    const scrollHeight = Math.ceil(
       window.scrollY + window.innerHeight + offset
     );
     const documentHeight = Math.ceil(document.documentElement.scrollHeight);
-    return scrollBottom >= documentHeight;
+
+    return scrollHeight >= documentHeight;
   } else {
     return false;
   }
@@ -100,7 +98,10 @@ export function isElementScrollBottom(
   options?: { offset?: number }
 ): boolean {
   if (import.meta.client) {
-    const scrollHeight = Math.ceil(element.scrollTop + element.clientHeight);
+    const offset = options?.offset ?? 0;
+    const scrollHeight = Math.ceil(
+      element.scrollTop + element.clientHeight + offset
+    );
 
     return scrollHeight >= element.scrollHeight;
   } else {
