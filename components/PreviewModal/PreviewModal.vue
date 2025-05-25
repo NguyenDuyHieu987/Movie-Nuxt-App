@@ -130,6 +130,7 @@
                     popper-class="popper-tooltip"
                     :hide-after="0"
                     :mouse-leave-delay="0"
+                    :teleported="false"
                   >
                     <NuxtLink
                       class="btn-play-now"
@@ -167,6 +168,7 @@
                     popper-class="popper-tooltip"
                     :hide-after="0"
                     :mouse-leave-delay="0"
+                    :teleported="false"
                   >
                     <a-button
                       class="click-active"
@@ -202,6 +204,7 @@
                     popper-class="popper-tooltip"
                     :hide-after="0"
                     :mouse-leave-delay="0"
+                    :teleported="false"
                   >
                     <ShareNetwork
                       network="facebook"
@@ -241,6 +244,7 @@
                     popper-class="popper-tooltip"
                     :hide-after="0"
                     :mouse-leave-delay="0"
+                    :teleported="false"
                   >
                     <NuxtLink
                       :to="{
@@ -435,6 +439,26 @@ onMounted(() => {
   showVideo.value = true;
 });
 
+onUnmounted(() => {
+  if (video.value) video.value.pause();
+  if (hls.value) {
+    hls.value.destroy();
+    hls.value = null;
+  }
+
+  if (previewModal.value) {
+    previewModal.value.removeEventListener('pointerenter', onPointerEnter);
+  }
+
+  gsap.globalTimeline.clear();
+});
+
+const onPointerEnter = () => {
+  if (!isTeleport.value) {
+    isTeleport.value = true;
+  }
+};
+
 watch(
   previewModal,
   () => {
@@ -526,11 +550,7 @@ watch(
 
       previewModal.value.style.setProperty('--top', style.value!.top + 'px');
 
-      previewModal.value.addEventListener('pointerenter', () => {
-        if (!isTeleport.value) {
-          isTeleport.value = true;
-        }
-      });
+      previewModal.value.addEventListener('pointerenter', onPointerEnter);
 
       previewModal.value.addEventListener('pointerleave', (el: any) => {
         isDisappear.value = true;
@@ -549,7 +569,7 @@ watch(
                 style.value!.offsetHeight
               }px / (-2)))
             scale(1)`,
-              duration: 0.3,
+              duration: 0.15,
               onComplete: () => {
                 isDisappear.value = false;
                 isTeleport.value = false;
@@ -572,7 +592,7 @@ watch(
                 style.value!.offsetHeight
               }px / (-2)))
             scale(1)`,
-              duration: 0.3,
+              duration: 0.15,
               onComplete: () => {
                 isDisappear.value = false;
                 isTeleport.value = false;
@@ -592,7 +612,7 @@ watch(
               style.value!.offsetHeight
             }px / (-2)))
             scale(1)`,
-            duration: 0.3,
+            duration: 0.15,
             onComplete: () => {
               isDisappear.value = false;
               isTeleport.value = false;

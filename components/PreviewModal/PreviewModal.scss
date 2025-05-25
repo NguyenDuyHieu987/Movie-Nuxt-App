@@ -23,29 +23,29 @@
     box-shadow: var(--box-shadow-medium);
     overflow: hidden;
     transform: translateX(-50%) translateY(-50%) scale(1.3);
-    animation: preview-modal-appear 0.3s;
+    animation: preview-modal-appear 0.15s;
     will-change: transform;
 
     /* &.appear {
     } */
 
     &.disappear {
-      /* animation: preview-modal-disappear 0.3s; */
+      /* animation: preview-modal-disappear 0.15s; */
 
       .bottom-content {
-        transition: all 0.3s;
+        transition: all 0.1s;
         opacity: 0;
       }
     }
 
     &.only-left {
       left: var(--left-only);
-      animation: preview-modal-appear-only-left 0.3s;
+      animation: preview-modal-appear-only-left 0.15s;
     }
 
     &.only-right {
       right: var(--right-only);
-      animation: preview-modal-appear-only-right 0.3s;
+      animation: preview-modal-appear-only-right 0.15s;
     }
 
     .el-skeleton.is-animated {
