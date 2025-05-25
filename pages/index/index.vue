@@ -537,7 +537,13 @@ onMounted(() => {
 onUnmounted(() => window.removeEventListener('scroll', handleLoadMoreMods));
 
 const handleLoadMoreMods = async () => {
-  if (loadingMods.value || modList.value?.length == 0 || loading.value) return;
+  if (
+    modList.value?.length == 0 ||
+    loadMore.value ||
+    loadingMods.value ||
+    loading.value
+  )
+    return;
 
   if (
     utils.isWindowScrollBottom() &&
@@ -552,7 +558,7 @@ const handleLoadMoreMods = async () => {
     loadMore.value = false;
   }
 
-  //   if (modList.value?.length == 0 || loading.value) {
+  //   if (modList.value?.length == 0 || loading.value || loadMore.value) {
   //     return;
   //   }
 
