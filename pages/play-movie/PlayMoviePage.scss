@@ -308,7 +308,7 @@
               color: var(--text-color-gray);
               margin-top: 2px;
 
-              &:not(:nth-child(2)) {
+              &:not(:nth-child(1)) {
                 &::before {
                   content: '\2022';
                   /* color: #d0d0d0; */

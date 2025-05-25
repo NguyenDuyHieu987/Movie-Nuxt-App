@@ -298,37 +298,39 @@
                     {{ dataMovie?.original_name }}
                   </h3>
 
-                  <div class="movie-info-item">HD - Vietsub</div>
+                  <div>
+                    <div class="movie-info-item">HD - Vietsub</div>
 
-                  <div class="movie-info-item">
-                    <NuxtLink
-                      class="underline"
-                      :to="`/discover/year/${release_date?.slice(0, 4)}`"
-                    >
-                      {{ release_date?.slice(0, 4) }}
-                    </NuxtLink>
-                    <span>
-                      {{ release_date?.slice(4) }}
-                    </span>
-                  </div>
+                    <div class="movie-info-item">
+                      <NuxtLink
+                        class="underline"
+                        :to="`/discover/year/${release_date?.slice(0, 4)}`"
+                      >
+                        {{ release_date?.slice(0, 4) }}
+                      </NuxtLink>
+                      <span>
+                        {{ release_date?.slice(4) }}
+                      </span>
+                    </div>
 
-                  <div class="movie-info-item">
-                    <NuxtLink
-                      class="underline"
-                      :to="`/discover/country/${
-                        getCountryByOriginalLanguage(
-                          dataMovie?.origin_country,
-                          store.allCountries
-                        )?.short_name || 'au-my'
-                      }`"
-                    >
-                      {{
-                        getCountryByOriginalLanguage(
-                          dataMovie?.origin_country,
-                          store.allCountries
-                        )?.name || ''
-                      }}
-                    </NuxtLink>
+                    <div class="movie-info-item">
+                      <NuxtLink
+                        class="underline"
+                        :to="`/discover/country/${
+                          getCountryByOriginalLanguage(
+                            dataMovie?.origin_country,
+                            store.allCountries
+                          )?.short_name || 'au-my'
+                        }`"
+                      >
+                        {{
+                          getCountryByOriginalLanguage(
+                            dataMovie?.origin_country,
+                            store.allCountries
+                          )?.name || ''
+                        }}
+                      </NuxtLink>
+                    </div>
                   </div>
                 </div>
               </div>
