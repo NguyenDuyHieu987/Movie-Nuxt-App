@@ -4,24 +4,23 @@
     class="back-page"
     :class="{ fixed: fixed }"
   >
-    <a-button
-      class="not-focusable"
+    <button
+      class="ant-btn ant-btn-text not-focusable"
       :class="{ 'align-left': alignLeft }"
-      type="text"
       @click="emits('onclick')"
     >
-      <template #icon>
-        <!-- <Icon name="ic:baseline-arrow-back" /> -->
+      <!-- <template #icon> -->
+      <!-- <Icon name="ic:baseline-arrow-back" /> -->
 
-        <SvgoArrowLeft
-          width="2.3rem"
-          height="2.3rem"
-          fill="currentColor"
-        />
-      </template>
+      <SvgoArrowLeft
+        width="2.3rem"
+        height="2.3rem"
+        fill="currentColor"
+      />
+      <!-- </template> -->
 
       <slot />
-    </a-button>
+    </button>
   </div>
 </template>
 
