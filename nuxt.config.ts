@@ -377,7 +377,7 @@ export default defineNuxtConfig({
   ogImage: {},
   schemaOrg: {},
   linkChecker: {
-    // enabled: false
+    enabled: false
   },
 
   plugins: [],
@@ -583,7 +583,7 @@ export default defineNuxtConfig({
   nitro: {
     // preset: 'static',
     prerender: {
-      // crawlLinks: false,
+      crawlLinks: false,
       ignore: [
         // '/ranks',
         // '/follow',

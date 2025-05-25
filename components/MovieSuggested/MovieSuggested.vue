@@ -78,7 +78,7 @@ const props = withDefaults(
 );
 
 const utils = useUtils();
-// const dataSuggested = ref<any[]>([]);
+const dataSuggested = ref<any[]>([]);
 const page = ref<number>(1);
 const loading = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
@@ -131,10 +131,10 @@ const loadMore = ref<boolean>(false);
 loading.value = true;
 
 const {
-  data: dataSuggested,
+  data: dataSuggestedCache,
   refresh,
   pending
-} = await useAsyncData(
+} = useAsyncData(
   `similar/all/${props?.dataMovie?.id}/${page.value}`,
   async () => {
     if (!props.dataMovie?.id) return { results: [] };
@@ -146,8 +146,26 @@ const {
     immediate: true
   }
 );
-page.value++;
-loading.value = false;
+
+watch(
+  () => dataSuggestedCache.value,
+  (newVal) => {
+    if (newVal?.results) {
+      if (page.value == 1) {
+        dataSuggested.value = newVal.results;
+        page.value++;
+        loading.value = false;
+      }
+    }
+  },
+  {
+    immediate: true
+  }
+);
+
+// dataSuggested.value = dataSuggestedCache.value?.results;
+// page.value++;
+// loading.value = false;
 
 onMounted(() => {
   if (props.windowScroll) {
@@ -179,6 +197,9 @@ onMounted(() => {
 const handleLoadmoreData = async () => {
   loadMore.value = true;
   await refresh();
+  dataSuggested.value = dataSuggested.value.concat(
+    dataSuggestedCache.value?.results
+  );
   page.value++;
   loadMore.value = false;
 
