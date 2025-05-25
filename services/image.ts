@@ -1,7 +1,7 @@
 import { makeRequest, makeMediaRequest } from './makeRequest';
 
-export const SERVER_IMAGE = 'https://proxy.phimhay247.online/media';
-// export const SERVER_IMAGE = 'https://media.phimhay247.online';
+// export const SERVER_IMAGE = 'https://proxy.phimhay247.online/media';
+export const SERVER_IMAGE = 'https://media.phimhay247.online';
 export const DEV_SERVER_IMAGE = 'http://localhost:5002';
 
 const PREFIX_ROUTE = 'images';
