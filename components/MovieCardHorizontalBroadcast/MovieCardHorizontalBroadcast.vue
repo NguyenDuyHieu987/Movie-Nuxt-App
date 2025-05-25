@@ -67,10 +67,7 @@
 
     <div class="info">
       <div class="title-wrapper">
-        <p
-          class="title"
-          :title="dataMovie?.name"
-        >
+        <p class="title">
           {{ dataMovie?.name }}
         </p>
 

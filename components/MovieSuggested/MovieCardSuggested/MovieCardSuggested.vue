@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="movie-card-item-suggested"
-    :title="dataMovie?.name"
-  >
+  <div class="movie-card-item-suggested">
     <!-- <el-skeleton :loading="loading" animated>
       <template #template>
         <div class="img-box">
@@ -47,6 +44,7 @@
           format="avif"
           loading="lazy"
           :alt="dataMovie?.name"
+          :title="dataMovie?.name"
         />
       </div>
 
@@ -75,12 +73,8 @@
       :to="{
         path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
       }"
-      :title="dataMovie?.name"
     >
-      <h2
-        class="title"
-        :title="dataMovie?.name"
-      >
+      <h2 class="title">
         {{ dataMovie?.name }}
       </h2>
 

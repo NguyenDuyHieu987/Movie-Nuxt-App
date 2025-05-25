@@ -218,6 +218,7 @@ loading.value = false;
 watch(
   () => route.query?.q,
   async () => {
+    console.log('gg');
     nuxtLoadingIndicator.start();
     await refresh();
     nuxtLoadingIndicator.finish();

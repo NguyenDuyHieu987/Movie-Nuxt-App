@@ -6,7 +6,6 @@
     }"
     @pointerenter="onMouseEnter"
     @pointerleave="onMouseLeave"
-    :title="dataMovie?.name"
   >
     <!-- <el-skeleton :loading="loading" animated>
       <template #template>
@@ -51,6 +50,7 @@
         format="avif"
         loading="lazy"
         :alt="dataMovie?.name"
+        :title="dataMovie?.name"
       />
 
       <div
@@ -126,12 +126,8 @@
         path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
       }"
       target="_top"
-      :title="dataMovie?.name"
     >
-      <p
-        class="title"
-        :title="dataMovie?.name"
-      >
+      <p class="title">
         {{ dataMovie?.name }}
       </p>
       <div class="middle">

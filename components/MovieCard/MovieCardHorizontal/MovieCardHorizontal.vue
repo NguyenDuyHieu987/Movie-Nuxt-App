@@ -8,7 +8,6 @@
       'show-video': showVideo
     }"
     :style="`--dominant-backdrop-color: ${item.dominant_backdrop_color[0]}, ${item.dominant_backdrop_color[1]},${item.dominant_backdrop_color[2]}`"
-    :title="dataMovie?.name"
   >
     <!-- <el-skeleton :loading="loading" animated class="ratio-16-9">
       <template #template>
@@ -39,6 +38,7 @@
         format="avif"
         loading="lazy"
         :alt="dataMovie?.name"
+        :title="dataMovie?.name"
       />
 
       <!-- <Image
@@ -69,10 +69,7 @@
 
     <div class="info">
       <div class="title-wrapper">
-        <p
-          class="title"
-          :title="dataMovie?.name"
-        >
+        <p class="title">
           {{ dataMovie?.name }}
         </p>
 

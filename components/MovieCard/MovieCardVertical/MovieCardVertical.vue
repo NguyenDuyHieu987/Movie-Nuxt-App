@@ -6,7 +6,6 @@
     }"
     class="movie-card-item vertical"
     :style="`--dominant-poster-color: ${dataMovie.dominant_poster_color[0]}, ${dataMovie.dominant_poster_color[1]},${dataMovie.dominant_poster_color[2]}`"
-    :title="dataMovie?.name"
   >
     <!-- <el-skeleton :loading="loading" animated class="ratio-2-3">
       <template #template>
@@ -32,6 +31,7 @@
         format="avif"
         loading="lazy"
         :alt="dataMovie?.name"
+        :title="dataMovie?.name"
       />
 
       <div class="info-over-image">
@@ -195,10 +195,7 @@
         :class="{ 'no-genres': dataMovie?.genres.length == 0 }"
       >
         <div class="title-wrapper">
-          <p
-            class="title"
-            :title="dataMovie?.name"
-          >
+          <p class="title">
             {{ dataMovie?.name }}
           </p>
 

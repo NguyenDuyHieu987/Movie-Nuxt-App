@@ -56,10 +56,7 @@
       </div>
 
       <div class="info">
-        <h2
-          class="title"
-          :title="dataMovie?.name"
-        >
+        <h2 class="title">
           {{ dataMovie?.name }}
         </h2>
 

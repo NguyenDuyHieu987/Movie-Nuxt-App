@@ -55,10 +55,7 @@
     </NuxtLink>
 
     <div class="info">
-      <p
-        class="title"
-        :title="dataMovie?.name"
-      >
+      <p class="title">
         {{ dataMovie?.name }}
       </p>
       <p class="original-title">

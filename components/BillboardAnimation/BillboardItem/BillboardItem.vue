@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="billboard-item"
-    :title="dataMovie?.name"
-  >
+  <div class="billboard-item">
     <div class="left-mask" />
     <div class="img-wrapper ratio-16-9">
       <NuxtImg
@@ -135,7 +132,6 @@
           :to="{
             path: `/play-${dataMovie?.media_type}/${dataMovie?.id}`
           }"
-          :title="dataMovie?.name"
         >
           <a-button
             class="play modern"
