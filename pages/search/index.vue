@@ -203,9 +203,15 @@ const {
 // searchDataMovie.value = searchDataCache.value?.movie;
 // searchDataTv.value = searchDataCache.value?.tv;
 
-const searchData = computed<any[]>(
-  () => dataChangeType() || searchDataCache.value?.results || []
-);
+// const searchData = computed<any[]>(
+//   () => dataChangeType() || searchDataCache.value?.results
+// );
+const searchData = computed(() => {
+  if (activeTabSearch.value === 'movie') return searchDataMovie.value;
+  if (activeTabSearch.value === 'tv') return searchDataTv.value;
+
+  return searchDataCache.value?.results;
+});
 const total = computed<number>(() => searchDataCache.value?.total ?? 0);
 const pageSize = computed<number>(() => searchDataCache.value?.page_size ?? 20);
 const searchDataMovie = computed<any[]>(
@@ -218,7 +224,6 @@ loading.value = false;
 watch(
   () => route.query?.q,
   async () => {
-    console.log('gg');
     nuxtLoadingIndicator.start();
     await refresh();
     nuxtLoadingIndicator.finish();
