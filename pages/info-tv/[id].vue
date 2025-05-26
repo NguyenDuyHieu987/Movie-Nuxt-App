@@ -55,7 +55,7 @@
             <NuxtLink
               class="play-now click-active"
               :to="{
-                path: `/play-movie/${dataMovie?.id}`
+                path: `/play-tv/${dataMovie?.id}`
               }"
             >
               Xem phim ngay
