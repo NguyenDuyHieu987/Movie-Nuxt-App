@@ -13,6 +13,7 @@ export function LogIn(params: any) {
   const bodyFormData = new FormData();
   bodyFormData.append('email', params.email);
   bodyFormData.append('password', params.password);
+  bodyFormData.append('remember', params.remember);
 
   return makeRequest(`/${PREFIX_ROUTE}/login`, null, {
     method: 'POST',

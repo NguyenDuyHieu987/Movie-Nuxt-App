@@ -287,7 +287,8 @@ const handleLogin = () => {
   LogIn({
     email: formLogin.username,
     // password: utils.encryptPassword(formLogin.password),
-    password: formLogin.password
+    password: formLogin.password,
+    remember: formLogin.rememberMe
   })
     .then(async (response) => {
       if (response?.isLogin == true) {
