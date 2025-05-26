@@ -537,7 +537,14 @@ onMounted(() => {
 onUnmounted(() => window.removeEventListener('scroll', handleLoadMoreMods));
 
 const handleLoadMoreMods = async () => {
-  if (modList.value?.length == 0 || loading.value || loadMore.value) return;
+  if (
+    modList.value?.length == 0 ||
+    loading.value ||
+    loadMore.value ||
+    total.value <= pageSize.value ||
+    modList.value?.length >= total.value
+  )
+    return;
 
   if (
     utils.isWindowScrollBottom() &&
@@ -546,7 +553,6 @@ const handleLoadMoreMods = async () => {
   ) {
     loadMore.value = true;
     await refreshMods();
-    await utils.wait(300);
     modList.value = modList.value.concat(modListData.value?.results);
     page.value++;
     loadMore.value = false;
