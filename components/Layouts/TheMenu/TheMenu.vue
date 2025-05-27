@@ -345,7 +345,7 @@
     <el-menu-item index="/ranks">
       <el-icon>
         <!-- <Icon name="fa6-solid:ranking-star" /> -->
-        <SvgoRankingStar
+        <SvgoRankStar
           width="1.5rem"
           height="1.5rem"
           fill="currentColor"
