@@ -18,7 +18,6 @@
         <!-- <canvas ref="canvasOverlayBackdrop"> </canvas> -->
         <NuxtImg
           :src="backdrop"
-          format="avif"
           loading="lazy"
           alt=""
         />
@@ -207,7 +206,7 @@
               class="canvas-preview-img"
             >
             </canvas>
-            <!-- <NuxtImg class="preview-img" format="avif" loading="lazy" alt="" /> -->
+            <!-- <NuxtImg class="preview-img"  loading="lazy" alt="" /> -->
           </div>
         </div>
         <span class="timeline-indicator">{{ timelineUpdate }} </span>

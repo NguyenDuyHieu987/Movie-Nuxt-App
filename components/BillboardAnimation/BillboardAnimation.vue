@@ -11,7 +11,6 @@
           :src="
             getImage(currenActiveItem?.backdrop_path, 'backdrop', { w: 1200 })
           "
-          format="avif"
           loading="lazy"
           :alt="currenActiveItem?.name"
           :title="currenActiveItem?.name"
@@ -158,7 +157,6 @@
           <NuxtImg
             :src="getImage(item?.poster_path, 'poster', { w: 200 })"
             placeholder="/images/loading-img-2-3.webp"
-            format="avif"
             loading="lazy"
             alt=""
           />

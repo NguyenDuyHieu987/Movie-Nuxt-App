@@ -13,7 +13,6 @@
             )
           "
           preload
-          format="avif"
           alt=""
         />
       </div>

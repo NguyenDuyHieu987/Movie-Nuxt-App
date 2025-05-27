@@ -27,7 +27,6 @@
                   { w: windowWidth }
                 )
               "
-              format="avif"
               loading="lazy"
               alt=""
             />
@@ -46,7 +45,6 @@
 
               <NuxtImg
                 :src="getImage(dataMovie?.poster_path, 'poster', { w: 250 })"
-                format="avif"
                 loading="lazy"
                 alt=""
               />
@@ -72,7 +70,6 @@
                   { w: windowWidth }
                 )
               "
-              format="avif"
               loading="lazy"
               alt=""
             />

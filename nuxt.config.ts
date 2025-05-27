@@ -271,7 +271,7 @@ export default defineNuxtConfig({
     //   // baseURL: `${process.env.SERVER_IMAGE_URL}/images`,
     //   baseURL: ''
     // },
-    format: ['avif', 'webp']
+    format: ['webp', 'jpeg']
     // domains: ['https://ik.imagekit.io'],
     // alias: {}
   },

@@ -47,7 +47,6 @@
         v-if="!showVideo"
         :src="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
         placeholder="/images/loading-img-16-9.webp"
-        format="avif"
         loading="lazy"
         :alt="dataMovie?.name"
         :title="dataMovie?.name"

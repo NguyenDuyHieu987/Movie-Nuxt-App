@@ -38,7 +38,6 @@
           <div class="img-wrapper ratio-2-3">
             <NuxtImg
               :src="getImage(dataMovie?.poster_path, 'poster', { w: 120 })"
-              format="avif"
               loading="lazy"
               alt=""
             />

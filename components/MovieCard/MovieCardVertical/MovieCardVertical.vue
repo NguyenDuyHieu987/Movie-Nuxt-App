@@ -28,7 +28,6 @@
       <NuxtImg
         :src="getImage(dataMovie?.poster_path, 'poster', { w: 250 })"
         placeholder="/images/loading-img-2-3.webp"
-        format="avif"
         loading="lazy"
         :alt="dataMovie?.name"
         :title="dataMovie?.name"

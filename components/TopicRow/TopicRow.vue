@@ -21,7 +21,6 @@
             <NuxtImg
               :src="getImage(topicImage, 'backdrop', { h: 300 })"
               placeholder="/images/loading-img-16-9.webp"
-              format="avif"
               loading="lazy"
               alt=""
             />
@@ -45,7 +44,6 @@
             <NuxtImg
               class="ant-image"
               :src="getImage('topic1.jpg', 'misc', { h: 300 })"
-              format="avif"
               loading="lazy"
               alt=""
             />
@@ -63,7 +61,6 @@
               { h: 300 }
             )
           "
-          format="avif"
           loading="lazy"
           alt=""
         />
