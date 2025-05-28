@@ -33,6 +33,7 @@ export const useUtils = () => {
     dateTimeFormater: dateTimeFormater(),
     conrfirmMessageModal,
     removeVietnameseTones,
+    convertMediaTypeToVietnamese,
     wait
   };
 };
@@ -140,13 +141,23 @@ export function serialize(obj: object | any): string | null {
   return new URLSearchParams(obj).toString();
 }
 
-const slugifyString = (str: string): string => {
+export function slugifyString(str: string): string {
   return slugify(str, {
     lower: true,
     strict: true,
     locale: 'en'
   });
-};
+}
+
+export function convertMediaTypeToVietnamese(
+  media_type: 'all' | 'movie' | 'tv'
+): string {
+  if (media_type === 'all') return 'Tất cả';
+  if (media_type === 'movie') return 'Phim lẻ';
+  if (media_type === 'tv') return 'Phim bộ';
+
+  return media_type;
+}
 
 export * from './convertPath';
 export * from './convertViews';

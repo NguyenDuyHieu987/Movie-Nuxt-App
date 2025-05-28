@@ -120,7 +120,9 @@
             <h2 class="gradient-title-default">
               <span>{{
                 mod?.type == 'trending'
-                  ? mod?.name + ' ' + _lodash_Capitalize(mod?.media_type)
+                  ? mod?.name +
+                    ' ' +
+                    utils.convertMediaTypeToVietnamese(mod?.media_type)
                   : mod?.name
               }}</span>
               <NuxtLink
