@@ -133,7 +133,7 @@ export default defineNuxtConfig({
       selectiveClient: true
     },
     headNext: true,
-    payloadExtraction: false,
+    payloadExtraction: true,
     renderJsonPayloads: true,
     restoreState: true,
     viewTransition: true,
