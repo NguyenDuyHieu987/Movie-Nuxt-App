@@ -166,7 +166,7 @@
                       ...route.query,
                       year:
                         // item.name != route.query?.year ? item.name : undefined
-                        item.name != route.query?.year
+                        utils.slugifyString(item?.name) != route.query?.year
                           ? utils.isNumber(item?.name) ||
                             utils.isStringNumber(item?.name)
                             ? item?.name
