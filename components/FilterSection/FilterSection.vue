@@ -64,204 +64,208 @@
               </li>
             </ul>
           </div>
-          <div class="filter-row">
-            <div class="filter-label">Thể loại</div>
-            <Swiper
-              class="filter-options"
-              :modules="[
-                SwiperFreeMode,
-                SwiperNavigation
+          <ClientOnly>
+            <div class="filter-row">
+              <div class="filter-label">Thể loại</div>
+              <Swiper
+                class="filter-options"
+                :modules="[
+                  SwiperFreeMode,
+                  SwiperNavigation
 
-                // Navigation,
-                // FreeMode
-              ]"
-              :speed="500"
-              :slides-per-view="'auto'"
-              :slides-per-group="5"
-              :space-between="10"
-              :free-mode="true"
-              :navigation="{
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next'
-              }"
-              :initial-slide="
-                genres.findIndex((item1: any) => item1.id == route.query?.genre)
-              "
-            >
-              <SwiperSlide
-                v-for="(item, index) in genres"
-                :key="item?.id"
-                class="filter-option"
-                :index="index"
-                :class="{
-                  active: item.id == +(route.query?.genre as string)
+                  // Navigation,
+                  // FreeMode
+                ]"
+                :speed="500"
+                :slides-per-view="'auto'"
+                :slides-per-group="5"
+                :space-between="10"
+                :free-mode="true"
+                :navigation="{
+                  prevEl: '.swiper-button-prev',
+                  nextEl: '.swiper-button-next'
                 }"
+                :initial-slide="
+                  genres.findIndex(
+                    (item1: any) => item1.id == route.query?.genre
+                  )
+                "
               >
-                <NuxtLink
-                  :to="{
-                    query: {
-                      ...route.query,
-                      genre:
-                        item.id != +(route.query?.genre as string)
-                          ? item.id
-                          : undefined
-                    }
+                <SwiperSlide
+                  v-for="(item, index) in genres"
+                  :key="item?.id"
+                  class="filter-option"
+                  :index="index"
+                  :class="{
+                    active: item.id == +(route.query?.genre as string)
                   }"
                 >
-                  {{ item?.name }}
-                </NuxtLink>
-              </SwiperSlide>
-              <div class="swiper-button-prev">
-                <SvgoChevronLeftLight
-                  width="2.8rem"
-                  height="2.8rem"
-                  fill="currentColor"
-                />
-              </div>
-              <div class="swiper-button-next">
-                <SvgoChevronRightLight
-                  width="2.8rem"
-                  height="2.8rem"
-                  fill="currentColor"
-                />
-              </div>
-            </Swiper>
-          </div>
-          <div class="filter-row">
-            <div class="filter-label">Năm</div>
-            <Swiper
-              class="filter-options"
-              :modules="[
-                SwiperFreeMode,
-                SwiperNavigation
+                  <NuxtLink
+                    :to="{
+                      query: {
+                        ...route.query,
+                        genre:
+                          item.id != +(route.query?.genre as string)
+                            ? item.id
+                            : undefined
+                      }
+                    }"
+                  >
+                    {{ item?.name }}
+                  </NuxtLink>
+                </SwiperSlide>
+                <div class="swiper-button-prev">
+                  <SvgoChevronLeftLight
+                    width="2.8rem"
+                    height="2.8rem"
+                    fill="currentColor"
+                  />
+                </div>
+                <div class="swiper-button-next">
+                  <SvgoChevronRightLight
+                    width="2.8rem"
+                    height="2.8rem"
+                    fill="currentColor"
+                  />
+                </div>
+              </Swiper>
+            </div>
+            <div class="filter-row">
+              <div class="filter-label">Năm</div>
+              <Swiper
+                class="filter-options"
+                :modules="[
+                  SwiperFreeMode,
+                  SwiperNavigation
 
-                // Navigation,
-                // FreeMode
-              ]"
-              :speed="500"
-              :slides-per-view="'auto'"
-              :slides-per-group="5"
-              :space-between="10"
-              :free-mode="true"
-              :navigation="{
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next'
-              }"
-              :initial-slide="
-                years.findIndex(
-                  (item1) =>
-                    utils.slugifyString(item1.name) == route.query?.year
-                )
-              "
-            >
-              <SwiperSlide
-                v-for="(item, index) in years"
-                :key="item?.name"
-                class="filter-option"
-                :index="index"
-                :class="{
-                  active: utils.slugifyString(item.name) == route.query?.year
+                  // Navigation,
+                  // FreeMode
+                ]"
+                :speed="500"
+                :slides-per-view="'auto'"
+                :slides-per-group="5"
+                :space-between="10"
+                :free-mode="true"
+                :navigation="{
+                  prevEl: '.swiper-button-prev',
+                  nextEl: '.swiper-button-next'
                 }"
+                :initial-slide="
+                  years.findIndex(
+                    (item1) =>
+                      utils.slugifyString(item1.name) == route.query?.year
+                  )
+                "
               >
-                <NuxtLink
-                  :to="{
-                    query: {
-                      ...route.query,
-                      year:
-                        // item.name != route.query?.year ? item.name : undefined
-                        utils.slugifyString(item.name) != route.query?.year
-                          ? utils.isNumber(item.name) ||
-                            utils.isStringNumber(item.name)
-                            ? item.name
-                            : utils.slugifyString(item.name)
-                          : undefined
-                    }
+                <SwiperSlide
+                  v-for="(item, index) in years"
+                  :key="item?.name"
+                  class="filter-option"
+                  :index="index"
+                  :class="{
+                    active: utils.slugifyString(item.name) == route.query?.year
                   }"
                 >
-                  {{ item?.name }}
-                </NuxtLink>
-              </SwiperSlide>
-              <div class="swiper-button-prev">
-                <SvgoChevronLeftLight
-                  width="2.8rem"
-                  height="2.8rem"
-                  fill="currentColor"
-                />
-              </div>
-              <div class="swiper-button-next">
-                <SvgoChevronRightLight
-                  width="2.8rem"
-                  height="2.8rem"
-                  fill="currentColor"
-                />
-              </div>
-            </Swiper>
-          </div>
-          <div class="filter-row">
-            <div class="filter-label">Quốc gia</div>
-            <Swiper
-              class="filter-options"
-              :modules="[
-                SwiperFreeMode,
-                SwiperNavigation
+                  <NuxtLink
+                    :to="{
+                      query: {
+                        ...route.query,
+                        year:
+                          // item.name != route.query?.year ? item.name : undefined
+                          utils.slugifyString(item.name) != route.query?.year
+                            ? utils.isNumber(item.name) ||
+                              utils.isStringNumber(item.name)
+                              ? item.name
+                              : utils.slugifyString(item.name)
+                            : undefined
+                      }
+                    }"
+                  >
+                    {{ item?.name }}
+                  </NuxtLink>
+                </SwiperSlide>
+                <div class="swiper-button-prev">
+                  <SvgoChevronLeftLight
+                    width="2.8rem"
+                    height="2.8rem"
+                    fill="currentColor"
+                  />
+                </div>
+                <div class="swiper-button-next">
+                  <SvgoChevronRightLight
+                    width="2.8rem"
+                    height="2.8rem"
+                    fill="currentColor"
+                  />
+                </div>
+              </Swiper>
+            </div>
+            <div class="filter-row">
+              <div class="filter-label">Quốc gia</div>
+              <Swiper
+                class="filter-options"
+                :modules="[
+                  SwiperFreeMode,
+                  SwiperNavigation
 
-                // Navigation,
-                // FreeMode
-              ]"
-              :slides-per-group="5"
-              :speed="500"
-              :slides-per-view="'auto'"
-              :space-between="10"
-              :free-mode="true"
-              :navigation="{
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next'
-              }"
-              :initial-slide="
-                countries.findIndex(
-                  (item1) => item1.iso_3166_1 == route.query?.country
-                )
-              "
-            >
-              <SwiperSlide
-                v-for="(item, index) in countries"
-                :key="item?.iso_3166_1"
-                class="filter-option"
-                :index="index"
-                :class="{
-                  active: item.iso_3166_1 == route.query?.country
+                  // Navigation,
+                  // FreeMode
+                ]"
+                :slides-per-group="5"
+                :speed="500"
+                :slides-per-view="'auto'"
+                :space-between="10"
+                :free-mode="true"
+                :navigation="{
+                  prevEl: '.swiper-button-prev',
+                  nextEl: '.swiper-button-next'
                 }"
+                :initial-slide="
+                  countries.findIndex(
+                    (item1) => item1.iso_3166_1 == route.query?.country
+                  )
+                "
               >
-                <NuxtLink
-                  :to="{
-                    query: {
-                      ...route.query,
-                      country:
-                        item.iso_3166_1 != route.query?.country
-                          ? item.iso_3166_1
-                          : undefined
-                    }
+                <SwiperSlide
+                  v-for="(item, index) in countries"
+                  :key="item?.iso_3166_1"
+                  class="filter-option"
+                  :index="index"
+                  :class="{
+                    active: item.iso_3166_1 == route.query?.country
                   }"
                 >
-                  {{ item?.name }}
-                </NuxtLink>
-              </SwiperSlide>
-              <div class="swiper-button-prev">
-                <SvgoChevronLeftLight
-                  width="3.5rem"
-                  height="3.5rem"
-                  fill="currentColor"
-                />
-              </div>
-              <div class="swiper-button-next">
-                <SvgoChevronRightLight
-                  width="3.5rem"
-                  height="3.5rem"
-                  fill="currentColor"
-                />
-              </div>
-            </Swiper>
-          </div>
+                  <NuxtLink
+                    :to="{
+                      query: {
+                        ...route.query,
+                        country:
+                          item.iso_3166_1 != route.query?.country
+                            ? item.iso_3166_1
+                            : undefined
+                      }
+                    }"
+                  >
+                    {{ item?.name }}
+                  </NuxtLink>
+                </SwiperSlide>
+                <div class="swiper-button-prev">
+                  <SvgoChevronLeftLight
+                    width="3.5rem"
+                    height="3.5rem"
+                    fill="currentColor"
+                  />
+                </div>
+                <div class="swiper-button-next">
+                  <SvgoChevronRightLight
+                    width="3.5rem"
+                    height="3.5rem"
+                    fill="currentColor"
+                  />
+                </div>
+              </Swiper>
+            </div>
+          </ClientOnly>
         </div>
         <template #extra>
           <SvgoFilterAlt
