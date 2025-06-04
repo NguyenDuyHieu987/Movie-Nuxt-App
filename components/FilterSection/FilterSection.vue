@@ -148,7 +148,10 @@
                 nextEl: '.swiper-button-next'
               }"
               :initial-slide="
-                years.findIndex((item1) => item1.name == route.query?.year)
+                years.findIndex(
+                  (item1) =>
+                    utils.slugifyString(item1.name) == route.query?.year
+                )
               "
             >
               <SwiperSlide
@@ -166,11 +169,11 @@
                       ...route.query,
                       year:
                         // item.name != route.query?.year ? item.name : undefined
-                        utils.slugifyString(item?.name) != route.query?.year
-                          ? utils.isNumber(item?.name) ||
-                            utils.isStringNumber(item?.name)
-                            ? item?.name
-                            : utils.slugifyString(item?.name)
+                        utils.slugifyString(item.name) != route.query?.year
+                          ? utils.isNumber(item.name) ||
+                            utils.isStringNumber(item.name)
+                            ? item.name
+                            : utils.slugifyString(item.name)
                           : undefined
                     }
                   }"
