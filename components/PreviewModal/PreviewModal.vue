@@ -288,17 +288,20 @@
                 </h3> -->
 
                 <div class="genres">
-                  <span
+                  <NuxtLink
                     v-for="(genre, index) in Array.from(
                       dataMovie?.genres,
-                      (x: any) => x.name
+                      (x: any) => x
                     )"
                     :key="index"
                     class="genre-item"
                     :index="index"
+                    :to="`/discover/genre/${
+                      getGenreById(genre.id, store?.allGenres)?.short_name
+                    }`"
                   >
-                    {{ genre }}
-                  </span>
+                    {{ genre.name }}
+                  </NuxtLink>
                 </div>
 
                 <div class="bottom">
@@ -368,7 +371,7 @@
 import { getCountryByOriginalLanguage } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
-import { getTvById } from '~/services/tv';
+import { getGenreById } from '~/services/genres';
 import { getItemList } from '~/services/list';
 import { getItemHistory } from '~/services/history';
 import { getVideo } from '~/services/video';
@@ -684,36 +687,6 @@ onBeforeRouteLeave(() => {
 const getData = async () => {
   showVideo.value = true;
   dataMovie.value = dataMovie.value;
-
-  // if (!dataMovie.value) {
-  //   loading.value = true;
-
-  //   if (props.isEpisodes) {
-  //     // await useAsyncData(`tv/short/${dataMovie.value?.id}`, () =>
-  //     //   getTvById(dataMovie.value?.id)
-  //     // )
-  //     await getTvById(dataMovie.value?.id)
-  //       .then((response) => {
-  //         dataMovie.value = response;
-  //       })
-  //       .catch((e) => {})
-  //       .finally(() => {});
-  //   } else {
-  //     // await useAsyncData(`movie/short/${dataMovie.value?.id}`, () =>
-  //     //   getMovieById(dataMovie.value?.id)
-  //     // )
-  //     await getMovieById(dataMovie.value?.id)
-  //       .then((response) => {
-  //         dataMovie.value = response;
-  //       })
-  //       .catch((e) => {})
-  //       .finally(() => {});
-  //   }
-
-  //   setTimeout(() => {
-  //     loading.value = false;
-  //   }, 500);
-  // }
 
   loading.value = true;
 

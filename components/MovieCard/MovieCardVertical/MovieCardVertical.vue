@@ -226,7 +226,7 @@
               </NuxtLink>
             </ClientOnly> -->
 
-            <div
+            <NuxtLink
               v-for="(genreItem, index) in Array.from(
                 dataMovie?.genres,
                 (x: genre) => x
@@ -234,10 +234,13 @@
               :key="index"
               :index="index"
               class="genre-item"
-              @click.prevent="handleClickGenreItem(genreItem)"
+              :to="`/discover/genre/${
+                getGenreById(genreItem.id, store?.allGenres)?.short_name
+              }`"
             >
+              <!-- @click.prevent="handleClickGenreItem(genreItem)" -->
               {{ genreItem?.name }}
-            </div>
+            </NuxtLink>
           </div>
         </div>
       </div>

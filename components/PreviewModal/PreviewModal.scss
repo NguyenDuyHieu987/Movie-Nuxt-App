@@ -301,35 +301,61 @@
           text-overflow: ellipsis;
         }
 
+        // .genres {
+        //   font-size: 1.3rem;
+        //   max-width: 100%;
+        //   -webkit-line-clamp: 2;
+        //   -webkit-box-orient: vertical;
+        //   overflow: hidden;
+        //   display: -webkit-box;
+        //   line-height: 1.2;
+
+        //   .genre-item {
+        //     margin-right: 0.4vw;
+
+        //     &:not(:first-child) {
+        //       &::before {
+        //         content: '\2022';
+        //         /* color: #d0d0d0; */
+        //         color: inherit;
+        //         display: inline-block;
+        //         padding-right: 0.4vw;
+        //         font-size: 1.5rem;
+        //       }
+        //     }
+        //   }
+        // }
+
         .genres {
-          font-size: 1.3rem;
-          max-width: 100%;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          display: -webkit-box;
-          line-height: 1.2;
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          gap: 5px;
+          font-size: 1rem;
 
           .genre-item {
-            margin-right: 0.4vw;
-
-            &:not(:first-child) {
-              &::before {
-                content: '\2022';
-                /* color: #d0d0d0; */
-                color: inherit;
-                display: inline-block;
-                padding-right: 0.4vw;
-                font-size: 1.5rem;
-              }
-            }
+            padding: 4px 8px;
+            // background-color: #2d2d2dcc;
+            background-color: rgba(
+              var(--dominant-backdrop-color, (90, 90, 90)),
+              0.3
+            );
+            white-space: nowrap;
+            border-radius: 3px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgba(var(--dominant-backdrop-color, (90, 90, 90)), 1);
+            color: inherit;
+            line-height: normal;
           }
         }
 
         .bottom {
           display: flex;
           flex-direction: column;
-          margin-top: 5px;
+          margin-top: 8px;
 
           .evidence-tags {
             font-size: 1.2rem;
