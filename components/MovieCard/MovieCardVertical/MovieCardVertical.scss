@@ -244,15 +244,8 @@
 
           .genre-item {
             padding: 4px 8px;
-            // background-color: #5151514e;
-            background-color: rgba(
-              var(--dominant-backdrop-color, (90, 90, 90)),
-              0.3
-            );
+            background-color: #5151514e;
             border-radius: 3px;
-            border-width: 1px;
-            border-style: solid;
-            border-color: rgba(var(--dominant-backdrop-color, (90, 90, 90)), 1);
             white-space: nowrap;
             color: inherit;
             line-height: normal;
