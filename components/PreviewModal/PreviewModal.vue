@@ -291,11 +291,11 @@
                   <NuxtLink
                     v-for="(genre, index) in Array.from(
                       dataMovie?.genres,
-                      (x: any) => x
+                      (x: genre) => x
                     )"
                     :key="index"
-                    class="genre-item"
                     :index="index"
+                    class="genre-item"
                     :to="`/discover/genre/${
                       getGenreById(genre.id, store?.allGenres)?.short_name
                     }`"
@@ -375,6 +375,7 @@ import { getGenreById } from '~/services/genres';
 import { getItemList } from '~/services/list';
 import { getItemHistory } from '~/services/history';
 import { getVideo } from '~/services/video';
+import type { genre } from '~/types';
 import gsap from 'gsap';
 import Hls from 'hls.js';
 
