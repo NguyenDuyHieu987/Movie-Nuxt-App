@@ -540,7 +540,7 @@ const movieId = computed<string>(
 );
 
 const setBackgroundColor = (color: string[]) => {
-  const main_color = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`;
+  const main_color = `rgba(${color?.join(', ')}, 1)`;
 
   const backdrop_wrapper = document.getElementsByClassName(
     'backdrop-wrapper'

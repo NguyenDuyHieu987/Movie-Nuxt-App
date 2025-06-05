@@ -5,7 +5,7 @@
       path: `/info-${dataMovie?.media_type}/${dataMovie?.id}`
     }"
     class="movie-card-item vertical"
-    :style="`--dominant-poster-color: ${dataMovie.dominant_poster_color[0]}, ${dataMovie.dominant_poster_color[1]},${dataMovie.dominant_poster_color[2]}`"
+    :style="`--dominant-poster-color: ${dataMovie.dominant_poster_color?.join(', ')}`"
   >
     <!-- <el-skeleton :loading="loading" animated class="ratio-2-3">
       <template #template>

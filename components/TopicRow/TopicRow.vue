@@ -209,7 +209,7 @@ watch(dataRow, (newVal, oldVal) => {
 });
 
 const setBackgroundColor = (color: string[]) => {
-  const main_color = `linear-gradient(to bottom, rgba(${color[0]}, ${color[1]}, ${color[2]}, 1), rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.5), rgba(0, 0, 0, 1));`;
+  const main_color = `linear-gradient(to bottom, rgba(${color?.join(', ')}, 1), rgba(${color?.join(', ')}, 0.5), rgba(0, 0, 0, 1));`;
 
   // const topic_row = document.getElementsByClassName(
   //   'topic-row'

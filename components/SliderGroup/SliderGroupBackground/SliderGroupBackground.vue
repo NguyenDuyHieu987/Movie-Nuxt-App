@@ -84,7 +84,7 @@ const currentImage = ref<string>(
   getImage(props.data[0]?.backdrop_path, 'backdrop', { h: 250 })
 );
 const dominantBackdropColor = ref<string>(
-  `rgb(${props.data[0]?.dominant_backdrop_color[0]}, ${props.data[0]?.dominant_backdrop_color[1]},${props.data[0]?.dominant_backdrop_color[2]}, 0.6)`
+  `rgb(${props.data[0]?.dominant_backdrop_color?.join(', ')}, 0.6)`
 );
 
 watchEffect(() => {
@@ -93,7 +93,7 @@ watchEffect(() => {
       h: 250
     });
 
-    dominantBackdropColor.value = `rgb(${props.data[0]?.dominant_backdrop_color[0]}, ${props.data[0]?.dominant_backdrop_color[1]},${props.data[0]?.dominant_backdrop_color[2]}, 0.6)`;
+    dominantBackdropColor.value = `rgb(${props.data[0]?.dominant_backdrop_color?.join(', ')}, 0.6)`;
   }
 });
 
@@ -178,7 +178,7 @@ const onPointerOverSlider = (e: any) => {
       .querySelector('.movie-card-item')
       .getAttribute('index');
 
-    dominantBackdropColor.value = `rgba(${props.data[indexItem]?.dominant_backdrop_color[0]}, ${props.data[indexItem]?.dominant_backdrop_color[1]},${props.data[indexItem]?.dominant_backdrop_color[2]}, 0.6)`;
+    dominantBackdropColor.value = `rgba(${props.data[indexItem]?.dominant_backdrop_color?.join(', ')}, 0.6)`;
   }
 };
 </script>

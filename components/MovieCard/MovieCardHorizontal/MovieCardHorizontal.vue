@@ -7,7 +7,7 @@
     :class="{
       'show-video': showVideo
     }"
-    :style="`--dominant-backdrop-color: ${item.dominant_backdrop_color[0]}, ${item.dominant_backdrop_color[1]},${item.dominant_backdrop_color[2]}`"
+    :style="`--dominant-backdrop-color: ${item.dominant_backdrop_color?.join(', ')}`"
   >
     <!-- <el-skeleton :loading="loading" animated class="ratio-16-9">
       <template #template>

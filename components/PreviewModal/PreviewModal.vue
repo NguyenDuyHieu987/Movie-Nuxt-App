@@ -12,7 +12,7 @@
           'only-right': isOnlyRight,
           'show-video': showVideo
         }"
-        :style="`--dominant-backdrop-color: ${dataMovie.dominant_backdrop_color[0]}, ${dataMovie.dominant_backdrop_color[1]},${dataMovie.dominant_backdrop_color[2]}`"
+        :style="`--dominant-backdrop-color: ${dataMovie.dominant_backdrop_color?.join(', ')}`"
       >
         <el-skeleton
           :loading="loading"

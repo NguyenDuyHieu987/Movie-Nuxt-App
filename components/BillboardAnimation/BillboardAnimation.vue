@@ -5,7 +5,7 @@
     <div class="billboard-carousel-wrapper">
       <div
         class="overlay-backdrop"
-        :style="`--dominant-backdrop-color: ${currenActiveItem?.dominant_backdrop_color[0]}, ${currenActiveItem?.dominant_backdrop_color[1]},${currenActiveItem?.dominant_backdrop_color[2]}`"
+        :style="`--dominant-backdrop-color: ${currenActiveItem?.dominant_backdrop_color?.join(', ')}`"
       >
         <NuxtImg
           :src="

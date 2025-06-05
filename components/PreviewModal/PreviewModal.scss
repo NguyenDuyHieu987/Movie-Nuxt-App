@@ -342,11 +342,11 @@
               var(--dominant-backdrop-color, (90, 90, 90)),
               0.3
             );
-            white-space: nowrap;
             border-radius: 3px;
             border-width: 1px;
             border-style: solid;
             border-color: rgba(var(--dominant-backdrop-color, (90, 90, 90)), 1);
+            white-space: nowrap;
             color: inherit;
             line-height: normal;
           }
