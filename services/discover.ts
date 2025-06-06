@@ -1,9 +1,9 @@
 import ALLGENRES from '../constants/data/Genres.json';
+import ALLCOUNTRIES from '@/constants/data/Country.json';
 import { getCountryByShortName } from './country';
 import { getGenreByShortName } from './genres';
 import { makeRequest } from './makeRequest';
 
-import ALLCOUNTRIES from '@/constants/data/Country.json';
 import type { country, formfilter, genre, typeMovie, typeTv } from '@/types';
 
 const PREFIX_ROUTE = 'discover';
