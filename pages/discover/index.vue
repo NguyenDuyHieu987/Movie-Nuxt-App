@@ -53,10 +53,10 @@
 // } from '~/components/MovieCard';
 // import { LoadingSpinner } from '~/components/Loading';
 // import { ControlPage } from '~/components/ControlPage';
-import FilterSection from '~/components/FilterSection/FilterSection.vue';
-import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
-import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
-import ControlPage from '~/components/ControlPage/ControlPage.vue';
+// import FilterSection from '~/components/FilterSection/FilterSection.vue';
+// import MovieCardVertical from '~/components/MovieCard/MovieCardVertical/MovieCardVertical.vue';
+// import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
+// import ControlPage from '~/components/ControlPage/ControlPage.vue';
 import { FilterMovie } from '~/services/discover';
 import type { formfilter } from '@/types';
 
