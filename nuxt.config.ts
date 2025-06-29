@@ -184,7 +184,7 @@ export default defineNuxtConfig({
     // 'nuxt-gtag',
     'nuxt-lodash',
     // 'nuxt-delay-hydration',
-    // 'nuxt-purgecss',
+    'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
