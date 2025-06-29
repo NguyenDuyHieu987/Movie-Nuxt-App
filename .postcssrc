@@ -1,6 +1,5 @@
 {
   "syntax": "postcss-scss",
-  "parser": "sugarss",
   "plugins": {
     "postcss-import": {},
     "autoprefixer": {},
