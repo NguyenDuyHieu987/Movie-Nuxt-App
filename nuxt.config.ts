@@ -341,17 +341,17 @@ export default defineNuxtConfig({
 
   purgecss: {
     mode: 'postcss',
-    whitelist: ['svg-defs'],
+    whitelist: ['svg-defs']
     // whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
-    whitelistPatterns: [
-      /^(w-\D)\w+/,
-      /^el-/,
-      /^ant-/,
-      /^w-\D/,
-      /^v-lazy-/,
-      /^swiper/,
-      /^svg-icon/
-    ]
+    // whitelistPatterns: [
+    //   /^(w-\D)\w+/,
+    //   /^el-/,
+    //   /^ant-/,
+    //   /^w-\D/,
+    //   /^v-lazy-/,
+    //   /^swiper/,
+    //   /^svg-icon/
+    // ]
   },
 
   // delayHydration: {
