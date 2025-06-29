@@ -183,8 +183,8 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     // 'nuxt-gtag',
     'nuxt-lodash',
-    'nuxt-delay-hydration',
-    // 'nuxt-purgecss',
+    // 'nuxt-delay-hydration',
+    'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
@@ -213,9 +213,9 @@ export default defineNuxtConfig({
       prefix: Math.floor(Math.random() * 10000),
       current: 0
     },
-    appendTo: ['#append-to'],
-    components: ['el-skeleton'],
-    noStylesComponents: ['el-skeleton']
+    appendTo: ['#append-to']
+    // components: ['el-skeleton'],
+    // noStylesComponents: ['el-skeleton']
   },
 
   // vueuse: {
@@ -339,16 +339,16 @@ export default defineNuxtConfig({
     ]
   },
 
-  // purgecss: {
-  //   mode: 'postcss',
-  //   whitelist: ['svg-defs'],
-  //   whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
-  // },
-
-  delayHydration: {
-    mode: 'init',
-    debug: process.env.NODE_ENV === 'development'
+  purgecss: {
+    mode: 'postcss',
+    whitelist: ['svg-defs'],
+    whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
   },
+
+  // delayHydration: {
+  //   mode: 'init',
+  //   debug: process.env.NODE_ENV === 'development'
+  // },
   device: {},
   vitalizer: {
     // disablePrefetchLinks: true,
