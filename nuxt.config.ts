@@ -184,7 +184,7 @@ export default defineNuxtConfig({
     // 'nuxt-gtag',
     'nuxt-lodash',
     // 'nuxt-delay-hydration',
-    'nuxt-purgecss',
+    // 'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
@@ -344,6 +344,7 @@ export default defineNuxtConfig({
     whitelist: ['svg-defs'],
     // whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
     whitelistPatterns: [
+      /^(w-\D)\w+/,
       /^el-/,
       /^ant-/,
       /^w-\D/,
