@@ -18,7 +18,7 @@
 
     <section class="discover-section">
       <div
-        v-if="!loading"
+        v-show="!loading"
         class="movie-group vertical"
       >
         <MovieCardVertical
@@ -31,7 +31,7 @@
       </div>
 
       <LoadingSpinner
-        v-else
+        v-show="loading"
         class="loading-page"
       />
     </section>
