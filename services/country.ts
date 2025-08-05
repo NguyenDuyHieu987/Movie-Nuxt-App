@@ -1,6 +1,7 @@
 import { makeRequest } from './makeRequest';
 
 import ALLCOUNTRIES from '@/constants/data/Country.json';
+import { isArray } from 'lodash';
 import type { country } from '~/types';
 
 const PREFIX_ROUTE = 'country';
@@ -39,9 +40,7 @@ export function getCountryByOriginalLanguage(
   origin_country: string | string[],
   allCountries: country[]
 ): country {
-  var name = _lodash_IsArray(origin_country)
-    ? origin_country[0]
-    : origin_country;
+  var name = isArray(origin_country) ? origin_country[0] : origin_country;
   if (allCountries?.length != 0) {
     return allCountries.find((language) => language.iso_3166_1 === name)!;
   } else {

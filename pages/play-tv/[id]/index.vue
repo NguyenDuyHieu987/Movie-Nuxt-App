@@ -426,6 +426,7 @@ import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
+import { throttle } from 'lodash';
 
 defineOptions({ name: 'play-tv' });
 
@@ -673,7 +674,7 @@ const onPLayVideoPlayer = (e: any) => {
   isPlayVideo.value = true;
 };
 
-const throttleUpdateHistory = _lodash_Throttle(updateHistory, 1000);
+const throttleUpdateHistory = throttle(updateHistory, 1000);
 
 const onTimeUpdateVideoPlayer = (e: any) => {
   if (!isPlayVideo.value) {

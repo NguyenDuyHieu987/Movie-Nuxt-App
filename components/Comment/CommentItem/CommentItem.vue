@@ -241,6 +241,7 @@ import { getImage, getUserAvatar } from '~/services/image';
 import DOMPurify from 'dompurify';
 import { storeToRefs } from 'pinia';
 import type { commentForm } from '@/types';
+import { reject } from 'lodash';
 
 const props = defineProps<{
   movieId: string;
@@ -346,12 +347,9 @@ const handleRemoveComment = () => {
   })
     .then((response) => {
       if (response?.success) {
-        commentsList.value = _lodash_Reject(
-          commentsList.value,
-          (x: commentForm) => {
-            return x!.id === props.item?.id;
-          }
-        );
+        commentsList.value = reject(commentsList.value, (x: commentForm) => {
+          return x!.id === props.item?.id;
+        });
 
         ElNotification.success({
           title: MESSAGE.STATUS.SUCCESS,

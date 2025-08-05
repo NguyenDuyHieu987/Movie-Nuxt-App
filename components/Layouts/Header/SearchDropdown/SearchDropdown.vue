@@ -155,6 +155,7 @@
 // import SvgoChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
 // import SvgoXCircle from '~/assets/svgs/icons/x-circle.svg?component';
 
+import { reject } from 'lodash';
 import { addRankSearch } from '~/services/ranks';
 import {
   addSearch,
@@ -195,19 +196,13 @@ const handleRemoveSearchHistory = async (id: string) => {
   await removeSearchHistory(id)
     .then((response) => {
       if (response?.success) {
-        dataSearchHistory.value = _lodash_Reject(
-          dataSearchHistory.value,
-          (x) => {
-            return x.id === id;
-          }
-        );
+        dataSearchHistory.value = reject(dataSearchHistory.value, (x) => {
+          return x.id === id;
+        });
 
-        store.dataSearchHistory = _lodash_Reject(
-          store.dataSearchHistory,
-          (x) => {
-            return x.id === id;
-          }
-        );
+        store.dataSearchHistory = reject(store.dataSearchHistory, (x) => {
+          return x.id === id;
+        });
       }
     })
     .catch((e) => {});
@@ -217,23 +212,17 @@ const handleRemoveSearchHistoryInSearchResults = async (id: string) => {
   await removeSearchHistory(id)
     .then((response) => {
       if (response?.success) {
-        dataSearch.value = _lodash_Reject(dataSearch.value, (x) => {
+        dataSearch.value = reject(dataSearch.value, (x) => {
           return x?.type == 'history' && x.id === id;
         });
 
-        dataSearchHistory.value = _lodash_Reject(
-          dataSearchHistory.value,
-          (x) => {
-            return x.id === id;
-          }
-        );
+        dataSearchHistory.value = reject(dataSearchHistory.value, (x) => {
+          return x.id === id;
+        });
 
-        store.dataSearchHistory = _lodash_Reject(
-          store.dataSearchHistory,
-          (x) => {
-            return x.id === id;
-          }
-        );
+        store.dataSearchHistory = reject(store.dataSearchHistory, (x) => {
+          return x.id === id;
+        });
       }
     })
     .catch((e) => {});

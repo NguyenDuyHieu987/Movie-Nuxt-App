@@ -142,6 +142,7 @@ import { getHistory, searchHistory } from '~/services/history';
 import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';
 import { storeToRefs } from 'pinia';
+import { reject } from 'lodash';
 
 defineOptions({ name: 'history' });
 
@@ -281,7 +282,7 @@ getData();
 
 const getDataWhenRemoveHistory = (data: string) => {
   // dataHistory.value = data;
-  dataHistory.value = _lodash_Reject(dataHistory.value, (x) => {
+  dataHistory.value = reject(dataHistory.value, (x) => {
     return x.id === data;
   });
   total.value = dataHistory.value?.length;

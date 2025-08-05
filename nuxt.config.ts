@@ -182,7 +182,7 @@ export default defineNuxtConfig({
     // '@nuxt/fonts',
     '@nuxtjs/google-fonts',
     // 'nuxt-gtag',
-    'nuxt-lodash',
+    // 'nuxt-lodash',
     'nuxt-delay-hydration',
     // 'nuxt-purgecss',
     // SEO
@@ -242,14 +242,14 @@ export default defineNuxtConfig({
   // },
 
   lodash: {
-    prefix: '_lodash_',
+    prefix: 'useLodash',
     prefixSkip: false,
     upperAfterPrefix: true,
     exclude: ['map'],
     alias: [
-      ['camelCase', 'stringToCamelCase'], // => stringToCamelCase
-      ['kebabCase', 'stringToKebab'], // => stringToKebab
-      ['isDate', 'isLodashDate'] // => _isLodashDate
+      // ['camelCase', 'stringToCamelCase'], // => stringToCamelCase
+      // ['kebabCase', 'stringToKebab'], // => stringToKebab
+      // ['isDate', 'isLodashDate'] // => _isLodashDate
     ]
   },
 
