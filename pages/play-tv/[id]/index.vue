@@ -426,7 +426,7 @@ import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
-import { throttle } from 'lodash';
+import throttle from 'lodash/throttle';
 
 defineOptions({ name: 'play-tv' });
 

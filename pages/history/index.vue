@@ -142,7 +142,7 @@ import { getHistory, searchHistory } from '~/services/history';
 import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';
 import { storeToRefs } from 'pinia';
-import { reject } from 'lodash';
+import reject from 'lodash/reject';
 
 defineOptions({ name: 'history' });
 

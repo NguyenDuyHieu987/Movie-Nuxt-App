@@ -155,7 +155,7 @@
 // import SvgoChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
 // import SvgoXCircle from '~/assets/svgs/icons/x-circle.svg?component';
 
-import { reject } from 'lodash';
+import reject from 'lodash/reject';
 import { addRankSearch } from '~/services/ranks';
 import {
   addSearch,

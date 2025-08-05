@@ -1,7 +1,7 @@
 import { makeRequest } from './makeRequest';
 
 import ALLCOUNTRIES from '@/constants/data/Country.json';
-import { isArray } from 'lodash';
+import isArray from 'lodash/isArray';
 import type { country } from '~/types';
 
 const PREFIX_ROUTE = 'country';

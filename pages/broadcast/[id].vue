@@ -318,7 +318,7 @@ import { getItemList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 import { Socket, io } from 'socket.io-client';
-import { throttle } from 'lodash';
+import throttle from 'lodash/throttle';
 
 defineOptions({ name: 'broadcast' });
 
