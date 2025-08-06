@@ -18,7 +18,7 @@
 
     <section class="discover-section">
       <div
-        v-if="!loading"
+        v-if="!pending"
         class="movie-group vertical"
       >
         <MovieCardVertical
@@ -126,6 +126,7 @@ loading.value = true;
 const {
   data: dataDiscoverCache,
   status,
+  pending,
   refresh
 } = await useAsyncData(
   `discover/${JSON.stringify(formFilter.value)}`,
