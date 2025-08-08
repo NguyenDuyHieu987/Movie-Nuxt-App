@@ -37,12 +37,6 @@ export default defineNuxtConfig({
           href: process.env.NUXT_APP_CDN_URL,
           crossorigin: 'anonymous'
         }
-        // antdVersion == 4
-        //   ? {
-        //       rel: 'stylesheet',
-        //       href: isProduction ? '/css/antdv4.css' : '/css/antdv4.dev.css'
-        //     }
-        //   : {}
       ],
       script: [
         // {
@@ -164,7 +158,7 @@ export default defineNuxtConfig({
     antdVersion == 4
       ? 'ant-design-vue/dist/reset.css'
       : 'ant-design-vue/dist/antd.dark.min.css',
-    'element-plus/dist/index.css',
+    // 'element-plus/dist/index.css',
     '~/assets/style/globalStyle/overwrite/antdv/antdv.scss',
     '~/assets/style/globalStyle/overwrite/element/element.scss',
     '~/assets/style/globalStyle.scss'
@@ -198,7 +192,6 @@ export default defineNuxtConfig({
     '@nuxtjs/critters'
   ],
 
-  // extends: ['nuxt-seo-kit'],
   antd: {
     extractStyle: true,
     icons: false
