@@ -156,7 +156,6 @@
 <script setup lang="ts">
 // import SvgoFacebook from '~/assets/svgs/icons/facebook.svg?component';
 // import SvgoGoogle from '~/assets/svgs/icons/google.svg?component';
-// import { Form as AForm, FormItem as AFormItem } from 'ant-design-vue';
 
 import { LockOutlined, UserOutlined } from '@ant-design/icons-vue';
 import { useLocalStorage } from '@vueuse/core';
