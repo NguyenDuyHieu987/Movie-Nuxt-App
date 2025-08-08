@@ -1,4 +1,3 @@
-import { message } from 'ant-design-vue';
 import { ElNotification } from 'element-plus';
 
 import { removeAllItemHistory, removeItemHistory } from '~/services/history';
@@ -12,7 +11,6 @@ export async function handleAddItemToList(
   movieId: string,
   media_type: string
 ): Promise<boolean> {
-  // message.loading({ content: 'Đang thêm' });
   return addItemList({
     movie_id: movieId,
     media_type
@@ -53,8 +51,6 @@ export async function handleRemoveItemFromList(
   movieId: string,
   media_type: string
 ): Promise<boolean> {
-  // message.loading({ content: 'Đang xóa' });
-
   return removeItemList({
     movie_id: movieId,
     media_type
@@ -92,8 +88,6 @@ export async function handleRemoveItemFromList(
 }
 
 export async function handleRemoveAllitemFromList(): Promise<boolean> {
-  // message.loading({ content: 'Đang xóa tất cả Danh sách phát' });
-
   return removeAllItemList()
     .then((response) => {
       if (response?.success == true) {
@@ -131,8 +125,6 @@ export async function handleRemoveItemFromHistory(
   movieId: string,
   media_type: string
 ): Promise<boolean> {
-  // message.loading({ content: 'Đang xóa' });
-
   return removeItemHistory({
     movie_id: movieId,
     media_type
@@ -169,8 +161,6 @@ export async function handleRemoveItemFromHistory(
 }
 
 export async function handleRemoveAllitemFromHistory(): Promise<boolean> {
-  // message.loading({ content: 'Đang xóa tất cả Lịch sử xem' });
-
   return removeAllItemHistory()
     .then((response) => {
       if (response?.success == true) {
