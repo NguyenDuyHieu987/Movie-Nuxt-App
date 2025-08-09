@@ -131,6 +131,7 @@ const {
   `discover/${JSON.stringify(formFilter.value)}`,
   () => FilterMovie(formFilter.value),
   {
+    lazy: true
     // transform: (data: any) => {
     //   totalPage.value = data?.total;
     //   pageSize.value = data?.page_size;

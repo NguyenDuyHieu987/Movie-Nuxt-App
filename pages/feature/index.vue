@@ -183,21 +183,26 @@ loading.value = true;
 
 const { data: modLíst, status } = await useAsyncData(
   `mod/movie/${page.value}/${pageSize.value}`,
-  () => getAllModWithData('all', 'movie', page.value, pageSize.value)
-  // {
-  //   // default: () => {
-  //   //   return { results: trendingsCache.value || [] };
-  //   // },
-  //   transform: (data: any) => {
-  //     return data.results[0].data;
-  //   }
-  // }
+  () => getAllModWithData('all', 'movie', page.value, pageSize.value),
+  {
+    lazy: true
+    // default: () => {
+    //   return { results: trendingsCache.value || [] };
+    // },
+    // transform: (data: any) => {
+    //   return data.results[0].data;
+    // }
+  }
 );
 
-dataBilboard.value = modLíst.value?.results[0].data;
-total.value = modLíst.value?.total;
-pageSize.value = modLíst.value?.page_size;
-// page.value++;
+watchEffect(() => {
+  if (modLíst.value) {
+    dataBilboard.value = modLíst.value?.results[0].data;
+    total.value = modLíst.value?.total;
+    pageSize.value = modLíst.value?.page_size;
+    // page.value++;
+  }
+});
 
 const onSwiperLoaded = () => {
   // loading.value = false;

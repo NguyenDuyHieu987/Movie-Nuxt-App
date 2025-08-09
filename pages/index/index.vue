@@ -254,6 +254,7 @@ const page = ref<number>(1);
 const pageSize = ref<number>(3);
 const total = ref<number>(0);
 const recommends = ref<any>([]);
+// const modListData = ref<any>([]);
 // const broadcasts = ref<any>([]);
 // const isLoading = computed<boolean>(() => status.value != 'success');
 const loading = ref<boolean>(false);
@@ -466,18 +467,28 @@ const {
   refresh: refreshMods
 } = await useAsyncData(
   () => `mods/all/all/${page.value}/${pageSize.value}`,
-  () => getAllModWithData('all', 'all', page.value, pageSize.value)
+  () => getAllModWithData('all', 'all', page.value, pageSize.value),
+  {
+    lazy: true
+  }
 );
 
-trendings.value = modListData.value?.results?.[0].data;
-modList.value = modListData.value?.results?.slice(1);
-total.value = modListData.value.total;
-pageSize.value = modListData.value.page_size;
-page.value++;
+watchEffect(() => {
+  if (modListData.value) {
+    trendings.value = modListData.value?.results?.[0].data;
+    modList.value = modListData.value?.results?.slice(1);
+    total.value = modListData.value?.total;
+    pageSize.value = modListData.value?.page_size;
+    page.value++;
+  }
+});
 
 const { data: broadcasts, pending: loadingBroadcasts } = await useAsyncData(
   `broadcasts/all/1/20`,
-  () => getAllAiringBroadcast(page.value, pageSize.value)
+  () => getAllAiringBroadcast(page.value, pageSize.value),
+  {
+    lazy: true
+  }
 );
 
 // const { data: modListData, status } = await useAsyncData(
