@@ -473,15 +473,17 @@ const {
   }
 );
 
-watchEffect(() => {
-  if (modListData.value) {
+watch(
+  () => modListData.value,
+  () => {
     trendings.value = modListData.value?.results?.[0].data;
     modList.value = modListData.value?.results?.slice(1);
     total.value = modListData.value?.total;
     pageSize.value = modListData.value?.page_size;
     page.value++;
-  }
-});
+  },
+  { immediate: true }
+);
 
 const { data: broadcasts, pending: loadingBroadcasts } = await useAsyncData(
   `broadcasts/all/1/20`,

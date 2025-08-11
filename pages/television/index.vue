@@ -195,14 +195,16 @@ const { data: modLíst, status } = await useAsyncData(
   }
 );
 
-watchEffect(() => {
-  if (modLíst.value) {
+watch(
+  () => modLíst.value,
+  () => {
     dataBilboard.value = modLíst.value?.results[0].data;
     total.value = modLíst.value?.total;
     pageSize.value = modLíst.value?.page_size;
     // page.value++;
-  }
-});
+  },
+  { immediate: true }
+);
 
 const onSwiperLoaded = () => {
   loading.value = false;
