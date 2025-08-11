@@ -195,18 +195,23 @@ const { data: modLíst, status } = await useAsyncData(
   }
 );
 
-watch(
-  () => modLíst.value,
-  () => {
-    if (page.value == 1) {
-      dataBilboard.value = modLíst.value?.results[0].data;
-      total.value = modLíst.value?.total;
-      pageSize.value = modLíst.value?.page_size;
-      // page.value++;
-    }
-  },
-  { immediate: true }
-);
+// dataBilboard.value = modLíst.value?.results[0].data;
+// total.value = modLíst.value?.total;
+// pageSize.value = modLíst.value?.page_size;
+// // page.value++;
+
+watchEffect(() => {
+  const {
+    results = [],
+    total: t = 0,
+    page_size = pageSize.value
+  } = modLíst.value || {};
+  if (results.length) {
+    dataBilboard.value = results[0]?.data || [];
+    total.value = t;
+    pageSize.value = page_size;
+  }
+});
 
 const onSwiperLoaded = () => {
   // loading.value = false;

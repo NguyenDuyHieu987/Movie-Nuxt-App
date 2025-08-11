@@ -473,19 +473,27 @@ const {
   }
 );
 
-watch(
-  () => modListData.value,
-  () => {
-    if (page.value == 1) {
-      trendings.value = modListData.value?.results?.[0].data;
-      modList.value = modListData.value?.results?.slice(1);
-      total.value = modListData.value?.total;
-      pageSize.value = modListData.value?.page_size;
-      page.value++;
-    }
-  },
-  { immediate: true }
-);
+// trendings.value = modListData.value?.results?.[0].data;
+// modList.value = modListData.value?.results?.slice(1);
+// total.value = modListData.value?.total;
+// pageSize.value = modListData.value?.page_size;
+// page.value++;
+
+watchEffect(() => {
+  const {
+    results = [],
+    total: t = 0,
+    page_size = pageSize.value
+  } = modListData.value || {};
+
+  if (page.value === 1 && results.length) {
+    trendings.value = results[0]?.data || [];
+    modList.value = results.slice(1);
+    total.value = t;
+    pageSize.value = page_size;
+    page.value++;
+  }
+});
 
 const { data: broadcasts, pending: loadingBroadcasts } = await useAsyncData(
   `broadcasts/all/1/20`,
