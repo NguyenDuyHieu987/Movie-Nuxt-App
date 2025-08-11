@@ -198,10 +198,12 @@ const { data: modLíst, status } = await useAsyncData(
 watch(
   () => modLíst.value,
   () => {
-    dataBilboard.value = modLíst.value?.results[0].data;
-    total.value = modLíst.value?.total;
-    pageSize.value = modLíst.value?.page_size;
-    // page.value++;
+    if (page.value == 1) {
+      dataBilboard.value = modLíst.value?.results[0].data;
+      total.value = modLíst.value?.total;
+      pageSize.value = modLíst.value?.page_size;
+      // page.value++;
+    }
   },
   { immediate: true }
 );
