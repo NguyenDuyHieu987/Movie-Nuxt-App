@@ -304,7 +304,7 @@
 // import Interaction from '~/components/Interaction/Interaction.vue';
 // import Comment from '~/components/Comment/Comment.vue';
 // import MovieSuggested from '~/components/MovieSuggested/MovieSuggested.vue';
-import { getCountryByOriginalLanguage } from '~/services/country';
+import { getCountryByOriginalCountry } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';

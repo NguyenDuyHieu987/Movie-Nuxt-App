@@ -36,14 +36,14 @@ export function getCountryByShortName(
   }
 }
 
-export function getCountryByOriginalLanguage(
+export function getCountryByOriginalCountry(
   origin_country: string | string[],
   allCountries: country[]
 ): country {
   var name = isArray(origin_country) ? origin_country[0] : origin_country;
   if (allCountries?.length != 0) {
-    return allCountries.find((language) => language.iso_3166_1 === name)!;
+    return allCountries.find((c) => c.iso_3166_1 === name)!;
   } else {
-    return ALLCOUNTRIES.find((language) => language.iso_3166_1 === name)!;
+    return ALLCOUNTRIES.find((c) => c.iso_3166_1 === name)!;
   }
 }

@@ -308,7 +308,7 @@
                   <div class="evidence-tags">
                     <span class="evidence-item country">
                       {{
-                        getCountryByOriginalLanguage(
+                        getCountryByOriginalCountry(
                           dataMovie?.origin_country,
                           store.allCountries
                         )?.name || ''
@@ -368,7 +368,7 @@
 
 // import { LoadingSpinner } from '~/components/Loading';
 // import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
-import { getCountryByOriginalLanguage } from '~/services/country';
+import { getCountryByOriginalCountry } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getGenreById } from '~/services/genres';

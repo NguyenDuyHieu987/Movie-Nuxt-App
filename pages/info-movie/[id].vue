@@ -365,14 +365,14 @@
                         <NuxtLink
                           class="underline"
                           :to="`/discover/country/${
-                            getCountryByOriginalLanguage(
+                            getCountryByOriginalCountry(
                               dataMovie?.origin_country,
                               store.allCountries
                             )?.short_name || 'au-my'
                           }`"
                         >
                           {{
-                            getCountryByOriginalLanguage(
+                            getCountryByOriginalCountry(
                               dataMovie?.origin_country,
                               store.allCountries
                             )?.name || ''
@@ -498,7 +498,7 @@
 // import CastCrew from '~/components/CastCrew/CastCrew.vue';
 // import Comment from '~/components/Comment/Comment.vue';
 import { getMovieById, getMovieByType_Id } from '~/services/movie';
-import { getCountryByOriginalLanguage } from '~/services/country';
+import { getCountryByOriginalCountry } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';

@@ -315,14 +315,14 @@
                       <NuxtLink
                         class="underline"
                         :to="`/discover/country/${
-                          getCountryByOriginalLanguage(
+                          getCountryByOriginalCountry(
                             dataMovie?.origin_country,
                             store.allCountries
                           )?.short_name || 'au-my'
                         }`"
                       >
                         {{
-                          getCountryByOriginalLanguage(
+                          getCountryByOriginalCountry(
                             dataMovie?.origin_country,
                             store.allCountries
                           )?.name || ''
@@ -419,7 +419,7 @@
 import { getMovieByType_Id } from '~/services/movie';
 import { getTvById, UpdateViewTv } from '~/services/tv';
 import { getGenreById } from '~/services/genres';
-import { getCountryByOriginalLanguage } from '~/services/country';
+import { getCountryByOriginalCountry } from '~/services/country';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
 import { getItemList } from '~/services/list';
