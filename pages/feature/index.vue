@@ -185,7 +185,7 @@ const { data: modLíst, status } = await useAsyncData(
   `mod/movie/${page.value}/${pageSize.value}`,
   () => getAllModWithData('all', 'movie', page.value, pageSize.value),
   {
-    // lazy: true
+    lazy: true
     // default: () => {
     //   return { results: trendingsCache.value || [] };
     // },
