@@ -391,7 +391,7 @@ video::-webkit-media-controls {
           min-width: 0%;
           max-width: 100%;
           /* background-color: rgba(255, 255, 255, 0.4); */
-          background-color: var(--color-green-800);
+          background-color: var(--color-primary-800);
           opacity: 0.4;
         }
 
@@ -417,7 +417,7 @@ video::-webkit-media-controls {
           width: calc(var(--progress-width, 0) * 100%);
           min-width: 0%;
           max-width: 100%;
-          background-color: var(--color-green-800);
+          background-color: var(--color-primary-800);
           z-index: 2;
 
           /* &::after {
@@ -430,7 +430,7 @@ video::-webkit-media-controls {
             width: 0px;
             border-radius: 50%;
             z-index: 1;
-            background-color: var(--color-green-800);
+            background-color: var(--color-primary-800);
             transition: all 0.15s;
           } */
 
@@ -443,7 +443,7 @@ video::-webkit-media-controls {
             width: 0px;
             border-radius: 50%;
             z-index: 1;
-            background-color: var(--color-green-800);
+            background-color: var(--color-primary-800);
             transition: all 0.15s;
           }
         }
@@ -578,12 +578,12 @@ video::-webkit-media-controls {
               }
 
               .ant-slider-track {
-                background-color: var(--color-green-800);
+                background-color: var(--color-primary-800);
               }
 
               .ant-slider-handle {
                 /* border: none; */
-                border: 2px solid var(--color-green-800);
+                border: 2px solid var(--color-primary-800);
 
                 &:focus {
                   box-shadow: none;

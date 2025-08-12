@@ -127,7 +127,7 @@
             height: 30px;
 
             .el-carousel__button {
-              background-color: var(--color-green-800);
+              background-color: var(--color-primary-800);
               /* background: linear-gradient(
                 to bottom,
                 var(--color-primary-950),
@@ -202,7 +202,7 @@
 
       &:hover,
       &:focus {
-        color: var(--color-green-800);
+        color: var(--color-primary-800);
       }
     }
   }
@@ -310,7 +310,7 @@
 
     .slick-arrow {
       &:hover {
-        color: var(--color-green-800);
+        color: var(--color-primary-800);
       }
 
       &.prev {

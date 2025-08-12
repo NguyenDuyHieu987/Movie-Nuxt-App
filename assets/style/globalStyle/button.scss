@@ -1,5 +1,5 @@
 :root {
-  --btn-background-color-primary: var(--color-green-800);
+  --btn-background-color-primary: var(--color-primary-800);
   --btn-background-color-gray: #1e1e1e;
   --btn-disabled-background-color: #9494947d;
   --btn-border-color: #757575;
@@ -68,10 +68,10 @@
   }
 
   &.ant-btn-primary:not([disabled]) {
-    border-color: var(--color-green-800);
+    border-color: var(--color-primary-800);
 
     &:hover {
-      border-color: var(--color-green-800);
+      border-color: var(--color-primary-800);
     }
   }
 

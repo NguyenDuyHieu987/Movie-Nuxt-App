@@ -48,7 +48,7 @@
         border-radius: 25px;
 
         &:hover {
-          /* background-color: var(--color-green-800); */
+          /* background-color: var(--color-primary-800); */
           background-color: #242424;
         }
       }
@@ -62,7 +62,7 @@
         overflow: hidden;
 
         &.active {
-          /* background-color: var(--color-green-800); */
+          /* background-color: var(--color-primary-800); */
           background-color: #242424;
           box-shadow: var(--box-shadow-small);
 

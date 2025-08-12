@@ -51,12 +51,12 @@
         .ant-tabs-tab-active {
           &:hover {
             .ant-tabs-tab-btn {
-              color: var(--color-green-800);
+              color: var(--color-primary-800);
             }
           }
 
           .ant-tabs-tab-btn {
-            color: var(--color-green-800);
+            color: var(--color-primary-800);
             /* color: transparent;
             display: inline;
             -webkit-text-fill-color: transparent;
@@ -71,7 +71,7 @@
 
         .ant-tabs-ink-bar {
           height: 2px;
-          background: var(--color-green-800);
+          background: var(--color-primary-800);
         }
       }
     }

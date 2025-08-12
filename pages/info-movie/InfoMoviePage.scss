@@ -144,10 +144,10 @@
               z-index: 1;
 
               .ant-ribbon {
-                background-color: var(--color-green-800);
+                background-color: var(--color-primary-800);
 
                 &.vip-1 {
-                  background-color: var(--color-green-800);
+                  background-color: var(--color-primary-800);
                 }
 
                 &.vip-2 {
@@ -191,7 +191,7 @@
             z-index: 2;
 
             &:hover {
-              background-color: var(--color-green-800);
+              background-color: var(--color-primary-800);
             }
           }
 

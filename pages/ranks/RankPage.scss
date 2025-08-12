@@ -12,7 +12,7 @@
       transition: opacity 0.15s;
 
       &:hover {
-        color: var(--color-green-800);
+        color: var(--color-primary-800);
       }
     }
 
@@ -59,12 +59,12 @@
               font-weight: 500;
 
               &:hover {
-                color: var(--color-green-800);
+                color: var(--color-primary-800);
               }
             }
 
             &.active {
-              color: var(--color-green-800);
+              color: var(--color-primary-800);
             }
           }
         }

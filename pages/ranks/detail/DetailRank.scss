@@ -20,7 +20,7 @@
 
       .detail-rank-title {
         font-size: 2.5rem;
-        color: var(--color-green-800);
+        color: var(--color-primary-800);
         font-weight: bold;
       }
 
@@ -31,7 +31,7 @@
 
         .ant-btn {
           &:hover {
-            color: var(--color-green-800) !important;
+            color: var(--color-primary-800) !important;
           }
 
           &:active {
@@ -100,7 +100,7 @@
           }
 
           .rank-number {
-            // color: var(--color-green-800);
+            // color: var(--color-primary-800);
             color: var(--text-color-gray);
           }
 
@@ -115,7 +115,7 @@
 
               &:hover {
                 .movie-title {
-                  color: var(--color-green-800);
+                  color: var(--color-primary-800);
                 }
               }
             }
@@ -142,7 +142,7 @@
                 top: 0;
                 bottom: 0;
                 width: calc(var(--width-percent, 1) * 100%);
-                background-color: var(--color-green-800);
+                background-color: var(--color-primary-800);
                 border-radius: 4px;
                 z-index: 1;
               }

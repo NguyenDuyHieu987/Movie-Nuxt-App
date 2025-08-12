@@ -31,7 +31,7 @@
 
     .plan-box-selector {
       position: relative;
-      background-color: var(--color-green-800);
+      background-color: var(--color-primary-800);
       height: var(--plan-box-selector-size);
       display: flex;
       align-items: center;
@@ -87,7 +87,7 @@
       }
 
       &.selected {
-        background-color: var(--color-green-800);
+        background-color: var(--color-primary-800);
         opacity: 1;
         transform: translateX(5%);
         box-shadow: var(--box-shadow-medium1);
@@ -201,7 +201,7 @@
           }
 
           &.selected {
-            color: var(--color-green-800);
+            color: var(--color-primary-800);
             transform: translateX(2%);
             box-shadow: var(--box-shadow-medium1);
 
@@ -210,7 +210,7 @@
             }
 
             .plan-option.support-devices svg {
-              fill: var(--color-green-800);
+              fill: var(--color-primary-800);
             }
 
             td {

@@ -47,7 +47,7 @@
           background-image: linear-gradient(
             to right,
             var(--color-primary-950),
-            var(--color-green-800),
+            var(--color-primary-800),
             var(--color-primary-950)
           );
           background-size: 100% 100%;
@@ -117,7 +117,7 @@
             padding: 10px 15px;
 
             &:hover {
-              /* border-color: var(--color-green-800); */
+              /* border-color: var(--color-primary-800); */
               background-color: var(--background-content-color1);
             }
 

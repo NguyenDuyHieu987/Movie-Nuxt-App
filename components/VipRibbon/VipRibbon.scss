@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   z-index: 1;
-  background-color: var(--color-green-800);
+  background-color: var(--color-primary-800);
   padding: 0px 7px;
   --border-ribbon-vip: 5px;
 
@@ -36,7 +36,7 @@
   }
 
   &.vip-1 {
-    background-color: var(--color-green-800);
+    background-color: var(--color-primary-800);
   }
 
   &.vip-2 {

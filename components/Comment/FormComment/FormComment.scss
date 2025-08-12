@@ -58,7 +58,7 @@
         z-index: 2;
         height: 1px;
         width: 0%;
-        background-color: var(--color-green-800);
+        background-color: var(--color-primary-800);
         transition: all 0.1s;
       }
 
@@ -173,11 +173,11 @@
 
             &.comment-btn {
               padding: 6.5px 15px;
-              /* color: var(--color-green-800); */
+              /* color: var(--color-primary-800); */
               color: #fff;
 
               &:not(:disabled) {
-                background-color: var(--color-green-800);
+                background-color: var(--color-primary-800);
 
                 &:hover {
                   // background-color: var(--color-primary-600);
