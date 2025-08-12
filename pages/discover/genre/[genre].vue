@@ -144,6 +144,7 @@ const {
   `discover/genre/all/${route.params.genre}/${page.value}`,
   () => getMoviesByGenres(route.params.genre as string, '', page.value),
   {
+    lazy: true
     // transform: (data: any) => {
     //   totalPage.value = data?.total;
     //   pageSize.value = data?.page_size;

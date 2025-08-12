@@ -159,6 +159,7 @@ const {
   `discover/year/all/${route.params.year}/${page.value}`,
   () => getMoviesByYear(route.params.year as string, '', page.value),
   {
+    lazy: true
     // transform: (data: any) => {
     //   totalPage.value = data?.total;
     //   pageSize.value = data?.page_size;

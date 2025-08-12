@@ -142,6 +142,7 @@ const {
   `discover/country/all/${route.params.country}/${page.value}`,
   () => getMovieByCountry(route.params.country as string, '', page.value),
   {
+    lazy: true
     // transform: (data: any) => {
     //   totalPage.value = data?.total;
     //   pageSize.value = data?.page_size;
