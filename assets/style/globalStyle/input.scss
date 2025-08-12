@@ -1,9 +1,9 @@
 :root {
   --input-background-color-disabled: #353535;
   --input-border-color: #545454;
-  --input-border-color-focused: #0080ca;
-  --input-border-color-hover: #0080ca;
-  --input-border-color-error: #ff4d4f;
+  --input-border-color-focused: var(--color-primary-600);
+  --input-border-color-hover: var(--color-primary-600);
+  --input-border-color-error: var(--color-error-500);
 }
 
 input,
