@@ -1,11 +1,11 @@
 :root {
   --loading-mask: rgba(0, 0, 0, 0.6);
 
-  --loading-app-color: #0080ca;
+  --loading-app-color: var(--color-primary-700);
   --loading-spinner-color: #fff;
 
-  --loading-progress-bar1: #003984;
-  --loading-progress-bar2: #1cb5e0;
+  --loading-progress-bar1: var(--color-primary-900);
+  --loading-progress-bar2: var(--color-primary-400);
 
   --loading-spinner-color: #303030;
 }
