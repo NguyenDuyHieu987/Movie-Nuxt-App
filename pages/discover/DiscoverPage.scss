@@ -1,4 +1,8 @@
 .discover {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   .discover-title {
     .gradient-title-default {
       margin-top: 15px;
@@ -9,9 +13,9 @@
   }
 
   .discover-section {
-    .loading-page {
-      top: 60%;
+    flex-grow: 1;
 
+    .loading-page {
       svg {
         font-size: 4rem;
         width: 4rem;

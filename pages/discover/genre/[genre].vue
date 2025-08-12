@@ -167,7 +167,9 @@ const pageSize = computed<number>(
   () => dataDiscoverCache.value?.page_size ?? 20
 );
 
-loading.value = false;
+onMounted(() => {
+  loading.value = false;
+});
 
 const onChangePage = async (
   pageSelected: number
