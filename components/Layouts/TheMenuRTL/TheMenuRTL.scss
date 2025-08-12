@@ -10,7 +10,7 @@
   --el-menu-sub-item-height: var(--menu-item-height) !important;
   --el-menu-hover-bg-color: var(--menu-item-background-color) !important;
   // --el-menu-base-level-padding: 20px;
-  --menu-active-text-color: #0092ba;
+  --menu-active-text-color: var(--color-primary-600);
 
   &.el-menu--collapse {
     .el-menu-item {
