@@ -3,6 +3,7 @@
     <a-collapse
       class="filter-collapse"
       :bordered="false"
+      v-model:active-key="activeKey"
     >
       <template #expandIcon="{ isActive }">
         <CaretRightFilled :rotate="isActive ? 90 : 0" />
@@ -23,9 +24,10 @@
                 class="filter-option"
                 :index="index"
                 :class="{
-                  active: route.query?.type
-                    ? item.value == route.query?.type
-                    : item.value == 'all'
+                  active:
+                    route.query?.type && !loadingData
+                      ? item.value == route.query?.type
+                      : item.value == 'all'
                 }"
               >
                 <NuxtLink
@@ -310,6 +312,8 @@ const loadingData = defineModel<boolean>('loading', {
   default: false
 });
 
+const activeKey = ref<string>('');
+
 const { data: listSortBy } = await useAsyncData(
   'sortby/all',
   () => getAllSortBy(),
@@ -323,6 +327,10 @@ const { data: listSortBy } = await useAsyncData(
 const onFilter = () => {
   emits('onFilter');
 };
+
+onMounted(() => {
+  activeKey.value = Object.keys(route.query).length > 0 ? '1' : '';
+});
 </script>
 
 <!-- <style lang="scss" src="./FilterSection.scss"></style> -->
