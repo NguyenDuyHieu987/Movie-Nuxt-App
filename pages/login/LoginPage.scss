@@ -46,9 +46,9 @@
           padding: 6px 15px;
           background-image: linear-gradient(
             to right,
-            var(--app-background-color2),
-            var(--app-background-color),
-            var(--app-background-color2)
+            var(--color-primary-950),
+            var(--color-green-800),
+            var(--color-primary-950)
           );
           background-size: 100% 100%;
           background-position: 100% center;
@@ -117,7 +117,7 @@
             padding: 10px 15px;
 
             &:hover {
-              /* border-color: var(--app-background-color); */
+              /* border-color: var(--color-green-800); */
               background-color: var(--background-content-color1);
             }
 

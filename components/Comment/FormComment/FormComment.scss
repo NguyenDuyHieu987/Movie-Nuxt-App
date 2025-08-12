@@ -58,7 +58,7 @@
         z-index: 2;
         height: 1px;
         width: 0%;
-        background-color: var(--app-background-color);
+        background-color: var(--color-green-800);
         transition: all 0.1s;
       }
 
@@ -173,15 +173,15 @@
 
             &.comment-btn {
               padding: 6.5px 15px;
-              /* color: var(--app-background-color); */
+              /* color: var(--color-green-800); */
               color: #fff;
 
               &:not(:disabled) {
-                background-color: var(--app-background-color);
+                background-color: var(--color-green-800);
 
                 &:hover {
-                  // background-color: var(--app-background-color3);
-                  background-color: var(--app-background-color8);
+                  // background-color: var(--color-primary-600);
+                  background-color: var(--color-primary-800);
                 }
               }
             }

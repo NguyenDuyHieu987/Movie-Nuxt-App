@@ -354,14 +354,14 @@ body > [id|='el-popper-container'],
           // border-bottom: 1px solid var(--border-regular);
 
           &.is-active {
-            color: var(--app-background-color);
+            color: var(--color-green-800);
           }
         }
 
         .el-tabs__active-bar {
           height: 1.5px;
           transition: all 0.15s;
-          background-color: var(--app-background-color);
+          background-color: var(--color-green-800);
         }
       }
     }
@@ -371,7 +371,7 @@ body > [id|='el-popper-container'],
 }
 
 .el-slider {
-  --el-slider-main-bg-color: var(--app-background-color) !important;
+  --el-slider-main-bg-color: var(--color-green-800) !important;
 
   .el-slider__runway {
     .el-slider__button-wrapper {

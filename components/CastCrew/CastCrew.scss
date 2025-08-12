@@ -34,8 +34,8 @@
               -webkit-background-clip: text;
               background-image: linear-gradient(
                 to right,
-                var(--app-background-color2),
-                var(--app-background-color3)
+                var(--color-primary-950),
+                var(--color-primary-600)
               ); */
             }
           }
@@ -51,27 +51,27 @@
         .ant-tabs-tab-active {
           &:hover {
             .ant-tabs-tab-btn {
-              color: var(--app-background-color);
+              color: var(--color-green-800);
             }
           }
 
           .ant-tabs-tab-btn {
-            color: var(--app-background-color);
+            color: var(--color-green-800);
             /* color: transparent;
             display: inline;
             -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
             background-image: linear-gradient(
               to right,
-              var(--app-background-color2),
-              var(--app-background-color3)
+              var(--color-primary-950),
+              var(--color-primary-600)
             ); */
           }
         }
 
         .ant-tabs-ink-bar {
           height: 2px;
-          background: var(--app-background-color);
+          background: var(--color-green-800);
         }
       }
     }

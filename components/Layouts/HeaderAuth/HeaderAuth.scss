@@ -36,7 +36,7 @@ header.header-bar-auth {
     .login-btn {
       font-size: 1.8rem;
       font-weight: 600;
-      color: var(--app-background-color) !important;
+      color: var(--color-green-800) !important;
       user-select: none;
       transition: all 0.15s;
     }
@@ -52,7 +52,7 @@ header.header-bar-auth {
 
       .signup-btn {
         display: inline-block;
-        background-color: var(--app-background-color);
+        background-color: var(--color-green-800);
         padding: 5px 15px;
         color: inherit;
         border-radius: 25px;
@@ -62,7 +62,7 @@ header.header-bar-auth {
         transition: background-color 0.15s;
 
         &:hover {
-          background-color: var(--app-background-color8);
+          background-color: var(--color-primary-800);
         }
       }
     }

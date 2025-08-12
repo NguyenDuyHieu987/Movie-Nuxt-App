@@ -84,8 +84,9 @@ body {
   font-weight: 400;
   font-variant: normal;
   line-height: var(--line-height-regular);
-  font-family: 'Roboto', 'Noto Sans', 'Mulish', 'Source Sans 3',
-    'Plus Jakarta Sans', 'Nunito Sans', sans-serif;
+  font-family:
+    'Roboto', 'Noto Sans', 'Mulish', 'Source Sans 3', 'Plus Jakarta Sans',
+    'Nunito Sans', sans-serif;
   text-rendering: optimizeSpeed;
 }
 
@@ -251,8 +252,8 @@ video {
   a {
     background-image: linear-gradient(
       90deg,
-      var(--app-background-color7),
-      var(--app-background-color3)
+      var(--color-primary-900),
+      var(--color-primary-600)
     );
     /* background-size: 200% auto; */
     background-clip: text;

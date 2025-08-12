@@ -56,7 +56,7 @@
         &.number {
           &.is-active {
             width: 44px;
-            background-color: var(--app-background-color);
+            background-color: var(--color-green-800);
             /* color: var(--text-link-color); */
             color: #fff;
             font-weight: normal;
@@ -155,7 +155,7 @@
       }
 
       &.ant-pagination-item-active {
-        background-color: var(--app-background-color) !important;
+        background-color: var(--color-green-800) !important;
         /* color: var(--text-link-color); */
         color: #fff;
         padding: 0px 2px;

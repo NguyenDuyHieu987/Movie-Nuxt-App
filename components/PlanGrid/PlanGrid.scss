@@ -31,7 +31,7 @@
 
     .plan-box-selector {
       position: relative;
-      background-color: var(--app-background-color);
+      background-color: var(--color-green-800);
       height: var(--plan-box-selector-size);
       display: flex;
       align-items: center;
@@ -49,7 +49,7 @@
         top: 0;
         left: 0;
         padding: 2px 10px;
-        background-color: var(--app-background-color1);
+        background-color: var(--color-pink-700);
         font-size: 1.4rem;
         border-top-left-radius: 3px;
         border-bottom-right-radius: 3px;
@@ -61,12 +61,12 @@
         left: 0;
 
         .ant-ribbon {
-          // background-color: var(--app-background-color1);
-          // color: var(--app-background-color1);
-          background-color: var(--app-background-color3);
+          // background-color: var(--color-pink-700);
+          // color: var(--color-pink-700);
+          background-color: var(--color-primary-600);
 
           &.vip-1 {
-            background-color: var(--app-background-color3);
+            background-color: var(--color-primary-600);
           }
 
           &.vip-2 {
@@ -87,7 +87,7 @@
       }
 
       &.selected {
-        background-color: var(--app-background-color);
+        background-color: var(--color-green-800);
         opacity: 1;
         transform: translateX(5%);
         box-shadow: var(--box-shadow-medium1);
@@ -201,7 +201,7 @@
           }
 
           &.selected {
-            color: var(--app-background-color);
+            color: var(--color-green-800);
             transform: translateX(2%);
             box-shadow: var(--box-shadow-medium1);
 
@@ -210,7 +210,7 @@
             }
 
             .plan-option.support-devices svg {
-              fill: var(--app-background-color);
+              fill: var(--color-green-800);
             }
 
             td {

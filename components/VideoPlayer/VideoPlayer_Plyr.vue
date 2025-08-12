@@ -2,7 +2,7 @@
   <div class="video-player-wrapper">
     <div
       class="video-player"
-      :style="{ '--plyr-color-main': 'var(--app-background-color)' }"
+      :style="{ '--plyr-color-main': 'var(--color-green-800)' }"
     >
       <video
         id="video-player"

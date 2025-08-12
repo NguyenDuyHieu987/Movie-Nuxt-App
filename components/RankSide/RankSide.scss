@@ -48,7 +48,7 @@
         border-radius: 25px;
 
         &:hover {
-          /* background-color: var(--app-background-color); */
+          /* background-color: var(--color-green-800); */
           background-color: #242424;
         }
       }
@@ -62,7 +62,7 @@
         overflow: hidden;
 
         &.active {
-          /* background-color: var(--app-background-color); */
+          /* background-color: var(--color-green-800); */
           background-color: #242424;
           box-shadow: var(--box-shadow-small);
 
@@ -71,8 +71,8 @@
             background-clip: text;
             background-image: linear-gradient(
               to right,
-              var(--app-background-color7),
-              var(--app-background-color3)
+              var(--color-primary-900),
+              var(--color-primary-600)
             );
 
             /* &::before {

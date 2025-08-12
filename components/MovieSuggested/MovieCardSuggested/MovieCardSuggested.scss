@@ -145,7 +145,7 @@
 
         &:hover {
           svg {
-            // fill: var(--app-background-color);
+            // fill: var(--color-green-800);
             transform: scale(1.3);
           }
         }
@@ -164,7 +164,7 @@
       bottom: 0;
       height: 3px;
       width: var(--percent-viewed);
-      background-color: var(--app-background-color3);
+      background-color: var(--color-primary-600);
       z-index: 1;
     }
 

@@ -2,10 +2,11 @@ footer.footer {
   position: relative;
   padding: 25px 50px;
   /* background-color: var(--background-content-color); */
-  background: linear-gradient(
+  background:
+    linear-gradient(
       10deg,
       rgba(0, 141, 223, 0) 58%,
-      var(--app-background-color) 128%
+      var(--color-green-800) 128%
     ),
     var(--background-content-color);
 

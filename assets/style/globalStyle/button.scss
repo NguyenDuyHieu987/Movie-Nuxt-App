@@ -1,12 +1,12 @@
 :root {
-  --btn-background-color-primary: var(--app-background-color);
+  --btn-background-color-primary: var(--color-green-800);
   --btn-background-color-gray: #1e1e1e;
   --btn-disabled-background-color: #9494947d;
   --btn-border-color: #757575;
   --btn-hover-border-color: #c1c1c1;
-  --btn-focused-outline-color: #0091ff4d;
-  --btn-primary-color: #0094ea;
-  --btn-danger-color: #ff4d4f;
+  --btn-focused-outline-color: var(--color-primary-900);
+  --btn-primary-color: var(--color-primary-600);
+  --btn-danger-color: var(--color-error-500);
 
   --btn-focused-outline: 4px solid var(--btn-focused-outline-color);
 }
@@ -68,10 +68,10 @@
   }
 
   &.ant-btn-primary:not([disabled]) {
-    border-color: var(--app-background-color);
+    border-color: var(--color-green-800);
 
     &:hover {
-      border-color: var(--app-background-color);
+      border-color: var(--color-green-800);
     }
   }
 
@@ -180,9 +180,9 @@
   &.gradient {
     background: linear-gradient(
       to right,
-      var(--app-background-color3),
-      var(--app-background-color2),
-      var(--app-background-color3)
+      var(--color-primary-600),
+      var(--color-primary-950),
+      var(--color-primary-600)
     );
     background-size: 200% 100%;
     padding: 7px 35px;

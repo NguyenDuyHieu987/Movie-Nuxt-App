@@ -109,7 +109,7 @@
 
               //   &.ant-input-number-focused {
               //     .ant-input-number-input-wrap {
-              //       outline: 1px solid var(--app-background-color);
+              //       outline: 1px solid var(--color-green-800);
               //     }
               //   }
               // }
@@ -124,7 +124,7 @@
         width: 100%;
 
         &:not(:disabled) {
-          background-color: var(--app-background-color);
+          background-color: var(--color-green-800);
         }
 
         /* &:disabled {

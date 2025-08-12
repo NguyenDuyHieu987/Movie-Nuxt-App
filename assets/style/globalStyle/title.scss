@@ -11,8 +11,8 @@
     border-radius: 2px;
     background: linear-gradient(
       to bottom,
-      var(--app-background-color7),
-      var(--app-background-color3)
+      var(--color-primary-900),
+      var(--color-primary-600)
     );
   }
 }
@@ -30,8 +30,8 @@
     font-weight: 500;
     background-image: linear-gradient(
       to right,
-      var(--app-background-color7),
-      var(--app-background-color3)
+      var(--color-primary-900),
+      var(--color-primary-600)
     );
   }
 
@@ -48,8 +48,8 @@
 
       background-image: linear-gradient(
         to right,
-        var(--app-background-color3),
-        var(--app-background-color7)
+        var(--color-primary-600),
+        var(--color-primary-900)
       );
     }
   }
@@ -71,8 +71,8 @@
     font-weight: 500;
     background-image: linear-gradient(
       to right,
-      var(--app-background-color7),
-      var(--app-background-color3)
+      var(--color-primary-900),
+      var(--color-primary-600)
     );
   }
 
@@ -83,8 +83,8 @@
     width: 100%;
     background-image: linear-gradient(
       to right,
-      var(--app-background-color3),
-      var(--app-background-color7)
+      var(--color-primary-600),
+      var(--color-primary-900)
     );
     left: 0;
     bottom: -5px;

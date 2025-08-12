@@ -238,7 +238,7 @@ header.header-bar-center-page {
             border-radius: 25px;
             line-height: var(--button-line-height);
             border: 1px solid var(--border-regular);
-            /* background-color: var(--app-background-color) */
+            /* background-color: var(--color-green-800) */
             /* background-color: #003c52; */
             color: inherit;
             user-select: none;
@@ -247,7 +247,7 @@ header.header-bar-center-page {
             &:hover {
               background-color: #282828;
               border: 1px solid transparent;
-              /* background-color: var(--app-background-color8) */
+              /* background-color: var(--color-primary-800) */
               /* background-color: #0043743c; */
             }
           }

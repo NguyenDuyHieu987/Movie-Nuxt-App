@@ -135,7 +135,7 @@ onBeforeMount(async () => {
     z-index: 1;
 
     svg {
-      fill: var(--app-background-color);
+      fill: var(--color-green-800);
       width: 4rem;
       height: 4rem;
     }
