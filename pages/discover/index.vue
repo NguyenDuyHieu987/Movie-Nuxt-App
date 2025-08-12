@@ -155,8 +155,19 @@ const pageSize = computed<number>(
 );
 
 onMounted(() => {
-  loading.value = false;
+  if (status.value == 'success') {
+    loading.value = false;
+  }
 });
+
+watch(
+  () => status.value,
+  () => {
+    if (status.value == 'success') {
+      loading.value = false;
+    }
+  }
+);
 
 watch(
   formFilter,
