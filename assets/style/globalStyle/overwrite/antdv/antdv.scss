@@ -675,6 +675,21 @@
 .ant-checkbox-wrapper {
   color: inherit;
 
+  &:not(.ant-checkbox-wrapper-disabled):hover
+    .ant-checkbox-checked:not(.ant-checkbox-disabled)
+    .ant-checkbox-inner {
+    background-color: var(--color-primary-500);
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--color-primary-600);
+    border-color: var(--color-primary-700);
+  }
+
+  .ant-checkbox-checked::after {
+    border-color: var(--color-primary-500) !important;
+  }
+
   span {
     user-select: none;
   }
