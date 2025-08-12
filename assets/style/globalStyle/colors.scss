@@ -1,16 +1,4 @@
 :root {
-  --text-color: #f1f1f1;
-  --text-color-inverted: #0f0f0f;
-  --text-color-black: #0f0f0f;
-  --text-color-gray: #6f6f6f;
-  --text-color-gray1: #474747;
-  --text-label-color: #888888;
-  --text-button-disabled-color: #979797;
-  --text-link-color: #0083cf;
-  --text-link-color-hover: #08659b;
-  --text-danger-color: #ff3236;
-  --text-placeholder-color: #7e7e7e;
-
   // Common colors
   --color-black: #000;
   --color-white: #fff;
@@ -122,7 +110,7 @@
   --color-gray-900: #111827;
   --color-gray-950: #030712;
 
-  // Custom colors
+  // App colors
   --color-primary-50: var(--color-red-50, #effdf5);
   --color-primary-100: var(--color-red-100, #d9fbe8);
   --color-primary-200: var(--color-red-200, #b3f5d1);
@@ -218,6 +206,19 @@
   --color-important-800: var(--color-violet-800, #5b21b6);
   --color-important-900: var(--color-violet-900, #4c1d95);
   --color-important-950: var(--color-violet-950, #2e1065);
+
+  // Custom colors
+  --text-color: #f1f1f1;
+  --text-color-inverted: #0f0f0f;
+  --text-color-black: #0f0f0f;
+  --text-color-gray: #6f6f6f;
+  --text-color-gray1: #474747;
+  --text-label-color: #888888;
+  --text-button-disabled-color: #979797;
+  --text-link-color: var(--color-primary-700);
+  --text-link-color-hover: var(--color-primary-800);
+  --text-danger-color: var(--color-error-500);
+  --text-placeholder-color: #7e7e7e;
 }
 
 html.dark {
