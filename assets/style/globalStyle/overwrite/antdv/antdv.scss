@@ -693,6 +693,12 @@
   span {
     user-select: none;
   }
+
+  &:hover {
+    .ant-checkbox-inner {
+      border-color: var(--color-primary-500) !important;
+    }
+  }
 }
 
 .ant-ribbon-wrapper {
