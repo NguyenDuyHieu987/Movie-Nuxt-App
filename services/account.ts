@@ -35,7 +35,7 @@ export function AccountConfirm(
   });
 }
 
-export function ChangePassword(params: { otp: string; chgPwdToken: string }) {
+export function ChangePassword(params: { otp: string }) {
   const bodyFormData = new FormData();
   bodyFormData.append('otp', params.otp);
 
@@ -46,7 +46,7 @@ export function ChangePassword(params: { otp: string; chgPwdToken: string }) {
   });
 }
 
-export function VerifyEmail(params: { otp: string; vrfEmailToken: string }) {
+export function VerifyEmail(params: { otp: string }) {
   const bodyFormData = new FormData();
   bodyFormData.append('otp', params.otp);
 

@@ -14,9 +14,9 @@ function getCookie(cname: string) {
 
   if (import.meta.client) {
     decodedCookie = decodeURIComponent(document.cookie);
-    const ca = decodedCookie.split(';');
+    const ca: string[] = decodedCookie.split(';');
     for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
+      let c: string = ca[i]!;
       while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
@@ -31,9 +31,7 @@ function getCookie(cname: string) {
   return null;
 }
 
-export const customCookie = () => {
-  return {
-    setCookie,
-    getCookie
-  };
+export const customCookie = {
+  setCookie,
+  getCookie
 };

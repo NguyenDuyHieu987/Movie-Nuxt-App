@@ -330,8 +330,8 @@ const handleSignUp = async (e: any) => {
   if (loadingSignUp.value) return;
 
   if (
-    otpExpOffset.value > 0 ||
-    utils.cookie.getCookie(TOKEN.NAME.COOKIE_VRF_SIGNUP_TOKEN) != null
+    otpExpOffset.value > 0
+    // || utils.cookie.getCookie(TOKEN.NAME.COOKIE_VRF_SIGNUP_TOKEN) != null
   ) {
     showAnimation.value = false;
 
@@ -374,10 +374,9 @@ const handleSignUp = async (e: any) => {
           duration: MESSAGE.DURATION.SLOW
         });
 
-        // vrfSignupToken.value = response.headers.get('Authorization');
-        vrfSignupToken.value = utils.cookie.getCookie(
-          TOKEN.NAME.COOKIE_VRF_SIGNUP_TOKEN
-        )!;
+        // vrfSignupToken.value = utils.cookie.getCookie(
+        //   TOKEN.NAME.COOKIE_VRF_SIGNUP_TOKEN
+        // )!;
         otpExpOffset.value = response.exp_offset;
 
         showAnimation.value = false;
@@ -447,10 +446,9 @@ const handleResendVerifyEmail = () => {
 
         disabled_countdown.value = true;
 
-        // vrfSignupToken.value = response.headers.get('Authorization');
-        vrfSignupToken.value = utils.cookie.getCookie(
-          TOKEN.NAME.COOKIE_VRF_SIGNUP_TOKEN
-        )!;
+        // vrfSignupToken.value = utils.cookie.getCookie(
+        //   TOKEN.NAME.COOKIE_VRF_SIGNUP_TOKEN
+        // )!;
         otpExpOffset.value = response.exp_offset;
       } else if (response?.isInValidEmail == true) {
         ElNotification.error({
@@ -496,8 +494,8 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
   loadingVerify.value = true;
 
   signUp({
-    otp: formVerify.otp,
-    vrfSignupToken: vrfSignupToken.value
+    otp: formVerify.otp
+    // vrfSignupToken: vrfSignupToken.value
   })
     .then(async (response) => {
       // console.log(response);

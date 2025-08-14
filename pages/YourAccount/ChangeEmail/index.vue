@@ -21,7 +21,7 @@
 
             <div class="verifyEmail-header">
               <div class="note">
-                <SecurityCheck
+                <SvgoSecurityCheck
                   width="8rem"
                   height="8rem"
                   fill="currentColor"
@@ -51,7 +51,7 @@
                   html-type="submit"
                 >
                   <div class="left">
-                    <EmailIcon
+                    <SvgoEmail
                       width="3rem"
                       height="3rem"
                       fill="currentColor"
@@ -60,7 +60,7 @@
                   </div>
 
                   <div class="right">
-                    <ChevronRight1
+                    <SvgoChevronRight1
                       width="2.4rem"
                       height="2.4rem"
                       fill="currentColor"
@@ -161,9 +161,9 @@
 </template>
 
 <script setup lang="ts">
-import SecurityCheck from '~/assets/svgs/icons/security-check.svg?component';
-import EmailIcon from '~/assets/svgs/icons/email.svg?component';
-import ChevronRight1 from '~/assets/svgs/icons/chevron-right-1.svg?component';
+// import SvgoSecurityCheck from '~/assets/svgs/icons/security-check.svg?component';
+// import SvgoEmail from '~/assets/svgs/icons/email.svg?component';
+// import SvgoChevronRight1 from '~/assets/svgs/icons/chevron-right-1.svg?component';
 
 // import { BackPage } from '~/components/BackPage';
 // import { RequireAuth } from '~/components/RequireAuth';
@@ -187,7 +187,7 @@ definePageMeta({
 
 const authStore = useAuthStore();
 const utils = useUtils();
-const { isLogin } = storeToRefs<any>(authStore);
+const { isLogin } = storeToRefs(authStore);
 const loadingVerifyEmail = ref<boolean>(false);
 const loadingChangeEmail = ref<boolean>(false);
 const formVerifyEmail = reactive<{
@@ -284,8 +284,8 @@ const handleSubmitVerifyEmail = async () => {
   if (loadingVerifyEmail.value) return;
 
   if (
-    otpExpOffset.value > 0 ||
-    utils.cookie.getCookie(TOKEN.NAME.COOKIE_VRF_EMAIL_TOKEN) != null
+    otpExpOffset.value > 0
+    // || utils.cookie.getCookie(TOKEN.NAME.COOKIE_VRF_EMAIL_TOKEN) != null
   ) {
     showAnimation.value = false;
 
@@ -311,9 +311,9 @@ const handleSubmitVerifyEmail = async () => {
           duration: MESSAGE.DURATION.SLOW
         });
 
-        vrfEmailToken.value = utils.cookie.getCookie(
-          TOKEN.NAME.COOKIE_VRF_EMAIL_TOKEN
-        )!;
+        // vrfEmailToken.value = utils.cookie.getCookie(
+        //   TOKEN.NAME.COOKIE_VRF_EMAIL_TOKEN
+        // )!;
         otpExpOffset.value = response.exp_offset;
 
         showAnimation.value = false;
@@ -355,8 +355,7 @@ const handleVerify = (formVerify: any) => {
   loadingVerify.value = true;
 
   VerifyEmail({
-    otp: formVerify.otp,
-    vrfEmailToken: vrfEmailToken.value
+    otp: formVerify.otp
   })
     .then(async (response) => {
       // console.log(response);
@@ -418,9 +417,9 @@ const handleResendVerifyEmail = () => {
 
         disabled_countdown.value = true;
 
-        vrfEmailToken.value = utils.cookie.getCookie(
-          TOKEN.NAME.COOKIE_VRF_EMAIL_TOKEN
-        )!;
+        // vrfEmailToken.value = utils.cookie.getCookie(
+        //   TOKEN.NAME.COOKIE_VRF_EMAIL_TOKEN
+        // )!;
         otpExpOffset.value = response.exp_offset;
       } else {
         ElNotification.error({

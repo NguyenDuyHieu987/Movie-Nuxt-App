@@ -9,8 +9,11 @@ const breakpoints = useBreakpoints({
 });
 
 const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
-  [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false,
-  [STORAGE.APP_STATES.URL_LOGIN_BACK]: '/'
+  [STORAGE.APP_STATES.COLLAPSED_SIDEBAR]: false
+});
+
+const appStorageData = useLocalStorage(STORAGE.APP_DATA.KEY, {
+  [STORAGE.APP_DATA.URL_LOGIN_BACK]: '/'
 });
 
 export default defineStore('store', () => {
@@ -36,7 +39,7 @@ export default defineStore('store', () => {
   const allCountries = ref<country[]>([]);
   const allYears = ref<year[]>([]);
   const urlLoginBack = computed<string>(() =>
-    appStorageStates.value[STORAGE.APP_STATES.URL_LOGIN_BACK].toString()
+    appStorageData.value[STORAGE.APP_DATA.URL_LOGIN_BACK]!.toString()
   );
 
   watch(collapsed, (newVal, oldVal) => {

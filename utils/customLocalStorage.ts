@@ -1,3 +1,5 @@
+import type { user } from '~/types';
+
 function setWithExpiry(key: string, value: any, ttl: number) {
   const now = new Date();
 
@@ -69,10 +71,35 @@ export function getWithExpiry_ExpRemain(key: any) {
   return item.value;
 }
 
-export const customLocalStorage = () => {
-  return {
-    setWithExpiry,
-    getWithExpiry,
-    getWithExpiry_ExpRemain
-  };
+export function saveAccountsLoggedIn(
+  userAccount: user,
+  token: string,
+  accounts_logged_in?: string
+): any[] {
+  let accounts: any[] = [];
+
+  try {
+    accounts = JSON.parse(accounts_logged_in || '[]');
+  } catch (e) {
+    accounts = [];
+  }
+
+  const index = accounts.findIndex((acc) => acc.user_id === userAccount.id);
+  if (index !== -1) {
+    accounts[index].token = token;
+  } else {
+    accounts.push({
+      user_id: userAccount.id,
+      token: token
+    });
+  }
+
+  return accounts;
+}
+
+export const customLocalStorage = {
+  setWithExpiry,
+  getWithExpiry,
+  getWithExpiry_ExpRemain,
+  saveAccountsLoggedIn
 };

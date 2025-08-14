@@ -211,8 +211,8 @@ const tokenClient = ref<any>();
 const disabled = computed<boolean>((): boolean => {
   return !(utils.isEmailValid(formLogin.username) && formLogin.password);
 });
-const appStorageStates = useLocalStorage(STORAGE.APP_STATES.KEY, {
-  [STORAGE.APP_STATES.URL_LOGIN_BACK]: '/'
+const appStorageData = useLocalStorage(STORAGE.APP_DATA.KEY, {
+  [STORAGE.APP_DATA.URL_LOGIN_BACK]: '/'
 });
 
 const reset = () => {
@@ -222,8 +222,8 @@ const reset = () => {
 };
 
 onBeforeMount(() => {
-  appStorageStates.value[STORAGE.APP_STATES.URL_LOGIN_BACK] = router.options
-    .history.state?.back
+  appStorageData.value[STORAGE.APP_DATA.URL_LOGIN_BACK] = router.options.history
+    .state?.back
     ? [
         '/signup',
         '/oauth',
@@ -236,7 +236,7 @@ onBeforeMount(() => {
           .startsWith(item)
       )
       ? '/'
-      : router.options.history.state.back
+      : (router.options.history.state.back as string)
     : '/';
 
   utils.initFacebookSdk();
@@ -303,6 +303,15 @@ const handleLogin = () => {
           response.headers.get('Authorization'),
           TOKEN.OFFSET.USER_TOKEN
         );
+
+        appStorageData.value[STORAGE.APP_DATA.ACCOUNTS_LOGGED_IN] =
+          JSON.stringify(
+            utils.localStorage.saveAccountsLoggedIn(
+              authStore.userAccount!,
+              utils.cookie.getCookie(TOKEN.NAME.REFRESH_TOKEN)!,
+              appStorageData.value[STORAGE.APP_DATA.ACCOUNTS_LOGGED_IN]
+            )
+          );
 
         // await navigateTo({ path: '/' });
 

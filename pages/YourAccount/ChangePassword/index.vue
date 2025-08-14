@@ -162,7 +162,7 @@ definePageMeta({
 
 const utils = useUtils();
 const authStore = useAuthStore();
-const { isLogin } = storeToRefs<any>(authStore);
+const { isLogin } = storeToRefs(authStore);
 const loadingChangePassword = ref<boolean>(false);
 const formChangePassword = reactive<{
   oldPassword: string;
@@ -273,8 +273,8 @@ const handleSubmit = async () => {
   if (loadingChangePassword.value) return;
 
   if (
-    otpExpOffset.value > 0 ||
-    utils.cookie.getCookie(TOKEN.NAME.COOKIE_CHG_PASSWORD_TOKEN) != null
+    otpExpOffset.value > 0
+    // || utils.cookie.getCookie(TOKEN.NAME.COOKIE_CHG_PASSWORD_TOKEN) != null
   ) {
     showAnimation.value = false;
 
@@ -309,9 +309,9 @@ const handleSubmit = async () => {
           duration: MESSAGE.DURATION.SLOW
         });
 
-        chgPwdToken.value = utils.cookie.getCookie(
-          TOKEN.NAME.COOKIE_CHG_PASSWORD_TOKEN
-        )!;
+        // chgPwdToken.value = utils.cookie.getCookie(
+        //   TOKEN.NAME.COOKIE_CHG_PASSWORD_TOKEN
+        // )!;
         otpExpOffset.value = response.exp_offset;
 
         // router.push({
@@ -358,8 +358,7 @@ const handleVerify = (formVerify: { otp: string; token: string }) => {
   loadingVerify.value = true;
 
   ChangePassword({
-    otp: formVerify.otp,
-    chgPwdToken: chgPwdToken.value
+    otp: formVerify.otp
   })
     .then(async (response) => {
       // console.log(response);
@@ -441,9 +440,9 @@ const handleResendVerifyEmail = () => {
 
         disabled_countdown.value = true;
 
-        chgPwdToken.value = utils.cookie.getCookie(
-          TOKEN.NAME.COOKIE_CHG_PASSWORD_TOKEN
-        )!;
+        // chgPwdToken.value = utils.cookie.getCookie(
+        //   TOKEN.NAME.COOKIE_CHG_PASSWORD_TOKEN
+        // )!;
         otpExpOffset.value = response.exp_offset;
       } else if (response?.isWrongPassword == true) {
         ElNotification.error({

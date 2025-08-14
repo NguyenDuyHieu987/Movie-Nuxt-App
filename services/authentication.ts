@@ -83,15 +83,12 @@ export function verifySignUp(params: any, type: string) {
   });
 }
 
-export function signUp(params: { otp: string; vrfSignupToken: string }) {
+export function signUp(params: { otp: string }) {
   const bodyFormData = new FormData();
   bodyFormData.append('otp', params.otp);
 
-  const headers = { Authorization: `Bearer ${params.vrfSignupToken}` };
-
   return makeRequest(`/${PREFIX_ROUTE}/signup`, null, {
     method: 'POST',
-    // headers: headers,
     data: bodyFormData,
     getResponseHeaders: true
   });

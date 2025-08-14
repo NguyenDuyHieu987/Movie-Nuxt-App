@@ -22,17 +22,12 @@ export const useAuthStore = defineStore('auth', () => {
   const utils = useUtils();
   const store = useStore();
 
-  const userToken = computed<string>(
-    () =>
-      utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN) ||
-      utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN)
+  const userToken = computed<string>(() =>
+    utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
   );
   const localUserToken = computed<string>(() =>
     utils.localStorage.getWithExpiry(TOKEN.NAME.USER_TOKEN)
   );
-  // const cookieUserToken = computed<string | null>(() =>
-  //   utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN)
-  // );
 
   const loadUser = async () => {
     loadingUser.value = true;
@@ -57,14 +52,14 @@ export const useAuthStore = defineStore('auth', () => {
 
           if (
             localUserToken.value != response.headers.get('Authorization') ||
-            localUserToken.value !=
-              utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
+            // localUserToken.value !=
+            //   utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN) ||
             !localUserToken.value
           ) {
             utils.localStorage.setWithExpiry(
               TOKEN.NAME.USER_TOKEN,
-              response.headers.get('Authorization') ||
-                utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN),
+              response.headers.get('Authorization'),
+              //  || utils.cookie.getCookie(TOKEN.NAME.USER_TOKEN),
               TOKEN.OFFSET.USER_TOKEN
             );
           }
