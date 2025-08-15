@@ -7,6 +7,7 @@
       <div class="top">
         <div class="backdrop">
           <NuxtLink
+            v-if="dataRow?.length"
             class="img-box ratio-16-9"
             :to="{
               path: `/play-${dataMovie?.media_type}/${dataMovie?.id}`
@@ -38,7 +39,7 @@
           </NuxtLink>
 
           <div
-            v-if="!dataRow?.length"
+            v-else
             class="img-box"
           >
             <NuxtImg
@@ -52,15 +53,7 @@
 
         <NuxtImg
           class="overlay-image"
-          :src="
-            getImage(
-              topicImage || 'topic1.jpg',
-              topicImage == 'topic1.jpg' || topicImage == undefined
-                ? 'misc'
-                : 'backdrop',
-              { h: 300 }
-            )
-          "
+          :src="topicImageUrl"
           loading="lazy"
           alt=""
         />
@@ -197,7 +190,16 @@ const utils = useUtils();
 const topicRow = ref<HTMLElement>();
 const valueSearch = defineModel<string>('valueInput');
 const dataRow = defineModel<any>('dataRow');
-const dataMovie = ref<any>(dataRow.value[0].movieData || {});
+const dataMovie = ref<any>(dataRow.value[0]?.movieData || {});
+const topicImageUrl = computed<string>(() =>
+  getImage(
+    props.topicImage || 'topic1.jpg',
+    props.topicImage == 'topic1.jpg' || props.topicImage == undefined
+      ? 'misc'
+      : 'backdrop',
+    { h: 300 }
+  )
+);
 
 watch(dataRow, (newVal, oldVal) => {
   if (newVal?.length > 0) {
