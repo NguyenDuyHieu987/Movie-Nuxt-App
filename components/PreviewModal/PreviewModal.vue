@@ -372,7 +372,11 @@ import { getCountryByOriginalCountry } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getGenreById } from '~/services/genres';
-import { getItemList } from '~/services/list';
+import {
+  getItemList,
+  handleAddItemToList,
+  handleRemoveItemFromList
+} from '~/services/list';
 import { getItemHistory } from '~/services/history';
 import { getVideo } from '~/services/video';
 import type { genre } from '~/types';
@@ -750,17 +754,14 @@ const handleAddToList = (e: any) => {
   if (!isAddToList.value) {
     isAddToList.value = true;
     if (
-      !utils.handleAddItemToList(
-        dataMovie.value?.id,
-        dataMovie.value?.media_type
-      )
+      !handleAddItemToList(dataMovie.value?.id, dataMovie.value?.media_type)
     ) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
     if (
-      !utils.handleRemoveItemFromList(
+      !handleRemoveItemFromList(
         dataMovie.value?.id,
         dataMovie.value?.media_type
       )

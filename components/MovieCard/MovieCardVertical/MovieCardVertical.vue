@@ -257,7 +257,11 @@
 
 import { getGenreById } from '~/services/genres';
 import { getImage } from '~/services/image';
-import { getItemList } from '~/services/list';
+import {
+  getItemList,
+  handleAddItemToList,
+  handleRemoveItemFromList
+} from '~/services/list';
 import { getItemHistory } from '~/services/history';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
@@ -425,18 +429,13 @@ const handleAddToList = (e: any) => {
 
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (
-      !utils.handleAddItemToList(props.item?.id, dataMovie.value?.media_type)
-    ) {
+    if (!handleAddItemToList(props.item?.id, dataMovie.value?.media_type)) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
     if (
-      !utils.handleRemoveItemFromList(
-        props.item?.id,
-        dataMovie.value?.media_type
-      )
+      !handleRemoveItemFromList(props.item?.id, dataMovie.value?.media_type)
     ) {
       isAddToList.value = true;
     }

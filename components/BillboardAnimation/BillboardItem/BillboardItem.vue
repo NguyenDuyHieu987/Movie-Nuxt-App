@@ -230,7 +230,11 @@
 // import SvgoCheck from '~/assets/svgs/icons/check.svg?component';
 // import SvgoPngegg from '~/assets/svgs/icons/pngegg-icon.svg?component';
 import { getImage } from '~/services/image';
-import { getItemList } from '~/services/list';
+import {
+  getItemList,
+  handleAddItemToList,
+  handleRemoveItemFromList
+} from '~/services/list';
 
 const props = defineProps<{
   item: any;
@@ -268,18 +272,13 @@ const handleAddToList = () => {
 
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (
-      !utils.handleAddItemToList(dataMovie.value.id, dataMovie.value.media_type)
-    ) {
+    if (!handleAddItemToList(dataMovie.value.id, dataMovie.value.media_type)) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
     if (
-      !utils.handleRemoveItemFromList(
-        dataMovie.value.id,
-        dataMovie.value.media_type
-      )
+      !handleRemoveItemFromList(dataMovie.value.id, dataMovie.value.media_type)
     ) {
       isAddToList.value = true;
     }

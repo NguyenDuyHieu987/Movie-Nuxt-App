@@ -1,4 +1,5 @@
 import { makeRequest } from './makeRequest';
+import { ElNotification } from 'element-plus';
 
 const PREFIX_ROUTE = 'list';
 
@@ -52,4 +53,118 @@ export function removeAllItemList() {
   return makeRequest(`/${PREFIX_ROUTE}/clear`, null, {
     method: 'DELETE'
   });
+}
+
+export async function handleAddItemToList(
+  movieId: string,
+  media_type: string
+): Promise<boolean> {
+  return addItemList({
+    movie_id: movieId,
+    media_type
+  })
+    .then((response) => {
+      if (response?.success == true) {
+        ElNotification.success({
+          title: MESSAGE.STATUS.SUCCESS,
+          message: 'Thêm phim vào danh sách thành công.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+
+        return true;
+      } else {
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Thêm phim vào danh sách thất bại.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+        return false;
+      }
+    })
+    .catch((e) => {
+      ElNotification.error({
+        title: MESSAGE.STATUS.FAILED,
+        message: 'Thêm phim vào danh sách thất bại.',
+        position: 'bottom-right',
+        duration: MESSAGE.DURATION.FAST
+      });
+
+      return false;
+    });
+}
+
+export async function handleRemoveItemFromList(
+  movieId: string,
+  media_type: string
+): Promise<boolean> {
+  return removeItemList({
+    movie_id: movieId,
+    media_type
+  })
+    .then((response) => {
+      if (response?.success == true) {
+        ElNotification.success({
+          title: MESSAGE.STATUS.SUCCESS,
+          message: 'Xóa phim khỏi danh sách thành công.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+
+        return true;
+      } else {
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Xóa phim khỏi danh sách thất bại.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+        return false;
+      }
+    })
+    .catch((e) => {
+      ElNotification.error({
+        title: MESSAGE.STATUS.FAILED,
+        message: 'Xóa phim khỏi danh sách thất bại.',
+        position: 'bottom-right',
+        duration: MESSAGE.DURATION.FAST
+      });
+
+      return false;
+    });
+}
+
+export async function handleRemoveAllitemFromList(): Promise<boolean> {
+  return removeAllItemList()
+    .then((response) => {
+      if (response?.success == true) {
+        ElNotification.success({
+          title: MESSAGE.STATUS.SUCCESS,
+          message: 'Xóa tất cả phim khỏi lịch sử xem thành công.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+
+        return response?.results?.length == 0;
+      } else {
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Xóa tất cả phim khỏi lịch sử xem thất bại.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+        return false;
+      }
+    })
+    .catch((e) => {
+      ElNotification.error({
+        title: MESSAGE.STATUS.FAILED,
+        message: 'Xóa tất cả phim khỏi lịch sử xem thất bại.',
+        position: 'bottom-right',
+        duration: MESSAGE.DURATION.FAST
+      });
+
+      return false;
+    });
 }

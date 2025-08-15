@@ -20,13 +20,8 @@ export const useUtils = () => {
     minmax,
     serialize,
     slugifyString,
-    handleAddItemToList,
     viewFormatter,
     encryptPassword,
-    handleRemoveItemFromList,
-    handleRemoveAllitemFromList,
-    handleRemoveItemFromHistory,
-    handleRemoveAllitemFromHistory,
     initFacebookSdk,
     cookie: customCookie,
     localStorage: customLocalStorage,
@@ -166,7 +161,6 @@ export * from './customLocalStorage';
 export * from './dateTimeFormater';
 export * from './encryptPassword';
 export * from './facebookService';
-export * from './handleAddRemoveItemList_History';
 export * from './initFacebookSDK';
 export * from './messageModal';
 export * from './removeVietnameseTones';

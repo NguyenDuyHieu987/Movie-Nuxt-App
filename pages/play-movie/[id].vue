@@ -395,7 +395,11 @@ import {
   getMovieByType_Id,
   UpdateViewMovie
 } from '~/services/movie';
-import { getItemList } from '~/services/list';
+import {
+  getItemList,
+  handleAddItemToList,
+  handleRemoveItemFromList
+} from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 import throttle from 'lodash/throttle';
@@ -677,12 +681,12 @@ const handleAddToList = () => {
   }
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (!utils.handleAddItemToList(dataMovie.value?.id, 'movie')) {
+    if (!handleAddItemToList(dataMovie.value?.id, 'movie')) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
-    if (!utils.handleRemoveItemFromList(dataMovie.value?.id, 'movie')) {
+    if (!handleRemoveItemFromList(dataMovie.value?.id, 'movie')) {
       isAddToList.value = true;
     }
   }

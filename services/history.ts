@@ -1,4 +1,5 @@
 import { makeRequest } from './makeRequest';
+import { ElNotification } from 'element-plus';
 
 const PREFIX_ROUTE = 'history';
 
@@ -65,4 +66,76 @@ export function removeAllItemHistory() {
   return makeRequest(`/${PREFIX_ROUTE}/clear`, null, {
     method: 'DELETE'
   });
+}
+
+export async function handleRemoveItemFromHistory(
+  movieId: string,
+  media_type: string
+): Promise<boolean> {
+  return removeItemHistory({
+    movie_id: movieId,
+    media_type
+  })
+    .then((response) => {
+      if (response?.success == true) {
+        ElNotification.success({
+          title: MESSAGE.STATUS.SUCCESS,
+          message: 'Xóa phim khỏi lịch sử xem thành công.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+        return true;
+      } else {
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Xóa phim khỏi lịch sử xem thất bại.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+        return false;
+      }
+    })
+    .catch((e) => {
+      ElNotification.error({
+        title: MESSAGE.STATUS.FAILED,
+        message: 'Xóa phim khỏi lịch sử xem thất bại.',
+        position: 'bottom-right',
+        duration: MESSAGE.DURATION.FAST
+      });
+
+      return false;
+    });
+}
+
+export async function handleRemoveAllitemFromHistory(): Promise<boolean> {
+  return removeAllItemHistory()
+    .then((response) => {
+      if (response?.success == true) {
+        ElNotification.success({
+          title: MESSAGE.STATUS.SUCCESS,
+          message: 'Xóa tất cả phim khỏi lịch sử xem thành công.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+        return response?.results?.length == 0;
+      } else {
+        ElNotification.error({
+          title: MESSAGE.STATUS.FAILED,
+          message: 'Xóa tất cả phim khỏi lịch sử xem thất bại.',
+          position: 'bottom-right',
+          duration: MESSAGE.DURATION.FAST
+        });
+        return false;
+      }
+    })
+    .catch((e) => {
+      ElNotification.error({
+        title: MESSAGE.STATUS.FAILED,
+        message: 'Xóa tất cả phim khỏi lịch sử xem thất bại.',
+        position: 'bottom-right',
+        duration: MESSAGE.DURATION.FAST
+      });
+
+      return false;
+    });
 }

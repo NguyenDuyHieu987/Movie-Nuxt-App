@@ -423,7 +423,11 @@ import { getGenreById } from '~/services/genres';
 import { getCountryByOriginalCountry } from '~/services/country';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
-import { getItemList } from '~/services/list';
+import {
+  getItemList,
+  handleAddItemToList,
+  handleRemoveItemFromList
+} from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 import throttle from 'lodash/throttle';
@@ -735,12 +739,12 @@ const handleAddToList = () => {
   }
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (!utils.handleAddItemToList(dataMovie.value?.id, 'tv')) {
+    if (!handleAddItemToList(dataMovie.value?.id, 'tv')) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
-    if (!utils.handleRemoveItemFromList(dataMovie.value?.id, 'tv')) {
+    if (!handleRemoveItemFromList(dataMovie.value?.id, 'tv')) {
       isAddToList.value = true;
     }
   }

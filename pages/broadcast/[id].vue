@@ -314,7 +314,11 @@ import {
   UpdateViewMovie
 } from '~/services/movie';
 import { getBroadcastById } from '~/services/broadcast';
-import { getItemList } from '~/services/list';
+import {
+  getItemList,
+  handleAddItemToList,
+  handleRemoveItemFromList
+} from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 import { Socket, io } from 'socket.io-client';
@@ -607,21 +611,13 @@ const handleAddToList = () => {
   }
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (
-      !utils.handleAddItemToList(
-        dataMovie.value?.id,
-        dataMovie.value.media_type
-      )
-    ) {
+    if (!handleAddItemToList(dataMovie.value?.id, dataMovie.value.media_type)) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
     if (
-      !utils.handleRemoveItemFromList(
-        dataMovie.value?.id,
-        dataMovie.value.media_type
-      )
+      !handleRemoveItemFromList(dataMovie.value?.id, dataMovie.value.media_type)
     ) {
       isAddToList.value = true;
     }

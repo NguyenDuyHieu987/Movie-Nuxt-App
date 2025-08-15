@@ -513,7 +513,11 @@ import { getCountryByOriginalCountry } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
-import { getItemList } from '~/services/list';
+import {
+  getItemList,
+  handleAddItemToList,
+  handleRemoveItemFromList
+} from '~/services/list';
 import { getRating } from '~/services/rating';
 
 defineOptions({ name: 'info-tv' });
@@ -721,12 +725,12 @@ const handleAddToList = () => {
   }
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (!utils.handleAddItemToList(dataMovie.value?.id, 'tv')) {
+    if (!handleAddItemToList(dataMovie.value?.id, 'tv')) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
-    if (!utils.handleRemoveItemFromList(dataMovie.value?.id, 'tv')) {
+    if (!handleRemoveItemFromList(dataMovie.value?.id, 'tv')) {
       isAddToList.value = true;
     }
   }

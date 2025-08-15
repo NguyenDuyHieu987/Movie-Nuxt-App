@@ -206,7 +206,11 @@
 
 // import { LoadingSpinner } from '~/components/Loading';
 import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
-import { getItemList } from '~/services/list';
+import {
+  getItemList,
+  handleAddItemToList,
+  handleRemoveItemFromList
+} from '~/services/list';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getVideo } from '~/services/video';
@@ -285,18 +289,13 @@ const handleAddToList = (e: any) => {
   }
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (
-      !utils.handleAddItemToList(
-        dataMovie.value?.id,
-        dataMovie.value.media_type
-      )
-    ) {
+    if (!handleAddItemToList(dataMovie.value?.id, dataMovie.value.media_type)) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
     if (
-      !utils.handleRemoveItemFromList(
+      !handleRemoveItemFromList(
         dataMovie.value?.id,
         dataMovie.value?.media_type
       )

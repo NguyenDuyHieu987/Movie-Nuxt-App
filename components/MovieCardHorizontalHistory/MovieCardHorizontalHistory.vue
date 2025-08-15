@@ -279,7 +279,9 @@
 // import SvgoShareOutlined from '~/assets/svgs/icons/share-outlined.svg?component';
 // import SvgoTrashCan from '~/assets/svgs/icons/trash-can.svg?component';
 
+import { handleRemoveItemFromHistory } from '~/services/history';
 import { getImage } from '~/services/image';
+import { handleAddItemToList, handleRemoveItemFromList } from '~/services/list';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
 
@@ -394,21 +396,13 @@ getData();
 const handleAddToList = () => {
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (
-      !utils.handleAddItemToList(
-        dataMovie.value?.id,
-        dataMovie.value.media_type
-      )
-    ) {
+    if (!handleAddItemToList(dataMovie.value?.id, dataMovie.value.media_type)) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
     if (
-      !utils.handleRemoveItemFromList(
-        dataMovie.value?.id,
-        dataMovie.value.media_type
-      )
+      !handleRemoveItemFromList(dataMovie.value?.id, dataMovie.value.media_type)
     ) {
       isAddToList.value = true;
     }
@@ -417,7 +411,7 @@ const handleAddToList = () => {
 
 const handleRemoveFromHistory = async () => {
   if (
-    await utils.handleRemoveItemFromHistory(
+    await handleRemoveItemFromHistory(
       dataHistory.value?.movie_id,
       dataHistory.value?.media_type
     )
