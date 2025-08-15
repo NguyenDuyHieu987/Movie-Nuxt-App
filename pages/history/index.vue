@@ -138,7 +138,11 @@
 // import SortTab from '~/components/SortTab/SortTab.vue';
 // import MovieCardHorizontalHistory from '~/components/MovieCardHorizontalHistory/MovieCardHorizontalHistory.vue';
 // import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
-import { getHistory, searchHistory } from '~/services/history';
+import {
+  getHistory,
+  handleRemoveAllitemFromHistory,
+  searchHistory
+} from '~/services/history';
 import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';
 import { storeToRefs } from 'pinia';
@@ -296,7 +300,7 @@ const removeAllHistoryList = () => {
       message: 'Bạn có muốn xóa toàn bộ Lịch sử xem không?',
       okButtonProps: { danger: true },
       onOk: async function () {
-        if (await utils.handleRemoveAllitemFromHistory()) {
+        if (await handleRemoveAllitemFromHistory()) {
           dataHistory.value = [];
         }
       },

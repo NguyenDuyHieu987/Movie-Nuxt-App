@@ -140,7 +140,11 @@
 // import SortTab from '~/components/SortTab/SortTab.vue';
 // import MovieCardHorizontalFollow from '~/components/MovieCardHorizontalFollow/MovieCardHorizontalFollow.vue';
 // import RequireAuth from '~/components/RequireAuth/RequireAuth.vue';
-import { getList, searchList } from '~/services/list';
+import {
+  getList,
+  handleRemoveAllitemFromList,
+  searchList
+} from '~/services/list';
 import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';
 import reject from 'lodash/reject';
@@ -298,7 +302,7 @@ const removeAllFollowList = () => {
       message: 'Bạn có muốn xóa toàn bộ Danh sách phát không?',
       okButtonProps: { danger: true },
       onOk: async function () {
-        if (await utils.handleRemoveAllitemFromList()) {
+        if (await handleRemoveAllitemFromList()) {
           dataList.value = [];
         }
       },
