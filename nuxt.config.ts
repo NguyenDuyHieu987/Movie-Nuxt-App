@@ -234,17 +234,17 @@ export default defineNuxtConfig({
   //   id: process.env.GOOGLE_ANALYTICS_ID
   // },
 
-  lodash: {
-    prefix: 'useLodash',
-    prefixSkip: false,
-    upperAfterPrefix: true,
-    exclude: ['map'],
-    alias: [
-      // ['camelCase', 'stringToCamelCase'], // => stringToCamelCase
-      // ['kebabCase', 'stringToKebab'], // => stringToKebab
-      // ['isDate', 'isLodashDate'] // => _isLodashDate
-    ]
-  },
+  // lodash: {
+  //   prefix: 'useLodash',
+  //   prefixSkip: false,
+  //   upperAfterPrefix: true,
+  //   exclude: ['map'],
+  //   alias: [
+  //     // ['camelCase', 'stringToCamelCase'], // => stringToCamelCase
+  //     // ['kebabCase', 'stringToKebab'], // => stringToKebab
+  //     // ['isDate', 'isLodashDate'] // => _isLodashDate
+  //   ]
+  // },
 
   image: {
     // domains: ['proxy.phimhay247.online'],
@@ -332,29 +332,29 @@ export default defineNuxtConfig({
     ]
   },
 
-  purgecss: {
-    mode: 'postcss',
-    // whitelist: ['svg-defs'],
-    // whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
-    safelist: [
-      /^(w-\D)\w+/,
-      /^el-/,
-      /^ant-/,
-      /^w-\D/,
-      /^v-lazy-/,
-      /^swiper/,
-      /^svg-icon/
-    ],
-    blocklist: [
-      /^(w-\D)\w+/,
-      /^el-/,
-      /^ant-/,
-      /^w-\D/,
-      /^v-lazy-/,
-      /^swiper/,
-      /^svg-icon/
-    ]
-  },
+  // purgecss: {
+  //   mode: 'postcss',
+  //   // whitelist: ['svg-defs'],
+  //   // whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
+  //   safelist: [
+  //     /^(w-\D)\w+/,
+  //     /^el-/,
+  //     /^ant-/,
+  //     /^w-\D/,
+  //     /^v-lazy-/,
+  //     /^swiper/,
+  //     /^svg-icon/
+  //   ],
+  //   blocklist: [
+  //     /^(w-\D)\w+/,
+  //     /^el-/,
+  //     /^ant-/,
+  //     /^w-\D/,
+  //     /^v-lazy-/,
+  //     /^swiper/,
+  //     /^svg-icon/
+  //   ]
+  // },
 
   // delayHydration: {
   //   mode: 'init',
@@ -724,5 +724,5 @@ export default defineNuxtConfig({
     '/contactus': { redirect: '/contact' }
   },
 
-  compatibilityDate: '2024-08-11'
+  compatibilityDate: '2025-08-15'
 });

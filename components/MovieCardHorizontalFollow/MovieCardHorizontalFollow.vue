@@ -208,6 +208,7 @@
 // import SvgoTrashCan from '~/assets/svgs/icons/trash-can.svg?component';
 
 import { getImage } from '~/services/image';
+import { handleRemoveItemFromList } from '~/services/list';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
 
@@ -284,7 +285,7 @@ getData();
 
 const handleRemoveFromList = async () => {
   if (
-    await utils.handleRemoveItemFromList(
+    await handleRemoveItemFromList(
       dataMovie.value?.id,
       dataMovie.value.media_type
     )
