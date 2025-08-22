@@ -9,6 +9,8 @@ export function getVideo(path: string) {
     ? nuxtConfig.public.serverVideoUrl
     : nuxtConfig.public.serverVideoUrlDev;
 
+  path = path.replace(/^\//, ''); // Remove leading slash if exists
+
   return `${URL_VIDEO}/videos/${path}`;
 }
 

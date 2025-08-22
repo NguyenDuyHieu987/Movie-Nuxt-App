@@ -22,6 +22,7 @@ export function getImage(
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
+  path = path.replace(/^\//, ''); // Remove leading slash if exists
   if (!crop) {
     return `${URL_IMAGE}/images/${type}/${path}`;
   }
@@ -57,6 +58,8 @@ export function getServerImage(
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
+  path = path.replace(/^\//, ''); // Remove leading slash if exists
+
   if (isString(crop)) {
     const cropStr = crop as string;
     // const w = cropStr.replace('-', '=');
@@ -78,10 +81,14 @@ export function getTMDBImage(path: string): string {
   const nuxtConfig = useRuntimeConfig();
   const TMDB_IMAGE_BASE_URL = nuxtConfig.public.TMDBurl;
 
-  return `${TMDB_IMAGE_BASE_URL}/original${path}`;
+  path = path.replace(/^\//, ''); // Remove leading slash if exists
+
+  return `${TMDB_IMAGE_BASE_URL}/original/${path}`;
 }
 
 export function getColorImage(path: string) {
+  path = path.replace(/^\//, ''); // Remove leading slash if exists
+
   return makeMediaRequest(`/image/color/backdrop/${path}`);
 }
 
