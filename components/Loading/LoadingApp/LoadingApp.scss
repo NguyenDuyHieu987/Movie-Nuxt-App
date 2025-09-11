@@ -1,12 +1,14 @@
 body.loading-mask {
   overflow: hidden;
-  width: calc(100% - 14px);
+  // width: calc(100% - 14px);
+  width: 100%;
   touch-action: none;
 
   .header-bar,
   .header-bar-service,
   .header-bar-auth {
-    width: calc(100% - 14px);
+    // width: calc(100% - 14px);
+    width: 100%;
   }
 }
 

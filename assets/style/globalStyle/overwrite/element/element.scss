@@ -106,11 +106,13 @@
 
 .el-popup-parent--hidden {
   /* overflow: visible !important; */
+  width: 100% !important;
 
   .header-bar,
   .header-bar-service,
   .header-bar-auth {
-    width: calc(100% - 14px);
+    // width: calc(100% - 14px);
+    width: 100%;
   }
 }
 
