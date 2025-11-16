@@ -7,7 +7,7 @@ export const DEV_SERVER_IMAGE = 'http://localhost:5002';
 const PREFIX_ROUTE = 'images';
 
 export function getImage(
-  path: string,
+  path: string | null | undefined,
   type: string,
   crop?:
     | { w?: number; h?: number; crop_size?: string; quality?: number }
@@ -22,7 +22,7 @@ export function getImage(
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
-  path = path.replace(/^\//, ''); // Remove leading slash if exists
+  path = path?.replace(/^\//, ''); // Remove leading slash if exists
   if (!crop) {
     return `${URL_IMAGE}/images/${type}/${path}`;
   }
@@ -45,9 +45,8 @@ export function getImage(
 }
 
 export function getServerImage(
-  path: string,
+  path: string | null | undefined,
   type: string,
-
   crop?:
     | { w?: number; h?: number; crop_size?: string; quality?: number }
     | string
@@ -58,7 +57,7 @@ export function getServerImage(
 
   if (utils.isStringEmpty(path)) return URL_IMAGE;
 
-  path = path.replace(/^\//, ''); // Remove leading slash if exists
+  path = path?.replace(/^\//, ''); // Remove leading slash if exists
 
   if (isString(crop)) {
     const cropStr = crop as string;
@@ -77,11 +76,11 @@ export function getServerImage(
   return `${URL_IMAGE}/images/${type}/${path}?${utils.serialize(crop)}`;
 }
 
-export function getTMDBImage(path: string): string {
+export function getTMDBImage(path: string | null | undefined): string {
   const nuxtConfig = useRuntimeConfig();
   const TMDB_IMAGE_BASE_URL = nuxtConfig.public.TMDBurl;
 
-  path = path.replace(/^\//, ''); // Remove leading slash if exists
+  path = path?.replace(/^\//, ''); // Remove leading slash if exists
 
   return `${TMDB_IMAGE_BASE_URL}/original/${path}`;
 }
