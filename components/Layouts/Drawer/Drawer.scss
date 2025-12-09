@@ -21,7 +21,6 @@
 
         .ant-drawer-header-title {
           height: 100%;
-          color: inherit;
 
           .ant-drawer-title {
             display: flex;
@@ -30,6 +29,7 @@
             gap: 10px;
             line-height: inherit;
             font-weight: 500;
+            color: inherit;
 
             svg.close-drawer {
               font-size: 2.7rem;
