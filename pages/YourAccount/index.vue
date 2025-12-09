@@ -278,19 +278,19 @@
       />
       <template #footer>
         <div class="dialog-footer">
-          <el-button
+          <a-button
             @click="modalUploadAvatarVisible = false"
             :disabled="loadingUploadAvatar"
           >
             Đóng
-          </el-button>
-          <el-button
+          </a-button>
+          <a-button
             type="primary"
             @click="onUploadAvatar"
             :loading="loadingUploadAvatar"
           >
             Đổi
-          </el-button>
+          </a-button>
         </div>
       </template>
     </el-dialog>

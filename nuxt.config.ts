@@ -7,9 +7,9 @@ import { fileURLToPath } from 'url';
 import compression from 'vite-plugin-compression';
 // import CompressionPlugin from 'compression-webpack-plugin';
 
-const antdVersion: number = +version.split('.')[0];
+const antdVersion: number = +version.split('.')[0]!;
 
-console.log('Antd version:', antdVersion);
+// console.log('Antd version:', antdVersion);
 
 export default defineNuxtConfig({
   app: {
@@ -177,7 +177,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     // 'nuxt-gtag',
     // 'nuxt-lodash',
-    'nuxt-delay-hydration',
+    // 'nuxt-delay-hydration',
     // 'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
@@ -501,7 +501,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern-compiler',
+          // api: 'modern-compiler',
           silenceDeprecations: ['import'],
           // additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
           additionalData:
