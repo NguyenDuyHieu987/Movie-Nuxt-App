@@ -117,7 +117,6 @@
     "nuxt-link-checker": "^4.3.1",
     "nuxt-lodash": "2.5.3",
     "nuxt-og-image": "5.1.12",
-    "nuxt-purgecss": "2.0.0",
     "nuxt-schema-org": "5.0.9",
     "nuxt-svgo": "4.2.6",
     "nuxt-vitalizer": "2.0.0",

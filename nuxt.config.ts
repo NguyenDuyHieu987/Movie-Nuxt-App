@@ -178,7 +178,6 @@ export default defineNuxtConfig({
     // 'nuxt-gtag',
     // 'nuxt-lodash',
     // 'nuxt-delay-hydration',
-    'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
@@ -329,30 +328,6 @@ export default defineNuxtConfig({
       'latin',
       'latin-ext',
       'vietnamese'
-    ]
-  },
-
-  purgecss: {
-    mode: 'postcss',
-    // whitelist: ['svg-defs'],
-    // whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
-    safelist: [
-      /^(w-\D)\w+/,
-      /^el-/,
-      /^ant-/,
-      /^w-\D/,
-      /^v-lazy-/,
-      /^swiper/,
-      /^svg-icon/
-    ],
-    blocklist: [
-      /^(w-\D)\w+/,
-      /^el-/,
-      /^ant-/,
-      /^w-\D/,
-      /^v-lazy-/,
-      /^swiper/,
-      /^svg-icon/
     ]
   },
 
@@ -529,7 +504,7 @@ export default defineNuxtConfig({
       sourcemap: 'hidden',
       // target: 'esnext',
       cssCodeSplit: true,
-      // cssMinify: 'esbuild',
+      cssMinify: 'lightningcss',
       // minify: 'terser',
       terserOptions: {
         ecma: 2020,
