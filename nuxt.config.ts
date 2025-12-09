@@ -178,7 +178,7 @@ export default defineNuxtConfig({
     // 'nuxt-gtag',
     // 'nuxt-lodash',
     // 'nuxt-delay-hydration',
-    // 'nuxt-purgecss',
+    'nuxt-purgecss',
     // SEO
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
@@ -332,29 +332,29 @@ export default defineNuxtConfig({
     ]
   },
 
-  // purgecss: {
-  //   mode: 'postcss',
-  //   // whitelist: ['svg-defs'],
-  //   // whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
-  //   safelist: [
-  //     /^(w-\D)\w+/,
-  //     /^el-/,
-  //     /^ant-/,
-  //     /^w-\D/,
-  //     /^v-lazy-/,
-  //     /^swiper/,
-  //     /^svg-icon/
-  //   ],
-  //   blocklist: [
-  //     /^(w-\D)\w+/,
-  //     /^el-/,
-  //     /^ant-/,
-  //     /^w-\D/,
-  //     /^v-lazy-/,
-  //     /^swiper/,
-  //     /^svg-icon/
-  //   ]
-  // },
+  purgecss: {
+    mode: 'postcss',
+    // whitelist: ['svg-defs'],
+    // whitelistPatterns: [/^(w-\D)\w+/, /^v-lazy-/, /^swiper/, /^svg-icon/]
+    safelist: [
+      /^(w-\D)\w+/,
+      /^el-/,
+      /^ant-/,
+      /^w-\D/,
+      /^v-lazy-/,
+      /^swiper/,
+      /^svg-icon/
+    ],
+    blocklist: [
+      /^(w-\D)\w+/,
+      /^el-/,
+      /^ant-/,
+      /^w-\D/,
+      /^v-lazy-/,
+      /^swiper/,
+      /^svg-icon/
+    ]
+  },
 
   // delayHydration: {
   //   mode: 'init',
