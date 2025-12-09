@@ -41,6 +41,7 @@
     "axios": "1.13.2",
     "crypto-js": "4.2.0",
     "dompurify": "3.3.1",
+    "fs": "^0.0.1-security",
     "gsap": "3.14.1",
     "hls.js": "1.6.15",
     "jquery": "3.7.1",
@@ -63,7 +64,8 @@
     "vue-router": "4.6.3",
     "vue-social-sharing": "4.0.0-alpha4",
     "vue3-emoji-picker": "1.1.8",
-    "vuex": "4.1.0"
+    "vuex": "4.1.0",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "@ant-design-vue/nuxt": "1.4.2",
