@@ -361,19 +361,17 @@
                   @change="onChangeVolume(volume)"
                 /> -->
 
-                <ClientOnly>
-                  <el-slider
-                    v-model="volume"
-                    class="volume-slider"
-                    :class="{
-                      muted: videoStates.isVolumeOff,
-                      changing: videoStates.isChangingVolume
-                    }"
-                    :debounce="0"
-                    @input="onChangeVolume(volume)"
-                    @change="onChangeVolume(volume)"
-                  />
-                </ClientOnly>
+                <el-slider
+                  v-model="volume"
+                  class="volume-slider"
+                  :class="{
+                    muted: videoStates.isVolumeOff,
+                    changing: videoStates.isChangingVolume
+                  }"
+                  :debounce="0"
+                  @input="onChangeVolume(volume)"
+                  @change="onChangeVolume(volume)"
+                />
               </div>
 
               <div class="timeupdate-duration">
