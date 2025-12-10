@@ -567,7 +567,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // preset: 'static',
+    preset: 'node-cluster',
     prerender: {
       crawlLinks: false,
       ignore: [
