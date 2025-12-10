@@ -368,6 +368,7 @@
                     muted: videoStates.isVolumeOff,
                     changing: videoStates.isChangingVolume
                   }"
+                  size="small"
                   :debounce="0"
                   @input="onChangeVolume(volume)"
                   @change="onChangeVolume(volume)"
