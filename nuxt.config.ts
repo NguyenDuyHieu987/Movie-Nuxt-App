@@ -123,9 +123,7 @@ export default defineNuxtConfig({
     asyncEntry: false,
     asyncContext: true,
     crossOriginPrefetch: true,
-    // componentIslands: {
-    //   selectiveClient: true
-    // },
+    componentIslands: 'local+remote',
     headNext: true,
     payloadExtraction: false,
     renderJsonPayloads: true,
