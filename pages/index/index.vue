@@ -105,10 +105,7 @@
                   :index="index"
                 >
                   <!-- :virtual-index="index" -->
-                  <LazyMovieCardHorizontalBroadcast
-                    :item="item"
-                    hydrate-on-visible
-                  />
+                  <MovieCardHorizontalBroadcast :item="item" />
                 </SwiperSlide>
               </template>
             </SwiperCarouselGroup>
@@ -157,10 +154,9 @@
                   :index="index"
                 >
                   <!-- :virtual-index="index" -->
-                  <LazyMovieCardVertical
+                  <MovieCardVertical
                     :item="item"
                     :type="item.media_type"
-                    hydrate-on-visible
                   />
                 </SwiperSlide>
               </template>
