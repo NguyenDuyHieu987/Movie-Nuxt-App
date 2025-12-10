@@ -497,7 +497,7 @@ watchEffect(() => {
 
 const { data: broadcasts, pending: loadingBroadcasts } = await useAsyncData(
   `broadcasts/all/1/20`,
-  () => getAllAiringBroadcast(page.value, pageSize.value),
+  () => getAllAiringBroadcast(page.value, 20),
   {
     lazy: true
   }
