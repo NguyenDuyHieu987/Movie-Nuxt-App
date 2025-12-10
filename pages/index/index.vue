@@ -76,7 +76,7 @@
       >
         <template #content>
           <section
-            v-if="broadcasts?.results?.length > 0"
+            v-show="broadcasts?.results?.length > 0"
             class="home-section broadcast-list"
           >
             <h2 class="gradient-title-default">
@@ -479,22 +479,6 @@ const {
 // pageSize.value = modListData.value?.page_size;
 // page.value++;
 
-watchEffect(() => {
-  const {
-    results = [],
-    total: t = 0,
-    page_size = pageSize.value
-  } = modListData.value || {};
-
-  if (page.value === 1 && results.length) {
-    trendings.value = results[0]?.data || [];
-    modList.value = results.slice(1);
-    total.value = t;
-    pageSize.value = page_size;
-    page.value++;
-  }
-});
-
 const { data: broadcasts, pending: loadingBroadcasts } = await useAsyncData(
   `broadcasts/all/1/20`,
   () => getAllAiringBroadcast(page.value, 20),
@@ -533,6 +517,22 @@ const { data: broadcasts, pending: loadingBroadcasts } = await useAsyncData(
 // total.value = modListData.value?.total;
 // pageSize.value = modListData.value?.page_size;
 // page.value++;
+
+watchEffect(() => {
+  const {
+    results = [],
+    total: t = 0,
+    page_size = pageSize.value
+  } = modListData.value || {};
+
+  if (page.value === 1 && results.length) {
+    trendings.value = results[0]?.data || [];
+    modList.value = results.slice(1);
+    total.value = t;
+    pageSize.value = page_size;
+    page.value++;
+  }
+});
 
 watch(
   () => authStore.isLogin,
