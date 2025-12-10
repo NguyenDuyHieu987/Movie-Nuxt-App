@@ -382,6 +382,7 @@ import { getVideo } from '~/services/video';
 import type { genre } from '~/types';
 import gsap from 'gsap';
 import Hls from 'hls.js';
+// let Hls: any;
 
 const props = defineProps<{
   item: any;
@@ -443,7 +444,10 @@ const videoStates = reactive({
 });
 const hls = ref<Hls | null>();
 
-onMounted(() => {
+onMounted(async () => {
+  // const module = await import('hls.js');
+  // Hls = module.default;
+
   showVideo.value = true;
 });
 

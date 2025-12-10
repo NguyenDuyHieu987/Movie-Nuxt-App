@@ -724,6 +724,7 @@
 import { getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
 import Hls from 'hls.js';
+// let Hls: any;
 
 const props = withDefaults(
   defineProps<{
@@ -1122,6 +1123,9 @@ onUnmounted(() => {
 onBeforeMount(() => {});
 
 onMounted(async () => {
+  // const module = await import('hls.js');
+  // Hls = module.default;
+
   // calculateTimeRemaining();
   if (timeRemaining.value > 0) {
     timerCountdown.value = setInterval(calculateTimeRemaining, 1000);

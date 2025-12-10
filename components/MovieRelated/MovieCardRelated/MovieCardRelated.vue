@@ -215,6 +215,7 @@ import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getVideo } from '~/services/video';
 import Hls from 'hls.js';
+// let Hls: any;
 
 const props = defineProps<{
   item: any;
@@ -281,6 +282,11 @@ const getData = async () => {
 };
 
 getData();
+
+onMounted(async () => {
+  // const module = await import('hls.js');
+  // Hls = module.default;
+});
 
 const handleAddToList = (e: any) => {
   if (!authStore?.isLogin) {

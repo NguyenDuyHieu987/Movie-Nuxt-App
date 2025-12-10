@@ -704,6 +704,7 @@
 import { getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
 import Hls from 'hls.js';
+// let Hls: any;
 
 const props = withDefaults(
   defineProps<{
@@ -1013,6 +1014,9 @@ onUnmounted(() => {
 onBeforeMount(() => {});
 
 onMounted(async () => {
+  // const module = await import('hls.js');
+  // Hls = module.default;
+
   await loadM3u8Video();
 
   mounted.value = true;

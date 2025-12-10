@@ -123,9 +123,9 @@ export default defineNuxtConfig({
     asyncEntry: false,
     asyncContext: true,
     crossOriginPrefetch: true,
-    componentIslands: {
-      selectiveClient: true
-    },
+    // componentIslands: {
+    //   selectiveClient: true
+    // },
     headNext: true,
     payloadExtraction: false,
     renderJsonPayloads: true,
@@ -176,7 +176,6 @@ export default defineNuxtConfig({
     // '@nuxt/fonts',
     '@nuxtjs/google-fonts',
     // 'nuxt-gtag',
-    // 'nuxt-lodash',
     // 'nuxt-delay-hydration',
     // SEO
     '@nuxtjs/seo',
@@ -399,16 +398,16 @@ export default defineNuxtConfig({
         global: true,
         extensions: ['.vue'],
         pathPrefix: false
-      },
-      {
-        path: '~/components',
-        global: false,
-        extensions: ['.vue'],
-        pathPrefix: false
-        // island: true,
-        // isAsync: true,
-        // ignore: ['*.ts']
       }
+      // {
+      //   path: '~/components',
+      //   global: false,
+      //   extensions: ['.vue'],
+      //   pathPrefix: false
+      //   // island: true,
+      //   // isAsync: true,
+      //   // ignore: ['*.ts']
+      // },
     ]
   },
 
