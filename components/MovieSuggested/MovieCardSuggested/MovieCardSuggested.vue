@@ -22,10 +22,13 @@
         force: true,
         replace: true
       }" -->
-    <div
+    <NuxtLink
       class="img-box"
-      @click="onClickPlay"
+      :to="{
+        path: `/play-${dataMovie?.media_type}/${dataMovie?.id}`
+      }"
     >
+      <!-- @click="onClickPlay" -->
       <div class="img-wrapper ratio-16-9">
         <!-- <img
             v-lazy="getImage(dataMovie?.backdrop_path, 'backdrop', {h:250})"
@@ -65,7 +68,7 @@
           :style="{ width: percent * 100 + '%' }"
         ></div>
       </div>
-    </div>
+    </NuxtLink>
 
     <NuxtLink
       class="info"
