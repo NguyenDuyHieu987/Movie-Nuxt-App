@@ -36,8 +36,8 @@
         :src="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
         placeholder="/images/loading-img-16-9.webp"
         loading="lazy"
-        :alt="dataMovie?.name"
         :title="dataMovie?.name"
+        :alt="''"
       />
 
       <!-- <Image

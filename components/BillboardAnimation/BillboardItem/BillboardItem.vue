@@ -13,7 +13,7 @@
         "
         preload
         loading="lazy"
-        :alt="dataMovie?.name"
+        :alt="''"
       />
     </div>
 

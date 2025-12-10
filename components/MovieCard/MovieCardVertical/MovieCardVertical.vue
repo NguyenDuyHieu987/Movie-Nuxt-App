@@ -29,7 +29,7 @@
         :src="getImage(dataMovie?.poster_path, 'poster', { w: 250 })"
         placeholder="/images/loading-img-2-3.webp"
         loading="lazy"
-        :alt="dataMovie?.name"
+        :alt="''"
         :title="dataMovie?.name"
       />
 

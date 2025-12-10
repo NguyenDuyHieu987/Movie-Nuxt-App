@@ -12,7 +12,7 @@
             getImage(currenActiveItem?.backdrop_path, 'backdrop', { w: 1200 })
           "
           loading="lazy"
-          :alt="currenActiveItem?.name"
+          :alt="''"
           :title="currenActiveItem?.name"
         />
       </div>
