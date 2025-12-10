@@ -396,17 +396,17 @@ export default defineNuxtConfig({
       {
         path: '~/components/global',
         global: true,
-        extensions: ['.vue'],
-        pathPrefix: false
+        pathPrefix: false,
+        extensions: ['.vue']
       },
       {
-        path: '~/components',
+        // path: '~/components',
         global: false,
-        extensions: ['.vue'],
-        pathPrefix: false
+        pathPrefix: false,
         // island: true,
         // isAsync: true,
-        // ignore: ['*.ts']
+        extensions: ['.vue'],
+        ignore: ['*.ts', '*.backup.vue', '* copy*.vue']
       }
     ]
   },
