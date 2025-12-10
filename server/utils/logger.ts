@@ -45,7 +45,7 @@ const logger = winston.createLogger({
 });
 
 // 🔹 4. Log ra console trong development
-if (process.env.NODE_ENV !== 'production') {
+if (import.meta.env.DEV) {
   logger.add(
     new winston.transports.Console({
       format: winston.format.simple()
