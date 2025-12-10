@@ -317,11 +317,11 @@ const onClickPlay = () => {
   return navigateTo(
     {
       path: `/play-${dataMovie.value?.media_type}/${dataMovie.value?.id}`
-    },
-    {
-      replace: true,
-      open: { target: '_self' }
     }
+    // {
+    //   replace: true,
+    //   open: { target: '_self' }
+    // }
   );
 };
 </script>
