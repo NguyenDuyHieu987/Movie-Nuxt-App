@@ -451,6 +451,7 @@ const movieId = computed<string>(
     // utils.convertPath.parsePathInfo_Play(route.params?.id as string)
     route.params?.id as string
 );
+const nuxtLoadingIndicator = useLoadingIndicator();
 
 const getData = async () => {
   loading.value = true;
@@ -510,6 +511,7 @@ loading.value = true;
 const {
   data: dataMovie,
   status,
+  refresh,
   error
 } = await useAsyncData(
   `movie/detail/${movieId.value}`,
@@ -527,44 +529,61 @@ isAddToList.value = dataMovie.value?.in_list == true;
 
 ratedValue.value = dataMovie.value?.rated_value;
 
+const getOtherData = async () => {
+  if (!isAddToList.value) {
+    getItemList(movieId.value, 'movie')
+      .then((response) => {
+        if (response.success == true) {
+          isAddToList.value = true;
+        }
+      })
+      .catch((e) => {});
+  }
+
+  if (!isInHistory.value) {
+    getItemHistory(movieId.value, 'movie')
+      .then((response) => {
+        if (response.success == true) {
+          isInHistory.value = true;
+          historyProgress.value = response.result;
+        }
+      })
+      .catch((e) => {});
+  }
+
+  if (!ratedValue.value) {
+    getRating(movieId.value, 'movie')
+      .then((response) => {
+        if (response.success == true) {
+          ratedValue.value = response.result?.rate_value;
+        }
+      })
+      .catch((e) => {});
+  }
+};
+
 watch(
   () => authStore.isLogin,
   () => {
     if (authStore.isLogin) {
-      if (!isAddToList.value) {
-        getItemList(movieId.value, 'movie')
-          .then((response) => {
-            if (response.success == true) {
-              isAddToList.value = true;
-            }
-          })
-          .catch((e) => {});
-      }
-
-      if (!isInHistory.value) {
-        getItemHistory(movieId.value, 'movie')
-          .then((response) => {
-            if (response.success == true) {
-              isInHistory.value = true;
-              historyProgress.value = response.result;
-            }
-          })
-          .catch((e) => {});
-      }
-
-      if (!ratedValue.value) {
-        getRating(movieId.value, 'movie')
-          .then((response) => {
-            if (response.success == true) {
-              ratedValue.value = response.result?.rate_value;
-            }
-          })
-          .catch((e) => {});
-      }
+      getOtherData();
     }
   },
   {
     immediate: true
+  }
+);
+
+watch(
+  () => route.params.id,
+  async () => {
+    nuxtLoadingIndicator.start();
+
+    await refresh();
+    if (authStore.isLogin) {
+      getOtherData();
+    }
+    nuxtLoadingIndicator.finish();
   }
 );
 
