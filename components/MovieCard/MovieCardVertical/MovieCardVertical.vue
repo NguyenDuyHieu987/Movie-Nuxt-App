@@ -96,9 +96,7 @@
                 shape="circle"
                 size="large"
                 type="text"
-                @click.prevent="
-                  navigateTo(`/play-${dataMovie?.media_type}/${dataMovie?.id}`)
-                "
+                @click.prevent="onClickPlay"
               >
                 <template #icon>
                   <SvgoPlay
@@ -111,12 +109,8 @@
             </el-tooltip>
 
             <el-tooltip
-              :title="
-                !isAddToList ? 'Thêm vào danh sách' : 'Xóa khỏi danh sách'
-              "
-              :content="
-                !isAddToList ? 'Thêm vào danh sách' : 'Xóa khỏi danh sách'
-              "
+              :title="!isAddToList ? 'Thêm vào danh sách' : 'Xóa khỏi danh sách'"
+              :content="!isAddToList ? 'Thêm vào danh sách' : 'Xóa khỏi danh sách'"
               placement="right"
               popper-class="popper-tooltip"
               :hide-after="0"
@@ -227,16 +221,11 @@
             </ClientOnly> -->
 
             <NuxtLink
-              v-for="(genreItem, index) in Array.from(
-                dataMovie?.genres,
-                (x: genre) => x
-              )"
+              v-for="(genreItem, index) in Array.from(dataMovie?.genres, (x: genre) => x)"
               :key="index"
               :index="index"
               class="genre-item"
-              :to="`/discover/genre/${
-                getGenreById(genreItem.id, store?.allGenres)?.short_name
-              }`"
+              :to="`/discover/genre/${getGenreById(genreItem.id, store?.allGenres)?.short_name}`"
             >
               <!-- @click.prevent="handleClickGenreItem(genreItem)" -->
               {{ genreItem?.name }}
@@ -257,11 +246,7 @@
 
 import { getGenreById } from '~/services/genres';
 import { getImage } from '~/services/image';
-import {
-  getItemList,
-  handleAddItemToList,
-  handleRemoveItemFromList
-} from '~/services/list';
+import { getItemList, handleAddItemToList, handleRemoveItemFromList } from '~/services/list';
 import { getItemHistory } from '~/services/history';
 import { getMovieById } from '~/services/movie';
 import { getTvById } from '~/services/tv';
@@ -434,20 +419,18 @@ const handleAddToList = (e: any) => {
     }
   } else {
     isAddToList.value = false;
-    if (
-      !handleRemoveItemFromList(props.item?.id, dataMovie.value?.media_type)
-    ) {
+    if (!handleRemoveItemFromList(props.item?.id, dataMovie.value?.media_type)) {
       isAddToList.value = true;
     }
   }
 };
 
 const handleClickGenreItem = async (genreItem: genre) => {
-  await navigateTo(
-    `/discover/genre/${
-      getGenreById(genreItem.id, store?.allGenres)?.short_name
-    }`
-  );
+  await navigateTo(`/discover/genre/${getGenreById(genreItem.id, store?.allGenres)?.short_name}`);
+};
+
+const onClickPlay = () => {
+  navigateTo(`/play-${dataMovie.value?.media_type}/${dataMovie.value?.id}`);
 };
 </script>
 

@@ -133,8 +133,9 @@ loading.value = true;
 const {
   data: dataSuggestedCache,
   refresh,
+  status,
   pending
-} = useAsyncData(
+} = await useAsyncData(
   `similar/all/${props?.dataMovie?.id}/${page.value}`,
   async () => {
     if (!props.dataMovie?.id) return { results: [] };
@@ -142,16 +143,24 @@ const {
     return getSimilar('all', props.dataMovie?.id, page.value, 15);
   },
   {
+    lazy: true,
     immediate: true
   }
 );
+
+dataSuggested.value = dataSuggestedCache.value.results;
+page.value++;
+// loading.value = false;
 
 watch(
   () => props.dataMovie?.id,
   async () => {
     loading.value = true;
+
     page.value = 1;
     await refresh();
+    dataSuggested.value = dataSuggestedCache.value.results;
+    page.value++;
 
     const sideView: JQuery<HTMLElement> = $('.play-container .side-view');
 
@@ -163,27 +172,13 @@ watch(
   }
 );
 
-watch(
-  dataSuggestedCache,
-  (newVal) => {
-    if (newVal?.results) {
-      if (page.value == 1) {
-        dataSuggested.value = newVal.results;
-        page.value++;
-        loading.value = false;
-      }
-    }
-  },
-  {
-    immediate: true
-  }
-);
-
 // dataSuggested.value = dataSuggestedCache.value?.results;
 // page.value++;
 // loading.value = false;
 
 onMounted(() => {
+  loading.value = false;
+
   if (props.windowScroll) {
     window.onscroll = async () => {
       if (dataSuggested.value?.length == 0) {
@@ -215,6 +210,8 @@ onMounted(() => {
 });
 
 const handleLoadmoreData = async () => {
+  if (loadMore.value) return;
+
   loadMore.value = true;
   await refresh();
   if (dataSuggestedCache.value?.results?.length) {

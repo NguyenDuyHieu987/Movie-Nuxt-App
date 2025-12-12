@@ -110,37 +110,38 @@
       </div>
 
       <div class="action">
-        <el-dropdown
-          trigger="click"
-          placement="bottom-end"
-          class="dropdown-viewmore"
-          popper-class="dropdown-viewmore background-app-blur"
-          :show-timeout="0"
-        >
-          <a-button
-            class="viewmore-btn click-active"
-            type="text"
-            @click.prevent
+        <ClientOnly>
+          <el-dropdown
+            trigger="click"
+            placement="bottom-end"
+            class="dropdown-viewmore"
+            popper-class="dropdown-viewmore background-app-blur"
+            :show-timeout="0"
           >
-            <template #icon>
-              <!-- <Icon name="fa6-solid:ellipsis-vertical" /> -->
+            <a-button
+              class="viewmore-btn click-active"
+              type="text"
+              @click.prevent
+            >
+              <template #icon>
+                <!-- <Icon name="fa6-solid:ellipsis-vertical" /> -->
 
-              <SvgoEllipsisVertical
-                width="1.8rem"
-                height="1.8rem"
-                fill="currentColor"
-              />
-            </template>
-          </a-button>
+                <SvgoEllipsisVertical
+                  width="1.8rem"
+                  height="1.8rem"
+                  fill="currentColor"
+                />
+              </template>
+            </a-button>
 
-          <template #dropdown>
-            <el-dropdown-menu>
-              <div class="main-action">
-                <el-dropdown-item
-                  key="add-list"
-                  @click="handleAddToList"
-                >
-                  <!-- <Icon
+            <template #dropdown>
+              <el-dropdown-menu>
+                <div class="main-action">
+                  <el-dropdown-item
+                    key="add-list"
+                    @click="handleAddToList"
+                  >
+                    <!-- <Icon
                             class="icon-material"
                             v-if="isAddToList"
                             name="ic:twotone-playlist-add-check"
@@ -151,52 +152,52 @@
                             name="ic:twotone-playlist-add"
                           /> -->
 
-                  <SvgoPlaylistCheck
-                    v-if="isAddToList"
-                    class="icon-material"
-                    width="2.8rem"
-                    height="2.8rem"
-                    fill="currentColor"
-                  />
+                    <SvgoPlaylistCheck
+                      v-if="isAddToList"
+                      class="icon-material"
+                      width="2.8rem"
+                      height="2.8rem"
+                      fill="currentColor"
+                    />
 
-                  <SvgoPlaylistAdd
-                    v-else
-                    class="icon-material"
-                    width="2.8rem"
-                    height="2.8rem"
-                    fill="currentColor"
-                  />
+                    <SvgoPlaylistAdd
+                      v-else
+                      class="icon-material"
+                      width="2.8rem"
+                      height="2.8rem"
+                      fill="currentColor"
+                    />
 
-                  <span v-if="isAddToList">Xóa khỏi Danh sách phát</span>
-                  <span v-else>Thêm vào Danh sách phát</span>
-                </el-dropdown-item>
-                <el-dropdown-item key="share">
-                  <!-- <Icon name="ph:share-fat-bold"  /> -->
+                    <span v-if="isAddToList">Xóa khỏi Danh sách phát</span>
+                    <span v-else>Thêm vào Danh sách phát</span>
+                  </el-dropdown-item>
+                  <el-dropdown-item key="share">
+                    <!-- <Icon name="ph:share-fat-bold"  /> -->
 
-                  <SvgoShareOutlined
-                    class="share"
-                    width="1.8rem"
-                    height="1.8rem"
-                    fill="currentColor"
-                  />
+                    <SvgoShareOutlined
+                      class="share"
+                      width="1.8rem"
+                      height="1.8rem"
+                      fill="currentColor"
+                    />
 
-                  <span class="social-share">
-                    <ShareNetwork
-                      network="facebook"
-                      :url="urlShare"
-                      :title="dataMovie?.name || ''"
-                      hashtags="phimhay247.site,vite"
-                      style="white-space: nowrap; display: block"
-                    >
-                      Chia sẻ
-                    </ShareNetwork>
-                  </span>
-                </el-dropdown-item>
-              </div>
+                    <span class="social-share">
+                      <ShareNetwork
+                        network="facebook"
+                        :url="urlShare"
+                        :title="dataMovie?.name || ''"
+                        hashtags="phimhay247.site,vite"
+                        style="white-space: nowrap; display: block"
+                      >
+                        Chia sẻ
+                      </ShareNetwork>
+                    </span>
+                  </el-dropdown-item>
+                </div>
 
-              <!-- <div class="separate"></div> -->
+                <!-- <div class="separate"></div> -->
 
-              <!-- <div class="danger-zone">
+                <!-- <div class="danger-zone">
                 <el-dropdown-item
                   key="remove-list"
                   class="remove-item"
@@ -210,9 +211,10 @@
                   <span>Xóa khỏi Danh sách phát</span>
                 </el-dropdown-item>
               </div> -->
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </ClientOnly>
       </div>
     </NuxtLink>
 

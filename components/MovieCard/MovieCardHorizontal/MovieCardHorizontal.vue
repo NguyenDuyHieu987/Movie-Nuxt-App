@@ -115,9 +115,7 @@
       :styleProps="stylePreviewModal"
       :time-out="timeOut"
       :is-episodes="isEpisodes"
-      @set-is-teleport-modal="
-        (data: boolean) => (isTeleportPreviewModal = data)
-      "
+      @set-is-teleport-modal="(data: boolean) => (isTeleportPreviewModal = data)"
     />
   </NuxtLink>
 </template>
@@ -171,9 +169,7 @@ const timeOut = ref<any>();
 const isEpisodes = computed<boolean>(() => props?.item?.media_type == 'tv');
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
-const videoSrc = computed<string>(() =>
-  getVideo('/feature/Transformer_5/Transformer_5' + '.m3u8')
-);
+const videoSrc = computed<string>(() => getVideo('/feature/Transformer_5/Transformer_5' + '.m3u8'));
 
 const getData = async () => {
   // loading.value = true;
@@ -279,17 +275,14 @@ onMounted(() => {
   stylePreviewModal.offsetWidth = cardItem.value!?.offsetWidth;
   stylePreviewModal.offsetHeight = cardItem.value!?.offsetHeight;
 
-  stylePreviewModal.imgHeight =
-    cardItem.value!.querySelector('img')!?.offsetHeight;
-  stylePreviewModal.imgWidth =
-    cardItem.value!.querySelector('img')!?.offsetWidth;
+  stylePreviewModal.imgHeight = cardItem.value!.querySelector('img')!?.offsetHeight;
+  stylePreviewModal.imgWidth = cardItem.value!.querySelector('img')!?.offsetWidth;
 
   stylePreviewModal.rectBound = rect;
 });
 
 const onMouseEnterImg = ({ target }: { target: EventTarget | any }) => {
-  if (loading.value || window.innerWidth <= APP.SHOW_PREVIEW_MODAL_MIN_WIDTH)
-    return;
+  if (loading.value || window.innerWidth <= APP.SHOW_PREVIEW_MODAL_MIN_WIDTH) return;
 
   const rect = target.getBoundingClientRect();
 

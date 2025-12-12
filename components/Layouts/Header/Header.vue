@@ -171,22 +171,14 @@ import { MenuOutlined } from '@ant-design/icons-vue';
 // import SearchDropdown from '~/components/Layouts/Header/SearchDropdown/SearchDropdown.vue';
 // import SearchMobile from '~/components/Layouts/Header/SearchMobile/SearchMobile.vue';
 import { getImage } from '~/services/image';
-import {
-  getDaTaSearch,
-  getDaTaSearchHistory,
-  getDaTaSearchInHistory,
-  getDaTaTopSearch
-} from '~/services/search';
+import { getDaTaSearch, getDaTaSearchHistory, getDaTaSearchInHistory, getDaTaTopSearch } from '~/services/search';
 import { storeToRefs } from 'pinia';
 import type { AppLayout } from '~/types';
 
-const props = withDefaults(
-  defineProps<{ layout?: AppLayout; hideSearch?: boolean }>(),
-  {
-    layout: 'default',
-    hideSearch: false
-  }
-);
+const props = withDefaults(defineProps<{ layout?: AppLayout; hideSearch?: boolean }>(), {
+  layout: 'default',
+  hideSearch: false
+});
 
 const store = useStore();
 const authStore = useAuthStore();
@@ -225,15 +217,11 @@ const getData = async () => {
 
   loadingTopSearch.value = true;
 
-  const { data } = await useAsyncData(
-    `search/top-search/1/10`,
-    () => getDaTaTopSearch(1, 10),
-    {
-      transform: (data: any) => {
-        return data.results;
-      }
+  const { data } = await useAsyncData(`search/top-search/1/10`, () => getDaTaTopSearch(1, 10), {
+    transform: (data: any) => {
+      return data.results;
     }
-  );
+  });
   // .then((response) => {
   //   dataTopSearch.value = response.data.value?.results;
   // })
@@ -254,9 +242,7 @@ onMounted(() => {
   let lastScrollTop = 0;
 
   window.addEventListener('scroll', () => {
-    const billboardItem: HTMLElement | null = document.querySelector(
-      '.billboard-animation-container'
-    );
+    const billboardItem: HTMLElement | null = document.querySelector('.billboard-animation-container');
 
     const st = window.scrollY || document.documentElement.scrollTop;
 
@@ -270,10 +256,7 @@ onMounted(() => {
         }
       } else if (st < lastScrollTop) {
         // upscroll code
-        if (
-          window.scrollY <= billboardItem!?.offsetHeight ||
-          window.scrollY == 0
-        ) {
+        if (window.scrollY <= billboardItem!?.offsetHeight || window.scrollY == 0) {
           store.headerScrolled = false;
         }
       }
@@ -316,22 +299,13 @@ const handleChangeInput = async (query: string) => {
           .finally(() => {});
       }
 
-      await useAsyncData(`search/all/${query}/${page.value}/10`, () =>
-        getDaTaSearch(query, page.value, 10)
-      )
+      await useAsyncData(`search/all/${query}/${page.value}/10`, () => getDaTaSearch(query, page.value, 10))
         .then((response) => {
           // dataSearch.value = response.data.value?.results;
 
-          dataSearch.value = [
-            ...dataSearchInHistory.value,
-            ...response.data.value!.results
-          ];
+          dataSearch.value = [...dataSearchInHistory.value, ...response.data.value!.results];
 
-          if (
-            dataSearch.value.length > 0 &&
-            document.activeElement &&
-            isFocusSearchInput.value == false
-          ) {
+          if (dataSearch.value.length > 0 && document.activeElement && isFocusSearchInput.value == false) {
             isFocusSearchInput.value = true;
           }
         })

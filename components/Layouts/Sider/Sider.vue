@@ -125,12 +125,8 @@ onMounted(() => {
     store.collapsed = true;
   }
 
-  const menu: HTMLElement | null = document.querySelector(
-    '.sider-bar .ant-layout-sider-children'
-  );
-  const siderHeader = document.querySelector(
-    '.sider-bar .sider-header'
-  ) as HTMLElement;
+  const menu: HTMLElement | null = document.querySelector('.sider-bar .ant-layout-sider-children');
+  const siderHeader = document.querySelector('.sider-bar .sider-header') as HTMLElement;
 
   menu!.addEventListener('scroll', (e: any) => {
     if (e.target.scrollTop > 0) {
@@ -158,10 +154,7 @@ onMounted(() => {
 });
 
 router.afterEach((to: any, from: any, next: any) => {
-  if (
-    APP.PAGES_COLLAPSED_SIDEBAR.includes(to.meta.key as string) &&
-    !store.collapsed
-  ) {
+  if (APP.PAGES_COLLAPSED_SIDEBAR.includes(to.meta.key as string) && !store.collapsed) {
     store.collapsed = true;
   }
   // next();
