@@ -10,7 +10,7 @@
 
       <el-skeleton
         class="movie-group-suggested-skeleton"
-        :loading="loading"
+        :loading="loadingSuggested"
         animated
       >
         <template #template>
@@ -82,6 +82,7 @@ const dataSuggested = ref<any[]>([]);
 const page = ref<number>(1);
 const loading = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
+const loadingSuggested = computed<boolean>(() => loading.value || status.value != 'success');
 
 // watch(
 //   () => props.dataMovie,
@@ -148,9 +149,21 @@ const {
   }
 );
 
-dataSuggested.value = dataSuggestedCache.value.results;
-page.value++;
-// loading.value = false;
+watch(
+  dataSuggestedCache,
+  (newVal) => {
+    if (newVal?.results) {
+      if (page.value == 1) {
+        dataSuggested.value = newVal.results;
+        page.value++;
+        loading.value = false;
+      }
+    }
+  },
+  {
+    immediate: true
+  }
+);
 
 watch(
   () => props.dataMovie?.id,
@@ -159,8 +172,6 @@ watch(
 
     page.value = 1;
     await refresh();
-    dataSuggested.value = dataSuggestedCache.value.results;
-    page.value++;
 
     const sideView: JQuery<HTMLElement> = $('.play-container .side-view');
 
