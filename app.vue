@@ -1,13 +1,11 @@
 <template>
   <div id="app">
-    <!-- <a-app> -->
     <NetworkChecker />
+    <div id="append-to" />
+    <div id="preview-modal" />
+    <div id="el-popper-container-1024"></div>
 
     <a-extract-style>
-      <div id="append-to" />
-      <div id="preview-modal" />
-      <div id="el-popper-container-1024"></div>
-
       <a-config-provider
         :theme="{
           token: {
@@ -20,19 +18,6 @@
           }
         }"
       />
-
-      <!-- <ClientOnly>
-      <vue-progress-bar
-        style="
-          background: linear-gradient(
-            90deg,
-            var(--loading-progress-bar1),
-            var(--loading-progress-bar2),
-            var(--loading-progress-bar3)
-          );
-        "
-      />
-    </ClientOnly> -->
 
       <NuxtLoadingIndicator
         color="linear-gradient(90deg, var(--loading-progress-bar1), var(--loading-progress-bar2))"
@@ -70,7 +55,6 @@
         </NuxtLayout>
       </div>
     </a-extract-style>
-    <!-- </a-app> -->
   </div>
 </template>
 
