@@ -35,7 +35,7 @@
         @change="handleChangeInput(valueInput!)"
       >
         <template #enterButton>
-          <MagnifyingGlass
+          <SvgoMagnifyingGlass
             class="fa-magnifying-glass"
             width="1.8rem"
             height="1.8rem"

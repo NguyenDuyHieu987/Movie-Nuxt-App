@@ -43,8 +43,8 @@
             class="share-network facebook"
             network="facebook"
             :url="urlShare"
-            :title="dataMovie?.name"
-            :description="dataMovie?.overview"
+            :title="shareTitle"
+            :description="shareDescription"
             :quote="'Xem phim thỏa thích cùng Phimhay247'"
             hashtags="phimhay247,phimoi,phimhay"
           >
@@ -68,6 +68,7 @@
             class="share-network linkedIn"
             network="linkedIn"
             :url="urlShare"
+            :title="shareTitle"
           >
             <a-button
               class="click-active"
@@ -88,8 +89,8 @@
             class="share-network email"
             network="email"
             :url="urlShare"
-            :title="dataMovie?.name"
-            :description="dataMovie?.overview"
+            :title="shareTitle"
+            :description="shareDescription"
           >
             <a-button
               class="click-active"
@@ -110,8 +111,8 @@
             class="share-network messenger"
             network="messenger"
             :url="urlShare"
-            :title="dataMovie?.name"
-            :description="dataMovie?.overview"
+            :title="shareTitle"
+            :description="shareDescription"
           >
             <a-button
               class="click-active"
@@ -132,7 +133,7 @@
             class="share-network pinterest"
             network="pinterest"
             :url="urlShare"
-            :title="dataMovie?.name"
+            :title="shareTitle"
             :media="
               getImage(
                 dataMovie?.backdrop_path,
@@ -161,7 +162,7 @@
             class="share-network reddit"
             network="reddit"
             :url="urlShare"
-            :title="dataMovie?.name"
+            :title="shareTitle"
           >
             <a-button
               class="click-active"
@@ -182,8 +183,8 @@
             class="share-network skype"
             network="skype"
             :url="urlShare"
-            :title="dataMovie?.name"
-            :description="dataMovie?.overview"
+            :title="shareTitle"
+            :description="shareDescription"
           >
             <a-button
               class="click-active"
@@ -204,8 +205,8 @@
             class="share-network telegram"
             network="telegram"
             :url="urlShare"
-            :title="dataMovie?.name"
-            :description="dataMovie?.overview"
+            :title="shareTitle"
+            :description="shareDescription"
           >
             <a-button
               class="click-active"
@@ -226,7 +227,7 @@
             class="share-network twitter"
             network="twitter"
             :url="urlShare"
-            :title="dataMovie?.name"
+            :title="shareTitle"
             hashtags="phimhay247,phimoi,phimhay"
           >
             <a-button
@@ -248,8 +249,8 @@
             class="share-network whatsapp"
             network="whatsapp"
             :url="urlShare"
-            :title="dataMovie?.name"
-            :description="dataMovie?.overview"
+            :title="shareTitle"
+            :description="shareDescription"
           >
             <a-button
               class="click-active"
@@ -270,7 +271,7 @@
             class="share-network baidu"
             network="baidu"
             :url="urlShare"
-            :title="dataMovie?.name"
+            :title="shareTitle"
           >
             <a-button
               class="click-active"
@@ -291,7 +292,7 @@
             class="share-network weibo"
             network="weibo"
             :url="urlShare"
-            :title="dataMovie?.name"
+            :title="shareTitle"
             :media="
               getImage(
                 dataMovie?.backdrop_path,
@@ -325,7 +326,7 @@
 <script setup lang="ts">
 // import SvgoShare from '~/assets/svgs/icons/share.svg?component';
 // import Facebook from '~/assets/svgs/icons/facebook.svg?component';
-// import SvgoLinkedIn from '~/assets/svgs/icons/linkedin.svg?component';
+// import SvgoLinkedIn from '~/assets/svgs/icons/linkedIn.svg?component';
 // import SvgoEmail from '~/assets/svgs/icons/email.svg?component';
 // import SvgoMessenger from '~/assets/svgs/icons/messenger.svg?component';
 // import SvgoPinterest from '~/assets/svgs/icons/pinterest.svg?component';
@@ -333,7 +334,7 @@
 // import SvgoSkype from '~/assets/svgs/icons/skype.svg?component';
 // import SvgoTelegram from '~/assets/svgs/icons/telegram.svg?component';
 // import SvgoTwitter from '~/assets/svgs/icons/twitter.svg?component';
-// import SvgoWhatsApp from '~/assets/svgs/icons/whatsapp.svg?component';
+// import SvgoWhatsApp from '~/assets/svgs/icons/whatsApp.svg?component';
 // import SvgoBaidu from '~/assets/svgs/icons/baidu.svg?component';
 // import SvgoWeibo from '~/assets/svgs/icons/weibo.svg?component';
 
@@ -341,20 +342,19 @@
 import CloseBtn from '~/components/Button/CloseBtn/CloseBtn.vue';
 import { getImage } from '~/services/image';
 
-const props = withDefaults(
-  defineProps<{ buttonClass: string; dataMovie: any }>(),
-  {
-    buttonClass: ''
-  }
-);
+const props = withDefaults(defineProps<{ buttonClass: string; dataMovie: any }>(), {
+  buttonClass: ''
+});
 
 const openModal = ref<boolean>(false);
 const urlShare = ref<string>('');
 const windowWidth = ref<number>(1000);
+const shareTitle = computed(() => props.dataMovie?.name ?? '');
+const shareDescription = computed(() => props.dataMovie?.overview ?? '');
 
-onBeforeMount(() => {
+onMounted(() => {
   urlShare.value = window.location.href;
-  windowWidth.value = window.innerWidth;
+  // windowWidth.value = window.innerWidth;
 });
 </script>
 

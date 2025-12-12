@@ -180,9 +180,7 @@
               <Tags tagsLabel="Lượt xem:">
                 <template #tagsInfo>
                   <span class="text">{{
-                    dataMovie?.views
-                      ?.toString()
-                      ?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
+                    dataMovie?.views?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
                   }}</span>
                 </template>
               </Tags>
@@ -258,9 +256,7 @@
                     />
 
                     <NuxtImg
-                      :src="
-                        getImage(dataMovie?.poster_path, 'poster', { w: 250 })
-                      "
+                      :src="getImage(dataMovie?.poster_path, 'poster', { w: 250 })"
                       placeholder="/images/loading-img-2-3.webp"
                       loading="lazy"
                       alt=""
@@ -295,18 +291,11 @@
                       <NuxtLink
                         class="underline"
                         :to="`/discover/country/${
-                          getCountryByOriginalCountry(
-                            dataMovie?.origin_country,
-                            store.allCountries
-                          )?.short_name || 'au-my'
+                          getCountryByOriginalCountry(dataMovie?.origin_country, store.allCountries)?.short_name ||
+                          'au-my'
                         }`"
                       >
-                        {{
-                          getCountryByOriginalCountry(
-                            dataMovie?.origin_country,
-                            store.allCountries
-                          )?.name || ''
-                        }}
+                        {{ getCountryByOriginalCountry(dataMovie?.origin_country, store.allCountries)?.name || '' }}
                       </NuxtLink>
                     </div>
                   </div>
@@ -324,9 +313,7 @@
                     >
                       <NuxtLink
                         class="underline"
-                        :to="`/discover/genre/${
-                          getGenreById(item?.id, store.allGenres)?.short_name
-                        }`"
+                        :to="`/discover/genre/${getGenreById(item?.id, store.allGenres)?.short_name}`"
                         >{{ item?.name }}
                       </NuxtLink>
                       <span>
@@ -338,9 +325,7 @@
 
                 <Tags tagsLabel="Thời lượng:">
                   <template #tagsInfo>
-                    <span class="tags-item">
-                      {{ dataMovie?.runtime + ' phút' }}</span
-                    >
+                    <span class="tags-item"> {{ dataMovie?.runtime + ' phút' }}</span>
                   </template>
                 </Tags>
 
@@ -390,19 +375,11 @@ import { getCountryByOriginalCountry } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
-import {
-  getMovieById,
-  getMovieByType_Id,
-  UpdateViewMovie
-} from '~/services/movie';
-import {
-  getItemList,
-  handleAddItemToList,
-  handleRemoveItemFromList
-} from '~/services/list';
+import { getMovieById, getMovieByType_Id, UpdateViewMovie } from '~/services/movie';
+import { getItemList, handleAddItemToList, handleRemoveItemFromList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
-import throttle from 'lodash/throttle';
+import { throttle } from 'lodash-es';
 
 defineOptions({ name: 'play-movie' });
 
@@ -424,9 +401,7 @@ const route = useRoute();
 const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
-const loadingMovie = computed<boolean>(
-  () => !dataMovie.value || loading.value || status.value != 'success'
-);
+const loadingMovie = computed<boolean>(() => !dataMovie.value || loading.value || status.value != 'success');
 const urlCodeMovie = ref<string>('809431505');
 const isAddToList = ref<boolean>(false);
 const seconds = ref<number>(0);
@@ -488,7 +463,7 @@ const getData = async () => {
 };
 
 onMounted(() => {
-  windowWidth.value = window.innerWidth;
+  // windowWidth.value = window.innerWidth;
 
   // const videoPlayer = document.querySelector(
   //   '.video-player #video-player'
@@ -513,13 +488,9 @@ const {
   status,
   refresh,
   error
-} = await useAsyncData(
-  `movie/detail/${movieId.value}`,
-  () => getMovieByType_Id('movie', movieId.value),
-  {
-    // lazy: true
-  }
-);
+} = await useAsyncData(`movie/detail/${movieId.value}`, () => getMovieByType_Id('movie', movieId.value), {
+  // lazy: true
+});
 
 if (error.value) {
   throw createError({ statusCode: 500 });

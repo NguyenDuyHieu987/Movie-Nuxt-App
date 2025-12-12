@@ -361,18 +361,20 @@
                   @change="onChangeVolume(volume)"
                 /> -->
 
-                <el-slider
-                  v-model="volume"
-                  class="volume-slider"
-                  :class="{
-                    muted: videoStates.isVolumeOff,
-                    changing: videoStates.isChangingVolume
-                  }"
-                  size="small"
-                  :debounce="0"
-                  @input="onChangeVolume(volume)"
-                  @change="onChangeVolume(volume)"
-                />
+                <ClientOnly>
+                  <el-slider
+                    v-model="volume"
+                    class="volume-slider"
+                    :class="{
+                      muted: videoStates.isVolumeOff,
+                      changing: videoStates.isChangingVolume
+                    }"
+                    size="small"
+                    :debounce="0"
+                    @input="onChangeVolume(volume)"
+                    @change="onChangeVolume(volume)"
+                  />
+                </ClientOnly>
               </div>
 
               <div class="timeupdate-duration">
@@ -1017,7 +1019,19 @@ onBeforeMount(() => {});
 onMounted(async () => {
   // const module = await import('hls.js');
   // Hls = module.default;
+  initPlayer();
+});
 
+watch(
+  () => props.dataMovie?.id,
+  async () => {
+    if (!props.dataMovie?.id) return;
+
+    await initPlayer();
+  }
+);
+
+const initPlayer = async () => {
   await loadM3u8Video();
 
   mounted.value = true;
@@ -1080,7 +1094,7 @@ onMounted(async () => {
       }
     }
   });
-});
+};
 
 const handleTimeUpdate = (e: any) => {
   if (videoStates.isPlayVideo) {

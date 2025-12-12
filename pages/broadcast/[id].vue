@@ -193,9 +193,7 @@
               <Tags tagsLabel="Lượt xem:">
                 <template #tagsInfo>
                   <span class="text">{{
-                    dataMovie?.views
-                      ?.toString()
-                      ?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
+                    dataMovie?.views?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
                   }}</span>
                 </template>
               </Tags>
@@ -308,21 +306,13 @@ import { getCountryByOriginalCountry } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
-import {
-  getMovieById,
-  getMovieByType_Id,
-  UpdateViewMovie
-} from '~/services/movie';
+import { getMovieById, getMovieByType_Id, UpdateViewMovie } from '~/services/movie';
 import { getBroadcastById } from '~/services/broadcast';
-import {
-  getItemList,
-  handleAddItemToList,
-  handleRemoveItemFromList
-} from '~/services/list';
+import { getItemList, handleAddItemToList, handleRemoveItemFromList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
 import { Socket, io } from 'socket.io-client';
-import throttle from 'lodash/throttle';
+import { throttle } from 'lodash-es';
 
 defineOptions({ name: 'broadcast' });
 
@@ -345,9 +335,7 @@ const route = useRoute();
 const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
-const loadingMovie = computed<boolean>(
-  () => !dataMovie.value || loading.value || status.value != 'success'
-);
+const loadingMovie = computed<boolean>(() => !dataMovie.value || loading.value || status.value != 'success');
 const urlCodeMovie = ref<string>('809431505');
 const isAddToList = ref<boolean>(false);
 const seconds = ref<number>(0);
@@ -378,11 +366,7 @@ const socket = ref<Socket>();
 const liveViews = ref<number>(0);
 
 onBeforeMount(() => {
-  socket.value = io(
-    import.meta.env.PROD
-      ? nuxtConfig.public.apiGateway
-      : nuxtConfig.public.apiGatewayDev
-  );
+  socket.value = io(import.meta.env.PROD ? nuxtConfig.public.apiGateway : nuxtConfig.public.apiGatewayDev);
 
   if (isEndedBroadcast.value) return;
 
@@ -399,7 +383,7 @@ onUnmounted(() => {
 });
 
 onMounted(() => {
-  windowWidth.value = window.innerWidth;
+  // windowWidth.value = window.innerWidth;
 
   // const videoPlayer = document.querySelector(
   //   '.video-player #video-player'
@@ -421,9 +405,7 @@ const {
   data: dataBroadcast,
   status: statusBroadcast,
   error: errorBroadcast
-} = await useAsyncData(`broadcast/detail/${broadcastId.value}`, () =>
-  getBroadcastById(broadcastId.value)
-);
+} = await useAsyncData(`broadcast/detail/${broadcastId.value}`, () => getBroadcastById(broadcastId.value));
 
 if (errorBroadcast.value) {
   throw createError({ statusCode: 500 });
@@ -437,8 +419,7 @@ const {
   error
 } = await useAsyncData(
   `${dataBroadcast.value.movieData.media_type}/detail/${movieId.value}`,
-  () =>
-    getMovieByType_Id(dataBroadcast.value.movieData.media_type, movieId.value),
+  () => getMovieByType_Id(dataBroadcast.value.movieData.media_type, movieId.value),
   {
     // lazy: true
   }
@@ -616,9 +597,7 @@ const handleAddToList = () => {
     }
   } else {
     isAddToList.value = false;
-    if (
-      !handleRemoveItemFromList(dataMovie.value?.id, dataMovie.value.media_type)
-    ) {
+    if (!handleRemoveItemFromList(dataMovie.value?.id, dataMovie.value.media_type)) {
       isAddToList.value = true;
     }
   }

@@ -142,13 +142,29 @@ const {
     return getSimilar('all', props.dataMovie?.id, page.value, 15);
   },
   {
-    watch: [() => props.dataMovie],
     immediate: true
   }
 );
 
 watch(
-  () => dataSuggestedCache.value,
+  () => props.dataMovie?.id,
+  async () => {
+    loading.value = true;
+    page.value = 1;
+    await refresh();
+
+    const sideView: JQuery<HTMLElement> = $('.play-container .side-view');
+
+    if (sideView) {
+      sideView.animate({ scrollTop: 0 }, 300);
+    }
+
+    loading.value = false;
+  }
+);
+
+watch(
+  dataSuggestedCache,
   (newVal) => {
     if (newVal?.results) {
       if (page.value == 1) {
@@ -179,7 +195,11 @@ onMounted(() => {
       }
     };
   } else {
-    const sideView = $('.play-container .side-view');
+    const sideView: JQuery<HTMLElement> = $('.play-container .side-view');
+
+    if (!sideView) {
+      return;
+    }
 
     // window.onscroll = async () => {
     sideView.on('scroll', async function () {
@@ -187,7 +207,7 @@ onMounted(() => {
         return;
       }
 
-      if (utils.isElementScrollBottom(sideView[0])) {
+      if (utils.isElementScrollBottom(sideView[0]!)) {
         handleLoadmoreData();
       }
     });
@@ -197,9 +217,9 @@ onMounted(() => {
 const handleLoadmoreData = async () => {
   loadMore.value = true;
   await refresh();
-  dataSuggested.value = dataSuggested.value.concat(
-    dataSuggestedCache.value?.results
-  );
+  if (dataSuggestedCache.value?.results?.length) {
+    dataSuggested.value.push(...dataSuggestedCache.value.results);
+  }
   page.value++;
   loadMore.value = false;
 

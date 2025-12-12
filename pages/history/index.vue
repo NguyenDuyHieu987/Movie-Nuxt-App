@@ -146,7 +146,7 @@ import {
 import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';
 import { storeToRefs } from 'pinia';
-import reject from 'lodash/reject';
+import { reject } from 'lodash-es';
 
 defineOptions({ name: 'history' });
 

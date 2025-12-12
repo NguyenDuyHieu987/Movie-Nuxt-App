@@ -241,7 +241,7 @@ import { getImage, getUserAvatar } from '~/services/image';
 import DOMPurify from 'dompurify';
 import { storeToRefs } from 'pinia';
 import type { commentForm } from '@/types';
-import reject from 'lodash/reject';
+import { reject } from 'lodash-es';
 
 const props = defineProps<{
   movieId: string;

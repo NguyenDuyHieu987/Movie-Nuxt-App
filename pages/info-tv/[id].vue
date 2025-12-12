@@ -274,9 +274,7 @@
                   <Tags tagsLabel="Lượt xem:">
                     <template #tagsInfo>
                       <span class="text">{{
-                        dataMovie?.views
-                          ?.toString()
-                          ?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
+                        dataMovie?.views?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
                       }}</span>
                     </template>
                   </Tags>
@@ -365,18 +363,11 @@
                         <NuxtLink
                           class="underline"
                           :to="`/discover/country/${
-                            getCountryByOriginalCountry(
-                              dataMovie?.origin_country,
-                              store.allCountries
-                            )?.short_name || 'au-my'
+                            getCountryByOriginalCountry(dataMovie?.origin_country, store.allCountries)?.short_name ||
+                            'au-my'
                           }`"
                         >
-                          {{
-                            getCountryByOriginalCountry(
-                              dataMovie?.origin_country,
-                              store.allCountries
-                            )?.name || ''
-                          }}
+                          {{ getCountryByOriginalCountry(dataMovie?.origin_country, store.allCountries)?.name || '' }}
                         </NuxtLink>
                       </span>
                     </template>
@@ -392,16 +383,12 @@
                       >
                         <NuxtLink
                           class="underline"
-                          :to="`/discover/genre/${
-                            getGenreById(item?.id, store.allGenres)?.short_name
-                          }`"
+                          :to="`/discover/genre/${getGenreById(item?.id, store.allGenres)?.short_name}`"
                         >
                           {{ item?.name }}
                         </NuxtLink>
                         <span>
-                          {{
-                            index + 1 != dataMovie?.genres?.length ? ', ' : ''
-                          }}
+                          {{ index + 1 != dataMovie?.genres?.length ? ', ' : '' }}
                         </span>
                       </span>
                     </template>
@@ -464,10 +451,9 @@
                 : 'https://www.youtube.com/embed/ndl1W4ltcmg'
             "
             title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-            gyroscope; picture-in-picture"
-            allowFullScreen
-            frameBorder="{0}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            frameborder="0"
           />
         </div>
 
@@ -513,11 +499,7 @@ import { getCountryByOriginalCountry } from '~/services/country';
 import { getGenreById } from '~/services/genres';
 import { getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
-import {
-  getItemList,
-  handleAddItemToList,
-  handleRemoveItemFromList
-} from '~/services/list';
+import { getItemList, handleAddItemToList, handleRemoveItemFromList } from '~/services/list';
 import { getRating } from '~/services/rating';
 
 defineOptions({ name: 'info-tv' });
@@ -539,16 +521,12 @@ const route = useRoute();
 const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
-const loadingMovie = computed<boolean>(
-  () => !dataMovie.value || loading.value || status.value != 'success'
-);
+const loadingMovie = computed<boolean>(() => !dataMovie.value || loading.value || status.value != 'success');
 const srcBackdropList = ref<string[]>([]);
 const isAddToList = ref<boolean>(false);
 const isInHistory = ref<boolean>(false);
 const percentProgressHistory = ref<number>(0);
-const release_date = computed<string>(
-  () => dataMovie.value?.first_air_date || ''
-);
+const release_date = computed<string>(() => dataMovie.value?.first_air_date || '');
 const ratedValue = ref<number | undefined>();
 const windowWidth = ref<number>(1200);
 const movieId = computed<string>(
@@ -560,9 +538,7 @@ const movieId = computed<string>(
 const setBackgroundColor = (color: string[]) => {
   const main_color = `rgba(${color?.join(', ')}, 1)`;
 
-  const backdrop_wrapper = document.getElementsByClassName(
-    'backdrop-wrapper'
-  )[0] as HTMLElement;
+  const backdrop_wrapper = document.getElementsByClassName('backdrop-wrapper')[0] as HTMLElement;
 
   // backdrop_wrapper.style.setProperty('--dominant-backdrop-color', main_color);
 };
@@ -615,8 +591,7 @@ const getData = async () => {
 };
 
 onMounted(() => {
-  windowWidth.value = window.innerWidth;
-
+  // windowWidth.value = window.innerWidth;
   // window.scrollTo({
   //   top: 0,
   //   left: 0,

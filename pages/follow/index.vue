@@ -147,7 +147,7 @@ import {
 } from '~/services/list';
 import { useBreakpoints } from '@vueuse/core';
 import gsap from 'gsap';
-import reject from 'lodash/reject';
+import { reject } from 'lodash-es';
 import { storeToRefs } from 'pinia';
 
 defineOptions({ name: 'follow' });

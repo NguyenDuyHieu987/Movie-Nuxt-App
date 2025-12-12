@@ -315,9 +315,7 @@
         v-for="(item, index) in years"
         :key="item?.name"
         :index="`/discover/year/${
-          utils.isNumber(item?.name) || utils.isStringNumber(item?.name)
-            ? item?.name
-            : utils.slugifyString(item?.name)
+          utils.isNumber(item?.name) || utils.isStringNumber(item?.name) ? item?.name : utils.slugifyString(item?.name)
         }`"
       >
         <NuxtLink
@@ -535,11 +533,9 @@ const getData = async () => {
       countries.value = response[2].data.value?.results;
 
       store.allGenres = response[0].data.value?.results;
-      store.allYears = response[1].data.value?.results.sort(
-        (a: year, b: year) => {
-          return +b.name.slice(-4) - +a.name.slice(-4);
-        }
-      );
+      store.allYears = response[1].data.value?.results.sort((a: year, b: year) => {
+        return +b.name.slice(-4) - +a.name.slice(-4);
+      });
       store.allCountries = response[2].data.value?.results;
     })
     .catch((e) => {});
@@ -574,17 +570,13 @@ const { data: years } = await useAsyncData('year/all', () => getAllYear(), {
   }
 });
 
-const { data: countries } = await useAsyncData(
-  'country/all',
-  () => getAllCountry(),
-  {
-    transform: (data: any) => {
-      store.allCountries = data.results;
+const { data: countries } = await useAsyncData('country/all', () => getAllCountry(), {
+  transform: (data: any) => {
+    store.allCountries = data.results;
 
-      return data.results;
-    }
+    return data.results;
   }
-);
+});
 
 watchEffect(() => {
   if (route.path) {

@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <!-- <a-app> -->
+    <NetworkChecker />
+
     <a-extract-style>
       <div id="append-to" />
       <div id="preview-modal" />
+      <div id="el-popper-container-1024"></div>
 
       <a-config-provider
         :theme="{
           token: {
             // colorPrimary: '#008ddf',
-            fontFamily:
-              'Roboto, Noto Sans, Mulish, Source Sans 3, Plus Jakarta Sans, Nunito Sans, sans-serif'
+            fontFamily: 'Roboto, Noto Sans, Mulish, Source Sans 3, Plus Jakarta Sans, Nunito Sans, sans-serif'
             // fontSize: 15,
             // lineHeight: 1.5,
             // borderRadius: 2,
@@ -41,7 +43,6 @@
 
       <LoadingApp />
       <RequireAuthDialog />
-      <NetworkChecker />
 
       <div class="app-wrapper">
         <NuxtLayout>
@@ -63,9 +64,7 @@
               viewBox="0 0 24 24"
               fill="currentColor"
             >
-              <path
-                d="m4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8l-8 8z"
-              />
+              <path d="m4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8l-8 8z" />
             </svg>
           </el-backtop>
         </NuxtLayout>
@@ -103,15 +102,7 @@ useHead({
   }
 });
 
-let notCacheList = ref<string[]>([
-  'follow',
-  'history',
-  'broadcast',
-  'info-movie',
-  'play-movie',
-  'info-tv',
-  'play-tv'
-]);
+let notCacheList = ref<string[]>(['follow', 'history', 'broadcast', 'info-movie', 'play-movie', 'info-tv', 'play-tv']);
 
 const route = useRoute();
 

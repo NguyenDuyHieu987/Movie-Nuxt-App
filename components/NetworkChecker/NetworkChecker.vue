@@ -37,11 +37,7 @@
             fill="currentColor"
           />
 
-          <span class="message">{{
-            isOnline
-              ? 'Đã khôi phục kết nối Internet.'
-              : 'Không có kết nối Internet.'
-          }}</span>
+          <span class="message"> {{ isOnline ? 'Đã khôi phục kết nối Internet.' : 'Không có kết nối Internet.' }}</span>
         </div>
       </div>
       <div class="right">
@@ -102,7 +98,7 @@ watch(
     }
   },
   {
-    immediate: true
+    // immediate: true
   }
 );
 

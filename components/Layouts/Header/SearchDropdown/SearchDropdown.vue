@@ -116,7 +116,7 @@
                   @click="isFocusSearchInput = false"
                 >
                   Tất cả
-                  <ChevronRight
+                  <SvgoChevronRight
                     width="1.2rem"
                     height="1.2rem"
                     fill="currentColor"
@@ -155,7 +155,7 @@
 // import SvgoChevronRight from '~/assets/svgs/icons/chevron-right.svg?component';
 // import SvgoXCircle from '~/assets/svgs/icons/x-circle.svg?component';
 
-import reject from 'lodash/reject';
+import { reject } from 'lodash-es';
 import { addRankSearch } from '~/services/ranks';
 import {
   addSearch,

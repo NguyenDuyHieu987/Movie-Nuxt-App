@@ -8,9 +8,7 @@
         :style="`--dominant-backdrop-color: ${currenActiveItem?.dominant_backdrop_color?.join(', ')}`"
       >
         <NuxtImg
-          :src="
-            getImage(currenActiveItem?.backdrop_path, 'backdrop', { w: 1200 })
-          "
+          :src="getImage(currenActiveItem?.backdrop_path, 'backdrop', { w: 1200 })"
           loading="lazy"
           :alt="''"
           :title="currenActiveItem?.name"
@@ -148,7 +146,7 @@
         :index="index"
         class="billboard-preview-item"
         :class="{
-          active: (billboard?.innerSlider.currentSlide || 0) == index
+          active: currentSlide == index
         }"
         :title="item?.name"
         @click="handleChangeBillboardActiveItem(index)"
@@ -201,17 +199,15 @@ import { getImage } from '~/services/image';
 const billboard = ref();
 const billboardPreview = ref();
 const dataModel = defineModel<any[]>('data', { default: [] });
-const prevItemCarousel = ref<string>(
-  dataModel.value![dataModel.value!?.length - 1]?.name
-);
+const prevItemCarousel = ref<string>(dataModel.value![dataModel.value!?.length - 1]?.name);
 const nextItemCarousel = ref<string>(dataModel.value![1]?.name);
 const currenActiveItem = ref<any>(dataModel.value![0]);
 const loading = ref<boolean>(false);
+const currentSlide = computed<number>(() => billboard.value?.innerSlider?.currentSlide ?? 0);
 
 watch(dataModel, () => {
   if (dataModel.value) {
-    prevItemCarousel.value =
-      dataModel.value![dataModel.value!?.length - 1]?.name;
+    prevItemCarousel.value = dataModel.value![dataModel.value!?.length - 1]?.name;
     nextItemCarousel.value = dataModel.value![1]?.name;
   }
 });
@@ -228,8 +224,7 @@ const handleChangeCarouel = (activeIndex: number) => {
     prevItemCarousel.value = dataModel.value![activeIndex - 1]?.name;
     nextItemCarousel.value = dataModel.value![0]?.name;
   } else if (activeIndex == 0) {
-    prevItemCarousel.value =
-      dataModel.value![dataModel.value!?.length - 1]?.name;
+    prevItemCarousel.value = dataModel.value![dataModel.value!?.length - 1]?.name;
     nextItemCarousel.value = dataModel.value![activeIndex + 1]?.name;
   } else {
     prevItemCarousel.value = dataModel.value![activeIndex - 1]?.name;
@@ -237,13 +232,16 @@ const handleChangeCarouel = (activeIndex: number) => {
   }
 };
 
-watchEffect(() => {
-  if (billboard.value?.innerSlider) {
-    const activeIndex = billboard.value.innerSlider.currentSlide;
-    billboardPreview.value?.goTo(activeIndex);
-    handleChangeCarouel(activeIndex);
+watch(
+  () => billboard.value?.innerSlider,
+  () => {
+    if (billboard.value?.innerSlider) {
+      const activeIndex = billboard.value.innerSlider.currentSlide;
+      billboardPreview.value?.goTo(activeIndex);
+      handleChangeCarouel(activeIndex);
+    }
   }
-});
+);
 
 const handleChangeBillboardActiveItem = (index: number) => {
   billboard.value!.goTo(index);

@@ -155,9 +155,7 @@ export default defineNuxtConfig({
 
   css: [
     '~/assets/style/fonts/GoogleFonts.css',
-    antdVersion == 4
-      ? 'ant-design-vue/dist/reset.css'
-      : 'ant-design-vue/dist/antd.dark.min.css',
+    antdVersion == 4 ? 'ant-design-vue/dist/reset.css' : 'ant-design-vue/dist/antd.dark.min.css',
     // 'element-plus/dist/index.css',
     '~/assets/style/globalStyle/overwrite/antdv/antdv.scss',
     '~/assets/style/globalStyle/overwrite/element/element.scss',
@@ -200,8 +198,8 @@ export default defineNuxtConfig({
     importStyle: 'css',
     themes: ['dark'],
     injectionID: {
-      // prefix: 1024,
-      prefix: Math.floor(Math.random() * 10000),
+      prefix: 1024,
+      // prefix: Math.floor(Math.random() * 10000),
       current: 0
     },
     appendTo: ['#append-to']
@@ -319,15 +317,7 @@ export default defineNuxtConfig({
       Mulish: { wght: '200..700', ital: '200..700' },
       Lobster: true
     },
-    subsets: [
-      'cyrillic',
-      'cyrillic-ext',
-      'greek',
-      'greek-ext',
-      'latin',
-      'latin-ext',
-      'vietnamese'
-    ]
+    subsets: ['cyrillic', 'cyrillic-ext', 'greek', 'greek-ext', 'latin', 'latin-ext', 'vietnamese']
   },
 
   // delayHydration: {
@@ -479,8 +469,7 @@ export default defineNuxtConfig({
           // api: 'modern-compiler',
           silenceDeprecations: ['import'],
           // additionalData: `@import "~/assets/style/globalStyle/_variables.scss";`
-          additionalData:
-            '@use "~/assets/style/globalStyle/_variables.scss" as *;'
+          additionalData: '@use "~/assets/style/globalStyle/_variables.scss" as *;'
         }
       },
       transformer: 'postcss',
@@ -598,13 +587,9 @@ export default defineNuxtConfig({
     // redirect the request from server
     routeRules: {
       '/api/**': {
-        proxy: isProduction
-          ? `${process.env.API_GATEWAY}/**`
-          : `${process.env.API_GATEWAY_DEV}/**`,
+        proxy: isProduction ? `${process.env.API_GATEWAY}/**` : `${process.env.API_GATEWAY_DEV}/**`,
         headers: {
-          referer: isProduction
-            ? `${process.env.API_GATEWAY}/`
-            : `${process.env.API_GATEWAY_DEV}/`
+          referer: isProduction ? `${process.env.API_GATEWAY}/` : `${process.env.API_GATEWAY_DEV}/`
         }
       }
     },

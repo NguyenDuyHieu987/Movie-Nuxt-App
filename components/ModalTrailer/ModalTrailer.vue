@@ -105,12 +105,9 @@
         <iframe
           height="100%"
           width="100%"
-          :src="`https://www.youtube.com/embed/${
-            dataVideos[0]?.key || 'ndl1W4ltcmg'
-          }`"
+          :src="`https://www.youtube.com/embed/${dataVideos[0]?.key || 'ndl1W4ltcmg'}`"
           title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-            gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           frameBorder="{0}"
         />
@@ -129,10 +126,7 @@
 
               <p class="overview">
                 <span>Nội dung: </span>
-                {{
-                  dataMovie.overview ||
-                  'Sorry! This movie has not been updated overview content.'
-                }}
+                {{ dataMovie.overview || 'Sorry! This movie has not been updated overview content.' }}
               </p>
             </div>
             <div class="action">
@@ -191,9 +185,7 @@ watch(isTeleport, async () => {
     loading.value = true;
 
     if (dataVideos.value.length == 0) {
-      await useAsyncData(`videos/${dataMovie.value.id}`, () =>
-        getVideos(dataMovie.value.id)
-      )
+      await useAsyncData(`videos/${dataMovie.value.id}`, () => getVideos(dataMovie.value.id))
         .then((response) => {
           dataVideos.value = response.data.value;
         })

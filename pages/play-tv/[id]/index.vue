@@ -42,10 +42,7 @@
               :dataMovie="dataMovie"
               :episode="currentEpisode"
               :loadingData="loading || currentEpisode == null"
-              :videoUrl="
-                currentEpisode?.video_path ||
-                `/television/The_Witcher_S1/${urlCodeMovie}/` + urlCodeMovie
-              "
+              :videoUrl="currentEpisode?.video_path || `/television/The_Witcher_S1/${urlCodeMovie}/` + urlCodeMovie"
               :backdrop="
                 getImage(
                   dataMovie?.backdrop_path,
@@ -186,9 +183,7 @@
               <Tags tagsLabel="Lượt xem:">
                 <template #tagsInfo>
                   <span class="text">{{
-                    dataMovie?.views
-                      ?.toString()
-                      ?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
+                    dataMovie?.views?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' lượt xem'
                   }}</span>
                 </template>
               </Tags>
@@ -274,9 +269,7 @@
                     />
 
                     <NuxtImg
-                      :src="
-                        getImage(dataMovie?.poster_path, 'poster', { w: 250 })
-                      "
+                      :src="getImage(dataMovie?.poster_path, 'poster', { w: 250 })"
                       placeholder="/images/loading-img-2-3.webp"
                       loading="lazy"
                       alt=""
@@ -316,18 +309,11 @@
                       <NuxtLink
                         class="underline"
                         :to="`/discover/country/${
-                          getCountryByOriginalCountry(
-                            dataMovie?.origin_country,
-                            store.allCountries
-                          )?.short_name || 'au-my'
+                          getCountryByOriginalCountry(dataMovie?.origin_country, store.allCountries)?.short_name ||
+                          'au-my'
                         }`"
                       >
-                        {{
-                          getCountryByOriginalCountry(
-                            dataMovie?.origin_country,
-                            store.allCountries
-                          )?.name || ''
-                        }}
+                        {{ getCountryByOriginalCountry(dataMovie?.origin_country, store.allCountries)?.name || '' }}
                       </NuxtLink>
                     </div>
                   </div>
@@ -345,9 +331,7 @@
                     >
                       <NuxtLink
                         class="underline"
-                        :to="`/discover/genre/${
-                          getGenreById(item?.id, store.allGenres)?.short_name
-                        }`"
+                        :to="`/discover/genre/${getGenreById(item?.id, store.allGenres)?.short_name}`"
                         >{{ item?.name }}
                       </NuxtLink>
                       <span>
@@ -423,14 +407,10 @@ import { getGenreById } from '~/services/genres';
 import { getCountryByOriginalCountry } from '~/services/country';
 import { add_update_History, getItemHistory } from '~/services/history';
 import { getImage, getServerImage } from '~/services/image';
-import {
-  getItemList,
-  handleAddItemToList,
-  handleRemoveItemFromList
-} from '~/services/list';
+import { getItemList, handleAddItemToList, handleRemoveItemFromList } from '~/services/list';
 import { addRankPlay } from '~/services/ranks';
 import { getRating } from '~/services/rating';
-import throttle from 'lodash/throttle';
+import { throttle } from 'lodash-es';
 
 defineOptions({ name: 'play-tv' });
 
@@ -451,9 +431,7 @@ const route = useRoute();
 const router = useRouter();
 // const dataMovie = ref<any>({});
 const loading = ref<boolean>(false);
-const loadingMovie = computed<boolean>(
-  () => !dataMovie.value || loading.value || status.value != 'success'
-);
+const loadingMovie = computed<boolean>(() => !dataMovie.value || loading.value || status.value != 'success');
 const urlCodeMovie = ref<string>('The_Witcher_S1_Ep1');
 const isAddToList = ref<boolean>(false);
 const seconds = ref<number>(0);
@@ -471,9 +449,7 @@ const historyProgress = ref<{
   percent: 0,
   seconds: 0
 });
-const release_date = computed<string>(
-  () => dataMovie.value?.first_air_date || ''
-);
+const release_date = computed<string>(() => dataMovie.value?.first_air_date || '');
 const ratedValue = ref<number | undefined>();
 const currentEpisode = ref<any>();
 const windowWidth = ref<number>(1200);
@@ -518,7 +494,7 @@ const getData = async () => {
 };
 
 onMounted(() => {
-  windowWidth.value = window.innerWidth;
+  // windowWidth.value = window.innerWidth;
 
   // const videoPlayer = document.querySelector(
   //   '.video-player #video-player'
@@ -599,29 +575,14 @@ watch(
 loading.value = false;
 
 useHead({
-  title: () =>
-    'Xem phim: ' +
-    dataMovie.value?.name +
-    ' | Tập ' +
-    currentEpisode.value?.episode_number +
-    '',
+  title: () => 'Xem phim: ' + dataMovie.value?.name + ' | Tập ' + currentEpisode.value?.episode_number + '',
   htmlAttrs: { lang: 'vi' }
 });
 
 useSeoMeta({
-  title: () =>
-    'Xem phim: ' +
-    dataMovie.value?.name +
-    ' | Tập ' +
-    currentEpisode.value?.episode_number +
-    '',
+  title: () => 'Xem phim: ' + dataMovie.value?.name + ' | Tập ' + currentEpisode.value?.episode_number + '',
   description: () => dataMovie.value?.overview,
-  ogTitle: () =>
-    'Xem phim: ' +
-    dataMovie.value?.name +
-    ' | Tập ' +
-    currentEpisode.value?.episode_number +
-    '',
+  ogTitle: () => 'Xem phim: ' + dataMovie.value?.name + ' | Tập ' + currentEpisode.value?.episode_number + '',
   ogType: 'video.movie',
   ogUrl: () => window?.location?.href,
   ogDescription: () => dataMovie.value?.overview,
