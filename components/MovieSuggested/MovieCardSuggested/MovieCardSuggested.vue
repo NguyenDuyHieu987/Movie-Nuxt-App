@@ -106,9 +106,7 @@
           }}
         </p>
 
-        <p class="views">
-          {{ utils.viewFormatter(dataMovie?.views) }} lượt xem
-        </p>
+        <p class="views">{{ utils.viewFormatter(dataMovie?.views) }} lượt xem</p>
       </div>
 
       <div class="action">
@@ -234,11 +232,7 @@
 import { getImage } from '~/services/image';
 import { getMovieById, getMovieByType_Id } from '~/services/movie';
 import { getTvById } from '~/services/tv';
-import {
-  getItemList,
-  handleAddItemToList,
-  handleRemoveItemFromList
-} from '~/services/list';
+import { getItemList, handleAddItemToList, handleRemoveItemFromList } from '~/services/list';
 import { getItemHistory } from '~/services/history';
 
 const props = defineProps<{
@@ -256,7 +250,7 @@ const isInHistory = ref<boolean>(false);
 const percent = ref<number>(0);
 const urlShare = computed<string>(
   (): string =>
-    window.location.origin +
+    //  window.location.origin +
     `/info-${dataMovie.value?.media_type}/${dataMovie.value?.id}`
 );
 const isAddToList = ref<boolean>(false);
@@ -305,12 +299,7 @@ const handleAddToList = () => {
     }
   } else {
     isAddToList.value = false;
-    if (
-      !handleRemoveItemFromList(
-        dataMovie.value?.movie_id,
-        dataMovie.value?.media_type
-      )
-    ) {
+    if (!handleRemoveItemFromList(dataMovie.value?.movie_id, dataMovie.value?.media_type)) {
       isAddToList.value = true;
     }
   }
