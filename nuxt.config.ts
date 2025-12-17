@@ -174,7 +174,7 @@ export default defineNuxtConfig({
     // '@nuxt/fonts',
     '@nuxtjs/google-fonts',
     // 'nuxt-gtag',
-    // 'nuxt-delay-hydration',
+    'nuxt-delay-hydration',
     // SEO
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
@@ -461,7 +461,8 @@ export default defineNuxtConfig({
         // './components/**/*.vue', 'ant-design-vue', 'element-plus'
         // './components/CarouselGroup/SwiperCarouselGroup/SwiperCarouselGroup.vue',
         // 'swiper/vue'
-      ]
+      ],
+      exclude: ['hls.js']
     },
     css: {
       preprocessorOptions: {

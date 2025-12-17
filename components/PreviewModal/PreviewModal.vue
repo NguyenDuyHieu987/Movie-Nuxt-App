@@ -52,9 +52,7 @@
             <div class="backdrop-box">
               <NuxtImg
                 v-if="!showVideo"
-                :src="
-                  getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })
-                "
+                :src="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
                 loading="lazy"
                 alt=""
               />
@@ -67,9 +65,7 @@
                   ref="video"
                   autoplay
                   muted
-                  :poster="
-                    getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })
-                  "
+                  :poster="getImage(dataMovie?.backdrop_path, 'backdrop', { h: 250 })"
                   @loadstart="onLoadStartVideo"
                   @waiting="onWaitingVideo"
                   @playing="onPLayingVideo"
@@ -158,12 +154,8 @@
                   </el-tooltip>
 
                   <el-tooltip
-                    :title="
-                      !isAddToList ? 'Thêm vào danh sách' : 'Xóa khỏi danh sách'
-                    "
-                    :content="
-                      !isAddToList ? 'Thêm vào danh sách' : 'Xóa khỏi danh sách'
-                    "
+                    :title="!isAddToList ? 'Thêm vào danh sách' : 'Xóa khỏi danh sách'"
+                    :content="!isAddToList ? 'Thêm vào danh sách' : 'Xóa khỏi danh sách'"
                     placement="top"
                     popper-class="popper-tooltip"
                     :hide-after="0"
@@ -289,16 +281,11 @@
 
                 <div class="genres">
                   <NuxtLink
-                    v-for="(genre, index) in Array.from(
-                      dataMovie?.genres,
-                      (x: genre) => x
-                    )"
+                    v-for="(genre, index) in Array.from(dataMovie?.genres, (x: genre) => x)"
                     :key="index"
                     :index="index"
                     class="genre-item"
-                    :to="`/discover/genre/${
-                      getGenreById(genre.id, store?.allGenres)?.short_name
-                    }`"
+                    :to="`/discover/genre/${getGenreById(genre.id, store?.allGenres)?.short_name}`"
                   >
                     {{ genre.name }}
                   </NuxtLink>
@@ -307,19 +294,12 @@
                 <div class="bottom">
                   <div class="evidence-tags">
                     <span class="evidence-item country">
-                      {{
-                        getCountryByOriginalCountry(
-                          dataMovie?.origin_country,
-                          store.allCountries
-                        )?.name || ''
-                      }}
+                      {{ getCountryByOriginalCountry(dataMovie?.origin_country, store.allCountries)?.name || '' }}
                     </span>
                   </div>
 
                   <div class="views-rate">
-                    <p class="views">
-                      {{ utils.viewFormatter(dataMovie?.views) }} lượt xem
-                    </p>
+                    <p class="views">{{ utils.viewFormatter(dataMovie?.views) }} lượt xem</p>
 
                     <p>
                       <span
@@ -329,10 +309,7 @@
                         {{ dataMovie?.vote_average.toFixed(2) }}
                       </span>
                       <span
-                        v-if="
-                          dataMovie?.vote_average >= 5 &&
-                          dataMovie?.vote_average < 8
-                        "
+                        v-if="dataMovie?.vote_average >= 5 && dataMovie?.vote_average < 8"
                         style="color: yellow; font-weight: bold"
                       >
                         {{ dataMovie?.vote_average.toFixed(2) }}
@@ -372,17 +349,13 @@ import { getCountryByOriginalCountry } from '~/services/country';
 import { getImage } from '~/services/image';
 import { getMovieById } from '~/services/movie';
 import { getGenreById } from '~/services/genres';
-import {
-  getItemList,
-  handleAddItemToList,
-  handleRemoveItemFromList
-} from '~/services/list';
+import { getItemList, handleAddItemToList, handleRemoveItemFromList } from '~/services/list';
 import { getItemHistory } from '~/services/history';
 import { getVideo } from '~/services/video';
 import type { genre } from '~/types';
 import gsap from 'gsap';
-import Hls from 'hls.js';
-// let Hls: any;
+// import Hls from 'hls.js';
+let Hls: any;
 
 const props = defineProps<{
   item: any;
@@ -413,9 +386,7 @@ const isInHistory = ref<boolean>(false);
 const percent = ref<number>(0);
 const previewModal = ref<HTMLElement>();
 const urlShare = computed<string>(
-  (): string =>
-    window.location.origin +
-    `/info-${dataMovie.value?.media_type}/${dataMovie.value?.id}`
+  (): string => window.location.origin + `/info-${dataMovie.value?.media_type}/${dataMovie.value?.id}`
 );
 const isTeleport = defineModel<boolean>('isTeleport');
 const style = defineModel<{
@@ -433,10 +404,7 @@ const isOnlyRight = ref<boolean>(false);
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
-  getVideo(
-    dataMovie.value?.video_path ||
-      '/feature/Transformer_5/Transformer_5' + '.m3u8'
-  )
+  getVideo(dataMovie.value?.video_path || '/feature/Transformer_5/Transformer_5' + '.m3u8')
 );
 const videoStates = reactive({
   isLoading: false,
@@ -445,8 +413,8 @@ const videoStates = reactive({
 const hls = ref<Hls | null>();
 
 onMounted(async () => {
-  // const module = await import('hls.js');
-  // Hls = module.default;
+  const module = await import('hls.js');
+  Hls = module.default;
 
   showVideo.value = true;
 });
@@ -475,23 +443,12 @@ watch(
   previewModal,
   () => {
     if (isTeleport.value == true && previewModal.value) {
-      previewModal.value.style.setProperty(
-        '--width',
-        style.value!.offsetWidth + 'px'
-      );
-      previewModal.value.style.setProperty(
-        '--height',
-        style.value!.offsetHeight + 'px'
-      );
-      previewModal.value.style.setProperty(
-        '--img-height',
-        style.value!.imgHeight + 'px'
-      );
+      previewModal.value.style.setProperty('--width', style.value!.offsetWidth + 'px');
+      previewModal.value.style.setProperty('--height', style.value!.offsetHeight + 'px');
+      previewModal.value.style.setProperty('--img-height', style.value!.imgHeight + 'px');
 
       let minRecLeft =
-        +getComputedStyle(document.documentElement)
-          .getPropertyValue('--sider-width')
-          .replace('px', '') + 45;
+        +getComputedStyle(document.documentElement).getPropertyValue('--sider-width').replace('px', '') + 45;
 
       if (window.innerWidth < 900) {
         minRecLeft = 15;
@@ -499,9 +456,7 @@ watch(
 
       if (store.collapsed && window.innerWidth >= 900) {
         minRecLeft =
-          +getComputedStyle(document.documentElement)
-            .getPropertyValue('--sider-width')
-            .replace('px', '') + 30;
+          +getComputedStyle(document.documentElement).getPropertyValue('--sider-width').replace('px', '') + 30;
       }
 
       isOnlyLeft.value = false;
@@ -517,18 +472,11 @@ watch(
 
         isOnlyLeft.value = true;
 
-        previewModal.value.style.setProperty(
-          '--left',
-          style.value!.rectBound.left + 'px'
-        );
+        previewModal.value.style.setProperty('--left', style.value!.rectBound.left + 'px');
 
-        previewModal.value.style.setProperty(
-          '--left-only',
-          style.value!.rectBound.left * 1.15 + 'px'
-        );
+        previewModal.value.style.setProperty('--left-only', style.value!.rectBound.left * 1.15 + 'px');
 
-        previewModal.value.style.transform =
-          'translateX(0%) translateY(-50%) scale(1.3)';
+        previewModal.value.style.transform = 'translateX(0%) translateY(-50%) scale(1.3)';
       } else {
         const minRectRight = window.innerWidth - style.value!?.rectBound.right;
 
@@ -540,23 +488,13 @@ watch(
 
           previewModal.value.style.setProperty('--left', 'auto');
 
-          previewModal.value.style.setProperty(
-            '--right',
-            minRectRight - 14 + 'px'
-          );
+          previewModal.value.style.setProperty('--right', minRectRight - 14 + 'px');
 
-          previewModal.value.style.setProperty(
-            '--right-only',
-            minRectRight + 14 * 1.8 + 'px'
-          );
+          previewModal.value.style.setProperty('--right-only', minRectRight + 14 * 1.8 + 'px');
 
-          previewModal.value.style.transform =
-            'translateX(0%) translateY(-50%) scale(1.3)';
+          previewModal.value.style.transform = 'translateX(0%) translateY(-50%) scale(1.3)';
         } else {
-          previewModal.value.style.setProperty(
-            '--left',
-            style.value!.left + 'px'
-          );
+          previewModal.value.style.setProperty('--left', style.value!.left + 'px');
         }
       }
 
@@ -577,9 +515,7 @@ watch(
             },
             {
               left: style.value!.rectBound.left + 'px',
-              transform: `translateX(0%) translateY(calc(${
-                style.value!.offsetHeight
-              }px / (-2)))
+              transform: `translateX(0%) translateY(calc(${style.value!.offsetHeight}px / (-2)))
             scale(1)`,
               duration: 0.15,
               onComplete: () => {
@@ -600,9 +536,7 @@ watch(
             },
             {
               right: minRectRight - 14 + 'px',
-              transform: `translateX(0%) translateY(calc(${
-                style.value!.offsetHeight
-              }px / (-2)))
+              transform: `translateX(0%) translateY(calc(${style.value!.offsetHeight}px / (-2)))
             scale(1)`,
               duration: 0.15,
               onComplete: () => {
@@ -620,9 +554,7 @@ watch(
             transform: 'translateX(-50%) translateY(-50%) scale(1.3)'
           },
           {
-            transform: `translateX(-50%) translateY(calc(${
-              style.value!.offsetHeight
-            }px / (-2)))
+            transform: `translateX(-50%) translateY(calc(${style.value!.offsetHeight}px / (-2)))
             scale(1)`,
             duration: 0.15,
             onComplete: () => {
@@ -757,19 +689,12 @@ const handleAddToList = (e: any) => {
 
   if (!isAddToList.value) {
     isAddToList.value = true;
-    if (
-      !handleAddItemToList(dataMovie.value?.id, dataMovie.value?.media_type)
-    ) {
+    if (!handleAddItemToList(dataMovie.value?.id, dataMovie.value?.media_type)) {
       isAddToList.value = false;
     }
   } else {
     isAddToList.value = false;
-    if (
-      !handleRemoveItemFromList(
-        dataMovie.value?.id,
-        dataMovie.value?.media_type
-      )
-    ) {
+    if (!handleRemoveItemFromList(dataMovie.value?.id, dataMovie.value?.media_type)) {
       isAddToList.value = true;
     }
   }

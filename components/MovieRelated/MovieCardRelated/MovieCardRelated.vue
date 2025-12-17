@@ -132,11 +132,7 @@
       <div class="middle">
         <div class="left">
           <div
-            v-if="
-              dataMovie?.release_date ||
-              dataMovie?.last_air_date ||
-              dataMovie?.first_air_date
-            "
+            v-if="dataMovie?.release_date || dataMovie?.last_air_date || dataMovie?.first_air_date"
             class="release-date-box"
           >
             <span
@@ -156,9 +152,7 @@
               }}
             </span>
           </div>
-          <span class="views">
-            {{ utils.viewFormatter(dataMovie?.views) }} lượt xem
-          </span>
+          <span class="views"> {{ utils.viewFormatter(dataMovie?.views) }} lượt xem </span>
         </div>
         <div class="right">
           <a-button
@@ -189,10 +183,7 @@
       </div>
       <div class="bottom">
         <p class="overview">
-          {{
-            dataMovie?.overview ||
-            'Sorry! This movie has not been updated overview content.'
-          }}
+          {{ dataMovie?.overview || 'Sorry! This movie has not been updated overview content.' }}
         </p>
       </div>
     </NuxtLink>
@@ -206,16 +197,12 @@
 
 // import { LoadingSpinner } from '~/components/Loading';
 import LoadingSpinner from '~/components/Loading/LoadingSpinner/LoadingSpinner.vue';
-import {
-  getItemList,
-  handleAddItemToList,
-  handleRemoveItemFromList
-} from '~/services/list';
+import { getItemList, handleAddItemToList, handleRemoveItemFromList } from '~/services/list';
 import { getItemHistory } from '~/services/history';
 import { getImage } from '~/services/image';
 import { getVideo } from '~/services/video';
-import Hls from 'hls.js';
-// let Hls: any;
+// import Hls from 'hls.js';
+let Hls: any;
 
 const props = defineProps<{
   item: any;
@@ -234,10 +221,7 @@ const isEpisodes = computed<boolean>(() => dataMovie.value?.media_type == 'tv');
 const video = ref<HTMLVideoElement>();
 const showVideo = ref<boolean>(false);
 const videoSrc = computed<string>(() =>
-  getVideo(
-    dataMovie.value?.video_path ||
-      '/feature/Transformer_5/Transformer_5' + '.m3u8'
-  )
+  getVideo(dataMovie.value?.video_path || '/feature/Transformer_5/Transformer_5' + '.m3u8')
 );
 const videoStates = reactive({
   isLoading: false,
@@ -284,8 +268,8 @@ const getData = async () => {
 getData();
 
 onMounted(async () => {
-  // const module = await import('hls.js');
-  // Hls = module.default;
+  const module = await import('hls.js');
+  Hls = module.default;
 });
 
 const handleAddToList = (e: any) => {
@@ -300,12 +284,7 @@ const handleAddToList = (e: any) => {
     }
   } else {
     isAddToList.value = false;
-    if (
-      !handleRemoveItemFromList(
-        dataMovie.value?.id,
-        dataMovie.value?.media_type
-      )
-    ) {
+    if (!handleRemoveItemFromList(dataMovie.value?.id, dataMovie.value?.media_type)) {
       isAddToList.value = true;
     }
   }

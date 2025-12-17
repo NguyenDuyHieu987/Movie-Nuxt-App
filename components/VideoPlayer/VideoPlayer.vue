@@ -65,10 +65,7 @@
               class="load-error"
             >
               <div class="load-error-message">
-                <p>
-                  Gặp sự cố trong quá trình tải video. Chúng tôi sẽ khắc phục sự
-                  cố sớm nhất có thể.
-                </p>
+                <p>Gặp sự cố trong quá trình tải video. Chúng tôi sẽ khắc phục sự cố sớm nhất có thể.</p>
                 <p>
                   <strong>{{ videoStates.isLoadError.type }}: </strong>
                   {{ videoStates.isLoadError.reason }}
@@ -81,16 +78,13 @@
             class="prevent-notification-wrapper"
           >
             <div
-              v-if="
-                !authStore.loadingUser && authStore.vipNumber < movieVipNumber
-              "
+              v-if="!authStore.loadingUser && authStore.vipNumber < movieVipNumber"
               class="require-vip"
             >
               <div class="require-vip-message">
                 <span>
                   Bạn cần nâng cấp tài khoản lên
-                  <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem
-                  phim.
+                  <strong>VIP {{ movieVipNumber }}</strong> để tiếp tục xem phim.
                 </span>
                 <NuxtLink
                   class="underline"
@@ -112,9 +106,7 @@
       <div class="float-center">
         <div
           v-show="
-            (videoStates.isLoading &&
-              !videoStates.isEndedVideo &&
-              !videoStates.isRewind.enable) ||
+            (videoStates.isLoading && !videoStates.isEndedVideo && !videoStates.isRewind.enable) ||
             !mounted ||
             loadingData
           "
@@ -145,9 +137,7 @@
 
         <div
           v-if="isEligibleToWatch"
-          v-show="
-            videoStates.isShowNotify && isInHistory && !videoStates.isLoading
-          "
+          v-show="videoStates.isShowNotify && isInHistory && !videoStates.isLoading"
           class="notify-keep-watching"
         >
           <CloseBtn
@@ -229,9 +219,7 @@
         ref="timeline"
         class="timeline"
         :class="{
-          active:
-            videoStates.isMouseMoveOverlayProgress ||
-            videoStates.isScrubbingProgressBar
+          active: videoStates.isMouseMoveOverlayProgress || videoStates.isScrubbingProgressBar
         }"
       >
         <div class="timeline-container">
@@ -487,9 +475,7 @@
         >
           <div
             class="setting-item switch-background"
-            @click="
-              settingStates.switchBackgroud = !settingStates.switchBackgroud
-            "
+            @click="settingStates.switchBackgroud = !settingStates.switchBackgroud"
           >
             <div class="left">
               <!-- <Icon name="ic:outline-light-mode" /> -->
@@ -504,9 +490,7 @@
             <div class="right">
               <a-switch
                 v-model:checked="settingStates.switchBackgroud"
-                @click="
-                  settingStates.switchBackgroud = !settingStates.switchBackgroud
-                "
+                @click="settingStates.switchBackgroud = !settingStates.switchBackgroud"
               />
             </div>
           </div>
@@ -706,8 +690,8 @@
 // import { getImage } from '~/services/image';
 import { getVideo } from '~/services/video';
 import { useLocalStorage } from '@vueuse/core';
-import Hls from 'hls.js';
-// let Hls: any;
+// import Hls from 'hls.js';
+let Hls: any;
 
 const props = withDefaults(
   defineProps<{
@@ -730,14 +714,11 @@ const emits = defineEmits<{
 const nuxtConfig = useRuntimeConfig();
 const authStore = useAuthStore();
 const route = useRoute();
-const movieVipNumber = computed<number>(
-  () => props?.episode?.vip || props.dataMovie?.vip || 0
-);
+const movieVipNumber = computed<number>(() => props?.episode?.vip || props.dataMovie?.vip || 0);
 const isEligibleToWatch = computed<boolean>(
   () =>
     !props.loadingData &&
-    (movieVipNumber.value == 0 ||
-      authStore.vipNumber! >= movieVipNumber.value) &&
+    (movieVipNumber.value == 0 || authStore.vipNumber! >= movieVipNumber.value) &&
     !videoStates.isLoadError.enable
 );
 // const ísWatchable = computed<boolean>(
@@ -752,27 +733,18 @@ const isEligibleToWatch = computed<boolean>(
 // );
 const ísWatchable = computed<boolean>(
   () =>
-    !(
-      videoStates.isLoading &&
-      !videoStates.isEndedVideo &&
-      !videoStates.isRewind.enable
-    ) &&
+    !(videoStates.isLoading && !videoStates.isEndedVideo && !videoStates.isRewind.enable) &&
     // !mounted.value &&
     !props.loadingData &&
     !videoStates.isLoadError.enable
 );
 const videoSrc = computed<string>(() =>
-  getVideo(
-    props.videoUrl.endsWith('.m3u8') ? props.videoUrl : props.videoUrl + '.m3u8'
-  )
+  getVideo(props.videoUrl.endsWith('.m3u8') ? props.videoUrl : props.videoUrl + '.m3u8')
 );
-const videoPlayerStorageStates = useLocalStorage(
-  STORAGE.VIDEO_PLAYER_STATES.KEY,
-  {
-    [STORAGE.VIDEO_PLAYER_STATES.VOLUME]: 100,
-    [STORAGE.VIDEO_PLAYER_STATES.MUTED]: false
-  }
-);
+const videoPlayerStorageStates = useLocalStorage(STORAGE.VIDEO_PLAYER_STATES.KEY, {
+  [STORAGE.VIDEO_PLAYER_STATES.VOLUME]: 100,
+  [STORAGE.VIDEO_PLAYER_STATES.MUTED]: false
+});
 const blobVideoSrc = ref<string>('');
 const videoPlayer = ref<HTMLElement>();
 const video = ref<HTMLVideoElement>();
@@ -805,8 +777,7 @@ const videoStates = reactive({
   isScrubbingProgressBar: false,
   isFullScreen: false,
   isChangingVolume: false,
-  isVolumeOff:
-    videoPlayerStorageStates.value[STORAGE.VIDEO_PLAYER_STATES.MUTED] || false,
+  isVolumeOff: videoPlayerStorageStates.value[STORAGE.VIDEO_PLAYER_STATES.MUTED] || false,
   isEndedVideo: false,
   isMouseMoveOverlayProgress: false,
   isHideControls: false,
@@ -834,23 +805,11 @@ const settings = reactive({
     current: 'Bình thường'
   },
   quality: {
-    all: [
-      '2560p - 4K',
-      '1440p - 2K',
-      '1080p - HD',
-      '720p',
-      '480p',
-      '360p',
-      'Tự động'
-    ],
+    all: ['2560p - 4K', '1440p - 2K', '1080p - HD', '720p', '480p', '360p', 'Tự động'],
     current: '1080p - HD'
   }
 });
-const volume = ref<number>(
-  (videoPlayerStorageStates.value[
-    STORAGE.VIDEO_PLAYER_STATES.VOLUME
-  ] as number) || 100
-);
+const volume = ref<number>((videoPlayerStorageStates.value[STORAGE.VIDEO_PLAYER_STATES.VOLUME] as number) || 100);
 const timeUpdate = ref<string>('0:00');
 const timelineUpdate = ref<string>('0:00');
 const duration = ref<string>('00:00');
@@ -1017,8 +976,8 @@ onUnmounted(() => {
 onBeforeMount(() => {});
 
 onMounted(async () => {
-  // const module = await import('hls.js');
-  // Hls = module.default;
+  const module = await import('hls.js');
+  Hls = module.default;
   initPlayer();
 });
 
@@ -1085,9 +1044,7 @@ const initPlayer = async () => {
     if (settingStates.enable) {
       if (
         !e.target.closest('.video-player .settings') &&
-        !e.target.closest(
-          '.video-player .controls .main-controls .right svg.setting'
-        )
+        !e.target.closest('.video-player .controls .main-controls .right svg.setting')
       ) {
         settingStates.enable = false;
         onCloseSettings();
@@ -1103,8 +1060,7 @@ const handleTimeUpdate = (e: any) => {
 
   const rect = overlayProgress.value!.getBoundingClientRect();
 
-  const percent =
-    Math.min(Math.max(0, e.x - rect.left), rect.width) / rect.width;
+  const percent = Math.min(Math.max(0, e.x - rect.left), rect.width) / rect.width;
 
   progressBar.value!.style.setProperty('--progress-width', percent.toString());
 
@@ -1214,10 +1170,7 @@ const onProgressVideo = (e: any) => {
 
       if (video.value!.currentTime > bufferedStart) {
         const percent = bufferedEnd / e.target.duration;
-        overlayProgress.value!.style.setProperty(
-          '--seekable-width',
-          percent.toString()
-        );
+        overlayProgress.value!.style.setProperty('--seekable-width', percent.toString());
         break;
       }
     }
@@ -1346,10 +1299,7 @@ const rewindVideo = async (value: number) => {
     checkEndedVideo();
 
     const percent = video.value!.currentTime / video.value!.duration;
-    progressBar.value!.style.setProperty(
-      '--progress-width',
-      percent.toString()
-    );
+    progressBar.value!.style.setProperty('--progress-width', percent.toString());
 
     if (videoStates.isPlayVideo) {
       video.value!.play();
@@ -1375,10 +1325,7 @@ const forwardVideo = async (value: number) => {
     checkEndedVideo();
 
     const percent = video.value!.currentTime / video.value!.duration;
-    progressBar.value!.style.setProperty(
-      '--progress-width',
-      percent.toString()
-    );
+    progressBar.value!.style.setProperty('--progress-width', percent.toString());
 
     videoStates.isActiveControlsAnimation = false;
     await wait(10);
@@ -1431,12 +1378,8 @@ const onTouchMoveProgressBar = (e: any) => {
   const rect = overlayProgress.value!.getBoundingClientRect();
 
   [...e.changedTouches].forEach((touch) => {
-    const percent =
-      Math.min(Math.max(0, touch.pageX - rect.left), rect.width) / rect.width;
-    overlayProgress.value!.style.setProperty(
-      '--preview-width',
-      percent.toString()
-    );
+    const percent = Math.min(Math.max(0, touch.pageX - rect.left), rect.width) / rect.width;
+    overlayProgress.value!.style.setProperty('--preview-width', percent.toString());
 
     if (videoStates.isScrubbingProgressBar) {
       handleTimeUpdate({ x: touch.pageX });
@@ -1450,13 +1393,9 @@ const onMouseMoveProgressBar = (e: any) => {
   videoStates.isMouseMoveOverlayProgress = true;
   const rect = overlayProgress.value!.getBoundingClientRect();
 
-  const percent =
-    Math.min(Math.max(0, e.x - rect.left), rect.width) / rect.width;
+  const percent = Math.min(Math.max(0, e.x - rect.left), rect.width) / rect.width;
 
-  overlayProgress.value!.style.setProperty(
-    '--preview-width',
-    percent.toString()
-  );
+  overlayProgress.value!.style.setProperty('--preview-width', percent.toString());
 
   if (videoStates.isScrubbingProgressBar) {
     handleTimeUpdate(e);
@@ -1472,8 +1411,7 @@ const onMouseLeaveProgressBar = (e: any) => {
 const drawTimeLine = (e: any) => {
   const rect = overlayProgress.value!.getBoundingClientRect();
 
-  const percent =
-    Math.min(Math.max(0, e.x - rect.left), rect.width) / rect.width;
+  const percent = Math.min(Math.max(0, e.x - rect.left), rect.width) / rect.width;
 
   timelineUpdate.value = formatDuration(percent * video.value!.duration)!;
 
@@ -1485,10 +1423,7 @@ const drawTimeLine = (e: any) => {
     overlayProgress.value!.offsetWidth - timeline.value!.offsetWidth
   );
 
-  timeline.value!.style.setProperty(
-    '--timeline-position',
-    timeLinePositionFinnal + 'px'
-  );
+  timeline.value!.style.setProperty('--timeline-position', timeLinePositionFinnal + 'px');
 
   // videoTemp.value.currentTime = percent * videoTemp.value.duration;
 
@@ -1590,10 +1525,7 @@ const onClickPlayAgain = () => {
 
 const onClickKeepWatching = () => {
   video.value!.currentTime = historyProgress.value.seconds;
-  progressBar.value!.style.setProperty(
-    '--progress-width',
-    historyProgress.value.percent.toString()
-  );
+  progressBar.value!.style.setProperty('--progress-width', historyProgress.value.percent.toString());
   videoStates.isShowNotify = false;
   video.value!.play();
   videoStates.isPlayVideo = true;
