@@ -82,7 +82,7 @@ const dataSuggested = ref<any[]>([]);
 const page = ref<number>(1);
 const loading = ref<boolean>(false);
 const loadMore = ref<boolean>(false);
-const loadingSuggested = computed<boolean>(() => loading.value || status.value != 'success');
+const loadingSuggested = computed<boolean>(() => loading.value);
 
 // watch(
 //   () => props.dataMovie,
