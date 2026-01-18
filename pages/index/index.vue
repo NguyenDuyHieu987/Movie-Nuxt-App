@@ -94,7 +94,7 @@
               </NuxtLink>
             </h2>
             <SwiperCarouselGroup
-              :data="broadcasts.results"
+              :data="broadcasts?.results"
               :responsive="responsiveHorizoltal"
               @on-loaded="onSwiperLoaded"
             >
@@ -120,9 +120,7 @@
             <h2 class="gradient-title-default">
               <span>{{
                 mod?.type == 'trending'
-                  ? mod?.name +
-                    ' ' +
-                    utils.convertMediaTypeToVietnamese(mod?.media_type)
+                  ? mod?.name + ' ' + utils.convertMediaTypeToVietnamese(mod?.media_type)
                   : mod?.name
               }}</span>
               <NuxtLink
@@ -519,11 +517,7 @@ const { data: broadcasts, pending: loadingBroadcasts } = await useAsyncData(
 // page.value++;
 
 watchEffect(() => {
-  const {
-    results = [],
-    total: t = 0,
-    page_size = pageSize.value
-  } = modListData.value || {};
+  const { results = [], total: t = 0, page_size = pageSize.value } = modListData.value || {};
 
   if (page.value === 1 && results.length) {
     trendings.value = results[0]?.data || [];
@@ -571,11 +565,7 @@ const handleLoadMoreMods = async () => {
   )
     return;
 
-  if (
-    utils.isWindowScrollBottom() &&
-    total.value > pageSize.value &&
-    modList.value?.length < total.value
-  ) {
+  if (utils.isWindowScrollBottom() && total.value > pageSize.value && modList.value?.length < total.value) {
     loadMore.value = true;
     await refreshMods();
     modList.value = modList.value.concat(modListData.value?.results);
