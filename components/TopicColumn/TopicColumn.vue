@@ -83,8 +83,6 @@
               type="text"
             >
               <template #icon>
-                <!-- <Icon name="fa6-solid:ellipsis-vertical" /> -->
-
                 <SvgoEllipsisVertical
                   width="1.9rem"
                   height="1.9rem"
@@ -96,17 +94,14 @@
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item key="info">
-                  <template #icon>
-                    <!-- <InfoCircleOutlined /> -->
-                    <!-- <Icon name="bi:info-circle" class="info" /> -->
-
-                    <SvgoInfoCircle
-                      class="info"
-                      width="1.5rem"
-                      height="1.5rem"
-                      fill="currentColor"
-                    />
-                  </template>
+                  <!-- <template #icon> -->
+                  <SvgoInfoCircle
+                    class="info"
+                    width="1.5rem"
+                    height="1.5rem"
+                    fill="currentColor"
+                  />
+                  <!-- </template> -->
                   <span>Thông tin chi tiết</span>
                 </el-dropdown-item>
               </el-dropdown-menu>
@@ -188,9 +183,7 @@ const dataMovie = ref<any>(dataColumn.value[0]?.movieData || {});
 const topicImageUrl = computed<string>(() =>
   getImage(
     props.topicImage || 'topic1.jpg',
-    props.topicImage == 'topic1.jpg' || props.topicImage == undefined
-      ? 'misc'
-      : 'backdrop',
+    props.topicImage == 'topic1.jpg' || props.topicImage == undefined ? 'misc' : 'backdrop',
     { h: 300 }
   )
 );
@@ -216,10 +209,7 @@ const setBackgroundColor = (color: string[]) => {
   const ant_input_affix_wrapper = topicColumn.value!.getElementsByClassName(
     'ant-input-affix-wrapper'
   )[0] as HTMLElement;
-  ant_input_affix_wrapper.setAttribute(
-    'style',
-    `border-bottom: 2px solid rgb(${color[0]}, ${color[1]}, ${color[2]});`
-  );
+  ant_input_affix_wrapper.setAttribute('style', `border-bottom: 2px solid rgb(${color[0]}, ${color[1]}, ${color[2]});`);
 };
 
 onMounted(() => {
