@@ -522,7 +522,7 @@ watchEffect(() => {
 
   if (page.value === 1 && results.length) {
     trendings.value = results[0]?.data || [];
-    modList.value = results.slice(1);
+    modList.value = results?.slice(1);
     total.value = t;
     pageSize.value = page_size;
     page.value++;
