@@ -467,7 +467,8 @@ const {
   () => `mods/all/all/${page.value}/${pageSize.value}`,
   () => getAllModWithData('all', 'all', page.value, pageSize.value),
   {
-    lazy: true
+    lazy: true,
+    getCachedData: () => undefined
   }
 );
 
